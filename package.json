@@ -1,0 +1,44 @@
+{
+  "name": "brainsait-platform",
+  "version": "1.0.0",
+  "description": "BrainSAIT Healthcare SME Digital Transformation Platform",
+  "private": true,
+  "workspaces": [
+    "packages/brainsait-frontend",
+    "packages/brainsait-backend",
+    "packages/brainsait-shared",
+    "packages/brainsait-docs",
+    "packages/brainsait-ai"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\" \"npm run dev:docs\"",
+    "dev:frontend": "npm run dev --workspace=brainsait-frontend",
+    "dev:backend": "npm run dev --workspace=brainsait-backend",
+    "dev:docs": "npm run dev --workspace=brainsait-docs",
+    "build": "npm run build --workspaces",
+    "build:frontend": "npm run build --workspace=brainsait-frontend",
+    "build:backend": "npm run build --workspace=brainsait-backend",
+    "build:docs": "npm run build --workspace=brainsait-docs",
+    "test": "npm run test --workspaces",
+    "lint": "npm run lint --workspaces",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up",
+    "docker:down": "docker-compose down",
+    "clean": "npm run clean --workspaces && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "title": "الامتثال التنظيمي",
+  "subtitle": "إدارة الامتثال للأنظمة السعودية",
+  "dashboard": {
+    "overview": "نظرة عامة",
+    "score": "نقاط الامتثال",
+    "status": "حالة الامتثال",
+    "last_updated": "آخر تحديث",
+    "next_audit": "المراجعة القادمة",
+    "critical_issues": "المسائل الحرجة",
+    "recommendations": "التوصيات"
+  },
+  "status": {
+    "compliant": "متوافق",
+    "partial": "متوافق جزئياً",
+    "non_compliant": "غير متوافق",
+    "pending": "في الانتظار",
+    "expired": "منتهي الصلاحية",
+    "suspended": "معلق"
+  },
+  "sections": {
+    "commercial_registration": {
+      "title": "السجل التجاري",
+      "description": "بيانات السجل التجاري ووزارة التجارة",
+      "cr_number": "رقم السجل التجاري",
+      "issue_date": "تاريخ الإصدار",
+      "expiry_date": "تاريخ الانتهاء",
+      "activity": "النشاط التجاري",
+      "status": "حالة السجل",
+      "validation": "التحقق من الصحة"
+    },
+    "vat_registration": {
+      "title": "ضريبة القيمة المضافة",
+      "description": "تسجيل ضريبة القيمة المضافة مع هيئة الزكاة والضريبة",
+      "vat_number": "الرقم الضريبي",
+      "registration_date": "تاريخ التسجيل",
+      "status": "حالة التسجيل",
+      "exemption": "إعفاء ضريبي"
+    },
+    "zakat_registration": {
+      "title": "تسجيل الزكاة",
+      "description": "تسجيل الزكاة مع هيئة الزكاة والضريبة",
+      "zakat_number": "رقم الزكاة",
+      "status": "حالة التسجيل"
+    },
+    "gosi_registration": {
+      "title": "التأمينات الاجتماعية",
+      "description": "التسجيل في المؤسسة العامة للتأمينات الاجتماعية",
+      "gosi_number": "رقم التأمينات الاجتماعية",
+      "status": "حالة التسجيل"
+    },
+    "wasl_address": {
+      "title": "العنوان الوطني",
+      "description": "العنوان المطابق لمعايير وصل",
+      "building_number": "رقم المبنى",
+      "street_name": "اسم الشارع",
+      "district": "الحي",
+      "city": "المدينة",
+      "region": "المنطقة",
+      "postal_code": "الرمز البريدي",
+      "additional_number": "الرقم الإضافي",
+      "validated": "مُتحقق منه"
+    },
+    "healthcare_licensing": {
+      "title": "التراخيص الصحية",
+      "description": "التراخيص والاعتمادات الصحية",
+      "health_council_license": "ترخيص مجلس الصحة السعودي",
+      "cbahi_accreditation": "اعتماد المركز السعودي",
+      "sfda_license": "ترخيص الهيئة العامة للغذاء والدواء",
+      "mph_license": "ترخيص وزارة الصحة",
+      "health_region": "المنطقة الصحية"
+    }
+  },
+  "actions": {
+    "update_compliance": "تحديث بيانات الامتثال",
+    "validate_cr": "التحقق من السجل التجاري",
+    "validate_vat": "التحقق من الرقم الضريبي",
+    "validate_address": "التحقق من العنوان",
+    "generate_report": "إنشاء تقرير",
+    "schedule_audit": "جدولة مراجعة",
+    "contact_support": "اتصل بالدعم",
+    "download_certificate": "تحميل الشهادة"
+  },
+  "compliance_score": {
+    "excellent": "ممتاز (٩٠-١٠٠)",
+    "good": "جيد (٧٠-٨٩)",
+    "fair": "مقبول (٥٠-٦٩)",
+    "poor": "ضعيف (أقل من ٥٠)",
+    "breakdown": "تفصيل النقاط",
+    "improvement_plan": "خطة التحسين"
+  },
+  "issues": {
+    "critical": "حرج",
+    "high": "عالي",
+    "medium": "متوسط",
+    "low": "منخفض",
+    "title": "المسائل المعلقة",
+    "description": "الوصف",
+    "required_action": "الإجراء المطلوب",
+    "deadline": "الموعد النهائي",
+    "responsible": "المسؤول"
+  },
+  "recommendations": {
+    "title": "التوصيات",
+    "immediate_actions": "إجراءات فورية",
+    "short_term": "قصيرة المدى (٣٠ يوماً)",
+    "medium_term": "متوسطة المدى (٩٠ يوماً)",
+    "long_term": "طويلة المدى (١٢ شهراً)",
+    "priority": "الأولوية"
+  },
+  "audit": {
+    "title": "مراجعة الامتثال",
+    "last_audit": "آخر مراجعة",
+    "next_audit": "المراجعة القادمة",
+    "audit_type": "نوع المراجعة",
+    "auditor": "المراجع",
+    "findings": "النتائج",
+    "action_plan": "خطة العمل",
+    "follow_up": "المتابعة"
+  },
+  "government_apis": {
+    "title": "الربط مع الجهات الحكومية",
+    "moci": "وزارة التجارة والاستثمار",
+    "zatca": "هيئة الزكاة والضريبة والجمارك",
+    "health_council": "مجلس الصحة السعودي",
+    "gosi": "المؤسسة العامة للتأمينات الاجتماعية",
+    "cbahi": "المركز السعودي لاعتماد المنشآت الصحية",
+    "sfda": "الهيئة العامة للغذاء والدواء",
+    "last_sync": "آخر مزامنة",
+    "sync_status": "حالة المزامنة",
+    "auto_validation": "التحقق التلقائي"
+  },
+  "notifications": {
+    "compliance_updated": "تم تحديث بيانات الامتثال بنجاح",
+    "validation_success": "تم التحقق بنجاح",
+    "validation_failed": "فشل في التحقق",
+    "audit_scheduled": "تم جدولة المراجعة",
+    "deadline_approaching": "اقتراب موعد نهائي",
+    "license_expiring": "انتهاء صلاحية الترخيص قريباً",
+    "score_improved": "تحسن نقاط الامتثال",
+    "critical_issue": "مسألة حرجة تتطلب انتباهاً فورياً"
+  },
+  "help": {
+    "title": "مساعدة الامتثال",
+    "guides": "أدلة الامتثال",
+    "faq": "الأسئلة الشائعة",
+    "contact": "اتصل بخبير الامتثال",
+    "video_tutorials": "دروس مرئية",
+    "regulatory_updates": "آخر التحديثات التنظيمية"
+  },
+  "reports": {
+    "compliance_report": "تقرير الامتثال",
+    "gap_analysis": "تحليل الفجوات",
+    "improvement_tracking": "تتبع التحسينات",
+    "regulatory_changes": "التغييرات التنظيمية",
+    "export_options": "خيارات التصدير",
+    "schedule_reports": "جدولة التقارير"
+  }
+}

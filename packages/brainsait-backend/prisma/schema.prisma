@@ -1,0 +1,1018 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  firstName   String
+  lastName    String
+  password    String
+  role        UserRole @default(SME_OWNER)
+  isActive    Boolean  @default(true)
+  isVerified  Boolean  @default(false)
+  avatar      String?
+  phoneNumber String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  smeProfile     SMEProfile?
+  mentorProfile  MentorProfile?
+  sessions       Session[]
+  passwordResets PasswordReset[]
+  aiChampion     AIChampion?
+  aiUsageLogs    AIUsageLog[]
+
+  @@map("users")
+}
+
+model SMEProfile {
+  id              String            @id @default(cuid())
+  userId          String            @unique
+  companyName     String
+  companyType     SMEType
+  industryFocus   IndustryFocus[]
+  description     String?
+  website         String?
+  foundedYear     Int?
+  employeeCount   Int?
+  annualRevenue   String?
+  address         Json?
+  documents       Json?
+  verificationStatus VerificationStatus @default(PENDING)
+  
+  // Saudi Regulatory Fields
+  commercialRegistrationNumber String? @unique
+  monocNumber     String?           // Ministry of Commerce and Industry Number
+  vatRegistrationNumber String?     // VAT Registration Number
+  saudiAddress    Json?             // Saudi standardized address (WASL compliant)
+  
+  // Saudi Compliance Status
+  saudiComplianceStatus SaudiComplianceStatus @default(PENDING)
+  lastComplianceCheck DateTime?
+  complianceNotes String?
+  
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+
+  // Relations
+  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  programEnrollments ProgramEnrollment[]
+  mentorships     Mentorship[]
+  assessmentResponses AssessmentResponse[]
+  generatedDocuments GeneratedDocument[]
+  kpiEntries      KPIEntry[]
+  healthcareProfile SMEHealthcareProfile?
+  saudiRegulatory SaudiRegulatoryCompliance?
+
+  @@map("sme_profiles")
+}
+
+model MentorProfile {
+  id            String         @id @default(cuid())
+  userId        String         @unique
+  expertise     IndustryFocus[]
+  yearsExperience Int
+  currentRole   String
+  company       String
+  bio           String?
+  linkedinUrl   String?
+  availability  Json?
+  hourlyRate    Float?
+  isVerified    Boolean        @default(false)
+  rating        Float?
+  totalSessions Int            @default(0)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  // Relations
+  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  mentorships   Mentorship[]
+  reviews       MentorReview[]
+
+  @@map("mentor_profiles")
+}
+
+model Program {
+  id          String            @id @default(cuid())
+  title       String
+  titleAr     String?
+  description String
+  descriptionAr String?
+  type        ProgramType
+  duration    Int               // Duration in weeks
+  maxParticipants Int
+  currentParticipants Int       @default(0)
+  status      ProgramStatus     @default(DRAFT)
+  startDate   DateTime?
+  endDate     DateTime?
+  cost        Float?
+  requirements Json?
+  curriculum  Json?
+  resources   Json?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  // Relations
+  enrollments ProgramEnrollment[]
+  phases      ProgramPhase[]
+  assessments Assessment[]
+
+  @@map("programs")
+}
+
+model ProgramEnrollment {
+  id          String              @id @default(cuid())
+  smeId       String
+  programId   String
+  status      EnrollmentStatus    @default(PENDING)
+  progress    Float               @default(0)
+  completedAt DateTime?
+  enrolledAt  DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+
+  // Relations
+  sme         SMEProfile          @relation(fields: [smeId], references: [id], onDelete: Cascade)
+  program     Program             @relation(fields: [programId], references: [id], onDelete: Cascade)
+  phaseProgress PhaseProgress[]
+  generatedDocuments GeneratedDocument[]
+
+  @@unique([smeId, programId])
+  @@map("program_enrollments")
+}
+
+model Mentorship {
+  id          String          @id @default(cuid())
+  smeId       String
+  mentorId    String
+  status      MentorshipStatus @default(PENDING)
+  startDate   DateTime?
+  endDate     DateTime?
+  sessionCount Int            @default(0)
+  notes       String?
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  // Relations
+  sme         SMEProfile      @relation(fields: [smeId], references: [id], onDelete: Cascade)
+  mentor      MentorProfile   @relation(fields: [mentorId], references: [id], onDelete: Cascade)
+  sessions    MentorSession[]
+
+  @@map("mentorships")
+}
+
+model MentorSession {
+  id            String      @id @default(cuid())
+  mentorshipId  String
+  scheduledAt   DateTime
+  duration      Int         // Duration in minutes
+  status        SessionStatus @default(SCHEDULED)
+  notes         String?
+  feedback      String?
+  rating        Int?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  // Relations
+  mentorship    Mentorship  @relation(fields: [mentorshipId], references: [id], onDelete: Cascade)
+
+  @@map("mentor_sessions")
+}
+
+model MentorReview {
+  id        String        @id @default(cuid())
+  mentorId  String
+  rating    Int           // 1-5 stars
+  comment   String?
+  isPublic  Boolean       @default(true)
+  createdAt DateTime      @default(now())
+
+  // Relations
+  mentor    MentorProfile @relation(fields: [mentorId], references: [id], onDelete: Cascade)
+
+  @@map("mentor_reviews")
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  // Relations
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model PasswordReset {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  // Relations
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("password_resets")
+}
+
+// New BrainSAIT Platform Models
+
+model ProgramPhase {
+  id          String            @id @default(cuid())
+  programId   String
+  name        String
+  nameAr      String?
+  description String?
+  descriptionAr String?
+  order       Int
+  type        PhaseType
+  duration    Int?              // Duration in days
+  requirements Json?            // Phase requirements and deliverables
+  resources   Json?             // Phase-specific resources
+  isActive    Boolean           @default(true)
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  // Relations
+  program     Program           @relation(fields: [programId], references: [id], onDelete: Cascade)
+  progressEntries PhaseProgress[]
+  assessments Assessment[]
+
+  @@unique([programId, order])
+  @@map("program_phases")
+}
+
+model PhaseProgress {
+  id              String          @id @default(cuid())
+  enrollmentId    String
+  phaseId         String
+  status          PhaseStatus     @default(NOT_STARTED)
+  progress        Float           @default(0) // 0-100 percentage
+  startDate       DateTime?
+  completedDate   DateTime?
+  notes           String?
+  deliverables    Json?           // Submitted deliverables
+  mentorFeedback  String?
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  // Relations
+  enrollment      ProgramEnrollment @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
+  phase           ProgramPhase    @relation(fields: [phaseId], references: [id], onDelete: Cascade)
+  kpiEntries      KPIEntry[]
+
+  @@unique([enrollmentId, phaseId])
+  @@map("phase_progress")
+}
+
+model Assessment {
+  id            String          @id @default(cuid())
+  programId     String?
+  phaseId       String?
+  title         String
+  titleAr       String?
+  description   String?
+  descriptionAr String?
+  type          AssessmentType
+  isRequired    Boolean         @default(true)
+  maxScore      Int?
+  passingScore  Int?
+  timeLimit     Int?            // Time limit in minutes
+  questions     Json            // Assessment questions structure
+  instructions  String?
+  instructionsAr String?
+  isActive      Boolean         @default(true)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  // Relations
+  program       Program?        @relation(fields: [programId], references: [id], onDelete: Cascade)
+  phase         ProgramPhase?   @relation(fields: [phaseId], references: [id], onDelete: Cascade)
+  responses     AssessmentResponse[]
+
+  @@map("assessments")
+}
+
+model AssessmentResponse {
+  id            String          @id @default(cuid())
+  assessmentId  String
+  smeId         String
+  responses     Json            // User responses structure
+  score         Int?
+  maxScore      Int?
+  percentage    Float?
+  status        ResponseStatus  @default(DRAFT)
+  startedAt     DateTime        @default(now())
+  submittedAt   DateTime?
+  reviewedAt    DateTime?
+  reviewedBy    String?         // User ID of reviewer
+  feedback      String?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  // Relations
+  assessment    Assessment      @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+  sme           SMEProfile      @relation(fields: [smeId], references: [id], onDelete: Cascade)
+
+  @@unique([assessmentId, smeId])
+  @@map("assessment_responses")
+}
+
+model DocumentTemplate {
+  id            String          @id @default(cuid())
+  name          String
+  nameAr        String?
+  description   String?
+  descriptionAr String?
+  category      DocumentCategory
+  type          DocumentType
+  language      TemplateLanguage @default(BILINGUAL)
+  template      Json            // Template structure (HTML/JSON)
+  fields        Json            // Dynamic fields configuration
+  version       String          @default("1.0")
+  isActive      Boolean         @default(true)
+  createdBy     String?         // User ID
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  // Relations
+  documents     GeneratedDocument[]
+
+  @@map("document_templates")
+}
+
+model GeneratedDocument {
+  id            String          @id @default(cuid())
+  templateId    String
+  smeId         String
+  enrollmentId  String?
+  title         String
+  titleAr       String?
+  content       Json            // Generated document content
+  data          Json            // Source data used for generation
+  format        DocumentFormat  @default(PDF)
+  status        DocumentStatus  @default(DRAFT)
+  version       String          @default("1.0")
+  fileUrl       String?         // URL to generated file
+  fileName      String?
+  fileSize      Int?
+  generatedBy   String?         // User ID
+  reviewedBy    String?         // User ID
+  reviewedAt    DateTime?
+  reviewNotes   String?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  // Relations
+  template      DocumentTemplate @relation(fields: [templateId], references: [id], onDelete: Cascade)
+  sme           SMEProfile      @relation(fields: [smeId], references: [id], onDelete: Cascade)
+  enrollment    ProgramEnrollment? @relation(fields: [enrollmentId], references: [id], onDelete: SetNull)
+
+  @@map("generated_documents")
+}
+
+model KPITemplate {
+  id            String          @id @default(cuid())
+  name          String
+  nameAr        String?
+  description   String?
+  descriptionAr String?
+  category      KPICategory
+  dataType      KPIDataType
+  unit          String?         // e.g., "percentage", "count", "currency"
+  unitAr        String?
+  targetType    KPITargetType   // INCREASE, DECREASE, MAINTAIN
+  formula       String?         // Calculation formula
+  industryFocus IndustryFocus[]
+  isActive      Boolean         @default(true)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  // Relations
+  entries       KPIEntry[]
+
+  @@map("kpi_templates")
+}
+
+model KPIEntry {
+  id            String          @id @default(cuid())
+  kpiTemplateId String
+  smeId         String
+  phaseProgressId String?
+  period        KPIPeriod
+  periodStart   DateTime
+  periodEnd     DateTime
+  targetValue   Float?
+  actualValue   Float?
+  previousValue Float?
+  variance      Float?          // Calculated variance
+  varianceType  VarianceType?   // POSITIVE, NEGATIVE, NEUTRAL
+  notes         String?
+  dataSource    String?         // Source of the data
+  verifiedBy    String?         // User ID
+  verifiedAt    DateTime?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  // Relations
+  kpiTemplate   KPITemplate     @relation(fields: [kpiTemplateId], references: [id], onDelete: Cascade)
+  sme           SMEProfile      @relation(fields: [smeId], references: [id], onDelete: Cascade)
+  phaseProgress PhaseProgress?  @relation(fields: [phaseProgressId], references: [id], onDelete: SetNull)
+
+  @@unique([kpiTemplateId, smeId, periodStart])
+  @@map("kpi_entries")
+}
+
+model BusinessHealthcareType {
+  id            String          @id @default(cuid())
+  name          String
+  nameAr        String
+  description   String?
+  descriptionAr String?
+  category      HealthcareCategory
+  regulatoryRequirements Json?  // Specific regulatory requirements
+  commonChallenges Json?         // Common business challenges
+  kpiSuggestions Json?           // Suggested KPIs for this type
+  isActive      Boolean         @default(true)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  // Relations
+  smeProfiles   SMEHealthcareProfile[]
+
+  @@map("business_healthcare_types")
+}
+
+model SMEHealthcareProfile {
+  id                    String                @id @default(cuid())
+  smeId                 String                @unique
+  healthcareTypeId      String
+  licenseNumber         String?
+  licenseExpiryDate     DateTime?
+  
+  // Saudi Healthcare Regulatory Fields
+  saudiHealthLicense    String?               // Saudi Health Council License
+  cbahiAccreditationId  String?               // CBAHI Accreditation ID
+  sfdaLicenseNumber     String?               // SFDA License Number (for medical devices/pharma)
+  healthCouncilRegion   SaudiRegion?          // Health Council Region
+  mphLicenseNumber      String?               // Ministry of Public Health License
+  
+  accreditations        Json?                 // List of accreditations
+  specializations       Json?                 // Medical specializations
+  targetPatientGroups   Json?                 // Target demographics
+  servicesOffered       Json?                 // List of services
+  operatingHours        Json?                 // Operating schedule
+  insuranceAccepted     Json?                 // Insurance providers accepted
+  certifications        Json?                 // Professional certifications
+  complianceStatus      ComplianceStatus      @default(PENDING)
+  lastComplianceCheck   DateTime?
+  regulatoryNotes       String?
+  createdAt             DateTime              @default(now())
+  updatedAt             DateTime              @updatedAt
+
+  // Relations
+  sme                   SMEProfile            @relation(fields: [smeId], references: [id], onDelete: Cascade)
+  healthcareType        BusinessHealthcareType @relation(fields: [healthcareTypeId], references: [id], onDelete: Cascade)
+
+  @@map("sme_healthcare_profiles")
+}
+
+model SaudiRegulatoryCompliance {
+  id                    String                @id @default(cuid())
+  smeId                 String                @unique
+  
+  // Commercial Registration Details
+  crNumber              String?               @unique // Commercial Registration Number
+  crIssueDate           DateTime?
+  crExpiryDate          DateTime?
+  crActivity            String?               // Main business activity in CR
+  crStatus              CRStatus              @default(PENDING)
+  
+  // MOCI (Ministry of Commerce) Compliance  
+  monocNumber           String?               // Ministry number
+  monocStatus           MOCIStatus            @default(PENDING)
+  
+  // VAT Registration
+  vatNumber             String?               @unique
+  vatRegistrationDate   DateTime?
+  vatStatus             VATStatus             @default(NOT_APPLICABLE)
+  
+  // ZAKAT Registration
+  zakatNumber           String?
+  zakatStatus           ZakatStatus           @default(PENDING)
+  
+  // GOSI Registration (General Organization for Social Insurance)
+  gosiNumber            String?
+  gosiStatus            GOSIStatus            @default(NOT_APPLICABLE)
+  
+  // Saudi Address (WASL Compliant)
+  waslBuildingNumber    String?
+  waslStreetName        String?
+  waslDistrict          String?
+  waslCity              String?
+  waslRegion            SaudiRegion?
+  waslPostalCode        String?
+  waslAdditionalNumber  String?
+  waslValidated         Boolean               @default(false)
+  
+  // Compliance Tracking
+  overallComplianceScore Float?               // 0-100 score
+  lastFullAudit         DateTime?
+  nextAuditDue          DateTime?
+  complianceOfficer     String?               // User ID of assigned officer
+  
+  createdAt             DateTime              @default(now())
+  updatedAt             DateTime              @updatedAt
+
+  // Relations
+  sme                   SMEProfile            @relation(fields: [smeId], references: [id], onDelete: Cascade)
+
+  @@map("saudi_regulatory_compliance")
+}
+
+// Saudi Government Integration Log
+model SaudiGovernmentAPILog {
+  id                    String                @id @default(cuid())
+  smeId                 String
+  apiEndpoint           String                // Which government API was called
+  requestType           String                // CR_VALIDATION, VAT_CHECK, etc.
+  requestData           Json?                 // Request payload
+  responseData          Json?                 // Response data
+  status                APICallStatus
+  responseTime          Int?                  // Response time in milliseconds
+  errorMessage          String?
+  createdAt             DateTime              @default(now())
+
+  @@map("saudi_government_api_logs")
+}
+
+// Enums
+enum UserRole {
+  SME_OWNER
+  MENTOR
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum SMEType {
+  STARTUP
+  SMALL_BUSINESS
+  MEDIUM_ENTERPRISE
+  NON_PROFIT
+}
+
+enum IndustryFocus {
+  HEALTHCARE_TECHNOLOGY
+  MEDICAL_DEVICES
+  PHARMACEUTICALS
+  BIOTECHNOLOGY
+  DIGITAL_HEALTH
+  TELEMEDICINE
+  HEALTH_ANALYTICS
+  MEDICAL_RESEARCH
+  HEALTHCARE_SERVICES
+  HEALTH_INSURANCE
+}
+
+enum VerificationStatus {
+  PENDING
+  IN_REVIEW
+  VERIFIED
+  REJECTED
+}
+
+enum ProgramType {
+  INCUBATION
+  ACCELERATION
+  MENTORSHIP
+  WORKSHOP
+  MASTERCLASS
+}
+
+enum ProgramStatus {
+  DRAFT
+  PUBLISHED
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+enum EnrollmentStatus {
+  PENDING
+  APPROVED
+  ACTIVE
+  COMPLETED
+  WITHDRAWN
+  REJECTED
+}
+
+enum MentorshipStatus {
+  PENDING
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+enum SessionStatus {
+  SCHEDULED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+// New BrainSAIT Platform Enums
+
+enum PhaseType {
+  DIAGNOSIS
+  PLANNING
+  IMPLEMENTATION
+  MONITORING
+  EVALUATION
+}
+
+enum PhaseStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  UNDER_REVIEW
+  COMPLETED
+  BLOCKED
+  SKIPPED
+}
+
+enum AssessmentType {
+  DIAGNOSTIC
+  FORMATIVE
+  SUMMATIVE
+  SELF_ASSESSMENT
+  PEER_ASSESSMENT
+  MENTOR_ASSESSMENT
+  BUSINESS_READINESS
+  COMPLIANCE_CHECK
+}
+
+enum ResponseStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  REVIEWED
+  APPROVED
+  REJECTED
+  REQUIRES_REVISION
+}
+
+enum DocumentCategory {
+  BUSINESS_PLAN
+  FINANCIAL_REPORT
+  COMPLIANCE_DOCUMENT
+  CERTIFICATION
+  ASSESSMENT_REPORT
+  PROGRESS_REPORT
+  MARKETING_MATERIAL
+  LEGAL_DOCUMENT
+  TRAINING_MATERIAL
+  TEMPLATE
+}
+
+enum DocumentType {
+  FORM
+  REPORT
+  CERTIFICATE
+  PRESENTATION
+  SPREADSHEET
+  CHECKLIST
+  GUIDE
+  TEMPLATE
+}
+
+enum DocumentFormat {
+  PDF
+  DOCX
+  XLSX
+  PPTX
+  HTML
+  JSON
+}
+
+enum DocumentStatus {
+  DRAFT
+  IN_PROGRESS
+  PENDING_REVIEW
+  REVIEWED
+  APPROVED
+  PUBLISHED
+  ARCHIVED
+  REJECTED
+}
+
+enum TemplateLanguage {
+  ENGLISH
+  ARABIC
+  BILINGUAL
+}
+
+enum KPICategory {
+  FINANCIAL
+  OPERATIONAL
+  CUSTOMER
+  GROWTH
+  COMPLIANCE
+  QUALITY
+  EFFICIENCY
+  MARKET
+  INNOVATION
+  SUSTAINABILITY
+}
+
+enum KPIDataType {
+  NUMBER
+  PERCENTAGE
+  CURRENCY
+  RATIO
+  BOOLEAN
+  TEXT
+  DATE
+}
+
+enum KPITargetType {
+  INCREASE
+  DECREASE
+  MAINTAIN
+  RANGE
+}
+
+enum KPIPeriod {
+  DAILY
+  WEEKLY
+  MONTHLY
+  QUARTERLY
+  YEARLY
+  CUSTOM
+}
+
+enum VarianceType {
+  POSITIVE
+  NEGATIVE
+  NEUTRAL
+}
+
+enum HealthcareCategory {
+  PRIMARY_CARE
+  SPECIALTY_CARE
+  DIAGNOSTIC_SERVICES
+  THERAPEUTIC_SERVICES
+  PHARMACEUTICAL
+  MEDICAL_DEVICES
+  HEALTH_TECHNOLOGY
+  TELEMEDICINE
+  HOME_HEALTHCARE
+  MENTAL_HEALTH
+  DENTAL_CARE
+  ALTERNATIVE_MEDICINE
+  HEALTH_INSURANCE
+  HEALTHCARE_ADMINISTRATION
+}
+
+enum ComplianceStatus {
+  PENDING
+  IN_REVIEW
+  COMPLIANT
+  NON_COMPLIANT
+  EXPIRED
+  REQUIRES_UPDATE
+}
+
+// Saudi-Specific Enums
+
+enum SaudiComplianceStatus {
+  PENDING
+  IN_REVIEW
+  COMPLIANT
+  NON_COMPLIANT
+  EXPIRED
+  SUSPENDED
+  REQUIRES_UPDATE
+}
+
+enum SaudiRegion {
+  RIYADH
+  MAKKAH
+  MADINAH
+  EASTERN_PROVINCE
+  ASIR
+  TABUK
+  QASSIM
+  HAIL
+  NORTHERN_BORDERS
+  JAZAN
+  NAJRAN
+  AL_BAHAH
+  AL_JAWF
+}
+
+enum CRStatus {
+  PENDING
+  ACTIVE
+  INACTIVE
+  EXPIRED
+  SUSPENDED
+  CANCELLED
+}
+
+enum MOCIStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  EXPIRED
+  UNDER_REVIEW
+}
+
+enum VATStatus {
+  NOT_APPLICABLE
+  PENDING_REGISTRATION
+  REGISTERED
+  EXEMPTED
+  SUSPENDED
+  CANCELLED
+}
+
+enum ZakatStatus {
+  PENDING
+  REGISTERED
+  EXEMPTED
+  SUSPENDED
+  NON_COMPLIANT
+}
+
+enum GOSIStatus {
+  NOT_APPLICABLE
+  REGISTERED
+  PENDING_REGISTRATION
+  NON_COMPLIANT
+  SUSPENDED
+}
+
+enum APICallStatus {
+  SUCCESS
+  FAILED
+  TIMEOUT
+  RATE_LIMITED
+  AUTHENTICATION_ERROR
+  VALIDATION_ERROR
+}
+
+// AI Adoption Models
+
+model AIChampion {
+  id                String            @id @default(cuid())
+  userId            String            @unique
+  department        String
+  proficiencyScore  Float             @default(0)
+  useCasesDelivered Int               @default(0)
+  lastActivity      DateTime?
+  status            ChampionStatus    @default(TRAINING)
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  
+  // Relations
+  user              User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  aiUsageLogs       AIUsageLog[]
+  pilotProjects     AIPilotProject[]
+  tasks             ChampionTask[]
+  assessments       ProficiencyAssessment[]
+  
+  @@map("ai_champions")
+}
+
+model AIUsageLog {
+  id                String            @id @default(cuid())
+  userId            String
+  championId        String?
+  feature           String
+  model             String
+  promptTokens      Int
+  completionTokens  Int
+  timeSaved         Float?
+  qualityScore      Float?
+  createdAt         DateTime          @default(now())
+  
+  // Relations
+  user              User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  champion          AIChampion?       @relation(fields: [championId], references: [id])
+  
+  @@map("ai_usage_logs")
+}
+
+model AIPilotProject {
+  id                    String            @id @default(cuid())
+  title                 String
+  description           String
+  useCase               AIUseCase
+  status                AIProjectStatus   @default(PLANNING)
+  expectedEfficiencyGain Float?
+  efficiencyGain        Float?
+  roi                   Float?
+  championId            String
+  startDate             DateTime
+  endDate               DateTime?
+  createdAt             DateTime          @default(now())
+  updatedAt             DateTime          @updatedAt
+  
+  // Relations
+  champion              AIChampion        @relation(fields: [championId], references: [id], onDelete: Cascade)
+  metrics               AIMetric[]
+  
+  @@map("ai_pilot_projects")
+}
+
+model AIMetric {
+  id                String            @id @default(cuid())
+  projectId         String
+  metricType        String
+  baseline          Float
+  current           Float
+  target            Float
+  measuredAt        DateTime          @default(now())
+  
+  // Relations
+  project           AIPilotProject    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  
+  @@map("ai_metrics")
+}
+
+model ChampionTask {
+  id                String            @id @default(cuid())
+  championId        String
+  title             String
+  description       String
+  status            TaskStatus        @default(PENDING)
+  dueDate           DateTime?
+  completedAt       DateTime?
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  
+  // Relations
+  champion          AIChampion        @relation(fields: [championId], references: [id], onDelete: Cascade)
+  
+  @@map("champion_tasks")
+}
+
+model ProficiencyAssessment {
+  id                String            @id @default(cuid())
+  championId        String
+  score             Float
+  assessmentType    String
+  assessedAt        DateTime          @default(now())
+  
+  // Relations
+  champion          AIChampion        @relation(fields: [championId], references: [id], onDelete: Cascade)
+  
+  @@map("proficiency_assessments")
+}
+
+// AI-related Enums
+
+enum ChampionStatus {
+  TRAINING
+  ACTIVE
+  INACTIVE
+  GRADUATED
+}
+
+enum AIUseCase {
+  CLAIMS_AUTOMATION
+  PATIENT_CONTACT
+  CLINICAL_DOCUMENTATION
+  COMPLIANCE_AUDIT
+  KNOWLEDGE_MANAGEMENT
+}
+
+enum AIProjectStatus {
+  PLANNING
+  PILOT
+  SCALING
+  PRODUCTION
+  COMPLETED
+  CANCELLED
+}
+
+enum TaskStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}

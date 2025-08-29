@@ -1,0 +1,85 @@
+{
+  "title": "لوحة التحكم",
+  "welcome": "مرحباً بك في برينسايت",
+  "sme": {
+    "title": "لوحة تحكم المشروع الصغير والمتوسط",
+    "metrics": {
+      "program_progress": "تقدم البرنامج",
+      "completed_modules": "الوحدات المكتملة",
+      "mentor_sessions": "جلسات الإرشاد",
+      "documents_generated": "المستندات المولدة",
+      "upcoming_deadlines": "المواعيد النهائية القادمة",
+      "total_hours": "إجمالي الساعات المستثمرة"
+    },
+    "sections": {
+      "overview": "نظرة عامة",
+      "current_program": "البرنامج الحالي",
+      "mentor_sessions": "جلسات الإرشاد",
+      "documents": "المستندات",
+      "progress_tracking": "تتبع التقدم",
+      "notifications": "الإشعارات"
+    }
+  },
+  "entrepreneur": {
+    "title": "لوحة تحكم رائد الأعمال",
+    "metrics": {
+      "active_projects": "المشاريع النشطة",
+      "total_smes": "إجمالي المشاريع الصغيرة والمتوسطة",
+      "success_rate": "معدل النجاح",
+      "avg_completion_time": "متوسط وقت الإنجاز"
+    },
+    "sections": {
+      "portfolio_overview": "نظرة عامة على المحفظة",
+      "project_status": "حالة المشروع",
+      "performance_metrics": "مقاييس الأداء",
+      "resource_allocation": "تخصيص الموارد"
+    }
+  },
+  "mentor": {
+    "title": "لوحة تحكم المرشد",
+    "metrics": {
+      "assigned_smes": "المشاريع المسندة",
+      "completed_sessions": "الجلسات المكتملة",
+      "avg_rating": "متوسط التقييم",
+      "total_mentoring_hours": "إجمالي ساعات الإرشاد",
+      "upcoming_sessions": "الجلسات القادمة"
+    },
+    "sections": {
+      "mentoring_overview": "نظرة عامة على الإرشاد",
+      "assigned_smes": "المشاريع المسندة",
+      "session_schedule": "جدول الجلسات",
+      "performance_analytics": "تحليلات الأداء",
+      "feedback_summary": "ملخص التغذية الراجعة"
+    }
+  },
+  "analytics": {
+    "title": "التحليلات",
+    "charts": {
+      "program_enrollment": "اتجاهات التسجيل في البرنامج",
+      "completion_rates": "معدلات الإنجاز",
+      "mentor_performance": "أداء المرشدين",
+      "sme_progress": "توزيع تقدم المشاريع",
+      "document_generation": "إحصائيات توليد المستندات",
+      "user_activity": "نشاط المستخدمين",
+      "revenue_tracking": "تتبع الإيرادات",
+      "geographic_distribution": "التوزيع الجغرافي"
+    },
+    "filters": {
+      "time_period": "الفترة الزمنية",
+      "program_type": "نوع البرنامج",
+      "industry_focus": "التركيز الصناعي",
+      "mentor": "المرشد",
+      "status": "الحالة"
+    }
+  },
+  "widgets": {
+    "recent_activities": "الأنشطة الأخيرة",
+    "upcoming_events": "الأحداث القادمة",
+    "quick_stats": "إحصائيات سريعة",
+    "performance_summary": "ملخص الأداء",
+    "notifications": "الإشعارات",
+    "calendar": "التقويم",
+    "tasks": "المهام",
+    "messages": "الرسائل"
+  }
+}
