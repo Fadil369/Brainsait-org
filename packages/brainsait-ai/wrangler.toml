@@ -1,0 +1,61 @@
+# Cloudflare Workers Configuration for BrainSAIT AI Service
+
+name = "brainsait-ai"
+main = "dist/index.js"
+compatibility_date = "2024-01-01"
+node_compat = true
+
+# Account configuration
+account_id = "YOUR_ACCOUNT_ID"
+workers_dev = true
+route = { pattern = "ai.brainsait.com/*", zone_id = "YOUR_ZONE_ID" }
+
+# KV Namespaces for caching
+[[kv_namespaces]]
+binding = "AI_CACHE"
+id = "YOUR_AI_CACHE_KV_ID"
+preview_id = "YOUR_AI_CACHE_PREVIEW_ID"
+
+# Durable Objects for usage tracking
+[[durable_objects.bindings]]
+name = "USAGE_TRACKER"
+class_name = "UsageTracker"
+
+# R2 Storage for model outputs
+[[r2_buckets]]
+binding = "AI_OUTPUTS"
+bucket_name = "brainsait-ai-outputs"
+
+# Analytics Engine binding
+[[analytics_engine_datasets]]
+binding = "AI_ANALYTICS"
+
+# Environment variables
+[vars]
+SERVICE_NAME = "brainsait-ai"
+MAX_TOKENS_PER_REQUEST = "4000"
+MAX_REQUESTS_PER_MINUTE = "60"
+
+# Production environment
+[env.production]
+vars = { 
+  ENVIRONMENT = "production",
+  API_BASE_URL = "https://api.brainsait.com",
+  LOG_LEVEL = "info"
+}
+
+# Staging environment
+[env.staging]
+vars = { 
+  ENVIRONMENT = "staging",
+  API_BASE_URL = "https://staging-api.brainsait.com",
+  LOG_LEVEL = "debug"
+}
+
+# Development environment
+[env.development]
+vars = { 
+  ENVIRONMENT = "development",
+  API_BASE_URL = "http://localhost:5000",
+  LOG_LEVEL = "debug"
+}

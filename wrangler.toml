@@ -1,0 +1,68 @@
+# Cloudflare Workers Configuration for BrainSAIT Platform
+
+name = "brainsait-platform"
+main = "packages/brainsait-backend/dist/server.js"
+compatibility_date = "2024-01-01"
+node_compat = true
+
+# Account and route configuration
+account_id = "YOUR_ACCOUNT_ID"
+workers_dev = true
+route = { pattern = "brainsait.com/*", zone_id = "YOUR_ZONE_ID" }
+
+# Environment variables (non-sensitive)
+[env.production]
+vars = { 
+  NODE_ENV = "production",
+  API_BASE_URL = "https://api.brainsait.com",
+  FRONTEND_URL = "https://brainsait.com"
+}
+
+# KV Namespaces for session storage
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "YOUR_KV_NAMESPACE_ID"
+preview_id = "YOUR_KV_PREVIEW_ID"
+
+# Durable Objects for real-time features
+[[durable_objects.bindings]]
+name = "AI_USAGE_TRACKER"
+class_name = "AIUsageTracker"
+script_name = "packages/brainsait-ai/dist/durableObjects/aiUsageTracker.js"
+
+# R2 Storage for documents
+[[r2_buckets]]
+binding = "DOCUMENTS"
+bucket_name = "brainsait-documents"
+
+# D1 Database binding (if using Cloudflare D1)
+[[d1_databases]]
+binding = "DB"
+database_name = "brainsait-db"
+database_id = "YOUR_DATABASE_ID"
+
+# Build configuration
+[build]
+command = "npm run build"
+watch_paths = ["packages/**/*.ts", "packages/**/*.tsx"]
+
+# Cloudflare Pages configuration for frontend
+[site]
+bucket = "./packages/brainsait-frontend/out"
+entry-point = "packages/brainsait-frontend"
+
+# Development configuration
+[env.development]
+vars = { 
+  NODE_ENV = "development",
+  API_BASE_URL = "http://localhost:5000",
+  FRONTEND_URL = "http://localhost:3000"
+}
+
+# Staging configuration
+[env.staging]
+vars = { 
+  NODE_ENV = "staging",
+  API_BASE_URL = "https://staging-api.brainsait.com",
+  FRONTEND_URL = "https://staging.brainsait.com"
+}

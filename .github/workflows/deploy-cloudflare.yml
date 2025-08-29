@@ -1,0 +1,218 @@
+name: Deploy to Cloudflare
+
+on:
+  push:
+    branches: [main, production]
+  pull_request:
+    branches: [main]
+
+jobs:
+  deploy-frontend:
+    runs-on: ubuntu-latest
+    name: Deploy Frontend to Cloudflare Pages
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci --workspaces
+      
+      - name: Build frontend
+        run: npm run build:frontend
+        env:
+          NEXT_PUBLIC_API_URL: ${{ secrets.API_URL }}
+          NEXT_PUBLIC_FRONTEND_URL: ${{ secrets.FRONTEND_URL }}
+      
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: brainsait-frontend
+          directory: packages/brainsait-frontend/out
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref == 'refs/heads/main' && 'production' || 'preview' }}
+
+  deploy-backend:
+    runs-on: ubuntu-latest
+    name: Deploy Backend to Cloudflare Workers
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci --workspaces
+      
+      - name: Generate Prisma Client
+        run: |
+          cd packages/brainsait-backend
+          npx prisma generate
+      
+      - name: Build backend
+        run: npm run build:backend
+      
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
+          secrets: |
+            DATABASE_URL
+            JWT_SECRET
+            OPENAI_API_KEY
+            CLAUDE_API_KEY
+            REDIS_URL
+            EMAIL_API_KEY
+            SAUDI_GOV_API_KEY
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+          REDIS_URL: ${{ secrets.REDIS_URL }}
+          EMAIL_API_KEY: ${{ secrets.EMAIL_API_KEY }}
+          SAUDI_GOV_API_KEY: ${{ secrets.SAUDI_GOV_API_KEY }}
+
+  deploy-ai-service:
+    runs-on: ubuntu-latest
+    name: Deploy AI Service to Cloudflare Workers
+    needs: [deploy-backend]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci --workspaces
+      
+      - name: Build AI service
+        run: |
+          cd packages/brainsait-ai
+          npm run build
+      
+      - name: Deploy AI Service
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: packages/brainsait-ai
+          environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
+          secrets: |
+            OPENAI_API_KEY
+            CLAUDE_API_KEY
+            VECTOR_DB_URL
+            VECTOR_DB_API_KEY
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+          VECTOR_DB_URL: ${{ secrets.VECTOR_DB_URL }}
+          VECTOR_DB_API_KEY: ${{ secrets.VECTOR_DB_API_KEY }}
+
+  deploy-docs-service:
+    runs-on: ubuntu-latest
+    name: Deploy Docs Service to Cloudflare Workers
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci --workspaces
+      
+      - name: Build docs service
+        run: |
+          cd packages/brainsait-docs
+          npm run build
+      
+      - name: Deploy Docs Service
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: packages/brainsait-docs
+          environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
+
+  run-migrations:
+    runs-on: ubuntu-latest
+    name: Run Database Migrations
+    needs: [deploy-backend]
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: |
+          cd packages/brainsait-backend
+          npm ci
+      
+      - name: Run migrations
+        run: |
+          cd packages/brainsait-backend
+          npx prisma migrate deploy
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+  health-check:
+    runs-on: ubuntu-latest
+    name: Health Check
+    needs: [deploy-frontend, deploy-backend, deploy-ai-service, deploy-docs-service]
+    
+    steps:
+      - name: Check Frontend Health
+        run: |
+          curl -f https://brainsait.com || exit 1
+      
+      - name: Check Backend Health
+        run: |
+          curl -f https://api.brainsait.com/health || exit 1
+      
+      - name: Check AI Service Health
+        run: |
+          curl -f https://ai.brainsait.com/health || exit 1
+      
+      - name: Check Docs Service Health
+        run: |
+          curl -f https://docs.brainsait.com/health || exit 1
+      
+      - name: Notify Success
+        if: success()
+        run: echo "All services deployed successfully!"
+      
+      - name: Notify Failure
+        if: failure()
+        run: echo "Deployment health check failed!"
