@@ -1,0 +1,56 @@
+name = "brainsait-backend"
+main = "dist/server.js"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[env.staging]
+name = "brainsait-backend-staging"
+
+[env.production]
+name = "brainsait-backend-production"
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "b2f1b780fc1b4388aa9fd2b27ca58bf1"
+
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "394268b352c24c28868a33aad89f991c"
+
+[[kv_namespaces]]
+binding = "RATE_LIMIT"
+id = "1d749622e39241ca8129407a96e1e111"
+
+[[kv_namespaces]]
+binding = "METRICS"
+id = "5525dd9577e542fda6ee0e5a84576758"
+
+[[kv_namespaces]]
+binding = "CONFIG"
+id = "4acc7168b5cc492da85b93bdde4f4b32"
+
+[[r2_buckets]]
+binding = "DOCUMENTS"
+bucket_name = "brainsait-documents-staging"
+
+[[r2_buckets]]
+binding = "UPLOADS"
+bucket_name = "brainsait-uploads-staging"
+
+[[r2_buckets]]
+binding = "BACKUPS"
+bucket_name = "brainsait-backups-staging"
+
+[[r2_buckets]]
+binding = "ANALYTICS"
+bucket_name = "brainsait-analytics-staging"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "brainsait-db-staging"
+database_id = "eca8e762-8675-4bd9-889d-8d5893891d18"
+
+[vars]
+ENVIRONMENT = "staging"
+NODE_ENV = "production"
+API_VERSION = "v1"

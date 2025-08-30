@@ -11,14 +11,16 @@
     "packages/brainsait-ai"
   ],
   "scripts": {
-    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\" \"npm run dev:docs\"",
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\" \"npm run dev:docs\" \"npm run dev:ai\"",
     "dev:frontend": "npm run dev --workspace=brainsait-frontend",
     "dev:backend": "npm run dev --workspace=brainsait-backend",
     "dev:docs": "npm run dev --workspace=brainsait-docs",
+    "dev:ai": "npm run dev --workspace=brainsait-ai",
     "build": "npm run build --workspaces",
     "build:frontend": "npm run build --workspace=brainsait-frontend",
     "build:backend": "npm run build --workspace=brainsait-backend",
     "build:docs": "npm run build --workspace=brainsait-docs",
+    "build:ai": "npm run build --workspace=brainsait-ai",
     "test": "npm run test --workspaces",
     "lint": "npm run lint --workspaces",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",

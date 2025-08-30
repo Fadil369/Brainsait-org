@@ -2,25 +2,42 @@
 
 name = "brainsait-platform"
 main = "packages/brainsait-backend/dist/server.js"
-compatibility_date = "2024-01-01"
+compatibility_date = "2024-08-30"
 compatibility_flags = ["nodejs_compat"]
 
 # Account and route configuration
 account_id = "87a79e73521fc85dab488b2c700554e3"
 workers_dev = true
-route = { pattern = "brainsait.com/*", zone_id = "YOUR_ZONE_ID" }
+
+# Custom domains for production
+[env.production.routes]
+patterns = ["api.brainsait.com/*"]
+zone_name = "brainsait.com"
 
 # Environment variables (non-sensitive)
 [env.production.vars]
 NODE_ENV = "production"
 API_BASE_URL = "https://api.brainsait.com"
 FRONTEND_URL = "https://brainsait.com"
+AI_SERVICE_URL = "https://ai.brainsait.com"
+DOCS_SERVICE_URL = "https://docs.brainsait.com"
+DOMAIN = "brainsait.com"
 
-# KV Namespaces for session storage
+# KV Namespaces for caching and sessions
 [[kv_namespaces]]
 binding = "SESSIONS"
-id = "YOUR_KV_NAMESPACE_ID"
-preview_id = "YOUR_KV_PREVIEW_ID"
+id = "your-sessions-kv-namespace-id"
+preview_id = "your-sessions-preview-kv-namespace-id"
+
+[[kv_namespaces]]
+binding = "AI_CACHE"
+id = "your-ai-cache-kv-namespace-id"
+preview_id = "your-ai-cache-preview-kv-namespace-id"
+
+[[kv_namespaces]]
+binding = "RATE_LIMIT_STORE"
+id = "your-rate-limit-kv-namespace-id"
+preview_id = "your-rate-limit-preview-kv-namespace-id"
 
 # Durable Objects for real-time features
 [[durable_objects.bindings]]
@@ -28,33 +45,60 @@ name = "AI_USAGE_TRACKER"
 class_name = "AIUsageTracker"
 script_name = "packages/brainsait-ai/dist/durableObjects/aiUsageTracker.js"
 
-# R2 Storage for documents
+[[durable_objects.bindings]]
+name = "CHAT_ROOMS"
+class_name = "ChatRoom"
+script_name = "packages/brainsait-frontend/dist/durableObjects/chatRoom.js"
+
+# R2 Storage for documents and files
 [[r2_buckets]]
 binding = "DOCUMENTS"
-bucket_name = "brainsait-documents"
+bucket_name = "brainsait-documents-prod"
+
+[[r2_buckets]]
+binding = "UPLOADS"
+bucket_name = "brainsait-uploads-prod"
+
+[[r2_buckets]]
+binding = "BACKUPS"
+bucket_name = "brainsait-backups-prod"
 
 # D1 Database binding (if using Cloudflare D1)
 [[d1_databases]]
 binding = "DB"
-database_name = "brainsait-db"
-database_id = "YOUR_DATABASE_ID"
+database_name = "brainsait-db-prod"
+database_id = "your-d1-database-id"
+
+# Analytics Engine for usage tracking
+[[analytics_engine_datasets]]
+binding = "AI_ANALYTICS"
+dataset = "brainsait_ai_usage"
 
 # Build configuration
 [build]
 command = "npm run build"
 watch_paths = ["packages/**/*.ts", "packages/**/*.tsx"]
 
-# Cloudflare Pages configuration for frontend
-# Note: Pages deployment handled separately via wrangler pages commands
-
 # Development configuration
 [env.development.vars]
 NODE_ENV = "development"
 API_BASE_URL = "http://localhost:5000"
 FRONTEND_URL = "http://localhost:3000"
+AI_SERVICE_URL = "http://localhost:5001"
+DOCS_SERVICE_URL = "http://localhost:5002"
+ENABLE_DEBUG = "true"
 
 # Staging configuration
 [env.staging.vars]
 NODE_ENV = "staging"
 API_BASE_URL = "https://staging-api.brainsait.com"
 FRONTEND_URL = "https://staging.brainsait.com"
+AI_SERVICE_URL = "https://staging-ai.brainsait.com"
+DOCS_SERVICE_URL = "https://staging-docs.brainsait.com"
+ENABLE_DEBUG = "false"
+
+# Preview configuration
+[env.preview.vars]
+NODE_ENV = "preview"
+API_BASE_URL = "https://preview-api.brainsait.com"
+FRONTEND_URL = "https://preview.brainsait.com"
