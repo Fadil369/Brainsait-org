@@ -1,21 +1,4 @@
 import { ReactNode } from 'react';
-import { 
-  User, 
-  SMEProfile, 
-  MentorProfile, 
-  UserRole,
-  IndustryFocus,
-  SMEType,
-  VerificationStatus 
-} from 'brainsait-shared/types/user.types';
-import {
-  Program,
-  ProgramEnrollment,
-  Mentorship,
-  MentorSession,
-  EnrollmentStatus,
-  SessionStatus
-} from 'brainsait-shared/types/program.types';
 
 // Common Component Types
 export interface BilingualText {

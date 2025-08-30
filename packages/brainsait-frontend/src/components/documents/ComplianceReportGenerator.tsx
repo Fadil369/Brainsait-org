@@ -1,78 +1,69 @@
 'use client';
 
-import React, { useState, useCallback, useEffect, useMemo } from 'react';
 import {
-  Box,
-  Paper,
-  Typography,
-  Card,
-  CardContent,
-  CardHeader,
-  Grid,
-  TextField,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  Chip,
-  Button,
-  IconButton,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemSecondaryAction,
-  ListItemIcon,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Alert,
-  AlertTitle,
-  LinearProgress,
-  CircularProgress,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Badge,
-  Tooltip,
-  Divider,
-  Avatar,
-  Switch,
-  FormControlLabel,
-} from '@mui/material';
-import {
-  Security as SecurityIcon,
-  Assessment as AssessmentIcon,
-  Warning as WarningIcon,
-  CheckCircle as CheckCircleIcon,
-  Error as ErrorIcon,
-  Info as InfoIcon,
-  TrendingUp as TrendingUpIcon,
-  TrendingDown as TrendingDownIcon,
-  Timeline as TimelineIcon,
-  Business as BusinessIcon,
-  Gavel as GavelIcon,
-  Add as AddIcon,
-  Delete as DeleteIcon,
-  Edit as EditIcon,
-  Refresh as RefreshIcon,
-  CloudDone as CloudDoneIcon,
-  CloudOff as CloudOffIcon,
-  Schedule as ScheduleIcon,
-  Assignment as AssignmentIcon,
-  Phone as PhoneIcon,
-  Email as EmailIcon,
-  ExpandMore as ExpandMoreIcon,
-  Person as PersonIcon,
-  Support as SupportIcon,
+    Add as AddIcon,
+    Assessment as AssessmentIcon,
+    Business as BusinessIcon,
+    CloudDone as CloudDoneIcon,
+    CloudOff as CloudOffIcon,
+    Delete as DeleteIcon,
+    Edit as EditIcon,
+    Email as EmailIcon,
+    ExpandMore as ExpandMoreIcon,
+    Person as PersonIcon,
+    Phone as PhoneIcon,
+    Refresh as RefreshIcon,
+    Schedule as ScheduleIcon,
+    Security as SecurityIcon,
+    Support as SupportIcon,
+    Warning as WarningIcon
 } from '@mui/icons-material';
+import {
+    Accordion,
+    AccordionDetails,
+    AccordionSummary,
+    Alert,
+    AlertTitle,
+    Avatar,
+    Badge,
+    Box,
+    Button,
+    Card,
+    CardContent,
+    CardHeader,
+    Chip,
+    CircularProgress,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    FormControl,
+    FormControlLabel,
+    Grid,
+    IconButton,
+    InputLabel,
+    LinearProgress,
+    List,
+    ListItem,
+    ListItemIcon,
+    ListItemSecondaryAction,
+    ListItemText,
+    MenuItem,
+    Paper,
+    Select,
+    Switch,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    TextField,
+    Tooltip,
+    Typography
+} from '@mui/material';
 import { useTranslation } from 'next-i18next';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useAppTheme } from '../../lib/ThemeProvider';
 import type { ComplianceReportRequest } from '../../services/documentService';
 
@@ -80,10 +71,10 @@ import type { ComplianceReportRequest } from '../../services/documentService';
  * ComplianceReportGenerator Component Props
  */
 interface ComplianceReportGeneratorProps {
-  data: Partial&lt;ComplianceReportRequest&gt;;
-  onChange: (data: Partial&lt;ComplianceReportRequest&gt;) =&gt; void;
+  data: Partial<ComplianceReportRequest>;
+  onChange: (data: Partial<ComplianceReportRequest>) => void;
   language: 'ar' | 'en';
-  errors: Record&lt;string, string&gt;;
+  errors: Record<string, string>;
 }
 
 /**
@@ -158,12 +149,12 @@ interface ActionPlanItem {
  * @param props - Component properties
  * @returns JSX.Element
  */
-const ComplianceReportGenerator: React.FC&lt;ComplianceReportGeneratorProps&gt; = ({
+const ComplianceReportGenerator: React.FC<ComplianceReportGeneratorProps> = ({
   data,
   onChange,
   language,
   errors,
-}) =&gt; {
+}) => {
   const { t } = useTranslation(['documents', 'common']);
   const { direction } = useAppTheme();
   
@@ -176,12 +167,12 @@ const ComplianceReportGenerator: React.FC&lt;ComplianceReportGeneratorProps&gt; 
   const [showAPIConnectionDialog, setShowAPIConnectionDialog] = useState(false);
   
   // Current editing items
-  const [currentIssue, setCurrentIssue] = useState&lt;ComplianceIssue | null&gt;(null);
-  const [currentRecommendation, setCurrentRecommendation] = useState&lt;Recommendation | null&gt;(null);
-  const [currentAction, setCurrentAction] = useState&lt;ActionPlanItem | null&gt;(null);
+  const [currentIssue, setCurrentIssue] = useState<ComplianceIssue | null>(null);
+  const [currentRecommendation, setCurrentRecommendation] = useState<Recommendation | null>(null);
+  const [currentAction, setCurrentAction] = useState<ActionPlanItem | null>(null);
 
   // Mock data for demonstration
-  const [complianceCategories, setComplianceCategories] = useState&lt;ComplianceCategory[]&gt;([
+  const [complianceCategories, setComplianceCategories] = useState<ComplianceCategory[]>([
     {
       id: 'legal',
       name: language === 'ar' ? 'الامتثال القانوني' : 'Legal Compliance',
@@ -224,7 +215,7 @@ const ComplianceReportGenerator: React.FC&lt;ComplianceReportGeneratorProps&gt; 
     },
   ]);
 
-  const [governmentAPIs, setGovernmentAPIs] = useState&lt;GovernmentAPI[]&gt;([
+  const [governmentAPIs, setGovernmentAPIs] = useState<GovernmentAPI[]>([
     {
       id: 'moj',
       name: language === 'ar' ? 'وزارة العدل' : 'Ministry of Justice',
@@ -259,7 +250,7 @@ const ComplianceReportGenerator: React.FC&lt;ComplianceReportGeneratorProps&gt; 
     },
   ]);
 
-  const [issues, setIssues] = useState&lt;ComplianceIssue[]&gt;(data.issues?.map((issue, index) =&gt; ({
+  const [issues, setIssues] = useState<ComplianceIssue[]>(data.issues?.map((issue, index) => ({
     id: index.toString(),
     title: issue.title,
     priority: issue.priority,
@@ -270,7 +261,7 @@ const ComplianceReportGenerator: React.FC&lt;ComplianceReportGeneratorProps&gt; 
     status: 'open' as const,
   })) || []);
 
-  const [recommendations, setRecommendations] = useState&lt;Recommendation[]&gt;(data.recommendations?.map((rec, index) =&gt; ({
+  const [recommendations, setRecommendations] = useState<Recommendation[]>(data.recommendations?.map((rec, index) => ({
     id: index.toString(),
     title: rec.title,
     description: rec.description,
@@ -279,7 +270,7 @@ const ComplianceReportGenerator: React.FC&lt;ComplianceReportGeneratorProps&gt; 
     category: 'general',
   })) || []);
 
-  const [actionPlan, setActionPlan] = useState&lt;ActionPlanItem[]&gt;(data.actionPlan?.map((action, index) =&gt; ({
+  const [actionPlan, setActionPlan] = useState<ActionPlanItem[]>(data.actionPlan?.map((action, index) => ({
     id: index.toString(),
     phase: action.phase,
     description: action.description,
@@ -291,52 +282,52 @@ const ComplianceReportGenerator: React.FC&lt;ComplianceReportGeneratorProps&gt; 
   /**
    * Update form data
    */
-  const updateData = useCallback((updates: Partial&lt;ComplianceReportRequest&gt;) =&gt; {
+  const updateData = useCallback((updates: Partial<ComplianceReportRequest>) => {
     onChange({ ...data, ...updates });
   }, [data, onChange]);
 
   /**
    * Calculate overall compliance score
    */
-  const calculateOverallScore = useCallback(() =&gt; {
-    const totalScore = complianceCategories.reduce((sum, cat) =&gt; sum + cat.score, 0);
-    const maxTotalScore = complianceCategories.reduce((sum, cat) =&gt; sum + cat.maxScore, 0);
+  const calculateOverallScore = useCallback(() => {
+    const totalScore = complianceCategories.reduce((sum, cat) => sum + cat.score, 0);
+    const maxTotalScore = complianceCategories.reduce((sum, cat) => sum + cat.maxScore, 0);
     return Math.round((totalScore / maxTotalScore) * 100);
   }, [complianceCategories]);
 
   /**
    * Calculate total issues
    */
-  const calculateTotalIssues = useCallback(() =&gt; {
-    return issues.filter(issue =&gt; issue.status !== 'resolved').length;
+  const calculateTotalIssues = useCallback(() => {
+    return issues.filter(issue => issue.status !== 'resolved').length;
   }, [issues]);
 
   /**
    * Calculate critical issues
    */
-  const calculateCriticalIssues = useCallback(() =&gt; {
-    return issues.filter(issue =&gt; issue.priority === 'critical' &amp;&amp; issue.status !== 'resolved').length;
+  const calculateCriticalIssues = useCallback(() => {
+    return issues.filter(issue => issue.priority === 'critical' && issue.status !== 'resolved').length;
   }, [issues]);
 
   /**
    * Calculate completion rate
    */
-  const calculateCompletionRate = useCallback(() =&gt; {
-    const completedActions = actionPlan.filter(action =&gt; action.status === 'completed').length;
-    return actionPlan.length &gt; 0 ? Math.round((completedActions / actionPlan.length) * 100) : 0;
+  const calculateCompletionRate = useCallback(() => {
+    const completedActions = actionPlan.filter(action => action.status === 'completed').length;
+    return actionPlan.length > 0 ? Math.round((completedActions / actionPlan.length) * 100) : 0;
   }, [actionPlan]);
 
   /**
    * Simulate real-time score calculation
    */
-  const refreshCompliance = useCallback(async () =&gt; {
+  const refreshCompliance = useCallback(async () => {
     setIsCalculatingScore(true);
     
     // Simulate API calls and calculations
-    await new Promise(resolve =&gt; setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 2000));
     
     // Update scores with slight variations
-    setComplianceCategories(prev =&gt; prev.map(cat =&gt; ({
+    setComplianceCategories(prev => prev.map(cat => ({
       ...cat,
       score: Math.max(0, Math.min(100, cat.score + (Math.random() - 0.5) * 10)),
     })));
@@ -345,15 +336,15 @@ const ComplianceReportGenerator: React.FC&lt;ComplianceReportGeneratorProps&gt; 
   }, []);
 
   // Auto-refresh effect
-  useEffect(() =&gt; {
+  useEffect(() => {
     if (autoRefresh) {
       const interval = setInterval(refreshCompliance, 300000); // 5 minutes
-      return () =&gt; clearInterval(interval);
+      return () => clearInterval(interval);
     }
   }, [autoRefresh, refreshCompliance]);
 
   // Update parent data when local state changes
-  useEffect(() =&gt; {
+  useEffect(() => {
     const overallScore = calculateOverallScore();
     const totalIssues = calculateTotalIssues();
     const criticalIssues = calculateCriticalIssues();
@@ -364,32 +355,32 @@ const ComplianceReportGenerator: React.FC&lt;ComplianceReportGeneratorProps&gt; 
       totalIssues,
       criticalIssues,
       completionRate,
-      complianceBreakdown: complianceCategories.map(cat =&gt; ({
+      complianceBreakdown: complianceCategories.map(cat => ({
         category: cat.name,
         score: cat.score,
         scoreClass: cat.status,
       })),
-      progressCharts: complianceCategories.map(cat =&gt; ({
+      progressCharts: complianceCategories.map(cat => ({
         category: cat.name,
         percentage: Math.round((cat.score / cat.maxScore) * 100),
       })),
-      issues: issues.map(issue =&gt; ({
+      issues: issues.map(issue => ({
         title: issue.title,
         priority: issue.priority,
         description: issue.description,
         requiredAction: issue.requiredAction,
         deadline: issue.deadline,
       })),
-      governmentAPIs: governmentAPIs.map(api =&gt; ({
+      governmentAPIs: governmentAPIs.map(api => ({
         name: api.name,
         status: api.status,
       })),
-      recommendations: recommendations.map(rec =&gt; ({
+      recommendations: recommendations.map(rec => ({
         title: rec.title,
         description: rec.description,
         timeline: rec.timeline,
       })),
-      actionPlan: actionPlan.map(action =&gt; ({
+      actionPlan: actionPlan.map(action => ({
         phase: action.phase,
         description: action.description,
         timeline: action.timeline,
@@ -401,7 +392,7 @@ const ComplianceReportGenerator: React.FC&lt;ComplianceReportGeneratorProps&gt; 
   /**
    * Get status color based on score
    */
-  const getStatusColor = (status: string) =&gt; {
+  const getStatusColor = (status: string) => {
     switch (status) {
       case 'excellent': return 'success';
       case 'good': return 'info';
@@ -414,7 +405,7 @@ const ComplianceReportGenerator: React.FC&lt;ComplianceReportGeneratorProps&gt; 
   /**
    * Get priority color
    */
-  const getPriorityColor = (priority: string) =&gt; {
+  const getPriorityColor = (priority: string) => {
     switch (priority) {
       case 'critical': return 'error';
       case 'high': return 'warning';
@@ -427,222 +418,222 @@ const ComplianceReportGenerator: React.FC&lt;ComplianceReportGeneratorProps&gt; 
   /**
    * Render basic information section
    */
-  const renderBasicInfo = () =&gt; (
-    &lt;Card&gt;
-      &lt;CardHeader
+  const renderBasicInfo = () => (
+    <Card>
+      <CardHeader
         title={language === 'ar' ? 'معلومات أساسية' : 'Basic Information'}
-        avatar={&lt;BusinessIcon /&gt;}
-      /&gt;
-      &lt;CardContent&gt;
-        &lt;Grid container spacing={3}&gt;
-          &lt;Grid item xs={12}&gt;
-            &lt;TextField
+        avatar={<BusinessIcon />}
+      />
+      <CardContent>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <TextField
               fullWidth
               label={language === 'ar' ? 'اسم الشركة' : 'Company Name'}
               value={data.companyName || ''}
-              onChange={(e) =&gt; updateData({ companyName: e.target.value })}
+              onChange={(e) => updateData({ companyName: e.target.value })}
               required
               error={!!errors.companyName}
               helperText={errors.companyName}
               dir={direction}
-            /&gt;
-          &lt;/Grid&gt;
+            />
+          </Grid>
           
-          &lt;Grid item xs={12} md={6}&gt;
-            &lt;TextField
+          <Grid item xs={12} md={6}>
+            <TextField
               fullWidth
               label={language === 'ar' ? 'فترة التقرير' : 'Report Period'}
               value={data.reportPeriod || ''}
-              onChange={(e) =&gt; updateData({ reportPeriod: e.target.value })}
+              onChange={(e) => updateData({ reportPeriod: e.target.value })}
               placeholder={language === 'ar' ? 'Q1 2024' : 'Q1 2024'}
               dir={direction}
-            /&gt;
-          &lt;/Grid&gt;
+            />
+          </Grid>
           
-          &lt;Grid item xs={12} md={6}&gt;
-            &lt;TextField
+          <Grid item xs={12} md={6}>
+            <TextField
               fullWidth
               label={language === 'ar' ? 'رقم التقرير' : 'Report Number'}
               value={data.reportNumber || ''}
-              onChange={(e) =&gt; updateData({ reportNumber: e.target.value })}
+              onChange={(e) => updateData({ reportNumber: e.target.value })}
               placeholder={language === 'ar' ? 'CR-2024-001' : 'CR-2024-001'}
               dir="ltr"
-            /&gt;
-          &lt;/Grid&gt;
-        &lt;/Grid&gt;
-      &lt;/CardContent&gt;
-    &lt;/Card&gt;
+            />
+          </Grid>
+        </Grid>
+      </CardContent>
+    </Card>
   );
 
   /**
    * Render compliance score dashboard
    */
-  const renderComplianceScore = () =&gt; {
+  const renderComplianceScore = () => {
     const overallScore = calculateOverallScore();
     const totalIssues = calculateTotalIssues();
     const criticalIssues = calculateCriticalIssues();
 
     return (
-      &lt;Card&gt;
-        &lt;CardHeader
+      <Card>
+        <CardHeader
           title={
-            &lt;Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}&gt;
-              &lt;Box sx={{ display: 'flex', alignItems: 'center' }}&gt;
-                &lt;AssessmentIcon sx={{ mr: 1 }} /&gt;
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <AssessmentIcon sx={{ mr: 1 }} />
                 {language === 'ar' ? 'لوحة الامتثال' : 'Compliance Dashboard'}
-              &lt;/Box&gt;
-              &lt;Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}&gt;
-                &lt;FormControlLabel
+              </Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <FormControlLabel
                   control={
-                    &lt;Switch
+                    <Switch
                       checked={autoRefresh}
-                      onChange={(e) =&gt; setAutoRefresh(e.target.checked)}
+                      onChange={(e) => setAutoRefresh(e.target.checked)}
                       size="small"
-                    /&gt;
+                    />
                   }
                   label={language === 'ar' ? 'تحديث تلقائي' : 'Auto Refresh'}
-                /&gt;
-                &lt;Tooltip title={language === 'ar' ? 'تحديث البيانات' : 'Refresh Data'}&gt;
-                  &lt;IconButton onClick={refreshCompliance} disabled={isCalculatingScore}&gt;
-                    &lt;RefreshIcon /&gt;
-                  &lt;/IconButton&gt;
-                &lt;/Tooltip&gt;
-              &lt;/Box&gt;
-            &lt;/Box&gt;
+                />
+                <Tooltip title={language === 'ar' ? 'تحديث البيانات' : 'Refresh Data'}>
+                  <IconButton onClick={refreshCompliance} disabled={isCalculatingScore}>
+                    <RefreshIcon />
+                  </IconButton>
+                </Tooltip>
+              </Box>
+            </Box>
           }
-        /&gt;
-        &lt;CardContent&gt;
+        />
+        <CardContent>
           {/* Overall Score */}
-          &lt;Grid container spacing={3} sx={{ mb: 3 }}&gt;
-            &lt;Grid item xs={12} md={3}&gt;
-              &lt;Paper sx={{ p: 2, textAlign: 'center', bgcolor: 'primary.light', color: 'white' }}&gt;
-                &lt;Typography variant="h3" fontWeight="bold"&gt;
-                  {isCalculatingScore ? &lt;CircularProgress size={40} color="inherit" /&gt; : `${overallScore}%`}
-                &lt;/Typography&gt;
-                &lt;Typography variant="body2"&gt;
+          <Grid container spacing={3} sx={{ mb: 3 }}>
+            <Grid item xs={12} md={3}>
+              <Paper sx={{ p: 2, textAlign: 'center', bgcolor: 'primary.light', color: 'white' }}>
+                <Typography variant="h3" fontWeight="bold">
+                  {isCalculatingScore ? <CircularProgress size={40} color="inherit" /> : `${overallScore}%`}
+                </Typography>
+                <Typography variant="body2">
                   {language === 'ar' ? 'نقاط الامتثال العامة' : 'Overall Compliance Score'}
-                &lt;/Typography&gt;
-              &lt;/Paper&gt;
-            &lt;/Grid&gt;
+                </Typography>
+              </Paper>
+            </Grid>
             
-            &lt;Grid item xs={12} md={3}&gt;
-              &lt;Paper sx={{ p: 2, textAlign: 'center', bgcolor: totalIssues &gt; 0 ? 'warning.light' : 'success.light', color: 'white' }}&gt;
-                &lt;Typography variant="h3" fontWeight="bold"&gt;
+            <Grid item xs={12} md={3}>
+              <Paper sx={{ p: 2, textAlign: 'center', bgcolor: totalIssues > 0 ? 'warning.light' : 'success.light', color: 'white' }}>
+                <Typography variant="h3" fontWeight="bold">
                   {totalIssues}
-                &lt;/Typography&gt;
-                &lt;Typography variant="body2"&gt;
+                </Typography>
+                <Typography variant="body2">
                   {language === 'ar' ? 'إجمالي القضايا' : 'Total Issues'}
-                &lt;/Typography&gt;
-              &lt;/Paper&gt;
-            &lt;/Grid&gt;
+                </Typography>
+              </Paper>
+            </Grid>
             
-            &lt;Grid item xs={12} md={3}&gt;
-              &lt;Paper sx={{ p: 2, textAlign: 'center', bgcolor: criticalIssues &gt; 0 ? 'error.light' : 'success.light', color: 'white' }}&gt;
-                &lt;Typography variant="h3" fontWeight="bold"&gt;
+            <Grid item xs={12} md={3}>
+              <Paper sx={{ p: 2, textAlign: 'center', bgcolor: criticalIssues > 0 ? 'error.light' : 'success.light', color: 'white' }}>
+                <Typography variant="h3" fontWeight="bold">
                   {criticalIssues}
-                &lt;/Typography&gt;
-                &lt;Typography variant="body2"&gt;
+                </Typography>
+                <Typography variant="body2">
                   {language === 'ar' ? 'القضايا الحرجة' : 'Critical Issues'}
-                &lt;/Typography&gt;
-              &lt;/Paper&gt;
-            &lt;/Grid&gt;
+                </Typography>
+              </Paper>
+            </Grid>
             
-            &lt;Grid item xs={12} md={3}&gt;
-              &lt;Paper sx={{ p: 2, textAlign: 'center', bgcolor: 'info.light', color: 'white' }}&gt;
-                &lt;Typography variant="h3" fontWeight="bold"&gt;
+            <Grid item xs={12} md={3}>
+              <Paper sx={{ p: 2, textAlign: 'center', bgcolor: 'info.light', color: 'white' }}>
+                <Typography variant="h3" fontWeight="bold">
                   {calculateCompletionRate()}%
-                &lt;/Typography&gt;
-                &lt;Typography variant="body2"&gt;
+                </Typography>
+                <Typography variant="body2">
                   {language === 'ar' ? 'معدل الإنجاز' : 'Completion Rate'}
-                &lt;/Typography&gt;
-              &lt;/Paper&gt;
-            &lt;/Grid&gt;
-          &lt;/Grid&gt;
+                </Typography>
+              </Paper>
+            </Grid>
+          </Grid>
 
           {/* Category Breakdown */}
-          &lt;Typography variant="h6" gutterBottom&gt;
+          <Typography variant="h6" gutterBottom>
             {language === 'ar' ? 'تفصيل الامتثال حسب الفئة' : 'Compliance Breakdown by Category'}
-          &lt;/Typography&gt;
+          </Typography>
           
-          {complianceCategories.map((category) =&gt; (
-            &lt;Box key={category.id} sx={{ mb: 2 }}&gt;
-              &lt;Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}&gt;
-                &lt;Typography variant="body2"&gt;{category.name}&lt;/Typography&gt;
-                &lt;Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}&gt;
-                  &lt;Typography variant="body2" fontWeight="bold"&gt;
+          {complianceCategories.map((category) => (
+            <Box key={category.id} sx={{ mb: 2 }}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+                <Typography variant="body2">{category.name}</Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <Typography variant="body2" fontWeight="bold">
                     {category.score}/{category.maxScore}
-                  &lt;/Typography&gt;
-                  &lt;Chip
+                  </Typography>
+                  <Chip
                     label={category.status}
                     size="small"
                     color={getStatusColor(category.status) as any}
-                  /&gt;
-                  {category.issues &gt; 0 &amp;&amp; (
-                    &lt;Badge badgeContent={category.issues} color="error"&gt;
-                      &lt;WarningIcon color="warning" /&gt;
-                    &lt;/Badge&gt;
+                  />
+                  {category.issues > 0 && (
+                    <Badge badgeContent={category.issues} color="error">
+                      <WarningIcon color="warning" />
+                    </Badge>
                   )}
-                &lt;/Box&gt;
-              &lt;/Box&gt;
-              &lt;LinearProgress
+                </Box>
+              </Box>
+              <LinearProgress
                 variant="determinate"
                 value={(category.score / category.maxScore) * 100}
                 color={getStatusColor(category.status) as any}
                 sx={{ height: 8, borderRadius: 4 }}
-              /&gt;
-            &lt;/Box&gt;
+              />
+            </Box>
           ))}
-        &lt;/CardContent&gt;
-      &lt;/Card&gt;
+        </CardContent>
+      </Card>
     );
   };
 
   /**
    * Render government APIs section
    */
-  const renderGovernmentAPIs = () =&gt; (
-    &lt;Card&gt;
-      &lt;CardHeader
+  const renderGovernmentAPIs = () => (
+    <Card>
+      <CardHeader
         title={
-          &lt;Box sx={{ display: 'flex', alignItems: 'center' }}&gt;
-            &lt;SecurityIcon sx={{ mr: 1 }} /&gt;
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <SecurityIcon sx={{ mr: 1 }} />
             {language === 'ar' ? 'الربط مع الأنظمة الحكومية' : 'Government API Integration'}
-          &lt;/Box&gt;
+          </Box>
         }
         action={
-          &lt;Button
-            startIcon={&lt;AddIcon /&gt;}
-            onClick={() =&gt; setShowAPIConnectionDialog(true)}
-          &gt;
+          <Button
+            startIcon={<AddIcon />}
+            onClick={() => setShowAPIConnectionDialog(true)}
+          >
             {language === 'ar' ? 'إضافة ربط' : 'Add Connection'}
-          &lt;/Button&gt;
+          </Button>
         }
-      /&gt;
-      &lt;CardContent&gt;
-        &lt;List&gt;
-          {governmentAPIs.map((api) =&gt; (
-            &lt;ListItem key={api.id} divider&gt;
-              &lt;ListItemIcon&gt;
-                &lt;Avatar sx={{ bgcolor: api.status === 'connected' ? 'success.main' : api.status === 'error' ? 'error.main' : 'warning.main' }}&gt;
-                  {api.status === 'connected' ? &lt;CloudDoneIcon /&gt; : 
-                   api.status === 'error' ? &lt;CloudOffIcon /&gt; : &lt;ScheduleIcon /&gt;}
-                &lt;/Avatar&gt;
-              &lt;/ListItemIcon&gt;
-              &lt;ListItemText
+      />
+      <CardContent>
+        <List>
+          {governmentAPIs.map((api) => (
+            <ListItem key={api.id} divider>
+              <ListItemIcon>
+                <Avatar sx={{ bgcolor: api.status === 'connected' ? 'success.main' : api.status === 'error' ? 'error.main' : 'warning.main' }}>
+                  {api.status === 'connected' ? <CloudDoneIcon /> : 
+                   api.status === 'error' ? <CloudOffIcon /> : <ScheduleIcon />}
+                </Avatar>
+              </ListItemIcon>
+              <ListItemText
                 primary={api.name}
                 secondary={
-                  &lt;Box&gt;
-                    &lt;Typography variant="caption" display="block"&gt;{api.description}&lt;/Typography&gt;
-                    {api.lastSync &amp;&amp; (
-                      &lt;Typography variant="caption" color="text.secondary"&gt;
+                  <Box>
+                    <Typography variant="caption" display="block">{api.description}</Typography>
+                    {api.lastSync && (
+                      <Typography variant="caption" color="text.secondary">
                         {language === 'ar' ? 'آخر مزامنة:' : 'Last sync:'} {new Date(api.lastSync).toLocaleString(language === 'ar' ? 'ar-SA' : 'en-US')}
-                      &lt;/Typography&gt;
+                      </Typography>
                     )}
-                  &lt;/Box&gt;
+                  </Box>
                 }
-              /&gt;
-              &lt;ListItemSecondaryAction&gt;
-                &lt;Chip
+              />
+              <ListItemSecondaryAction>
+                <Chip
                   label={
                     api.status === 'connected' ? (language === 'ar' ? 'متصل' : 'Connected') :
                     api.status === 'error' ? (language === 'ar' ? 'خطأ' : 'Error') :
@@ -653,34 +644,34 @@ const ComplianceReportGenerator: React.FC&lt;ComplianceReportGeneratorProps&gt; 
                     api.status === 'connected' ? 'success' :
                     api.status === 'error' ? 'error' : 'warning'
                   }
-                /&gt;
-              &lt;/ListItemSecondaryAction&gt;
-            &lt;/ListItem&gt;
+                />
+              </ListItemSecondaryAction>
+            </ListItem>
           ))}
-        &lt;/List&gt;
-      &lt;/CardContent&gt;
-    &lt;/Card&gt;
+        </List>
+      </CardContent>
+    </Card>
   );
 
   /**
    * Render issues management section
    */
-  const renderIssuesManagement = () =&gt; (
-    &lt;Card&gt;
-      &lt;CardHeader
+  const renderIssuesManagement = () => (
+    <Card>
+      <CardHeader
         title={
-          &lt;Box sx={{ display: 'flex', alignItems: 'center' }}&gt;
-            &lt;WarningIcon sx={{ mr: 1 }} /&gt;
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <WarningIcon sx={{ mr: 1 }} />
             {language === 'ar' ? 'إدارة القضايا' : 'Issues Management'}
-            &lt;Badge badgeContent={issues.filter(i =&gt; i.status !== 'resolved').length} color="error" sx={{ ml: 1 }}&gt;
-              &lt;Box /&gt;
-            &lt;/Badge&gt;
-          &lt;/Box&gt;
+            <Badge badgeContent={issues.filter(i => i.status !== 'resolved').length} color="error" sx={{ ml: 1 }}>
+              <Box />
+            </Badge>
+          </Box>
         }
         action={
-          &lt;Button
-            startIcon={&lt;AddIcon /&gt;}
-            onClick={() =&gt; {
+          <Button
+            startIcon={<AddIcon />}
+            onClick={() => {
               setCurrentIssue({
                 id: Date.now().toString(),
                 title: '',
@@ -693,304 +684,310 @@ const ComplianceReportGenerator: React.FC&lt;ComplianceReportGeneratorProps&gt; 
               });
               setShowAddIssueDialog(true);
             }}
-          &gt;
+          >
             {language === 'ar' ? 'إضافة قضية' : 'Add Issue'}
-          &lt;/Button&gt;
+          </Button>
         }
-      /&gt;
-      &lt;CardContent&gt;
-        {issues.length &gt; 0 ? (
-          &lt;TableContainer component={Paper} variant="outlined"&gt;
-            &lt;Table&gt;
-              &lt;TableHead&gt;
-                &lt;TableRow&gt;
-                  &lt;TableCell&gt;{language === 'ar' ? 'العنوان' : 'Title'}&lt;/TableCell&gt;
-                  &lt;TableCell&gt;{language === 'ar' ? 'الأولوية' : 'Priority'}&lt;/TableCell&gt;
-                  &lt;TableCell&gt;{language === 'ar' ? 'الموعد النهائي' : 'Deadline'}&lt;/TableCell&gt;
-                  &lt;TableCell&gt;{language === 'ar' ? 'الحالة' : 'Status'}&lt;/TableCell&gt;
-                  &lt;TableCell&gt;{language === 'ar' ? 'الإجراءات' : 'Actions'}&lt;/TableCell&gt;
-                &lt;/TableRow&gt;
-              &lt;/TableHead&gt;
-              &lt;TableBody&gt;
-                {issues.map((issue) =&gt; (
-                  &lt;TableRow key={issue.id}&gt;
-                    &lt;TableCell&gt;
-                      &lt;Typography variant="body2" fontWeight="bold"&gt;{issue.title}&lt;/Typography&gt;
-                      &lt;Typography variant="caption" color="text.secondary"&gt;
+      />
+      <CardContent>
+        {issues.length > 0 ? (
+          <TableContainer component={Paper} variant="outlined">
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>{language === 'ar' ? 'العنوان' : 'Title'}</TableCell>
+                  <TableCell>{language === 'ar' ? 'الأولوية' : 'Priority'}</TableCell>
+                  <TableCell>{language === 'ar' ? 'الموعد النهائي' : 'Deadline'}</TableCell>
+                  <TableCell>{language === 'ar' ? 'الحالة' : 'Status'}</TableCell>
+                  <TableCell>{language === 'ar' ? 'الإجراءات' : 'Actions'}</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {issues.map((issue) => (
+                  <TableRow key={issue.id}>
+                    <TableCell>
+                      <Typography variant="body2" fontWeight="bold">{issue.title}</Typography>
+                      <Typography variant="caption" color="text.secondary">
                         {issue.description}
-                      &lt;/Typography&gt;
-                    &lt;/TableCell&gt;
-                    &lt;TableCell&gt;
-                      &lt;Chip
+                      </Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Chip
                         label={issue.priority}
                         size="small"
                         color={getPriorityColor(issue.priority) as any}
-                      /&gt;
-                    &lt;/TableCell&gt;
-                    &lt;TableCell&gt;{issue.deadline}&lt;/TableCell&gt;
-                    &lt;TableCell&gt;
-                      &lt;Chip
+                      />
+                    </TableCell>
+                    <TableCell>{issue.deadline}</TableCell>
+                    <TableCell>
+                      <Chip
                         label={issue.status}
                         size="small"
                         color={
                           issue.status === 'resolved' ? 'success' :
                           issue.status === 'in_progress' ? 'info' : 'warning'
                         }
-                      /&gt;
-                    &lt;/TableCell&gt;
-                    &lt;TableCell&gt;
-                      &lt;IconButton
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <IconButton
                         size="small"
-                        onClick={() =&gt; {
+                        onClick={() => {
                           setCurrentIssue(issue);
                           setShowAddIssueDialog(true);
                         }}
-                      &gt;
-                        &lt;EditIcon /&gt;
-                      &lt;/IconButton&gt;
-                      &lt;IconButton
+                      >
+                        <EditIcon />
+                      </IconButton>
+                      <IconButton
                         size="small"
                         color="error"
-                        onClick={() =&gt; setIssues(issues.filter(i =&gt; i.id !== issue.id))}
-                      &gt;
-                        &lt;DeleteIcon /&gt;
-                      &lt;/IconButton&gt;
-                    &lt;/TableCell&gt;
-                  &lt;/TableRow&gt;
+                        onClick={() => setIssues(issues.filter(i => i.id !== issue.id))}
+                      >
+                        <DeleteIcon />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
                 ))}
-              &lt;/TableBody&gt;
-            &lt;/Table&gt;
-          &lt;/TableContainer&gt;
+              </TableBody>
+            </Table>
+          </TableContainer>
         ) : (
-          &lt;Alert severity="success"&gt;
-            &lt;AlertTitle&gt;{language === 'ar' ? 'لا توجد قضايا مفتوحة' : 'No Open Issues'}&lt;/AlertTitle&gt;
+          <Alert severity="success">
+            <AlertTitle>{language === 'ar' ? 'لا توجد قضايا مفتوحة' : 'No Open Issues'}</AlertTitle>
             {language === 'ar' 
               ? 'جميع قضايا الامتثال تم حلها أو لا توجد قضايا حالياً.'
               : 'All compliance issues are resolved or there are no current issues.'
             }
-          &lt;/Alert&gt;
+          </Alert>
         )}
-      &lt;/CardContent&gt;
-    &lt;/Card&gt;
+      </CardContent>
+    </Card>
   );
 
   /**
    * Render contact information section
    */
-  const renderContactInfo = () =&gt; (
-    &lt;Accordion&gt;
-      &lt;AccordionSummary expandIcon={&lt;ExpandMoreIcon /&gt;}&gt;
-        &lt;Box sx={{ display: 'flex', alignItems: 'center' }}&gt;
-          &lt;PersonIcon sx={{ mr: 2, color: 'primary.main' }} /&gt;
-          &lt;Typography variant="h6"&gt;
+  const renderContactInfo = () => (
+    <Accordion>
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <PersonIcon sx={{ mr: 2, color: 'primary.main' }} />
+          <Typography variant="h6">
             {language === 'ar' ? 'معلومات الاتصال' : 'Contact Information'}
-          &lt;/Typography&gt;
-        &lt;/Box&gt;
-      &lt;/AccordionSummary&gt;
-      &lt;AccordionDetails&gt;
-        &lt;Grid container spacing={3}&gt;
-          &lt;Grid item xs={12} md={6}&gt;
-            &lt;Card variant="outlined"&gt;
-              &lt;CardHeader
+          </Typography>
+        </Box>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={6}>
+            <Card variant="outlined">
+              <CardHeader
                 title={language === 'ar' ? 'مسؤول الامتثال' : 'Compliance Officer'}
-                avatar={&lt;PersonIcon /&gt;}
-              /&gt;
-              &lt;CardContent&gt;
-                &lt;TextField
+                avatar={<PersonIcon />}
+              />
+              <CardContent>
+                <TextField
                   fullWidth
                   label={language === 'ar' ? 'الاسم' : 'Name'}
                   value={data.complianceOfficer?.name || ''}
-                  onChange={(e) =&gt; updateData({
+                  onChange={(e) => updateData({
                     complianceOfficer: {
-                      ...data.complianceOfficer,
                       name: e.target.value,
+                      phone: data.complianceOfficer?.phone || '',
+                      email: data.complianceOfficer?.email || '',
                     }
                   })}
                   sx={{ mb: 2 }}
                   dir={direction}
-                /&gt;
-                &lt;TextField
+                />
+                <TextField
                   fullWidth
                   label={language === 'ar' ? 'الهاتف' : 'Phone'}
                   value={data.complianceOfficer?.phone || ''}
-                  onChange={(e) =&gt; updateData({
+                  onChange={(e) => updateData({
                     complianceOfficer: {
-                      ...data.complianceOfficer,
+                      name: data.complianceOfficer?.name || '',
                       phone: e.target.value,
+                      email: data.complianceOfficer?.email || '',
                     }
                   })}
                   sx={{ mb: 2 }}
                   InputProps={{
-                    startAdornment: &lt;PhoneIcon sx={{ mr: 1, color: 'text.secondary' }} /&gt;,
+                    startAdornment: <PhoneIcon sx={{ mr: 1, color: 'text.secondary' }} />,
                   }}
                   dir="ltr"
-                /&gt;
-                &lt;TextField
+                />
+                <TextField
                   fullWidth
                   label={language === 'ar' ? 'البريد الإلكتروني' : 'Email'}
                   value={data.complianceOfficer?.email || ''}
-                  onChange={(e) =&gt; updateData({
+                  onChange={(e) => updateData({
                     complianceOfficer: {
-                      ...data.complianceOfficer,
+                      name: data.complianceOfficer?.name || '',
+                      phone: data.complianceOfficer?.phone || '',
                       email: e.target.value,
                     }
                   })}
                   InputProps={{
-                    startAdornment: &lt;EmailIcon sx={{ mr: 1, color: 'text.secondary' }} /&gt;,
+                    startAdornment: <EmailIcon sx={{ mr: 1, color: 'text.secondary' }} />,
                   }}
                   dir="ltr"
-                /&gt;
-              &lt;/CardContent&gt;
-            &lt;/Card&gt;
-          &lt;/Grid&gt;
+                />
+              </CardContent>
+            </Card>
+          </Grid>
           
-          &lt;Grid item xs={12} md={6}&gt;
-            &lt;Card variant="outlined"&gt;
-              &lt;CardHeader
+          <Grid item xs={12} md={6}>
+            <Card variant="outlined">
+              <CardHeader
                 title={language === 'ar' ? 'الدعم الفني' : 'Technical Support'}
-                avatar={&lt;SupportIcon /&gt;}
-              /&gt;
-              &lt;CardContent&gt;
-                &lt;TextField
+                avatar={<SupportIcon />}
+              />
+              <CardContent>
+                <TextField
                   fullWidth
                   label={language === 'ar' ? 'البريد الإلكتروني' : 'Email'}
                   value={data.technicalSupport?.email || ''}
-                  onChange={(e) =&gt; updateData({
+                  onChange={(e) => updateData({
                     technicalSupport: {
-                      ...data.technicalSupport,
                       email: e.target.value,
+                      phone: data.technicalSupport?.phone || '',
+                      hours: data.technicalSupport?.hours || '',
                     }
                   })}
                   sx={{ mb: 2 }}
                   InputProps={{
-                    startAdornment: &lt;EmailIcon sx={{ mr: 1, color: 'text.secondary' }} /&gt;,
+                    startAdornment: <EmailIcon sx={{ mr: 1, color: 'text.secondary' }} />,
                   }}
                   dir="ltr"
-                /&gt;
-                &lt;TextField
+                />
+                <TextField
                   fullWidth
                   label={language === 'ar' ? 'الهاتف' : 'Phone'}
                   value={data.technicalSupport?.phone || ''}
-                  onChange={(e) =&gt; updateData({
+                  onChange={(e) => updateData({
                     technicalSupport: {
-                      ...data.technicalSupport,
+                      email: data.technicalSupport?.email || '',
                       phone: e.target.value,
+                      hours: data.technicalSupport?.hours || '',
                     }
                   })}
                   sx={{ mb: 2 }}
                   InputProps={{
-                    startAdornment: &lt;PhoneIcon sx={{ mr: 1, color: 'text.secondary' }} /&gt;,
+                    startAdornment: <PhoneIcon sx={{ mr: 1, color: 'text.secondary' }} />,
                   }}
                   dir="ltr"
-                /&gt;
-                &lt;TextField
+                />
+                <TextField
                   fullWidth
                   label={language === 'ar' ? 'ساعات العمل' : 'Working Hours'}
                   value={data.technicalSupport?.hours || ''}
-                  onChange={(e) =&gt; updateData({
+                  onChange={(e) => updateData({
                     technicalSupport: {
-                      ...data.technicalSupport,
+                      email: data.technicalSupport?.email || '',
+                      phone: data.technicalSupport?.phone || '',
                       hours: e.target.value,
                     }
                   })}
                   placeholder={language === 'ar' ? '8:00 ص - 6:00 م' : '8:00 AM - 6:00 PM'}
                   dir={direction}
-                /&gt;
-              &lt;/CardContent&gt;
-            &lt;/Card&gt;
-          &lt;/Grid&gt;
-        &lt;/Grid&gt;
-      &lt;/AccordionDetails&gt;
-    &lt;/Accordion&gt;
+                />
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </AccordionDetails>
+    </Accordion>
   );
 
   // Issue Dialog Component
-  const IssueDialog = () =&gt; (
-    &lt;Dialog open={showAddIssueDialog} onClose={() =&gt; setShowAddIssueDialog(false)} maxWidth="md" fullWidth&gt;
-      &lt;DialogTitle&gt;
+  const IssueDialog = () => (
+    <Dialog open={showAddIssueDialog} onClose={() => setShowAddIssueDialog(false)} maxWidth="md" fullWidth>
+      <DialogTitle>
         {currentIssue?.title 
           ? (language === 'ar' ? 'تعديل القضية' : 'Edit Issue')
           : (language === 'ar' ? 'إضافة قضية جديدة' : 'Add New Issue')
         }
-      &lt;/DialogTitle&gt;
-      &lt;DialogContent&gt;
-        &lt;Grid container spacing={2} sx={{ mt: 1 }}&gt;
-          &lt;Grid item xs={12}&gt;
-            &lt;TextField
+      </DialogTitle>
+      <DialogContent>
+        <Grid container spacing={2} sx={{ mt: 1 }}>
+          <Grid item xs={12}>
+            <TextField
               fullWidth
               label={language === 'ar' ? 'عنوان القضية' : 'Issue Title'}
               value={currentIssue?.title || ''}
-              onChange={(e) =&gt; setCurrentIssue(prev =&gt; prev ? { ...prev, title: e.target.value } : null)}
+              onChange={(e) => setCurrentIssue(prev => prev ? { ...prev, title: e.target.value } : null)}
               required
               dir={direction}
-            /&gt;
-          &lt;/Grid&gt;
+            />
+          </Grid>
           
-          &lt;Grid item xs={12} md={6}&gt;
-            &lt;FormControl fullWidth&gt;
-              &lt;InputLabel&gt;{language === 'ar' ? 'الأولوية' : 'Priority'}&lt;/InputLabel&gt;
-              &lt;Select
+          <Grid item xs={12} md={6}>
+            <FormControl fullWidth>
+              <InputLabel>{language === 'ar' ? 'الأولوية' : 'Priority'}</InputLabel>
+              <Select
                 value={currentIssue?.priority || 'medium'}
-                onChange={(e) =&gt; setCurrentIssue(prev =&gt; prev ? { 
+                onChange={(e) => setCurrentIssue(prev => prev ? { 
                   ...prev, 
                   priority: e.target.value as 'critical' | 'high' | 'medium' | 'low'
                 } : null)}
-              &gt;
-                &lt;MenuItem value="critical"&gt;{language === 'ar' ? 'حرج' : 'Critical'}&lt;/MenuItem&gt;
-                &lt;MenuItem value="high"&gt;{language === 'ar' ? 'عالي' : 'High'}&lt;/MenuItem&gt;
-                &lt;MenuItem value="medium"&gt;{language === 'ar' ? 'متوسط' : 'Medium'}&lt;/MenuItem&gt;
-                &lt;MenuItem value="low"&gt;{language === 'ar' ? 'منخفض' : 'Low'}&lt;/MenuItem&gt;
-              &lt;/Select&gt;
-            &lt;/FormControl&gt;
-          &lt;/Grid&gt;
+              >
+                <MenuItem value="critical">{language === 'ar' ? 'حرج' : 'Critical'}</MenuItem>
+                <MenuItem value="high">{language === 'ar' ? 'عالي' : 'High'}</MenuItem>
+                <MenuItem value="medium">{language === 'ar' ? 'متوسط' : 'Medium'}</MenuItem>
+                <MenuItem value="low">{language === 'ar' ? 'منخفض' : 'Low'}</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
           
-          &lt;Grid item xs={12} md={6}&gt;
-            &lt;TextField
+          <Grid item xs={12} md={6}>
+            <TextField
               fullWidth
               label={language === 'ar' ? 'الموعد النهائي' : 'Deadline'}
               value={currentIssue?.deadline || ''}
-              onChange={(e) =&gt; setCurrentIssue(prev =&gt; prev ? { ...prev, deadline: e.target.value } : null)}
+              onChange={(e) => setCurrentIssue(prev => prev ? { ...prev, deadline: e.target.value } : null)}
               type="date"
               InputLabelProps={{ shrink: true }}
-            /&gt;
-          &lt;/Grid&gt;
+            />
+          </Grid>
           
-          &lt;Grid item xs={12}&gt;
-            &lt;TextField
+          <Grid item xs={12}>
+            <TextField
               fullWidth
               label={language === 'ar' ? 'وصف القضية' : 'Issue Description'}
               value={currentIssue?.description || ''}
-              onChange={(e) =&gt; setCurrentIssue(prev =&gt; prev ? { ...prev, description: e.target.value } : null)}
+              onChange={(e) => setCurrentIssue(prev => prev ? { ...prev, description: e.target.value } : null)}
               multiline
               rows={3}
               dir={direction}
-            /&gt;
-          &lt;/Grid&gt;
+            />
+          </Grid>
           
-          &lt;Grid item xs={12}&gt;
-            &lt;TextField
+          <Grid item xs={12}>
+            <TextField
               fullWidth
               label={language === 'ar' ? 'الإجراء المطلوب' : 'Required Action'}
               value={currentIssue?.requiredAction || ''}
-              onChange={(e) =&gt; setCurrentIssue(prev =&gt; prev ? { ...prev, requiredAction: e.target.value } : null)}
+              onChange={(e) => setCurrentIssue(prev => prev ? { ...prev, requiredAction: e.target.value } : null)}
               multiline
               rows={2}
               dir={direction}
-            /&gt;
-          &lt;/Grid&gt;
-        &lt;/Grid&gt;
-      &lt;/DialogContent&gt;
-      &lt;DialogActions&gt;
-        &lt;Button onClick={() =&gt; setShowAddIssueDialog(false)}&gt;
+            />
+          </Grid>
+        </Grid>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={() => setShowAddIssueDialog(false)}>
           {language === 'ar' ? 'إلغاء' : 'Cancel'}
-        &lt;/Button&gt;
-        &lt;Button
+        </Button>
+        <Button
           variant="contained"
-          onClick={() =&gt; {
+          onClick={() => {
             if (currentIssue) {
-              const existingIndex = issues.findIndex(i =&gt; i.id === currentIssue.id);
+              const existingIndex = issues.findIndex(i => i.id === currentIssue.id);
               if (existingIndex !== -1) {
-                setIssues(issues.map(i =&gt; i.id === currentIssue.id ? currentIssue : i));
+                setIssues(issues.map(i => i.id === currentIssue.id ? currentIssue : i));
               } else {
                 setIssues([...issues, currentIssue]);
               }
@@ -999,51 +996,51 @@ const ComplianceReportGenerator: React.FC&lt;ComplianceReportGeneratorProps&gt; 
             setCurrentIssue(null);
           }}
           disabled={!currentIssue?.title}
-        &gt;
+        >
           {language === 'ar' ? 'حفظ' : 'Save'}
-        &lt;/Button&gt;
-      &lt;/DialogActions&gt;
-    &lt;/Dialog&gt;
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 
   return (
-    &lt;Box sx={{ width: '100%' }}&gt;
-      &lt;Typography variant="h5" gutterBottom&gt;
+    <Box sx={{ width: '100%' }}>
+      <Typography variant="h5" gutterBottom>
         {language === 'ar' ? 'مولد تقرير الامتثال' : 'Compliance Report Generator'}
-      &lt;/Typography&gt;
+      </Typography>
       
-      &lt;Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}&gt;
+      <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
         {language === 'ar' 
           ? 'إنشاء تقرير امتثال شامل مع ربط الأنظمة الحكومية ونقاط الامتثال في الوقت الفعلي'
           : 'Generate comprehensive compliance report with government system integration and real-time compliance scoring'
         }
-      &lt;/Typography&gt;
+      </Typography>
 
-      &lt;Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}&gt;
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
         {renderBasicInfo()}
         {renderComplianceScore()}
         {renderGovernmentAPIs()}
         {renderIssuesManagement()}
         {renderContactInfo()}
-      &lt;/Box&gt;
+      </Box>
 
       {/* Dialogs */}
-      &lt;IssueDialog /&gt;
+      <IssueDialog />
       
       {/* Error display */}
-      {Object.keys(errors).length &gt; 0 &amp;&amp; (
-        &lt;Alert severity="error" sx={{ mt: 2 }}&gt;
-          &lt;Typography variant="subtitle2"&gt;
+      {Object.keys(errors).length > 0 && (
+        <Alert severity="error" sx={{ mt: 2 }}>
+          <Typography variant="subtitle2">
             {language === 'ar' ? 'يرجى تصحيح الأخطاء التالية:' : 'Please correct the following errors:'}
-          &lt;/Typography&gt;
-          &lt;ul&gt;
-            {Object.entries(errors).map(([field, error]) =&gt; (
-              &lt;li key={field}&gt;{error}&lt;/li&gt;
+          </Typography>
+          <ul>
+            {Object.entries(errors).map(([field, error]) => (
+              <li key={field}>{error}</li>
             ))}
-          &lt;/ul&gt;
-        &lt;/Alert&gt;
+          </ul>
+        </Alert>
       )}
-    &lt;/Box&gt;
+    </Box>
   );
 };
 

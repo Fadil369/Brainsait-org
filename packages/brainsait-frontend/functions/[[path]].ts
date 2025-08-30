@@ -1,6 +1,11 @@
 // Cloudflare Pages Functions for server-side rendering and API routes
 
-export const onRequest: PagesFunction = async (context) => {
+interface Env {
+  API_BASE_URL?: string;
+  ASSETS: any;
+}
+
+export const onRequest = async (context: { request: Request; env: Env; params: any }) => {
   const { request, env, params } = context;
   
   // Handle API proxy requests

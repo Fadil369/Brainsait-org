@@ -6,7 +6,7 @@
  * @version 1.0.0
  */
 
-import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { toast } from 'react-hot-toast';
 
 // Environment configuration
@@ -114,44 +114,44 @@ export interface FeasibilityStudyRequest extends DocumentRequestBase {
   vatNumber?: string;
   executiveSummary: string;
   projectObjectives: string[];
-  marketAnalysis: {
-    marketSize: number;
-    targetSegment: string;
-    competitorAnalysis: string;
-    marketTrends: string;
-    growthProjections: number;
+  marketAnalysis?: {
+    marketSize?: number;
+    targetSegment?: string;
+    competitorAnalysis?: string;
+    marketTrends?: string;
+    growthProjections?: number;
   };
-  technicalAnalysis: {
-    technologyRequirements: string[];
-    implementationPlan: string;
-    resourceRequirements: string[];
-    technicalRisks: string[];
+  technicalAnalysis?: {
+    technologyRequirements?: string[];
+    implementationPlan?: string;
+    resourceRequirements?: string[];
+    technicalRisks?: string[];
   };
-  financialAnalysis: {
-    initialInvestment: number;
-    operatingCosts: number;
-    revenueProjections: Array<{
+  financialAnalysis?: {
+    initialInvestment?: number;
+    operatingCosts?: number;
+    revenueProjections?: Array<{
       year: number;
       revenue: number;
       costs: number;
       profit: number;
     }>;
-    breakEvenPoint: number;
-    roi: number;
-    npv: number;
-    irr: number;
-    paybackPeriod: number;
+    breakEvenPoint?: number;
+    roi?: number;
+    npv?: number;
+    irr?: number;
+    paybackPeriod?: number;
   };
-  riskAnalysis: {
-    marketRisks: string[];
-    technicalRisks: string[];
-    financialRisks: string[];
-    mitigationStrategies: string[];
+  riskAnalysis?: {
+    marketRisks?: string[];
+    technicalRisks?: string[];
+    financialRisks?: string[];
+    mitigationStrategies?: string[];
   };
-  saudiCompliance: {
-    requiredLicenses: string[];
-    regulatoryRequirements: string[];
-    complianceTimeline: string[];
+  saudiCompliance?: {
+    requiredLicenses?: string[];
+    regulatoryRequirements?: string[];
+    complianceTimeline?: string[];
   };
   conclusion: string;
   recommendations: string[];

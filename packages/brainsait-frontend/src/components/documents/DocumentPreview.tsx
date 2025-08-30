@@ -1,55 +1,50 @@
 'use client';
 
-import React, { useState, useRef, useCallback, useEffect } from 'react';
 import {
-  Box,
-  Paper,
-  Typography,
-  Button,
-  IconButton,
-  Toolbar,
-  Divider,
-  Card,
-  CardContent,
-  CardActions,
-  Chip,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Menu,
-  MenuItem,
-  ListItemIcon,
-  ListItemText,
-  Alert,
-  CircularProgress,
-  Tooltip,
-  Zoom,
-  Fade,
-  Skeleton,
-} from '@mui/material';
-import {
-  Download as DownloadIcon,
-  Print as PrintIcon,
-  Share as ShareIcon,
-  Edit as EditIcon,
-  ZoomIn as ZoomInIcon,
-  ZoomOut as ZoomOutIcon,
-  Fullscreen as FullscreenIcon,
-  FullscreenExit as FullscreenExitIcon,
-  Refresh as RefreshIcon,
-  Save as SaveIcon,
-  Email as EmailIcon,
-  Link as LinkIcon,
-  WhatsApp as WhatsAppIcon,
-  PictureAsPdf as PdfIcon,
-  Html as HtmlIcon,
-  Language as LanguageIcon,
-  Info as InfoIcon,
-  CheckCircle as CheckCircleIcon,
-  Error as ErrorIcon,
+    CheckCircle as CheckCircleIcon,
+    Download as DownloadIcon,
+    Edit as EditIcon,
+    Email as EmailIcon,
+    Error as ErrorIcon,
+    FullscreenExit as FullscreenExitIcon,
+    Fullscreen as FullscreenIcon,
+    Info as InfoIcon,
+    Language as LanguageIcon,
+    Link as LinkIcon,
+    PictureAsPdf as PdfIcon,
+    Print as PrintIcon,
+    Refresh as RefreshIcon,
+    Share as ShareIcon,
+    WhatsApp as WhatsAppIcon,
+    ZoomIn as ZoomInIcon,
+    ZoomOut as ZoomOutIcon
 } from '@mui/icons-material';
+import {
+    Box,
+    Button,
+    Card,
+    CardActions,
+    CardContent,
+    Chip,
+    CircularProgress,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    Divider,
+    IconButton,
+    ListItemIcon,
+    ListItemText,
+    Menu,
+    MenuItem,
+    Paper,
+    Skeleton,
+    Toolbar,
+    Tooltip,
+    Typography
+} from '@mui/material';
 import { useTranslation } from 'next-i18next';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useAppTheme } from '../../lib/ThemeProvider';
 import type { DocumentResponse } from '../../services/documentService';
 
@@ -59,9 +54,9 @@ import type { DocumentResponse } from '../../services/documentService';
 interface DocumentPreviewProps {
   document: DocumentResponse;
   language: 'ar' | 'en';
-  onEdit?: () =&gt; void;
-  onDownload?: () =&gt; void;
-  onShare?: (method: string) =&gt; void;
+  onEdit?: () => void;
+  onDownload?: () => void;
+  onShare?: (method: string) => void;
   allowEdit?: boolean;
   allowDownload?: boolean;
   allowShare?: boolean;
@@ -90,7 +85,7 @@ interface ShareOption {
   key: string;
   label: string;
   icon: React.ComponentType;
-  action: (url: string) =&gt; void;
+  action: (url: string) => void;
 }
 
 /**
@@ -102,7 +97,7 @@ interface ShareOption {
  * @param props - Component properties
  * @returns JSX.Element
  */
-const DocumentPreview: React.FC&lt;DocumentPreviewProps&gt; = ({
+const DocumentPreview: React.FC<DocumentPreviewProps> = ({
   document,
   language,
   onEdit,
@@ -113,7 +108,7 @@ const DocumentPreview: React.FC&lt;DocumentPreviewProps&gt; = ({
   allowShare = true,
   embedded = false,
   maxHeight = 800,
-}) =&gt; {
+}) => {
   const { t } = useTranslation(['documents', 'common']);
   const { direction } = useAppTheme();
   
@@ -121,14 +116,14 @@ const DocumentPreview: React.FC&lt;DocumentPreviewProps&gt; = ({
   const [zoomLevel, setZoomLevel] = useState(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState&lt;string | null&gt;(null);
-  const [shareAnchorEl, setShareAnchorEl] = useState&lt;null | HTMLElement&gt;(null);
+  const [error, setError] = useState<string | null>(null);
+  const [shareAnchorEl, setShareAnchorEl] = useState<null | HTMLElement>(null);
   const [showMetadata, setShowMetadata] = useState(false);
-  const [documentContent, setDocumentContent] = useState&lt;string | null&gt;(null);
+  const [documentContent, setDocumentContent] = useState<string | null>(null);
   
   // Refs
-  const previewContainerRef = useRef&lt;HTMLDivElement&gt;(null);
-  const iframeRef = useRef&lt;HTMLIFrameElement&gt;(null);
+  const previewContainerRef = useRef<HTMLDivElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   // Mock metadata (in real implementation, this would come from the document response)
   const metadata: DocumentMetadata = {
@@ -150,7 +145,7 @@ const DocumentPreview: React.FC&lt;DocumentPreviewProps&gt; = ({
       key: 'email',
       label: language === 'ar' ? 'البريد الإلكتروني' : 'Email',
       icon: EmailIcon,
-      action: (url) =&gt; {
+      action: (url) => {
         const subject = encodeURIComponent(`${metadata.title} - ${metadata.type}`);
         const body = encodeURIComponent(
           language === 'ar' 
@@ -164,7 +159,7 @@ const DocumentPreview: React.FC&lt;DocumentPreviewProps&gt; = ({
       key: 'whatsapp',
       label: 'WhatsApp',
       icon: WhatsAppIcon,
-      action: (url) =&gt; {
+      action: (url) => {
         const text = encodeURIComponent(
           language === 'ar'
             ? `${metadata.title} - ${metadata.type}\n${url}`
@@ -177,8 +172,8 @@ const DocumentPreview: React.FC&lt;DocumentPreviewProps&gt; = ({
       key: 'link',
       label: language === 'ar' ? 'نسخ الرابط' : 'Copy Link',
       icon: LinkIcon,
-      action: (url) =&gt; {
-        navigator.clipboard.writeText(url).then(() =&gt; {
+      action: (url) => {
+        navigator.clipboard.writeText(url).then(() => {
           // Show success message
         });
       },
@@ -188,13 +183,13 @@ const DocumentPreview: React.FC&lt;DocumentPreviewProps&gt; = ({
   /**
    * Load document content
    */
-  useEffect(() =&gt; {
+  useEffect(() => {
     if (document.data?.downloadUrl) {
       setIsLoading(true);
       setError(null);
       
       // Simulate loading for demo purposes
-      const timer = setTimeout(() =&gt; {
+      const timer = setTimeout(() => {
         try {
           // In real implementation, fetch the actual document content
           setDocumentContent(document.data?.downloadUrl || '');
@@ -205,34 +200,34 @@ const DocumentPreview: React.FC&lt;DocumentPreviewProps&gt; = ({
         }
       }, 1500);
       
-      return () =&gt; clearTimeout(timer);
+      return () => clearTimeout(timer);
     }
   }, [document, language]);
 
   /**
    * Handle zoom controls
    */
-  const handleZoomIn = useCallback(() =&gt; {
-    setZoomLevel(prev =&gt; Math.min(prev + 0.25, 3));
+  const handleZoomIn = useCallback(() => {
+    setZoomLevel(prev => Math.min(prev + 0.25, 3));
   }, []);
 
-  const handleZoomOut = useCallback(() =&gt; {
-    setZoomLevel(prev =&gt; Math.max(prev - 0.25, 0.25));
+  const handleZoomOut = useCallback(() => {
+    setZoomLevel(prev => Math.max(prev - 0.25, 0.25));
   }, []);
 
-  const resetZoom = useCallback(() =&gt; {
+  const resetZoom = useCallback(() => {
     setZoomLevel(1);
   }, []);
 
   /**
    * Handle fullscreen toggle
    */
-  const toggleFullscreen = useCallback(() =&gt; {
-    if (!document.fullscreenElement) {
+  const toggleFullscreen = useCallback(() => {
+    if (!window.document.fullscreenElement) {
       previewContainerRef.current?.requestFullscreen?.();
       setIsFullscreen(true);
     } else {
-      document.exitFullscreen?.();
+      window.document.exitFullscreen?.();
       setIsFullscreen(false);
     }
   }, []);
@@ -240,9 +235,9 @@ const DocumentPreview: React.FC&lt;DocumentPreviewProps&gt; = ({
   /**
    * Handle download
    */
-  const handleDownload = useCallback(() =&gt; {
+  const handleDownload = useCallback(() => {
     if (document.data?.downloadUrl) {
-      const link = document.createElement('a');
+      const link = window.document.createElement('a');
       link.href = document.data.downloadUrl;
       link.download = document.data.filename || 'document.pdf';
       link.click();
@@ -253,7 +248,7 @@ const DocumentPreview: React.FC&lt;DocumentPreviewProps&gt; = ({
   /**
    * Handle print
    */
-  const handlePrint = useCallback(() =&gt; {
+  const handlePrint = useCallback(() => {
     if (iframeRef.current?.contentWindow) {
       iframeRef.current.contentWindow.print();
     } else {
@@ -264,7 +259,7 @@ const DocumentPreview: React.FC&lt;DocumentPreviewProps&gt; = ({
   /**
    * Handle share
    */
-  const handleShare = useCallback((option: ShareOption) =&gt; {
+  const handleShare = useCallback((option: ShareOption) => {
     if (document.data?.downloadUrl) {
       option.action(document.data.downloadUrl);
       onShare?.(option.key);
@@ -275,8 +270,8 @@ const DocumentPreview: React.FC&lt;DocumentPreviewProps&gt; = ({
   /**
    * Render toolbar
    */
-  const renderToolbar = () =&gt; (
-    &lt;Toolbar
+  const renderToolbar = () => (
+    <Toolbar
       variant="dense"
       sx={{
         bgcolor: 'background.paper',
@@ -285,14 +280,14 @@ const DocumentPreview: React.FC&lt;DocumentPreviewProps&gt; = ({
         px: 2,
         gap: 1,
       }}
-    &gt;
+    >
       {/* Document Info */}
-      &lt;Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}&gt;
-        &lt;PdfIcon sx={{ mr: 1, color: 'error.main' }} /&gt;
-        &lt;Typography variant="subtitle2" noWrap&gt;
+      <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
+        <PdfIcon sx={{ mr: 1, color: 'error.main' }} />
+        <Typography variant="subtitle2" noWrap>
           {metadata.title}
-        &lt;/Typography&gt;
-        &lt;Chip
+        </Typography>
+        <Chip
           label={metadata.status}
           size="small"
           color={
@@ -301,88 +296,88 @@ const DocumentPreview: React.FC&lt;DocumentPreviewProps&gt; = ({
             metadata.status === 'review' ? 'warning' : 'default'
           }
           sx={{ ml: 1 }}
-        /&gt;
-      &lt;/Box&gt;
+        />
+      </Box>
 
       {/* Controls */}
-      &lt;Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}&gt;
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
         {/* Zoom Controls */}
-        &lt;Tooltip title={language === 'ar' ? 'تكبير' : 'Zoom In'}&gt;
-          &lt;IconButton size="small" onClick={handleZoomIn} disabled={zoomLevel &gt;= 3}&gt;
-            &lt;ZoomInIcon /&gt;
-          &lt;/IconButton&gt;
-        &lt;/Tooltip&gt;
+        <Tooltip title={language === 'ar' ? 'تكبير' : 'Zoom In'}>
+          <IconButton size="small" onClick={handleZoomIn} disabled={zoomLevel >= 3}>
+            <ZoomInIcon />
+          </IconButton>
+        </Tooltip>
         
-        &lt;Typography variant="caption" sx={{ minWidth: 45, textAlign: 'center' }}&gt;
+        <Typography variant="caption" sx={{ minWidth: 45, textAlign: 'center' }}>
           {Math.round(zoomLevel * 100)}%
-        &lt;/Typography&gt;
+        </Typography>
         
-        &lt;Tooltip title={language === 'ar' ? 'تصغير' : 'Zoom Out'}&gt;
-          &lt;IconButton size="small" onClick={handleZoomOut} disabled={zoomLevel &lt;= 0.25}&gt;
-            &lt;ZoomOutIcon /&gt;
-          &lt;/IconButton&gt;
-        &lt;/Tooltip&gt;
+        <Tooltip title={language === 'ar' ? 'تصغير' : 'Zoom Out'}>
+          <IconButton size="small" onClick={handleZoomOut} disabled={zoomLevel <= 0.25}>
+            <ZoomOutIcon />
+          </IconButton>
+        </Tooltip>
         
-        &lt;Divider orientation="vertical" flexItem sx={{ mx: 1 }} /&gt;
+        <Divider orientation="vertical" flexItem sx={{ mx: 1 }} />
         
         {/* Action Buttons */}
-        {allowEdit &amp;&amp; onEdit &amp;&amp; (
-          &lt;Tooltip title={language === 'ar' ? 'تعديل' : 'Edit'}&gt;
-            &lt;IconButton size="small" onClick={onEdit} color="primary"&gt;
-              &lt;EditIcon /&gt;
-            &lt;/IconButton&gt;
-          &lt;/Tooltip&gt;
+        {allowEdit && onEdit && (
+          <Tooltip title={language === 'ar' ? 'تعديل' : 'Edit'}>
+            <IconButton size="small" onClick={onEdit} color="primary">
+              <EditIcon />
+            </IconButton>
+          </Tooltip>
         )}
         
-        {allowDownload &amp;&amp; (
-          &lt;Tooltip title={language === 'ar' ? 'تحميل' : 'Download'}&gt;
-            &lt;IconButton size="small" onClick={handleDownload} color="primary"&gt;
-              &lt;DownloadIcon /&gt;
-            &lt;/IconButton&gt;
-          &lt;/Tooltip&gt;
+        {allowDownload && (
+          <Tooltip title={language === 'ar' ? 'تحميل' : 'Download'}>
+            <IconButton size="small" onClick={handleDownload} color="primary">
+              <DownloadIcon />
+            </IconButton>
+          </Tooltip>
         )}
         
-        &lt;Tooltip title={language === 'ar' ? 'طباعة' : 'Print'}&gt;
-          &lt;IconButton size="small" onClick={handlePrint}&gt;
-            &lt;PrintIcon /&gt;
-          &lt;/IconButton&gt;
-        &lt;/Tooltip&gt;
+        <Tooltip title={language === 'ar' ? 'طباعة' : 'Print'}>
+          <IconButton size="small" onClick={handlePrint}>
+            <PrintIcon />
+          </IconButton>
+        </Tooltip>
         
-        {allowShare &amp;&amp; (
-          &lt;Tooltip title={language === 'ar' ? 'مشاركة' : 'Share'}&gt;
-            &lt;IconButton
+        {allowShare && (
+          <Tooltip title={language === 'ar' ? 'مشاركة' : 'Share'}>
+            <IconButton
               size="small"
-              onClick={(e) =&gt; setShareAnchorEl(e.currentTarget)}
-            &gt;
-              &lt;ShareIcon /&gt;
-            &lt;/IconButton&gt;
-          &lt;/Tooltip&gt;
+              onClick={(e) => setShareAnchorEl(e.currentTarget)}
+            >
+              <ShareIcon />
+            </IconButton>
+          </Tooltip>
         )}
         
-        &lt;Tooltip title={language === 'ar' ? 'معلومات المستند' : 'Document Info'}&gt;
-          &lt;IconButton size="small" onClick={() =&gt; setShowMetadata(true)}&gt;
-            &lt;InfoIcon /&gt;
-          &lt;/IconButton&gt;
-        &lt;/Tooltip&gt;
+        <Tooltip title={language === 'ar' ? 'معلومات المستند' : 'Document Info'}>
+          <IconButton size="small" onClick={() => setShowMetadata(true)}>
+            <InfoIcon />
+          </IconButton>
+        </Tooltip>
         
-        {!embedded &amp;&amp; (
-          &lt;Tooltip title={language === 'ar' ? 'ملء الشاشة' : 'Fullscreen'}&gt;
-            &lt;IconButton size="small" onClick={toggleFullscreen}&gt;
-              {isFullscreen ? &lt;FullscreenExitIcon /&gt; : &lt;FullscreenIcon /&gt;}
-            &lt;/IconButton&gt;
-          &lt;/Tooltip&gt;
+        {!embedded && (
+          <Tooltip title={language === 'ar' ? 'ملء الشاشة' : 'Fullscreen'}>
+            <IconButton size="small" onClick={toggleFullscreen}>
+              {isFullscreen ? <FullscreenExitIcon /> : <FullscreenIcon />}
+            </IconButton>
+          </Tooltip>
         )}
-      &lt;/Box&gt;
-    &lt;/Toolbar&gt;
+      </Box>
+    </Toolbar>
   );
 
   /**
    * Render document content
    */
-  const renderDocumentContent = () =&gt; {
+  const renderDocumentContent = () => {
     if (isLoading) {
       return (
-        &lt;Box
+        <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
@@ -391,32 +386,32 @@ const DocumentPreview: React.FC&lt;DocumentPreviewProps&gt; = ({
             minHeight: 400,
             p: 4,
           }}
-        &gt;
-          &lt;CircularProgress size={60} sx={{ mb: 2 }} /&gt;
-          &lt;Typography variant="h6" gutterBottom&gt;
+        >
+          <CircularProgress size={60} sx={{ mb: 2 }} />
+          <Typography variant="h6" gutterBottom>
             {language === 'ar' ? 'جاري تحميل المستند...' : 'Loading document...'}
-          &lt;/Typography&gt;
-          &lt;Typography variant="body2" color="text.secondary"&gt;
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
             {language === 'ar' 
               ? 'يرجى الانتظار بينما نحضر معاينة المستند'
               : 'Please wait while we prepare the document preview'
             }
-          &lt;/Typography&gt;
+          </Typography>
           
           {/* Loading skeleton */}
-          &lt;Box sx={{ width: '100%', maxWidth: 600, mt: 3 }}&gt;
-            &lt;Skeleton variant="rectangular" height={300} sx={{ mb: 2 }} /&gt;
-            &lt;Skeleton variant="text" width="80%" /&gt;
-            &lt;Skeleton variant="text" width="60%" /&gt;
-            &lt;Skeleton variant="text" width="90%" /&gt;
-          &lt;/Box&gt;
-        &lt;/Box&gt;
+          <Box sx={{ width: '100%', maxWidth: 600, mt: 3 }}>
+            <Skeleton variant="rectangular" height={300} sx={{ mb: 2 }} />
+            <Skeleton variant="text" width="80%" />
+            <Skeleton variant="text" width="60%" />
+            <Skeleton variant="text" width="90%" />
+          </Box>
+        </Box>
       );
     }
 
     if (error) {
       return (
-        &lt;Box
+        <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
@@ -425,27 +420,27 @@ const DocumentPreview: React.FC&lt;DocumentPreviewProps&gt; = ({
             minHeight: 400,
             p: 4,
           }}
-        &gt;
-          &lt;ErrorIcon sx={{ fontSize: 64, color: 'error.main', mb: 2 }} /&gt;
-          &lt;Typography variant="h6" gutterBottom color="error"&gt;
+        >
+          <ErrorIcon sx={{ fontSize: 64, color: 'error.main', mb: 2 }} />
+          <Typography variant="h6" gutterBottom color="error">
             {language === 'ar' ? 'خطأ في تحميل المستند' : 'Document Loading Error'}
-          &lt;/Typography&gt;
-          &lt;Typography variant="body2" color="text.secondary" sx={{ mb: 2, textAlign: 'center' }}&gt;
+          </Typography>
+          <Typography variant="body2" color="text.secondary" sx={{ mb: 2, textAlign: 'center' }}>
             {error}
-          &lt;/Typography&gt;
-          &lt;Button
+          </Typography>
+          <Button
             variant="outlined"
-            startIcon={&lt;RefreshIcon /&gt;}
-            onClick={() =&gt; window.location.reload()}
-          &gt;
+            startIcon={<RefreshIcon />}
+            onClick={() => window.location.reload()}
+          >
             {language === 'ar' ? 'إعادة المحاولة' : 'Retry'}
-          &lt;/Button&gt;
-        &lt;/Box&gt;
+          </Button>
+        </Box>
       );
     }
 
     return (
-      &lt;Box
+      <Box
         sx={{
           transform: `scale(${zoomLevel})`,
           transformOrigin: 'top center',
@@ -454,9 +449,9 @@ const DocumentPreview: React.FC&lt;DocumentPreviewProps&gt; = ({
           background: '#f5f5f5',
           p: 2,
         }}
-      &gt;
+      >
         {/* Document Preview Area */}
-        &lt;Paper
+        <Paper
           elevation={3}
           sx={{
             maxWidth: 800,
@@ -466,81 +461,81 @@ const DocumentPreview: React.FC&lt;DocumentPreviewProps&gt; = ({
             p: 4,
             direction: language === 'ar' ? 'rtl' : 'ltr',
           }}
-        &gt;
+        >
           {/* Document Header */}
-          &lt;Box sx={{ mb: 4, borderBottom: 1, borderColor: 'divider', pb: 2 }}&gt;
-            &lt;Typography variant="h4" align="center" gutterBottom&gt;
+          <Box sx={{ mb: 4, borderBottom: 1, borderColor: 'divider', pb: 2 }}>
+            <Typography variant="h4" align="center" gutterBottom>
               {metadata.title}
-            &lt;/Typography&gt;
-            &lt;Typography variant="subtitle1" align="center" color="text.secondary"&gt;
+            </Typography>
+            <Typography variant="subtitle1" align="center" color="text.secondary">
               {metadata.type}
-            &lt;/Typography&gt;
-            &lt;Box sx={{ display: 'flex', justifyContent: 'center', mt: 1 }}&gt;
-              &lt;Chip
-                icon={&lt;LanguageIcon /&gt;}
+            </Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 1 }}>
+              <Chip
+                icon={<LanguageIcon />}
                 label={metadata.language}
                 size="small"
                 variant="outlined"
-              /&gt;
-            &lt;/Box&gt;
-          &lt;/Box&gt;
+              />
+            </Box>
+          </Box>
 
           {/* Sample Document Content */}
-          &lt;Box sx={{ mb: 3 }}&gt;
-            &lt;Typography variant="h6" gutterBottom&gt;
+          <Box sx={{ mb: 3 }}>
+            <Typography variant="h6" gutterBottom>
               {language === 'ar' ? 'الملخص التنفيذي' : 'Executive Summary'}
-            &lt;/Typography&gt;
-            &lt;Typography variant="body1" paragraph&gt;
+            </Typography>
+            <Typography variant="body1" paragraph>
               {language === 'ar'
                 ? 'هذا نموذج لمعاينة المستند المُنتج. يحتوي هذا المستند على معلومات شاملة حول المشروع أو الدراسة المطلوبة. تم إنتاج هذا المستند باستخدام نظام BrainSAIT لتوليد المستندات مع الامتثال للمعايير السعودية.'
                 : 'This is a sample preview of the generated document. This document contains comprehensive information about the project or study requested. This document was generated using the BrainSAIT document generation system with Saudi compliance standards.'
               }
-            &lt;/Typography&gt;
-          &lt;/Box&gt;
+            </Typography>
+          </Box>
 
-          &lt;Box sx={{ mb: 3 }}&gt;
-            &lt;Typography variant="h6" gutterBottom&gt;
+          <Box sx={{ mb: 3 }}>
+            <Typography variant="h6" gutterBottom>
               {language === 'ar' ? 'المعلومات الأساسية' : 'Basic Information'}
-            &lt;/Typography&gt;
-            &lt;Box component="ul" sx={{ pl: language === 'ar' ? 0 : 2, pr: language === 'ar' ? 2 : 0 }}&gt;
-              &lt;li&gt;
-                &lt;Typography variant="body1"&gt;
-                  &lt;strong&gt;{language === 'ar' ? 'النوع:' : 'Type:'}&lt;/strong&gt; {metadata.type}
-                &lt;/Typography&gt;
-              &lt;/li&gt;
-              &lt;li&gt;
-                &lt;Typography variant="body1"&gt;
-                  &lt;strong&gt;{language === 'ar' ? 'تاريخ الإنشاء:' : 'Created:'}&lt;/strong&gt; {metadata.createdAt}
-                &lt;/Typography&gt;
-              &lt;/li&gt;
-              &lt;li&gt;
-                &lt;Typography variant="body1"&gt;
-                  &lt;strong&gt;{language === 'ar' ? 'اللغة:' : 'Language:'}&lt;/strong&gt; {metadata.language}
-                &lt;/Typography&gt;
-              &lt;/li&gt;
-              &lt;li&gt;
-                &lt;Typography variant="body1"&gt;
-                  &lt;strong&gt;{language === 'ar' ? 'الحالة:' : 'Status:'}&lt;/strong&gt; {metadata.status}
-                &lt;/Typography&gt;
-              &lt;/li&gt;
-            &lt;/Box&gt;
-          &lt;/Box&gt;
+            </Typography>
+            <Box component="ul" sx={{ pl: language === 'ar' ? 0 : 2, pr: language === 'ar' ? 2 : 0 }}>
+              <li>
+                <Typography variant="body1">
+                  <strong>{language === 'ar' ? 'النوع:' : 'Type:'}</strong> {metadata.type}
+                </Typography>
+              </li>
+              <li>
+                <Typography variant="body1">
+                  <strong>{language === 'ar' ? 'تاريخ الإنشاء:' : 'Created:'}</strong> {metadata.createdAt}
+                </Typography>
+              </li>
+              <li>
+                <Typography variant="body1">
+                  <strong>{language === 'ar' ? 'اللغة:' : 'Language:'}</strong> {metadata.language}
+                </Typography>
+              </li>
+              <li>
+                <Typography variant="body1">
+                  <strong>{language === 'ar' ? 'الحالة:' : 'Status:'}</strong> {metadata.status}
+                </Typography>
+              </li>
+            </Box>
+          </Box>
 
           {/* Placeholder sections */}
-          &lt;Box sx={{ mb: 3 }}&gt;
-            &lt;Typography variant="h6" gutterBottom&gt;
+          <Box sx={{ mb: 3 }}>
+            <Typography variant="h6" gutterBottom>
               {language === 'ar' ? 'المحتوى التفصيلي' : 'Detailed Content'}
-            &lt;/Typography&gt;
-            &lt;Typography variant="body1" paragraph&gt;
+            </Typography>
+            <Typography variant="body1" paragraph>
               {language === 'ar'
                 ? 'سيظهر هنا المحتوى الكامل للمستند بناءً على البيانات المدخلة في النموذج. يتضمن ذلك جميع الأقسام والتفاصيل والتحليلات المطلوبة.'
                 : 'The full document content will appear here based on the data entered in the form. This includes all sections, details, and required analyses.'
               }
-            &lt;/Typography&gt;
-          &lt;/Box&gt;
+            </Typography>
+          </Box>
 
           {/* Footer */}
-          &lt;Box
+          <Box
             sx={{
               mt: 6,
               pt: 2,
@@ -548,28 +543,28 @@ const DocumentPreview: React.FC&lt;DocumentPreviewProps&gt; = ({
               borderColor: 'divider',
               textAlign: 'center',
             }}
-          &gt;
-            &lt;Typography variant="caption" color="text.secondary"&gt;
+          >
+            <Typography variant="caption" color="text.secondary">
               {language === 'ar'
                 ? 'تم إنتاج هذا المستند بواسطة منصة BrainSAIT'
                 : 'Generated by BrainSAIT Platform'
               }
-            &lt;/Typography&gt;
-            &lt;br /&gt;
-            &lt;Typography variant="caption" color="text.secondary"&gt;
+            </Typography>
+            <br />
+            <Typography variant="caption" color="text.secondary">
               {language === 'ar' 
                 ? `تاريخ الإنتاج: ${metadata.createdAt}`
                 : `Generated on: ${metadata.createdAt}`
               }
-            &lt;/Typography&gt;
-          &lt;/Box&gt;
-        &lt;/Paper&gt;
-      &lt;/Box&gt;
+            </Typography>
+          </Box>
+        </Paper>
+      </Box>
     );
   };
 
   return (
-    &lt;Box
+    <Box
       ref={previewContainerRef}
       sx={{
         width: '100%',
@@ -578,113 +573,115 @@ const DocumentPreview: React.FC&lt;DocumentPreviewProps&gt; = ({
         flexDirection: 'column',
         bgcolor: 'background.default',
       }}
-    &gt;
+    >
       {/* Toolbar */}
       {renderToolbar()}
 
       {/* Document Content */}
-      &lt;Box
+      <Box
         sx={{
           flexGrow: 1,
           overflow: 'auto',
           position: 'relative',
         }}
-      &gt;
+      >
         {renderDocumentContent()}
-      &lt;/Box&gt;
+      </Box>
 
       {/* Share Menu */}
-      &lt;Menu
+      <Menu
         anchorEl={shareAnchorEl}
         open={Boolean(shareAnchorEl)}
-        onClose={() =&gt; setShareAnchorEl(null)}
+        onClose={() => setShareAnchorEl(null)}
         PaperProps={{
           sx: { minWidth: 200 }
         }}
-      &gt;
-        {shareOptions.map((option) =&gt; (
-          &lt;MenuItem key={option.key} onClick={() =&gt; handleShare(option)}&gt;
-            &lt;ListItemIcon&gt;
-              &lt;option.icon fontSize="small" /&gt;
-            &lt;/ListItemIcon&gt;
-            &lt;ListItemText&gt;{option.label}&lt;/ListItemText&gt;
-          &lt;/MenuItem&gt;
+      >
+        {shareOptions.map((option) => (
+          <MenuItem key={option.key} onClick={() => handleShare(option)}>
+            <ListItemIcon>
+              <Box sx={{ fontSize: 'small' }}>
+                <option.icon />
+              </Box>
+            </ListItemIcon>
+            <ListItemText>{option.label}</ListItemText>
+          </MenuItem>
         ))}
-      &lt;/Menu&gt;
+      </Menu>
 
       {/* Metadata Dialog */}
-      &lt;Dialog
+      <Dialog
         open={showMetadata}
-        onClose={() =&gt; setShowMetadata(false)}
+        onClose={() => setShowMetadata(false)}
         maxWidth="sm"
         fullWidth
-      &gt;
-        &lt;DialogTitle&gt;
+      >
+        <DialogTitle>
           {language === 'ar' ? 'معلومات المستند' : 'Document Information'}
-        &lt;/DialogTitle&gt;
-        &lt;DialogContent&gt;
-          &lt;Card variant="outlined"&gt;
-            &lt;CardContent&gt;
-              &lt;Box sx={{ display: 'grid', gap: 2 }}&gt;
-                &lt;Box sx={{ display: 'flex', justifyContent: 'space-between' }}&gt;
-                  &lt;Typography variant="body2" color="text.secondary"&gt;
+        </DialogTitle>
+        <DialogContent>
+          <Card variant="outlined">
+            <CardContent>
+              <Box sx={{ display: 'grid', gap: 2 }}>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <Typography variant="body2" color="text.secondary">
                     {language === 'ar' ? 'العنوان:' : 'Title:'}
-                  &lt;/Typography&gt;
-                  &lt;Typography variant="body2" fontWeight="bold"&gt;
+                  </Typography>
+                  <Typography variant="body2" fontWeight="bold">
                     {metadata.title}
-                  &lt;/Typography&gt;
-                &lt;/Box&gt;
+                  </Typography>
+                </Box>
                 
-                &lt;Box sx={{ display: 'flex', justifyContent: 'space-between' }}&gt;
-                  &lt;Typography variant="body2" color="text.secondary"&gt;
+                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <Typography variant="body2" color="text.secondary">
                     {language === 'ar' ? 'النوع:' : 'Type:'}
-                  &lt;/Typography&gt;
-                  &lt;Typography variant="body2" fontWeight="bold"&gt;
+                  </Typography>
+                  <Typography variant="body2" fontWeight="bold">
                     {metadata.type}
-                  &lt;/Typography&gt;
-                &lt;/Box&gt;
+                  </Typography>
+                </Box>
                 
-                &lt;Box sx={{ display: 'flex', justifyContent: 'space-between' }}&gt;
-                  &lt;Typography variant="body2" color="text.secondary"&gt;
+                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <Typography variant="body2" color="text.secondary">
                     {language === 'ar' ? 'الحجم:' : 'Size:'}
-                  &lt;/Typography&gt;
-                  &lt;Typography variant="body2" fontWeight="bold"&gt;
+                  </Typography>
+                  <Typography variant="body2" fontWeight="bold">
                     {metadata.size}
-                  &lt;/Typography&gt;
-                &lt;/Box&gt;
+                  </Typography>
+                </Box>
                 
-                &lt;Box sx={{ display: 'flex', justifyContent: 'space-between' }}&gt;
-                  &lt;Typography variant="body2" color="text.secondary"&gt;
+                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <Typography variant="body2" color="text.secondary">
                     {language === 'ar' ? 'عدد الصفحات:' : 'Pages:'}
-                  &lt;/Typography&gt;
-                  &lt;Typography variant="body2" fontWeight="bold"&gt;
+                  </Typography>
+                  <Typography variant="body2" fontWeight="bold">
                     {metadata.pages}
-                  &lt;/Typography&gt;
-                &lt;/Box&gt;
+                  </Typography>
+                </Box>
                 
-                &lt;Box sx={{ display: 'flex', justifyContent: 'space-between' }}&gt;
-                  &lt;Typography variant="body2" color="text.secondary"&gt;
+                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <Typography variant="body2" color="text.secondary">
                     {language === 'ar' ? 'تاريخ الإنشاء:' : 'Created:'}
-                  &lt;/Typography&gt;
-                  &lt;Typography variant="body2" fontWeight="bold"&gt;
+                  </Typography>
+                  <Typography variant="body2" fontWeight="bold">
                     {metadata.createdAt}
-                  &lt;/Typography&gt;
-                &lt;/Box&gt;
+                  </Typography>
+                </Box>
                 
-                &lt;Box sx={{ display: 'flex', justifyContent: 'space-between' }}&gt;
-                  &lt;Typography variant="body2" color="text.secondary"&gt;
+                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <Typography variant="body2" color="text.secondary">
                     {language === 'ar' ? 'اللغة:' : 'Language:'}
-                  &lt;/Typography&gt;
-                  &lt;Typography variant="body2" fontWeight="bold"&gt;
+                  </Typography>
+                  <Typography variant="body2" fontWeight="bold">
                     {metadata.language}
-                  &lt;/Typography&gt;
-                &lt;/Box&gt;
+                  </Typography>
+                </Box>
                 
-                &lt;Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}&gt;
-                  &lt;Typography variant="body2" color="text.secondary"&gt;
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <Typography variant="body2" color="text.secondary">
                     {language === 'ar' ? 'الحالة:' : 'Status:'}
-                  &lt;/Typography&gt;
-                  &lt;Chip
+                  </Typography>
+                  <Chip
                     label={metadata.status}
                     size="small"
                     color={
@@ -693,39 +690,39 @@ const DocumentPreview: React.FC&lt;DocumentPreviewProps&gt; = ({
                       metadata.status === 'review' ? 'warning' : 'default'
                     }
                     icon={
-                      metadata.status === 'final' ? &lt;CheckCircleIcon /&gt; :
-                      metadata.status === 'approved' ? &lt;CheckCircleIcon /&gt; : undefined
+                      metadata.status === 'final' ? <CheckCircleIcon /> :
+                      metadata.status === 'approved' ? <CheckCircleIcon /> : undefined
                     }
-                  /&gt;
-                &lt;/Box&gt;
-              &lt;/Box&gt;
-            &lt;/CardContent&gt;
-            &lt;CardActions&gt;
-              &lt;Button
+                  />
+                </Box>
+              </Box>
+            </CardContent>
+            <CardActions>
+              <Button
                 size="small"
-                startIcon={&lt;DownloadIcon /&gt;}
+                startIcon={<DownloadIcon />}
                 onClick={handleDownload}
                 disabled={!allowDownload}
-              &gt;
+              >
                 {language === 'ar' ? 'تحميل' : 'Download'}
-              &lt;/Button&gt;
-              &lt;Button
+              </Button>
+              <Button
                 size="small"
-                startIcon={&lt;PrintIcon /&gt;}
+                startIcon={<PrintIcon />}
                 onClick={handlePrint}
-              &gt;
+              >
                 {language === 'ar' ? 'طباعة' : 'Print'}
-              &lt;/Button&gt;
-            &lt;/CardActions&gt;
-          &lt;/Card&gt;
-        &lt;/DialogContent&gt;
-        &lt;DialogActions&gt;
-          &lt;Button onClick={() =&gt; setShowMetadata(false)}&gt;
+              </Button>
+            </CardActions>
+          </Card>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setShowMetadata(false)}>
             {language === 'ar' ? 'إغلاق' : 'Close'}
-          &lt;/Button&gt;
-        &lt;/DialogActions&gt;
-      &lt;/Dialog&gt;
-    &lt;/Box&gt;
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </Box>
   );
 };
 

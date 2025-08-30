@@ -1,27 +1,27 @@
 'use client';
 
-import React, { useState } from 'react';
 import {
+  Language as LanguageIcon,
+  Translate as TranslateIcon,
+} from '@mui/icons-material';
+import {
+  Box,
+  Chip,
+  FormControl,
+  FormHelperText,
+  FormLabel,
+  IconButton,
   TextField,
   TextFieldProps,
-  Box,
-  IconButton,
-  Chip,
-  Typography,
   Tooltip,
-  FormControl,
-  FormLabel,
-  FormHelperText,
+  Typography,
 } from '@mui/material';
-import {
-  Translate as TranslateIcon,
-  Language as LanguageIcon,
-} from '@mui/icons-material';
 import { useTranslation } from 'next-i18next';
+import React, { useState } from 'react';
 import { useAppTheme } from '../../lib/ThemeProvider';
-import { BilingualText, FormFieldProps } from '../../types/component.types';
+import { BilingualText } from '../../types/component.types';
 
-export interface BilingualTextFieldProps extends Omit<TextFieldProps, 'label' | 'placeholder' | 'helperText'> {
+export interface BilingualTextFieldProps extends Omit<TextFieldProps, 'label' | 'placeholder' | 'helperText' | 'onChange' | 'value'> {
   name: string;
   label: BilingualText;
   placeholder?: BilingualText;

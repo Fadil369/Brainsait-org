@@ -1,13 +1,13 @@
 'use client';
 
-import React from 'react';
+import createCache from '@emotion/cache';
+import { CacheProvider } from '@emotion/react';
+import { Box, CssBaseline } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { CssBaseline, Box } from '@mui/material';
+import { useParams } from 'next/navigation';
+import React from 'react';
 import { prefixer } from 'stylis';
 import rtlPlugin from 'stylis-plugin-rtl';
-import { CacheProvider } from '@emotion/react';
-import createCache from '@emotion/cache';
-import { useRouter } from 'next/router';
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -24,8 +24,9 @@ const cacheLtr = createCache({
 });
 
 export default function RootLayout({ children }: RootLayoutProps) {
-  const router = useRouter();
-  const isArabic = router?.locale === 'ar';
+  const params = useParams();
+  const locale = Array.isArray(params?.locale) ? params.locale[0] : params?.locale;
+  const isArabic = locale === 'ar';
 
   // Create theme with RTL support and Arabic typography
   const theme = createTheme({
@@ -272,7 +273,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   });
 
   return (
-    <html lang={router?.locale || 'en'} dir={isArabic ? 'rtl' : 'ltr'}>
+    <html lang={locale || 'en'} dir={isArabic ? 'rtl' : 'ltr'}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="BrainSAIT Healthcare SME Digital Transformation Platform" />

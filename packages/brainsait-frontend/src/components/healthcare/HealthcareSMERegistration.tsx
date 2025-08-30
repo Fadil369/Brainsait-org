@@ -316,9 +316,9 @@ const HealthcareSMERegistration: React.FC<HealthcareSMERegistrationProps> = ({ o
                     key={app}
                     label={t(`aiApplications.${app}`)}
                     clickable
-                    color={formik.values.interestedAIApplications.includes(app) ? 'primary' : 'default'}
+                    color={(formik.values.interestedAIApplications as string[]).includes(app) ? 'primary' : 'default'}
                     onClick={() => {
-                      const current = formik.values.interestedAIApplications;
+                      const current = formik.values.interestedAIApplications as string[];
                       const updated = current.includes(app)
                         ? current.filter(item => item !== app)
                         : [...current, app];

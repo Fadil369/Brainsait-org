@@ -1,58 +1,54 @@
 'use client';
 
-import React, { useState, useCallback, useMemo } from 'react';
 import {
-  Box,
-  Paper,
-  Typography,
-  Stepper,
-  Step,
-  StepLabel,
-  StepContent,
-  Button,
-  Card,
-  CardContent,
-  CardActions,
-  Grid,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  Chip,
-  Alert,
-  AlertTitle,
-  LinearProgress,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  IconButton,
-  Tooltip,
-  Divider,
-} from '@mui/material';
-import {
-  Description as DescriptionIcon,
-  Business as BusinessIcon,
-  Assessment as AssessmentIcon,
-  Gavel as ComplianceIcon,
-  Certificate as CertificateIcon,
-  Language as LanguageIcon,
-  Preview as PreviewIcon,
-  Download as DownloadIcon,
-  Check as CheckIcon,
-  Error as ErrorIcon,
-  Close as CloseIcon,
-  ArrowBack as ArrowBackIcon,
-  ArrowForward as ArrowForwardIcon,
+    ArrowBack as ArrowBackIcon,
+    ArrowForward as ArrowForwardIcon,
+    Assessment as AssessmentIcon,
+    Business as BusinessIcon,
+    VerifiedUser as CertificateIcon,
+    Check as CheckIcon,
+    Close as CloseIcon,
+    Gavel as ComplianceIcon,
+    Description as DescriptionIcon,
+    Download as DownloadIcon,
+    Language as LanguageIcon,
+    Preview as PreviewIcon
 } from '@mui/icons-material';
+import {
+    Alert,
+    AlertTitle,
+    Box,
+    Button,
+    Card,
+    CardContent,
+    Chip,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    Divider,
+    FormControl,
+    Grid,
+    IconButton,
+    InputLabel,
+    LinearProgress,
+    MenuItem,
+    Paper,
+    Select,
+    Step,
+    StepLabel,
+    Stepper,
+    Typography
+} from '@mui/material';
 import { useTranslation } from 'next-i18next';
+import React, { useCallback, useMemo, useState } from 'react';
 import { useAppTheme } from '../../lib/ThemeProvider';
-import { documentService, DocumentResponse } from '../../services/documentService';
+import { DocumentResponse, documentService } from '../../services/documentService';
 import type { BilingualText } from '../../types/component.types';
+import ComplianceReportGenerator from './ComplianceReportGenerator';
+import DocumentPreview from './DocumentPreview';
 import BusinessPlanForm from './forms/BusinessPlanForm';
 import FeasibilityStudyForm from './forms/FeasibilityStudyForm';
-import DocumentPreview from './DocumentPreview';
-import ComplianceReportGenerator from './ComplianceReportGenerator';
 
 /**
  * Document Template Interface
@@ -87,7 +83,7 @@ interface DocumentFormData {
   templateId: string;
   language: 'ar' | 'en';
   format: 'pdf' | 'html';
-  data: Record&lt;string, any&gt;;
+  data: Record<string, any>;
   options: {
     watermark: boolean;
     digitalSignature: boolean;
@@ -99,8 +95,8 @@ interface DocumentFormData {
  * DocumentGenerationWizard Component Props
  */
 interface DocumentGenerationWizardProps {
-  onDocumentGenerated?: (document: DocumentResponse) =&gt; void;
-  onClose?: () =&gt; void;
+  onDocumentGenerated?: (document: DocumentResponse) => void;
+  onClose?: () => void;
   defaultTemplate?: string;
   defaultLanguage?: 'ar' | 'en';
   embedded?: boolean;
@@ -115,19 +111,19 @@ interface DocumentGenerationWizardProps {
  * @param props - Component properties
  * @returns JSX.Element
  */
-const DocumentGenerationWizard: React.FC&lt;DocumentGenerationWizardProps&gt; = ({
+const DocumentGenerationWizard: React.FC<DocumentGenerationWizardProps> = ({
   onDocumentGenerated,
   onClose,
   defaultTemplate,
   defaultLanguage = 'ar',
   embedded = false,
-}) =&gt; {
+}) => {
   const { t } = useTranslation(['documents', 'common']);
   const { language, direction } = useAppTheme();
   
   // State management
   const [activeStep, setActiveStep] = useState(0);
-  const [formData, setFormData] = useState&lt;DocumentFormData&gt;({
+  const [formData, setFormData] = useState<DocumentFormData>({
     templateId: defaultTemplate || '',
     language: defaultLanguage,
     format: 'pdf',
@@ -140,12 +136,12 @@ const DocumentGenerationWizard: React.FC&lt;DocumentGenerationWizardProps&gt; = 
   });
   const [isGenerating, setIsGenerating] = useState(false);
   const [generationProgress, setGenerationProgress] = useState(0);
-  const [errors, setErrors] = useState&lt;Record&lt;string, string&gt;&gt;({});
-  const [previewData, setPreviewData] = useState&lt;DocumentResponse | null&gt;(null);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [previewData, setPreviewData] = useState<DocumentResponse | null>(null);
   const [showPreviewDialog, setShowPreviewDialog] = useState(false);
 
   // Document templates configuration
-  const templates: DocumentTemplate[] = useMemo(() =&gt; [
+  const templates: DocumentTemplate[] = useMemo(() => [
     {
       id: 'business-plan',
       name: { 
@@ -237,7 +233,7 @@ const DocumentGenerationWizard: React.FC&lt;DocumentGenerationWizardProps&gt; = 
   ], []);
 
   // Wizard steps configuration
-  const steps: WizardStep[] = useMemo(() =&gt; [
+  const steps: WizardStep[] = useMemo(() => [
     {
       id: 'template',
       label: { ar: 'اختيار النموذج', en: 'Template Selection' },
@@ -256,7 +252,7 @@ const DocumentGenerationWizard: React.FC&lt;DocumentGenerationWizardProps&gt; = 
       id: 'content',
       label: { ar: 'المحتوى', en: 'Content' },
       description: { ar: 'إدخال بيانات المستند', en: 'Enter document data' },
-      completed: Object.keys(formData.data).length &gt; 0,
+      completed: Object.keys(formData.data).length > 0,
       optional: false,
     },
     {
@@ -276,26 +272,26 @@ const DocumentGenerationWizard: React.FC&lt;DocumentGenerationWizardProps&gt; = 
   ], [formData, previewData]);
 
   // Get current template
-  const currentTemplate = templates.find(t =&gt; t.id === formData.templateId);
+  const currentTemplate = templates.find(t => t.id === formData.templateId);
 
   /**
    * Handle step navigation
    */
-  const handleNext = useCallback(() =&gt; {
-    if (activeStep &lt; steps.length - 1) {
+  const handleNext = useCallback(() => {
+    if (activeStep < steps.length - 1) {
       setActiveStep(activeStep + 1);
     }
   }, [activeStep, steps.length]);
 
-  const handleBack = useCallback(() =&gt; {
-    if (activeStep &gt; 0) {
+  const handleBack = useCallback(() => {
+    if (activeStep > 0) {
       setActiveStep(activeStep - 1);
     }
   }, [activeStep]);
 
-  const handleStepClick = useCallback((stepIndex: number) =&gt; {
+  const handleStepClick = useCallback((stepIndex: number) => {
     // Allow clicking on completed steps or the next step
-    if (stepIndex &lt;= activeStep + 1) {
+    if (stepIndex <= activeStep + 1) {
       setActiveStep(stepIndex);
     }
   }, [activeStep]);
@@ -303,16 +299,16 @@ const DocumentGenerationWizard: React.FC&lt;DocumentGenerationWizardProps&gt; = 
   /**
    * Handle form data updates
    */
-  const updateFormData = useCallback((updates: Partial&lt;DocumentFormData&gt;) =&gt; {
-    setFormData(prev =&gt; ({ ...prev, ...updates }));
+  const updateFormData = useCallback((updates: Partial<DocumentFormData>) => {
+    setFormData(prev => ({ ...prev, ...updates }));
     setErrors({});
   }, []);
 
   /**
    * Validate current step
    */
-  const validateStep = useCallback((stepIndex: number): boolean =&gt; {
-    const newErrors: Record&lt;string, string&gt; = {};
+  const validateStep = useCallback((stepIndex: number): boolean => {
+    const newErrors: Record<string, string> = {};
 
     switch (stepIndex) {
       case 0: // Template selection
@@ -329,7 +325,7 @@ const DocumentGenerationWizard: React.FC&lt;DocumentGenerationWizardProps&gt; = 
       
       case 2: // Content
         if (currentTemplate) {
-          currentTemplate.requiredFields.forEach(field =&gt; {
+          currentTemplate.requiredFields.forEach(field => {
             if (!formData.data[field]) {
               newErrors[field] = t('validation.required_fields');
             }
@@ -345,15 +341,15 @@ const DocumentGenerationWizard: React.FC&lt;DocumentGenerationWizardProps&gt; = 
   /**
    * Handle document generation
    */
-  const handleGenerate = useCallback(async () =&gt; {
+  const handleGenerate = useCallback(async () => {
     if (!validateStep(2)) return;
 
     setIsGenerating(true);
     setGenerationProgress(0);
 
     // Simulate progress updates
-    const progressInterval = setInterval(() =&gt; {
-      setGenerationProgress(prev =&gt; Math.min(prev + 10, 90));
+    const progressInterval = setInterval(() => {
+      setGenerationProgress(prev => Math.min(prev + 10, 90));
     }, 500);
 
     try {
@@ -363,28 +359,28 @@ const DocumentGenerationWizard: React.FC&lt;DocumentGenerationWizardProps&gt; = 
       switch (formData.templateId) {
         case 'business-plan':
           response = await documentService.generateBusinessPlan(
-            { ...formData.data, language: formData.language, format: formData.format },
+            { ...formData.data, language: formData.language, format: formData.format } as any,
             true
           );
           break;
         
         case 'feasibility-study':
           response = await documentService.generateFeasibilityStudy(
-            { ...formData.data, language: formData.language, format: formData.format },
+            { ...formData.data, language: formData.language, format: formData.format } as any,
             true
           );
           break;
         
         case 'certificate':
           response = await documentService.generateCertificate(
-            { ...formData.data, language: formData.language, format: formData.format },
+            { ...formData.data, language: formData.language, format: formData.format } as any,
             true
           );
           break;
         
         case 'compliance-report':
           response = await documentService.generateComplianceReport(
-            { ...formData.data, language: formData.language, format: formData.format },
+            { ...formData.data, language: formData.language, format: formData.format } as any,
             true
           );
           break;
@@ -413,7 +409,7 @@ const DocumentGenerationWizard: React.FC&lt;DocumentGenerationWizardProps&gt; = 
   /**
    * Handle preview generation
    */
-  const handlePreview = useCallback(async () =&gt; {
+  const handlePreview = useCallback(async () => {
     if (!validateStep(2)) return;
 
     try {
@@ -423,28 +419,28 @@ const DocumentGenerationWizard: React.FC&lt;DocumentGenerationWizardProps&gt; = 
       switch (formData.templateId) {
         case 'business-plan':
           response = await documentService.generateBusinessPlan(
-            { ...formData.data, language: formData.language, format: 'html' },
+            { ...formData.data, language: formData.language, format: 'html' } as any,
             false
           );
           break;
         
         case 'feasibility-study':
           response = await documentService.generateFeasibilityStudy(
-            { ...formData.data, language: formData.language, format: 'html' },
+            { ...formData.data, language: formData.language, format: 'html' } as any,
             false
           );
           break;
         
         case 'certificate':
           response = await documentService.generateCertificate(
-            { ...formData.data, language: formData.language, format: 'html' },
+            { ...formData.data, language: formData.language, format: 'html' } as any,
             false
           );
           break;
         
         case 'compliance-report':
           response = await documentService.generateComplianceReport(
-            { ...formData.data, language: formData.language, format: 'html' },
+            { ...formData.data, language: formData.language, format: 'html' } as any,
             false
           );
           break;
@@ -465,16 +461,16 @@ const DocumentGenerationWizard: React.FC&lt;DocumentGenerationWizardProps&gt; = 
   /**
    * Render template selection step
    */
-  const renderTemplateSelection = () =&gt; (
-    &lt;Box sx={{ mt: 2 }}&gt;
-      &lt;Typography variant="h6" gutterBottom&gt;
+  const renderTemplateSelection = () => (
+    <Box sx={{ mt: 2 }}>
+      <Typography variant="h6" gutterBottom>
         {t('documents:form.wizard.step_1')}
-      &lt;/Typography&gt;
+      </Typography>
       
-      &lt;Grid container spacing={3}&gt;
-        {templates.map(template =&gt; (
-          &lt;Grid item xs={12} md={6} key={template.id}&gt;
-            &lt;Card
+      <Grid container spacing={3}>
+        {templates.map(template => (
+          <Grid item xs={12} md={6} key={template.id}>
+            <Card
               sx={{
                 cursor: 'pointer',
                 border: formData.templateId === template.id ? 2 : 1,
@@ -482,142 +478,144 @@ const DocumentGenerationWizard: React.FC&lt;DocumentGenerationWizardProps&gt; = 
                 '&amp;:hover': { borderColor: 'primary.main' },
                 height: '100%',
               }}
-              onClick={() =&gt; updateFormData({ templateId: template.id })}
-            &gt;
-              &lt;CardContent&gt;
-                &lt;Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}&gt;
-                  &lt;template.icon color="primary" sx={{ mr: 2 }} /&gt;
-                  &lt;Typography variant="h6"&gt;
+              onClick={() => updateFormData({ templateId: template.id })}
+            >
+              <CardContent>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                  <Box sx={{ mr: 2, color: 'primary.main' }}>
+                    <template.icon />
+                  </Box>
+                  <Typography variant="h6">
                     {template.name[language]}
-                  &lt;/Typography&gt;
-                  {template.saudiCompliant &amp;&amp; (
-                    &lt;Chip 
+                  </Typography>
+                  {template.saudiCompliant && (
+                    <Chip 
                       label={language === 'ar' ? 'متوافق سعودياً' : 'Saudi Compliant'}
                       color="success"
                       size="small"
                       sx={{ ml: 1 }}
-                    /&gt;
+                    />
                   )}
-                &lt;/Box&gt;
+                </Box>
                 
-                &lt;Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}&gt;
+                <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
                   {template.description[language]}
-                &lt;/Typography&gt;
+                </Typography>
                 
-                &lt;Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mb: 2 }}&gt;
-                  {template.features.map((feature, index) =&gt; (
-                    &lt;Chip
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mb: 2 }}>
+                  {template.features.map((feature, index) => (
+                    <Chip
                       key={index}
                       label={feature[language]}
                       size="small"
                       variant="outlined"
-                    /&gt;
+                    />
                   ))}
-                &lt;/Box&gt;
+                </Box>
                 
-                &lt;Typography variant="caption" color="text.secondary"&gt;
+                <Typography variant="caption" color="text.secondary">
                   {language === 'ar' 
                     ? `الوقت المتوقع: ${template.estimatedTime} دقيقة`
                     : `Estimated time: ${template.estimatedTime} minutes`
                   }
-                &lt;/Typography&gt;
-              &lt;/CardContent&gt;
-            &lt;/Card&gt;
-          &lt;/Grid&gt;
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
         ))}
-      &lt;/Grid&gt;
+      </Grid>
       
-      {errors.template &amp;&amp; (
-        &lt;Alert severity="error" sx={{ mt: 2 }}&gt;
+      {errors.template && (
+        <Alert severity="error" sx={{ mt: 2 }}>
           {errors.template}
-        &lt;/Alert&gt;
+        </Alert>
       )}
-    &lt;/Box&gt;
+    </Box>
   );
 
   /**
    * Render configuration step
    */
-  const renderConfiguration = () =&gt; (
-    &lt;Box sx={{ mt: 2 }}&gt;
-      &lt;Typography variant="h6" gutterBottom&gt;
+  const renderConfiguration = () => (
+    <Box sx={{ mt: 2 }}>
+      <Typography variant="h6" gutterBottom>
         {t('documents:form.wizard.step_2')}
-      &lt;/Typography&gt;
+      </Typography>
       
-      &lt;Grid container spacing={3}&gt;
-        &lt;Grid item xs={12} md={6}&gt;
-          &lt;FormControl fullWidth&gt;
-            &lt;InputLabel&gt;{t('documents:language_selector.title')}&lt;/InputLabel&gt;
-            &lt;Select
+      <Grid container spacing={3}>
+        <Grid item xs={12} md={6}>
+          <FormControl fullWidth>
+            <InputLabel>{t('documents:language_selector.title')}</InputLabel>
+            <Select
               value={formData.language}
-              onChange={(e) =&gt; updateFormData({ language: e.target.value as 'ar' | 'en' })}
-              startAdornment={&lt;LanguageIcon sx={{ mr: 1 }} /&gt;}
-            &gt;
-              &lt;MenuItem value="ar"&gt;
+              onChange={(e) => updateFormData({ language: e.target.value as 'ar' | 'en' })}
+              startAdornment={<LanguageIcon sx={{ mr: 1 }} />}
+            >
+              <MenuItem value="ar">
                 {t('documents:language_selector.arabic')}
-              &lt;/MenuItem&gt;
-              &lt;MenuItem value="en"&gt;
+              </MenuItem>
+              <MenuItem value="en">
                 {t('documents:language_selector.english')}
-              &lt;/MenuItem&gt;
-            &lt;/Select&gt;
-          &lt;/FormControl&gt;
-        &lt;/Grid&gt;
+              </MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
         
-        &lt;Grid item xs={12} md={6}&gt;
-          &lt;FormControl fullWidth&gt;
-            &lt;InputLabel&gt;{language === 'ar' ? 'تنسيق المستند' : 'Document Format'}&lt;/InputLabel&gt;
-            &lt;Select
+        <Grid item xs={12} md={6}>
+          <FormControl fullWidth>
+            <InputLabel>{language === 'ar' ? 'تنسيق المستند' : 'Document Format'}</InputLabel>
+            <Select
               value={formData.format}
-              onChange={(e) =&gt; updateFormData({ format: e.target.value as 'pdf' | 'html' })}
-              startAdornment={&lt;DescriptionIcon sx={{ mr: 1 }} /&gt;}
-            &gt;
-              &lt;MenuItem value="pdf"&gt;PDF&lt;/MenuItem&gt;
-              &lt;MenuItem value="html"&gt;HTML&lt;/MenuItem&gt;
-            &lt;/Select&gt;
-          &lt;/FormControl&gt;
-        &lt;/Grid&gt;
-      &lt;/Grid&gt;
+              onChange={(e) => updateFormData({ format: e.target.value as 'pdf' | 'html' })}
+              startAdornment={<DescriptionIcon sx={{ mr: 1 }} />}
+            >
+              <MenuItem value="pdf">PDF</MenuItem>
+              <MenuItem value="html">HTML</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+      </Grid>
       
-      {errors.language &amp;&amp; (
-        &lt;Alert severity="error" sx={{ mt: 2 }}&gt;
+      {errors.language && (
+        <Alert severity="error" sx={{ mt: 2 }}>
           {errors.language}
-        &lt;/Alert&gt;
+        </Alert>
       )}
-    &lt;/Box&gt;
+    </Box>
   );
 
   /**
    * Render content step based on selected template
    */
-  const renderContent = () =&gt; {
+  const renderContent = () => {
     if (!currentTemplate) return null;
 
     const commonProps = {
       data: formData.data,
-      onChange: (data: Record&lt;string, any&gt;) =&gt; updateFormData({ data }),
+      onChange: (data: Record<string, any>) => updateFormData({ data }),
       language: formData.language,
       errors,
     };
 
     switch (formData.templateId) {
       case 'business-plan':
-        return &lt;BusinessPlanForm {...commonProps} /&gt;;
+        return <BusinessPlanForm {...commonProps} />;
       
       case 'feasibility-study':
-        return &lt;FeasibilityStudyForm {...commonProps} /&gt;;
+        return <FeasibilityStudyForm {...commonProps} />;
       
       case 'compliance-report':
-        return &lt;ComplianceReportGenerator {...commonProps} /&gt;;
+        return <ComplianceReportGenerator {...commonProps} />;
       
       default:
         return (
-          &lt;Alert severity="info"&gt;
-            &lt;AlertTitle&gt;{language === 'ar' ? 'قيد التطوير' : 'Under Development'}&lt;/AlertTitle&gt;
+          <Alert severity="info">
+            <AlertTitle>{language === 'ar' ? 'قيد التطوير' : 'Under Development'}</AlertTitle>
             {language === 'ar' 
               ? 'هذا النموذج قيد التطوير حالياً. سيكون متاحاً قريباً.'
               : 'This template is currently under development. It will be available soon.'
             }
-          &lt;/Alert&gt;
+          </Alert>
         );
     }
   };
@@ -625,208 +623,208 @@ const DocumentGenerationWizard: React.FC&lt;DocumentGenerationWizardProps&gt; = 
   /**
    * Render generation step
    */
-  const renderGeneration = () =&gt; (
-    &lt;Box sx={{ mt: 2 }}&gt;
-      &lt;Typography variant="h6" gutterBottom&gt;
+  const renderGeneration = () => (
+    <Box sx={{ mt: 2 }}>
+      <Typography variant="h6" gutterBottom>
         {t('documents:form.wizard.step_5')}
-      &lt;/Typography&gt;
+      </Typography>
       
       {isGenerating ? (
-        &lt;Box&gt;
-          &lt;Typography variant="body1" gutterBottom&gt;
+        <Box>
+          <Typography variant="body1" gutterBottom>
             {t('documents:generation.generating')}
-          &lt;/Typography&gt;
-          &lt;LinearProgress 
+          </Typography>
+          <LinearProgress 
             variant="determinate" 
             value={generationProgress} 
             sx={{ mb: 2 }}
-          /&gt;
-          &lt;Typography variant="body2" color="text.secondary"&gt;
+          />
+          <Typography variant="body2" color="text.secondary">
             {t('documents:generation.progress', { percentage: generationProgress })}
-          &lt;/Typography&gt;
-        &lt;/Box&gt;
+          </Typography>
+        </Box>
       ) : (
-        &lt;Box sx={{ textAlign: 'center', py: 4 }}&gt;
-          &lt;CheckIcon color="success" sx={{ fontSize: 64, mb: 2 }} /&gt;
-          &lt;Typography variant="h5" gutterBottom&gt;
+        <Box sx={{ textAlign: 'center', py: 4 }}>
+          <CheckIcon color="success" sx={{ fontSize: 64, mb: 2 }} />
+          <Typography variant="h5" gutterBottom>
             {t('documents:generation.success')}
-          &lt;/Typography&gt;
-          &lt;Button
+          </Typography>
+          <Button
             variant="contained"
-            startIcon={&lt;DownloadIcon /&gt;}
+            startIcon={<DownloadIcon />}
             onClick={handleGenerate}
             size="large"
-          &gt;
+          >
             {language === 'ar' ? 'تحميل المستند' : 'Download Document'}
-          &lt;/Button&gt;
-        &lt;/Box&gt;
+          </Button>
+        </Box>
       )}
       
-      {errors.generation &amp;&amp; (
-        &lt;Alert severity="error" sx={{ mt: 2 }}&gt;
-          &lt;AlertTitle&gt;{t('documents:generation.error')}&lt;/AlertTitle&gt;
+      {errors.generation && (
+        <Alert severity="error" sx={{ mt: 2 }}>
+          <AlertTitle>{t('documents:generation.error')}</AlertTitle>
           {errors.generation}
-        &lt;/Alert&gt;
+        </Alert>
       )}
-    &lt;/Box&gt;
+    </Box>
   );
 
   return (
-    &lt;Box sx={{ width: '100%', maxWidth: embedded ? '100%' : '1200px', mx: 'auto', p: 2 }}&gt;
-      {!embedded &amp;&amp; (
-        &lt;Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 3 }}&gt;
-          &lt;Typography variant="h4"&gt;
+    <Box sx={{ width: '100%', maxWidth: embedded ? '100%' : '1200px', mx: 'auto', p: 2 }}>
+      {!embedded && (
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 3 }}>
+          <Typography variant="h4">
             {t('documents:title')}
-          &lt;/Typography&gt;
+          </Typography>
           
-          {onClose &amp;&amp; (
-            &lt;IconButton onClick={onClose}&gt;
-              &lt;CloseIcon /&gt;
-            &lt;/IconButton&gt;
+          {onClose && (
+            <IconButton onClick={onClose}>
+              <CloseIcon />
+            </IconButton>
           )}
-        &lt;/Box&gt;
+        </Box>
       )}
       
-      &lt;Paper elevation={2} sx={{ p: 3 }}&gt;
+      <Paper elevation={2} sx={{ p: 3 }}>
         {/* Progress Stepper */}
-        &lt;Stepper 
+        <Stepper 
           activeStep={activeStep} 
           orientation="horizontal"
           dir={direction}
           sx={{ mb: 3 }}
-        &gt;
-          {steps.map((step, index) =&gt; (
-            &lt;Step 
+        >
+          {steps.map((step, index) => (
+            <Step 
               key={step.id} 
               completed={step.completed}
-              sx={{ cursor: index &lt;= activeStep + 1 ? 'pointer' : 'default' }}
-              onClick={() =&gt; handleStepClick(index)}
-            &gt;
-              &lt;StepLabel
+              sx={{ cursor: index <= activeStep + 1 ? 'pointer' : 'default' }}
+              onClick={() => handleStepClick(index)}
+            >
+              <StepLabel
                 optional={
                   step.optional ? (
-                    &lt;Typography variant="caption"&gt;
+                    <Typography variant="caption">
                       {language === 'ar' ? 'اختياري' : 'Optional'}
-                    &lt;/Typography&gt;
+                    </Typography>
                   ) : undefined
                 }
-              &gt;
+              >
                 {step.label[language]}
-              &lt;/StepLabel&gt;
-            &lt;/Step&gt;
+              </StepLabel>
+            </Step>
           ))}
-        &lt;/Stepper&gt;
+        </Stepper>
         
-        &lt;Divider sx={{ mb: 3 }} /&gt;
+        <Divider sx={{ mb: 3 }} />
         
         {/* Step Content */}
-        &lt;Box sx={{ minHeight: 400 }}&gt;
-          {activeStep === 0 &amp;&amp; renderTemplateSelection()}
-          {activeStep === 1 &amp;&amp; renderConfiguration()}
-          {activeStep === 2 &amp;&amp; renderContent()}
-          {activeStep === 3 &amp;&amp; (
-            &lt;Box sx={{ textAlign: 'center', py: 4 }}&gt;
-              &lt;PreviewIcon sx={{ fontSize: 64, color: 'primary.main', mb: 2 }} /&gt;
-              &lt;Typography variant="h6" gutterBottom&gt;
+        <Box sx={{ minHeight: 400 }}>
+          {activeStep === 0 && renderTemplateSelection()}
+          {activeStep === 1 && renderConfiguration()}
+          {activeStep === 2 && renderContent()}
+          {activeStep === 3 && (
+            <Box sx={{ textAlign: 'center', py: 4 }}>
+              <PreviewIcon sx={{ fontSize: 64, color: 'primary.main', mb: 2 }} />
+              <Typography variant="h6" gutterBottom>
                 {t('documents:preview.title')}
-              &lt;/Typography&gt;
-              &lt;Button
+              </Typography>
+              <Button
                 variant="outlined"
                 onClick={handlePreview}
-                startIcon={&lt;PreviewIcon /&gt;}
-              &gt;
+                startIcon={<PreviewIcon />}
+              >
                 {language === 'ar' ? 'معاينة المستند' : 'Preview Document'}
-              &lt;/Button&gt;
-            &lt;/Box&gt;
+              </Button>
+            </Box>
           )}
-          {activeStep === 4 &amp;&amp; renderGeneration()}
-        &lt;/Box&gt;
+          {activeStep === 4 && renderGeneration()}
+        </Box>
         
         {/* Navigation Buttons */}
-        &lt;Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 3 }}&gt;
-          &lt;Button
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 3 }}>
+          <Button
             onClick={handleBack}
             disabled={activeStep === 0}
-            startIcon={direction === 'rtl' ? &lt;ArrowForwardIcon /&gt; : &lt;ArrowBackIcon /&gt;}
-          &gt;
+            startIcon={direction === 'rtl' ? <ArrowForwardIcon /> : <ArrowBackIcon />}
+          >
             {language === 'ar' ? 'السابق' : 'Back'}
-          &lt;/Button&gt;
+          </Button>
           
-          &lt;Box sx={{ display: 'flex', gap: 1 }}&gt;
-            {activeStep === 2 &amp;&amp; (
-              &lt;Button
+          <Box sx={{ display: 'flex', gap: 1 }}>
+            {activeStep === 2 && (
+              <Button
                 variant="outlined"
                 onClick={handlePreview}
-                startIcon={&lt;PreviewIcon /&gt;}
+                startIcon={<PreviewIcon />}
                 disabled={!validateStep(2)}
-              &gt;
+              >
                 {language === 'ar' ? 'معاينة' : 'Preview'}
-              &lt;/Button&gt;
+              </Button>
             )}
             
-            {activeStep &lt; steps.length - 1 ? (
-              &lt;Button
+            {activeStep < steps.length - 1 ? (
+              <Button
                 variant="contained"
                 onClick={activeStep === 3 ? handleGenerate : handleNext}
-                endIcon={direction === 'rtl' ? &lt;ArrowBackIcon /&gt; : &lt;ArrowForwardIcon /&gt;}
+                endIcon={direction === 'rtl' ? <ArrowBackIcon /> : <ArrowForwardIcon />}
                 disabled={!validateStep(activeStep)}
-              &gt;
+              >
                 {activeStep === 3 
                   ? (language === 'ar' ? 'إنتاج المستند' : 'Generate Document')
                   : (language === 'ar' ? 'التالي' : 'Next')
                 }
-              &lt;/Button&gt;
+              </Button>
             ) : (
-              &lt;Button
+              <Button
                 variant="contained"
                 onClick={handleGenerate}
-                startIcon={&lt;DownloadIcon /&gt;}
+                startIcon={<DownloadIcon />}
                 disabled={isGenerating}
-              &gt;
+              >
                 {language === 'ar' ? 'تحميل' : 'Download'}
-              &lt;/Button&gt;
+              </Button>
             )}
-          &lt;/Box&gt;
-        &lt;/Box&gt;
-      &lt;/Paper&gt;
+          </Box>
+        </Box>
+      </Paper>
       
       {/* Preview Dialog */}
-      &lt;Dialog
+      <Dialog
         open={showPreviewDialog}
-        onClose={() =&gt; setShowPreviewDialog(false)}
+        onClose={() => setShowPreviewDialog(false)}
         maxWidth="lg"
         fullWidth
-      &gt;
-        &lt;DialogTitle&gt;
-          &lt;Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}&gt;
+      >
+        <DialogTitle>
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             {t('documents:preview.title')}
-            &lt;IconButton onClick={() =&gt; setShowPreviewDialog(false)}&gt;
-              &lt;CloseIcon /&gt;
-            &lt;/IconButton&gt;
-          &lt;/Box&gt;
-        &lt;/DialogTitle&gt;
-        &lt;DialogContent&gt;
-          {previewData &amp;&amp; (
-            &lt;DocumentPreview
+            <IconButton onClick={() => setShowPreviewDialog(false)}>
+              <CloseIcon />
+            </IconButton>
+          </Box>
+        </DialogTitle>
+        <DialogContent>
+          {previewData && (
+            <DocumentPreview
               document={previewData}
               language={formData.language}
-              onEdit={() =&gt; {
+              onEdit={() => {
                 setShowPreviewDialog(false);
                 setActiveStep(2);
               }}
-            /&gt;
+            />
           )}
-        &lt;/DialogContent&gt;
-        &lt;DialogActions&gt;
-          &lt;Button onClick={() =&gt; setShowPreviewDialog(false)}&gt;
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setShowPreviewDialog(false)}>
             {language === 'ar' ? 'إغلاق' : 'Close'}
-          &lt;/Button&gt;
-          &lt;Button variant="contained" onClick={handleGenerate}&gt;
+          </Button>
+          <Button variant="contained" onClick={handleGenerate}>
             {language === 'ar' ? 'إنتاج المستند النهائي' : 'Generate Final Document'}
-          &lt;/Button&gt;
-        &lt;/DialogActions&gt;
-      &lt;/Dialog&gt;
-    &lt;/Box&gt;
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </Box>
   );
 };
 
