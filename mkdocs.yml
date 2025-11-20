@@ -56,10 +56,10 @@ theme:
 extra:
   alternate:
     - name: English
-      link: /en/
+      link: /brainsait-docs/en/
       lang: en
     - name: العربية
-      link: /ar/
+      link: /brainsait-docs/ar/
       lang: ar
 
   social:
@@ -99,7 +99,7 @@ plugins:
         - en
         - ar
   - i18n:
-      docs_structure: suffix
+      docs_structure: folder
       languages:
         - locale: en
           default: true

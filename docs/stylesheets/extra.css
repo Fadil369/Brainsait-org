@@ -1,89 +1,122 @@
-/* BrainSAIT Custom Styles */
-/* أنماط برينسايت المخصصة */
-
+/* BrainSAIT Premium Theme */
 :root {
-  /* Brand Colors | ألوان العلامة */
-  --md-primary-fg-color: #1a365d;
-  --md-primary-fg-color--light: #2b6cb8;
-  --md-primary-fg-color--dark: #0f2942;
-  --md-accent-fg-color: #0ea5e9;
-
-  /* Custom Colors | ألوان مخصصة */
-  --brainsait-midnight: #1a365d;
-  --brainsait-medical: #2b6cb8;
-  --brainsait-teal: #0ea5e9;
-  --brainsait-orange: #ea580c;
-  --brainsait-green: #059669;
+  /* Core Brand Colors */
+  --md-primary-fg-color:        #1a365d; /* Midnight Blue */
+  --md-primary-bg-color:        #ffffff;
+  --md-accent-fg-color:         #0ea5e9; /* Signal Teal */
+  
+  /* Custom Gradients */
+  --brainsait-gradient: linear-gradient(135deg, #1a365d 0%, #2b6cb8 100%);
+  --brainsait-glass: rgba(255, 255, 255, 0.7);
+  --brainsait-glass-border: rgba(255, 255, 255, 0.4);
+  --brainsait-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
 }
 
-/* Arabic RTL Support | دعم العربية */
-[dir="rtl"] {
-  --md-text-font: "IBM Plex Sans Arabic", sans-serif;
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:        #0ea5e9;
+  --md-primary-bg-color:        #0f172a;
+  --brainsait-glass: rgba(15, 23, 42, 0.7);
+  --brainsait-glass-border: rgba(255, 255, 255, 0.1);
+  --brainsait-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
-/* Code blocks | كتل الكود */
-.md-typeset code {
-  background-color: #f1f5f9;
-  border-radius: 4px;
-  padding: 0.1em 0.3em;
+/* Typography Enhancements */
+body {
+  font-family: 'IBM Plex Sans Arabic', 'Inter', sans-serif;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
 }
 
-/* Tables | الجداول */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1em;
+}
+
+h1 {
+  background: var(--brainsait-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2.5em;
+  padding-bottom: 0.5em;
+}
+
+/* Glassmorphism Header */
+.md-header {
+  background: var(--brainsait-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--brainsait-glass-border);
+}
+
+/* Card Styling */
+.md-content__inner {
+  margin-top: 2rem;
+}
+
+/* Navigation Tabs */
+.md-tabs {
+  background: var(--md-primary-fg-color);
+  font-weight: 600;
+}
+
+/* Admonitions */
+.md-typeset .admonition, 
+.md-typeset details {
+  border-radius: 12px;
+  box-shadow: var(--brainsait-shadow);
+  border: 1px solid var(--brainsait-glass-border);
+}
+
+/* Code Blocks */
+.md-typeset pre > code {
+  border-radius: 8px;
+  font-family: 'Fira Code', monospace;
+}
+
+/* Buttons */
+.md-button {
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.md-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+}
+
+/* Language Toggle Styling */
+.md-header__option {
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.md-header__option:hover {
+  opacity: 1;
+}
+
+/* RTL Support Tweaks */
+[dir="rtl"] .md-header__title {
+  margin-left: 2rem;
+}
+
+/* Table Styling */
 .md-typeset table:not([class]) {
-  font-size: 0.85rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .md-typeset table:not([class]) th {
-  background-color: var(--brainsait-midnight);
+  background-color: var(--md-primary-fg-color);
   color: white;
+  font-weight: 600;
 }
 
-/* Admonitions | التنبيهات */
-.md-typeset .admonition.brainsait,
-.md-typeset details.brainsait {
-  border-color: var(--brainsait-teal);
-}
-
-.md-typeset .brainsait > .admonition-title,
-.md-typeset .brainsait > summary {
-  background-color: rgba(14, 165, 233, 0.1);
-}
-
-/* Agent cards | بطاقات الوكلاء */
-.agent-card {
-  border-left: 4px solid var(--brainsait-teal);
-  padding: 1rem;
-  margin: 1rem 0;
-  background: #f8fafc;
-  border-radius: 0 8px 8px 0;
-}
-
-/* Bilingual text | النص ثنائي اللغة */
-.bilingual {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-
-.bilingual .ar {
-  direction: rtl;
-  text-align: right;
-}
-
-/* Status badges | شارات الحالة */
-.status-success { color: var(--brainsait-green); }
-.status-warning { color: var(--brainsait-orange); }
-.status-info { color: var(--brainsait-teal); }
-
-/* Footer | التذييل */
-.md-footer-meta__inner {
-  display: flex;
-  justify-content: space-between;
-}
-
-/* Mobile responsiveness | استجابة الجوال */
-@media screen and (max-width: 76.1875em) {
-  .bilingual {
-    grid-template-columns: 1fr;
-  }
+/* Footer */
+.md-footer {
+  background: var(--md-primary-fg-color);
+  color: white;
 }
