@@ -3,14 +3,14 @@ name: Build and Deploy Documentation
 on:
   push:
     branches:
-      - main
+      - main-enterprise
     paths:
       - 'docs/**'
       - 'mkdocs.yml'
       - '.github/workflows/docs.yml'
   pull_request:
     branches:
-      - main
+      - main-enterprise
     paths:
       - 'docs/**'
       - 'mkdocs.yml'
@@ -70,7 +70,7 @@ jobs:
 
   # Deployment job (only on push to main)
   deploy:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main-enterprise'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
