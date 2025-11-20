@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+  .error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    text-align: center;
+    padding: var(--space-2xl);
+  }
+
+  .error-code {
+    font-size: 8rem;
+    font-weight: 800;
+    background: var(--brainsait-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: var(--space-lg);
+  }
+
+  .error-title {
+    font-size: var(--font-size-3xl);
+    color: var(--brainsait-midnight);
+    margin-bottom: var(--space-md);
+  }
+
+  [data-md-color-scheme="slate"] .error-title {
+    color: #f1f5f9;
+  }
+
+  .error-message {
+    font-size: var(--font-size-lg);
+    color: #64748b;
+    margin-bottom: var(--space-xl);
+    max-width: 500px;
+  }
+
+  [data-md-color-scheme="slate"] .error-message {
+    color: #94a3b8;
+  }
+
+  .error-actions {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .error-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-xl);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    text-decoration: none;
+    transition: var(--transition-normal);
+  }
+
+  .error-btn--primary {
+    background: var(--brainsait-gradient);
+    color: white;
+    box-shadow: 0 4px 16px rgba(6, 182, 212, 0.3);
+  }
+
+  .error-btn--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(6, 182, 212, 0.4);
+  }
+
+  .error-btn--secondary {
+    background: var(--brainsait-glass);
+    color: var(--brainsait-medical);
+    border: 1px solid var(--brainsait-glass-border);
+  }
+
+  .error-btn--secondary:hover {
+    background: var(--brainsait-gradient-soft);
+  }
+
+  .lang-switch {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--brainsait-glass-border);
+  }
+
+  .lang-switch__label {
+    font-size: var(--font-size-sm);
+    color: #64748b;
+    margin-bottom: var(--space-sm);
+    display: block;
+  }
+
+  .lang-switch__links {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+  }
+
+  .lang-switch__link {
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    text-decoration: none;
+    color: #64748b;
+    transition: var(--transition-fast);
+  }
+
+  .lang-switch__link:hover {
+    background: var(--brainsait-gradient-soft);
+    color: var(--brainsait-medical);
+  }
+
+  @media (max-width: 600px) {
+    .error-code {
+      font-size: 5rem;
+    }
+
+    .error-title {
+      font-size: var(--font-size-2xl);
+    }
+
+    .error-actions {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<div class="error-container">
+  <div class="error-code">404</div>
+
+  <!-- English Content -->
+  <div id="en-content">
+    <h1 class="error-title">Page Not Found</h1>
+    <p class="error-message">
+      The page you're looking for doesn't exist or has been moved.
+      Let's get you back on track.
+    </p>
+    <div class="error-actions">
+      <a href="{{ config.site_url }}en/" class="error-btn error-btn--primary">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        Go Home
+      </a>
+      <a href="{{ config.site_url }}en/healthcare/" class="error-btn error-btn--secondary">
+        Healthcare Docs
+      </a>
+      <a href="{{ config.site_url }}en/tech/" class="error-btn error-btn--secondary">
+        Tech Docs
+      </a>
+    </div>
+  </div>
+
+  <!-- Arabic Content -->
+  <div id="ar-content" style="display: none;" dir="rtl">
+    <h1 class="error-title">الصفحة غير موجودة</h1>
+    <p class="error-message">
+      الصفحة التي تبحث عنها غير موجودة أو تم نقلها.
+      دعنا نساعدك في العودة إلى المسار الصحيح.
+    </p>
+    <div class="error-actions">
+      <a href="{{ config.site_url }}ar/" class="error-btn error-btn--primary">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        الصفحة الرئيسية
+      </a>
+      <a href="{{ config.site_url }}ar/healthcare/" class="error-btn error-btn--secondary">
+        توثيق الرعاية الصحية
+      </a>
+      <a href="{{ config.site_url }}ar/tech/" class="error-btn error-btn--secondary">
+        التوثيق التقني
+      </a>
+    </div>
+  </div>
+
+  <div class="lang-switch">
+    <span class="lang-switch__label">Switch language / تبديل اللغة</span>
+    <div class="lang-switch__links">
+      <a href="#" class="lang-switch__link" onclick="showLang('en'); return false;">English</a>
+      <a href="#" class="lang-switch__link" onclick="showLang('ar'); return false;">العربية</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showLang(lang) {
+    document.getElementById('en-content').style.display = lang === 'en' ? 'block' : 'none';
+    document.getElementById('ar-content').style.display = lang === 'ar' ? 'block' : 'none';
+
+    if (lang === 'ar') {
+      document.documentElement.setAttribute('dir', 'rtl');
+    } else {
+      document.documentElement.setAttribute('dir', 'ltr');
+    }
+  }
+
+  // Auto-detect language from URL
+  (function() {
+    const path = window.location.pathname;
+    if (path.includes('/ar/')) {
+      showLang('ar');
+    } else {
+      showLang('en');
+    }
+  })();
+</script>
+{% endblock %}

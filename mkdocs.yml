@@ -12,18 +12,20 @@ theme:
   direction: ltr
 
   palette:
-    - scheme: brainsait
+    - media: "(prefers-color-scheme: light)"
+      scheme: brainsait
       primary: custom
       accent: custom
       toggle:
         icon: material/brightness-7
-        name: Switch to dark mode
-    - scheme: slate
+        name: Switch to dark mode | التبديل للوضع الليلي
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
       primary: custom
       accent: custom
       toggle:
         icon: material/brightness-4
-        name: Switch to light mode
+        name: Switch to light mode | التبديل للوضع النهاري
 
   features:
     - navigation.instant
@@ -109,10 +111,16 @@ plugins:
           name: English
           build: true
           site_name: BrainSAIT Knowledge System
+          site_description: Unified documentation platform for BrainSAIT Healthcare AI
+          theme:
+            direction: ltr
         - locale: ar
           name: العربية
           build: true
           site_name: نظام معرفة برينسايت
+          site_description: منصة التوثيق الموحدة لبرينسايت للذكاء الاصطناعي في الرعاية الصحية
+          theme:
+            direction: rtl
           nav_translations:
             Home | الرئيسية: الرئيسية
             Healthcare | الرعاية الصحية: الرعاية الصحية
@@ -121,6 +129,90 @@ plugins:
             Personal | التطوير الشخصي: التطوير الشخصي
             Brand | العلامة التجارية: العلامة التجارية
             Appendices | الملاحق: الملاحق
+            Overview | نظرة عامة: نظرة عامة
+            Introduction | مقدمة: مقدمة
+            KSA Health Landscape | المشهد الصحي السعودي: المشهد الصحي السعودي
+            Digital Transformation | التحول الرقمي: التحول الرقمي
+            Stakeholders | أصحاب المصلحة: أصحاب المصلحة
+            Claims | المطالبات: المطالبات
+            Lifecycle | دورة الحياة: دورة الحياة
+            Rejection Types | أنواع الرفض: أنواع الرفض
+            Resubmission Playbook | دليل إعادة التقديم: دليل إعادة التقديم
+            Automation Pipeline | خط الأتمتة: خط الأتمتة
+            Payer Integrations | تكامل شركات التأمين: تكامل شركات التأمين
+            NPHIES | نفيس: نفيس
+            FHIR R4 Profile | ملف FHIR R4: ملف FHIR R4
+            Workflows | سير العمل: سير العمل
+            API Reference | مرجع API: مرجع API
+            Agents | الوكلاء: الوكلاء
+            ClaimLinc | كليم لينك: كليم لينك
+            PolicyLinc | بوليسي لينك: بوليسي لينك
+            DocsLinc | دوكس لينك: دوكس لينك
+            RadioLinc | راديو لينك: راديو لينك
+            Voice2Care | فويس تو كير: فويس تو كير
+            SOPs | الإجراءات: الإجراءات
+            Claim Submission | تقديم المطالبة: تقديم المطالبة
+            Eligibility Process | التحقق من الأهلية: التحقق من الأهلية
+            Compliance SOP | إجراء الامتثال: إجراء الامتثال
+            Glossary | المصطلحات: المصطلحات
+            Strategy | الاستراتيجية: الاستراتيجية
+            Mission & Vision | الرؤية والرسالة: الرؤية والرسالة
+            Market Alignment | التوافق مع السوق: التوافق مع السوق
+            Products | المنتجات: المنتجات
+            Ecosystem Map | خريطة المنظومة: خريطة المنظومة
+            Pricing | التسعير: التسعير
+            Partners | الشركاء: الشركاء
+            Partner Management | إدارة الشركاء: إدارة الشركاء
+            Vendor Guidelines | إرشادات الموردين: إرشادات الموردين
+            Marketing | التسويق: التسويق
+            Brand Identity | الهوية التجارية: الهوية التجارية
+            Sales Playbooks | أدلة المبيعات: أدلة المبيعات
+            RFPs | المناقصات: المناقصات
+            Response Guide | دليل الاستجابة: دليل الاستجابة
+            Templates | القوالب: القوالب
+            Financials | المالية: المالية
+            Revenue Streams | مصادر الإيرادات: مصادر الإيرادات
+            Financial Models | النماذج المالية: النماذج المالية
+            Infrastructure | البنية التحتية: البنية التحتية
+            Cloudflare | كلاود فلير: كلاود فلير
+            Coolify | كوليفاي: كوليفاي
+            Raspberry Cluster | مجموعة راسبيري: مجموعة راسبيري
+            Security | الأمان: الأمان
+            LINC Ecosystem | منظومة لينك: منظومة لينك
+            MasterLinc | ماستر لينك: ماستر لينك
+            DevLinc | ديف لينك: ديف لينك
+            DataLinc | داتا لينك: داتا لينك
+            SecUnit | وحدة الأمان: وحدة الأمان
+            Skill Bundles | حزم المهارات: حزم المهارات
+            Apps | التطبيقات: التطبيقات
+            HealthSync | هيلث سينك: هيلث سينك
+            Efhm RAG | إفهم: إفهم
+            Spark Solo Suite | سبارك سولو: سبارك سولو
+            DevOps | ديف أوبس: ديف أوبس
+            Secrets Management | إدارة الأسرار: إدارة الأسرار
+            Monitoring | المراقبة: المراقبة
+            Internal APIs | واجهات داخلية: واجهات داخلية
+            NPHIES Integration | تكامل نفيس: تكامل نفيس
+            Architecture | الهندسة: الهندسة
+            System Overview | نظرة عامة: نظرة عامة
+            Data Models | نماذج البيانات: نماذج البيانات
+            Mindset | العقلية: العقلية
+            Leadership | القيادة: القيادة
+            Productivity | الإنتاجية: الإنتاجية
+            Learning | التعلم: التعلم
+            Health & Balance | الصحة والتوازن: الصحة والتوازن
+            Ethics & AI | أخلاقيات الذكاء: أخلاقيات الذكاء
+            Reflections | التأملات: التأملات
+            Colors | الألوان: الألوان
+            Typography | الخطوط: الخطوط
+            Linc Agents Map | خريطة وكلاء لينك: خريطة وكلاء لينك
+            PRD Template | قالب PRD: قالب PRD
+            SOP Template | قالب SOP: قالب SOP
+            API Template | قالب API: قالب API
+            Report Template | قالب التقرير: قالب التقرير
+            Master Glossary | المصطلحات: المصطلحات
+            Compliance Index | فهرس الامتثال: فهرس الامتثال
+            Reference Links | الروابط المرجعية: الروابط المرجعية
   - tags
   - git-revision-date-localized:
       enable_creation_date: true
