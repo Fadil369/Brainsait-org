@@ -51,13 +51,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install mkdocs-material
-          pip install mkdocs-i18n
-          pip install mkdocs-glightbox
-          pip install mkdocs-minify-plugin
-          pip install pymdown-extensions
-          pip install pillow
-          pip install cairosvg
+          pip install -r requirements.txt
 
       - name: Configure Git for timestamps
         run: |
