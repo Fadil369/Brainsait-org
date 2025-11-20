@@ -1,37 +1,29 @@
-!!! info "Translation in Progress / الترجمة قيد الإجراء"
-    This content is currently being translated. / هذا المحتوى قيد الترجمة حالياً.
+# المطالبات والتعويضات
 
-<div dir="rtl">
+## 2.1. دورة حياة المطالبة
 
-# Claims & Reimbursement
+1. **التسجيل**: تسجيل المريض والتحقق من الأهلية.
+2. **توثيق الزيارة**: التوثيق السريري للزيارة.
+3. **الترميز**: تعيين رموز ICD-10-AM و ACHI.
+4. **التقديم**: إرسال المطالبة عبر نفيس.
+5. **المراجعة**: عملية مراجعة شركة التأمين.
+6. **الرفض**: التعامل مع المطالبات المرفوضة.
+7. **إعادة التقديم**: تصحيح وإعادة إرسال المطالبات.
+8. **التسوية**: الدفع النهائي والتسوية.
 
-## 2.1. Claim Lifecycle
+## 2.2. تصنيف حالات الرفض
 
-1. **Registration**: Patient registration and eligibility check.
-2. **Encounter documentation**: Clinical documentation of the visit.
-3. **Coding**: Assigning ICD-10-AM and ACHI codes.
-4. **Submission**: Sending the claim via NPHIES.
-5. **Adjudication**: Payer review process.
-6. **Rejection**: Handling denied claims.
-7. **Resubmission**: Correcting and resending claims.
-8. **Settlement**: Final payment and reconciliation.
+- **إداري**: معلومات ناقصة، رقم هوية غير صالح.
+- **سريري**: الضرورة الطبية، تشخيص غير متسق.
+- **الأهلية**: تغطية منتهية، خدمة غير مشمولة.
+- **تقني**: أخطاء التحقق من FHIR.
+- **متعلق بالترميز**: رموز أو معدلات غير صحيحة.
+- **مكرر**: مطالبة مقدمة مسبقاً.
 
-## 2.2. Rejection Classification
+## 2.3. أفضل ممارسات إعادة التقديم
 
-- **Administrative**: Missing info, invalid ID.
-- **Clinical**: Medical necessity, inconsistent diagnosis.
-- **Eligibility**: Expired coverage, uncovered service.
-- **Technical**: FHIR validation errors.
-- **Coding-related**: Incorrect codes or modifiers.
-- **Duplicate**: Claim already submitted.
-
-## 2.3. Resubmission Best Practices
-
-- Validate FHIR bundle
-- Correct coding
-- Add missing attachments
-- Include clinical justification
-- Follow payer-specific rules (Bupa/Tawuniya/GlobeMed)
-
-
-</div>
+- التحقق من حزمة FHIR
+- تصحيح الترميز
+- إضافة المرفقات الناقصة
+- تضمين التبرير السريري
+- اتباع القواعد الخاصة بكل شركة تأمين (بوبا/التعاونية/جلوب ميد)

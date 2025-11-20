@@ -1,21 +1,7 @@
----
-title: Coolify Deployment
-domain: tech
-chapter: infrastructure
----
+# Coolify
 
-!!! info "Translation in Progress / الترجمة قيد الإجراء"
-    This content is currently being translated. / هذا المحتوى قيد الترجمة حالياً.
-
-<div dir="rtl">
-
-
-# Coolify Deployment
-
-*Documentation coming soon.*
-
-## Overview
-Coolify is used for self-hosted PaaS capabilities.
-
-
-</div>
+نستخدم Coolify لـ:
+- **تنسيق الحاويات**: إدارة خدمات Docker
+- **النشر التلقائي**: CI/CD المدمج
+- **التوسع التلقائي**: توسيع الموارد الديناميكي
+- **المراقبة**: مقاييس الأداء والسجلات

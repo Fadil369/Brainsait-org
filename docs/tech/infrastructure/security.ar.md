@@ -1,21 +1,8 @@
----
-title: Security Architecture
-domain: tech
-chapter: infrastructure
----
+# هندسة الأمان
 
-!!! info "Translation in Progress / الترجمة قيد الإجراء"
-    This content is currently being translated. / هذا المحتوى قيد الترجمة حالياً.
-
-<div dir="rtl">
-
-
-# Security Architecture
-
-*Documentation coming soon.*
-
-## Overview
-Security measures including Cloudflare Zero Trust and internal protocols.
-
-
-</div>
+نحمي بنيتنا التحتية من خلال:
+- **التشفير**: AES-256 للبيانات في حالة السكون، TLS 1.3 أثناء النقل
+- **عدم الثقة الصفرية**: التحقق من كل طلب
+- **RBAC**: التحكم في الوصول القائم على الأدوار
+- **التدقيق**: سجلات شاملة لجميع الوصول إلى البيانات الصحية المحمية
+- **الامتثال**: PDPL و HIPAA

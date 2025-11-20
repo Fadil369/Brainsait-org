@@ -1,20 +1,12 @@
-!!! info "Translation in Progress / الترجمة قيد الإجراء"
-    This content is currently being translated. / هذا المحتوى قيد الترجمة حالياً.
-
-<div dir="rtl">
-
 # MasterLinc
 
-**Role**: Orchestrator Agent
+**الدور**: وكيل التنسيق
 
-MasterLinc is the central brain of the BrainSAIT agent ecosystem. It coordinates tasks between other agents like ClaimLinc, PolicyLinc, and DevLinc.
+MasterLinc هو العقل المركزي لمنظومة وكلاء برينسايت. ينسق المهام بين الوكلاء الآخرين مثل ClaimLinc و PolicyLinc و DevLinc.
 
-## Capabilities
+## القدرات
 
-- Task delegation
-- Context management
-- Cross-agent communication
-- System monitoring
-
-
-</div>
+- تفويض المهام
+- إدارة السياق
+- التواصل بين الوكلاء
+- مراقبة النظام

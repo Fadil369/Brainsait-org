@@ -1,270 +1,261 @@
 ---
-title: BrainSAIT Mission & Vision
+title: رؤية ورسالة برينسايت
 domain: business
 chapter: strategy
 version: 1.0.0
 ---
 
-!!! info "Translation in Progress / الترجمة قيد الإجراء"
-    This content is currently being translated. / هذا المحتوى قيد الترجمة حالياً.
+# رؤية ورسالة برينسايت
 
-<div dir="rtl">
+## بيان الرسالة
 
+**تمكين التحول الرقمي في المملكة العربية السعودية من خلال الأتمتة الذكية التي تعزز تقديم الرعاية الصحية، وتحسن العمليات التجارية، وتسرع الابتكار.**
 
-# BrainSAIT Mission & Vision
+## التوافق مع رؤية 2030
 
-## Mission Statement
+تم وضع برينسايت بشكل استراتيجي لدعم أهداف رؤية 2030 للمملكة العربية السعودية:
 
-**Empowering Saudi Arabia's digital transformation through intelligent automation that enhances healthcare delivery, optimizes business operations, and accelerates innovation.**
+### التحول الصحي
+- **رقمنة 100%** من السجلات الصحية
+- **تقليل العبء الإداري** بنسبة 80%
+- **تحسين نتائج المرضى** من خلال دعم القرار السريري المدعوم بالذكاء الاصطناعي
+- **تمكين قابلية التشغيل البيني** عبر منظومة الرعاية الصحية
 
-## Vision 2030 Alignment
+### التنويع الاقتصادي
+- **دعم المنشآت الصغيرة والمتوسطة** بحلول أتمتة ميسورة التكلفة
+- **خلق وظائف تقنية** في الذكاء الاصطناعي وتقنية المعلومات الصحية
+- **جذب الشراكات الدولية**
+- **بناء القدرات المحلية في الذكاء الاصطناعي**
 
-BrainSAIT is strategically positioned to support Saudi Arabia's Vision 2030 objectives:
-
-### Healthcare Transformation
-- **Digitize 100%** of healthcare records
-- **Reduce administrative burden** by 80%
-- **Improve patient outcomes** through AI-powered clinical decision support
-- **Enable interoperability** across the healthcare ecosystem
-
-### Economic Diversification
-- **Support SMEs** with affordable automation solutions
-- **Create tech jobs** in AI and healthcare IT
-- **Attract international partnerships**
-- **Build local AI capabilities**
-
-### Digital Society
-- **Bilingual AI** (Arabic/English) for inclusive access
-- **Privacy-first** approach aligned with PDPL
-- **Ethical AI** development and deployment
-- **Community education** on AI benefits
+### المجتمع الرقمي
+- **ذكاء اصطناعي ثنائي اللغة** (عربي/إنجليزي) للوصول الشامل
+- **نهج يركز على الخصوصية** متوافق مع نظام حماية البيانات الشخصية
+- **تطوير ونشر أخلاقي للذكاء الاصطناعي**
+- **تعليم المجتمع** حول فوائد الذكاء الاصطناعي
 
 ---
 
-## Core Values
+## القيم الأساسية
 
-### 1. **Excellence**
-We strive for the highest quality in every solution we deliver.
+### 1. **التميز**
+نسعى لأعلى مستويات الجودة في كل حل نقدمه.
 
-### 2. **Innovation**
-We continuously push the boundaries of what's possible with AI and automation.
+### 2. **الابتكار**
+ندفع باستمرار حدود الممكن مع الذكاء الاصطناعي والأتمتة.
 
-### 3. **Integrity**
-We operate with transparency, honesty, and ethical principles.
+### 3. **النزاهة**
+نعمل بشفافية وصدق ومبادئ أخلاقية.
 
-### 4. **Collaboration**
-We believe in the power of partnerships and knowledge sharing.
+### 4. **التعاون**
+نؤمن بقوة الشراكات ومشاركة المعرفة.
 
-### 5. **Impact**
-We measure success by the positive change we create for our clients and society.
-
----
-
-## Strategic Pillars
-
-### Pillar 1: Healthcare Intelligence
-**Goal**: Become the leading healthcare automation platform in Saudi Arabia
-
-**Initiatives**:
-- NPHIES integration excellence
-- RCM optimization for hospitals and clinics
-- Clinical decision support systems
-- Medical imaging AI
-- Patient engagement automation
-
-**Target Market**:
-- 500+ hospitals
-- 2,000+ clinics
-- 10,000+ pharmacies
-- All major insurance payers
+### 5. **الأثر**
+نقيس النجاح بالتغيير الإيجابي الذي نحدثه لعملائنا والمجتمع.
 
 ---
 
-### Pillar 2: Business Automation
-**Goal**: Empower Saudi SMEs with enterprise-grade automation
+## الركائز الاستراتيجية
 
-**Initiatives**:
-- Document processing automation
-- Workflow optimization
-- Customer service AI
-- Financial analytics
-- Compliance automation
+### الركيزة 1: الذكاء الصحي
+**الهدف**: أن نصبح منصة الأتمتة الصحية الرائدة في المملكة العربية السعودية
 
-**Target Market**:
-- 1M+ SMEs in Saudi Arabia
-- Government entities
-- Large enterprises
-- Startups and scale-ups
+**المبادرات**:
+- التميز في التكامل مع نفيس
+- تحسين دورة الإيرادات للمستشفيات والعيادات
+- أنظمة دعم القرار السريري
+- الذكاء الاصطناعي للتصوير الطبي
+- أتمتة تفاعل المرضى
 
----
-
-### Pillar 3: Agentic AI Platform
-**Goal**: Build the most advanced multi-agent orchestration system
-
-**Initiatives**:
-- MasterLinc orchestration engine
-- Specialized Linc agents (ClaimLinc, PolicyLinc, etc.)
-- Agent marketplace
-- Developer tools and SDKs
-- Training and certification programs
-
-**Target Market**:
-- Developers and AI engineers
-- System integrators
-- Technology partners
-- Research institutions
+**السوق المستهدف**:
+- أكثر من 500 مستشفى
+- أكثر من 2,000 عيادة
+- أكثر من 10,000 صيدلية
+- جميع شركات التأمين الرئيسية
 
 ---
 
-### Pillar 4: Knowledge Systems
-**Goal**: Create comprehensive, accessible knowledge bases
+### الركيزة 2: أتمتة الأعمال
+**الهدف**: تمكين المنشآت الصغيرة والمتوسطة السعودية بأتمتة على مستوى المؤسسات
 
-**Initiatives**:
-- BrainSAIT Academy (online learning)
-- Documentation platform
-- Best practices library
-- Community forums
-- Bilingual content
+**المبادرات**:
+- أتمتة معالجة الوثائق
+- تحسين سير العمل
+- ذكاء اصطناعي لخدمة العملاء
+- التحليلات المالية
+- أتمتة الامتثال
 
-**Target Market**:
-- Healthcare professionals
-- Business leaders
-- Students and researchers
-- General public
-
----
-
-## Market Opportunity
-
-### Saudi Healthcare IT Market
-- **Market Size**: $2.5B+ (2025)
-- **Growth Rate**: 15% CAGR
-- **Key Drivers**: Vision 2030, NPHIES mandate, digital transformation
-
-### Competitive Advantages
-1. **Local Expertise**: Deep understanding of Saudi healthcare regulations
-2. **Bilingual AI**: Native Arabic language processing
-3. **NPHIES Integration**: Certified and battle-tested
-4. **Agent Ecosystem**: Unique multi-agent approach
-5. **Compliance First**: Built-in PDPL and HIPAA controls
+**السوق المستهدف**:
+- أكثر من مليون منشأة صغيرة ومتوسطة في المملكة
+- الجهات الحكومية
+- المؤسسات الكبيرة
+- الشركات الناشئة والمتوسعة
 
 ---
 
-## 3-Year Roadmap
+### الركيزة 3: منصة الذكاء الاصطناعي الوكيل
+**الهدف**: بناء أكثر أنظمة تنسيق الوكلاء المتعددين تقدماً
 
-### Year 1 (2025): Foundation
-- Launch Health Linc suite (ClaimLinc, PolicyLinc, DocsLinc)
-- Onboard 50+ healthcare providers
-- Achieve NPHIES certification
-- Build core team (20+ employees)
-- Establish partnerships with 3 major payers
+**المبادرات**:
+- محرك تنسيق MasterLinc
+- وكلاء Linc المتخصصون (ClaimLinc، PolicyLinc، إلخ.)
+- سوق الوكلاء
+- أدوات ومجموعات تطوير البرمجيات
+- برامج التدريب والشهادات
 
-### Year 2 (2026): Expansion
-- Expand to 200+ healthcare providers
-- Launch Business Automation suite
-- Open Agent Marketplace
-- Grow team to 50+ employees
-- International expansion (GCC markets)
-
-### Year 3 (2027): Leadership
-- Market leader in Saudi healthcare automation
-- 500+ enterprise clients
-- 10,000+ SME users
-- 100+ employees
-- IPO preparation
+**السوق المستهدف**:
+- المطورون ومهندسو الذكاء الاصطناعي
+- مدمجو الأنظمة
+- الشركاء التقنيون
+- المؤسسات البحثية
 
 ---
 
-## Financial Projections
+### الركيزة 4: أنظمة المعرفة
+**الهدف**: إنشاء قواعد معرفية شاملة ويمكن الوصول إليها
 
-### Revenue Streams
-1. **SaaS Subscriptions** (60%)
-   - Healthcare providers: $500-5,000/month
-   - SMEs: $100-500/month
-   - Enterprises: Custom pricing
+**المبادرات**:
+- أكاديمية برينسايت (التعلم عبر الإنترنت)
+- منصة التوثيق
+- مكتبة أفضل الممارسات
+- منتديات المجتمع
+- محتوى ثنائي اللغة
 
-2. **Professional Services** (25%)
-   - Implementation
-   - Training
-   - Custom development
-   - Consulting
-
-3. **Agent Marketplace** (10%)
-   - Revenue share from third-party agents
-   - Premium agent features
-
-4. **Data & Analytics** (5%)
-   - Anonymized insights
-   - Benchmarking reports
-   - Market intelligence
-
-### Profitability Timeline
-- **Year 1**: Investment phase (-$2M)
-- **Year 2**: Break-even
-- **Year 3**: Profitable ($5M+ EBITDA)
+**السوق المستهدف**:
+- المهنيون الصحيون
+- قادة الأعمال
+- الطلاب والباحثون
+- عامة الناس
 
 ---
 
-## Partnerships Strategy
+## فرصة السوق
 
-### Technology Partners
-- **Cloudflare**: Infrastructure and security
-- **Anthropic**: AI capabilities
-- **Google Cloud**: Healthcare AI tools
-- **Microsoft**: Enterprise integration
+### سوق تقنية المعلومات الصحية السعودية
+- **حجم السوق**: أكثر من 2.5 مليار دولار (2025)
+- **معدل النمو**: 15% معدل نمو سنوي مركب
+- **المحركات الرئيسية**: رؤية 2030، تفويض نفيس، التحول الرقمي
 
-### Healthcare Partners
-- Major hospital groups
-- Insurance companies
-- Medical associations
-- Government health entities
-
-### Academic Partners
-- King Saud University
-- KAUST
-- International research institutions
+### المزايا التنافسية
+1. **الخبرة المحلية**: فهم عميق للوائح الرعاية الصحية السعودية
+2. **ذكاء اصطناعي ثنائي اللغة**: معالجة اللغة العربية الأصلية
+3. **التكامل مع نفيس**: معتمد ومختبر
+4. **منظومة الوكلاء**: نهج فريد متعدد الوكلاء
+5. **الامتثال أولاً**: ضوابط مدمجة لحماية البيانات الشخصية وHIPAA
 
 ---
 
-## Social Impact
+## خارطة الطريق لثلاث سنوات
 
-### Healthcare Access
-- Reduce wait times through automation
-- Improve diagnostic accuracy with AI
-- Enable remote consultations
-- Lower healthcare costs
+### السنة الأولى (2025): الأساس
+- إطلاق مجموعة Health Linc (ClaimLinc، PolicyLinc، DocsLinc)
+- تأهيل أكثر من 50 مقدم رعاية صحية
+- الحصول على شهادة نفيس
+- بناء الفريق الأساسي (أكثر من 20 موظف)
+- إنشاء شراكات مع 3 شركات تأمين رئيسية
 
-### Economic Development
-- Create high-value tech jobs
-- Support local startups
-- Build AI expertise
-- Attract foreign investment
+### السنة الثانية (2026): التوسع
+- التوسع لأكثر من 200 مقدم رعاية صحية
+- إطلاق مجموعة أتمتة الأعمال
+- فتح سوق الوكلاء
+- نمو الفريق لأكثر من 50 موظف
+- التوسع الدولي (أسواق دول مجلس التعاون)
 
-### Education
-- Free training programs
-- Open-source contributions
-- Research collaborations
-- Student internships
+### السنة الثالثة (2027): القيادة
+- الريادة في سوق أتمتة الرعاية الصحية السعودية
+- أكثر من 500 عميل من المؤسسات
+- أكثر من 10,000 مستخدم من المنشآت الصغيرة والمتوسطة
+- أكثر من 100 موظف
+- التحضير للطرح العام الأولي
 
 ---
 
-## Contact
+## التوقعات المالية
 
-**BrainSAIT**  
-Riyadh, Saudi Arabia
+### مصادر الإيرادات
+1. **اشتراكات SaaS** (60%)
+   - مقدمو الرعاية الصحية: 500-5,000 دولار/شهر
+   - المنشآت الصغيرة والمتوسطة: 100-500 دولار/شهر
+   - المؤسسات: تسعير مخصص
 
-Email: info@brainsait.com  
-Website: https://brainsait.com  
+2. **الخدمات المهنية** (25%)
+   - التنفيذ
+   - التدريب
+   - التطوير المخصص
+   - الاستشارات
+
+3. **سوق الوكلاء** (10%)
+   - مشاركة الإيرادات من وكلاء الطرف الثالث
+   - ميزات الوكلاء المميزة
+
+4. **البيانات والتحليلات** (5%)
+   - رؤى مجهولة المصدر
+   - تقارير المقارنة المعيارية
+   - ذكاء السوق
+
+### الجدول الزمني للربحية
+- **السنة الأولى**: مرحلة الاستثمار (-2 مليون دولار)
+- **السنة الثانية**: التعادل
+- **السنة الثالثة**: مربحة (أكثر من 5 ملايين دولار EBITDA)
+
+---
+
+## استراتيجية الشراكات
+
+### الشركاء التقنيون
+- **Cloudflare**: البنية التحتية والأمان
+- **Anthropic**: قدرات الذكاء الاصطناعي
+- **Google Cloud**: أدوات الذكاء الاصطناعي الصحي
+- **Microsoft**: التكامل المؤسسي
+
+### الشركاء الصحيون
+- مجموعات المستشفيات الكبرى
+- شركات التأمين
+- الجمعيات الطبية
+- الجهات الصحية الحكومية
+
+### الشركاء الأكاديميون
+- جامعة الملك سعود
+- جامعة الملك عبدالله للعلوم والتقنية
+- المؤسسات البحثية الدولية
+
+---
+
+## الأثر الاجتماعي
+
+### الوصول للرعاية الصحية
+- تقليل أوقات الانتظار من خلال الأتمتة
+- تحسين دقة التشخيص بالذكاء الاصطناعي
+- تمكين الاستشارات عن بعد
+- خفض تكاليف الرعاية الصحية
+
+### التنمية الاقتصادية
+- خلق وظائف تقنية عالية القيمة
+- دعم الشركات الناشئة المحلية
+- بناء خبرة في الذكاء الاصطناعي
+- جذب الاستثمار الأجنبي
+
+### التعليم
+- برامج تدريب مجانية
+- مساهمات مفتوحة المصدر
+- تعاونات بحثية
+- تدريب الطلاب
+
+---
+
+## التواصل
+
+**برينسايت**  
+الرياض، المملكة العربية السعودية
+
+البريد الإلكتروني: info@brainsait.com  
+الموقع: https://brainsait.com  
 LinkedIn: /company/brainsait
 
 ---
 
-## Related Documentation
+## وثائق ذات صلة
 
-- [Product Catalog](../products/index.md)
-- [Market Analysis](./market_analysis.md)
-- [Pricing Strategy](../pricing/index.md)
-- [Partner Program](../partners/index.md)
-
-
-</div>
+- [كتالوج المنتجات](../products/index.md)
+- [تحليل السوق](./market_alignment.md)
+- [استراتيجية التسعير](../pricing/index.md)
+- [برنامج الشراكة](../partners/index.md)

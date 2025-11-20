@@ -1,15 +1,7 @@
-!!! info "Translation in Progress / الترجمة قيد الإجراء"
-    This content is currently being translated. / هذا المحتوى قيد الترجمة حالياً.
+# البنية التحتية لـ Cloudflare
 
-<div dir="rtl">
-
-# Cloudflare Infrastructure
-
-We use Cloudflare for:
-- **DNS**: Fast and secure domain management.
-- **Pages**: Hosting this documentation site.
-- **Workers**: Serverless functions for our APIs.
-- **Zero Trust**: Secure access to internal tools.
-
-
-</div>
+نستخدم Cloudflare لـ:
+- **DNS**: إدارة نطاقات سريعة وآمنة.
+- **Pages**: استضافة موقع التوثيق هذا.
+- **Workers**: وظائف بدون خادم لواجهات برمجة التطبيقات.
+- **Zero Trust**: وصول آمن للأدوات الداخلية.

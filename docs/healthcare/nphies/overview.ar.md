@@ -1,31 +1,23 @@
-!!! info "Translation in Progress / الترجمة قيد الإجراء"
-    This content is currently being translated. / هذا المحتوى قيد الترجمة حالياً.
+# نظرة عامة على نفيس
 
-<div dir="rtl">
+نفيس (المنصة الوطنية لخدمات التبادل الصحي والتأميني) هي المنصة الوطنية التي تتيح:
 
-# NPHIES Overview
+- تبادل المطالبات
+- فحوصات الأهلية
+- التفويضات الإلكترونية
+- تسوية المدفوعات
 
-NPHIES (National Platform for Health and Insurance Exchange Services) is the national platform enabling:
+تستخدم **FHIR R4** كمعيار أساسي.
 
-- Claim exchange
-- Eligibility checks
-- e-Authorizations
-- Payment reconciliation
+## الملفات الشخصية المطلوبة
 
-It uses **FHIR R4** as the base standard.
+- Claim (المطالبة)
+- Coverage (التغطية)
+- ExplanationOfBenefit (شرح الفائدة)
+- Encounter (الزيارة)
+- Observation (الملاحظة)
+- Procedure (الإجراء)
 
-## Required Profiles
+## التحقق من FHIR
 
-- Claim
-- Coverage
-- ExplanationOfBenefit
-- Encounter
-- Observation
-- Procedure
-
-## FHIR Validation
-
-A single failed field can reject the entire claim.
-
-
-</div>
+حقل واحد فاشل يمكن أن يرفض المطالبة بأكملها.

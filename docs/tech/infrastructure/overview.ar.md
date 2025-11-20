@@ -1,561 +1,198 @@
----
-title: Infrastructure Overview
-domain: tech
-chapter: infrastructure
-version: 1.0.0
----
+# نظرة عامة على البنية التحتية لبرينسايت
 
-!!! info "Translation in Progress / الترجمة قيد الإجراء"
-    This content is currently being translated. / هذا المحتوى قيد الترجمة حالياً.
+## فلسفة الهندسة
 
-<div dir="rtl">
-
-
-# BrainSAIT Infrastructure Overview
-
-## Architecture Philosophy
-
-BrainSAIT's infrastructure is built on principles of:
-- **Resilience**: Multi-layer redundancy
-- **Security**: Zero-trust architecture
-- **Scalability**: Elastic resource allocation
-- **Cost-efficiency**: Hybrid cloud approach
-- **Compliance**: PDPL and HIPAA alignment
+بنيت البنية التحتية لبرينسايت على مبادئ:
+- **المرونة**: التكرار متعدد الطبقات
+- **الأمان**: هندسة عدم الثقة الصفرية
+- **قابلية التوسع**: تخصيص الموارد المرن
+- **الكفاءة من حيث التكلفة**: نهج السحابة الهجينة
+- **الامتثال**: التوافق مع PDPL و HIPAA
 
 ---
 
-## Infrastructure Stack
+## مكدس البنية التحتية
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                    EDGE LAYER                            │
-│  Cloudflare: CDN, DDoS Protection, Zero Trust           │
+│                    طبقة الحافة                          │
+│  Cloudflare: CDN، حماية DDoS، عدم الثقة الصفرية        │
 └─────────────────────────────────────────────────────────┘
-                          │
+                           │
 ┌─────────────────────────────────────────────────────────┐
-│                  APPLICATION LAYER                       │
-│  Coolify: Container Orchestration, Auto-scaling          │
-│  Workers: Serverless Functions                           │
+│                  طبقة التطبيقات                         │
+│  Coolify: تنسيق الحاويات، التوسع التلقائي              │
+│  Workers: وظائف بدون خادم                               │
 └─────────────────────────────────────────────────────────┘
-                          │
+                           │
 ┌─────────────────────────────────────────────────────────┐
-│                    DATA LAYER                            │
-│  PostgreSQL: Relational Data                             │
-│  D1: Edge Database                                       │
-│  R2: Object Storage                                      │
-│  ChromaDB: Vector Database                               │
+│                    طبقة البيانات                        │
+│  PostgreSQL: البيانات العلائقية                         │
+│  D1: قاعدة بيانات الحافة                                │
+│  R2: تخزين الكائنات                                     │
+│  ChromaDB: قاعدة البيانات المتجهة                        │
 └─────────────────────────────────────────────────────────┘
-                          │
+                           │
 ┌─────────────────────────────────────────────────────────┐
-│                  COMPUTE LAYER                           │
-│  VPS: Primary workloads                                  │
-│  Raspberry Pi Cluster: Edge computing                    │
-│  Starlink: Hybrid connectivity                           │
+│                  طبقة الحوسبة                           │
+│  VPS: أحمال العمل الأساسية                              │
+│  مجموعة Raspberry Pi: الحوسبة الطرفية                  │
+│  Starlink: الاتصال الهجين                               │
 └─────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Cloudflare Services
+## خدمات Cloudflare
 
-### DNS & CDN
-- **Global network**: 300+ data centers
-- **Smart routing**: Argo Smart Routing
-- **Caching**: Automatic edge caching
-- **SSL/TLS**: Universal SSL with auto-renewal
+### DNS و CDN
+- **الشبكة العالمية**: أكثر من 300 مركز بيانات
+- **التوجيه الذكي**: Argo Smart Routing
+- **التخزين المؤقت**: التخزين المؤقت التلقائي على الحافة
+- **SSL/TLS**: SSL عالمي مع التجديد التلقائي
 
 ### Workers
-**Serverless Edge Computing**
+**الحوسبة بدون خادم على الحافة**
 
-```javascript
-// Example: NPHIES API proxy with caching
-export default {
-  async fetch(request, env) {
-    const cache = caches.default;
-    const cacheKey = new Request(request.url, request);
-    
-    // Check cache first
-    let response = await cache.match(cacheKey);
-    
-    if (!response) {
-      // Forward to NPHIES
-      response = await fetch('https://nphies.sa/api', {
-        method: request.method,
-        headers: {
-          'Authorization': `Bearer ${env.NPHIES_TOKEN}`,
-          'Content-Type': 'application/fhir+json'
-        },
-        body: request.body
-      });
-      
-      // Cache successful responses
-      if (response.ok) {
-        response = new Response(response.body, response);
-        response.headers.set('Cache-Control', 'max-age=300');
-        await cache.put(cacheKey, response.clone());
-      }
-    }
-    
-    return response;
-  }
-};
-```
+استخدام Workers لوكيل API نفيس مع التخزين المؤقت للاستجابات.
 
-### D1 Database
-**Edge SQL Database**
+### قاعدة بيانات D1
+**قاعدة بيانات SQL على الحافة**
 
-```sql
--- Schema for claim tracking
-CREATE TABLE claims (
-  id TEXT PRIMARY KEY,
-  provider_id TEXT NOT NULL,
-  payer_id TEXT NOT NULL,
-  patient_id TEXT NOT NULL,
-  status TEXT NOT NULL,
-  amount REAL NOT NULL,
-  submitted_at INTEGER NOT NULL,
-  adjudicated_at INTEGER,
-  created_at INTEGER DEFAULT (unixepoch())
-);
+تستخدم لتتبع المطالبات والبيانات الوصفية.
 
-CREATE INDEX idx_claims_provider ON claims(provider_id);
-CREATE INDEX idx_claims_status ON claims(status);
-CREATE INDEX idx_claims_submitted ON claims(submitted_at);
-```
+### تخزين R2
+**تخزين الكائنات للوثائق الطبية**
 
-### R2 Storage
-**Object Storage for Medical Documents**
+تخزين آمن ومشفر للوثائق الطبية مع التشفير من جانب الخادم.
 
-```python
-# Upload medical document to R2
-async def upload_medical_document(
-    document: bytes,
-    document_id: str,
-    metadata: dict
-) -> str:
-    """
-    Upload document with encryption and compliance
-    
-    BRAINSAIT: Audit logging enabled
-    MEDICAL: PHI encryption required
-    """
-    # Encrypt document
-    encrypted_doc = encrypt_document(
-        document,
-        key=env.ENCRYPTION_KEY
-    )
-    
-    # Upload to R2
-    r2_client.put_object(
-        Bucket='medical-documents',
-        Key=f'documents/{document_id}',
-        Body=encrypted_doc,
-        Metadata={
-            'patient-id': metadata['patient_id'],
-            'document-type': metadata['type'],
-            'uploaded-by': metadata['user_id'],
-            'encrypted': 'true'
-        },
-        ServerSideEncryption='AES256'
-    )
-    
-    # Audit log
-    audit_logger.log_document_upload(
-        document_id=document_id,
-        user=current_user,
-        metadata=metadata
-    )
-    
-    return f"r2://medical-documents/documents/{document_id}"
-```
+### عدم الثقة الصفرية
+**هندسة الوصول الآمن**
 
-### Zero Trust
-**Secure Access Architecture**
-
-- **Access**: Application-level authentication
-- **Gateway**: DNS filtering and inspection
-- **Tunnel**: Secure connection to origin servers
-- **WARP**: Client-to-edge encryption
+- **الوصول**: المصادقة على مستوى التطبيق
+- **البوابة**: تصفية وفحص DNS
+- **النفق**: اتصال آمن بخوادم المصدر
+- **WARP**: تشفير من العميل إلى الحافة
 
 ---
 
-## Coolify Deployment
+## نشر Coolify
 
-### Container Orchestration
+### تنسيق الحاويات
 
-```yaml
-# docker-compose.yml for ClaimLinc service
-version: '3.8'
+استخدام Docker Compose لنشر خدمات ClaimLinc مع التوسع التلقائي وفحوصات الصحة.
 
-services:
-  claimlinc-api:
-    image: brainsait/claimlinc:latest
-    environment:
-      - DATABASE_URL=${DATABASE_URL}
-      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
-      - NPHIES_ENDPOINT=${NPHIES_ENDPOINT}
-    deploy:
-      replicas: 3
-      resources:
-        limits:
-          cpus: '2'
-          memory: 4G
-        reservations:
-          cpus: '1'
-          memory: 2G
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-    networks:
-      - brainsait-network
-    labels:
-      - "coolify.managed=true"
-      - "coolify.domain=claimlinc.brainsait.com"
-      - "coolify.https=true"
+### تكوين التوسع التلقائي
 
-  claimlinc-worker:
-    image: brainsait/claimlinc-worker:latest
-    environment:
-      - REDIS_URL=${REDIS_URL}
-      - DATABASE_URL=${DATABASE_URL}
-    deploy:
-      replicas: 5
-      resources:
-        limits:
-          cpus: '1'
-          memory: 2G
-    networks:
-      - brainsait-network
-
-networks:
-  brainsait-network:
-    driver: overlay
-```
-
-### Auto-Scaling Configuration
-
-```yaml
-# coolify-autoscale.yml
-autoscaling:
-  enabled: true
-  min_replicas: 2
-  max_replicas: 10
-  metrics:
-    - type: cpu
-      target: 70
-    - type: memory
-      target: 80
-    - type: requests_per_second
-      target: 1000
-  scale_up:
-    threshold: 80
-    cooldown: 60s
-  scale_down:
-    threshold: 30
-    cooldown: 300s
-```
+تمكين التوسع التلقائي بناءً على استخدام CPU والذاكرة والطلبات في الثانية.
 
 ---
 
-## Database Architecture
+## هندسة قاعدة البيانات
 
-### PostgreSQL (Primary Database)
+### PostgreSQL (قاعدة البيانات الأساسية)
 
-**Schema Design**:
-```sql
--- Healthcare domain tables
-CREATE SCHEMA healthcare;
+**تصميم المخطط**:
+- جداول المرضى
+- جداول المطالبات
+- سجلات التدقيق
+- فهارس للأداء
 
--- Patients
-CREATE TABLE healthcare.patients (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  national_id TEXT UNIQUE NOT NULL,
-  name_en TEXT NOT NULL,
-  name_ar TEXT NOT NULL,
-  date_of_birth DATE NOT NULL,
-  gender TEXT NOT NULL,
-  mobile TEXT,
-  email TEXT,
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  updated_at TIMESTAMPTZ DEFAULT NOW()
-);
+### ChromaDB (قاعدة البيانات المتجهة)
 
--- Claims
-CREATE TABLE healthcare.claims (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  claim_number TEXT UNIQUE NOT NULL,
-  patient_id UUID REFERENCES healthcare.patients(id),
-  provider_id UUID NOT NULL,
-  payer_id UUID NOT NULL,
-  encounter_id UUID NOT NULL,
-  status TEXT NOT NULL,
-  total_amount DECIMAL(10,2) NOT NULL,
-  approved_amount DECIMAL(10,2),
-  fhir_bundle JSONB NOT NULL,
-  submission_id TEXT,
-  submitted_at TIMESTAMPTZ,
-  adjudicated_at TIMESTAMPTZ,
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  updated_at TIMESTAMPTZ DEFAULT NOW()
-);
-
--- Audit logs
-CREATE TABLE healthcare.audit_logs (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  entity_type TEXT NOT NULL,
-  entity_id UUID NOT NULL,
-  action TEXT NOT NULL,
-  user_id UUID NOT NULL,
-  ip_address INET,
-  user_agent TEXT,
-  changes JSONB,
-  created_at TIMESTAMPTZ DEFAULT NOW()
-);
-
--- Indexes for performance
-CREATE INDEX idx_claims_patient ON healthcare.claims(patient_id);
-CREATE INDEX idx_claims_status ON healthcare.claims(status);
-CREATE INDEX idx_claims_submitted ON healthcare.claims(submitted_at);
-CREATE INDEX idx_audit_logs_entity ON healthcare.audit_logs(entity_type, entity_id);
-CREATE INDEX idx_audit_logs_created ON healthcare.audit_logs(created_at);
-```
-
-### ChromaDB (Vector Database)
-
-**For RAG and Semantic Search**:
-```python
-# Initialize ChromaDB for documentation
-import chromadb
-from chromadb.config import Settings
-
-client = chromadb.Client(Settings(
-    chroma_db_impl="duckdb+parquet",
-    persist_directory="./chroma_db"
-))
-
-# Create collection for medical policies
-policies_collection = client.create_collection(
-    name="medical_policies",
-    metadata={
-        "description": "Payer policy documents and rules",
-        "domain": "healthcare"
-    }
-)
-
-# Add policy documents
-policies_collection.add(
-    documents=[policy_text],
-    metadatas=[{
-        "payer_id": "bupa",
-        "policy_type": "coverage_rules",
-        "effective_date": "2025-01-01",
-        "language": "ar"
-    }],
-    ids=[policy_id]
-)
-
-# Query for relevant policies
-results = policies_collection.query(
-    query_texts=["ما هي شروط تغطية العلاج الطبيعي؟"],
-    n_results=5,
-    where={"payer_id": "bupa"}
-)
-```
+**للبحث الدلالي وRAG**:
+استخدام ChromaDB لتخزين واسترجاع سياسات شركات التأمين والوثائق الطبية.
 
 ---
 
-## Raspberry Pi Cluster
+## مجموعة Raspberry Pi
 
-### Edge Computing Setup
+### إعداد الحوسبة الطرفية
 
-**Hardware**:
+**الأجهزة**:
 - 5x Raspberry Pi 5 (8GB RAM)
-- 1TB NVMe storage per node
-- 10Gbps network switch
-- UPS backup power
+- تخزين NVMe بسعة 1TB لكل عقدة
+- مفتاح شبكة 10Gbps
+- طاقة احتياطية UPS
 
-**Use Cases**:
-- Local AI inference
-- Development environment
-- Testing and staging
-- Disaster recovery backup
-- IoT gateway
-
-**K3s Cluster Configuration**:
-```yaml
-# k3s-config.yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: brainsait-config
-data:
-  NODE_ENV: "production"
-  LOG_LEVEL: "info"
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: claimlinc-edge
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: claimlinc-edge
-  template:
-    metadata:
-      labels:
-        app: claimlinc-edge
-    spec:
-      containers:
-      - name: claimlinc
-        image: brainsait/claimlinc:arm64
-        resources:
-          limits:
-            memory: "2Gi"
-            cpu: "1000m"
-          requests:
-            memory: "1Gi"
-            cpu: "500m"
-```
+**حالات الاستخدام**:
+- الاستدلال المحلي للذكاء الاصطناعي
+- بيئة التطوير
+- الاختبار والتجهيز
+- النسخ الاحتياطي لاسترداد الكوارث
+- بوابة إنترنت الأشياء
 
 ---
 
-## Starlink Hybrid Connectivity
+## اتصال Starlink الهجين
 
-### Network Architecture
+### هندسة الشبكة
 
 ```
-Primary: Fiber (1Gbps) ──┐
-                          ├──→ Load Balancer ──→ Services
-Backup: Starlink (200Mbps)┘
+الأساسي: ألياف (1Gbps) ──┐
+                           ├──→ موازن الحمل ──→ الخدمات
+الاحتياطي: Starlink (200Mbps)┘
 ```
 
-**Failover Configuration**:
-- Automatic failover in <30 seconds
-- Health check every 10 seconds
-- Traffic prioritization
-- Bandwidth monitoring
+**تكوين التبديل التلقائي**:
+- التبديل التلقائي في أقل من 30 ثانية
+- فحص الصحة كل 10 ثوانٍ
+- تحديد أولويات حركة المرور
+- مراقبة عرض النطاق الترددي
 
 ---
 
-## Security Architecture
+## هندسة الأمان
 
-### Encryption
+### التشفير
 
-**At Rest**:
-- AES-256-GCM for databases
-- Server-side encryption for object storage
-- Encrypted backups
+**في حالة السكون**:
+- AES-256-GCM لقواعد البيانات
+- التشفير من جانب الخادم لتخزين الكائنات
+- نسخ احتياطية مشفرة
 
-**In Transit**:
-- TLS 1.3 for all connections
-- mTLS for service-to-service
-- VPN for administrative access
+**أثناء النقل**:
+- TLS 1.3 لجميع الاتصالات
+- mTLS للخدمة إلى الخدمة
+- VPN للوصول الإداري
 
-### Access Control
+### التحكم في الوصول
 
-```python
-# Role-based access control
-class Permission(Enum):
-    READ_CLAIMS = "claims:read"
-    WRITE_CLAIMS = "claims:write"
-    ADMIN_USERS = "users:admin"
-    VIEW_PHI = "phi:view"
-
-class Role(Enum):
-    VIEWER = [Permission.READ_CLAIMS]
-    BILLER = [Permission.READ_CLAIMS, Permission.WRITE_CLAIMS]
-    ADMIN = [Permission.READ_CLAIMS, Permission.WRITE_CLAIMS, 
-             Permission.ADMIN_USERS, Permission.VIEW_PHI]
-
-@require_permission(Permission.VIEW_PHI)
-async def get_patient_data(patient_id: str):
-    """
-    Retrieve patient data with PHI access control
-    
-    BRAINSAIT: Audit logged
-    MEDICAL: PHI access restricted
-    """
-    # Audit log
-    audit_logger.log_phi_access(
-        patient_id=patient_id,
-        user=current_user,
-        purpose="clinical_review"
-    )
-    
-    return await patient_repository.get(patient_id)
-```
+التحكم في الوصول القائم على الأدوار مع أذونات دقيقة للوصول إلى البيانات الصحية المحمية.
 
 ---
 
-## Monitoring & Observability
+## المراقبة والملاحظة
 
-### Metrics Collection
+### جمع المقاييس
 
-```yaml
-# Prometheus configuration
-global:
-  scrape_interval: 15s
+استخدام Prometheus لجمع المقاييس من جميع الخدمات.
 
-scrape_configs:
-  - job_name: 'claimlinc'
-    static_configs:
-      - targets: ['claimlinc:8000']
-    metrics_path: '/metrics'
-    
-  - job_name: 'postgres'
-    static_configs:
-      - targets: ['postgres-exporter:9187']
-```
+### التسجيل
 
-### Logging
-
-```python
-# Structured logging
-import structlog
-
-logger = structlog.get_logger()
-
-logger.info(
-    "claim_submitted",
-    claim_id=claim.id,
-    provider_id=claim.provider_id,
-    payer_id=claim.payer_id,
-    amount=claim.total_amount,
-    user_id=current_user.id
-)
-```
+تسجيل منظم مع structlog لتتبع جميع الأحداث والمعاملات.
 
 ---
 
-## Disaster Recovery
+## استرداد الكوارث
 
-### Backup Strategy
+### استراتيجية النسخ الاحتياطي
 
-- **Database**: Hourly incremental, daily full
-- **Object Storage**: Continuous replication
-- **Configuration**: Git-based versioning
-- **Secrets**: Vault with HA setup
+- **قاعدة البيانات**: نسخ احتياطي تزايدي كل ساعة، كامل يومياً
+- **تخزين الكائنات**: نسخ متماثل مستمر
+- **التكوين**: إصدارات قائمة على Git
+- **الأسرار**: Vault مع إعداد عالي التوفر
 
-### Recovery Objectives
+### أهداف الاسترداد
 
-- **RTO** (Recovery Time Objective): 1 hour
-- **RPO** (Recovery Point Objective): 15 minutes
+- **RTO** (هدف وقت الاسترداد): ساعة واحدة
+- **RPO** (هدف نقطة الاسترداد): 15 دقيقة
 
 ---
 
-## Related Documentation
+## وثائق ذات صلة
 
-- [Cloudflare Setup](./cloudflare.md)
-- [Coolify Deployment](./coolify.md)
-- [Security Guidelines](./security.md)
-- [DevOps Pipelines](../devops/cicd.md)
-
-
-</div>
+- [إعداد Cloudflare](./cloudflare.md)
+- [نشر Coolify](./coolify.md)
+- [إرشادات الأمان](./security.md)
+- [خطوط DevOps](../devops/cicd.md)

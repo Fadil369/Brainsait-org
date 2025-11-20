@@ -1,21 +1,32 @@
----
-title: System Architecture
-domain: tech
-chapter: architecture
----
+# نظرة عامة على هندسة النظام
 
-!!! info "Translation in Progress / الترجمة قيد الإجراء"
-    This content is currently being translated. / هذا المحتوى قيد الترجمة حالياً.
+## الهندسة الشاملة
 
-<div dir="rtl">
+منظومة برينسايت مبنية على هندسة متعددة الطبقات:
 
+### طبقة العرض
+- تطبيقات الويب (Next.js)
+- تطبيقات الجوال (React Native)
+- لوحات المعلومات
 
-# System Architecture
+### طبقة التطبيقات
+- واجهات برمجة التطبيقات (FastAPI، Node.js)
+- وكلاء الذكاء الاصطناعي (MasterLinc، ClaimLinc)
+- معالجة الخلفية
 
-*Documentation coming soon.*
+### طبقة البيانات
+- PostgreSQL (البيانات العلائقية)
+- ChromaDB (البحث المتجه)
+- Redis (التخزين المؤقت)
 
-## Overview
-High-level architecture of the BrainSAIT platform.
+### طبقة التكامل
+- NPHIES API
+- تكاملات شركات التأمين
+- خدمات الطرف الثالث
 
+## المبادئ
 
-</div>
+- **الخدمات الصغيرة**: خدمات مستقلة قابلة للتوسع
+- **الأحداث**: الاتصال القائم على الأحداث
+- **API أولاً**: جميع الوظائف عبر APIs
+- **السحابة الأصلية**: مبنية للسحابة

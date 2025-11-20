@@ -1,21 +1,19 @@
----
-title: CI/CD Pipelines
-domain: tech
-chapter: devops
----
+# CI/CD
 
-!!! info "Translation in Progress / الترجمة قيد الإجراء"
-    This content is currently being translated. / هذا المحتوى قيد الترجمة حالياً.
+خطوط التكامل والنشر المستمر لدينا:
 
-<div dir="rtl">
+## GitHub Actions
 
+- **الاختبار التلقائي**: تشغيل الاختبارات على كل دفع
+- **البناء**: بناء صور Docker
+- **النشر**: نشر تلقائي إلى Coolify
+- **الأمان**: فحص الثغرات الأمنية
 
-# CI/CD Pipelines
+## سير العمل
 
-*Documentation coming soon.*
-
-## Overview
-Continuous Integration and Deployment workflows using GitHub Actions.
-
-
-</div>
+1. دفع الكود → GitHub
+2. تشغيل الاختبارات
+3. بناء الصورة
+4. نشر إلى التجهيز
+5. الموافقة اليدوية
+6. نشر إلى الإنتاج

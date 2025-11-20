@@ -1,21 +1,44 @@
----
-title: Data Models
-domain: tech
-chapter: architecture
----
+# نماذج البيانات
 
-!!! info "Translation in Progress / الترجمة قيد الإجراء"
-    This content is currently being translated. / هذا المحتوى قيد الترجمة حالياً.
+## نماذج FHIR
 
-<div dir="rtl">
+نستخدم FHIR R4 لجميع البيانات الصحية:
 
+### الموارد الأساسية
 
-# Data Models
+- **Patient**: بيانات المريض
+- **Claim**: المطالبات
+- **Coverage**: التغطية التأمينية
+- **Encounter**: الزيارات
+- **Observation**: الملاحظات السريرية
+- **Procedure**: الإجراءات الطبية
 
-*Documentation coming soon.*
+## مخطط قاعدة البيانات
 
-## Overview
-Core data models including Patient, Claim, and Provider entities.
+### الجداول الرئيسية
 
+```sql
+-- المرضى
+patients (
+  id, national_id, name_ar, name_en,
+  date_of_birth, gender, mobile, email
+)
 
-</div>
+-- المطالبات
+claims (
+  id, claim_number, patient_id, provider_id,
+  payer_id, status, total_amount, fhir_bundle
+)
+
+-- سجلات التدقيق
+audit_logs (
+  id, entity_type, entity_id, action,
+  user_id, ip_address, changes, created_at
+)
+```
+
+## العلاقات
+
+- مريض واحد → مطالبات متعددة
+- مطالبة واحدة → زيارة واحدة
+- زيارة واحدة → إجراءات متعددة
