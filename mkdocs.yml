@@ -1,0 +1,265 @@
+site_name: BrainSAIT Knowledge System | نظام معرفة برينسايت
+site_url: https://docs.brainsait.com
+site_description: Unified documentation platform for BrainSAIT Healthcare AI - منصة التوثيق الموحدة لبرينسايت
+site_author: Dr. Mohamed El Fadil
+repo_url: https://github.com/brainsait/docs
+repo_name: brainsait/docs
+
+theme:
+  name: material
+  custom_dir: overrides
+  language: en
+  direction: ltr
+
+  palette:
+    - scheme: brainsait
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - toc.follow
+    - announce.dismiss
+
+  font:
+    text: IBM Plex Sans Arabic
+    code: Fira Code
+
+  icon:
+    logo: material/brain
+    repo: fontawesome/brands/github
+
+extra:
+  alternate:
+    - name: English
+      link: /en/
+      lang: en
+    - name: العربية
+      link: /ar/
+      lang: ar
+
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/brainsait
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/company/brainsait
+
+  brainsait:
+    colors:
+      midnight_blue: "#1a365d"
+      medical_blue: "#2b6cb8"
+      signal_teal: "#0ea5e9"
+      deep_orange: "#ea580c"
+      forest_green: "#059669"
+
+    oid: "1.3.6.1.4.1.61026"
+
+    agents:
+      - ClaimLinc
+      - PolicyLinc
+      - DocsLinc
+      - RadioLinc
+      - Voice2Care
+      - MasterLinc
+      - DevLinc
+      - DataLinc
+      - SecUnit
+      - ProcessLinc
+
+extra_css:
+  - stylesheets/extra.css
+
+plugins:
+  - search:
+      lang:
+        - en
+        - ar
+  - i18n:
+      docs_structure: suffix
+      languages:
+        - locale: en
+          default: true
+          name: English
+          build: true
+        - locale: ar
+          name: العربية
+          build: true
+  - tags:
+      tags_file: tags.md
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+      fallback_to_build_date: true
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+nav:
+  - Home | الرئيسية: index.md
+
+  - Healthcare | الرعاية الصحية:
+    - healthcare/index.md
+    - Overview | نظرة عامة:
+      - Introduction | مقدمة: healthcare/overview/introduction.md
+      - KSA Health Landscape | المشهد الصحي السعودي: healthcare/overview/ksa_health_landscape.md
+      - Digital Transformation | التحول الرقمي: healthcare/overview/digital_transformation.md
+      - Stakeholders | أصحاب المصلحة: healthcare/overview/roles_and_stakeholders.md
+
+    - Claims | المطالبات:
+      - Lifecycle | دورة الحياة: healthcare/claims/lifecycle.md
+      - Rejection Types | أنواع الرفض: healthcare/claims/rejection_types.md
+      - Resubmission Playbook | دليل إعادة التقديم: healthcare/claims/resubmission_playbook.md
+      - Automation Pipeline | خط الأتمتة: healthcare/claims/automation_pipeline.md
+      - Payer Integrations | تكامل شركات التأمين: healthcare/claims/payer_integrations.md
+
+    - NPHIES | نفيس:
+      - Overview | نظرة عامة: healthcare/nphies/overview.md
+      - FHIR R4 Profile | ملف FHIR R4: healthcare/nphies/fhir_r4_profile.md
+      - Workflows | سير العمل: healthcare/nphies/workflows.md
+      - API Reference | مرجع API: healthcare/nphies/api_reference.md
+
+    - Agents | الوكلاء:
+      - ClaimLinc | كليم لينك: healthcare/agents/ClaimLinc.md
+      - PolicyLinc | بوليسي لينك: healthcare/agents/PolicyLinc.md
+      - DocsLinc | دوكس لينك: healthcare/agents/DocsLinc.md
+      - RadioLinc | راديو لينك: healthcare/agents/RadioLinc.md
+      - Voice2Care | فويس تو كير: healthcare/agents/Voice2Care.md
+
+    - SOPs | الإجراءات:
+      - Claim Submission | تقديم المطالبة: healthcare/sop/claim_submission_sop.md
+      - Eligibility Process | التحقق من الأهلية: healthcare/sop/eligibility_process.md
+      - Compliance SOP | إجراء الامتثال: healthcare/sop/compliance_sop.md
+
+    - Glossary | المصطلحات: healthcare/glossary.md
+
+  - Business | الأعمال:
+    - business/index.md
+    - Strategy | الاستراتيجية:
+      - Mission & Vision | الرؤية والرسالة: business/strategy/mission_vision.md
+      - Market Alignment | التوافق مع السوق: business/strategy/market_alignment.md
+    - Products | المنتجات:
+      - Ecosystem Map | خريطة المنظومة: business/products/ecosystem_map.md
+      - Pricing | التسعير: business/products/pricing.md
+    - Partners | الشركاء:
+      - Partner Management | إدارة الشركاء: business/partners/partner_management.md
+      - Vendor Guidelines | إرشادات الموردين: business/partners/vendor_guidelines.md
+    - Marketing | التسويق:
+      - Brand Identity | الهوية التجارية: business/marketing/brand_identity.md
+      - Sales Playbooks | أدلة المبيعات: business/marketing/sales_playbooks.md
+    - RFPs | المناقصات:
+      - Response Guide | دليل الاستجابة: business/rfps/response_guide.md
+      - Templates | القوالب: business/rfps/templates.md
+    - Financials | المالية:
+      - Revenue Streams | مصادر الإيرادات: business/financials/revenue_streams.md
+      - Financial Models | النماذج المالية: business/financials/financial_models.md
+
+  - Tech | التقنية:
+    - tech/index.md
+    - Infrastructure | البنية التحتية:
+      - Cloudflare | كلاود فلير: tech/infrastructure/cloudflare.md
+      - Coolify | كوليفاي: tech/infrastructure/coolify.md
+      - Raspberry Cluster | مجموعة راسبيري: tech/infrastructure/raspberry_cluster.md
+      - Security | الأمان: tech/infrastructure/security.md
+    - Agents | الوكلاء:
+      - LINC Ecosystem | منظومة لينك: tech/agents/linc_ecosystem.md
+      - MasterLinc | ماستر لينك: tech/agents/masterlinc.md
+      - DevLinc | ديف لينك: tech/agents/devlinc.md
+      - DataLinc | داتا لينك: tech/agents/datalinc.md
+      - SecUnit | وحدة الأمان: tech/agents/secunit.md
+      - Skill Bundles | حزم المهارات: tech/agents/skill_bundles.md
+    - Apps | التطبيقات:
+      - HealthSync | هيلث سينك: tech/apps/healthsync.md
+      - Efhm RAG | إفهم: tech/apps/efhm_rag.md
+      - Voice2Care | فويس تو كير: tech/apps/voice2care.md
+      - Spark Solo Suite | سبارك سولو: tech/apps/spark_solo_suite.md
+    - DevOps | ديف أوبس:
+      - CI/CD: tech/devops/cicd.md
+      - Secrets Management | إدارة الأسرار: tech/devops/vault_secrets.md
+      - Monitoring | المراقبة: tech/devops/monitoring.md
+    - APIs:
+      - Internal APIs | واجهات داخلية: tech/apis/internal.md
+      - NPHIES Integration | تكامل نفيس: tech/apis/nphies.md
+    - Architecture | الهندسة:
+      - System Overview | نظرة عامة: tech/architecture/overview.md
+      - Data Models | نماذج البيانات: tech/architecture/data_models.md
+
+  - Personal | التطوير الشخصي:
+    - personal/index.md
+    - Mindset | العقلية: personal/mindset.md
+    - Leadership | القيادة: personal/leadership.md
+    - Productivity | الإنتاجية: personal/productivity.md
+    - Learning | التعلم: personal/learning_systems.md
+    - Health & Balance | الصحة والتوازن: personal/health_and_balance.md
+    - Ethics & AI | أخلاقيات الذكاء: personal/ethics_ai_oi.md
+    - Reflections | التأملات: personal/reflections.md
+
+  - Brand | العلامة التجارية:
+    - brand/index.md
+    - Colors | الألوان: brand/colors.md
+    - Typography | الخطوط: brand/typography.md
+    - Linc Agents Map | خريطة وكلاء لينك: brand/linc_agents_map.md
+    - Templates | القوالب:
+      - PRD Template | قالب PRD: brand/templates/prd_template.md
+      - SOP Template | قالب SOP: brand/templates/sop_template.md
+      - API Template | قالب API: brand/templates/api_template.md
+      - Report Template | قالب التقرير: brand/templates/report_template.md
+
+  - Appendices | الملاحق:
+    - appendices/index.md
+    - Master Glossary | المصطلحات: appendices/glossary_master.md
+    - Compliance Index | فهرس الامتثال: appendices/compliance_index.md
+    - Reference Links | الروابط المرجعية: appendices/reference_links.md
+
+copyright: Copyright &copy; 2025 BrainSAIT Ltd. - OID 1.3.6.1.4.1.61026 | جميع الحقوق محفوظة لشركة برينسايت المحدودة
