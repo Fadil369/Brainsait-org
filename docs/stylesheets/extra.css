@@ -1,0 +1,89 @@
+/* BrainSAIT Custom Styles */
+/* أنماط برينسايت المخصصة */
+
+:root {
+  /* Brand Colors | ألوان العلامة */
+  --md-primary-fg-color: #1a365d;
+  --md-primary-fg-color--light: #2b6cb8;
+  --md-primary-fg-color--dark: #0f2942;
+  --md-accent-fg-color: #0ea5e9;
+
+  /* Custom Colors | ألوان مخصصة */
+  --brainsait-midnight: #1a365d;
+  --brainsait-medical: #2b6cb8;
+  --brainsait-teal: #0ea5e9;
+  --brainsait-orange: #ea580c;
+  --brainsait-green: #059669;
+}
+
+/* Arabic RTL Support | دعم العربية */
+[dir="rtl"] {
+  --md-text-font: "IBM Plex Sans Arabic", sans-serif;
+}
+
+/* Code blocks | كتل الكود */
+.md-typeset code {
+  background-color: #f1f5f9;
+  border-radius: 4px;
+  padding: 0.1em 0.3em;
+}
+
+/* Tables | الجداول */
+.md-typeset table:not([class]) {
+  font-size: 0.85rem;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--brainsait-midnight);
+  color: white;
+}
+
+/* Admonitions | التنبيهات */
+.md-typeset .admonition.brainsait,
+.md-typeset details.brainsait {
+  border-color: var(--brainsait-teal);
+}
+
+.md-typeset .brainsait > .admonition-title,
+.md-typeset .brainsait > summary {
+  background-color: rgba(14, 165, 233, 0.1);
+}
+
+/* Agent cards | بطاقات الوكلاء */
+.agent-card {
+  border-left: 4px solid var(--brainsait-teal);
+  padding: 1rem;
+  margin: 1rem 0;
+  background: #f8fafc;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Bilingual text | النص ثنائي اللغة */
+.bilingual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.bilingual .ar {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Status badges | شارات الحالة */
+.status-success { color: var(--brainsait-green); }
+.status-warning { color: var(--brainsait-orange); }
+.status-info { color: var(--brainsait-teal); }
+
+/* Footer | التذييل */
+.md-footer-meta__inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Mobile responsiveness | استجابة الجوال */
+@media screen and (max-width: 76.1875em) {
+  .bilingual {
+    grid-template-columns: 1fr;
+  }
+}
