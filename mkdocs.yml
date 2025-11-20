@@ -99,15 +99,28 @@ plugins:
         - en
         - ar
   - i18n:
-      docs_structure: folder
+      docs_structure: suffix
+      fallback_to_default: true
+      reconfigure_material: true
+      reconfigure_search: true
       languages:
         - locale: en
           default: true
           name: English
           build: true
+          site_name: BrainSAIT Knowledge System
         - locale: ar
           name: العربية
           build: true
+          site_name: نظام معرفة برينسايت
+          nav_translations:
+            Home | الرئيسية: الرئيسية
+            Healthcare | الرعاية الصحية: الرعاية الصحية
+            Business | الأعمال: الأعمال
+            Tech | التقنية: التقنية
+            Personal | التطوير الشخصي: التطوير الشخصي
+            Brand | العلامة التجارية: العلامة التجارية
+            Appendices | الملاحق: الملاحق
   - tags
   - git-revision-date-localized:
       enable_creation_date: true
