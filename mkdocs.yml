@@ -108,8 +108,7 @@ plugins:
         - locale: ar
           name: العربية
           build: true
-  - tags:
-      tags_file: tags.md
+  - tags
   - git-revision-date-localized:
       enable_creation_date: true
       type: timeago
