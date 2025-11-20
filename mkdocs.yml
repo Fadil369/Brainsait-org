@@ -1,9 +1,9 @@
 site_name: BrainSAIT Knowledge System | نظام معرفة برينسايت
-site_url: https://docs.brainsait.com
+site_url: https://fadil369.github.io/brainsait-docs/
 site_description: Unified documentation platform for BrainSAIT Healthcare AI - منصة التوثيق الموحدة لبرينسايت
 site_author: Dr. Mohamed El Fadil
-repo_url: https://github.com/brainsait/docs
-repo_name: brainsait/docs
+repo_url: https://github.com/Fadil369/brainsait-docs
+repo_name: Fadil369/brainsait-docs
 
 theme:
   name: material
