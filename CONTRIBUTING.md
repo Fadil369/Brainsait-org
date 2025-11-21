@@ -9,7 +9,9 @@ Thank you for your interest in contributing to the BrainSAIT Knowledge System! T
 4. [Accessibility Requirements](#accessibility-requirements)
 5. [File Structure](#file-structure)
 6. [Writing Guidelines](#writing-guidelines)
-7. [Submitting Changes](#submitting-changes)
+7. [Branch Strategy](#branch-strategy)
+8. [Content Enhancement Guidelines](#content-enhancement-guidelines)
+9. [Submitting Changes](#submitting-changes)
 
 ---
 
@@ -231,6 +233,246 @@ def process_claim(claim_id: str) -> Dict:
 <!-- ❌ Generic link text -->
 [Click here](healthcare/claims/lifecycle.md)
 ```
+
+---
+
+## Branch Strategy
+
+BrainSAIT follows a structured branch strategy to ensure code quality and compliance:
+
+### Main Branches
+- **`main`** - Production branch, protected, requires reviews
+- **`main-enterprise`** - Enterprise deployment branch
+- **`develop`** - Development integration branch
+
+### Feature Branches
+Follow this naming convention based on the type of work:
+
+```bash
+# Documentation changes
+docs/update-nphies-integration
+docs/add-accessibility-guide
+
+# New features
+feature/add-versioning-support
+feature/integrate-analytics
+
+# Bug fixes
+fix/broken-links-in-healthcare
+fix/rtl-layout-issues
+
+# Emergency fixes
+hotfix/critical-security-patch
+hotfix/broken-deployment
+```
+
+### Branch Workflow
+1. Create feature branch from `main` or `develop`
+2. Make changes and commit with conventional commit messages
+3. Open Pull Request to target branch
+4. Require at least one review before merging
+5. Delete feature branch after successful merge
+
+### Protected Branch Rules
+- `main` and `main-enterprise` require:
+  - At least 1 approving review
+  - All CI checks must pass
+  - Up-to-date with base branch
+  - No force pushes allowed
+
+---
+
+## Content Enhancement Guidelines
+
+### Adding Page Depth
+
+When expanding documentation pages, include:
+
+1. **Clear Definitions and Objectives**
+   ```markdown
+   ## Overview
+   
+   **Purpose**: [What this page covers]
+   
+   **Learning Objectives**:
+   - Understand [concept A]
+   - Learn how to [task B]
+   - Apply [skill C]
+   ```
+
+2. **Step-by-Step Instructions**
+   ```markdown
+   ## How to Submit a Claim
+   
+   1. **Verify Eligibility**
+      - Navigate to the eligibility check interface
+      - Enter patient ID and insurance details
+      - Wait for confirmation response
+   
+   2. **Prepare Claim Data**
+      - Gather diagnosis codes (ICD-10)
+      - Collect procedure codes (CPT)
+      - Document supporting evidence
+   ```
+
+3. **Workflow Diagrams**
+   Use Mermaid or PlantUML for process diagrams:
+   
+   ````markdown
+   ```mermaid
+   graph TD
+       A[Start] --> B{Check Eligibility}
+       B -->|Eligible| C[Submit Claim]
+       B -->|Not Eligible| D[Notify Patient]
+       C --> E[Await Response]
+       E --> F{Approved?}
+       F -->|Yes| G[Process Payment]
+       F -->|No| H[Review & Resubmit]
+   ```
+   ````
+
+4. **External Standards References**
+   Link to relevant regulations and standards:
+   ```markdown
+   > **PDPL Compliance**: This process follows Saudi Arabia's Personal Data 
+   > Protection Law (PDPL) requirements for handling patient data.
+   > See [PDPL Article 5](reference-url) for data processing principles.
+   ```
+
+5. **Cross-References**
+   Link to related documentation:
+   ```markdown
+   **Related Topics**:
+   - [Claims Lifecycle](../claims/lifecycle.md)
+   - [NPHIES Integration](../nphies/overview.md)
+   - [Data Privacy SOP](../sop/compliance_sop.md)
+   ```
+
+### Alt Text Guidelines
+
+Follow W3C guidelines for image accessibility:
+
+#### Informative Images
+Provide descriptive alt text that conveys the information or function:
+
+```html
+<!-- ✅ Good: Describes the information -->
+<img src="claim-workflow.png" 
+     alt="Diagram showing claim submission workflow from patient registration to payment processing" />
+
+<!-- ❌ Bad: Not descriptive -->
+<img src="claim-workflow.png" alt="workflow" />
+```
+
+#### Decorative Images
+Use empty alt text for purely decorative images:
+
+```html
+<!-- ✅ Good: Empty alt for decorative -->
+<img src="decorative-line.png" alt="" role="presentation" />
+```
+
+#### Complex Images
+For complex diagrams, provide both alt text and a longer description:
+
+```html
+<figure>
+  <img src="complex-architecture.png" 
+       alt="BrainSAIT system architecture diagram" 
+       aria-describedby="arch-description" />
+  <figcaption id="arch-description">
+    The architecture shows three layers: presentation layer with web and mobile 
+    clients, application layer with API gateway and microservices, and data layer 
+    with PostgreSQL and Redis. All layers communicate through secure REST APIs.
+  </figcaption>
+</figure>
+```
+
+### Bilingual Alignment
+
+Maintain consistency between English and Arabic content:
+
+1. **Identical Structure**
+   - Same number of headings and sections
+   - Matching bullet point counts
+   - Equivalent table rows and columns
+
+2. **Synchronized Updates**
+   - Update both language versions simultaneously
+   - Use translation memory for consistency
+   - Review both versions before committing
+
+3. **Validation Checklist**
+   ```markdown
+   - [ ] English and Arabic have same section headings
+   - [ ] List items match in both languages
+   - [ ] Code examples are identical
+   - [ ] Links point to equivalent language versions
+   - [ ] Diagrams have bilingual labels
+   ```
+
+### Glossary Expansion
+
+When adding new terms to the glossary:
+
+1. **Term Entry Format**
+   ```markdown
+   ### [Term Name]
+   
+   **English**: Definition in English
+   
+   **Arabic**: تعريف بالعربية
+   
+   **Context**: Where and how this term is used
+   
+   **Related Terms**: [Link to related glossary entries]
+   
+   **Standards Reference**: [Link to external standard if applicable]
+   ```
+
+2. **Translation Consistency**
+   - Use the master glossary as the single source of truth
+   - Consult glossary when translating technical terms
+   - Update glossary when introducing new terminology
+
+### Case Studies and Real Deployments
+
+When contributing case studies:
+
+1. **Structure**
+   ```markdown
+   ## Case Study: [Hospital/Deployment Name]
+   
+   ### Background
+   - Hospital size and type
+   - Previous challenges
+   - Goals and objectives
+   
+   ### Implementation
+   - Timeline and phases
+   - Technologies deployed
+   - Integration points
+   
+   ### Results
+   - **Metrics**: Specific improvements (e.g., "40% reduction in claim rejections")
+   - **Qualitative Benefits**: Staff feedback, patient satisfaction
+   - **Lessons Learned**: What worked well, what could be improved
+   
+   ### Impact
+   - Financial impact
+   - Operational improvements
+   - Compliance achievements
+   ```
+
+2. **Privacy Considerations**
+   - Anonymize sensitive data
+   - Get written permission before publishing
+   - Comply with PDPL and healthcare privacy laws
+
+3. **Supporting Evidence**
+   - Include before/after comparisons
+   - Provide charts and graphs
+   - Add testimonials (with permission)
 
 ---
 

@@ -2,3 +2,5 @@ mkdocs
 mkdocs-material
 mkdocs-static-i18n
 mkdocs-git-revision-date-localized-plugin
+mkdocs-minify-plugin
+mike

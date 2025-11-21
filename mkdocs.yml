@@ -26,6 +26,13 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to light mode | التبديل للوضع النهاري
+    # High-contrast mode for accessibility
+    - scheme: default
+      primary: black
+      accent: deep-orange
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to high contrast mode | التبديل للوضع عالي التباين
 
   features:
     - navigation.instant
@@ -69,6 +76,16 @@ extra:
   meta:
     description: "Dr. Mohamed Al Fadil – Physician, Tech Entrepreneur & Founder of BrainSAIT. Healthcare technology expertise, HIPAA-compliant solutions, AI integration and more."
     keywords: "general practitioner, healthcare technology, BrainSAIT, FHIR implementation, digital health transformation, AI healthcare, NPHIES integration"
+    # Open Graph metadata for social sharing
+    og_type: website
+    og_title: BrainSAIT Knowledge System
+    og_description: Unified documentation platform for BrainSAIT Healthcare AI ecosystem
+    og_image: assets/images/og-preview.png
+    og_locale: en_US
+    # Twitter Card metadata
+    twitter_card: summary_large_image
+    twitter_site: "@brainsait369"
+    twitter_creator: "@brainsait369"
 
   social:
     - icon: fontawesome/brands/github
@@ -81,6 +98,11 @@ extra:
       link: https://www.linkedin.com/in/fadil369
     - icon: fontawesome/brands/x-twitter
       link: https://x.com/brainsait369
+
+  # Contact information
+  contact:
+    email: contact@brainsait.com
+    support: support@brainsait.com
 
   brainsait:
     colors:
@@ -112,6 +134,7 @@ plugins:
       lang:
         - en
         - ar
+      separator: '[\s\-\.]+'
   - i18n:
       docs_structure: suffix
       fallback_to_default: true
@@ -229,8 +252,21 @@ plugins:
   - tags
   - git-revision-date-localized:
       enable_creation_date: true
-      type: timeago
+      type: date
       fallback_to_build_date: true
+      locale: en
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+      htmlmin_opts:
+        remove_comments: true
+      cache_safe: true
+  - mike:
+      version_selector: true
+      css_dir: css
+      javascript_dir: js
+      canonical_version: null
 
 markdown_extensions:
   - abbr

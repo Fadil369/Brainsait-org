@@ -1,3 +1,8 @@
+---
+title: Claims Lifecycle Management
+description: Complete guide to healthcare claims lifecycle in Saudi Arabia, from patient registration through NPHIES submission to payment settlement and rejection handling.
+---
+
 # Claims & Reimbursement
 
 ## 2.1. Claim Lifecycle
