@@ -12,7 +12,7 @@ Welcome to the BrainSAIT Knowledge System - a comprehensive documentation platfo
 
 1. **Clone the repository**:
 ```bash
-git clone https://github.com/brainsait/docs.git
+git clone https://github.com/fadil369/brainsait-docs.git
 cd brainsait-docs
 ```
 
