@@ -54,6 +54,8 @@ theme:
   icon:
     logo: material/brain
     repo: fontawesome/brands/github
+  
+  favicon: assets/images/favicon.ico
 
 extra:
   alternate:
@@ -133,6 +135,7 @@ plugins:
             direction: rtl
           nav_translations:
             Home | الرئيسية: الرئيسية
+            About | عن: عن
             Healthcare | الرعاية الصحية: الرعاية الصحية
             Business | الأعمال: الأعمال
             Tech | التقنية: التقنية
