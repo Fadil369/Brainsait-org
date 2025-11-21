@@ -1,86 +1,96 @@
 ---
-title: About
-description: Learn more about Dr. Mohamed Al Fadil – his journey, tools and projects.
+title: عن الدكتور محمد الفاضل
+description: طبيب ورائد أعمال تقني ومؤسس برينسايت - تحويل الرعاية الصحية من خلال الابتكار والذكاء الاصطناعي
 ---
 
-!!! info "Translation in Progress / الترجمة قيد الإجراء"
-    This content is currently being translated. / هذا المحتوى قيد الترجمة حالياً.
+<img src="/assets/images/logo.svg" alt="الدكتور محمد الفاضل - شعار برينسايت" id="hero-image" width="200" height="200" loading="lazy">
 
-<div dir="rtl">
+# الدكتور محمد الفاضل
 
+**طبيب ورائد أعمال تقني | مؤسس برينسايت المحدودة**
 
-![Dr. Mohamed Al Fadil](/assets/images/logo.svg){#hero-image aria-label="Logo for GP"}
+**حلول رعاية صحية آلية · متكاملة · مدفوعة بالتكنولوجيا**
 
-# Dr. Mohamed Al Fadil
+---
 
-*Physician & Tech Entrepreneur | Founder of BrainSAIT LTD*
+## من أنا
 
-*Automated · Integrated · Technology‑driven Healthcare Solutions*
+تقاطع الرعاية الصحية والأعمال والتكنولوجيا.
 
-## About Me | من أنا
+### 🧠 رحلتي المهنية
 
-Intersection of healthcare, business & technology.
+طبيب ورائد أعمال بخبرة تزيد عن **10 سنوات** في إدارة الأنظمة الطبية والسريرية والرعاية الصحية. متخصص في دمج التكنولوجيا مع خدمات الرعاية الصحية، وتطوير الإرشادات الطبية والمسارات السريرية والمبادرات القائمة على القيمة. شغفي يكمن في تحويل الرعاية الصحية من خلال الابتكار والتكنولوجيا واتخاذ القرارات المبنية على البيانات.
 
-### 🧠 Professional Journey | رحلتي المهنية
+---
 
-A physician and entrepreneur with over **10 years** of experience in medical, clinical and healthcare systems management.  I specialize in integrating technology with healthcare services, developing medical guidelines, clinical pathways and value‑based initiatives.  My passion lies in transforming healthcare through innovation, technology and data‑driven decision‑making.
+## 🛠️ الأدوات المدمجة
 
-طبيب ورائد أعمال بخبرة تزيد عن 10 سنوات في إدارة الأنظمة الطبية والسريرية والرعاية الصحية. متخصص في دمج التكنولوجيا مع خدمات الرعاية الصحية، وتطوير الإرشادات الطبية والمسارات السريرية والمبادرات القائمة على القيمة. شغفي يكمن في تحويل الرعاية الصحية من خلال الابتكار والتكنولوجيا واتخاذ القرارات المبنية على البيانات.
+حلول ذكية للرعاية الصحية الحديثة:
 
-## 🛠️ Built‑in Tools | الأدوات المدمجة
+| الأداة | الوصف |
+|--------|-------|
+| [منشئ سياق المطالبات](https://context.thefadil.site/) | بناء مطالبات منظمة وسياقات وكلاء الذكاء الاصطناعي |
+| [دمج Excel المتقدم](https://excel-advanced-consolidator.fadil.workers.dev/) | دمج وتنظيف ملفات Excel المعقدة |
+| [حاويات وثائق الذكاء الاصطناعي](https://ai-docs-cod-containers.fadil.workers.dev/) | تحويل ملفات PDF/Word إلى JSON منظم |
+| [تحليل التأمين الصحي](https://healthcare-insurance-analysis.fadil.workers.dev/) | تحليل بيانات التأمين الصحي للمطالبات والتسجيل |
 
-Intelligent solutions for modern healthcare:
+---
 
-| Tool | Description (EN) | الوصف (AR) |
-|---|---|---|
-| [Context Prompt Generator](https://context.thefadil.site/){:target="_blank"} | Build structured prompts and AI agent contexts | منشئ سياق ومطالبات للأنظمة الذكية |
-| [Excel Advanced Consolidator](https://excel-advanced-consolidator.fadil.workers.dev/){:target="_blank"} | Merge and clean complex Excel files | دمج ملفات Excel متعددة وتنظيفها |
-| [AI Docs Cod Containers](https://ai-docs-cod-containers.fadil.workers.dev/){:target="_blank"} | Convert PDFs/Word into structured JSON | تحويل ملفات PDF و Word إلى JSON |
-| [Healthcare Insurance Analysis](https://healthcare-insurance-analysis.fadil.workers.dev/){:target="_blank"} | Analyze health insurance data for claims & scoring | تحليل بيانات التأمين الصحي والتغطية |
+## 🚀 المشاريع
 
-## 🚀 Projects | المشاريع
+تحويل الرعاية الصحية من خلال الابتكار:
 
-Transforming healthcare through innovation:
+| المشروع | الوصف |
+|---------|-------|
+| [الموقع الرئيسي لبرينسايت](https://brainsait.io) | البوابة الرئيسية للتحول الرقمي في الرعاية الصحية |
+| [برينسايت كير](https://care.brainsait.io) | نظام آلي ذكي للرعاية الصحية |
+| [قالب البداية Next](https://next-starter-template.fadil.workers.dev/) | منصة إطلاق لتطبيقات برينسايت على الويب |
+| [وكيل محادثة المطالبات](https://claim-chat-agent.fadil.workers.dev/) | ذكاء اصطناعي تحاوري للتأمين |
+| [خادم MCP البعيد](https://remote-mcp-server.fadil.workers.dev/) | مدير الخدمات الدقيقة وواجهة برمجة التطبيقات |
+| [برينسايت متعدد الأدوات](https://fadil369.fadil.workers.dev/) | مركز التحكم بالوكلاء ولوحة التطوير |
 
-| Project | Description (EN) | الوصف (AR) |
-|---|---|---|
-| [BrainSAIT Main Site](https://brainsait.io){:target="_blank"} | Main digital healthcare transformation portal | البوابة الرئيسية لبرينسايت |
-| [BrainSAIT Care](https://care.brainsait.io){:target="_blank"} | Smart healthcare automation system | نظام ذكي للمطالبات والرعاية الصحية |
-| [Next Starter Template](https://next-starter-template.fadil.workers.dev/){:target="_blank"} | Launchpad for BrainSAIT web apps | قالب انطلاق لمشاريع برينسايت |
-| [Claim Chat Agent](https://claim-chat-agent.fadil.workers.dev/){:target="_blank"} | Conversational AI for insurance | وكيل ذكاء اصطناعي للمطالبات |
-| [Remote MCP Server](https://remote-mcp-server.fadil.workers.dev/){:target="_blank"} | Microcontroller and API manager | خادم تحكم بالخدمات المصغرة |
-| [BrainSAIT MultiTool](https://fadil369.fadil.workers.dev/){:target="_blank"} | Agent control center and development panel | بوابة الأدوات والتحكم السريع |
+---
 
-## 📱 Apps | التطبيقات
+## 📱 التطبيقات
 
-A suite of applications:
+مجموعة من التطبيقات:
 
-| App | Description (EN) | الوصف (AR) |
-|---|---|---|
-| **Consultation Scheduler** | Manage appointments and patient scheduling | إدارة المواعيد وجدولة المرضى |
-| **MedRec Viewer** | Securely view and update medical records | عرض وتحديث السجلات الطبية بأمان |
-| **Prescription Generator** | Generate electronic prescriptions quickly and safely | إنشاء وصفات إلكترونية بسرعة وأمان |
+| التطبيق | الوصف |
+|---------|-------|
+| **جدولة الاستشارات** | إدارة المواعيد وجدولة المرضى |
+| **عارض السجلات الطبية** | عرض وتحديث السجلات الطبية بأمان |
+| **مولد الوصفات الطبية** | إنشاء وصفات إلكترونية بسرعة وأمان |
 
-*(Sample entries; expand with real apps as needed.)*
+*(إدخالات نموذجية؛ قم بالتوسع مع التطبيقات الحقيقية حسب الحاجة.)*
 
-## 🧠 Claude Artifacts | القطع الأثرية
+---
 
-Curated insights and artifacts from using Claude and other AI models for healthcare use‑cases.
+## 🧠 قطع كلود الأثرية
 
-## 📅 Timeline | الخط الزمني
+رؤى منسقة وقطع أثرية من استخدام Claude ونماذج الذكاء الاصطناعي الأخرى لحالات استخدام الرعاية الصحية.
 
-A chronological overview of my professional milestones and major achievements. *(Coming soon.)*
+---
 
-## 💼 Business Portfolio | محفظة الأعمال
+## 📅 الخط الزمني
 
-Details of business ventures, strategic partnerships and revenue‑generating initiatives. *(Coming soon.)*
+نظرة عامة زمنية على إنجازاتي المهنية والمعالم الرئيسية. *(قريباً.)*
 
-## 🚧 Billing & Access | الفواتير والوصول
+---
 
-Certain premium content (for example, the billing portal) requires qualified lead access.  Please contact me for access details.
+## 💼 محفظة الأعمال
 
-## 📩 Get in Touch | تواصل معنا
+تفاصيل المشاريع التجارية والشراكات الاستراتيجية والمبادرات المدرة للدخل. *(قريباً.)*
 
-Questions or ideas?  Reach out via email or connect on social platforms listed in the footer.
+---
 
-</div>
+## 🚧 الفواتير والوصول
+
+يتطلب محتوى متميز معين (على سبيل المثال، بوابة الفواتير) وصول العملاء المحتملين المؤهلين. يرجى الاتصال بي للحصول على تفاصيل الوصول.
+
+---
+
+## 📩 تواصل معنا
+
+أسئلة أو أفكار؟ تواصل عبر البريد الإلكتروني أو اتصل عبر منصات التواصل الاجتماعي المدرجة في التذييل.
+
+**البريد الإلكتروني**: <contact@brainsait.io>
