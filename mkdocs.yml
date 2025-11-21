@@ -48,7 +48,7 @@ theme:
     - announce.dismiss
 
   font:
-    text: IBM Plex Sans Arabic
+    text: Inter
     code: Fira Code
 
   icon:
