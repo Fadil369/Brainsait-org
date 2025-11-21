@@ -68,9 +68,9 @@ jobs:
         with:
           path: ./site
 
-  # Deployment job (only on push to main)
+  # Deployment job (on push to main or manual dispatch)
   deploy:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main-enterprise'
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main-enterprise') || github.event_name == 'workflow_dispatch'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
