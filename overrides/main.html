@@ -115,9 +115,107 @@
         return baseUrl + targetLang + '/' + pagePath;
       }
 
+      function localizeNavLabels(root = document) {
+        const currentLang = getCurrentLanguage();
+        const isArabic = currentLang === 'ar';
+        const selectors = [
+          '.md-tabs__link',
+          '.md-nav__link',
+          '.md-nav__title',
+          '.md-footer__link'
+        ];
+        root.querySelectorAll(selectors.join(',')).forEach(node => {
+          const labelEl = node.querySelector('.md-ellipsis') || node;
+          if (!labelEl) return;
+          const raw = labelEl.dataset.originalLabel || labelEl.textContent.trim();
+          if (!labelEl.dataset.originalLabel) {
+            labelEl.dataset.originalLabel = raw;
+          }
+          const hasSeparator = raw.includes('|');
+          if (!hasSeparator && !labelEl.dataset.labelEn) return;
+          if (hasSeparator && !labelEl.dataset.labelEn) {
+            const [en, ar] = raw.split('|').map(part => part.trim());
+            labelEl.dataset.labelEn = en || raw.trim();
+            labelEl.dataset.labelAr = ar || en || raw.trim();
+          }
+          const label = isArabic
+            ? (labelEl.dataset.labelAr || labelEl.dataset.labelEn)
+            : (labelEl.dataset.labelEn || labelEl.dataset.labelAr);
+          if (label) {
+            labelEl.textContent = label;
+          }
+        });
+      }
+
+      function renderPageHierarchy() {
+        const container = document.querySelector('.md-content__inner');
+        if (!container) return;
+
+        const existing = container.querySelector('.page-hierarchy');
+        if (existing) existing.remove();
+
+        const activeLinks = document.querySelectorAll('.md-nav__item--active > .md-nav__link');
+        if (!activeLinks.length) return;
+
+        const crumbs = Array.from(activeLinks).map(link => {
+          const labelEl = link.querySelector('.md-ellipsis') || link;
+          const text = labelEl ? labelEl.textContent.trim() : link.textContent.trim();
+          return {
+            text,
+            href: link.getAttribute('href')
+          };
+        }).filter(crumb => crumb.text);
+
+        if (!crumbs.length) return;
+
+        const wrapper = document.createElement('section');
+        wrapper.className = 'page-hierarchy';
+
+        const isArabic = getCurrentLanguage() === 'ar';
+        const labelText = isArabic ? 'مسار الصفحة' : 'Page hierarchy';
+        const separator = document.documentElement.getAttribute('dir') === 'rtl' ? '‹' : '›';
+
+        const label = document.createElement('div');
+        label.className = 'page-hierarchy__label';
+        label.textContent = labelText;
+        wrapper.appendChild(label);
+
+        const crumbNav = document.createElement('nav');
+        crumbNav.className = 'page-hierarchy__crumbs';
+
+        crumbs.forEach(function(crumb, index) {
+          if (index > 0) {
+            const sep = document.createElement('span');
+            sep.className = 'page-hierarchy__separator';
+            sep.textContent = separator;
+            crumbNav.appendChild(sep);
+          }
+
+          if (crumb.href && index < crumbs.length - 1) {
+            const link = document.createElement('a');
+            link.href = crumb.href;
+            link.textContent = crumb.text;
+            crumbNav.appendChild(link);
+          } else {
+            const span = document.createElement('span');
+            span.textContent = crumb.text;
+            crumbNav.appendChild(span);
+          }
+        });
+
+        wrapper.appendChild(crumbNav);
+        container.insertBefore(wrapper, container.firstChild);
+      }
+
+      function refreshEnterpriseUI() {
+        localizeNavLabels();
+        renderPageHierarchy();
+      }
+
       // Initialize
       document.addEventListener('DOMContentLoaded', function() {
         updateToggleState();
+        refreshEnterpriseUI();
 
         // Add click handlers
         const toggleBtns = document.querySelectorAll('.language-toggle__btn');
@@ -151,6 +249,7 @@
       if (typeof document$ !== 'undefined') {
         document$.subscribe(function() {
           updateToggleState();
+          refreshEnterpriseUI();
         });
       }
     })();
