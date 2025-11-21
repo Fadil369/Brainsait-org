@@ -64,11 +64,21 @@ extra:
       link: /brainsait-docs/ar/
       lang: ar
 
+  meta:
+    description: "Dr. Mohamed Al Fadil – Physician, Tech Entrepreneur & Founder of BrainSAIT. Healthcare technology expertise, HIPAA-compliant solutions, AI integration and more."
+    keywords: "general practitioner, healthcare technology, BrainSAIT, FHIR implementation, digital health transformation, AI healthcare, NPHIES integration"
+
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/brainsait
+    - icon: fontawesome/brands/github
+      link: https://github.com/fadil369
     - icon: fontawesome/brands/linkedin
       link: https://linkedin.com/company/brainsait
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/fadil369
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/brainsait369
 
   brainsait:
     colors:
@@ -252,6 +262,7 @@ markdown_extensions:
 
 nav:
   - Home | الرئيسية: index.md
+  - About | عن: about.md
 
   - Healthcare | الرعاية الصحية:
     - healthcare/index.md
