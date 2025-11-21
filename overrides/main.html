@@ -3,21 +3,38 @@
 {% block extrahead %}
   {{ super() }}
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <!-- Font preconnection and loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Load Inter for English and IBM Plex Sans Arabic for Arabic -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Color scheme meta for dark theme -->
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0F172A">
 {% endblock %}
 
 {% block content %}
+  <!-- Skip to Content Link (Accessibility) -->
+  <a href="#main-content" class="skip-to-content" id="skipToContent">
+    {% if config.theme.language == 'ar' %}تخطي إلى المحتوى{% else %}Skip to content{% endif %}
+  </a>
+
+  <!-- Screen Reader Announcement Region -->
+  <div id="languageAnnouncement" class="language-announcement" aria-live="polite" aria-atomic="true"></div>
+
   {{ super() }}
 
   <!-- Prominent Language Toggle -->
-  <div class="language-toggle-wrapper" id="languageToggle">
+  <div class="language-toggle-wrapper" id="languageToggle" role="navigation" aria-label="Language selection">
     <div class="language-toggle">
       <a href="{{ config.site_url }}en/"
          class="language-toggle__btn {% if config.theme.language == 'en' or page.url.startswith('en/') %}language-toggle__btn--active{% endif %}"
          title="Switch to English"
-         aria-label="Switch to English">
-        <svg class="language-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+         aria-label="Switch to English"
+         lang="en"
+         hreflang="en"
+         data-lang="en">
+        <svg class="language-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <circle cx="12" cy="12" r="10"/>
           <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
         </svg>
@@ -27,8 +44,11 @@
          class="language-toggle__btn {% if config.theme.language == 'ar' or page.url.startswith('ar/') %}language-toggle__btn--active{% endif %}"
          title="التبديل إلى العربية"
          aria-label="التبديل إلى العربية"
-         dir="rtl">
-        <svg class="language-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+         lang="ar"
+         hreflang="ar"
+         dir="rtl"
+         data-lang="ar">
+        <svg class="language-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <circle cx="12" cy="12" r="10"/>
           <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
         </svg>
@@ -41,7 +61,8 @@
 {% block scripts %}
   {{ super() }}
   <script>
-    // Language Toggle Enhancement Script
+    // Language Toggle Enhancement Script v3.0
+    // Enhanced with accessibility and complete language separation
     (function() {
       'use strict';
 
@@ -53,24 +74,56 @@
         return 'en'; // Default to English
       }
 
+      // Announce language change to screen readers
+      function announceLanguageChange(lang) {
+        const announcement = document.getElementById('languageAnnouncement');
+        if (announcement) {
+          const message = lang === 'ar'
+            ? 'تم التبديل إلى اللغة العربية'
+            : 'Switched to English';
+          announcement.textContent = message;
+
+          // Clear after announcement
+          setTimeout(() => {
+            announcement.textContent = '';
+          }, 1000);
+        }
+      }
+
+      // Update skip link text based on language
+      function updateSkipLinkText(lang) {
+        const skipLink = document.getElementById('skipToContent');
+        if (skipLink) {
+          skipLink.textContent = lang === 'ar' ? 'تخطي إلى المحتوى' : 'Skip to content';
+        }
+      }
+
+      // Add main content ID for skip link
+      function ensureMainContentId() {
+        const mainContent = document.querySelector('.md-content__inner');
+        if (mainContent && !mainContent.id) {
+          mainContent.id = 'main-content';
+          mainContent.setAttribute('tabindex', '-1');
+        }
+      }
+
       // Update toggle state based on current language
       function updateToggleState() {
         const currentLang = getCurrentLanguage();
         const toggleBtns = document.querySelectorAll('.language-toggle__btn');
 
         toggleBtns.forEach(btn => {
-          const href = btn.getAttribute('href');
-          const isArabic = href && href.includes('/ar/');
-          const isEnglish = href && href.includes('/en/');
-
+          const btnLang = btn.getAttribute('data-lang');
           btn.classList.remove('language-toggle__btn--active');
+          btn.setAttribute('aria-current', 'false');
 
-          if ((currentLang === 'ar' && isArabic) || (currentLang === 'en' && isEnglish)) {
+          if (btnLang === currentLang) {
             btn.classList.add('language-toggle__btn--active');
+            btn.setAttribute('aria-current', 'page');
           }
         });
 
-        // Set document direction based on language
+        // Set document direction and language
         if (currentLang === 'ar') {
           document.documentElement.setAttribute('dir', 'rtl');
           document.documentElement.setAttribute('lang', 'ar');
@@ -82,17 +135,28 @@
           document.body.classList.add('en-mode');
           document.body.classList.remove('ar-mode');
         }
+
+        // Update skip link and ensure main content ID
+        updateSkipLinkText(currentLang);
+        ensureMainContentId();
       }
 
       // Handle toggle click with smooth page transition
       function handleToggleClick(event) {
         const btn = event.currentTarget;
-        if (btn.classList.contains('language-toggle__btn--active')) {
+        const targetLang = btn.getAttribute('data-lang');
+        const currentLang = getCurrentLanguage();
+
+        // Prevent navigation if already on the target language
+        if (targetLang === currentLang) {
           event.preventDefault();
           return;
         }
 
-        // Add transition effect
+        // Announce language change before navigation
+        announceLanguageChange(targetLang);
+
+        // Add transition effect (respects prefers-reduced-motion via CSS)
         document.body.style.opacity = '0.7';
         document.body.style.transition = 'opacity 0.2s ease';
       }
