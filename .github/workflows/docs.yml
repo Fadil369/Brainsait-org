@@ -40,6 +40,11 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: Cache pip dependencies
         uses: actions/cache@v4
         with:
@@ -53,7 +58,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           # Install linting and spell checking tools
-          pip install codespell markdownlint-cli2
+          pip install codespell
+
+      - name: Install markdownlint-cli2
+        run: npm install -g markdownlint-cli2
 
       - name: Configure Git for timestamps
         run: |
