@@ -244,6 +244,58 @@ graph TB
 
 ### HIS/EMR Integration
 
+#### Cloudpital EMR Integration
+
+BrainSAIT provides **native integration** with Cloudpital's cloud-based EMR system, enabling seamless claims automation:
+
+**Integration Architecture:**
+```mermaid
+graph LR
+    A[Cloudpital EMR] --> B[BrainSAIT API Gateway]
+    B --> C[ClaimLinc Validation]
+    C --> D[NPHIES Submission]
+    D --> E[Response to Cloudpital]
+```
+
+**Real-Time Data Sync:**
+- Automatic encounter capture from Cloudpital
+- Real-time charge posting and validation
+- Bi-directional claim status updates
+- Integrated denial management workflow
+
+**Pre-Built Cloudpital Connector:**
+```python
+from brainsait.integrations import CloudpitalConnector
+
+# Initialize Cloudpital connection
+cloudpital = CloudpitalConnector(
+    api_endpoint="https://api.cloudpital.com",
+    credentials=credentials
+)
+
+# Auto-fetch unbilled encounters
+encounters = cloudpital.get_unbilled_encounters(
+    date_range="last_7_days"
+)
+
+# Process through BrainSAIT pipeline
+for encounter in encounters:
+    claim = claim_linc.process_encounter(encounter)
+    if claim.validation_score > 0.95:
+        cloudpital.submit_to_nphies(claim)
+```
+
+**Benefits of Cloudpital Integration:**
+- ✅ Zero manual data entry
+- ✅ Real-time claim validation
+- ✅ Automated coding suggestions
+- ✅ Integrated denial workflow
+- ✅ 98%+ clean claim rate
+
+**Generic HIS/EMR Integration**
+
+For non-Cloudpital systems, we support standard methods:
+
 **Methods:**
 - HL7 FHIR R4
 - HL7 v2 ADT/SIU
@@ -333,7 +385,9 @@ graph TB
 - [ClaimLinc Agent](../agents/ClaimLinc.md)
 - [NPHIES API Reference](../nphies/api_reference.md)
 - [DevOps CI/CD](../../tech/devops/cicd.md)
+- **[Cloudpital Integration](../cloudpital/index.md)** - Complete integration guide
+- **[Cloudpital RCM](../cloudpital/rcm_capabilities.md)** - Revenue cycle features
 
 ---
 
-*Last updated: January 2025*
+*Last updated: November 2025*

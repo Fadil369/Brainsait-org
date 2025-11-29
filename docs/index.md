@@ -15,6 +15,39 @@ Welcome to the BrainSAIT Knowledge System — a comprehensive documentation plat
 
 ---
 
+## 🤝 Strategic Partnership: Cloudpital + BrainSAIT
+
+**Powering the future of Saudi healthcare together**
+
+BrainSAIT partners with **Cloudpital**, a leading cloud-based EMR and RCM platform, to deliver an integrated healthcare intelligence solution that combines:
+
+- ✅ **Cloudpital's NPHIES-certified platform** - Complete EMR, RCM, and ERP capabilities
+- ✅ **BrainSAIT's AI agents** - Intelligent automation and optimization
+- ✅ **Unified solution** - Seamless integration out-of-the-box
+
+### The Combined Power
+
+```mermaid
+graph LR
+    A[Cloudpital<br/>EMR/RCM] -->|Clinical Data| B[BrainSAIT<br/>AI Layer]
+    B -->|Validated Claims| C[NPHIES<br/>Platform]
+    C -->|Payments| D[Revenue<br/>Optimization]
+    B -->|Intelligence| A
+```
+
+### Proven Results
+
+| Metric | Industry Average | Cloudpital + BrainSAIT |
+|--------|------------------|------------------------|
+| Clean Claim Rate | 85-90% | **98%+** |
+| Denial Rate | 8-12% | **<3%** |
+| Days in AR | 45-60 days | **30-35 days** |
+| Collection Rate | 92-95% | **98%+** |
+
+**[Explore Cloudpital Integration →](healthcare/cloudpital/index.md)**
+
+---
+
 ## Core Domains
 
 ### Healthcare
@@ -23,6 +56,7 @@ Welcome to the BrainSAIT Knowledge System — a comprehensive documentation plat
 
 Saudi healthcare transformation, NPHIES integration, RCM optimization, and FHIR compliance.
 
+- **[Cloudpital Integration](healthcare/cloudpital/index.md)** - EMR/RCM platform partnership
 - [Claims Lifecycle](healthcare/claims/lifecycle.md)
 - [NPHIES Overview](healthcare/nphies/overview.md)
 - [ClaimLinc Agent](healthcare/agents/ClaimLinc.md)

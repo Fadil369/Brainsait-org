@@ -186,6 +186,9 @@ plugins:
             DocsLinc | دوكس لينك: دوكس لينك
             RadioLinc | راديو لينك: راديو لينك
             Voice2Care | فويس تو كير: فويس تو كير
+            Cloudpital Integration | تكامل كلاودبيتال: تكامل كلاودبيتال
+            EMR Features | ميزات EMR: ميزات السجلات الطبية الإلكترونية
+            RCM Capabilities | قدرات RCM: قدرات إدارة دورة الإيرادات
             SOPs | الإجراءات: الإجراءات
             Claim Submission | تقديم المطالبة: تقديم المطالبة
             Eligibility Process | التحقق من الأهلية: التحقق من الأهلية
@@ -330,6 +333,13 @@ nav:
       - DocsLinc | دوكس لينك: healthcare/agents/DocsLinc.md
       - RadioLinc | راديو لينك: healthcare/agents/RadioLinc.md
       - Voice2Care | فويس تو كير: healthcare/agents/Voice2Care.md
+
+    - Cloudpital Integration | تكامل كلاودبيتال:
+      - healthcare/cloudpital/index.md
+      - Overview | نظرة عامة: healthcare/cloudpital/overview.md
+      - EMR Features | ميزات EMR: healthcare/cloudpital/emr_features.md
+      - RCM Capabilities | قدرات RCM: healthcare/cloudpital/rcm_capabilities.md
+      - NPHIES Integration | تكامل نفيس: healthcare/cloudpital/nphies_integration.md
 
     - SOPs | الإجراءات:
       - Claim Submission | تقديم المطالبة: healthcare/sop/claim_submission_sop.md
