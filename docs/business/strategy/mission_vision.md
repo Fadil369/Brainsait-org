@@ -255,7 +255,7 @@ LinkedIn: /company/brainsait
 
 ## Related Documentation
 
-- [Product Catalog](../products/index.md)
+- [Product Catalog](../products/catalog.md)
 - [Market Analysis](./market_analysis.md)
-- [Pricing Strategy](../pricing/index.md)
-- [Partner Program](../partners/index.md)
+- [Pricing Strategy](../pricing/pricing_models.md)
+- [Partner Program](../partners/partner_program.md)

@@ -108,7 +108,7 @@ graph TB
 ### For Developers
 
 1. **Review API Documentation**
-   - Cloudpital API endpoints: See `tech/apis/internal.md`
+   - Cloudpital API endpoints: See `tech/apis/overview.md`
    - NPHIES integration: See `tech/apis/nphies.md`
    - BrainSAIT Agent SDK: See `tech/agents/linc_ecosystem.md`
 
@@ -160,7 +160,7 @@ This documentation is designed for:
 ### Documentation Support
 - Browse the documentation sections above
 - Check the [Appendices](../../appendices/index.md) for glossaries and references
-- Review [Healthcare SOPs](../sop/claim_submission_sop.md) for workflows
+- Review [Healthcare SOPs](../sop/claim_submission.md) for workflows
 
 ### Technical Support
 - **Cloudpital Support**: Contact Cloudpital support team
@@ -189,7 +189,7 @@ This documentation is designed for:
 
 ### Technical Domain
 - [LINC Ecosystem](../../tech/agents/linc_ecosystem.md)
-- [API Reference](../../tech/apis/internal.md)
+- [API Reference](../../tech/apis/overview.md)
 - [System Architecture](../../tech/architecture/overview.md)
 
 ## Roadmap

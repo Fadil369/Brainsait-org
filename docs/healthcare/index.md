@@ -1,158 +1,141 @@
 ---
-title: Healthcare Documentation | توثيق الرعاية الصحية
+title: Healthcare Documentation
 description: Comprehensive healthcare documentation for Saudi digital health transformation
 ---
 
 # Healthcare Documentation
-# توثيق الرعاية الصحية
 
 **Volume 1: BrainSAIT Health Knowledge System**
 
-**المجلد الأول: نظام معرفة برينسايت الصحي**
-
 ---
 
-## Overview | نظرة عامة
+## Overview
 
 This volume covers everything related to Saudi healthcare digital transformation, including NPHIES integration, claims management, RCM optimization, and AI-powered automation.
 
-يغطي هذا المجلد كل ما يتعلق بالتحول الرقمي للرعاية الصحية السعودية، بما في ذلك تكامل نفيس وإدارة المطالبات وتحسين دورة الإيرادات والأتمتة المدعومة بالذكاء الاصطناعي.
+---
+
+## Table of Contents
+
+### Part I: Foundations
+
+1. [Introduction to KSA Healthcare](overview/introduction.md)
+2. [KSA Health Landscape](overview/ksa_health_landscape.md)
+3. [Digital Transformation](overview/digital_transformation.md)
+4. [Stakeholders](overview/roles_and_stakeholders.md)
+
+### Part II: Claims & Reimbursement
+
+5. [Claim Lifecycle](claims/lifecycle.md)
+6. [Rejection Types](claims/rejection_types.md)
+7. [Resubmission Playbook](claims/resubmission_playbook.md)
+8. [Automation Pipeline](claims/automation_pipeline.md)
+9. [Payer Integrations](claims/payer_integrations.md)
+
+### Part III: NPHIES & Standards
+
+10. [NPHIES Overview](nphies/overview.md)
+11. [FHIR R4 Profile](nphies/fhir_r4_profile.md)
+12. [Workflows](nphies/workflows.md)
+13. [API Reference](nphies/api_reference.md)
+
+### Part IV: BrainSAIT Agents
+
+14. [ClaimLinc](agents/ClaimLinc.md)
+15. [PolicyLinc](agents/PolicyLinc.md)
+16. [DocsLinc](agents/DocsLinc.md)
+17. [RadioLinc](agents/RadioLinc.md)
+18. [Voice2Care](agents/Voice2Care.md)
+
+### Part V: SOPs
+
+19. [Claim Submission SOP](sop/claim_submission.md)
+20. [Eligibility Process](sop/eligibility_process.md)
+21. [Compliance SOP](sop/compliance_sop.md)
+
+### Appendix
+
+22. [Healthcare Glossary](glossary.md)
 
 ---
 
-## Table of Contents | جدول المحتويات
+## Key Concepts
 
-### Part I: Foundations | الجزء الأول: الأساسيات
-
-1. [Introduction to KSA Healthcare | مقدمة الرعاية الصحية](overview/introduction.md)
-2. [KSA Health Landscape | المشهد الصحي السعودي](overview/ksa_health_landscape.md)
-3. [Digital Transformation | التحول الرقمي](overview/digital_transformation.md)
-4. [Stakeholders | أصحاب المصلحة](overview/roles_and_stakeholders.md)
-
-### Part II: Claims & Reimbursement | الجزء الثاني: المطالبات والتعويضات
-
-5. [Claim Lifecycle | دورة حياة المطالبة](claims/lifecycle.md)
-6. [Rejection Types | أنواع الرفض](claims/rejection_types.md)
-7. [Resubmission Playbook | دليل إعادة التقديم](claims/resubmission_playbook.md)
-8. [Automation Pipeline | خط الأتمتة](claims/automation_pipeline.md)
-9. [Payer Integrations | تكامل شركات التأمين](claims/payer_integrations.md)
-
-### Part III: NPHIES & Standards | الجزء الثالث: نفيس والمعايير
-
-10. [NPHIES Overview | نظرة عامة على نفيس](nphies/overview.md)
-11. [FHIR R4 Profile | ملف FHIR R4](nphies/fhir_r4_profile.md)
-12. [Workflows | سير العمل](nphies/workflows.md)
-13. [API Reference | مرجع API](nphies/api_reference.md)
-
-### Part IV: BrainSAIT Agents | الجزء الرابع: وكلاء برينسايت
-
-14. [ClaimLinc | كليم لينك](agents/ClaimLinc.md)
-15. [PolicyLinc | بوليسي لينك](agents/PolicyLinc.md)
-16. [DocsLinc | دوكس لينك](agents/DocsLinc.md)
-17. [RadioLinc | راديو لينك](agents/RadioLinc.md)
-18. [Voice2Care | فويس تو كير](agents/Voice2Care.md)
-
-### Part V: SOPs | الجزء الخامس: الإجراءات
-
-19. [Claim Submission SOP | إجراء تقديم المطالبة](sop/claim_submission_sop.md)
-20. [Eligibility Process | عملية الأهلية](sop/eligibility_process.md)
-21. [Compliance SOP | إجراء الامتثال](sop/compliance_sop.md)
-
-### Appendix | الملحق
-
-22. [Healthcare Glossary | مصطلحات الرعاية الصحية](glossary.md)
-
----
-
-## Key Concepts | المفاهيم الرئيسية
-
-### Revenue Cycle Management (RCM) | إدارة دورة الإيرادات
+### Revenue Cycle Management (RCM)
 
 The complete process from patient registration to final payment:
 
-العملية الكاملة من تسجيل المريض إلى الدفع النهائي:
-
 ```
 Patient Registration → Eligibility → Service → Coding → Claim → Payment
-تسجيل المريض ← الأهلية ← الخدمة ← الترميز ← المطالبة ← الدفع
 ```
 
-### NPHIES Integration | تكامل نفيس
+### NPHIES Integration
 
 NPHIES (National Platform for Health and Insurance Exchange Services) is Saudi Arabia's central health exchange platform.
 
-نفيس (المنصة الوطنية لخدمات التبادل الصحي والتأميني) هي منصة التبادل الصحي المركزية في المملكة العربية السعودية.
+**Core Services:**
 
-**Core Services | الخدمات الأساسية:**
+- Eligibility verification
+- Prior authorization
+- Claims submission
+- Payment reconciliation
 
-- Eligibility verification | التحقق من الأهلية
-- Prior authorization | التفويض المسبق
-- Claims submission | تقديم المطالبات
-- Payment reconciliation | تسوية المدفوعات
+### BrainSAIT Value
 
-### BrainSAIT Value | قيمة برينسايت
-
-| Metric | القياس | Result | النتيجة |
-|--------|--------|--------|---------|
-| First-pass acceptance | القبول من المرة الأولى | 90%+ | أكثر من 90% |
-| Days in A/R | أيام الحسابات المدينة | <30 days | أقل من 30 يوم |
-| Denial rate | معدل الرفض | <5% | أقل من 5% |
-| Processing time | وقت المعالجة | 80% reduction | تخفيض 80% |
+| Metric | Result |
+|--------|--------|
+| First-pass acceptance | 90%+ |
+| Days in A/R | <30 days |
+| Denial rate | <5% |
+| Processing time | 80% reduction |
 
 ---
 
-## Quick Start | البداية السريعة
+## Quick Start
 
-### For RCM Teams | لفرق إدارة الإيرادات
+### For RCM Teams
 
 1. **Understand the landscape** - Read [Introduction](overview/introduction.md)
 2. **Learn claim flow** - Review [Claim Lifecycle](claims/lifecycle.md)
 3. **Reduce rejections** - Study [Rejection Types](claims/rejection_types.md)
 4. **Use automation** - Explore [ClaimLinc](agents/ClaimLinc.md)
 
-### لفرق إدارة الإيرادات
+---
 
-1. **فهم المشهد** - اقرأ [المقدمة](overview/introduction.md)
-2. **تعلم تدفق المطالبات** - راجع [دورة حياة المطالبة](claims/lifecycle.md)
-3. **قلل الرفض** - ادرس [أنواع الرفض](claims/rejection_types.md)
-4. **استخدم الأتمتة** - استكشف [كليم لينك](agents/ClaimLinc.md)
+## Compliance Framework
+
+### PDPL Requirements
+
+- [x] Minimum privilege access
+- [x] Patient consent
+- [x] Breach reporting
+- [x] Data minimization
+- [x] Encryption
+
+### HIPAA-Aligned Controls
+
+- [x] Access logging
+- [x] Audit trails
+- [x] Secure sessions
+- [x] Role-based access
 
 ---
 
-## Compliance Framework | إطار الامتثال
+## Related Resources
 
-### PDPL Requirements | متطلبات نظام حماية البيانات
-
-- [x] Minimum privilege access | الوصول بأقل صلاحيات
-- [x] Patient consent | موافقة المريض
-- [x] Breach reporting | الإبلاغ عن الاختراقات
-- [x] Data minimization | تقليل البيانات
-- [x] Encryption | التشفير
-
-### HIPAA-Aligned Controls | ضوابط متوافقة مع HIPAA
-
-- [x] Access logging | تسجيل الوصول
-- [x] Audit trails | مسارات التدقيق
-- [x] Secure sessions | الجلسات الآمنة
-- [x] Role-based access | الوصول القائم على الأدوار
+- [Master Glossary](../appendices/glossary_master.md)
+- [Compliance Index](../appendices/compliance_index.md)
+- [Tech Infrastructure](../tech/index.md)
 
 ---
 
-## Related Resources | موارد ذات صلة
-
-- [Master Glossary | المصطلحات](../appendices/glossary_master.md)
-- [Compliance Index | فهرس الامتثال](../appendices/compliance_index.md)
-- [Tech Infrastructure | البنية التحتية](../tech/index.md)
-
----
-
-**BrainSAIT Healthcare** | الرعاية الصحية برينسايت
+**BrainSAIT Healthcare**
 
 OID: `1.3.6.1.4.1.61026`
 
-## Regional Support | الدعم الإقليمي
+## Regional Support
 
-### BrainSAIT OID Namespace | مساحة أسماء OID
+### BrainSAIT OID Namespace
 
 ```
 1.3.6.1.4.1.61026          # BrainSAIT Root
@@ -166,7 +149,7 @@ OID: `1.3.6.1.4.1.61026`
     └── 1.3.6.1.4.1.61026.2.3    # Health Information Systems
 ```
 
-### Regional Features | الميزات الإقليمية
+### Regional Features
 
 **Sudan Branch (OID: 1.3.6.1.4.1.61026.1)**
 - Healthcare facilities integration

@@ -1,5 +1,5 @@
 ---
-title: Introduction to Saudi Healthcare | مقدمة الرعاية الصحية السعودية
+title: Introduction to Saudi Healthcare
 description: Overview of Saudi Arabia's healthcare digital transformation under Vision 2030
 tags:
   - healthcare
@@ -8,149 +8,117 @@ tags:
 ---
 
 # Introduction to Saudi Healthcare
-# مقدمة الرعاية الصحية السعودية
 
 ---
 
-## Overview | نظرة عامة
+## Overview
 
 Saudi Arabia is undergoing a major digital transformation in healthcare under Vision 2030. This transformation touches every aspect of healthcare delivery, from patient registration to claims settlement.
 
-تخضع المملكة العربية السعودية لتحول رقمي كبير في الرعاية الصحية ضمن رؤية 2030. يمس هذا التحول كل جانب من جوانب تقديم الرعاية الصحية، من تسجيل المريض إلى تسوية المطالبات.
-
 ---
 
-## Key Transformation Areas | مجالات التحول الرئيسية
+## Key Transformation Areas
 
-### 1. Centralized Health Exchange (NPHIES) | التبادل الصحي المركزي (نفيس)
+### 1. Centralized Health Exchange (NPHIES)
 
 NPHIES enables real-time communication between healthcare providers and insurance companies.
 
-يتيح نفيس الاتصال الفوري بين مقدمي الرعاية الصحية وشركات التأمين.
+**Capabilities:**
 
-**Capabilities | القدرات:**
+- Real-time eligibility verification
+- Electronic prior authorization
+- Digital claims submission
+- Automated payment reconciliation
 
-- Real-time eligibility verification | التحقق الفوري من الأهلية
-- Electronic prior authorization | التفويض المسبق الإلكتروني
-- Digital claims submission | تقديم المطالبات الرقمي
-- Automated payment reconciliation | تسوية المدفوعات الآلية
-
-### 2. Unified Coding Standards | معايير الترميز الموحدة
+### 2. Unified Coding Standards
 
 Saudi Arabia has adopted international coding standards:
 
-اعتمدت المملكة العربية السعودية معايير ترميز دولية:
+| Standard | Purpose |
+|----------|---------|
+| ICD-10-AM | Diagnosis coding |
+| ACHI | Procedure coding |
+| FHIR R4 | Data exchange |
 
-| Standard | المعيار | Purpose | الغرض |
-|----------|---------|---------|-------|
-| ICD-10-AM | ICD-10-AM | Diagnosis coding | ترميز التشخيص |
-| ACHI | ACHI | Procedure coding | ترميز الإجراءات |
-| FHIR R4 | FHIR R4 | Data exchange | تبادل البيانات |
-
-### 3. Standardized Data Models (FHIR R4) | نماذج البيانات الموحدة
+### 3. Standardized Data Models (FHIR R4)
 
 All healthcare data exchange uses FHIR R4 (Fast Healthcare Interoperability Resources).
 
-يستخدم جميع تبادل البيانات الصحية معيار FHIR R4.
+**Key Resources:**
 
-**Key Resources | الموارد الرئيسية:**
+- `Patient` - Patient demographics
+- `Claim` - Insurance claims
+- `Coverage` - Insurance coverage
+- `ExplanationOfBenefit` - Payment details
 
-- `Patient` - Patient demographics | بيانات المريض
-- `Claim` - Insurance claims | مطالبات التأمين
-- `Coverage` - Insurance coverage | التغطية التأمينية
-- `ExplanationOfBenefit` - Payment details | تفاصيل الدفع
-
-### 4. Data Protection (PDPL) | حماية البيانات
+### 4. Data Protection (PDPL)
 
 The Personal Data Protection Law (PDPL) governs healthcare data handling.
 
-يحكم نظام حماية البيانات الشخصية التعامل مع البيانات الصحية.
+**Key Requirements:**
 
-**Key Requirements | المتطلبات الرئيسية:**
-
-- Explicit consent | الموافقة الصريحة
-- Data minimization | تقليل البيانات
-- Breach notification | الإخطار بالاختراق
-- Cross-border restrictions | قيود النقل عبر الحدود
+- Explicit consent
+- Data minimization
+- Breach notification
+- Cross-border restrictions
 
 ---
 
-## Healthcare Ecosystem | منظومة الرعاية الصحية
+## Healthcare Ecosystem
 
-### Providers | مقدمو الخدمات
+### Providers
 
-**Public Sector | القطاع العام:**
+**Public Sector:**
 
-- Ministry of Health hospitals | مستشفيات وزارة الصحة
-- Military hospitals | المستشفيات العسكرية
-- University hospitals | المستشفيات الجامعية
+- Ministry of Health hospitals
+- Military hospitals
+- University hospitals
 
-**Private Sector | القطاع الخاص:**
+**Private Sector:**
 
-- Hospital chains (e.g., Dr. Sulaiman Al Habib, SGHG) | سلاسل المستشفيات
-- Specialty centers | المراكز التخصصية
-- Clinics and polyclinics | العيادات والمجمعات الطبية
+- Hospital chains (e.g., Dr. Sulaiman Al Habib, SGHG)
+- Specialty centers
+- Clinics and polyclinics
 
-### Payers | شركات التأمين
+### Payers
 
-**Major Insurance Companies | شركات التأمين الرئيسية:**
+**Major Insurance Companies:**
 
-- Bupa Arabia | بوبا العربية
-- Tawuniya | التعاونية
-- Medgulf | ميدغلف
-- Malath | ملاذ للتأمين
-- AXA | أكسا
+- Bupa Arabia
+- Tawuniya
+- Medgulf
+- Malath
+- AXA
 
-### Regulators | الجهات الرقابية
+### Regulators
 
-- **Saudi Health Council** - Healthcare governance | حوكمة الرعاية الصحية
-- **CCHI** - Insurance regulation | تنظيم التأمين
-- **NHIC** - NPHIES oversight | الإشراف على نفيس
-- **SDAIA** - Data protection | حماية البيانات
+- **Saudi Health Council** - Healthcare governance
+- **CCHI** - Insurance regulation
+- **NHIC** - NPHIES oversight
+- **SDAIA** - Data protection
 
 ---
 
-## Key Challenges | التحديات الرئيسية
+## Key Challenges
 
-### For Providers | لمقدمي الخدمات
+### For Providers
 
 1. **High rejection rates** - Industry average 30-40%
-
-   **معدلات رفض عالية** - المتوسط الصناعي 30-40%
-
 2. **Manual processing overhead** - Time-consuming workflows
-
-   **عبء المعالجة اليدوية** - سير عمل يستهلك الوقت
-
 3. **Payer policy complexity** - Different rules per payer
-
-   **تعقيد سياسات شركات التأمين** - قواعد مختلفة لكل شركة
-
 4. **Staff training requirements** - Continuous education needed
 
-   **متطلبات تدريب الموظفين** - الحاجة للتعليم المستمر
-
-### For Payers | لشركات التأمين
+### For Payers
 
 1. **Fraud detection** - Identifying inappropriate billing
-
-   **كشف الاحتيال** - تحديد الفوترة غير المناسبة
-
 2. **Processing volume** - Scaling operations
-
-   **حجم المعالجة** - توسيع العمليات
-
 3. **Regulatory compliance** - Meeting CCHI requirements
-
-   **الامتثال التنظيمي** - تلبية متطلبات مجلس الضمان الصحي
 
 ---
 
-## BrainSAIT Solution | حل برينسايت
+## BrainSAIT Solution
 
 BrainSAIT addresses these challenges through intelligent automation:
-
-يعالج برينسايت هذه التحديات من خلال الأتمتة الذكية:
 
 ```
 Patient → Encounter → Coding → Validation → Submission → Adjudication
@@ -158,73 +126,57 @@ Patient → Encounter → Coding → Validation → Submission → Adjudication
 Voice2Care  DocsLinc  ClaimLinc  PolicyLinc  NPHIES API   Settlement
 ```
 
-### Value Proposition | عرض القيمة
+### Value Proposition
 
-| Benefit | الفائدة | Impact | الأثر |
-|---------|---------|--------|-------|
-| Processing time | وقت المعالجة | 80% reduction | تخفيض 80% |
-| Rejection rate | معدل الرفض | 50% fewer | أقل بـ 50% |
-| Eligibility check | فحص الأهلية | Real-time | فوري |
-| Audit compliance | امتثال التدقيق | 100% coverage | تغطية 100% |
-| Language support | دعم اللغة | AR/EN | عربي/إنجليزي |
+| Benefit | Impact |
+|---------|--------|
+| Processing time | 80% reduction |
+| Rejection rate | 50% fewer |
+| Eligibility check | Real-time |
+| Audit compliance | 100% coverage |
+| Language support | AR/EN |
 
 ---
 
-## Vision 2030 Alignment | التوافق مع رؤية 2030
+## Vision 2030 Alignment
 
-### Healthcare Transformation Goals | أهداف التحول الصحي
+### Healthcare Transformation Goals
 
 1. **Efficiency** - Increase healthcare spending efficiency to 80%
-
-   **الكفاءة** - زيادة كفاءة الإنفاق الصحي إلى 80%
-
 2. **Quality** - Reduce preventable deaths by 30%
-
-   **الجودة** - تقليل الوفيات التي يمكن تجنبها بـ 30%
-
 3. **Digitization** - 100% digital health records
-
-   **الرقمنة** - سجلات صحية رقمية 100%
-
 4. **Regional hub** - Establish KSA as healthcare hub
-
-   **المركز الإقليمي** - ترسيخ المملكة كمركز صحي
-
 5. **Satisfaction** - Patient satisfaction 85%+
 
-   **الرضا** - رضا المرضى أكثر من 85%
+### BrainSAIT Contribution
 
-### BrainSAIT Contribution | مساهمة برينسايت
-
-- Accelerate digital adoption | تسريع التبني الرقمي
-- Reduce administrative burden | تقليل العبء الإداري
-- Improve financial sustainability | تحسين الاستدامة المالية
-- Enable data-driven decisions | تمكين القرارات المبنية على البيانات
-- Support bilingual delivery | دعم التقديم ثنائي اللغة
+- Accelerate digital adoption
+- Reduce administrative burden
+- Improve financial sustainability
+- Enable data-driven decisions
+- Support bilingual delivery
 
 ---
 
-## Next Steps | الخطوات التالية
+## Next Steps
 
 Continue your learning journey:
 
-استمر في رحلة التعلم:
-
-1. [KSA Health Landscape | المشهد الصحي](ksa_health_landscape.md) - Detailed ecosystem map
-2. [Digital Transformation | التحول الرقمي](digital_transformation.md) - Technology enablers
-3. [Claim Lifecycle | دورة المطالبة](../claims/lifecycle.md) - End-to-end process
-4. [NPHIES Overview | نظرة نفيس](../nphies/overview.md) - Platform integration
+1. [KSA Health Landscape](ksa_health_landscape.md) - Detailed ecosystem map
+2. [Digital Transformation](digital_transformation.md) - Technology enablers
+3. [Claim Lifecycle](../claims/lifecycle.md) - End-to-end process
+4. [NPHIES Overview](../nphies/overview.md) - Platform integration
 
 ---
 
-## Related Documentation | وثائق ذات صلة
+## Related Documentation
 
-- [Master Glossary | المصطلحات](../../appendices/glossary_master.md)
-- [Compliance Index | فهرس الامتثال](../../appendices/compliance_index.md)
-- [ClaimLinc Agent | وكيل كليم لينك](../agents/ClaimLinc.md)
+- [Master Glossary](../../appendices/glossary_master.md)
+- [Compliance Index](../../appendices/compliance_index.md)
+- [ClaimLinc Agent](../agents/ClaimLinc.md)
 
 ---
 
-**BrainSAIT Healthcare** | الرعاية الصحية برينسايت
+**BrainSAIT Healthcare**
 
-Last updated: January 2025 | آخر تحديث: يناير 2025
+Last updated: January 2025

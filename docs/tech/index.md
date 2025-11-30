@@ -1,5 +1,5 @@
 ---
-title: Tech Documentation | التوثيق التقني
+title: Tech Documentation
 description: Technical infrastructure, agents, apps, and DevOps for BrainSAIT
 tags:
   - tech
@@ -9,99 +9,95 @@ tags:
 ---
 
 # Tech Documentation
-# التوثيق التقني
 
 **Volume 3: BrainSAIT Technical Infrastructure & Development**
 
-**المجلد الثالث: البنية التحتية التقنية والتطوير لبرينسايت**
-
 ---
 
-## Overview | نظرة عامة
+## Overview
 
 This volume covers all technical aspects of BrainSAIT including infrastructure, agentic AI systems, applications, DevOps practices, and security.
 
-يغطي هذا المجلد جميع الجوانب التقنية لبرينسايت بما في ذلك البنية التحتية وأنظمة الذكاء الاصطناعي الوكيل والتطبيقات وممارسات ديف أوبس والأمان.
-
 ---
 
-## Table of Contents | جدول المحتويات
+## Table of Contents
 
-### Infrastructure | البنية التحتية
+### Infrastructure
 
-1. [Cloudflare | كلاود فلير](infrastructure/cloudflare.md)
-2. [Coolify | كوليفاي](infrastructure/coolify.md)
-3. [Raspberry Cluster | مجموعة راسبيري](infrastructure/raspberry_cluster.md)
-4. [Security | الأمان](infrastructure/security.md)
+1. [Cloudflare](infrastructure/cloudflare.md)
+2. [Coolify](infrastructure/coolify.md)
+3. [Raspberry Cluster](infrastructure/raspberry_cluster.md)
+4. [Security](infrastructure/security.md)
 
-### Agents | الوكلاء
+### Agents
 
-5. [MasterLinc | ماستر لينك](agents/masterlinc.md)
-6. [DevLinc | ديف لينك](agents/devlinc.md)
-7. [DataLinc | داتا لينك](agents/datalinc.md)
-8. [SecUnit | وحدة الأمان](agents/secunit.md)
-9. [Skill Bundles | حزم المهارات](agents/skill_bundles.md)
+5. [MasterLinc](agents/masterlinc.md)
+6. [DevLinc](agents/devlinc.md)
+7. [DataLinc](agents/datalinc.md)
+8. [SecUnit](agents/secunit.md)
+9. [Skill Bundles](agents/skill_bundles.md)
 
-### Apps | التطبيقات
+### Apps
 
-10. [HealthSync | هيلث سينك](apps/healthsync.md)
-11. [Efhm RAG | إفهم](apps/efhm_rag.md)
-12. [Voice2Care | فويس تو كير](apps/voice2care.md)
-13. [Spark Solo Suite | سبارك سولو](apps/spark_solo_suite.md)
+10. [HealthSync](apps/healthsync.md)
+11. [Efhm RAG](apps/efhm_rag.md)
+12. [Voice2Care](apps/voice2care.md)
+13. [Spark Solo Suite](apps/spark_solo_suite.md)
 
-### DevOps | ديف أوبس
+### DevOps
 
 14. [CI/CD](devops/cicd.md)
-15. [Secrets Management | إدارة الأسرار](devops/vault_secrets.md)
-16. [Monitoring | المراقبة](devops/monitoring.md)
+15. [Secrets Management](devops/vault_secrets.md)
+16. [Monitoring](devops/monitoring.md)
 
 ### APIs
 
-17. [Internal APIs | واجهات داخلية](apis/internal.md)
-18. [NPHIES Integration | تكامل نفيس](apis/nphies.md)
+17. [API Overview](apis/overview.md)
+18. [Authentication](apis/authentication.md)
+19. [NPHIES Integration](apis/nphies.md)
 
-### Architecture | الهندسة
+### Architecture
 
-19. [System Overview | نظرة عامة](architecture/overview.md)
-20. [Data Models | نماذج البيانات](architecture/data_models.md)
-
----
-
-## Technology Stack | المكدس التقني
-
-### Cloud Infrastructure | البنية السحابية
-
-| Technology | التقنية | Purpose | الغرض |
-|------------|---------|---------|-------|
-| Cloudflare | كلاود فلير | Edge computing, DNS, security | الحوسبة الطرفية، DNS، الأمان |
-| Coolify | كوليفاي | Container orchestration | تنسيق الحاويات |
-| D1 | D1 | Edge database | قاعدة بيانات طرفية |
-| R2 | R2 | Object storage | تخزين الكائنات |
-| Workers | Workers | Serverless functions | دوال بدون خادم |
-
-### Development | التطوير
-
-| Technology | التقنية | Purpose | الغرض |
-|------------|---------|---------|-------|
-| Python | بايثون | Backend, AI/ML | الخلفية، الذكاء الاصطناعي |
-| Swift | سويفت | iOS apps | تطبيقات iOS |
-| TypeScript | تايب سكريبت | Web frontend | واجهة الويب |
-| n8n | n8n | Workflow automation | أتمتة سير العمل |
-| Docker | دوكر | Containerization | الحاويات |
-
-### AI/ML | الذكاء الاصطناعي
-
-| Technology | التقنية | Purpose | الغرض |
-|------------|---------|---------|-------|
-| Claude API | واجهة كلود | LLM processing | معالجة النماذج اللغوية |
-| ChromaDB | كروما DB | Vector database | قاعدة بيانات متجهية |
-| Anthropic SDK | SDK أنثروبيك | Agent framework | إطار الوكلاء |
+20. [System Overview](architecture/overview.md)
+21. [Data Models](architecture/data_models.md)
 
 ---
 
-## Agent Architecture | هندسة الوكلاء
+## Technology Stack
 
-### MasterLinc Orchestration | تنسيق ماستر لينك
+### Cloud Infrastructure
+
+| Technology | Purpose |
+|------------|---------|
+| Cloudflare | Edge computing, DNS, security |
+| Coolify | Container orchestration |
+| D1 | Edge database |
+| R2 | Object storage |
+| Workers | Serverless functions |
+
+### Development
+
+| Technology | Purpose |
+|------------|---------|
+| Python | Backend, AI/ML |
+| Swift | iOS apps |
+| TypeScript | Web frontend |
+| n8n | Workflow automation |
+| Docker | Containerization |
+
+### AI/ML
+
+| Technology | Purpose |
+|------------|---------|
+| Claude API | LLM processing |
+| ChromaDB | Vector database |
+| Anthropic SDK | Agent framework |
+
+---
+
+## Agent Architecture
+
+### MasterLinc Orchestration
 
 ```
 ┌─────────────────────────────────────┐
@@ -116,26 +112,26 @@ This volume covers all technical aspects of BrainSAIT including infrastructure, 
 └───────┘  └───────┘  └─────────┘
 ```
 
-### Agent Capabilities | قدرات الوكلاء
+### Agent Capabilities
 
-| Agent | القدرات |
-|-------|---------|
-| **MasterLinc** | Orchestration, task routing, coordination | التنسيق، توجيه المهام |
-| **DevLinc** | Code generation, review, deployment | توليد الكود، المراجعة، النشر |
-| **DataLinc** | ETL, analytics, reporting | ETL، التحليلات، التقارير |
-| **SecUnit** | Security monitoring, threat response | مراقبة الأمان، الاستجابة |
+| Agent | Capabilities |
+|-------|-------------|
+| **MasterLinc** | Orchestration, task routing, coordination |
+| **DevLinc** | Code generation, review, deployment |
+| **DataLinc** | ETL, analytics, reporting |
+| **SecUnit** | Security monitoring, threat response |
 
 ---
 
-## Security Framework | إطار الأمان
+## Security Framework
 
-### Compliance | الامتثال
+### Compliance
 
-- [x] PDPL aligned | متوافق مع نظام حماية البيانات
-- [x] HIPAA controls | ضوابط HIPAA
-- [x] SOC 2 practices | ممارسات SOC 2
+- [x] PDPL aligned
+- [x] HIPAA controls
+- [x] SOC 2 practices
 
-### Security Layers | طبقات الأمان
+### Security Layers
 
 1. **Edge Security** - Cloudflare WAF, DDoS protection
 2. **Transport** - TLS 1.3 everywhere
@@ -145,32 +141,31 @@ This volume covers all technical aspects of BrainSAIT including infrastructure, 
 
 ---
 
-## Development Workflow | سير عمل التطوير
+## Development Workflow
 
-### CI/CD Pipeline | خط CI/CD
+### CI/CD Pipeline
 
 ```
 Code → Lint → Test → Build → Stage → Deploy
-الكود ← التدقيق ← الاختبار ← البناء ← التجربة ← النشر
 ```
 
-### Branch Strategy | استراتيجية الفروع
+### Branch Strategy
 
-- `main` - Production ready | جاهز للإنتاج
-- `develop` - Integration branch | فرع التكامل
-- `feature/*` - New features | ميزات جديدة
-- `hotfix/*` - Emergency fixes | إصلاحات طارئة
-
----
-
-## Quick Links | روابط سريعة
-
-- [Healthcare Agents | وكلاء الصحة](../healthcare/agents/ClaimLinc.md)
-- [Business Overview | نظرة الأعمال](../business/index.md)
-- [Master Glossary | المصطلحات](../appendices/glossary_master.md)
+- `main` - Production ready
+- `develop` - Integration branch
+- `feature/*` - New features
+- `hotfix/*` - Emergency fixes
 
 ---
 
-**BrainSAIT Tech** | تقنية برينسايت
+## Quick Links
+
+- [Healthcare Agents](../healthcare/agents/ClaimLinc.md)
+- [Business Overview](../business/index.md)
+- [Master Glossary](../appendices/glossary_master.md)
+
+---
+
+**BrainSAIT Tech**
 
 OID: `1.3.6.1.4.1.61026`

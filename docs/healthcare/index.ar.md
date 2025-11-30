@@ -56,7 +56,7 @@ tags:
 
     إجراءات التشغيل القياسية لعمليات الرعاية الصحية
 
-    [:octicons-arrow-right-24: إجراء تقديم المطالبة](sop/claim_submission_sop.md)
+    [:octicons-arrow-right-24: إجراء تقديم المطالبة](sop/claim_submission.md)
 
 -   :material-book-alphabet:{ .lg .middle } **المصطلحات**
 
@@ -118,5 +118,5 @@ tags:
 للحصول على المساعدة في حلول الرعاية الصحية:
 
 - راجع [المصطلحات](glossary.md) للتعريفات
-- اتبع [الإجراءات التشغيلية](sop/claim_submission_sop.md) للعمليات
+- اتبع [الإجراءات التشغيلية](sop/claim_submission.md) للعمليات
 - استخدم [أنواع الرفض](claims/rejection_types.md) للتعامل مع المشاكل

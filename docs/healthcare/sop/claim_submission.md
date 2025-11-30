@@ -334,4 +334,4 @@ send_report(
 - [Claims Lifecycle](../claims/lifecycle.md)
 - [ClaimLinc Agent Guide](../agents/index.md)
 - [NPHIES Integration](../nphies/overview.md)
-- [Rejection Handling SOP](./rejection_handling.md)
+- [Rejection Types](../claims/rejection_types.md)

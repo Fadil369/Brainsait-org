@@ -467,12 +467,12 @@ version: 1.0.0
 
 ---
 
-## Related Documentation
+## الوثائق ذات الصلة
 
-- [Pricing Details](../pricing/index.md)
-- [Technical Specifications](../../tech/index.md)
-- [Implementation Guide](../implementation/index.md)
-- [API Documentation](../../tech/apis/index.md)
+- [نماذج التسعير](../pricing/pricing_models.md)
+- [المواصفات التقنية](../../tech/index.md)
+- [برنامج الشراكة](../partners/partner_program.md)
+- [توثيق API](../../tech/apis/overview.md)
 
 
 </div>

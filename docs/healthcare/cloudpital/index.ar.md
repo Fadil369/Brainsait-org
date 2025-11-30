@@ -108,7 +108,7 @@ graph TB
 ### للمطورين
 
 1. **راجع وثائق API**
-   - نقاط نهاية Cloudpital API: راجع `tech/apis/internal.md`
+   - نقاط نهاية Cloudpital API: راجع `tech/apis/overview.md`
    - تكامل نفيس: راجع `tech/apis/nphies.md`
    - BrainSAIT Agent SDK: راجع `tech/agents/linc_ecosystem.md`
 
@@ -160,7 +160,7 @@ graph TB
 ### دعم الوثائق
 - تصفح أقسام الوثائق أعلاه
 - تحقق من [الملاحق](../../appendices/index.ar.md) للمسارد والمراجع
-- راجع [إجراءات الرعاية الصحية](../sop/claim_submission_sop.ar.md) لسير العمل
+- راجع [إجراءات الرعاية الصحية](../sop/claim_submission.ar.md) لسير العمل
 
 ### الدعم الفني
 - **دعم Cloudpital**: اتصل بفريق دعم Cloudpital
@@ -189,7 +189,7 @@ graph TB
 
 ### المجال التقني
 - [منظومة LINC](../../tech/agents/linc_ecosystem.md)
-- [مرجع API](../../tech/apis/internal.md)
+- [مرجع API](../../tech/apis/overview.md)
 - [هندسة النظام](../../tech/architecture/overview.md)
 
 ## خريطة الطريق

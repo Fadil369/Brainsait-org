@@ -1,5 +1,5 @@
 ---
-title: Personal Development | التطوير الشخصي
+title: Personal Development
 description: Leadership, productivity, learning systems, and personal growth
 tags:
   - personal
@@ -9,141 +9,124 @@ tags:
 ---
 
 # Personal Development
-# التطوير الشخصي
 
 **Volume 4: Leadership, Productivity & Personal Growth**
 
-**المجلد الرابع: القيادة والإنتاجية والنمو الشخصي**
-
 ---
 
-## Overview | نظرة عامة
+## Overview
 
 This volume covers personal development frameworks, productivity systems, leadership principles, and the ethics of AI—themes central to BrainSAIT's mission and Dr. El Fadil's work.
 
-يغطي هذا المجلد أطر التطوير الشخصي وأنظمة الإنتاجية ومبادئ القيادة وأخلاقيات الذكاء الاصطناعي - موضوعات أساسية لرسالة برينسايت وعمل الدكتور الفاضل.
+---
+
+## Table of Contents
+
+1. [Mindset](mindset.md)
+2. [Leadership](leadership.md)
+3. [Productivity](productivity.md)
+4. [Learning Systems](learning_systems.md)
+5. [Health & Balance](health_and_balance.md)
+6. [Ethics & AI](ethics_ai_oi.md)
+7. [Reflections](reflections.md)
 
 ---
 
-## Table of Contents | جدول المحتويات
+## Core Principles
 
-1. [Mindset | العقلية](mindset.md)
-2. [Leadership | القيادة](leadership.md)
-3. [Productivity | الإنتاجية](productivity.md)
-4. [Learning Systems | أنظمة التعلم](learning_systems.md)
-5. [Health & Balance | الصحة والتوازن](health_and_balance.md)
-6. [Ethics & AI | أخلاقيات الذكاء](ethics_ai_oi.md)
-7. [Reflections | التأملات](reflections.md)
+### Growth Mindset
 
----
-
-## Core Principles | المبادئ الأساسية
-
-### Growth Mindset | عقلية النمو
-
-**English:**
 Embrace challenges as opportunities for growth. Every obstacle is a chance to learn and improve.
 
-**العربية:**
-اعتبر التحديات فرصاً للنمو. كل عقبة هي فرصة للتعلم والتحسن.
+### Continuous Learning
 
-### Continuous Learning | التعلم المستمر
-
-**English:**
 Stay curious and committed to lifelong learning. The best investment is in yourself.
 
-**العربية:**
-ابقَ فضولياً وملتزماً بالتعلم مدى الحياة. أفضل استثمار هو في نفسك.
+### Ethical Leadership
 
-### Ethical Leadership | القيادة الأخلاقية
-
-**English:**
 Lead with integrity, transparency, and a commitment to doing what's right.
 
-**العربية:**
-قُد بنزاهة وشفافية والتزام بفعل الصواب.
+---
+
+## Productivity Framework
+
+### Daily System
+
+| Time | Activity |
+|------|----------|
+| Morning | Deep work, creative tasks |
+| Midday | Meetings, collaboration |
+| Afternoon | Administrative, email |
+| Evening | Review, planning |
+
+### Key Practices
+
+1. **Time blocking** - Dedicated focus periods
+2. **Weekly review** - Reflect and adjust
+3. **Priority matrix** - Urgent vs important
+4. **Energy management** - Peak performance timing
 
 ---
 
-## Productivity Framework | إطار الإنتاجية
+## Ethics of AI & OI
 
-### Daily System | النظام اليومي
-
-| Time | الوقت | Activity | النشاط |
-|------|-------|----------|--------|
-| Morning | الصباح | Deep work, creative tasks | العمل العميق |
-| Midday | منتصف النهار | Meetings, collaboration | الاجتماعات |
-| Afternoon | بعد الظهر | Administrative, email | الإداري |
-| Evening | المساء | Review, planning | المراجعة |
-
-### Key Practices | الممارسات الرئيسية
-
-1. **Time blocking** - Dedicated focus periods | فترات تركيز مخصصة
-2. **Weekly review** - Reflect and adjust | المراجعة الأسبوعية
-3. **Priority matrix** - Urgent vs important | مصفوفة الأولويات
-4. **Energy management** - Peak performance timing | إدارة الطاقة
-
----
-
-## Ethics of AI & OI | أخلاقيات الذكاء الاصطناعي
-
-### OI vs AI Framework | إطار الذكاء الطبيعي مقابل الاصطناعي
+### OI vs AI Framework
 
 From Dr. El Fadil's work on the relationship between Organic Intelligence (human) and Artificial Intelligence:
 
-**Core Themes | الموضوعات الأساسية:**
+**Core Themes:**
 
-- Human-AI collaboration | التعاون بين الإنسان والذكاء الاصطناعي
-- Ethical AI development | تطوير الذكاء الاصطناعي الأخلاقي
-- Preserving human agency | الحفاظ على الوكالة البشرية
-- Bilingual AI systems | أنظمة ثنائية اللغة
+- Human-AI collaboration
+- Ethical AI development
+- Preserving human agency
+- Bilingual AI systems
 
-### Principles | المبادئ
+### Principles
 
-1. **Transparency** - AI decisions should be explainable | الشفافية
-2. **Beneficence** - AI should benefit humanity | الإحسان
-3. **Autonomy** - Preserve human decision-making | الاستقلالية
-4. **Justice** - Fair and unbiased AI | العدالة
-
----
-
-## Leadership for Digital Transformation | القيادة للتحول الرقمي
-
-### Key Competencies | الكفاءات الرئيسية
-
-**Vision Setting | وضع الرؤية**
-- Articulate clear digital vision | صياغة رؤية رقمية واضحة
-
-**Change Management | إدارة التغيير**
-- Guide through transformation | التوجيه خلال التحول
-
-**Technical Fluency | الطلاقة التقنية**
-- Understand technology capabilities | فهم قدرات التقنية
-
-**People Development | تطوير الأفراد**
-- Build capable teams | بناء فرق قادرة
+1. **Transparency** - AI decisions should be explainable
+2. **Beneficence** - AI should benefit humanity
+3. **Autonomy** - Preserve human decision-making
+4. **Justice** - Fair and unbiased AI
 
 ---
 
-## Coaching with MasterLinc | التدريب مع ماستر لينك
+## Leadership for Digital Transformation
+
+### Key Competencies
+
+**Vision Setting**
+- Articulate clear digital vision
+
+**Change Management**
+- Guide through transformation
+
+**Technical Fluency**
+- Understand technology capabilities
+
+**People Development**
+- Build capable teams
+
+---
+
+## Coaching with MasterLinc
 
 BrainSAIT's MasterLinc agent can serve as a personal development coach:
 
-- Goal setting and tracking | تحديد الأهداف وتتبعها
-- Habit formation support | دعم تكوين العادات
-- Reflection prompts | محفزات التأمل
-- Learning recommendations | توصيات التعلم
+- Goal setting and tracking
+- Habit formation support
+- Reflection prompts
+- Learning recommendations
 
 ---
 
-## Quick Links | روابط سريعة
+## Quick Links
 
-- [Healthcare Overview | نظرة صحية](../healthcare/index.md)
-- [Business Strategy | استراتيجية الأعمال](../business/index.md)
-- [Tech Agents | الوكلاء التقنيون](../tech/agents/masterlinc.md)
+- [Healthcare Overview](../healthcare/index.md)
+- [Business Strategy](../business/index.md)
+- [Tech Agents](../tech/agents/masterlinc.md)
 
 ---
 
-**BrainSAIT Personal Development** | التطوير الشخصي برينسايت
+**BrainSAIT Personal Development**
 
 OID: `1.3.6.1.4.1.61026`

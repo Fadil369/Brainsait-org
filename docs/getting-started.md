@@ -66,7 +66,7 @@ Growth and leadership resources:
 ### For Developers
 1. [Infrastructure Overview](tech/infrastructure/overview.md) - System architecture
 2. [MasterLinc](tech/agents/masterlinc.md) - Agent orchestration
-3. [API Documentation](tech/apis/index.md) - Integration guides
+3. [API Documentation](tech/apis/overview.md) - Integration guides
 
 ### For Business Leaders
 1. [Mission & Vision](business/strategy/mission_vision.md) - Strategic direction
@@ -177,7 +177,7 @@ Found an error or want to improve the documentation?
 
 ## 🔄 Updates & Changelog
 
-The documentation is continuously updated. Check the [Changelog](appendices/changelog.md) for recent changes.
+The documentation is continuously updated. See the changelog in the GitHub repository for recent changes.
 
 **Last Updated**: January 15, 2025  
 **Version**: 1.0.0

@@ -79,9 +79,9 @@ tags:
 
 ### لقادة الأعمال
 
-1. **توافق السوق** - راجع [توافق رؤية 2030](business/strategy/market_alignment.md)
+1. **توافق السوق** - راجع [تحليل السوق](business/strategy/market_analysis.md)
 2. **خريطة المنظومة** - افهم [عروض المنتجات](business/products/ecosystem_map.md)
-3. **أدلة المبيعات** - استخدم [موارد التسويق](business/marketing/sales_playbooks.md)
+3. **أدلة المبيعات** - استخدم [خطة التسويق](business/marketing/marketing_plan.md)
 
 ---
 

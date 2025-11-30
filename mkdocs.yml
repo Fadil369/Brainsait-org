@@ -342,7 +342,7 @@ nav:
       - NPHIES Integration | تكامل نفيس: healthcare/cloudpital/nphies_integration.md
 
     - SOPs | الإجراءات:
-      - Claim Submission | تقديم المطالبة: healthcare/sop/claim_submission_sop.md
+      - Claim Submission | تقديم المطالبة: healthcare/sop/claim_submission.md
       - Eligibility Process | التحقق من الأهلية: healthcare/sop/eligibility_process.md
       - Compliance SOP | إجراء الامتثال: healthcare/sop/compliance_sop.md
 
@@ -352,22 +352,25 @@ nav:
     - business/index.md
     - Strategy | الاستراتيجية:
       - Mission & Vision | الرؤية والرسالة: business/strategy/mission_vision.md
-      - Market Alignment | التوافق مع السوق: business/strategy/market_alignment.md
+      - Market Analysis | تحليل السوق: business/strategy/market_analysis.md
+      - Competitive Landscape | المشهد التنافسي: business/strategy/competitive_landscape.md
     - Products | المنتجات:
       - Ecosystem Map | خريطة المنظومة: business/products/ecosystem_map.md
-      - Pricing | التسعير: business/products/pricing.md
+      - Product Catalog | كتالوج المنتجات: business/products/catalog.md
+      - Pricing Models | نماذج التسعير: business/pricing/pricing_models.md
     - Partners | الشركاء:
       - Partner Management | إدارة الشركاء: business/partners/partner_management.md
-      - Vendor Guidelines | إرشادات الموردين: business/partners/vendor_guidelines.md
+      - Partner Program | برنامج الشراكة: business/partners/partner_program.md
+      - Integration Partners | شركاء التكامل: business/partners/integration_partners.md
     - Marketing | التسويق:
-      - Brand Identity | الهوية التجارية: business/marketing/brand_identity.md
-      - Sales Playbooks | أدلة المبيعات: business/marketing/sales_playbooks.md
+      - Marketing Plan | خطة التسويق: business/marketing/marketing_plan.md
+      - GTM Strategy | استراتيجية الدخول للسوق: business/marketing/gtm_strategy.md
+      - Brand Identity | الهوية التجارية: business/brand_identity.md
     - RFPs | المناقصات:
       - Response Guide | دليل الاستجابة: business/rfps/response_guide.md
-      - Templates | القوالب: business/rfps/templates.md
+      - Tender Framework | إطار المناقصات: business/rfps/tender_framework.md
     - Financials | المالية:
-      - Revenue Streams | مصادر الإيرادات: business/financials/revenue_streams.md
-      - Financial Models | النماذج المالية: business/financials/financial_models.md
+      - Financial Overview | نظرة مالية عامة: business/financials/overview.md
 
   - Tech | التقنية:
     - tech/index.md
@@ -393,7 +396,8 @@ nav:
       - Secrets Management | إدارة الأسرار: tech/devops/vault_secrets.md
       - Monitoring | المراقبة: tech/devops/monitoring.md
     - APIs:
-      - Internal APIs | واجهات داخلية: tech/apis/internal.md
+      - API Overview | نظرة عامة على APIs: tech/apis/overview.md
+      - Authentication | المصادقة: tech/apis/authentication.md
       - NPHIES Integration | تكامل نفيس: tech/apis/nphies.md
     - Architecture | الهندسة:
       - System Overview | نظرة عامة: tech/architecture/overview.md

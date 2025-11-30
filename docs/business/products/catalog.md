@@ -463,7 +463,7 @@ version: 1.0.0
 
 ## Related Documentation
 
-- [Pricing Details](../pricing/index.md)
+- [Pricing Models](../pricing/pricing_models.md)
 - [Technical Specifications](../../tech/index.md)
-- [Implementation Guide](../implementation/index.md)
-- [API Documentation](../../tech/apis/index.md)
+- [Partner Program](../partners/partner_program.md)
+- [API Documentation](../../tech/apis/overview.md)
