@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [One-on-One Coaching]! This channel serves as our central hub for structure manager-employee coaching conversations.
+> Welcome to [One-on-One Coaching]! This channel serves as our central hub for structuring manager-employee coaching conversations.
 >
 > **Quick Links:**
 > - [Documentation](#)

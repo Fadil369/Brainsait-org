@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Employee Onboarding]! This channel serves as our central hub for streamline new employee onboarding with structured channels and resources.
+> Welcome to [Employee Onboarding]! This channel serves as our central hub for streamlining new employee onboarding with structured channels and resources.
 >
 > **Quick Links:**
 > - [Documentation](#)

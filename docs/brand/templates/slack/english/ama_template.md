@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Ask Me Anything (AMA)]! This channel serves as our central hub for host q&a sessions with leadership or experts.
+> Welcome to [Ask Me Anything (AMA)]! This channel serves as our central hub for hosting Q&A sessions with leadership or experts.
 >
 > **Quick Links:**
 > - [Documentation](#)

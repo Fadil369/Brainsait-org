@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Social Media Management]! This channel serves as our central hub for coordinate social media content and campaigns.
+> Welcome to [Social Media Management]! This channel serves as our central hub for coordinating social media content and campaigns.
 >
 > **Quick Links:**
 > - [Documentation](#)

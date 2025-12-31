@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Deal Tracking]! This channel serves as our central hub for track sales deals through pipeline stages.
+> Welcome to [Deal Tracking]! This channel serves as our central hub for tracking sales deals through pipeline stages.
 >
 > **Quick Links:**
 > - [Documentation](#)

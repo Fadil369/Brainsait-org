@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [External Partners Collaboration]! This channel serves as our central hub for manage communication with external partners and vendors.
+> Welcome to [External Partners Collaboration]! This channel serves as our central hub for managing communication with external partners and vendors.
 >
 > **Quick Links:**
 > - [Documentation](#)

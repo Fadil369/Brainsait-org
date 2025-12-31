@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Help Desk & Support]! This channel serves as our central hub for manage internal or external support requests.
+> Welcome to [Help Desk & Support]! This channel serves as our central hub for managing internal or external support requests.
 >
 > **Quick Links:**
 > - [Documentation](#)

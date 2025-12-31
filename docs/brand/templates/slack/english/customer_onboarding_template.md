@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Customer Onboarding]! This channel serves as our central hub for guide new customers through implementation.
+> Welcome to [Customer Onboarding]! This channel serves as our central hub for guiding new customers through implementation.
 >
 > **Quick Links:**
 > - [Documentation](#)

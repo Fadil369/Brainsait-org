@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Feedback Collection]! This channel serves as our central hub for gather and process team or customer feedback.
+> Welcome to [Feedback Collection]! This channel serves as our central hub for gathering and processing team or customer feedback.
 >
 > **Quick Links:**
 > - [Documentation](#)

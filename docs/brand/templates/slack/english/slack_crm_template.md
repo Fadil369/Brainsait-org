@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [CRM & Sales Pipeline]! This channel serves as our central hub for track customer relationships and sales opportunities.
+> Welcome to [CRM & Sales Pipeline]! This channel serves as our central hub for tracking customer relationships and sales opportunities.
 >
 > **Quick Links:**
 > - [Documentation](#)

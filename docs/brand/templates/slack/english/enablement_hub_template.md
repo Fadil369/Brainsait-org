@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Enablement Hub]! This channel serves as our central hub for central hub for training and enablement resources.
+> Welcome to [Enablement Hub]! This channel serves as our central hub for providing training and enablement resources.
 >
 > **Quick Links:**
 > - [Documentation](#)

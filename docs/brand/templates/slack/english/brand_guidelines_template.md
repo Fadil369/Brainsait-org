@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Brand Guidelines]! This channel serves as our central hub for centralize brand assets and guidelines.
+> Welcome to [Brand Guidelines]! This channel serves as our central hub for centralizing brand assets and guidelines.
 >
 > **Quick Links:**
 > - [Documentation](#)

@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Time-Off Request]! This channel serves as our central hub for manage leave requests and approvals.
+> Welcome to [Time-Off Request]! This channel serves as our central hub for managing leave requests and approvals.
 >
 > **Quick Links:**
 > - [Documentation](#)

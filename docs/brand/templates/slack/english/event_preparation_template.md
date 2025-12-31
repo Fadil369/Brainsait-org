@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Event Preparation]! This channel serves as our central hub for plan and coordinate events and conferences.
+> Welcome to [Event Preparation]! This channel serves as our central hub for planning and coordinating events and conferences.
 >
 > **Quick Links:**
 > - [Documentation](#)

@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Benefits Hub]! This channel serves as our central hub for employee benefits information and resources.
+> Welcome to [Benefits Hub]! This channel serves as our central hub for providing employee benefits information and resources.
 >
 > **Quick Links:**
 > - [Documentation](#)

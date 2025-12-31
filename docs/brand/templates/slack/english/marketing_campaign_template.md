@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Marketing Campaign]! This channel serves as our central hub for coordinate marketing campaigns and launches.
+> Welcome to [Marketing Campaign]! This channel serves as our central hub for coordinating marketing campaigns and launches.
 >
 > **Quick Links:**
 > - [Documentation](#)

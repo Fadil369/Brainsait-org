@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Project Management]! This channel serves as our central hub for coordinate project tasks, milestones, and team collaboration.
+> Welcome to [Project Management]! This channel serves as our central hub for coordinating project tasks, milestones, and team collaboration.
 >
 > **Quick Links:**
 > - [Documentation](#)
