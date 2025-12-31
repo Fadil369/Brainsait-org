@@ -56,6 +56,7 @@ To fetch content from your specific Slack URLs (like the `/docs/` URLs you provi
 For URLs like `https://brainsait.slack.com/docs/T05NCLU87L2/F0844KK58B1`:
 
 ```python
+import os
 from slack_sdk import WebClient
 
 client = WebClient(token=os.environ["SLACK_BOT_TOKEN"])
