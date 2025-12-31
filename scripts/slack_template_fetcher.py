@@ -299,7 +299,8 @@ class MarkdownTranslator:
                     else:
                         translated = self.translator.translate(para)
                         translated_paragraphs.append(translated if translated else para)
-                except Exception:
+                except Exception as e:
+                    print(f"Warning: Translation failed for paragraph. Error: {e}")
                     translated_paragraphs.append(para)
             else:
                 translated_paragraphs.append(para)
