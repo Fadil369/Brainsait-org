@@ -1,133 +1,311 @@
 ---
 title: "Project Management"
-description: "Coordinate project tasks, milestones, and team collaboration"
+description: "BrainSAIT product and engineering project coordination"
 template_id: "project_template"
 category: "operations"
 language: "en"
-version: "1.0"
+version: "2.0"
 last_updated: "2025-12-31"
 tags:
   - template
-  - slack
+  - project
   - operations
+  - engineering
 ---
 
 # Project Management
 
 <div class="template-meta" markdown>
-**Category:** Operations | **Version:** 1.0 | **Status:** Active
+**Category:** Operations | **Version:** 2.0 | **Status:** Active
 </div>
 
 ## Overview
 
-Coordinate project tasks, milestones, and team collaboration
-
-This template provides a structured approach to project management within your organization,
-aligned with Brainsait's operational standards and best practices.
+Coordinate BrainSAIT product development, agent enhancements, and cross-functional initiatives with structured sprints, milestones, and stakeholder communication.
 
 ---
 
 ## Channel Structure
 
-### Primary Channels
+### Project Channels
 
-| Channel | Purpose | Visibility |
-|---------|---------|------------|
-| `#main` | Central hub for all communications | Public |
-| `#announcements` | Official announcements and updates | Public |
-| `#resources` | Shared documents and reference materials | Public |
+| Channel | Purpose | Members |
+|---------|---------|---------|
+| `#proj-[name]` | Main project coordination | Project team |
+| `#proj-[name]-standup` | Daily async standups | Core team |
+| `#proj-[name]-stakeholders` | Executive updates | Leadership + PM |
 
-### Optional Channels
+### Engineering Channels
 
-| Channel | Purpose | When to Use |
-|---------|---------|-------------|
-| `#questions` | Q&A and support requests | For high-volume workflows |
-| `#feedback` | Collect feedback and suggestions | For iterative processes |
+| Channel | Purpose |
+|---------|---------|
+| `#agent-development` | Agent feature work (ClaimLinc, PolicyLinc, etc.) |
+| `#nphies-integration` | NPHIES compliance and updates |
+| `#code-review` | PR reviews and discussions |
+| `#deployments` | Release coordination |
 
 ---
 
-## Workflow Steps
+## Project Types
 
-### Phase 1: Setup
+### Agent Enhancement
 
-1. **Create the channel** using this template
-2. **Invite stakeholders** with appropriate permissions
-3. **Pin essential resources** to the channel
+```
+📦 Agent Enhancement Project
+├── Agent: ClaimLinc / PolicyLinc / DocsLinc / etc.
+├── Feature: [Description]
+├── Sprint Duration: 2 weeks
+├── Team: [PM, Engineer(s), QA]
+└── Success Metric: [KPI improvement target]
+```
 
-### Phase 2: Onboarding
+### Customer Implementation
 
-1. Welcome new members with the introduction message
-2. Share relevant documentation and guidelines
-3. Assign initial tasks or action items
+```
+🏥 Customer Implementation
+├── Customer: [Name]
+├── Products: [Agent list]
+├── Timeline: 4-8 weeks
+├── Team: [CSM, PS, Engineering]
+└── Success Metric: Go-live, 98% clean claim rate
+```
 
-### Phase 3: Ongoing Operations
+### Platform Initiative
 
-1. Maintain regular updates and check-ins
-2. Archive completed items appropriately
-3. Iterate on processes based on feedback
+```
+🔧 Platform Initiative
+├── Initiative: [Name]
+├── Scope: Infrastructure / Security / Performance
+├── Timeline: [Duration]
+├── Team: [Engineering leads]
+└── Success Metric: [Technical KPI]
+```
+
+---
+
+## Sprint Structure
+
+### Sprint Ceremonies
+
+| Ceremony | When | Duration | Purpose |
+|----------|------|----------|---------|
+| Sprint Planning | Day 1 | 2 hours | Scope and commit |
+| Daily Standup | Daily | 15 min | Sync and blockers |
+| Sprint Review | Last day | 1 hour | Demo to stakeholders |
+| Retrospective | Last day | 1 hour | Process improvement |
+
+### Sprint Board States
+
+| State | Definition |
+|-------|------------|
+| **Backlog** | Prioritized, ready for sprint |
+| **To Do** | Committed for current sprint |
+| **In Progress** | Actively being worked |
+| **In Review** | PR submitted, awaiting review |
+| **QA** | Testing in progress |
+| **Done** | Merged and deployed |
 
 ---
 
 ## Key Messages
 
-### Welcome Message
+### Project Kickoff
 
-> Welcome to [Project Management]! This channel serves as our central hub for coordinating project tasks, milestones, and team collaboration.
+> 🚀 **Project Kickoff: [Project Name]**
 >
-> **Quick Links:**
-> - [Documentation](#)
-> - [Guidelines](#)
-> - [Support](#)
+> **Objective:** [One-line goal]
+>
+> **Team:**
+>
+> - 👤 PM: @[name]
+> - 💻 Tech Lead: @[name]
+> - 🔧 Engineers: @[names]
+> - ✅ QA: @[name]
+>
+> **Timeline:**
+>
+> - Start: [Date]
+> - Target Completion: [Date]
+> - Milestones: [Key dates]
+>
+> **Success Metrics:**
+>
+> - [Metric 1]: [Target]
+> - [Metric 2]: [Target]
+>
+> **Key Resources:**
+>
+> - PRD: [Link]
+> - Design: [Link]
+> - Jira Board: [Link]
 
-### Check-in Template
+### Async Standup Template
 
-```
-## Daily/Weekly Check-in
+```markdown
+## Standup - [Date]
 
-**Progress:**
-- [ ] Task 1
-- [ ] Task 2
+**Yesterday:**
+
+- ✅ [Completed task]
+- ✅ [Completed task]
+
+**Today:**
+
+- 🔄 [Planned task]
+- 🔄 [Planned task]
 
 **Blockers:**
-- None / [Describe blocker]
 
-**Next Steps:**
-- [Action item 1]
-- [Action item 2]
+- 🚫 [Blocker] - Need: [What's needed]
+- ✅ None
 ```
+
+### Weekly Status Update
+
+```markdown
+## Weekly Status - [Project Name]
+
+**Week:** [X] of [Y]
+**Status:** 🟢 On Track / 🟡 At Risk / 🔴 Blocked
+
+### Progress
+
+- Sprint [X] completion: [X]%
+- Features completed: [List]
+- Features in progress: [List]
+
+### Key Accomplishments
+
+- ✅ [Achievement 1]
+- ✅ [Achievement 2]
+
+### Upcoming Milestones
+
+| Milestone | Date | Status |
+|-----------|------|--------|
+| [Milestone] | [Date] | On Track/At Risk |
+
+### Risks & Blockers
+
+| Risk | Impact | Mitigation | Owner |
+|------|--------|------------|-------|
+| [Risk] | H/M/L | [Action] | @[name] |
+
+### Decisions Needed
+
+- [ ] [Decision] - By: [Date] - Owner: @[name]
+```
+
+### Sprint Review Summary
+
+> 📊 **Sprint [X] Review: [Project Name]**
+>
+> **Velocity:** [X] points completed / [Y] committed
+>
+> **Highlights:**
+>
+> - ✅ [Feature 1] - shipped to production
+> - ✅ [Feature 2] - ready for QA
+> - 🔄 [Feature 3] - 80% complete, carries over
+>
+> **Demo Recording:** [Link]
+>
+> **Impact:**
+>
+> - ClaimLinc validation accuracy: +[X]%
+> - Processing time reduced: [X] sec
+>
+> **Next Sprint Focus:**
+>
+> - [Priority 1]
+> - [Priority 2]
 
 ---
 
-## Best Practices
+## Agent Development Workflow
 
-!!! tip "Brainsait Recommendations"
-    - **Consistency**: Use standardized naming conventions
-    - **Documentation**: Keep channel topics and descriptions updated
-    - **Engagement**: Encourage active participation from all members
-    - **Organization**: Use threads to keep conversations organized
+### Feature Development
+
+```
+1. PRD Approved
+    ↓
+2. Technical Design
+    ↓
+3. Sprint Planning (committed)
+    ↓
+4. Development
+    ↓
+5. Code Review
+    ↓
+6. QA Testing
+    ↓
+7. Staging Deployment
+    ↓
+8. UAT with Customer (if applicable)
+    ↓
+9. Production Release
+    ↓
+10. Monitoring & Validation
+```
+
+### Agent-Specific Considerations
+
+| Agent | Key Testing | Stakeholders |
+|-------|-------------|--------------|
+| ClaimLinc | NPHIES compliance, validation rules | RCM team, Customers |
+| PolicyLinc | Payer accuracy, response time | Sales, Customers |
+| DocsLinc | OCR accuracy, extraction quality | Product, Customers |
+| RadioLinc | Sensitivity, specificity | Clinical advisors |
+| Voice2Care | Intent accuracy, Arabic dialect | Product, Call center |
+
+---
+
+## Release Management
+
+### Release Checklist
+
+- [ ] All sprint items merged to main
+- [ ] QA sign-off received
+- [ ] Release notes drafted
+- [ ] Customer communication prepared (if breaking changes)
+- [ ] Monitoring alerts configured
+- [ ] Rollback plan documented
+- [ ] On-call engineer assigned
+
+### Release Announcement
+
+> 🚢 **Release: v[X.Y.Z]**
+>
+> **Date:** [Date]
+> **Type:** Feature / Bugfix / Hotfix
+>
+> **Changes:**
+>
+> - ✨ [New feature]
+> - 🐛 [Bug fix]
+> - ⚡ [Performance improvement]
+>
+> **Agent Updates:**
+>
+> - ClaimLinc: [Changes]
+> - PolicyLinc: [Changes]
+>
+> **Customer Impact:** None / [Description]
+>
+> **Rollback:** [Plan if needed]
 
 ---
 
 ## Integration Points
 
-This template integrates with:
-
-- **Brainsait Agents**: Connect with relevant ClaimLinc, PolicyLinc, or DocsLinc agents
-- **Notion**: Sync key documents and databases
-- **Google Workspace**: Link shared drives and calendars
-
----
-
-## Customization
-
-Adapt this template to your specific needs by:
-
-1. Modifying channel names to match your naming conventions
-2. Adding custom workflows specific to your department
-3. Integrating with your existing tools and systems
+- **Jira**: Sprint boards and backlog
+- **GitHub**: Code repository and PRs
+- **Notion**: PRDs and documentation
+- **Figma**: Design files
+- **DataLinc**: Performance monitoring
 
 ---
 
 <div class="template-footer" markdown>
-*Brainsait Template v1.0 | Last Updated: 2025-12-31*
+*BrainSAIT Project Management v2.0 | Healthcare Intelligence, Delivered*
 </div>
