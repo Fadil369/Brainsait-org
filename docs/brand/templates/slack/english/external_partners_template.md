@@ -1,6 +1,6 @@
 ---
 title: "External Partners Collaboration"
-description: "Manage communication with external partners and vendors"
+description: "managing communication with external partners and vendors"
 template_id: "external_partners_template"
 category: "partnerships"
 language: "en"
@@ -20,7 +20,7 @@ tags:
 
 ## Overview
 
-Manage communication with external partners and vendors
+managing communication with external partners and vendors
 
 This template provides a structured approach to external partners collaboration within your organization,
 aligned with Brainsait's operational standards and best practices.
@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [External Partners Collaboration]! This channel serves as our central hub for manage communication with external partners and vendors.
+> Welcome to [External Partners Collaboration]! This channel serves as our central hub for managing communication with external partners and vendors.
 >
 > **Quick Links:**
 > - [Documentation](#)

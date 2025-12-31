@@ -1,6 +1,6 @@
 ---
 title: "Project Management"
-description: "Coordinate project tasks, milestones, and team collaboration"
+description: "coordinating project tasks, milestones, and team collaboration"
 template_id: "project_template"
 category: "operations"
 language: "en"
@@ -20,7 +20,7 @@ tags:
 
 ## Overview
 
-Coordinate project tasks, milestones, and team collaboration
+coordinating project tasks, milestones, and team collaboration
 
 This template provides a structured approach to project management within your organization,
 aligned with Brainsait's operational standards and best practices.
@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Project Management]! This channel serves as our central hub for coordinate project tasks, milestones, and team collaboration.
+> Welcome to [Project Management]! This channel serves as our central hub for coordinating project tasks, milestones, and team collaboration.
 >
 > **Quick Links:**
 > - [Documentation](#)

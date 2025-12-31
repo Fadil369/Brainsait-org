@@ -1,6 +1,6 @@
 ---
 title: "Employee Onboarding"
-description: "Streamline new employee onboarding with structured channels and resources"
+description: "streamlining new employee onboarding with structured channels and resources"
 template_id: "onboarding_template"
 category: "hr"
 language: "en"
@@ -20,7 +20,7 @@ tags:
 
 ## Overview
 
-Streamline new employee onboarding with structured channels and resources
+streamlining new employee onboarding with structured channels and resources
 
 This template provides a structured approach to employee onboarding within your organization,
 aligned with Brainsait's operational standards and best practices.
@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Employee Onboarding]! This channel serves as our central hub for streamline new employee onboarding with structured channels and resources.
+> Welcome to [Employee Onboarding]! This channel serves as our central hub for streamlining new employee onboarding with structured channels and resources.
 >
 > **Quick Links:**
 > - [Documentation](#)

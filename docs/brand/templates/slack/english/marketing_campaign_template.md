@@ -1,6 +1,6 @@
 ---
 title: "Marketing Campaign"
-description: "Coordinate marketing campaigns and launches"
+description: "coordinating marketing campaigns and launches"
 template_id: "marketing_campaign_template"
 category: "marketing"
 language: "en"
@@ -20,7 +20,7 @@ tags:
 
 ## Overview
 
-Coordinate marketing campaigns and launches
+coordinating marketing campaigns and launches
 
 This template provides a structured approach to marketing campaign within your organization,
 aligned with Brainsait's operational standards and best practices.
@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Marketing Campaign]! This channel serves as our central hub for coordinate marketing campaigns and launches.
+> Welcome to [Marketing Campaign]! This channel serves as our central hub for coordinating marketing campaigns and launches.
 >
 > **Quick Links:**
 > - [Documentation](#)

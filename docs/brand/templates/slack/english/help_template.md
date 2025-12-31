@@ -1,6 +1,6 @@
 ---
 title: "Help Desk & Support"
-description: "Manage internal or external support requests"
+description: "managing internal or external support requests"
 template_id: "help_template"
 category: "support"
 language: "en"
@@ -20,7 +20,7 @@ tags:
 
 ## Overview
 
-Manage internal or external support requests
+managing internal or external support requests
 
 This template provides a structured approach to help desk & support within your organization,
 aligned with Brainsait's operational standards and best practices.
@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Help Desk & Support]! This channel serves as our central hub for manage internal or external support requests.
+> Welcome to [Help Desk & Support]! This channel serves as our central hub for managing internal or external support requests.
 >
 > **Quick Links:**
 > - [Documentation](#)

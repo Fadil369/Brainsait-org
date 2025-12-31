@@ -1,6 +1,6 @@
 ---
 title: "Benefits Hub"
-description: "Employee benefits information and resources"
+description: "providing employee benefits information and resources"
 template_id: "benefits_hub_template"
 category: "hr"
 language: "en"
@@ -20,7 +20,7 @@ tags:
 
 ## Overview
 
-Employee benefits information and resources
+providing employee benefits information and resources
 
 This template provides a structured approach to benefits hub within your organization,
 aligned with Brainsait's operational standards and best practices.
@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Benefits Hub]! This channel serves as our central hub for employee benefits information and resources.
+> Welcome to [Benefits Hub]! This channel serves as our central hub for providing employee benefits information and resources.
 >
 > **Quick Links:**
 > - [Documentation](#)

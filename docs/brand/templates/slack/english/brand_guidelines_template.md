@@ -1,6 +1,6 @@
 ---
 title: "Brand Guidelines"
-description: "Centralize brand assets and guidelines"
+description: "centralizing brand assets and guidelines"
 template_id: "brand_guidelines_template"
 category: "marketing"
 language: "en"
@@ -20,7 +20,7 @@ tags:
 
 ## Overview
 
-Centralize brand assets and guidelines
+centralizing brand assets and guidelines
 
 This template provides a structured approach to brand guidelines within your organization,
 aligned with Brainsait's operational standards and best practices.
@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Brand Guidelines]! This channel serves as our central hub for centralize brand assets and guidelines.
+> Welcome to [Brand Guidelines]! This channel serves as our central hub for centralizing brand assets and guidelines.
 >
 > **Quick Links:**
 > - [Documentation](#)

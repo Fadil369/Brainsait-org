@@ -1,6 +1,6 @@
 ---
 title: "Deal Tracking"
-description: "Track sales deals through pipeline stages"
+description: "tracking sales deals through pipeline stages"
 template_id: "deal_tracking_template"
 category: "sales"
 language: "en"
@@ -20,7 +20,7 @@ tags:
 
 ## Overview
 
-Track sales deals through pipeline stages
+tracking sales deals through pipeline stages
 
 This template provides a structured approach to deal tracking within your organization,
 aligned with Brainsait's operational standards and best practices.
@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Deal Tracking]! This channel serves as our central hub for track sales deals through pipeline stages.
+> Welcome to [Deal Tracking]! This channel serves as our central hub for tracking sales deals through pipeline stages.
 >
 > **Quick Links:**
 > - [Documentation](#)

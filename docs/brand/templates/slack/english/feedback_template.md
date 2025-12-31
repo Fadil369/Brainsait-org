@@ -1,6 +1,6 @@
 ---
 title: "Feedback Collection"
-description: "Gather and process team or customer feedback"
+description: "gathering and processing team or customer feedback"
 template_id: "feedback_template"
 category: "hr"
 language: "en"
@@ -20,7 +20,7 @@ tags:
 
 ## Overview
 
-Gather and process team or customer feedback
+gathering and processing team or customer feedback
 
 This template provides a structured approach to feedback collection within your organization,
 aligned with Brainsait's operational standards and best practices.
@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Feedback Collection]! This channel serves as our central hub for gather and process team or customer feedback.
+> Welcome to [Feedback Collection]! This channel serves as our central hub for gathering and processing team or customer feedback.
 >
 > **Quick Links:**
 > - [Documentation](#)

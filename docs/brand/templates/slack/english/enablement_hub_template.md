@@ -1,6 +1,6 @@
 ---
 title: "Enablement Hub"
-description: "Central hub for training and enablement resources"
+description: "organizing training and enablement resources"
 template_id: "enablement_hub_template"
 category: "training"
 language: "en"
@@ -20,7 +20,7 @@ tags:
 
 ## Overview
 
-Central hub for training and enablement resources
+organizing training and enablement resources
 
 This template provides a structured approach to enablement hub within your organization,
 aligned with Brainsait's operational standards and best practices.
@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Enablement Hub]! This channel serves as our central hub for central hub for training and enablement resources.
+> Welcome to [Enablement Hub]! This channel serves as our central hub for organizing training and enablement resources.
 >
 > **Quick Links:**
 > - [Documentation](#)

@@ -1,6 +1,6 @@
 ---
 title: "Event Preparation"
-description: "Plan and coordinate events and conferences"
+description: "planning and coordinating events and conferences"
 template_id: "event_preparation_template"
 category: "operations"
 language: "en"
@@ -20,7 +20,7 @@ tags:
 
 ## Overview
 
-Plan and coordinate events and conferences
+planning and coordinating events and conferences
 
 This template provides a structured approach to event preparation within your organization,
 aligned with Brainsait's operational standards and best practices.
@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Event Preparation]! This channel serves as our central hub for plan and coordinate events and conferences.
+> Welcome to [Event Preparation]! This channel serves as our central hub for planning and coordinating events and conferences.
 >
 > **Quick Links:**
 > - [Documentation](#)

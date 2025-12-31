@@ -1,6 +1,6 @@
 ---
 title: "One-on-One Coaching"
-description: "Structure manager-employee coaching conversations"
+description: "structuring manager-employee coaching conversations"
 template_id: "one_on_one_coaching_template"
 category: "hr"
 language: "en"
@@ -20,7 +20,7 @@ tags:
 
 ## Overview
 
-Structure manager-employee coaching conversations
+structuring manager-employee coaching conversations
 
 This template provides a structured approach to one-on-one coaching within your organization,
 aligned with Brainsait's operational standards and best practices.
@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [One-on-One Coaching]! This channel serves as our central hub for structure manager-employee coaching conversations.
+> Welcome to [One-on-One Coaching]! This channel serves as our central hub for structuring manager-employee coaching conversations.
 >
 > **Quick Links:**
 > - [Documentation](#)

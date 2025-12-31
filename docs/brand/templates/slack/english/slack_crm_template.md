@@ -1,6 +1,6 @@
 ---
 title: "CRM & Sales Pipeline"
-description: "Track customer relationships and sales opportunities"
+description: "tracking customer relationships and sales opportunities"
 template_id: "slack_crm_template"
 category: "sales"
 language: "en"
@@ -20,7 +20,7 @@ tags:
 
 ## Overview
 
-Track customer relationships and sales opportunities
+tracking customer relationships and sales opportunities
 
 This template provides a structured approach to crm & sales pipeline within your organization,
 aligned with Brainsait's operational standards and best practices.
@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [CRM & Sales Pipeline]! This channel serves as our central hub for track customer relationships and sales opportunities.
+> Welcome to [CRM & Sales Pipeline]! This channel serves as our central hub for tracking customer relationships and sales opportunities.
 >
 > **Quick Links:**
 > - [Documentation](#)

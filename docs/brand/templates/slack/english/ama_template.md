@@ -1,6 +1,6 @@
 ---
 title: "Ask Me Anything (AMA)"
-description: "Host Q&A sessions with leadership or experts"
+description: "hosting Q&A sessions with leadership or experts"
 template_id: "ama_template"
 category: "engagement"
 language: "en"
@@ -20,7 +20,7 @@ tags:
 
 ## Overview
 
-Host Q&A sessions with leadership or experts
+hosting Q&A sessions with leadership or experts
 
 This template provides a structured approach to ask me anything (ama) within your organization,
 aligned with Brainsait's operational standards and best practices.
@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Ask Me Anything (AMA)]! This channel serves as our central hub for host q&a sessions with leadership or experts.
+> Welcome to [Ask Me Anything (AMA)]! This channel serves as our central hub for hosting Q&A sessions with leadership or experts.
 >
 > **Quick Links:**
 > - [Documentation](#)

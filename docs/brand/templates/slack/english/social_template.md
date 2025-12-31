@@ -1,6 +1,6 @@
 ---
 title: "Social Media Management"
-description: "Coordinate social media content and campaigns"
+description: "coordinating social media content and campaigns"
 template_id: "social_template"
 category: "marketing"
 language: "en"
@@ -20,7 +20,7 @@ tags:
 
 ## Overview
 
-Coordinate social media content and campaigns
+coordinating social media content and campaigns
 
 This template provides a structured approach to social media management within your organization,
 aligned with Brainsait's operational standards and best practices.
@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Social Media Management]! This channel serves as our central hub for coordinate social media content and campaigns.
+> Welcome to [Social Media Management]! This channel serves as our central hub for coordinating social media content and campaigns.
 >
 > **Quick Links:**
 > - [Documentation](#)

@@ -1,6 +1,6 @@
 ---
 title: "Time-Off Request"
-description: "Manage leave requests and approvals"
+description: "managing leave requests and approvals"
 template_id: "time_off_request_template"
 category: "hr"
 language: "en"
@@ -20,7 +20,7 @@ tags:
 
 ## Overview
 
-Manage leave requests and approvals
+managing leave requests and approvals
 
 This template provides a structured approach to time-off request within your organization,
 aligned with Brainsait's operational standards and best practices.
@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Time-Off Request]! This channel serves as our central hub for manage leave requests and approvals.
+> Welcome to [Time-Off Request]! This channel serves as our central hub for managing leave requests and approvals.
 >
 > **Quick Links:**
 > - [Documentation](#)

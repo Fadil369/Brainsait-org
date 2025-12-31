@@ -1,6 +1,6 @@
 ---
 title: "Customer Onboarding"
-description: "Guide new customers through implementation"
+description: "guiding new customers through implementation"
 template_id: "customer_onboarding_template"
 category: "customer_success"
 language: "en"
@@ -20,7 +20,7 @@ tags:
 
 ## Overview
 
-Guide new customers through implementation
+guiding new customers through implementation
 
 This template provides a structured approach to customer onboarding within your organization,
 aligned with Brainsait's operational standards and best practices.
@@ -72,7 +72,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [Customer Onboarding]! This channel serves as our central hub for guide new customers through implementation.
+> Welcome to [Customer Onboarding]! This channel serves as our central hub for guiding new customers through implementation.
 >
 > **Quick Links:**
 > - [Documentation](#)
