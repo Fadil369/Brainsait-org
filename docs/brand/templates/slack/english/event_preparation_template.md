@@ -1,133 +1,321 @@
 ---
 title: "Event Preparation"
-description: "Plan and coordinate events and conferences"
+description: "BrainSAIT healthcare conference and event coordination"
 template_id: "event_preparation_template"
 category: "operations"
 language: "en"
-version: "1.0"
+version: "2.0"
 last_updated: "2025-12-31"
 tags:
   - template
-  - slack
-  - operations
+  - events
+  - conferences
+  - marketing
 ---
 
 # Event Preparation
 
 <div class="template-meta" markdown>
-**Category:** Operations | **Version:** 1.0 | **Status:** Active
+**Category:** Operations | **Version:** 2.0 | **Status:** Active
 </div>
 
 ## Overview
 
-Plan and coordinate events and conferences
-
-This template provides a structured approach to event preparation within your organization,
-aligned with Brainsait's operational standards and best practices.
+Plan and execute BrainSAIT presence at healthcare conferences, product launches, webinars, and customer events across Saudi Arabia and the GCC region.
 
 ---
 
 ## Channel Structure
 
-### Primary Channels
+### Event Channels
 
-| Channel | Purpose | Visibility |
-|---------|---------|------------|
-| `#main` | Central hub for all communications | Public |
-| `#announcements` | Official announcements and updates | Public |
-| `#resources` | Shared documents and reference materials | Public |
-
-### Optional Channels
-
-| Channel | Purpose | When to Use |
-|---------|---------|-------------|
-| `#questions` | Q&A and support requests | For high-volume workflows |
-| `#feedback` | Collect feedback and suggestions | For iterative processes |
+| Channel | Purpose | Members |
+|---------|---------|---------|
+| `#event-[name]` | Main event coordination | Event team |
+| `#event-[name]-logistics` | Venue, travel, materials | Ops + Marketing |
+| `#event-[name]-content` | Presentations, demos | Product + Marketing |
+| `#events-calendar` | All upcoming events | All |
 
 ---
 
-## Workflow Steps
+## Event Types
 
-### Phase 1: Setup
+### Healthcare Conference
 
-1. **Create the channel** using this template
-2. **Invite stakeholders** with appropriate permissions
-3. **Pin essential resources** to the channel
+```
+🏥 Healthcare Conference
+├── Examples: HIMSS Arabia, Saudi Health, eHealth Summit
+├── Duration: 2-3 days
+├── Team: Sales, Marketing, Product, Exec
+├── Goals: Brand awareness, lead gen, partnerships
+└── Investment: High
+```
 
-### Phase 2: Onboarding
+### Product Launch
 
-1. Welcome new members with the introduction message
-2. Share relevant documentation and guidelines
-3. Assign initial tasks or action items
+```
+🚀 Product Launch Event
+├── Format: Virtual or hybrid
+├── Duration: 2-4 hours
+├── Team: Product, Marketing, CS
+├── Goals: Awareness, adoption, press coverage
+└── Audience: Customers, prospects, partners
+```
 
-### Phase 3: Ongoing Operations
+### Webinar
 
-1. Maintain regular updates and check-ins
-2. Archive completed items appropriately
-3. Iterate on processes based on feedback
+```
+💻 Webinar
+├── Format: Virtual presentation + Q&A
+├── Duration: 45-60 min
+├── Team: Marketing, Product/Expert
+├── Goals: Lead gen, thought leadership
+└── Audience: Targeted prospects
+```
+
+### Customer Event
+
+```
+⭐ Customer Event
+├── Format: Roundtable, advisory board, appreciation
+├── Duration: Half-day to full-day
+├── Team: CS, Exec, Product
+├── Goals: Retention, advocacy, feedback
+└── Audience: Key customers
+```
+
+---
+
+## Event Planning
+
+### 8 Weeks Before
+
+- [ ] Confirm event and budget approval
+- [ ] Create event channel
+- [ ] Assign event lead and team
+- [ ] Book venue/booth (if conference)
+- [ ] Confirm speakers and topics
+- [ ] Create event brief
+
+### 4 Weeks Before
+
+- [ ] Finalize presentations and demos
+- [ ] Order marketing materials (booth, swag, brochures)
+- [ ] Confirm travel and accommodations
+- [ ] Set up registration (if owned event)
+- [ ] Create promotional content
+- [ ] Begin outreach and invitations
+
+### 2 Weeks Before
+
+- [ ] Rehearse presentations and demos
+- [ ] Prepare demo environments
+- [ ] Finalize attendee list
+- [ ] Ship materials to venue
+- [ ] Confirm all logistics
+- [ ] Brief team on goals and messaging
+
+### Day Before
+
+- [ ] Booth/venue setup
+- [ ] Tech check for demos and AV
+- [ ] Team briefing
+- [ ] Prepare lead capture process
+- [ ] Review schedule and assignments
+
+### Event Day
+
+- [ ] Arrive early for setup
+- [ ] Document everything (photos, videos)
+- [ ] Capture leads
+- [ ] Network and engage
+- [ ] Post real-time updates
+
+### Post-Event
+
+- [ ] Lead follow-up within 48 hours
+- [ ] Share event recap
+- [ ] Calculate ROI
+- [ ] Document lessons learned
+- [ ] Update CRM with leads
 
 ---
 
 ## Key Messages
 
-### Welcome Message
+### Event Kickoff
 
-> Welcome to [Event Preparation]! This channel serves as our central hub for plan and coordinate events and conferences.
+> 🎯 **Event Kickoff: [Event Name]**
 >
-> **Quick Links:**
-> - [Documentation](#)
-> - [Guidelines](#)
-> - [Support](#)
+> **Event:** [Name]
+> **Date:** [Date]
+> **Location:** [Venue/Virtual]
+>
+> **Team:**
+>
+> - 👤 Event Lead: @[name]
+> - 🎨 Marketing: @[name]
+> - 💻 Product/Demo: @[name]
+> - 💼 Sales: @[name]
+>
+> **Goals:**
+>
+> - [ ] [Goal 1 with metric]
+> - [ ] [Goal 2 with metric]
+>
+> **Budget:** [X] SAR
+>
+> **Key Dates:**
+>
+> - [Date]: Content finalized
+> - [Date]: Materials shipped
+> - [Date]: Event day
+>
+> **Resources:**
+>
+> - Event Brief: [Link]
+> - Asset Folder: [Link]
+> - Run of Show: [Link]
 
-### Check-in Template
+### Pre-Event Brief
 
+```markdown
+## Pre-Event Brief: [Event Name]
+
+**Date:** [Date]
+**Location:** [Venue]
+**BrainSAIT Team:** [Names]
+
+### Event Overview
+
+- **Type:** Conference / Webinar / Customer Event
+- **Expected Attendance:** [X]
+- **Our Booth/Room:** [Location]
+
+### Goals
+
+1. Generate [X] qualified leads
+2. Schedule [X] follow-up demos
+3. Connect with [X] target accounts
+4. [Other goal]
+
+### Key Messages
+
+- **Primary:** [50% rejection reduction, 98% clean claims]
+- **Proof Points:** [Customer names, metrics]
+- **Differentiators:** [NPHIES-native, Arabic-first]
+
+### Target Attendees
+
+| Company | Contact | Priority |
+|---------|---------|----------|
+| [Name] | [Person] | High |
+
+### Demo Scenarios
+
+1. ClaimLinc validation in action
+2. PolicyLinc eligibility check
+3. End-to-end claims workflow
+
+### Schedule
+
+| Time | Activity | Owner |
+|------|----------|-------|
+| [Time] | [Activity] | @[name] |
+
+### Lead Capture Process
+
+- Use [tool/app] for lead capture
+- Qualify leads on-site
+- Sync to CRM within 24 hours
+- Follow-up assigned by [Date]
 ```
-## Daily/Weekly Check-in
 
-**Progress:**
-- [ ] Task 1
-- [ ] Task 2
+### Event Recap
 
-**Blockers:**
-- None / [Describe blocker]
+```markdown
+## Event Recap: [Event Name]
 
-**Next Steps:**
-- [Action item 1]
-- [Action item 2]
+**Date:** [Date]
+**Location:** [Venue]
+**Team:** [Names]
+
+### Results vs. Goals
+
+| Goal | Target | Actual | Status |
+|------|--------|--------|--------|
+| Leads | [X] | [X] | 🟢/🟡/🔴 |
+| Demos scheduled | [X] | [X] | 🟢/🟡/🔴 |
+| Target accounts met | [X] | [X] | 🟢/🟡/🔴 |
+
+### Lead Summary
+
+- Total leads captured: [X]
+- MQL-ready: [X]
+- Hot leads (immediate follow-up): [X]
+
+### Highlights
+
+- ✅ [Win 1]
+- ✅ [Win 2]
+- ✅ [Win 3]
+
+### Key Conversations
+
+| Company | Contact | Notes | Next Step |
+|---------|---------|-------|-----------|
+| [Name] | [Person] | [Brief] | [Action] |
+
+### What Worked
+
+- [Positive 1]
+- [Positive 2]
+
+### What to Improve
+
+- [Improvement 1]
+- [Improvement 2]
+
+### ROI
+
+- Investment: [X] SAR
+- Pipeline generated: [X] SAR
+- Expected ROI: [X]x
+
+### Photos & Content
+
+📸 [Link to photo folder]
+📹 [Link to videos]
+
+### Action Items
+
+- [ ] [Action] - @[owner] - Due: [Date]
 ```
 
 ---
 
-## Best Practices
+## Saudi Healthcare Events Calendar
 
-!!! tip "Brainsait Recommendations"
-    - **Consistency**: Use standardized naming conventions
-    - **Documentation**: Keep channel topics and descriptions updated
-    - **Engagement**: Encourage active participation from all members
-    - **Organization**: Use threads to keep conversations organized
+| Event | Timing | Location | Type |
+|-------|--------|----------|------|
+| Saudi Health | March | Riyadh | Conference |
+| HIMSS Arabia | Q2 | Riyadh | Conference |
+| eHealth Summit | Q3 | Various | Conference |
+| Vision 2030 Healthcare | Q4 | Riyadh | Government |
+| Insurance Summit | Q4 | Riyadh | Industry |
 
 ---
 
 ## Integration Points
 
-This template integrates with:
-
-- **Brainsait Agents**: Connect with relevant ClaimLinc, PolicyLinc, or DocsLinc agents
-- **Notion**: Sync key documents and databases
-- **Google Workspace**: Link shared drives and calendars
-
----
-
-## Customization
-
-Adapt this template to your specific needs by:
-
-1. Modifying channel names to match your naming conventions
-2. Adding custom workflows specific to your department
-3. Integrating with your existing tools and systems
+- **Eventbrite/Hopin**: Registration
+- **CRM**: Lead tracking
+- **Notion**: Event planning docs
+- **Google Drive**: Assets and photos
+- **Calendar**: Team scheduling
 
 ---
 
 <div class="template-footer" markdown>
-*Brainsait Template v1.0 | Last Updated: 2025-12-31*
+*BrainSAIT Event Preparation v2.0 | Healthcare Intelligence, Delivered*
 </div>

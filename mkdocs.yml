@@ -80,7 +80,7 @@ extra:
     og_type: website
     og_title: BrainSAIT Knowledge System
     og_description: Unified documentation platform for BrainSAIT Healthcare AI ecosystem
-    og_image: assets/images/og-preview.png
+    og_image: assets/images/og-preview.svg
     og_locale: en_US
     # Twitter Card metadata
     twitter_card: summary_large_image
