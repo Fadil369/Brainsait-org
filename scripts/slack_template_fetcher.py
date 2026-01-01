@@ -22,11 +22,13 @@ Usage:
     python slack_template_fetcher.py --list-templates
 """
 
+import os
 import re
+import json
 import argparse
 from datetime import datetime
 from pathlib import Path
-from typing import Dict
+from typing import Optional, Dict, List, Any
 
 try:
     from slack_sdk import WebClient
@@ -162,8 +164,8 @@ TEMPLATE_METADATA = {
         "category": "training",
         "title_en": "Enablement Hub",
         "title_ar": "مركز التمكين",
-        "description_en": "organizing training and enablement resources",
-        "description_ar": "تنظيم موارد التدريب والتمكين",
+        "description_en": "providing training and enablement resources",
+        "description_ar": "موارد التدريب والتمكين",
     },
     "feedback_template": {
         "category": "hr",
@@ -184,7 +186,7 @@ TEMPLATE_METADATA = {
         "title_en": "Benefits Hub",
         "title_ar": "مركز المزايا",
         "description_en": "providing employee benefits information and resources",
-        "description_ar": "توفير معلومات وموارد مزايا الموظفين",
+        "description_ar": "معلومات وموارد مزايا الموظفين",
     },
     "time_off_request_template": {
         "category": "hr",
@@ -429,7 +431,7 @@ aligned with Brainsait's operational standards and best practices.
 
 ### Welcome Message
 
-> Welcome to [{title}]! This channel serves as our central hub for {description}.
+> Welcome to [{title}]! This channel serves as our central hub for {description.lower()}.
 >
 > **Quick Links:**
 > - [Documentation](#)

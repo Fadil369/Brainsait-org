@@ -1,133 +1,325 @@
 ---
 title: "CRM & Sales Pipeline"
-description: "tracking customer relationships and sales opportunities"
+description: "BrainSAIT customer relationship management and healthcare sales tracking"
 template_id: "slack_crm_template"
 category: "sales"
 language: "en"
-version: "1.0"
+version: "2.0"
 last_updated: "2025-12-31"
 tags:
   - template
-  - slack
   - sales
+  - crm
+  - healthcare
 ---
 
 # CRM & Sales Pipeline
 
 <div class="template-meta" markdown>
-**Category:** Sales | **Version:** 1.0 | **Status:** Active
+**Category:** Sales | **Version:** 2.0 | **Status:** Active
 </div>
 
 ## Overview
 
-tracking customer relationships and sales opportunities
-
-This template provides a structured approach to crm & sales pipeline within your organization,
-aligned with Brainsait's operational standards and best practices.
+Centralize BrainSAIT customer relationship management—track accounts, contacts, interactions, and customer health across hospitals, clinics, and insurance organizations in Saudi Arabia.
 
 ---
 
 ## Channel Structure
 
-### Primary Channels
+### CRM Channels
 
-| Channel | Purpose | Visibility |
-|---------|---------|------------|
-| `#main` | Central hub for all communications | Public |
-| `#announcements` | Official announcements and updates | Public |
-| `#resources` | Shared documents and reference materials | Public |
+| Channel | Purpose | Members |
+|---------|---------|---------|
+| `#accounts-enterprise` | Tier 1 hospital accounts (200+ beds) | AEs + CSMs |
+| `#accounts-midmarket` | Tier 2 accounts (50-200 beds) | AEs + CSMs |
+| `#accounts-sme` | Tier 3 clinics and small practices | AEs + Partners |
+| `#customer-intel` | Account research and insights | Sales + Marketing |
+| `#renewals` | Upcoming renewals and expansion | CSMs + Sales |
 
-### Optional Channels
+### Customer-Specific Channels
 
-| Channel | Purpose | When to Use |
-|---------|---------|-------------|
-| `#questions` | Q&A and support requests | For high-volume workflows |
-| `#feedback` | Collect feedback and suggestions | For iterative processes |
+| Pattern | Purpose |
+|---------|---------|
+| `#acct-[customer]` | Dedicated account channel |
+| `#acct-[customer]-executive` | Executive relationship channel |
 
 ---
 
-## Workflow Steps
+## Account Tiers
 
-### Phase 1: Setup
+| Tier | Criteria | Value | Team |
+|------|----------|-------|------|
+| **Enterprise** | 200+ beds, 10K+ monthly claims | 500K+ SAR | Named AE + CSM |
+| **Mid-Market** | 50-200 beds, 2-10K claims | 100-500K SAR | Named AE |
+| **SME** | <50 beds, <2K claims | 20-100K SAR | Partner/pooled |
 
-1. **Create the channel** using this template
-2. **Invite stakeholders** with appropriate permissions
-3. **Pin essential resources** to the channel
+### Account Health Scoring
 
-### Phase 2: Onboarding
+| Score | Status | Criteria | Action |
+|-------|--------|----------|--------|
+| 🟢 90-100 | Healthy | High adoption, expanding, advocate | Upsell, reference |
+| 🟡 70-89 | Stable | Steady usage, neutral sentiment | Engage, prevent churn |
+| 🟠 50-69 | At Risk | Low adoption, issues reported | Intervention plan |
+| 🔴 <50 | Critical | Churn signals, escalations | Executive engagement |
 
-1. Welcome new members with the introduction message
-2. Share relevant documentation and guidelines
-3. Assign initial tasks or action items
+---
 
-### Phase 3: Ongoing Operations
+## Account Templates
 
-1. Maintain regular updates and check-ins
-2. Archive completed items appropriately
-3. Iterate on processes based on feedback
+### New Account Setup
+
+```markdown
+## New Account: [Customer Name]
+
+**Account ID:** ACCT-[XXXX]
+**Tier:** Enterprise / Mid-Market / SME
+**Created:** [Date]
+
+### Account Profile
+
+- **Type:** Hospital / Clinic / Insurance / TPA
+- **Size:** [X] beds / [X] monthly claims
+- **Location:** [City], Saudi Arabia
+- **Industry Segment:** [Government / Private / Academic]
+
+### Products Deployed
+
+| Agent | Status | Go-Live | Monthly Usage |
+|-------|--------|---------|---------------|
+| ClaimLinc | Active | [Date] | [X] claims |
+| PolicyLinc | Active | [Date] | [X] verifications |
+| DocsLinc | Pending | [Date] | - |
+
+### Key Stakeholders
+
+| Name | Title | Role | Contact |
+|------|-------|------|---------|
+| [Name] | CIO | Executive Sponsor | [Email] |
+| [Name] | RCM Director | Champion | [Email] |
+| [Name] | IT Manager | Technical | [Email] |
+
+### Contract Details
+
+- **Start Date:** [Date]
+- **End Date:** [Date]
+- **ACV:** [X] SAR
+- **Payment Terms:** [Terms]
+
+### Success Metrics
+
+| Metric | Baseline | Current | Target |
+|--------|----------|---------|--------|
+| Clean Claim Rate | [X]% | [X]% | 98% |
+| Rejection Rate | [X]% | [X]% | <3% |
+| Processing Time | [X] min | [X] min | <2 min |
+```
+
+### Account Health Check
+
+```markdown
+## Account Health Check - [Customer Name]
+
+**Date:** [Date]
+**Health Score:** [X]/100 🟢/🟡/🟠/🔴
+
+### Usage Metrics (Last 30 Days)
+
+| Metric | Value | Trend |
+|--------|-------|-------|
+| Claims Processed | [X] | ↑/↓/→ |
+| Active Users | [X] | ↑/↓/→ |
+| API Calls | [X] | ↑/↓/→ |
+| Support Tickets | [X] | ↑/↓/→ |
+
+### Product Adoption
+
+| Agent | Adoption | Notes |
+|-------|----------|-------|
+| ClaimLinc | [X]% | [Notes] |
+| PolicyLinc | [X]% | [Notes] |
+| DocsLinc | [X]% | [Notes] |
+
+### Sentiment Indicators
+
+- [ ] NPS Score: [X]
+- [ ] CSAT: [X]/5
+- [ ] Executive engagement: Active / Declining
+- [ ] Reference willingness: Yes / No / Maybe
+
+### Risk Factors
+
+- [ ] [Risk 1]
+- [ ] [Risk 2]
+
+### Recommended Actions
+
+1. [Action] - Owner: @[name] - Due: [Date]
+```
 
 ---
 
 ## Key Messages
 
-### Welcome Message
+### Account Update
 
-> Welcome to [CRM & Sales Pipeline]! This channel serves as our central hub for tracking customer relationships and sales opportunities.
+> 📊 **Account Update: [Customer Name]**
 >
-> **Quick Links:**
-> - [Documentation](#)
-> - [Guidelines](#)
-> - [Support](#)
+> **Health Score:** [X]/100 🟢/🟡/🟠/🔴
+>
+> **Recent Activity:**
+>
+> - [Activity 1]
+> - [Activity 2]
+>
+> **Key Metrics:**
+>
+> - Claims this month: [X] (+/-[X]%)
+> - Clean claim rate: [X]%
+> - Active users: [X]
+>
+> **Next Steps:**
+>
+> - [ ] [Action] - @[owner]
 
-### Check-in Template
+### Renewal Alert
 
-```
-## Daily/Weekly Check-in
+> 🔔 **Renewal Alert: [Customer Name]**
+>
+> **Renewal Date:** [Date] ([X] days away)
+> **Current ACV:** [X] SAR
+> **Proposed ACV:** [X] SAR
+>
+> **Account Health:** 🟢/🟡/🟠/🔴
+>
+> **Expansion Opportunities:**
+>
+> - [ ] Add DocsLinc: +[X] SAR
+> - [ ] Add RadioLinc: +[X] SAR
+> - [ ] Volume increase: +[X] SAR
+>
+> **Risks:**
+>
+> - [Any concerns]
+>
+> **Next Steps:**
+>
+> - [ ] QBR scheduled: [Date]
+> - [ ] Renewal proposal sent: [Date]
 
-**Progress:**
-- [ ] Task 1
-- [ ] Task 2
+### Customer Win Story
 
-**Blockers:**
-- None / [Describe blocker]
+```markdown
+## Customer Success Story: [Customer Name]
 
-**Next Steps:**
-- [Action item 1]
-- [Action item 2]
+**Industry:** [Hospital / Clinic / Insurance]
+**Size:** [X] beds / [X] monthly claims
+**Region:** [City], Saudi Arabia
+
+### Challenge
+
+[Describe the customer's initial challenges - high rejection rates,
+manual processing, NPHIES compliance issues, etc.]
+
+### Solution
+
+**Products Deployed:** ClaimLinc, PolicyLinc, DocsLinc
+
+**Implementation Highlights:**
+
+- Timeline: [X] weeks
+- Integration: [EMR/HIS system]
+- Training: [X] users
+
+### Results
+
+| Metric | Before | After | Improvement |
+|--------|--------|-------|-------------|
+| Clean Claim Rate | [X]% | [X]% | +[X]% |
+| Rejection Rate | [X]% | [X]% | -[X]% |
+| Processing Time | [X] min | [X] sec | -[X]% |
+| Manual Review | [X]% | [X]% | -[X]% |
+
+### Customer Quote
+
+> "[Quote from customer about BrainSAIT impact]"
+>
+> — [Name], [Title], [Customer Name]
+
+### Referenceable?
+
+- [ ] Case study approved
+- [ ] Reference call available
+- [ ] Logo usage approved
 ```
 
 ---
 
-## Best Practices
+## Sales Process Integration
 
-!!! tip "Brainsait Recommendations"
-    - **Consistency**: Use standardized naming conventions
-    - **Documentation**: Keep channel topics and descriptions updated
-    - **Engagement**: Encourage active participation from all members
-    - **Organization**: Use threads to keep conversations organized
+### Lead to Customer Lifecycle
+
+```
+1. Lead Generated (Marketing)
+    ↓
+2. Qualified (Sales)
+    ↓
+3. Opportunity Created → Deal Tracking
+    ↓
+4. Closed Won → Account Created
+    ↓
+5. Implementation → Customer Onboarding
+    ↓
+6. Go-Live → CRM Active Management
+    ↓
+7. Renewal/Expansion → Sales Cycle
+```
+
+### Account Planning
+
+```markdown
+## Account Plan: [Customer Name]
+
+**FY Target:** [X] SAR
+**Current ACV:** [X] SAR
+**Whitespace:** [X] SAR
+
+### Growth Opportunities
+
+| Opportunity | Value | Timeline | Probability |
+|-------------|-------|----------|-------------|
+| Add DocsLinc | [X] SAR | Q[X] | [X]% |
+| Volume increase | [X] SAR | Q[X] | [X]% |
+| New department | [X] SAR | Q[X] | [X]% |
+
+### Relationship Map
+
+| Stakeholder | Relationship | Strategy |
+|-------------|--------------|----------|
+| [Name] - CIO | Strong | Maintain as champion |
+| [Name] - CFO | Neutral | Build ROI case |
+| [Name] - CMO | Unknown | Introduce RadioLinc |
+
+### Competitive Threats
+
+- [Threat 1 and mitigation]
+
+### Action Plan
+
+1. [Action] - Owner - Due
+```
 
 ---
 
 ## Integration Points
 
-This template integrates with:
-
-- **Brainsait Agents**: Connect with relevant ClaimLinc, PolicyLinc, or DocsLinc agents
-- **Notion**: Sync key documents and databases
-- **Google Workspace**: Link shared drives and calendars
-
----
-
-## Customization
-
-Adapt this template to your specific needs by:
-
-1. Modifying channel names to match your naming conventions
-2. Adding custom workflows specific to your department
-3. Integrating with your existing tools and systems
+- **CRM System**: Account records, opportunity sync
+- **DataLinc**: Usage analytics, health scores
+- **Notion**: Account plans, success stories
+- **Calendar**: QBR and check-in scheduling
 
 ---
 
 <div class="template-footer" markdown>
-*Brainsait Template v1.0 | Last Updated: 2025-12-31*
+*BrainSAIT CRM & Sales Pipeline v2.0 | Healthcare Intelligence, Delivered*
 </div>

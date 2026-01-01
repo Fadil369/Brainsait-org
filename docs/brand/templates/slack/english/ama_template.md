@@ -1,133 +1,274 @@
 ---
 title: "Ask Me Anything (AMA)"
-description: "hosting Q&A sessions with leadership or experts"
+description: "BrainSAIT leadership Q&A and expert sessions"
 template_id: "ama_template"
 category: "engagement"
 language: "en"
-version: "1.0"
+version: "2.0"
 last_updated: "2025-12-31"
 tags:
   - template
-  - slack
   - engagement
+  - leadership
+  - culture
 ---
 
 # Ask Me Anything (AMA)
 
 <div class="template-meta" markdown>
-**Category:** Engagement | **Version:** 1.0 | **Status:** Active
+**Category:** Engagement | **Version:** 2.0 | **Status:** Active
 </div>
 
 ## Overview
 
-hosting Q&A sessions with leadership or experts
-
-This template provides a structured approach to ask me anything (ama) within your organization,
-aligned with Brainsait's operational standards and best practices.
+Host engaging Q&A sessions at BrainSAIT—leadership AMAs, healthcare expert sessions, agent deep dives, and customer success stories to foster transparency and learning.
 
 ---
 
 ## Channel Structure
 
-### Primary Channels
+### AMA Channels
 
-| Channel | Purpose | Visibility |
-|---------|---------|------------|
-| `#main` | Central hub for all communications | Public |
-| `#announcements` | Official announcements and updates | Public |
-| `#resources` | Shared documents and reference materials | Public |
-
-### Optional Channels
-
-| Channel | Purpose | When to Use |
-|---------|---------|-------------|
-| `#questions` | Q&A and support requests | For high-volume workflows |
-| `#feedback` | Collect feedback and suggestions | For iterative processes |
+| Channel | Purpose | Frequency |
+|---------|---------|-----------|
+| `#ama-leadership` | CEO, founders, executives | Monthly |
+| `#ama-healthcare` | Industry experts, clinical advisors | Quarterly |
+| `#ama-product` | Product and engineering deep dives | Bi-weekly |
+| `#ama-customers` | Customer success spotlights | Monthly |
+| `#ama-archive` | Past AMA transcripts | Ongoing |
 
 ---
 
-## Workflow Steps
+## AMA Types
 
-### Phase 1: Setup
+### Leadership AMA
 
-1. **Create the channel** using this template
-2. **Invite stakeholders** with appropriate permissions
-3. **Pin essential resources** to the channel
+```
+👤 Leadership AMA
+├── Host: CEO / Founder / VP
+├── Format: Live Q&A (60 min)
+├── Audience: All employees
+├── Frequency: Monthly
+└── Focus: Strategy, vision, company updates
+```
 
-### Phase 2: Onboarding
+### Healthcare Expert AMA
 
-1. Welcome new members with the introduction message
-2. Share relevant documentation and guidelines
-3. Assign initial tasks or action items
+```
+🏥 Healthcare Expert AMA
+├── Host: Clinical advisor / Industry expert
+├── Format: Presentation + Q&A (90 min)
+├── Audience: All employees
+├── Frequency: Quarterly
+└── Focus: Industry trends, NPHIES updates, clinical insights
+```
 
-### Phase 3: Ongoing Operations
+### Product Deep Dive
 
-1. Maintain regular updates and check-ins
-2. Archive completed items appropriately
-3. Iterate on processes based on feedback
+```
+💻 Product Deep Dive AMA
+├── Host: Product Manager / Tech Lead
+├── Format: Demo + Q&A (45 min)
+├── Audience: Cross-functional
+├── Frequency: Bi-weekly
+└── Focus: New features, roadmap, agent updates
+```
+
+### Customer Spotlight
+
+```
+⭐ Customer Spotlight AMA
+├── Host: CSM + Customer champion (optional)
+├── Format: Case study + Q&A (45 min)
+├── Audience: All employees
+├── Frequency: Monthly
+└── Focus: Success stories, lessons learned
+```
+
+---
+
+## AMA Planning
+
+### Planning Checklist (2 weeks before)
+
+- [ ] Confirm host and date
+- [ ] Create AMA channel or thread
+- [ ] Announce to company
+- [ ] Collect pre-submitted questions
+- [ ] Prepare host with top questions
+- [ ] Set up recording (if applicable)
+
+### Day-Of Checklist
+
+- [ ] Post welcome message and ground rules
+- [ ] Monitor for questions
+- [ ] Track time and pace
+- [ ] Capture key takeaways
+- [ ] Thank participants
+
+### Post-AMA Checklist
+
+- [ ] Share recording/transcript
+- [ ] Post summary of key points
+- [ ] Follow up on unanswered questions
+- [ ] Gather feedback
+- [ ] Archive in `#ama-archive`
 
 ---
 
 ## Key Messages
 
-### Welcome Message
+### AMA Announcement
 
-> Welcome to [Ask Me Anything (AMA)]! This channel serves as our central hub for hosting Q&A sessions with leadership or experts.
+> 📣 **Upcoming AMA: [Title]**
 >
-> **Quick Links:**
-> - [Documentation](#)
-> - [Guidelines](#)
-> - [Support](#)
+> **Host:** [Name], [Title]
+> **Date:** [Day, Date]
+> **Time:** [Time] (Riyadh time)
+> **Channel:** #[channel]
+>
+> **Topic:** [Brief description]
+>
+> **What to Expect:**
+>
+> - [Topic 1]
+> - [Topic 2]
+> - Open Q&A
+>
+> **Submit Questions Early:**
+> Reply to this thread with your questions! Top-voted questions will be prioritized.
+>
+> 📅 Add to calendar: [Link]
 
-### Check-in Template
+### AMA Welcome Message
 
+> 👋 **Welcome to today's AMA!**
+>
+> **Host:** [Name], [Title]
+> **Topic:** [Topic]
+>
+> **Ground Rules:**
+>
+> 1. One question per message (use threads for follow-ups)
+> 2. Upvote questions you want answered (👍)
+> 3. Keep it respectful and constructive
+> 4. Off-topic questions saved for future AMAs
+>
+> **Format:**
+>
+> - 0-10 min: Opening remarks
+> - 10-50 min: Q&A
+> - 50-60 min: Closing thoughts
+>
+> Let's get started! 🚀
+
+### AMA Summary
+
+```markdown
+## AMA Summary: [Title]
+
+**Date:** [Date]
+**Host:** [Name], [Title]
+**Attendance:** [X] participants
+**Questions Asked:** [X]
+**Questions Answered:** [X]
+
+### Key Highlights
+
+1. **[Topic 1]**
+   > "[Key quote or insight]"
+
+2. **[Topic 2]**
+   > "[Key quote or insight]"
+
+3. **[Topic 3]**
+   > "[Key quote or insight]"
+
+### Top Questions & Answers
+
+**Q: [Question]**
+A: [Answer summary]
+
+**Q: [Question]**
+A: [Answer summary]
+
+### Action Items
+
+- [ ] [Action] - Owner: @[name]
+- [ ] [Action] - Owner: @[name]
+
+### Unanswered Questions (for follow-up)
+
+- [Question 1] - Will address in [forum]
+- [Question 2] - Will address in [forum]
+
+### Recording
+
+📹 [Link to recording]
+
+### Next AMA
+
+[Date]: [Topic] with [Host]
 ```
-## Daily/Weekly Check-in
 
-**Progress:**
-- [ ] Task 1
-- [ ] Task 2
+---
 
-**Blockers:**
-- None / [Describe blocker]
+## Sample AMA Topics
 
-**Next Steps:**
-- [Action item 1]
-- [Action item 2]
-```
+### Leadership AMAs
+
+| Topic | Suggested Host | Best Timing |
+|-------|----------------|-------------|
+| Q1 Strategy & Goals | CEO | January |
+| Product Vision 2025 | CPO | After roadmap planning |
+| Company Culture & Values | CEO/HR | During growth phases |
+| Funding & Financials Update | CEO/CFO | Post-round |
+| Healthcare Market Trends | CEO | Quarterly |
+
+### Product AMAs
+
+| Topic | Host | Audience |
+|-------|------|----------|
+| ClaimLinc Validation Engine | ClaimLinc PM | All |
+| NPHIES Integration Updates | Tech Lead | Engineering + CS |
+| Roadmap Preview | CPO | All |
+| New Agent Launch | Product Team | All |
+| API & Integration Patterns | Engineering | Partners + Customers |
+
+### Healthcare Expert AMAs
+
+| Topic | Suggested Expert |
+|-------|------------------|
+| NPHIES 2.0 Changes | NPHIES consultant |
+| PDPL Compliance Updates | Legal/Compliance |
+| RCM Best Practices | Industry expert |
+| Saudi Healthcare Trends | Healthcare analyst |
+| Clinical Coding Updates | Coding specialist |
 
 ---
 
 ## Best Practices
 
-!!! tip "Brainsait Recommendations"
-    - **Consistency**: Use standardized naming conventions
-    - **Documentation**: Keep channel topics and descriptions updated
-    - **Engagement**: Encourage active participation from all members
-    - **Organization**: Use threads to keep conversations organized
+!!! tip "Running Great AMAs"
+    - **Transparency**: Answer honestly, even difficult questions
+    - **Preparation**: Review pre-submitted questions beforehand
+    - **Inclusivity**: Acknowledge all questions, even if not answered live
+    - **Follow-up**: Always close the loop on unanswered questions
+    - **Recording**: Make sessions available for async viewing
+    - **Feedback**: Continuously improve based on participant input
 
 ---
 
 ## Integration Points
 
-This template integrates with:
-
-- **Brainsait Agents**: Connect with relevant ClaimLinc, PolicyLinc, or DocsLinc agents
-- **Notion**: Sync key documents and databases
-- **Google Workspace**: Link shared drives and calendars
-
----
-
-## Customization
-
-Adapt this template to your specific needs by:
-
-1. Modifying channel names to match your naming conventions
-2. Adding custom workflows specific to your department
-3. Integrating with your existing tools and systems
+- **Google Meet/Zoom**: Live video sessions
+- **Slack**: Async Q&A and announcements
+- **Notion**: AMA archive and summaries
+- **Calendar**: Scheduling and reminders
+- **Loom**: Recording for async viewing
 
 ---
 
 <div class="template-footer" markdown>
-*Brainsait Template v1.0 | Last Updated: 2025-12-31*
+*BrainSAIT Ask Me Anything v2.0 | Healthcare Intelligence, Delivered*
 </div>
