@@ -1,119 +1,111 @@
-# BrainSAIT Documentation
+﻿# BrainSAIT Documentation
+
+[![Build Status](https://github.com/Fadil369/brainsait-docs/actions/workflows/docs.yml/badge.svg)](https://github.com/Fadil369/brainsait-docs/actions)
+[![Documentation](https://img.shields.io/badge/docs-online-blue)](https://fadil369.github.io/brainsait-docs/)
 
 Welcome to the BrainSAIT Knowledge System - a comprehensive documentation platform covering Healthcare, Business, Tech & Development, and Personal Development domains.
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
+
 - Python 3.8+
 - pip
+- Node.js 18+ (for linting tools)
 
 ### Installation
 
 1. **Clone the repository**:
+
 ```bash
 git clone https://github.com/fadil369/brainsait-docs.git
 cd brainsait-docs
 ```
 
 2. **Create virtual environment**:
+
 ```bash
 python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
 3. **Install dependencies**:
+
 ```bash
-pip install -r requirements.txt
+make install
+# Or manually: pip install -r requirements.txt
 ```
 
 4. **Serve locally**:
+
 ```bash
-mkdocs serve
+make serve
+# Or manually: mkdocs serve
 ```
 
 5. **Open in browser**:
-Navigate to `http://127.0.0.1:8000`
+   Navigate to http://127.0.0.1:8000
 
-## 📚 Documentation Structure
+## Development Commands
+
+| Command | Description |
+|---------|-------------|
+| make install | Install all dependencies |
+| make serve | Start local development server |
+| make build | Build static site |
+| make lint | Run all linters |
+| make test | Run tests and validation |
+| make clean | Remove build artifacts |
+| make ar-generate | Generate Arabic placeholder files |
+| make pre-commit | Run pre-commit hooks |
+
+## Documentation Structure
 
 ```
 docs/
 ├── healthcare/          # Healthcare domain
-│   ├── overview/       # Saudi healthcare landscape
-│   ├── claims/         # Claims & reimbursement
-│   ├── nphies/         # NPHIES integration
-│   ├── agents/         # Healthcare agents
-│   └── sop/            # Standard operating procedures
-├── business/           # Business domain
-│   ├── strategy/       # Mission, vision, strategy
-│   ├── products/       # Product catalog
-│   ├── partners/       # Partner programs
-│   └── pricing/        # Pricing models
-├── tech/               # Tech & development
-│   ├── infrastructure/ # Cloud & edge infrastructure
-│   ├── agents/         # Agent ecosystem
-│   ├── apps/           # Application documentation
-│   └── devops/         # CI/CD & deployment
-├── personal/           # Personal development
-│   ├── mindset.md
-│   ├── productivity.md
-│   └── leadership.md
-├── brand/              # Brand identity
-│   └── index.md
-└── appendices/         # Reference materials
-    └── glossary_master.md
+│   ├── overview/        # Saudi healthcare landscape
+│   ├── claims/          # Claims & reimbursement
+│   ├── nphies/          # NPHIES integration
+│   ├── agents/          # Healthcare agents
+│   ├── cloudpital/      # Cloudpital EMR/RCM integration
+│   └── sop/             # Standard operating procedures
+├── business/            # Business domain
+│   ├── strategy/        # Mission, vision, strategy
+│   ├── products/        # Product catalog
+│   ├── partners/        # Partner programs
+│   └── pricing/         # Pricing models
+├── tech/                # Tech & development
+│   ├── infrastructure/  # Cloud & edge infrastructure
+│   ├── agents/          # Agent ecosystem
+│   ├── apps/            # Application documentation
+│   └── devops/          # CI/CD & deployment
+├── personal/            # Personal development
+├── brand/               # Brand identity & templates
+└── appendices/          # Reference materials
 ```
 
-## 🎯 Key Features
+## Key Features
 
-- **Bilingual Support**: English and Arabic content
+- **Bilingual Support**: English and Arabic content with RTL support
 - **Code Examples**: Practical implementation guides
-- **Agent Documentation**: Comprehensive agent ecosystem docs
+- **Agent Documentation**: Comprehensive LINC agent ecosystem docs
 - **SOPs**: Standard operating procedures
 - **API References**: Technical specifications
 - **Compliance Guides**: PDPL, HIPAA, and regulatory compliance
 
-## 🏥 Healthcare Documentation
-
-- NPHIES integration guides
-- Claims lifecycle management
-- FHIR R4 implementation
-- BrainSAIT Health Linc agents
-- RCM optimization playbooks
-
-## 💼 Business Documentation
-
-- Strategic vision and mission
-- Product catalog
-- Market analysis
-- Partner programs
-- Pricing strategies
-
-## 🛠️ Tech Documentation
-
-- Infrastructure architecture
-- Cloudflare integration
-- Coolify deployment
-- Agent development guides
-- API specifications
-
-## 🌟 Personal Development
-
-- Leadership frameworks
-- Productivity systems
-- Learning methodologies
-- Ethics and AI
-
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please follow these steps:
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-docs`)
-3. Commit your changes (`git commit -m 'Add amazing documentation'`)
-4. Push to the branch (`git push origin feature/amazing-docs`)
-5. Open a Pull Request
+2. Create a feature branch (git checkout -b feature/amazing-docs)
+3. Install pre-commit hooks (pre-commit install)
+4. Make your changes
+5. Run linters (make lint)
+6. Commit your changes (git commit -m 'Add amazing documentation')
+7. Push to the branch (git push origin feature/amazing-docs)
+8. Open a Pull Request
 
 ### Documentation Standards
 
@@ -123,89 +115,55 @@ We welcome contributions! Please follow these steps:
 - Follow the existing structure
 - Include YAML frontmatter in markdown files
 
-## 📝 Building for Production
+## Building for Production
 
 ```bash
 # Build static site
-mkdocs build
+make build
 
 # Output will be in ./site directory
 ```
 
-## 🚢 Deployment
+## Deployment
 
-### Cloudflare Pages
+### GitHub Pages (Automated)
 
-```bash
-# Deploy to Cloudflare Pages
-wrangler pages publish site
-```
+Pushing to main-enterprise branch automatically deploys via GitHub Actions.
 
-### GitHub Pages
+### Manual Deployment
 
 ```bash
 # Deploy to GitHub Pages
-mkdocs gh-deploy
+make deploy
+
+# Or with MkDocs directly
+mkdocs gh-deploy --force
 ```
 
-## 🔧 Configuration
+## Security
 
-The documentation is configured through `mkdocs.yml`:
+Please see [SECURITY.md](SECURITY.md) for our security policy and how to report vulnerabilities.
 
-- **Theme**: Material for MkDocs
-- **Plugins**: Search, i18n
-- **Extensions**: Admonitions, code highlighting, tabs
-- **Navigation**: Structured by domain
+## Configuration
 
-## 📖 Documentation Conventions
+The documentation is configured through:
 
-### YAML Frontmatter
+- mkdocs.yml - Main MkDocs configuration
+- .markdownlint.json - Markdown linting rules
+- .pre-commit-config.yaml - Pre-commit hooks
+- .editorconfig - Editor configuration
 
-```yaml
----
-title: Document Title
-domain: healthcare|business|tech|personal
-chapter: chapter_name
-version: 1.0.0
-last_updated: 2025-01-15
----
-```
+## License
 
-### Code Comments
+Copyright © 2026 BrainSAIT. All rights reserved.
 
-```python
-# BRAINSAIT: System-level annotation
-# AGENT: Agent-specific functionality
-# MEDICAL: Healthcare/clinical context
-# NEURAL: AI/ML components
-```
-
-## 🔐 Security & Compliance
-
-All documentation follows:
-- PDPL (Personal Data Protection Law) guidelines
-- HIPAA alignment for healthcare content
-- Secure coding practices
-- Audit logging standards
-
-## 📞 Support
+## Support
 
 - **Email**: docs@brainsait.com
 - **Website**: https://brainsait.com
-- **GitHub Issues**: https://github.com/brainsait/docs/issues
-
-## 📄 License
-
-Copyright © 2025 BrainSAIT. All rights reserved.
-
-## 🙏 Acknowledgments
-
-Built with:
-- [MkDocs](https://www.mkdocs.org/)
-- [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
-- [Cloudflare Pages](https://pages.cloudflare.com/)
+- **GitHub Issues**: https://github.com/fadil369/brainsait-docs/issues
 
 ---
 
-**BrainSAIT** | Healthcare Intelligence Platform  
+**BrainSAIT** | Healthcare Intelligence Platform
 OID: 1.3.6.1.4.1.61026

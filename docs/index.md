@@ -174,4 +174,4 @@ This documentation follows these principles:
 
 **BrainSAIT** | Healthcare Intelligence Platform  
 **OID:** `1.3.6.1.4.1.61026`  
-*Version 1.0 | January 2025*
+*Version 1.1 | January 2026*

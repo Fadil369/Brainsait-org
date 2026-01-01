@@ -1,10 +1,28 @@
-mkdocs
-mkdocs-material
-mkdocs-static-i18n
-mkdocs-git-revision-date-localized-plugin
-mkdocs-minify-plugin
-mike
-# Optional dependencies for slack_template_fetcher.py script
+﻿# BrainSAIT Documentation - Python Dependencies
+# Last Updated: January 2026
+
+# Core MkDocs
+mkdocs>=1.5.0,<2.0.0
+mkdocs-material>=9.5.0,<10.0.0
+
+# Internationalization & Localization
+mkdocs-static-i18n>=1.2.0,<2.0.0
+
+# Git Integration
+mkdocs-git-revision-date-localized-plugin>=1.2.0,<2.0.0
+
+# Performance
+mkdocs-minify-plugin>=0.7.0,<1.0.0
+
+# Versioning
+mike>=2.0.0,<3.0.0
+
+# Optional: Slack Template Fetcher Dependencies
+# Uncomment if using slack_template_fetcher.py
 slack_sdk>=3.19.0,<4.0.0
 deep-translator>=1.11.0,<2.0.0
 python-dotenv>=1.0.0,<2.0.0
+
+# Development & Testing
+codespell>=2.2.0,<3.0.0
+pre-commit>=3.5.0,<4.0.0
