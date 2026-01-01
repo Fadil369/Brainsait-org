@@ -126,10 +126,10 @@ Comprehensive employee benefits, wellness programs, and perks at BrainSAIT—des
 >
 > **Quick Links:**
 >
-> - 📋 [Benefits Summary](link)
-> - 🏥 [Medical Insurance Portal](link)
-> - 📚 [Learning & Development](link)
-> - 🏖️ [Time Off Requests](link)
+> - 📋 [Benefits Summary](#benefits-overview)
+> - 🏥 [Medical Insurance Portal](#health--medical)
+> - 📚 [Learning & Development](#professional-development)
+> - 🏖️ [Time Off Requests](#time-off)
 >
 > **Key Contacts:**
 >
@@ -189,7 +189,7 @@ Drop them in #benefits-questions!
 >
 > **How to Enroll:**
 >
-> 1. Log in to [HR Portal](link)
+> 1. Log in to [HR Portal](#integration-points)
 > 2. Navigate to "Benefits Enrollment"
 > 3. Complete all required sections
 > 4. Submit before deadline
