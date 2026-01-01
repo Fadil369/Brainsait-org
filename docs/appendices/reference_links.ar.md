@@ -6,6 +6,8 @@
 
 ---
 
+<a id="nphies"></a>
+
 ## الرعاية الصحية السعودية
 
 ### الموارد الحكومية
@@ -19,6 +21,8 @@
 - [هيئة الغذاء والدواء](https://www.sfda.gov.sa)
 
 ---
+
+<a id="fhir"></a>
 
 ## معايير الرعاية الصحية
 
@@ -34,6 +38,8 @@
 - [CPT](https://www.ama-assn.org/practice-management/cpt)
 
 ---
+
+<a id="integration"></a>
 
 ## التكنولوجيا
 
@@ -55,6 +61,8 @@
 - [Hugging Face](https://huggingface.co)
 
 ---
+
+<a id="market"></a>
 
 ## المنظمات الصناعية
 

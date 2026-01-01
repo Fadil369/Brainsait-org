@@ -6,7 +6,7 @@ Curated collection of external resources and references for BrainSAIT documentat
 
 ---
 
-## Saudi Healthcare
+## Saudi Healthcare {#nphies}
 
 ### Government Resources
 - [Ministry of Health](https://www.moh.gov.sa)
@@ -20,7 +20,7 @@ Curated collection of external resources and references for BrainSAIT documentat
 
 ---
 
-## Healthcare Standards
+## Healthcare Standards {#fhir}
 
 ### Interoperability
 - [HL7 FHIR](https://www.hl7.org/fhir/)
@@ -35,7 +35,7 @@ Curated collection of external resources and references for BrainSAIT documentat
 
 ---
 
-## Technology
+## Technology {#integration}
 
 ### Cloud Platforms
 - [AWS](https://aws.amazon.com)
@@ -56,7 +56,7 @@ Curated collection of external resources and references for BrainSAIT documentat
 
 ---
 
-## Industry Organizations
+## Industry Organizations {#market}
 
 ### Healthcare IT
 - [HIMSS](https://www.himss.org)

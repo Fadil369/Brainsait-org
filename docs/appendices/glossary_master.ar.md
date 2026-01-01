@@ -22,6 +22,8 @@ tags:
 
 ---
 
+<a id="claims"></a>
+
 ## Healthcare Terms | مصطلحات الرعاية الصحية
 
 ### Claims & Billing | المطالبات والفوترة
@@ -100,6 +102,8 @@ tags:
 
 ---
 
+<a id="api"></a>
+
 ## Technology Terms | المصطلحات التقنية
 
 ### Infrastructure | البنية التحتية
@@ -126,6 +130,8 @@ tags:
 | **Prompt Engineering** | هندسة المطالبات | Optimizing AI input instructions | تحسين تعليمات إدخال الذكاء الاصطناعي |
 
 ---
+
+<a id="business"></a>
 
 ## Business Terms | مصطلحات الأعمال
 

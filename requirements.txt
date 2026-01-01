@@ -4,3 +4,7 @@ mkdocs-static-i18n
 mkdocs-git-revision-date-localized-plugin
 mkdocs-minify-plugin
 mike
+# Optional dependencies for slack_template_fetcher.py script
+slack_sdk>=3.19.0,<4.0.0
+deep-translator>=1.11.0,<2.0.0
+python-dotenv>=1.0.0,<2.0.0

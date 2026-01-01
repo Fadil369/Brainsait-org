@@ -128,6 +128,7 @@ extra:
 
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/extra-enhanced.css
 
 plugins:
   - search:
@@ -252,6 +253,20 @@ plugins:
             Master Glossary | المصطلحات: المصطلحات
             Compliance Index | فهرس الامتثال: فهرس الامتثال
             Reference Links | الروابط المرجعية: الروابط المرجعية
+            Getting Started | البدء: البدء
+            HIPAA & PDPL Alignment | توافق HIPAA وPDPL: توافق HIPAA وPDPL
+            Saudi Market | السوق السعودي: السوق السعودي
+            SME Playbook | دليل المنشآت: دليل المنشآت
+            Enterprise Strategy | استراتيجية المؤسسات: استراتيجية المؤسسات
+            Starlink Hybrid | ستارلينك الهجين: ستارلينك الهجين
+            Pitch Deck | العرض التقديمي: العرض التقديمي
+            Slack Templates | قوالب سلاك: قوالب سلاك
+            Guides | الأدلة: الأدلة
+            Maintenance Guide | دليل الصيانة: دليل الصيانة
+            SEO Guide | دليل تحسين البحث: دليل تحسين البحث
+            Accessibility Testing | اختبار إمكانية الوصول: اختبار إمكانية الوصول
+            Full Index | الفهرس الكامل: الفهرس الكامل
+            Tags | الوسوم: الوسوم
   - tags
   - git-revision-date-localized:
       enable_creation_date: true
@@ -305,6 +320,7 @@ markdown_extensions:
 nav:
   - Home | الرئيسية: index.md
   - About | عن: about.md
+  - Getting Started | البدء: getting-started.md
 
   - Healthcare | الرعاية الصحية:
     - healthcare/index.md
@@ -326,8 +342,10 @@ nav:
       - FHIR R4 Profile | ملف FHIR R4: healthcare/nphies/fhir_r4_profile.md
       - Workflows | سير العمل: healthcare/nphies/workflows.md
       - API Reference | مرجع API: healthcare/nphies/api_reference.md
+      - HIPAA & PDPL Alignment | توافق HIPAA وPDPL: healthcare/nphies/hipaa_pdpl_alignment.md
 
     - Agents | الوكلاء:
+      - healthcare/agents/index.md
       - ClaimLinc | كليم لينك: healthcare/agents/ClaimLinc.md
       - PolicyLinc | بوليسي لينك: healthcare/agents/PolicyLinc.md
       - DocsLinc | دوكس لينك: healthcare/agents/DocsLinc.md
@@ -371,13 +389,18 @@ nav:
       - Tender Framework | إطار المناقصات: business/rfps/tender_framework.md
     - Financials | المالية:
       - Financial Overview | نظرة مالية عامة: business/financials/overview.md
+    - Saudi Market | السوق السعودي:
+      - SME Playbook | دليل المنشآت: business/sme_sau_market/sme_playbook.md
+      - Enterprise Strategy | استراتيجية المؤسسات: business/sme_sau_market/enterprise_strategy.md
 
   - Tech | التقنية:
     - tech/index.md
     - Infrastructure | البنية التحتية:
+      - Overview | نظرة عامة: tech/infrastructure/overview.md
       - Cloudflare | كلاود فلير: tech/infrastructure/cloudflare.md
       - Coolify | كوليفاي: tech/infrastructure/coolify.md
       - Raspberry Cluster | مجموعة راسبيري: tech/infrastructure/raspberry_cluster.md
+      - Starlink Hybrid | ستارلينك الهجين: tech/infrastructure/starlink_hybrid.md
       - Security | الأمان: tech/infrastructure/security.md
     - Agents | الوكلاء:
       - LINC Ecosystem | منظومة لينك: tech/agents/linc_ecosystem.md
@@ -402,6 +425,7 @@ nav:
     - Architecture | الهندسة:
       - System Overview | نظرة عامة: tech/architecture/overview.md
       - Data Models | نماذج البيانات: tech/architecture/data_models.md
+    - Glossary | المصطلحات: tech/glossary.md
 
   - Personal | التطوير الشخصي:
     - personal/index.md
@@ -423,11 +447,19 @@ nav:
       - SOP Template | قالب SOP: brand/templates/sop_template.md
       - API Template | قالب API: brand/templates/api_template.md
       - Report Template | قالب التقرير: brand/templates/report_template.md
+      - Pitch Deck | العرض التقديمي: brand/templates/pitch_deck.md
+      - Slack Templates | قوالب سلاك: brand/templates/slack/index.md
 
   - Appendices | الملاحق:
     - appendices/index.md
     - Master Glossary | المصطلحات: appendices/glossary_master.md
     - Compliance Index | فهرس الامتثال: appendices/compliance_index.md
     - Reference Links | الروابط المرجعية: appendices/reference_links.md
+    - Full Index | الفهرس الكامل: SUMMARY.md
+    - Tags | الوسوم: tags.md
+    - Guides | الأدلة:
+      - Maintenance Guide | دليل الصيانة: MAINTENANCE_GUIDE.md
+      - SEO Guide | دليل تحسين البحث: SEO_GUIDE.md
+      - Accessibility Testing | اختبار إمكانية الوصول: ACCESSIBILITY_TESTING.md
 
 copyright: Copyright &copy; 2025 BrainSAIT Ltd. - OID 1.3.6.1.4.1.61026 | جميع الحقوق محفوظة لشركة برينسايت المحدودة

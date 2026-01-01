@@ -16,7 +16,7 @@ tags:
 
 ---
 
-## Healthcare Terms | مصطلحات الرعاية الصحية
+## Healthcare Terms | مصطلحات الرعاية الصحية {#claims}
 
 ### Claims & Billing | المطالبات والفوترة
 
@@ -94,7 +94,7 @@ tags:
 
 ---
 
-## Technology Terms | المصطلحات التقنية
+## Technology Terms | المصطلحات التقنية {#api}
 
 ### Infrastructure | البنية التحتية
 
@@ -121,7 +121,7 @@ tags:
 
 ---
 
-## Business Terms | مصطلحات الأعمال
+## Business Terms | مصطلحات الأعمال {#business}
 
 | Term | المصطلح | Definition | التعريف |
 |------|---------|------------|---------|
