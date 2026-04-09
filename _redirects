@@ -1,0 +1,9 @@
+# Cloudflare Pages Redirects
+# https://developers.cloudflare.com/pages/configuration/redirects/
+
+# Redirect trailing slashes
+/index.html   /   301
+
+# Docs redirect to GitHub Pages docs
+/docs         https://fadil369.github.io/brainsait-docs   302
+/docs/*       https://fadil369.github.io/brainsait-docs/:splat   302
