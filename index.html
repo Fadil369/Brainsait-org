@@ -138,6 +138,7 @@
     .skip-link { position: absolute; top: -100px; left: 16px; background: var(--gold); color: var(--void); padding: 8px 16px; border-radius: var(--rx); text-decoration: none; font-weight: 600; z-index: 10000; transition: top .2s; }
     .skip-link:focus { top: 16px; }
     a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: var(--rx); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
     /* ─── Reduced Motion ─── */
     @media (prefers-reduced-motion: reduce) {
@@ -203,7 +204,6 @@
     .ni  { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; padding: 0 24px; gap: 24px; }
     .nb  { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); flex-shrink: 0; }
     .nlogo { width: 36px; height: 36px; background: linear-gradient(135deg, var(--gold), var(--teal)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: var(--fd); font-weight: 800; font-size: 18px; color: var(--void); position: relative; overflow: hidden; }
-    .nlogo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,.22), transparent); }
     .nn   { font-family: var(--fd); font-weight: 800; font-size: 18px; letter-spacing: .5px; }
     .nn em { color: var(--gold); font-style: normal; }
     .nl  { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; }
@@ -505,12 +505,18 @@
     <div class="c">
       <div class="stats-grid">
         <div class="stat-item">
-          <div class="stat-val"><span class="tg cnt" data-to="98.4" data-dec="1" data-sfx="%">98.4%</span></div>
+          <div class="stat-val">
+            <span class="tg cnt" data-to="98.4" data-dec="1" data-sfx="%" aria-hidden="true">98.4%</span>
+            <span class="sr-only">98.4%</span>
+          </div>
           <div class="stat-label"><span class="en">Claim Approval Rate</span><span class="ar">معدل الموافقة على المطالبات</span></div>
           <div class="stat-sub"><span class="en">Industry avg: 82%</span><span class="ar">متوسط الصناعة: 82٪</span></div>
         </div>
         <div class="stat-item">
-          <div class="stat-val"><span class="tg-teal cnt" data-to="1.2" data-dec="1" data-sfx="s">1.2s</span></div>
+          <div class="stat-val">
+            <span class="tg-teal cnt" data-to="1.2" data-dec="1" data-sfx="s" aria-hidden="true">1.2s</span>
+            <span class="sr-only">1.2s</span>
+          </div>
           <div class="stat-label"><span class="en">Avg Processing Latency</span><span class="ar">متوسط وقت المعالجة</span></div>
           <div class="stat-sub"><span class="en">Real-time automation</span><span class="ar">أتمتة فورية</span></div>
         </div>
@@ -520,7 +526,10 @@
           <div class="stat-sub"><span class="en">Full spec compliance</span><span class="ar">امتثال كامل للمواصفات</span></div>
         </div>
         <div class="stat-item">
-          <div class="stat-val"><span class="tg cnt" data-to="6" data-dec="0" data-sfx="">6</span></div>
+          <div class="stat-val">
+            <span class="tg cnt" data-to="6" data-dec="0" data-sfx="" aria-hidden="true">6</span>
+            <span class="sr-only">6</span>
+          </div>
           <div class="stat-label"><span class="en">Active LINC Agents</span><span class="ar">عوامل LINC النشطة</span></div>
           <div class="stat-sub"><span class="en">Autonomous workflows</span><span class="ar">سير عمل مستقل</span></div>
         </div>
