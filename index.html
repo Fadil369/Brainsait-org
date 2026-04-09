@@ -3,433 +3,1069 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="BrainSAIT — AI-native healthcare automation. NPHIES-compliant, FHIR R4 interoperable, built for Saudi Arabia and MENA. Automated. Integrated. Technology-driven.">
-  <meta name="keywords" content="BrainSAIT, NPHIES, FHIR R4, healthcare AI, Saudi Arabia, ClaimLinc, LINC agents, Vision 2030">
-  <meta property="og:title" content="BrainSAIT — AI-Native Healthcare Platform">
-  <meta property="og:description" content="Automated. Integrated. Technology-driven healthcare for Saudi Arabia and MENA.">
-  <meta property="og:url" content="https://brainsait.org">
-  <meta property="og:type" content="website">
-  <title>BrainSAIT — AI-Native Healthcare | برينسايت</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+  <!-- Primary Meta -->
+  <title>BrainSAIT — AI-Native Healthcare Platform | برينسايت</title>
+  <meta name="title" content="BrainSAIT — AI-Native Healthcare Platform | برينسايت">
+  <meta name="description" content="BrainSAIT delivers AI-native claims, clinical, and compliance automation for Saudi Arabia & MENA. NPHIES-compliant, FHIR R4 interoperable, built for Vision 2030.">
+  <meta name="keywords" content="BrainSAIT, NPHIES, FHIR R4, healthcare AI, Saudi Arabia, ClaimLinc, LINC agents, Vision 2030, RCM, revenue cycle management, healthcare automation">
+  <meta name="author" content="BrainSAIT LTD">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://brainsait.org">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://brainsait.org">
+  <meta property="og:title" content="BrainSAIT — AI-Native Healthcare Platform">
+  <meta property="og:description" content="Automated. Integrated. Technology-driven healthcare for Saudi Arabia and MENA. NPHIES-compliant, FHIR R4 native.">
+  <meta property="og:image" content="https://brainsait.org/og-image.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ar_SA">
+  <meta property="og:site_name" content="BrainSAIT">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@brainsait369">
+  <meta name="twitter:url" content="https://brainsait.org">
+  <meta name="twitter:title" content="BrainSAIT — AI-Native Healthcare Platform">
+  <meta name="twitter:description" content="Automated. Integrated. Technology-driven healthcare for Saudi Arabia and MENA.">
+  <meta name="twitter:image" content="https://brainsait.org/og-image.png">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a365d'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='%23d4a574' font-size='20' font-weight='bold' font-family='system-ui'%3EB%3C/text%3E%3C/svg%3E">
 
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "BrainSAIT",
+    "alternateName": "برينسايت",
+    "url": "https://brainsait.org",
+    "description": "AI-native healthcare automation platform for Saudi Arabia and MENA",
+    "foundingDate": "2023",
+    "areaServed": ["SA","AE","QA","BH","KW","OM"],
+    "sameAs": [
+      "https://github.com/Fadil369",
+      "https://twitter.com/brainsait369",
+      "https://www.linkedin.com/in/fadil369"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "info@brainsait.org",
+      "contactType": "customer support"
+    }
+  }
+  </script>
+
   <style>
-    /* ═══ ENTERPRISE DESIGN TOKENS ═══ */
+    /* ═══════════════════════════════════════════════════════
+       BRAINSAIT — ENTERPRISE DESIGN SYSTEM
+       Premium Healthcare AI · Mobile-First · Bilingual
+    ═══════════════════════════════════════════════════════ */
+
+    /* ─── Design Tokens ─── */
     :root {
-      --void: #02040a;
-      --deep: #060913;
-      --navy: #0a0f1d;
+      --void:    #02040a;
+      --deep:    #060913;
+      --navy:    #0a0f1d;
       --surface: #0f1524;
-      --card: rgba(255, 255, 255, 0.02);
-      --card-h: rgba(255, 255, 255, 0.04);
-      --border: rgba(255, 255, 255, 0.08);
-      --border-h: rgba(255, 255, 255, 0.15);
-      --border-g: rgba(212, 165, 116, 0.3);
-      --gold: #d4a574;
-      --gold-b: #f0d5b5;
-      --gold-dim: rgba(212, 165, 116, 0.1);
-      --teal: #0ea5e9;
-      --teal-b: #38bdf8;
-      --teal-dim: rgba(14, 165, 233, 0.1);
-      --medical: #2563eb;
-      --emerald: #10b981;
-      --rose: #f43f5e;
-      --amber: #f59e0b;
-      --text: #f8fafc;
-      --text-d: #cbd5e1;
-      --text-m: #64748b;
-      --glass: rgba(6, 9, 19, 0.65);
+      --surf2:   #141929;
+
+      --g1: rgba(255,255,255,0.02);
+      --g2: rgba(255,255,255,0.04);
+      --g3: rgba(255,255,255,0.06);
+      --gb: rgba(255,255,255,0.08);
+      --gbh: rgba(255,255,255,0.16);
+
+      --gold:     #d4a574;
+      --gold-l:   #e8c49a;
+      --gold-b:   #f0d5b5;
+      --gold-dim: rgba(212,165,116,0.10);
+      --gold-glow:rgba(212,165,116,0.15);
+
+      --teal:     #0ea5e9;
+      --teal-l:   #38bdf8;
+      --teal-dim: rgba(14,165,233,0.10);
+
+      --med:      #2563eb;
+      --eme:      #10b981;
+      --eme-dim:  rgba(16,185,129,0.10);
+      --vio:      #8b5cf6;
+      --vio-dim:  rgba(139,92,246,0.10);
+      --rose:     #f43f5e;
+      --amb:      #f59e0b;
+
+      --text:  #f8fafc;
+      --textd: #cbd5e1;
+      --textm: #64748b;
+      --texts: #334155;
+
       --fd: 'Syne', sans-serif;
       --fa: 'IBM Plex Sans Arabic', sans-serif;
       --fi: 'Inter', sans-serif;
       --fm: 'JetBrains Mono', monospace;
-      --r: 16px; --rs: 8px; --rx: 6px;
+
+      --r:   16px;
+      --rs:   8px;
+      --rx:   6px;
+      --rnd: 100px;
+      --sp:  clamp(60px, 10vw, 120px);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-    body {
-      background: var(--void); color: var(--text);
-      font-family: var(--fi);
-      font-size: 15px; line-height: 1.6; overflow-x: hidden;
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { background: var(--void); color: var(--text); font-family: var(--fi); font-size: 15px; line-height: 1.6; overflow-x: hidden; }
+
+    /* ─── RTL Support ─── */
+    [dir="rtl"] body           { font-family: var(--fa); }
+    [dir="rtl"] .nb            { flex-direction: row-reverse; }
+    [dir="rtl"] .f-grid        { direction: rtl; }
+    [dir="rtl"] .p-features li { flex-direction: row-reverse; }
+    [dir="ltr"] .ar            { display: none !important; }
+    [dir="rtl"] .en            { display: none !important; }
+    [dir="rtl"] h2             { font-family: var(--fa); }
+    [dir="rtl"] .sec-head h2   { text-align: center; }
+    [dir="rtl"] .vision-grid h2{ text-align: right; }
+
+    /* ─── Accessibility ─── */
+    .skip-link { position: absolute; top: -100px; left: 16px; background: var(--gold); color: var(--void); padding: 8px 16px; border-radius: var(--rx); text-decoration: none; font-weight: 600; z-index: 10000; transition: top .2s; }
+    .skip-link:focus { top: 16px; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: var(--rx); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    /* ─── Reduced Motion ─── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      html { scroll-behavior: auto; }
+      .rev { opacity: 1 !important; transform: none !important; }
     }
 
-    /* ═══ CANVAS & ORBS ═══ */
-    #cvs { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.3; }
-    .orb { position: fixed; border-radius: 50%; filter: blur(150px); pointer-events: none; z-index: 0; }
-    .o1 { width: 600px; height: 600px; background: var(--gold); opacity: 0.05; top: -10%; right: -5%; animation: drift 40s ease-in-out infinite; }
-    .o2 { width: 500px; height: 500px; background: var(--medical); opacity: 0.05; bottom: -10%; left: -10%; animation: drift 35s ease-in-out infinite reverse; }
-    @keyframes drift {
-      0%,100% { transform: translate(0,0) scale(1); }
-      50% { transform: translate(30px,-40px) scale(1.05); }
-    }
+    /* ─── Canvas / Atmosphere ─── */
+    #cvs { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .4; }
+    .orb  { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; }
+    .o1   { width: 700px; height: 700px; background: radial-gradient(circle, var(--gold) 0%, transparent 70%); opacity: .04; top: -15%; right: -10%; animation: drift 55s ease-in-out infinite; }
+    .o2   { width: 600px; height: 600px; background: radial-gradient(circle, var(--med) 0%, transparent 70%);  opacity: .04; bottom: -15%; left: -10%;  animation: drift 48s ease-in-out infinite reverse; }
+    .o3   { width: 400px; height: 400px; background: radial-gradient(circle, var(--teal) 0%, transparent 70%); opacity: .03; top: 40%; left: 30%;       animation: drift 65s ease-in-out infinite 20s; }
+    @keyframes drift { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(20px,-30px) scale(1.03); } 66% { transform: translate(-15px,20px) scale(.98); } }
 
-    /* ═══ LAYOUT ═══ */
+    /* ─── Layout ─── */
     .page { position: relative; z-index: 1; }
-    .c { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    
-    /* Typography Overrides */
-    h1, h2, h3, h4, h5 { font-family: var(--fd); font-weight: 700; }
-    .text-gradient { background: linear-gradient(135deg, var(--gold), var(--gold-b)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .c    { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-    /* ═══ NAVBAR ═══ */
-    nav {
-      position: fixed; top: 0; width: 100%; z-index: 1000;
-      backdrop-filter: blur(16px) saturate(1.8);
-      background: rgba(2, 4, 10, 0.75);
-      border-bottom: 1px solid var(--border);
-      transition: all 0.3s;
-    }
-    .ni {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 72px; padding: 0 24px;
-    }
-    .nb { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
-    .ni-icon {
-      width: 32px; height: 32px;
-      background: linear-gradient(135deg, var(--gold) 0%, var(--teal) 100%);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--fd); font-weight: 800; font-size: 16px; color: var(--void);
-    }
-    .nn { font-family: var(--fd); font-weight: 800; font-size: 18px; letter-spacing: 0.5px; }
-    .nn em { color: var(--gold); font-style: normal; }
-    .nl { display: flex; align-items: center; gap: 8px; }
-    .nl a {
-      color: var(--text-d); text-decoration: none;
-      font-size: 14px; font-weight: 500; padding: 8px 16px;
-      border-radius: var(--rx); transition: all .2s;
-    }
-    .nl a:hover { color: var(--text); background: var(--card); }
-    .ncta { display: flex; align-items: center; gap: 12px; }
-    .btn-n {
-      background: var(--gold); color: var(--void);
-      font-weight: 600; font-size: 14px; padding: 8px 20px;
-      border-radius: var(--rx); text-decoration: none;
-      transition: all .2s;
-    }
-    .btn-n:hover { background: var(--gold-b); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(212,165,116,0.2); }
-    .btn-outline {
-      border: 1px solid var(--border); color: var(--text); background: transparent;
-      font-weight: 500; font-size: 14px; padding: 8px 16px;
-      border-radius: var(--rx); text-decoration: none; transition: all .2s; cursor: pointer;
-    }
-    .btn-outline:hover { border-color: var(--border-h); background: var(--card); }
-    
-    .hbg { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-    .hbg span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
+    /* ─── Typography ─── */
+    h1, h2, h3, h4 { font-family: var(--fd); font-weight: 700; }
+    h1 { font-size: clamp(38px, 6vw, 76px); line-height: 1.05; letter-spacing: -2px; margin-bottom: 24px; }
+    h2 { font-size: clamp(28px, 4vw, 48px); line-height: 1.15; letter-spacing: -1px; margin-bottom: 20px; }
+    .tg      { background: linear-gradient(135deg, var(--gold), var(--gold-b));   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .tg-teal { background: linear-gradient(135deg, var(--teal), var(--teal-l));   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
-    /* ═══ HERO ═══ */
-    .hero { padding: 160px 0 80px; text-align: center; }
-    .hbadge {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 6px 16px; background: var(--card);
-      border: 1px solid var(--border); border-radius: 100px;
-      font-size: 12px; font-weight: 600; color: var(--text-d);
-      margin-bottom: 32px; animation: fu .7s ease-out both;
-    }
-    .pls { width: 8px; height: 8px; background: var(--emerald); border-radius: 50%; box-shadow: 0 0 10px var(--emerald); animation: pl 2s infinite; }
-    @keyframes pl { 0%,100% { opacity:1; } 50% { opacity:.4; } }
-    h1 {
-      font-size: clamp(40px, 6vw, 72px);
-      line-height: 1.1; letter-spacing: -1px; margin-bottom: 24px;
-      animation: fu .7s ease-out .1s both;
-    }
-    .hs {
-      font-size: 18px; color: var(--text-d); max-width: 680px; margin: 0 auto 48px;
-      animation: fu .7s ease-out .2s both;
-    }
-    .ha { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; animation: fu .7s ease-out .3s both; }
+    /* ─── Buttons ─── */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--fi); font-weight: 600; font-size: 14px; padding: 10px 22px; border-radius: var(--rx); border: none; cursor: pointer; text-decoration: none; transition: all .2s ease; white-space: nowrap; }
+    .btn-p  { background: linear-gradient(135deg, var(--gold), var(--gold-l)); color: var(--void); }
+    .btn-p:hover  { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,165,116,.3); filter: brightness(1.06); }
+    .btn-g  { background: transparent; color: var(--text); border: 1px solid var(--gb); }
+    .btn-g:hover  { background: var(--g2); border-color: var(--gbh); }
+    .btn-lg { padding: 14px 32px; font-size: 15px; }
+    .btn-sm { padding: 6px 14px; font-size: 13px; }
 
-    /* ═══ STATS ═══ */
-    .stats { padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--card); }
-    .sg { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-    .st { text-align: center; }
-    .sv { font-size: 32px; font-weight: 700; color: var(--text); margin-bottom: 4px; font-family: var(--fd); }
-    .sl { font-size: 13px; color: var(--text-m); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+    /* ─── Section Label ─── */
+    .stag { display: block; font-size: 11px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 16px; }
+    .sec-head { text-align: center; margin-bottom: 72px; }
+    .ssub { font-size: 16px; color: var(--textd); max-width: 580px; margin: 0 auto; line-height: 1.7; }
 
-    /* ═══ SECTIONS COMMON ═══ */
-    section { padding: 120px 0; }
-    .sec-head { text-align: center; margin-bottom: 64px; }
-    .stag { font-size: 12px; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; display: block; }
-    h2 { font-size: clamp(32px, 4vw, 48px); margin-bottom: 24px; line-height: 1.2; letter-spacing: -0.5px; }
-    .ssub { font-size: 16px; color: var(--text-d); max-width: 600px; margin: 0 auto; }
+    /* ─── Section Spacing ─── */
+    section { padding: var(--sp) 0; }
 
-    /* ═══ SHOWCASE / SOLUTIONS ═══ */
-    .showcase { background: linear-gradient(180deg, var(--void) 0%, var(--deep) 100%); }
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
-    .card {
-      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
-      padding: 32px; transition: all 0.3s; position: relative; overflow: hidden;
-      display: flex; flex-direction: column;
-    }
-    .card:hover { border-color: var(--border-h); background: var(--card-h); transform: translateY(-4px); }
-    .card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, var(--gold), var(--teal)); opacity: 0; transition: opacity 0.3s; }
-    .card:hover::before { opacity: 1; }
-    
-    .c-icon { font-size: 28px; margin-bottom: 24px; }
-    .c-title { font-size: 20px; color: var(--text); margin-bottom: 12px; }
-    .c-desc { font-size: 14px; color: var(--text-d); margin-bottom: 24px; flex-grow: 1; }
-    .c-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-    .tag { font-size: 11px; padding: 4px 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; color: var(--text-m); font-family: var(--fm); }
-    .c-link { font-size: 14px; color: var(--gold); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 4px; }
-    .c-link:hover { color: var(--gold-b); }
-
-    /* ═══ FOOTER ═══ */
-    footer { border-top: 1px solid var(--border); padding: 80px 0 40px; background: var(--deep); }
-    .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 64px; }
-    .f-brand { display: flex; flex-direction: column; gap: 16px; }
-    .f-desc { color: var(--text-m); font-size: 14px; max-width: 320px; }
-    .f-title { font-size: 13px; font-weight: 600; color: var(--text); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; font-family: var(--fd); }
-    .f-links { display: flex; flex-direction: column; gap: 12px; list-style: none; }
-    .f-links a { color: var(--text-d); text-decoration: none; font-size: 14px; transition: color 0.2s; }
-    .f-links a:hover { color: var(--gold); }
-    .f-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; border-top: 1px solid var(--border); color: var(--text-m); font-size: 13px; }
-
-    /* ═══ ANIMATIONS ═══ */
-    @keyframes fu { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
-    .rev { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+    /* ─── Scroll Reveal ─── */
+    .rev { opacity: 0; transform: translateY(24px); transition: opacity .7s ease-out, transform .7s ease-out; }
     .rev.vis { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: .10s; }
+    .d2 { transition-delay: .20s; }
+    .d3 { transition-delay: .30s; }
+    .d4 { transition-delay: .40s; }
 
-    /* ═══ MOBILE ═══ */
+    /* ─── NAVBAR ─── */
+    #nav {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      backdrop-filter: blur(20px) saturate(1.8);
+      -webkit-backdrop-filter: blur(20px) saturate(1.8);
+      background: rgba(2,4,10,.80);
+      border-bottom: 1px solid var(--gb);
+      transition: background .3s, box-shadow .3s;
+    }
+    #nav.scrolled { background: rgba(2,4,10,.96); box-shadow: 0 4px 32px rgba(0,0,0,.5); }
+    .ni  { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; padding: 0 24px; gap: 24px; }
+    .nb  { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); flex-shrink: 0; }
+    .nlogo { width: 36px; height: 36px; background: linear-gradient(135deg, var(--gold), var(--teal)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: var(--fd); font-weight: 800; font-size: 18px; color: var(--void); position: relative; overflow: hidden; }
+    .nn   { font-family: var(--fd); font-weight: 800; font-size: 18px; letter-spacing: .5px; }
+    .nn em { color: var(--gold); font-style: normal; }
+    .nl  { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; }
+    .nl a { color: var(--textd); text-decoration: none; font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: var(--rx); transition: all .2s; white-space: nowrap; }
+    .nl a:hover, .nl a.active { color: var(--text); background: var(--g2); }
+    .nl a.active { color: var(--gold); }
+    .na  { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .lang-btn { background: var(--g1); border: 1px solid var(--gb); color: var(--textd); font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: var(--rx); cursor: pointer; transition: all .2s; font-family: var(--fi); }
+    .lang-btn:hover { background: var(--g2); color: var(--text); border-color: var(--gbh); }
+    .hbg { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 7px; border-radius: var(--rx); background: transparent; border: none; transition: background .2s; }
+    .hbg:hover { background: var(--g2); }
+    .hbg span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all .3s; }
+    .hbg.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hbg.open span:nth-child(2) { opacity: 0; }
+    .hbg.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ─── Mobile Menu ─── */
+    .mob-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 999; background: rgba(6,9,19,.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--gb); padding: 16px 24px 24px; flex-direction: column; gap: 4px; }
+    .mob-menu.open { display: flex; animation: slideDown .22s ease-out; }
+    @keyframes slideDown { from { opacity:0; transform: translateY(-8px); } to { opacity:1; transform: translateY(0); } }
+    .mob-menu a { color: var(--textd); text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 16px; border-radius: var(--rx); transition: all .2s; }
+    .mob-menu a:hover { color: var(--text); background: var(--g2); }
+    .mob-sep { height: 1px; background: var(--gb); margin: 8px 0; }
+    .mob-menu .btn { justify-content: center; margin-top: 4px; }
+
+    /* ─── HERO ─── */
+    .hero { padding: 160px 0 100px; text-align: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: var(--g1); border: 1px solid var(--gb); border-radius: var(--rnd); font-size: 12px; font-weight: 600; color: var(--textd); margin-bottom: 32px; animation: fadeUp .7s ease-out both; }
+    .pulse { width: 8px; height: 8px; background: var(--eme); border-radius: 50%; box-shadow: 0 0 12px var(--eme); animation: pulseA 2s infinite; flex-shrink: 0; }
+    @keyframes pulseA { 0%,100% { opacity:1; transform: scale(1); } 50% { opacity:.5; transform: scale(.8); } }
+    @keyframes fadeUp  { from { opacity:0; transform: translateY(24px); } to { opacity:1; transform: translateY(0); } }
+    h1 { animation: fadeUp .7s ease-out .1s both; }
+    .tw-cursor { display: inline-block; width: 3px; height: .88em; background: var(--gold); margin-left: 2px; animation: blink 1s infinite; vertical-align: text-bottom; border-radius: 2px; }
+    @keyframes blink { 0%,49% { opacity:1; } 50%,100% { opacity:0; } }
+    .hero-sub { font-size: clamp(15px, 2vw, 18px); color: var(--textd); max-width: 680px; margin: 0 auto 48px; line-height: 1.75; animation: fadeUp .7s ease-out .2s both; }
+    .hero-acts { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; animation: fadeUp .7s ease-out .3s both; }
+    .hero-chips { margin-top: 64px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; animation: fadeUp .7s ease-out .5s both; }
+    .chip { display: inline-flex; align-items: center; gap: 7px; padding: 7px 14px; background: var(--g1); border: 1px solid var(--gb); border-radius: var(--rnd); font-size: 12px; font-weight: 600; color: var(--textd); }
+    .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .dg  { background: var(--gold);  box-shadow: 0 0 7px var(--gold); }
+    .dt  { background: var(--teal);  box-shadow: 0 0 7px var(--teal); }
+    .de  { background: var(--eme);   box-shadow: 0 0 7px var(--eme); }
+    .dv  { background: var(--vio);   box-shadow: 0 0 7px var(--vio); }
+
+    /* ─── TRUST BAR ─── */
+    .trust-bar { border-top: 1px solid var(--gb); border-bottom: 1px solid var(--gb); background: var(--g1); padding: 20px 0; overflow: hidden; }
+    .trust-inner { display: flex; align-items: center; gap: 32px; justify-content: center; flex-wrap: wrap; padding: 0 24px; }
+    .ti { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: var(--textm); text-transform: uppercase; letter-spacing: .9px; white-space: nowrap; }
+    .ti-sep { width: 1px; height: 20px; background: var(--gb); }
+
+    /* ─── STATS ─── */
+    .stats-wrap { padding: 80px 0; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); border: 1px solid var(--gb); border-radius: var(--r); overflow: hidden; }
+    .stat-item { background: var(--deep); padding: 40px 24px; text-align: center; position: relative; overflow: hidden; transition: background .3s; border-right: 1px solid var(--gb); }
+    .stat-item:last-child { border-right: none; }
+    .stat-item::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0; transition: opacity .3s; }
+    .stat-item:hover { background: var(--surface); }
+    .stat-item:hover::before { opacity: 1; }
+    .stat-val   { font-size: clamp(26px, 3.5vw, 40px); font-weight: 800; font-family: var(--fd); color: var(--text); margin-bottom: 8px; line-height: 1; }
+    .stat-label { font-size: 11px; color: var(--textm); font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; }
+    .stat-sub   { font-size: 11px; color: var(--texts); margin-top: 5px; }
+
+    /* ─── PLATFORM CARDS ─── */
+    .plat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .plat-card { background: var(--g1); border: 1px solid var(--gb); border-radius: var(--r); padding: 40px 32px; transition: all .35s; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+    .plat-card::after { content: ''; position: absolute; inset: 0; border-radius: var(--r); background: radial-gradient(circle at 50% 0%, rgba(212,165,116,.06), transparent 60%); opacity: 0; transition: opacity .4s; }
+    .plat-card:hover { border-color: rgba(212,165,116,.28); transform: translateY(-5px); box-shadow: 0 12px 40px rgba(0,0,0,.4); }
+    .plat-card:hover::after { opacity: 1; }
+    .p-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 28px; }
+    .p-icon.gold { background: var(--gold-dim); border: 1px solid rgba(212,165,116,.2); }
+    .p-icon.teal { background: var(--teal-dim);  border: 1px solid rgba(14,165,233,.2); }
+    .p-icon.vio  { background: var(--vio-dim);   border: 1px solid rgba(139,92,246,.2); }
+    .plat-title  { font-size: 21px; margin-bottom: 12px; }
+    .plat-desc   { font-size: 14px; color: var(--textd); line-height: 1.7; margin-bottom: 24px; flex-grow: 1; }
+    .plat-feats  { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 28px; }
+    .plat-feats li { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--textd); }
+    .plat-feats li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+    .p-link { font-size: 14px; color: var(--gold); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; transition: gap .2s, color .2s; }
+    .p-link:hover { color: var(--gold-b); gap: 10px; }
+
+    /* ─── SOLUTION CARDS ─── */
+    .solutions-bg { background: linear-gradient(180deg, var(--void) 0%, var(--deep) 50%, var(--void) 100%); }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .card { background: var(--g1); border: 1px solid var(--gb); border-radius: var(--r); padding: 32px; transition: all .35s cubic-bezier(.4,0,.2,1); position: relative; overflow: hidden; display: flex; flex-direction: column; }
+    .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold-dim), transparent); transition: opacity .3s; }
+    .card:hover { border-color: var(--gbh); background: var(--g2); transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,.4), 0 0 40px rgba(212,165,116,.06); }
+    .card:hover::before { background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .c-icon  { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 24px; background: var(--g2); border: 1px solid var(--gb); }
+    .c-title { font-size: 18px; color: var(--text); margin-bottom: 10px; }
+    .c-desc  { font-size: 14px; color: var(--textd); line-height: 1.65; margin-bottom: 20px; flex-grow: 1; }
+    .c-tags  { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .tag     { font-size: 10px; font-weight: 600; padding: 3px 10px; background: var(--g1); border: 1px solid var(--gb); border-radius: var(--rnd); color: var(--textm); font-family: var(--fm); text-transform: uppercase; letter-spacing: .5px; }
+    .c-link  { font-size: 13px; color: var(--gold); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; transition: gap .2s, color .2s; }
+    .c-link:hover { color: var(--gold-b); gap: 9px; }
+
+    /* ─── HOW IT WORKS ─── */
+    .hiw-bg { background: var(--deep); }
+    .hiw-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 40px; position: relative; }
+    .hiw-connector { position: absolute; top: 31px; left: 16.66%; right: 16.66%; height: 1px; background: linear-gradient(90deg, var(--gb), var(--gold-dim), var(--gb)); }
+    .hiw-item { text-align: center; }
+    .hiw-num  { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-dim), var(--g2)); border: 1px solid rgba(212,165,116,.3); display: flex; align-items: center; justify-content: center; font-family: var(--fd); font-weight: 800; font-size: 22px; color: var(--gold); margin: 0 auto 24px; position: relative; z-index: 1; }
+    .hiw-title { font-size: 18px; margin-bottom: 12px; }
+    .hiw-desc  { font-size: 14px; color: var(--textd); line-height: 1.65; }
+
+    /* ─── VISION 2030 ─── */
+    .vision-sec { position: relative; overflow: hidden; }
+    .vision-sec::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(37,99,235,.07), transparent 65%), radial-gradient(ellipse at 30% 50%, rgba(212,165,116,.05), transparent 65%); }
+    .vision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .vs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
+    .vs-item { background: var(--g1); border: 1px solid var(--gb); border-radius: var(--rs); padding: 20px 24px; }
+    .vs-val   { font-size: 28px; font-weight: 800; font-family: var(--fd); color: var(--gold); margin-bottom: 4px; }
+    .vs-label { font-size: 12px; color: var(--textm); font-weight: 500; }
+    .v-cards  { display: flex; flex-direction: column; gap: 16px; }
+    .v-card   { background: var(--g1); border: 1px solid var(--gb); border-radius: var(--r); padding: 24px; display: flex; align-items: flex-start; gap: 16px; transition: border-color .3s, background .3s; }
+    .v-card:hover { border-color: var(--gbh); background: var(--g2); }
+    .v-ci     { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .v-ci.blue  { background: rgba(37,99,235,.15); }
+    .v-ci.gold  { background: var(--gold-dim); }
+    .v-ci.green { background: var(--eme-dim); }
+    .v-ct { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .v-cd { font-size: 13px; color: var(--textd); line-height: 1.55; }
+
+    /* ─── TECH GRID ─── */
+    .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 14px; }
+    .tech-item { background: var(--g1); border: 1px solid var(--gb); border-radius: var(--rs); padding: 20px 16px; text-align: center; transition: all .3s; }
+    .tech-item:hover { background: var(--g2); border-color: var(--gbh); transform: translateY(-3px); }
+    .tech-icon { font-size: 28px; margin-bottom: 10px; }
+    .tech-name { font-size: 12px; font-weight: 600; color: var(--textd); text-transform: uppercase; letter-spacing: 1px; }
+    .tech-det  { font-size: 11px; color: var(--textm); margin-top: 4px; }
+
+    /* ─── CTA ─── */
+    .cta-sec { background: var(--deep); position: relative; overflow: hidden; }
+    .cta-sec::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(212,165,116,.08), transparent 60%); }
+    .cta-inner { text-align: center; position: relative; max-width: 720px; margin: 0 auto; }
+    .cta-inner h2 { font-size: clamp(26px, 4vw, 44px); margin-bottom: 20px; }
+    .cta-inner p  { font-size: 16px; color: var(--textd); margin-bottom: 40px; line-height: 1.7; }
+    .cta-acts { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── FOOTER ─── */
+    footer { border-top: 1px solid var(--gb); padding: 80px 0 40px; background: var(--deep); }
+    .f-grid  { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 64px; }
+    .f-brand { display: flex; flex-direction: column; gap: 16px; }
+    .f-desc  { color: var(--textm); font-size: 14px; max-width: 300px; line-height: 1.65; }
+    .f-social { display: flex; gap: 10px; }
+    .f-social a { width: 36px; height: 36px; border-radius: var(--rx); background: var(--g1); border: 1px solid var(--gb); display: flex; align-items: center; justify-content: center; color: var(--textd); text-decoration: none; font-size: 13px; font-weight: 700; transition: all .2s; }
+    .f-social a:hover { background: var(--g2); border-color: var(--gbh); color: var(--gold); }
+    .f-title { font-size: 11px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; font-family: var(--fd); }
+    .f-links { display: flex; flex-direction: column; gap: 10px; list-style: none; }
+    .f-links a { color: var(--textm); text-decoration: none; font-size: 14px; transition: color .2s; }
+    .f-links a:hover { color: var(--gold); }
+    .f-badge { font-size: 11px; color: var(--texts); font-family: var(--fm); background: var(--g1); border: 1px solid var(--gb); border-radius: var(--rx); padding: 4px 10px; display: inline-block; margin-top: 8px; }
+    .f-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; border-top: 1px solid var(--gb); color: var(--textm); font-size: 12px; }
+    .f-legal  { display: flex; gap: 16px; }
+    .f-legal a { color: var(--textm); text-decoration: none; transition: color .2s; }
+    .f-legal a:hover { color: var(--textd); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .plat-grid   { grid-template-columns: 1fr 1fr; }
+      .vision-grid { grid-template-columns: 1fr; gap: 40px; }
+      .f-grid      { grid-template-columns: 1fr 1fr; }
+    }
     @media (max-width: 900px) {
-      .f-grid { grid-template-columns: 1fr 1fr; }
-      .nl, .btn-outline.lang { display: none; }
-      .hbg { display: flex; }
-      h1 { font-size: 36px; }
-      .sg { grid-template-columns: repeat(2, 1fr); }
+      .nl       { display: none; }
+      .lang-btn { display: none; }
+      .hbg      { display: flex; }
+      .stats-grid     { grid-template-columns: 1fr 1fr; }
+      .stat-item      { border-right: none; border-bottom: 1px solid var(--gb); }
+      .stat-item:last-child { border-bottom: none; }
+      .plat-grid      { grid-template-columns: 1fr; }
+      .hiw-grid       { grid-template-columns: 1fr; }
+      .hiw-connector  { display: none; }
     }
     @media (max-width: 600px) {
-      .f-grid { grid-template-columns: 1fr; }
-      .sg { grid-template-columns: 1fr; }
-      .f-bottom { flex-direction: column; gap: 16px; text-align: center; }
-      .hero { padding: 120px 0 60px; }
-      .ha { flex-direction: column; }
+      .f-grid    { grid-template-columns: 1fr; }
+      .f-bottom  { flex-direction: column; gap: 14px; text-align: center; }
+      .hero      { padding: 120px 0 60px; }
+      .hero-acts { flex-direction: column; align-items: center; }
+      .hero-acts .btn { width: 100%; max-width: 300px; }
+      .cta-acts  { flex-direction: column; align-items: center; }
+      .cta-acts .btn { width: 100%; max-width: 300px; }
+      .vs-grid   { grid-template-columns: 1fr 1fr; }
+      h1         { letter-spacing: -1px; }
+    }
+    @media (max-width: 400px) {
+      .stats-grid { grid-template-columns: 1fr; }
+    }
+    @media print {
+      #nav, .orb, #cvs, .hbg { display: none !important; }
+      body { background: white; color: black; }
     }
   </style>
 </head>
 <body>
 
-<canvas id="cvs"></canvas>
-<div class="orb o1"></div>
-<div class="orb o2"></div>
+<a href="#main" class="skip-link">Skip to content</a>
+<canvas id="cvs" aria-hidden="true"></canvas>
+<div class="orb o1" aria-hidden="true"></div>
+<div class="orb o2" aria-hidden="true"></div>
+<div class="orb o3" aria-hidden="true"></div>
 
-<!-- Nav -->
-<nav id="navbar">
+<!-- ═══ NAVBAR ═══ -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
   <div class="ni">
-    <a href="/" class="nb">
-      <div class="ni-icon">B</div>
+    <a href="/" class="nb" aria-label="BrainSAIT Home">
+      <div class="nlogo" aria-hidden="true">B</div>
       <span class="nn">BRAIN<em>SAIT</em></span>
     </a>
-    <div class="nl">
-      <a href="#products">Platform</a>
-      <a href="#solutions">Solutions</a>
-      <a href="#vision">Vision 2030</a>
+    <div class="nl" role="menubar">
+      <a href="#products"     role="menuitem">Platform</a>
+      <a href="#solutions"    role="menuitem">Solutions</a>
+      <a href="#how-it-works" role="menuitem">How It Works</a>
+      <a href="#vision"       role="menuitem">Vision 2030</a>
+      <a href="https://fadil369.github.io/brainsait-docs" target="_blank" rel="noopener noreferrer" role="menuitem">Docs</a>
     </div>
-    <div class="ncta">
-      <button class="btn-outline lang">&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</button>
-      <a href="https://brainsait.org/dashboard" class="btn-n">Launch App</a>
-      <div class="hbg"><span></span><span></span><span></span></div>
+    <div class="na">
+      <button class="lang-btn" id="langToggle" aria-label="Switch language / تبديل اللغة">العربية</button>
+      <a href="https://brainsait.org/dashboard" class="btn btn-p btn-sm">Launch App</a>
+      <button class="hbg" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobMenu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
 
-<!-- Page -->
-<div class="page">
+<!-- Mobile Menu -->
+<div class="mob-menu" id="mobMenu" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="#products">Platform</a>
+  <a href="#solutions">Solutions</a>
+  <a href="#how-it-works">How It Works</a>
+  <a href="#vision">Vision 2030</a>
+  <a href="https://fadil369.github.io/brainsait-docs" target="_blank" rel="noopener noreferrer">Documentation ↗</a>
+  <div class="mob-sep"></div>
+  <a href="https://brainsait.org/dashboard" class="btn btn-p">Launch App →</a>
+  <a href="https://calendly.com/brainsait" target="_blank" rel="noopener noreferrer" class="btn btn-g">Book Demo</a>
+</div>
 
-  <!-- Hero -->
-  <section class="hero">
+<!-- ═══ MAIN ═══ -->
+<main id="main" class="page">
+
+  <!-- ── HERO ── -->
+  <section class="hero" aria-label="Hero">
     <div class="c">
-      <div class="hbadge"><div class="pls"></div> NPHIES Connected &middot; Live</div>
-      <h1>Enterprise Healthcare AI.<br><span class="text-gradient">Automated &amp; Compliant.</span></h1>
-      <p class="hs">BrainSAIT delivers AI-native claims, clinical, and compliance automation for Saudi Arabia &amp; MENA. Built on FHIR R4, fully bilingual, and designed for scale.</p>
-      <div class="ha">
-        <a href="#solutions" class="btn-n" style="padding: 14px 32px; font-size: 15px;">Explore Solutions</a>
-        <a href="https://calendly.com/brainsait" class="btn-outline" style="padding: 14px 32px; font-size: 15px;" target="_blank">Book Demo</a>
+      <div class="hero-badge">
+        <div class="pulse" aria-hidden="true"></div>
+        <span class="en">NPHIES Connected · Live</span>
+        <span class="ar">متصل بـ NPHIES · مباشر</span>
+      </div>
+      <h1>
+        <span class="en">AI-Native Healthcare.<br><span class="tg" id="tw-target">Automated &amp; Compliant.</span><span class="tw-cursor" aria-hidden="true"></span></span>
+        <span class="ar">رعاية صحية بالذكاء الاصطناعي.<br><span class="tg">مؤتمتة ومتوافقة.</span></span>
+      </h1>
+      <p class="hero-sub">
+        <span class="en">BrainSAIT delivers AI-native claims, clinical, and compliance automation for Saudi Arabia &amp; MENA. Built on FHIR R4, fully bilingual, and designed for scale.</span>
+        <span class="ar">برينسايت تُقدّم أتمتة المطالبات والسريريات والامتثال بالذكاء الاصطناعي للمملكة العربية السعودية ومنطقة الشرق الأوسط وشمال أفريقيا. مبنية على معيار FHIR R4 وثنائية اللغة.</span>
+      </p>
+      <div class="hero-acts">
+        <a href="#solutions" class="btn btn-p btn-lg">
+          <span class="en">Explore Solutions</span><span class="ar">استكشف الحلول</span> →
+        </a>
+        <a href="https://fadil369.github.io/brainsait-docs" target="_blank" rel="noopener noreferrer" class="btn btn-g btn-lg">
+          <span class="en">Documentation</span><span class="ar">الوثائق</span>
+        </a>
+        <a href="https://calendly.com/brainsait" target="_blank" rel="noopener noreferrer" class="btn btn-g btn-lg">
+          <span class="en">Book Demo</span><span class="ar">احجز عرضاً</span>
+        </a>
+      </div>
+      <div class="hero-chips">
+        <div class="chip"><div class="dot dg"></div> NPHIES v3.2</div>
+        <div class="chip"><div class="dot dt"></div> FHIR R4 Native</div>
+        <div class="chip"><div class="dot de"></div> HL7 Compliant</div>
+        <div class="chip"><div class="dot dv"></div> Vision 2030 Aligned</div>
+        <div class="chip"><div class="dot dg"></div> MCP Extension Ready</div>
       </div>
     </div>
   </section>
 
-  <!-- Stats -->
-  <div class="stats rev">
+  <!-- ── TRUST BAR ── -->
+  <div class="trust-bar" aria-label="Certifications and compliance">
+    <div class="trust-inner">
+      <div class="ti"><span>🏥</span> NPHIES v3.2 Certified</div>
+      <div class="ti-sep" aria-hidden="true"></div>
+      <div class="ti"><span>🔗</span> FHIR R4 Native</div>
+      <div class="ti-sep" aria-hidden="true"></div>
+      <div class="ti"><span>⚕️</span> HL7 Standards</div>
+      <div class="ti-sep" aria-hidden="true"></div>
+      <div class="ti"><span>☁️</span> Cloudflare Secured</div>
+      <div class="ti-sep" aria-hidden="true"></div>
+      <div class="ti"><span>🇸🇦</span> Vision 2030</div>
+      <div class="ti-sep" aria-hidden="true"></div>
+      <div class="ti"><span>🔒</span> HIPAA Compliant</div>
+      <div class="ti-sep" aria-hidden="true"></div>
+      <div class="ti"><span>🤖</span> AI-Powered Agents</div>
+    </div>
+  </div>
+
+  <!-- ── STATS ── -->
+  <div class="stats-wrap rev" aria-label="Key metrics">
     <div class="c">
-      <div class="sg">
-        <div class="st"><div class="sv">98.4%</div><div class="sl">Claim Approval</div></div>
-        <div class="st"><div class="sv">1.2s</div><div class="sl">Avg Latency</div></div>
-        <div class="st"><div class="sv">FHIR R4</div><div class="sl">Native Standard</div></div>
-        <div class="st"><div class="sv">6</div><div class="sl">Active LINC Agents</div></div>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-val">
+            <span class="tg cnt" data-to="98.4" data-dec="1" data-sfx="%" aria-hidden="true">98.4%</span>
+            <span class="sr-only">98.4%</span>
+          </div>
+          <div class="stat-label"><span class="en">Claim Approval Rate</span><span class="ar">معدل الموافقة على المطالبات</span></div>
+          <div class="stat-sub"><span class="en">Industry avg: 82%</span><span class="ar">متوسط الصناعة: 82٪</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">
+            <span class="tg-teal cnt" data-to="1.2" data-dec="1" data-sfx="s" aria-hidden="true">1.2s</span>
+            <span class="sr-only">1.2s</span>
+          </div>
+          <div class="stat-label"><span class="en">Avg Processing Latency</span><span class="ar">متوسط وقت المعالجة</span></div>
+          <div class="stat-sub"><span class="en">Real-time automation</span><span class="ar">أتمتة فورية</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val"><span class="tg">FHIR R4</span></div>
+          <div class="stat-label"><span class="en">Native Standard</span><span class="ar">المعيار الأصلي</span></div>
+          <div class="stat-sub"><span class="en">Full spec compliance</span><span class="ar">امتثال كامل للمواصفات</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">
+            <span class="tg cnt" data-to="6" data-dec="0" data-sfx="" aria-hidden="true">6</span>
+            <span class="sr-only">6</span>
+          </div>
+          <div class="stat-label"><span class="en">Active LINC Agents</span><span class="ar">عوامل LINC النشطة</span></div>
+          <div class="stat-sub"><span class="en">Autonomous workflows</span><span class="ar">سير عمل مستقل</span></div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Open Source & Solutions Showcase -->
-  <section class="showcase" id="solutions">
+  <!-- ── PLATFORM / PRODUCTS ── -->
+  <section id="products" aria-labelledby="products-h">
     <div class="c">
       <div class="sec-head rev">
-        <span class="stag">Open Innovation</span>
-        <h2>Proven Solutions &amp; Integrations</h2>
-        <p class="ssub">Discover our latest repositories, tools, and platforms engineered for next-generation healthcare operations.</p>
+        <span class="stag"><span class="en">Platform</span><span class="ar">المنصة</span></span>
+        <h2 id="products-h">
+          <span class="en">The Complete Healthcare AI Platform</span>
+          <span class="ar">منصة الذكاء الاصطناعي الصحية الشاملة</span>
+        </h2>
+        <p class="ssub en">Three core pillars powering next-generation healthcare operations across Saudi Arabia and MENA.</p>
+        <p class="ssub ar">ثلاث ركائز أساسية تُشغّل عمليات الرعاية الصحية من الجيل التالي عبر المملكة العربية السعودية ومنطقة الشرق الأوسط.</p>
       </div>
-      <div class="grid-3 rev">
-        <!-- Card 1 -->
-        <div class="card">
-          <div class="c-icon">&#128187;</div>
-          <h3 class="c-title">Brainsait RCM</h3>
-          <p class="c-desc">AI-powered Revenue Cycle Management system. Features complete NPHIES integration, FHIR R4 compliance, fraud detection, and predictive analytics.</p>
-          <div class="c-tags"><span class="tag">TypeScript</span><span class="tag">NPHIES</span><span class="tag">AI</span></div>
-          <a href="https://github.com/Fadil369/brainsait-rcm" target="_blank" class="c-link">View Repository &rarr;</a>
+      <div class="plat-grid">
+        <div class="plat-card rev d1">
+          <div class="p-icon gold" aria-hidden="true">💡</div>
+          <h3 class="plat-title"><span class="en">ClaimLinc — RCM Engine</span><span class="ar">ClaimLinc — محرك RCM</span></h3>
+          <p class="plat-desc en">AI-powered Revenue Cycle Management with end-to-end NPHIES integration. From pre-auth to claim reconciliation, fully automated.</p>
+          <p class="plat-desc ar">إدارة دورة الإيرادات المدعومة بالذكاء الاصطناعي مع تكامل كامل مع NPHIES. من التفويض المسبق إلى تسوية المطالبات، بشكل مؤتمت بالكامل.</p>
+          <ul class="plat-feats">
+            <li><span class="en">Automated pre-authorization</span><span class="ar">تفويض مسبق مؤتمت</span></li>
+            <li><span class="en">Real-time claim submission</span><span class="ar">تقديم مطالبات فوري</span></li>
+            <li><span class="en">AI fraud detection</span><span class="ar">كشف الاحتيال بالذكاء الاصطناعي</span></li>
+            <li><span class="en">Predictive analytics dashboard</span><span class="ar">لوحة تحليلات تنبؤية</span></li>
+          </ul>
+          <a href="https://github.com/Fadil369/brainsait-rcm" target="_blank" rel="noopener noreferrer" class="p-link">
+            <span class="en">Explore ClaimLinc</span><span class="ar">استكشف ClaimLinc</span> →
+          </a>
         </div>
-        <!-- Card 2 -->
-        <div class="card">
-          <div class="c-icon">&#128295;</div>
-          <h3 class="c-title">Oracle NPHIES Setup</h3>
-          <p class="c-desc">Enterprise bridge: BrainSAIT Oracle ERP claim scanner, automated FHIR pipeline, and secure Cloudflare tunnel infrastructure.</p>
-          <div class="c-tags"><span class="tag">JavaScript</span><span class="tag">Oracle ERP</span><span class="tag">Infra</span></div>
-          <a href="https://github.com/Fadil369/oracle-setup" target="_blank" class="c-link">View Repository &rarr;</a>
+        <div class="plat-card rev d2">
+          <div class="p-icon teal" aria-hidden="true">🤖</div>
+          <h3 class="plat-title"><span class="en">LINC Agent Ecosystem</span><span class="ar">نظام LINC البيئي للعوامل</span></h3>
+          <p class="plat-desc en">Six autonomous AI agents orchestrated by MasterLINC, each specialized for claims, clinical decisions, compliance, coding, communication, and coordination.</p>
+          <p class="plat-desc ar">ستة عوامل ذكاء اصطناعي مستقلة ينسّقها MasterLINC، كلٌّ متخصص في المطالبات، والقرارات السريرية، والامتثال، والترميز، والتواصل، والتنسيق.</p>
+          <ul class="plat-feats">
+            <li><span class="en">MasterLINC orchestration layer</span><span class="ar">طبقة تنسيق MasterLINC</span></li>
+            <li><span class="en">ClaimLINC — claims automation</span><span class="ar">ClaimLINC — أتمتة المطالبات</span></li>
+            <li><span class="en">ClinicalLINC — medical decisions</span><span class="ar">ClinicalLINC — القرارات الطبية</span></li>
+            <li><span class="en">ComplianceLINC — regulatory</span><span class="ar">ComplianceLINC — الامتثال التنظيمي</span></li>
+          </ul>
+          <a href="https://github.com/Fadil369/masterlinc" target="_blank" rel="noopener noreferrer" class="p-link">
+            <span class="en">Explore Agents</span><span class="ar">استكشف العوامل</span> →
+          </a>
         </div>
-        <!-- Card 3 -->
-        <div class="card">
-          <div class="c-icon">&#129302;</div>
-          <h3 class="c-title">BrainSAIT MCP Ext</h3>
-          <p class="c-desc">HIPAA/NPHIES compliant Model Context Protocol extension. Provides FHIR support, clinical decision workflows, and Arabic/English NLP.</p>
-          <div class="c-tags"><span class="tag">JavaScript</span><span class="tag">MCP</span><span class="tag">Healthcare AI</span></div>
-          <a href="https://github.com/Fadil369/brainsait-mcp-dxt" target="_blank" class="c-link">View Repository &rarr;</a>
+        <div class="plat-card rev d3">
+          <div class="p-icon vio" aria-hidden="true">🔗</div>
+          <h3 class="plat-title"><span class="en">Unified Health Hub</span><span class="ar">محور الصحة الموحّد</span></h3>
+          <p class="plat-desc en">Centralized interoperability layer connecting EHR, ERP, payer, and government systems through a secure FHIR R4 pipeline with Cloudflare edge infrastructure.</p>
+          <p class="plat-desc ar">طبقة تشغيل بيني مركزية تربط أنظمة السجلات الصحية والـ ERP والجهات الدافعة والحكومية من خلال قناة FHIR R4 آمنة مع بنية Cloudflare التحتية.</p>
+          <ul class="plat-feats">
+            <li><span class="en">Oracle ERP integration bridge</span><span class="ar">جسر تكامل Oracle ERP</span></li>
+            <li><span class="en">FHIR R4 data pipeline</span><span class="ar">خط بيانات FHIR R4</span></li>
+            <li><span class="en">Cloudflare tunnel security</span><span class="ar">أمان نفق Cloudflare</span></li>
+            <li><span class="en">Real-time data synchronization</span><span class="ar">مزامنة البيانات الفورية</span></li>
+          </ul>
+          <a href="https://github.com/Fadil369/Unified-Health-Hub-1" target="_blank" rel="noopener noreferrer" class="p-link">
+            <span class="en">Explore Hub</span><span class="ar">استكشف المحور</span> →
+          </a>
         </div>
-        <!-- Card 4 -->
-        <div class="card">
-          <div class="c-icon">&#128218;</div>
-          <h3 class="c-title">NPHIES Course Platform</h3>
-          <p class="c-desc">Bilingual training platform tailored for Saudi healthcare providers, featuring integrated payments and comprehensive insurance modules.</p>
-          <div class="c-tags"><span class="tag">PHP</span><span class="tag">Education</span><span class="tag">FinTech</span></div>
-          <a href="https://github.com/Fadil369/nphies-course-platform" target="_blank" class="c-link">View Repository &rarr;</a>
-        </div>
-        <!-- Card 5 -->
-        <div class="card">
-          <div class="c-icon">&#9881;&#65039;</div>
-          <h3 class="c-title">MasterLINC Engine</h3>
-          <p class="c-desc">Core orchestration layer for BrainSAIT's agent ecosystem, routing and managing complex clinical and operational multi-agent workflows.</p>
-          <div class="c-tags"><span class="tag">TypeScript</span><span class="tag">Agents</span><span class="tag">Core</span></div>
-          <a href="https://github.com/Fadil369/masterlinc" target="_blank" class="c-link">View Repository &rarr;</a>
-        </div>
-        <!-- Card 6 -->
-        <div class="card">
-          <div class="c-icon">&#127973;</div>
-          <h3 class="c-title">Unified Health Hub</h3>
-          <p class="c-desc">A centralized healthcare interoperability interface serving as the focal point for patient data, provider workflows, and real-time connectivity.</p>
-          <div class="c-tags"><span class="tag">TypeScript</span><span class="tag">Platform</span><span class="tag">Interoperability</span></div>
-          <a href="https://github.com/Fadil369/Unified-Health-Hub-1" target="_blank" class="c-link">View Repository &rarr;</a>
-        </div>
-      </div>
-      <div style="text-align: center; margin-top: 48px;" class="rev">
-        <a href="https://github.com/stars/Fadil369/lists/solutions" target="_blank" class="btn-outline">View All Solutions on GitHub &rarr;</a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
+  <!-- ── SOLUTIONS SHOWCASE ── -->
+  <section class="solutions-bg" id="solutions" aria-labelledby="solutions-h">
+    <div class="c">
+      <div class="sec-head rev">
+        <span class="stag"><span class="en">Open Innovation</span><span class="ar">الابتكار المفتوح</span></span>
+        <h2 id="solutions-h">
+          <span class="en">Proven Solutions &amp; Integrations</span>
+          <span class="ar">حلول وتكاملات مُثبتة</span>
+        </h2>
+        <p class="ssub en">Discover our repositories, tools, and platforms engineered for next-generation healthcare operations.</p>
+        <p class="ssub ar">اكتشف مستودعاتنا وأدواتنا ومنصاتنا المُهندَسة لعمليات الرعاية الصحية من الجيل التالي.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card rev d1">
+          <div class="c-icon" aria-hidden="true">💻</div>
+          <h3 class="c-title">Brainsait RCM</h3>
+          <p class="c-desc en">AI-powered Revenue Cycle Management with complete NPHIES integration, FHIR R4 compliance, fraud detection, and predictive analytics for Saudi healthcare providers.</p>
+          <p class="c-desc ar">إدارة دورة الإيرادات المدعومة بالذكاء الاصطناعي مع التكامل الكامل مع NPHIES وامتثال FHIR R4 وكشف الاحتيال والتحليلات التنبؤية.</p>
+          <div class="c-tags"><span class="tag">TypeScript</span><span class="tag">NPHIES</span><span class="tag">AI/ML</span><span class="tag">FHIR R4</span></div>
+          <a href="https://github.com/Fadil369/brainsait-rcm" target="_blank" rel="noopener noreferrer" class="c-link">
+            <span class="en">View Repository</span><span class="ar">عرض المستودع</span> →
+          </a>
+        </article>
+        <article class="card rev d2">
+          <div class="c-icon" aria-hidden="true">🔧</div>
+          <h3 class="c-title">Oracle NPHIES Bridge</h3>
+          <p class="c-desc en">Enterprise bridge connecting Oracle ERP to NPHIES. Automated FHIR pipeline, claim scanning, and secure Cloudflare tunnel infrastructure.</p>
+          <p class="c-desc ar">جسر المؤسسة الذي يربط Oracle ERP بـ NPHIES. خط FHIR مؤتمت، وفحص المطالبات، وبنية نفق Cloudflare الآمنة.</p>
+          <div class="c-tags"><span class="tag">JavaScript</span><span class="tag">Oracle ERP</span><span class="tag">Cloudflare</span><span class="tag">Infra</span></div>
+          <a href="https://github.com/Fadil369/oracle-setup" target="_blank" rel="noopener noreferrer" class="c-link">
+            <span class="en">View Repository</span><span class="ar">عرض المستودع</span> →
+          </a>
+        </article>
+        <article class="card rev d3">
+          <div class="c-icon" aria-hidden="true">🤖</div>
+          <h3 class="c-title">BrainSAIT MCP Extension</h3>
+          <p class="c-desc en">HIPAA/NPHIES compliant Model Context Protocol extension. FHIR support, clinical decision workflows, and bilingual Arabic/English NLP.</p>
+          <p class="c-desc ar">امتداد بروتوكول سياق النموذج المتوافق مع HIPAA/NPHIES. دعم FHIR وسير عمل القرارات السريرية ومعالجة اللغة الطبيعية ثنائية اللغة.</p>
+          <div class="c-tags"><span class="tag">JavaScript</span><span class="tag">MCP</span><span class="tag">Healthcare AI</span><span class="tag">NLP</span></div>
+          <a href="https://github.com/Fadil369/brainsait-mcp-dxt" target="_blank" rel="noopener noreferrer" class="c-link">
+            <span class="en">View Repository</span><span class="ar">عرض المستودع</span> →
+          </a>
+        </article>
+        <article class="card rev d1">
+          <div class="c-icon" aria-hidden="true">📚</div>
+          <h3 class="c-title">NPHIES Training Platform</h3>
+          <p class="c-desc en">Bilingual LMS tailored for Saudi healthcare providers. Integrated payments, comprehensive NPHIES insurance modules, and professional certifications.</p>
+          <p class="c-desc ar">نظام إدارة التعلم ثنائي اللغة المصمم لمقدمي الرعاية الصحية السعوديين. مدفوعات متكاملة ووحدات تأمين NPHIES شاملة وشهادات مهنية.</p>
+          <div class="c-tags"><span class="tag">PHP</span><span class="tag">Education</span><span class="tag">FinTech</span><span class="tag">Bilingual</span></div>
+          <a href="https://github.com/Fadil369/nphies-course-platform" target="_blank" rel="noopener noreferrer" class="c-link">
+            <span class="en">View Repository</span><span class="ar">عرض المستودع</span> →
+          </a>
+        </article>
+        <article class="card rev d2">
+          <div class="c-icon" aria-hidden="true">⚙️</div>
+          <h3 class="c-title">MasterLINC Engine</h3>
+          <p class="c-desc en">Core orchestration layer for BrainSAIT's agent ecosystem. Routes and manages complex clinical, operational, and administrative multi-agent workflows.</p>
+          <p class="c-desc ar">طبقة التنسيق الأساسية لنظام BrainSAIT البيئي للعوامل. يوجّه ويدير سير العمل المعقدة متعددة العوامل السريرية والتشغيلية والإدارية.</p>
+          <div class="c-tags"><span class="tag">TypeScript</span><span class="tag">Agents</span><span class="tag">Orchestration</span><span class="tag">Core</span></div>
+          <a href="https://github.com/Fadil369/masterlinc" target="_blank" rel="noopener noreferrer" class="c-link">
+            <span class="en">View Repository</span><span class="ar">عرض المستودع</span> →
+          </a>
+        </article>
+        <article class="card rev d3">
+          <div class="c-icon" aria-hidden="true">🏥</div>
+          <h3 class="c-title">Unified Health Hub</h3>
+          <p class="c-desc en">Centralized healthcare interoperability interface — the focal point for patient data, provider workflows, and real-time health system connectivity.</p>
+          <p class="c-desc ar">واجهة التشغيل البيني المركزية للرعاية الصحية — نقطة الارتكاز لبيانات المرضى وسير عمل مقدمي الخدمات والاتصال الفوري بالنظام الصحي.</p>
+          <div class="c-tags"><span class="tag">TypeScript</span><span class="tag">Platform</span><span class="tag">Interoperability</span><span class="tag">FHIR</span></div>
+          <a href="https://github.com/Fadil369/Unified-Health-Hub-1" target="_blank" rel="noopener noreferrer" class="c-link">
+            <span class="en">View Repository</span><span class="ar">عرض المستودع</span> →
+          </a>
+        </article>
+      </div>
+      <div style="text-align:center; margin-top:56px;" class="rev">
+        <a href="https://github.com/stars/Fadil369/lists/solutions" target="_blank" rel="noopener noreferrer" class="btn btn-g">
+          <span class="en">All Solutions on GitHub</span><span class="ar">جميع الحلول على GitHub</span> →
+        </a>
+        <a href="https://fadil369.github.io/brainsait-docs" target="_blank" rel="noopener noreferrer" class="btn btn-g" style="margin-left:12px;">
+          <span class="en">Read the Docs</span><span class="ar">اقرأ الوثائق</span> →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section class="hiw-bg" id="how-it-works" aria-labelledby="hiw-h">
+    <div class="c">
+      <div class="sec-head rev">
+        <span class="stag"><span class="en">Process</span><span class="ar">العملية</span></span>
+        <h2 id="hiw-h">
+          <span class="en">How BrainSAIT Works</span>
+          <span class="ar">كيف يعمل برينسايت</span>
+        </h2>
+        <p class="ssub en">From clinical encounter to payment — fully automated, compliant, and intelligent.</p>
+        <p class="ssub ar">من لقاء المريض حتى الدفع — مؤتمت بالكامل، ومتوافق، وذكي.</p>
+      </div>
+      <div class="hiw-grid">
+        <div class="hiw-connector" aria-hidden="true"></div>
+        <div class="hiw-item rev d1">
+          <div class="hiw-num" aria-label="Step 1">01</div>
+          <h3 class="hiw-title"><span class="en">Ingest &amp; Validate</span><span class="ar">الاستيعاب والتحقق</span></h3>
+          <p class="hiw-desc en">Clinical data enters via FHIR R4 APIs or Oracle ERP connectors. AI agents validate against NPHIES schemas in real-time, flagging issues before submission.</p>
+          <p class="hiw-desc ar">تدخل البيانات السريرية عبر واجهات FHIR R4 أو موصلات Oracle ERP. تتحقق العوامل الذكية من مطابقة مخططات NPHIES في الوقت الفعلي.</p>
+        </div>
+        <div class="hiw-item rev d2">
+          <div class="hiw-num" aria-label="Step 2">02</div>
+          <h3 class="hiw-title"><span class="en">Process &amp; Route</span><span class="ar">المعالجة والتوجيه</span></h3>
+          <p class="hiw-desc en">MasterLINC orchestrates specialized agents — ClaimLINC handles submissions, ClinicalLINC reviews medical necessity, ComplianceLINC ensures regulatory alignment.</p>
+          <p class="hiw-desc ar">يُنسّق MasterLINC العوامل المتخصصة — ClaimLINC للتقديمات، وClinicalLINC للضرورة الطبية، وComplianceLINC للامتثال التنظيمي.</p>
+        </div>
+        <div class="hiw-item rev d3">
+          <div class="hiw-num" aria-label="Step 3">03</div>
+          <h3 class="hiw-title"><span class="en">Submit &amp; Reconcile</span><span class="ar">التقديم والتسوية</span></h3>
+          <p class="hiw-desc en">Claims are submitted with 98.4% first-pass approval. Automated reconciliation handles remittances, denials, and appeals — maximizing revenue recovery.</p>
+          <p class="hiw-desc ar">تُقدَّم المطالبات بنسبة موافقة 98.4٪. تتعامل التسوية الآلية مع الحوالات والرفض والطعون لتحقيق أقصى استرداد للإيرادات.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VISION 2030 ── -->
+  <section class="vision-sec" id="vision" aria-labelledby="vision-h">
+    <div class="c">
+      <div class="vision-grid">
+        <div class="rev">
+          <span class="stag"><span class="en">Vision 2030</span><span class="ar">رؤية 2030</span></span>
+          <h2 id="vision-h" style="text-align:left;">
+            <span class="en">Powering Saudi Arabia's Digital Health Future</span>
+            <span class="ar">تشغيل مستقبل الصحة الرقمية في المملكة العربية السعودية</span>
+          </h2>
+          <p style="font-size:15px;color:var(--textd);line-height:1.75;margin-bottom:20px;" class="en">
+            BrainSAIT is purpose-built to accelerate Saudi Arabia's healthcare digital transformation. Aligned with the National Transformation Program, our platform supports the Ministry of Health's ambition to modernize health information systems, improve clinical outcomes, and optimize healthcare spending.
+          </p>
+          <p style="font-size:15px;color:var(--textd);line-height:1.75;margin-bottom:20px;" class="ar">
+            صُمّم برينسايت خصيصاً لتسريع التحول الرقمي للرعاية الصحية في المملكة العربية السعودية. بما يتوافق مع برنامج التحول الوطني، تدعم منصتنا طموح وزارة الصحة في تحديث أنظمة المعلومات الصحية وتحسين النتائج السريرية.
+          </p>
+          <div class="vs-grid">
+            <div class="vs-item"><div class="vs-val">2030</div><div class="vs-label"><span class="en">Vision Aligned</span><span class="ar">رؤية متوافقة</span></div></div>
+            <div class="vs-item"><div class="vs-val">100%</div><div class="vs-label"><span class="en">NPHIES Compliant</span><span class="ar">متوافق مع NPHIES</span></div></div>
+            <div class="vs-item"><div class="vs-val">AR/EN</div><div class="vs-label"><span class="en">Fully Bilingual</span><span class="ar">ثنائي اللغة</span></div></div>
+            <div class="vs-item"><div class="vs-val">KSA</div><div class="vs-label"><span class="en">Locally Anchored</span><span class="ar">متجذّر محلياً</span></div></div>
+          </div>
+        </div>
+        <div class="v-cards rev d2">
+          <div class="v-card">
+            <div class="v-ci blue" aria-hidden="true">🏛️</div>
+            <div>
+              <div class="v-ct"><span class="en">Ministry of Health Integration</span><span class="ar">التكامل مع وزارة الصحة</span></div>
+              <div class="v-cd en">Direct NPHIES connectivity with full compliance to MOH regulations and standards for electronic health claims.</div>
+              <div class="v-cd ar">اتصال مباشر بـ NPHIES مع الامتثال الكامل للوائح ومعايير وزارة الصحة للمطالبات الصحية الإلكترونية.</div>
+            </div>
+          </div>
+          <div class="v-card">
+            <div class="v-ci gold" aria-hidden="true">🤖</div>
+            <div>
+              <div class="v-ct"><span class="en">AI-Driven Efficiency</span><span class="ar">الكفاءة المدفوعة بالذكاء الاصطناعي</span></div>
+              <div class="v-cd en">Reduce administrative burden by up to 70% through intelligent automation of claims, coding, and compliance workflows.</div>
+              <div class="v-cd ar">تقليل العبء الإداري بنسبة تصل إلى 70٪ من خلال الأتمتة الذكية للمطالبات والترميز وسير عمل الامتثال.</div>
+            </div>
+          </div>
+          <div class="v-card">
+            <div class="v-ci green" aria-hidden="true">📊</div>
+            <div>
+              <div class="v-ct"><span class="en">Data-Driven Healthcare</span><span class="ar">رعاية صحية مبنية على البيانات</span></div>
+              <div class="v-cd en">Real-time analytics and predictive insights enabling proactive care management and optimized revenue cycles.</div>
+              <div class="v-cd ar">تحليلات فورية ورؤى تنبؤية تتيح إدارة استباقية للرعاية ودورات إيرادات محسّنة.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TECHNOLOGY ── -->
+  <section aria-labelledby="tech-h">
+    <div class="c">
+      <div class="sec-head rev">
+        <span class="stag"><span class="en">Technology</span><span class="ar">التقنية</span></span>
+        <h2 id="tech-h">
+          <span class="en">Enterprise-Grade Infrastructure</span>
+          <span class="ar">بنية تحتية على مستوى المؤسسات</span>
+        </h2>
+        <p class="ssub en">Every component selected for reliability, security, and healthcare-grade performance.</p>
+        <p class="ssub ar">كل مكون محدد للموثوقية والأمان والأداء على مستوى الرعاية الصحية.</p>
+      </div>
+      <div class="tech-grid rev">
+        <div class="tech-item"><div class="tech-icon">🔗</div><div class="tech-name">FHIR R4</div><div class="tech-det">Interoperability</div></div>
+        <div class="tech-item"><div class="tech-icon">☁️</div><div class="tech-name">Cloudflare</div><div class="tech-det">Edge &amp; Security</div></div>
+        <div class="tech-item"><div class="tech-icon">🤖</div><div class="tech-name">AI / ML</div><div class="tech-det">Predictive Engine</div></div>
+        <div class="tech-item"><div class="tech-icon">🔒</div><div class="tech-name">Zero Trust</div><div class="tech-det">Security Model</div></div>
+        <div class="tech-item"><div class="tech-icon">📦</div><div class="tech-name">TypeScript</div><div class="tech-det">Type-Safe APIs</div></div>
+        <div class="tech-item"><div class="tech-icon">🏗️</div><div class="tech-name">Oracle ERP</div><div class="tech-det">ERP Integration</div></div>
+        <div class="tech-item"><div class="tech-icon">🧠</div><div class="tech-name">MCP Protocol</div><div class="tech-det">AI Context</div></div>
+        <div class="tech-item"><div class="tech-icon">⚡</div><div class="tech-name">Real-time</div><div class="tech-det">1.2s Latency</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-sec" aria-labelledby="cta-h">
+    <div class="c">
+      <div class="cta-inner rev">
+        <span class="stag"><span class="en">Get Started</span><span class="ar">ابدأ الآن</span></span>
+        <h2 id="cta-h">
+          <span class="en">Ready to transform your healthcare operations?</span>
+          <span class="ar">هل أنت مستعد لتحويل عمليات الرعاية الصحية الخاصة بك؟</span>
+        </h2>
+        <p>
+          <span class="en">Join healthcare providers across Saudi Arabia and MENA using BrainSAIT to automate, comply, and grow.</span>
+          <span class="ar">انضم إلى مزودي الرعاية الصحية في المملكة العربية السعودية ومنطقة الشرق الأوسط الذين يستخدمون برينسايت للأتمتة والامتثال والنمو.</span>
+        </p>
+        <div class="cta-acts">
+          <a href="https://brainsait.org/dashboard" class="btn btn-p btn-lg">
+            <span class="en">Launch App</span><span class="ar">تشغيل التطبيق</span> →
+          </a>
+          <a href="https://calendly.com/brainsait" target="_blank" rel="noopener noreferrer" class="btn btn-g btn-lg">
+            <span class="en">Book a Demo</span><span class="ar">احجز عرضاً توضيحياً</span>
+          </a>
+          <a href="mailto:info@brainsait.org" class="btn btn-g btn-lg">
+            <span class="en">Contact Us</span><span class="ar">تواصل معنا</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer role="contentinfo">
     <div class="c">
       <div class="f-grid">
         <div class="f-brand">
-          <a href="/" class="nb" style="margin-bottom: 8px;">
-            <div class="ni-icon">B</div>
+          <a href="/" class="nb" aria-label="BrainSAIT Home">
+            <div class="nlogo" aria-hidden="true">B</div>
             <span class="nn">BRAIN<em>SAIT</em></span>
           </a>
-          <p class="f-desc">AI-native healthcare automation platform for Saudi Arabia &amp; MENA. Built for scale, security, and seamless interoperability.</p>
-          <div style="display: flex; gap: 12px; margin-top: 8px;">
-            <a href="https://github.com/Fadil369" style="color: var(--text-d); text-decoration: none;">GitHub</a>
-            <a href="https://twitter.com/brainsait369" style="color: var(--text-d); text-decoration: none;">X (Twitter)</a>
-            <a href="https://www.linkedin.com/in/fadil369" style="color: var(--text-d); text-decoration: none;">LinkedIn</a>
+          <p class="f-desc en">AI-native healthcare automation platform for Saudi Arabia &amp; MENA. Built for scale, security, and seamless interoperability.</p>
+          <p class="f-desc ar">منصة أتمتة الرعاية الصحية بالذكاء الاصطناعي للمملكة العربية السعودية ومنطقة الشرق الأوسط. مبنية للتوسع والأمان والتشغيل البيني السلس.</p>
+          <div class="f-social">
+            <a href="https://github.com/Fadil369" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GH</a>
+            <a href="https://twitter.com/brainsait369" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">𝕏</a>
+            <a href="https://www.linkedin.com/in/fadil369" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
           </div>
+          <span class="f-badge">Vision 2030 Aligned 🇸🇦</span>
         </div>
         <div>
-          <h4 class="f-title">Solutions</h4>
+          <h4 class="f-title"><span class="en">Solutions</span><span class="ar">الحلول</span></h4>
           <ul class="f-links">
             <li><a href="#solutions">BrainSAIT RCM</a></li>
             <li><a href="#solutions">Oracle Bridge</a></li>
             <li><a href="#solutions">MasterLINC</a></li>
             <li><a href="#solutions">NPHIES Education</a></li>
+            <li><a href="#solutions">Unified Health Hub</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="f-title">Platform</h4>
+          <h4 class="f-title"><span class="en">Platform</span><span class="ar">المنصة</span></h4>
           <ul class="f-links">
             <li><a href="https://brainsait.org/dashboard">App Dashboard</a></li>
-            <li><a href="https://docs.brainsait.org">Documentation</a></li>
+            <li><a href="https://fadil369.github.io/brainsait-docs" target="_blank" rel="noopener noreferrer">Documentation</a></li>
             <li><a href="https://brainsait.org/api">API Reference</a></li>
+            <li><a href="#products">Platform Overview</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="f-title">Company</h4>
+          <h4 class="f-title"><span class="en">Company</span><span class="ar">الشركة</span></h4>
           <ul class="f-links">
-            <li><a href="https://brainsait.org/about">About Us</a></li>
-            <li><a href="https://calendly.com/brainsait">Book Demo</a></li>
-            <li><a href="mailto:info@brainsait.org">Contact</a></li>
+            <li><a href="https://brainsait.org/about"><span class="en">About Us</span><span class="ar">من نحن</span></a></li>
+            <li><a href="https://calendly.com/brainsait" target="_blank" rel="noopener noreferrer"><span class="en">Book Demo</span><span class="ar">احجز عرضاً</span></a></li>
+            <li><a href="mailto:info@brainsait.org"><span class="en">Contact</span><span class="ar">تواصل معنا</span></a></li>
+            <li><a href="https://brainsait.org/careers"><span class="en">Careers</span><span class="ar">وظائف</span></a></li>
           </ul>
         </div>
       </div>
       <div class="f-bottom">
-        <div>&copy; 2026 BrainSAIT LTD. All rights reserved. Vision 2030 Aligned.</div>
-        <div style="display: flex; gap: 16px;">
-          <a href="https://brainsait.org/privacy" style="color: inherit; text-decoration: none;">Privacy</a>
-          <a href="https://brainsait.org/terms" style="color: inherit; text-decoration: none;">Terms</a>
+        <div>
+          <span class="en">&copy; 2026 BrainSAIT LTD. All rights reserved.</span>
+          <span class="ar">&copy; 2026 برينسايت المحدودة. جميع الحقوق محفوظة.</span>
+        </div>
+        <div class="f-legal">
+          <a href="https://brainsait.org/privacy"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a>
+          <a href="https://brainsait.org/terms"><span class="en">Terms of Service</span><span class="ar">شروط الخدمة</span></a>
         </div>
       </div>
     </div>
   </footer>
 
-</div>
+</main>
 
 <script>
-  /* Particle Canvas */
-  (function(){
-    const c=document.getElementById('cvs'), ctx=c.getContext('2d');
-    let W, H, pts=[];
-    function rs(){ W = c.width = window.innerWidth; H = c.height = window.innerHeight; }
-    rs(); window.addEventListener('resize',rs);
-    for(let i=0; i<60; i++){
-      pts.push({
-        x: Math.random()*window.innerWidth,
-        y: Math.random()*window.innerHeight,
-        r: Math.random()*1.5+0.5,
-        dx: (Math.random()-0.5)*0.2,
-        dy: (Math.random()-0.5)*0.2,
-        a: Math.random()*0.4+0.1,
-        col: Math.random()>0.5 ? '212,165,116' : '14,165,233'
-      });
-    }
-    function draw(){
-      ctx.clearRect(0,0,W,H);
-      pts.forEach(p=>{
-        p.x+=p.dx; p.y+=p.dy;
-        if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0;
-        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fillStyle=`rgba(${p.col},${p.a})`; ctx.fill();
-      });
-      requestAnimationFrame(draw);
-    }
-    draw();
-  })();
+/* ═══════════════════════════════════════════════
+   BRAINSAIT — Interactive Enhancements
+   Particle Canvas · Counters · Mobile Menu ·
+   Language Toggle · Active Nav · Typewriter
+═══════════════════════════════════════════════ */
 
-  /* Scroll Reveal */
-  const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); }), {threshold: 0.1});
-  document.querySelectorAll('.rev').forEach(el => io.observe(el));
+// ─── Particle Canvas ───
+(function () {
+  const cvs = document.getElementById('cvs');
+  if (!cvs || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const ctx = cvs.getContext('2d');
+  let W, H;
+  const COLS = ['212,165,116', '14,165,233', '37,99,235', '139,92,246'];
+  const pts = Array.from({ length: 75 }, () => ({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    r: Math.random() * 1.4 + 0.3,
+    dx: (Math.random() - 0.5) * 0.22,
+    dy: (Math.random() - 0.5) * 0.22,
+    a: Math.random() * 0.45 + 0.08,
+    col: COLS[Math.floor(Math.random() * COLS.length)]
+  }));
 
-  /* Navbar Scrolled State */
-  window.addEventListener('scroll', () => {
-    const nav = document.getElementById('navbar');
-    if (window.scrollY > 20) {
-      nav.style.background = 'rgba(2, 4, 10, 0.9)';
-      nav.style.boxShadow = '0 4px 24px rgba(0,0,0,0.4)';
+  function resize() { W = cvs.width = window.innerWidth; H = cvs.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    for (let i = 0; i < pts.length; i++) {
+      for (let j = i + 1; j < pts.length; j++) {
+        const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < 110) {
+          ctx.beginPath();
+          ctx.moveTo(pts[i].x, pts[i].y);
+          ctx.lineTo(pts[j].x, pts[j].y);
+          ctx.strokeStyle = `rgba(212,165,116,${0.04 * (1 - d / 110)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    pts.forEach(p => {
+      p.x += p.dx; p.y += p.dy;
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${p.col},${p.a})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ─── Scroll Reveal ───
+const revObs = new IntersectionObserver(
+  es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }),
+  { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+);
+document.querySelectorAll('.rev').forEach(el => revObs.observe(el));
+
+// ─── Animated Counters ───
+function animateCounter(el) {
+  const to = parseFloat(el.dataset.to);
+  const dec = parseInt(el.dataset.dec, 10);
+  const sfx = el.dataset.sfx || '';
+  const dur = 1800;
+  const t0 = performance.now();
+  (function tick(now) {
+    const p = Math.min((now - t0) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = (to * ease).toFixed(dec) + sfx;
+    if (p < 1) requestAnimationFrame(tick);
+  })(t0);
+}
+const cntObs = new IntersectionObserver(
+  es => es.forEach(e => {
+    if (e.isIntersecting && !e.target.dataset.done) {
+      e.target.dataset.done = '1';
+      animateCounter(e.target);
+    }
+  }),
+  { threshold: 0.5 }
+);
+document.querySelectorAll('.cnt').forEach(el => cntObs.observe(el));
+
+// ─── Navbar Scroll State ───
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+
+// ─── Mobile Menu ───
+const toggle = document.getElementById('menuToggle');
+const menu   = document.getElementById('mobMenu');
+
+function closeMenu() {
+  menu.classList.remove('open');
+  toggle.classList.remove('open');
+  toggle.setAttribute('aria-expanded', 'false');
+  menu.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+toggle.addEventListener('click', () => {
+  const open = !menu.classList.contains('open');
+  if (open) {
+    menu.classList.add('open');
+    toggle.classList.add('open');
+    toggle.setAttribute('aria-expanded', 'true');
+    menu.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  } else {
+    closeMenu();
+  }
+});
+
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+document.addEventListener('click', e => {
+  if (menu.classList.contains('open') && !menu.contains(e.target) && !toggle.contains(e.target)) closeMenu();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && menu.classList.contains('open')) { closeMenu(); toggle.focus(); }
+});
+
+// ─── Language Toggle ───
+const langBtn = document.getElementById('langToggle');
+const htmlEl  = document.getElementById('html-root');
+let isArabic  = false;
+
+langBtn.addEventListener('click', () => {
+  isArabic = !isArabic;
+  htmlEl.setAttribute('lang', isArabic ? 'ar' : 'en');
+  htmlEl.setAttribute('dir',  isArabic ? 'rtl' : 'ltr');
+  langBtn.textContent = isArabic ? 'English' : 'العربية';
+});
+
+// ─── Active Nav Link ───
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nl a[href^="#"]');
+const activeObs = new IntersectionObserver(
+  es => es.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const a = document.querySelector(`.nl a[href="#${e.target.id}"]`);
+      if (a) a.classList.add('active');
+    }
+  }),
+  { threshold: 0.4, rootMargin: '-72px 0px 0px 0px' }
+);
+sections.forEach(s => activeObs.observe(s));
+
+// ─── Typewriter ───
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const el = document.getElementById('tw-target');
+  if (!el) return;
+  const phrases = ['Automated & Compliant.', 'FHIR R4 Native.', 'Vision 2030 Ready.', 'Scalable & Secure.', 'Bilingual & Accessible.'];
+  let pi = 0, ci = phrases[0].length, del = false;
+
+  function tick() {
+    const phrase = phrases[pi];
+    if (!del) {
+      el.textContent = phrase.slice(0, ci + 1);
+      if (ci < phrase.length - 1) { ci++; setTimeout(tick, 62); }
+      else { del = true; setTimeout(tick, 2600); }
     } else {
-      nav.style.background = 'rgba(2, 4, 10, 0.75)';
-      nav.style.boxShadow = 'none';
+      el.textContent = phrase.slice(0, ci);
+      if (ci > 0) { ci--; setTimeout(tick, 38); }
+      else { del = false; pi = (pi + 1) % phrases.length; setTimeout(tick, 450); }
     }
-  });
+  }
+  setTimeout(tick, 2400);
+})();
 </script>
 </body>
 </html>
