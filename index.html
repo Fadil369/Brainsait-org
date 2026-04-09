@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BrainSAIT — AI-native healthcare automation. NPHIES-compliant, FHIR R4 interoperable, built for Saudi Arabia and MENA. Automated. Integrated. Technology-driven.">
+  <meta name="keywords" content="BrainSAIT, NPHIES, FHIR R4, healthcare AI, Saudi Arabia, ClaimLinc, LINC agents, Vision 2030">
+  <meta property="og:title" content="BrainSAIT — AI-Native Healthcare Platform">
+  <meta property="og:description" content="Automated. Integrated. Technology-driven healthcare for Saudi Arabia and MENA.">
+  <meta property="og:url" content="https://brainsait.org">
+  <meta property="og:type" content="website">
+  <title>BrainSAIT — AI-Native Healthcare | برينسايت</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a365d'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='%23d4a574' font-size='20' font-weight='bold' font-family='system-ui'%3EB%3C/text%3E%3C/svg%3E">
+
+  <style>
+    /* ═══ ENTERPRISE DESIGN TOKENS ═══ */
+    :root {
+      --void: #02040a;
+      --deep: #060913;
+      --navy: #0a0f1d;
+      --surface: #0f1524;
+      --card: rgba(255, 255, 255, 0.02);
+      --card-h: rgba(255, 255, 255, 0.04);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-h: rgba(255, 255, 255, 0.15);
+      --border-g: rgba(212, 165, 116, 0.3);
+      --gold: #d4a574;
+      --gold-b: #f0d5b5;
+      --gold-dim: rgba(212, 165, 116, 0.1);
+      --teal: #0ea5e9;
+      --teal-b: #38bdf8;
+      --teal-dim: rgba(14, 165, 233, 0.1);
+      --medical: #2563eb;
+      --emerald: #10b981;
+      --rose: #f43f5e;
+      --amber: #f59e0b;
+      --text: #f8fafc;
+      --text-d: #cbd5e1;
+      --text-m: #64748b;
+      --glass: rgba(6, 9, 19, 0.65);
+      --fd: 'Syne', sans-serif;
+      --fa: 'IBM Plex Sans Arabic', sans-serif;
+      --fi: 'Inter', sans-serif;
+      --fm: 'JetBrains Mono', monospace;
+      --r: 16px; --rs: 8px; --rx: 6px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      background: var(--void); color: var(--text);
+      font-family: var(--fi);
+      font-size: 15px; line-height: 1.6; overflow-x: hidden;
+    }
+
+    /* ═══ CANVAS & ORBS ═══ */
+    #cvs { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.3; }
+    .orb { position: fixed; border-radius: 50%; filter: blur(150px); pointer-events: none; z-index: 0; }
+    .o1 { width: 600px; height: 600px; background: var(--gold); opacity: 0.05; top: -10%; right: -5%; animation: drift 40s ease-in-out infinite; }
+    .o2 { width: 500px; height: 500px; background: var(--medical); opacity: 0.05; bottom: -10%; left: -10%; animation: drift 35s ease-in-out infinite reverse; }
+    @keyframes drift {
+      0%,100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(30px,-40px) scale(1.05); }
+    }
+
+    /* ═══ LAYOUT ═══ */
+    .page { position: relative; z-index: 1; }
+    .c { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    
+    /* Typography Overrides */
+    h1, h2, h3, h4, h5 { font-family: var(--fd); font-weight: 700; }
+    .text-gradient { background: linear-gradient(135deg, var(--gold), var(--gold-b)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+    /* ═══ NAVBAR ═══ */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      backdrop-filter: blur(16px) saturate(1.8);
+      background: rgba(2, 4, 10, 0.75);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    .ni {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px; padding: 0 24px;
+    }
+    .nb { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
+    .ni-icon {
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--teal) 100%);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--fd); font-weight: 800; font-size: 16px; color: var(--void);
+    }
+    .nn { font-family: var(--fd); font-weight: 800; font-size: 18px; letter-spacing: 0.5px; }
+    .nn em { color: var(--gold); font-style: normal; }
+    .nl { display: flex; align-items: center; gap: 8px; }
+    .nl a {
+      color: var(--text-d); text-decoration: none;
+      font-size: 14px; font-weight: 500; padding: 8px 16px;
+      border-radius: var(--rx); transition: all .2s;
+    }
+    .nl a:hover { color: var(--text); background: var(--card); }
+    .ncta { display: flex; align-items: center; gap: 12px; }
+    .btn-n {
+      background: var(--gold); color: var(--void);
+      font-weight: 600; font-size: 14px; padding: 8px 20px;
+      border-radius: var(--rx); text-decoration: none;
+      transition: all .2s;
+    }
+    .btn-n:hover { background: var(--gold-b); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(212,165,116,0.2); }
+    .btn-outline {
+      border: 1px solid var(--border); color: var(--text); background: transparent;
+      font-weight: 500; font-size: 14px; padding: 8px 16px;
+      border-radius: var(--rx); text-decoration: none; transition: all .2s; cursor: pointer;
+    }
+    .btn-outline:hover { border-color: var(--border-h); background: var(--card); }
+    
+    .hbg { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hbg span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
+
+    /* ═══ HERO ═══ */
+    .hero { padding: 160px 0 80px; text-align: center; }
+    .hbadge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px; background: var(--card);
+      border: 1px solid var(--border); border-radius: 100px;
+      font-size: 12px; font-weight: 600; color: var(--text-d);
+      margin-bottom: 32px; animation: fu .7s ease-out both;
+    }
+    .pls { width: 8px; height: 8px; background: var(--emerald); border-radius: 50%; box-shadow: 0 0 10px var(--emerald); animation: pl 2s infinite; }
+    @keyframes pl { 0%,100% { opacity:1; } 50% { opacity:.4; } }
+    h1 {
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1.1; letter-spacing: -1px; margin-bottom: 24px;
+      animation: fu .7s ease-out .1s both;
+    }
+    .hs {
+      font-size: 18px; color: var(--text-d); max-width: 680px; margin: 0 auto 48px;
+      animation: fu .7s ease-out .2s both;
+    }
+    .ha { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; animation: fu .7s ease-out .3s both; }
+
+    /* ═══ STATS ═══ */
+    .stats { padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--card); }
+    .sg { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .st { text-align: center; }
+    .sv { font-size: 32px; font-weight: 700; color: var(--text); margin-bottom: 4px; font-family: var(--fd); }
+    .sl { font-size: 13px; color: var(--text-m); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ═══ SECTIONS COMMON ═══ */
+    section { padding: 120px 0; }
+    .sec-head { text-align: center; margin-bottom: 64px; }
+    .stag { font-size: 12px; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; display: block; }
+    h2 { font-size: clamp(32px, 4vw, 48px); margin-bottom: 24px; line-height: 1.2; letter-spacing: -0.5px; }
+    .ssub { font-size: 16px; color: var(--text-d); max-width: 600px; margin: 0 auto; }
+
+    /* ═══ SHOWCASE / SOLUTIONS ═══ */
+    .showcase { background: linear-gradient(180deg, var(--void) 0%, var(--deep) 100%); }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 32px; transition: all 0.3s; position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .card:hover { border-color: var(--border-h); background: var(--card-h); transform: translateY(-4px); }
+    .card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, var(--gold), var(--teal)); opacity: 0; transition: opacity 0.3s; }
+    .card:hover::before { opacity: 1; }
+    
+    .c-icon { font-size: 28px; margin-bottom: 24px; }
+    .c-title { font-size: 20px; color: var(--text); margin-bottom: 12px; }
+    .c-desc { font-size: 14px; color: var(--text-d); margin-bottom: 24px; flex-grow: 1; }
+    .c-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .tag { font-size: 11px; padding: 4px 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; color: var(--text-m); font-family: var(--fm); }
+    .c-link { font-size: 14px; color: var(--gold); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 4px; }
+    .c-link:hover { color: var(--gold-b); }
+
+    /* ═══ FOOTER ═══ */
+    footer { border-top: 1px solid var(--border); padding: 80px 0 40px; background: var(--deep); }
+    .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 64px; }
+    .f-brand { display: flex; flex-direction: column; gap: 16px; }
+    .f-desc { color: var(--text-m); font-size: 14px; max-width: 320px; }
+    .f-title { font-size: 13px; font-weight: 600; color: var(--text); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; font-family: var(--fd); }
+    .f-links { display: flex; flex-direction: column; gap: 12px; list-style: none; }
+    .f-links a { color: var(--text-d); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .f-links a:hover { color: var(--gold); }
+    .f-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; border-top: 1px solid var(--border); color: var(--text-m); font-size: 13px; }
+
+    /* ═══ ANIMATIONS ═══ */
+    @keyframes fu { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+    .rev { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+    .rev.vis { opacity: 1; transform: translateY(0); }
+
+    /* ═══ MOBILE ═══ */
+    @media (max-width: 900px) {
+      .f-grid { grid-template-columns: 1fr 1fr; }
+      .nl, .btn-outline.lang { display: none; }
+      .hbg { display: flex; }
+      h1 { font-size: 36px; }
+      .sg { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .f-grid { grid-template-columns: 1fr; }
+      .sg { grid-template-columns: 1fr; }
+      .f-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .hero { padding: 120px 0 60px; }
+      .ha { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="cvs"></canvas>
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+
+<!-- Nav -->
+<nav id="navbar">
+  <div class="ni">
+    <a href="/" class="nb">
+      <div class="ni-icon">B</div>
+      <span class="nn">BRAIN<em>SAIT</em></span>
+    </a>
+    <div class="nl">
+      <a href="#products">Platform</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#vision">Vision 2030</a>
+    </div>
+    <div class="ncta">
+      <button class="btn-outline lang">&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</button>
+      <a href="https://brainsait.org/dashboard" class="btn-n">Launch App</a>
+      <div class="hbg"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</nav>
+
+<!-- Page -->
+<div class="page">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="c">
+      <div class="hbadge"><div class="pls"></div> NPHIES Connected &middot; Live</div>
+      <h1>Enterprise Healthcare AI.<br><span class="text-gradient">Automated &amp; Compliant.</span></h1>
+      <p class="hs">BrainSAIT delivers AI-native claims, clinical, and compliance automation for Saudi Arabia &amp; MENA. Built on FHIR R4, fully bilingual, and designed for scale.</p>
+      <div class="ha">
+        <a href="#solutions" class="btn-n" style="padding: 14px 32px; font-size: 15px;">Explore Solutions</a>
+        <a href="https://calendly.com/brainsait" class="btn-outline" style="padding: 14px 32px; font-size: 15px;" target="_blank">Book Demo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats rev">
+    <div class="c">
+      <div class="sg">
+        <div class="st"><div class="sv">98.4%</div><div class="sl">Claim Approval</div></div>
+        <div class="st"><div class="sv">1.2s</div><div class="sl">Avg Latency</div></div>
+        <div class="st"><div class="sv">FHIR R4</div><div class="sl">Native Standard</div></div>
+        <div class="st"><div class="sv">6</div><div class="sl">Active LINC Agents</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Open Source & Solutions Showcase -->
+  <section class="showcase" id="solutions">
+    <div class="c">
+      <div class="sec-head rev">
+        <span class="stag">Open Innovation</span>
+        <h2>Proven Solutions &amp; Integrations</h2>
+        <p class="ssub">Discover our latest repositories, tools, and platforms engineered for next-generation healthcare operations.</p>
+      </div>
+      <div class="grid-3 rev">
+        <!-- Card 1 -->
+        <div class="card">
+          <div class="c-icon">&#128187;</div>
+          <h3 class="c-title">Brainsait RCM</h3>
+          <p class="c-desc">AI-powered Revenue Cycle Management system. Features complete NPHIES integration, FHIR R4 compliance, fraud detection, and predictive analytics.</p>
+          <div class="c-tags"><span class="tag">TypeScript</span><span class="tag">NPHIES</span><span class="tag">AI</span></div>
+          <a href="https://github.com/Fadil369/brainsait-rcm" target="_blank" class="c-link">View Repository &rarr;</a>
+        </div>
+        <!-- Card 2 -->
+        <div class="card">
+          <div class="c-icon">&#128295;</div>
+          <h3 class="c-title">Oracle NPHIES Setup</h3>
+          <p class="c-desc">Enterprise bridge: BrainSAIT Oracle ERP claim scanner, automated FHIR pipeline, and secure Cloudflare tunnel infrastructure.</p>
+          <div class="c-tags"><span class="tag">JavaScript</span><span class="tag">Oracle ERP</span><span class="tag">Infra</span></div>
+          <a href="https://github.com/Fadil369/oracle-setup" target="_blank" class="c-link">View Repository &rarr;</a>
+        </div>
+        <!-- Card 3 -->
+        <div class="card">
+          <div class="c-icon">&#129302;</div>
+          <h3 class="c-title">BrainSAIT MCP Ext</h3>
+          <p class="c-desc">HIPAA/NPHIES compliant Model Context Protocol extension. Provides FHIR support, clinical decision workflows, and Arabic/English NLP.</p>
+          <div class="c-tags"><span class="tag">JavaScript</span><span class="tag">MCP</span><span class="tag">Healthcare AI</span></div>
+          <a href="https://github.com/Fadil369/brainsait-mcp-dxt" target="_blank" class="c-link">View Repository &rarr;</a>
+        </div>
+        <!-- Card 4 -->
+        <div class="card">
+          <div class="c-icon">&#128218;</div>
+          <h3 class="c-title">NPHIES Course Platform</h3>
+          <p class="c-desc">Bilingual training platform tailored for Saudi healthcare providers, featuring integrated payments and comprehensive insurance modules.</p>
+          <div class="c-tags"><span class="tag">PHP</span><span class="tag">Education</span><span class="tag">FinTech</span></div>
+          <a href="https://github.com/Fadil369/nphies-course-platform" target="_blank" class="c-link">View Repository &rarr;</a>
+        </div>
+        <!-- Card 5 -->
+        <div class="card">
+          <div class="c-icon">&#9881;&#65039;</div>
+          <h3 class="c-title">MasterLINC Engine</h3>
+          <p class="c-desc">Core orchestration layer for BrainSAIT's agent ecosystem, routing and managing complex clinical and operational multi-agent workflows.</p>
+          <div class="c-tags"><span class="tag">TypeScript</span><span class="tag">Agents</span><span class="tag">Core</span></div>
+          <a href="https://github.com/Fadil369/masterlinc" target="_blank" class="c-link">View Repository &rarr;</a>
+        </div>
+        <!-- Card 6 -->
+        <div class="card">
+          <div class="c-icon">&#127973;</div>
+          <h3 class="c-title">Unified Health Hub</h3>
+          <p class="c-desc">A centralized healthcare interoperability interface serving as the focal point for patient data, provider workflows, and real-time connectivity.</p>
+          <div class="c-tags"><span class="tag">TypeScript</span><span class="tag">Platform</span><span class="tag">Interoperability</span></div>
+          <a href="https://github.com/Fadil369/Unified-Health-Hub-1" target="_blank" class="c-link">View Repository &rarr;</a>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 48px;" class="rev">
+        <a href="https://github.com/stars/Fadil369/lists/solutions" target="_blank" class="btn-outline">View All Solutions on GitHub &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="c">
+      <div class="f-grid">
+        <div class="f-brand">
+          <a href="/" class="nb" style="margin-bottom: 8px;">
+            <div class="ni-icon">B</div>
+            <span class="nn">BRAIN<em>SAIT</em></span>
+          </a>
+          <p class="f-desc">AI-native healthcare automation platform for Saudi Arabia &amp; MENA. Built for scale, security, and seamless interoperability.</p>
+          <div style="display: flex; gap: 12px; margin-top: 8px;">
+            <a href="https://github.com/Fadil369" style="color: var(--text-d); text-decoration: none;">GitHub</a>
+            <a href="https://twitter.com/brainsait369" style="color: var(--text-d); text-decoration: none;">X (Twitter)</a>
+            <a href="https://www.linkedin.com/in/fadil369" style="color: var(--text-d); text-decoration: none;">LinkedIn</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="f-title">Solutions</h4>
+          <ul class="f-links">
+            <li><a href="#solutions">BrainSAIT RCM</a></li>
+            <li><a href="#solutions">Oracle Bridge</a></li>
+            <li><a href="#solutions">MasterLINC</a></li>
+            <li><a href="#solutions">NPHIES Education</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="f-title">Platform</h4>
+          <ul class="f-links">
+            <li><a href="https://brainsait.org/dashboard">App Dashboard</a></li>
+            <li><a href="https://docs.brainsait.org">Documentation</a></li>
+            <li><a href="https://brainsait.org/api">API Reference</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="f-title">Company</h4>
+          <ul class="f-links">
+            <li><a href="https://brainsait.org/about">About Us</a></li>
+            <li><a href="https://calendly.com/brainsait">Book Demo</a></li>
+            <li><a href="mailto:info@brainsait.org">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="f-bottom">
+        <div>&copy; 2026 BrainSAIT LTD. All rights reserved. Vision 2030 Aligned.</div>
+        <div style="display: flex; gap: 16px;">
+          <a href="https://brainsait.org/privacy" style="color: inherit; text-decoration: none;">Privacy</a>
+          <a href="https://brainsait.org/terms" style="color: inherit; text-decoration: none;">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  /* Particle Canvas */
+  (function(){
+    const c=document.getElementById('cvs'), ctx=c.getContext('2d');
+    let W, H, pts=[];
+    function rs(){ W = c.width = window.innerWidth; H = c.height = window.innerHeight; }
+    rs(); window.addEventListener('resize',rs);
+    for(let i=0; i<60; i++){
+      pts.push({
+        x: Math.random()*window.innerWidth,
+        y: Math.random()*window.innerHeight,
+        r: Math.random()*1.5+0.5,
+        dx: (Math.random()-0.5)*0.2,
+        dy: (Math.random()-0.5)*0.2,
+        a: Math.random()*0.4+0.1,
+        col: Math.random()>0.5 ? '212,165,116' : '14,165,233'
+      });
+    }
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      pts.forEach(p=>{
+        p.x+=p.dx; p.y+=p.dy;
+        if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle=`rgba(${p.col},${p.a})`; ctx.fill();
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+  /* Scroll Reveal */
+  const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); }), {threshold: 0.1});
+  document.querySelectorAll('.rev').forEach(el => io.observe(el));
+
+  /* Navbar Scrolled State */
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 20) {
+      nav.style.background = 'rgba(2, 4, 10, 0.9)';
+      nav.style.boxShadow = '0 4px 24px rgba(0,0,0,0.4)';
+    } else {
+      nav.style.background = 'rgba(2, 4, 10, 0.75)';
+      nav.style.boxShadow = 'none';
+    }
+  });
+</script>
+</body>
+</html>
