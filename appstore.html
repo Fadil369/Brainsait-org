@@ -722,17 +722,34 @@
   <p>© 2026 BrainSAIT LTD — All rights reserved. | <a href="/privacy" style="color: var(--gold); text-decoration: none;">Privacy Policy</a> | <a href="/terms" style="color: var(--gold); text-decoration: none;">Terms of Service</a></p>
 </footer>
 
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TP24GSTF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TP24GSTF');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google Tag Manager - Event Configuration -->
 <script>
+  // Initialize dataLayer
   window.dataLayer = window.dataLayer || [];
+  
+  // Standard GTM gtag function
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'GA_MEASUREMENT_ID', {
+  
+  // Configure GA4 through GTM (with privacy-first settings)
+  gtag('config', 'GA4_MEASUREMENT_ID', {
     'page_path': '/appstore',
     'page_title': 'BrainSAIT App Store',
-    'allow_google_signals': true,
-    'allow_ad_personalization_signals': true
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
   });
 </script>
 
