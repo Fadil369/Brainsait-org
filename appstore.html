@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- Primary Meta -->
+  <title>BrainSAIT App Store — Enterprise AI Solutions | برينسايت</title>
+  <meta name="title" content="BrainSAIT App Store — Enterprise AI Solutions">
+  <meta name="description" content="Browse and purchase enterprise-ready AI applications and healthcare solutions. Production-tested, fully supported, with flexible payment options.">
+  <meta name="keywords" content="BrainSAIT App Store, AI applications, healthcare software, enterprise solutions, NPHIES, FHIR">
+  <meta name="author" content="BrainSAIT LTD">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://brainsait.org/appstore">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://brainsait.org/appstore">
+  <meta property="og:title" content="BrainSAIT App Store — Enterprise AI Solutions">
+  <meta property="og:description" content="Enterprise-ready AI applications with live demos, source code options, and multiple payment methods.">
+  <meta property="og:image" content="https://brainsait.org/og-image.png">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ═══════════════════════════════════════════════════════
+       BRAINSAIT APP STORE — ENTERPRISE DESIGN SYSTEM
+       Premium Healthcare AI · Mobile-First · Bilingual
+    ═══════════════════════════════════════════════════════ */
+
+    /* ─── Design Tokens ─── */
+    :root {
+      --void:    #02040a;
+      --deep:    #060913;
+      --navy:    #0a0f1d;
+      --surface: #0f1524;
+      --surf2:   #141929;
+
+      --g1: rgba(255,255,255,0.02);
+      --g2: rgba(255,255,255,0.04);
+      --g3: rgba(255,255,255,0.06);
+      --gb: rgba(255,255,255,0.08);
+      --gbh: rgba(255,255,255,0.16);
+
+      --gold:     #d4a574;
+      --gold-l:   #e8c49a;
+      --gold-b:   #f0d5b5;
+      --gold-dim: rgba(212,165,116,0.10);
+
+      --teal:     #0ea5e9;
+      --teal-l:   #38bdf8;
+      --teal-dim: rgba(14,165,233,0.10);
+
+      --eme:      #10b981;
+      --eme-dim:  rgba(16,185,129,0.10);
+      --amb:      #f59e0b;
+      --rose:     #f43f5e;
+
+      --text:  #f8fafc;
+      --textd: #cbd5e1;
+      --textm: #64748b;
+      --texts: #334155;
+
+      --fd: 'Syne', sans-serif;
+      --fa: 'IBM Plex Sans Arabic', sans-serif;
+      --fi: 'Inter', sans-serif;
+
+      --r:   16px;
+      --rx:   6px;
+      --sp:  clamp(60px, 10vw, 120px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { 
+      background: var(--void); 
+      color: var(--text); 
+      font-family: var(--fi); 
+      font-size: 15px; 
+      line-height: 1.6; 
+      overflow-x: hidden;
+      letter-spacing: -0.3px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--fd);
+      letter-spacing: -1.5px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    h1 { font-size: clamp(32px, 6vw, 72px); letter-spacing: -2px; font-weight: 800; }
+    h2 { font-size: clamp(28px, 5vw, 56px); letter-spacing: -1.5px; font-weight: 700; }
+    h3 { font-size: clamp(20px, 3.5vw, 32px); letter-spacing: -1px; font-weight: 700; }
+
+    p { font-family: var(--fi); font-size: 15px; line-height: 1.7; letter-spacing: -0.3px; color: var(--textd); }
+
+    .stag {
+      font-family: var(--fd);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    strong, b { font-weight: 600; color: var(--gold-l); }
+    em { font-style: normal; font-weight: 700; color: var(--gold); }
+
+    /* ─── Navigation ─── */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(10, 10, 31, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--gb);
+      z-index: 1000;
+    }
+
+    .ni {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .nb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.2rem;
+      background: linear-gradient(135deg, var(--gold), var(--teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nl {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nl a {
+      color: var(--textd);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      font-family: var(--fd);
+      letter-spacing: -0.5px;
+    }
+
+    .nl a:hover, .nl a.active {
+      color: var(--gold);
+    }
+
+    .nl a[target="_blank"] {
+      color: var(--textm);
+      font-size: 0.85rem;
+    }
+
+    /* ─── Container & Layout ─── */
+    .c {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--r);
+    }
+
+    main { padding-top: 100px; }
+
+    section { padding: var(--sp) 0; }
+
+    /* ─── Hero ─── */
+    .hero {
+      padding: 120px var(--r) 60px;
+      text-align: center;
+      background: radial-gradient(ellipse at top left, rgba(139, 92, 246, 0.1), var(--void));
+    }
+
+    .hero h1 {
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--gold-l), var(--teal-l));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+    }
+
+    /* ─── Section Header ─── */
+    .sec-head {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .sec-head h2 {
+      background: linear-gradient(135deg, var(--gold-l), var(--teal-l));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+
+    .sec-head .ssub {
+      font-size: 16px;
+      color: var(--textd);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* ─── App Grid ─── */
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    /* ─── App Card ─── */
+    .app-card {
+      background: var(--g2);
+      border: 1px solid var(--gb);
+      border-radius: var(--rx);
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 500px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .app-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--teal), transparent);
+    }
+
+    .app-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--gold);
+      background: var(--g3);
+    }
+
+    .app-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .app-card h3 {
+      margin: 0 0 0.5rem;
+      color: var(--gold-l);
+      font-size: 1.3rem;
+    }
+
+    .app-card p {
+      margin: 0 0 1.5rem;
+      color: var(--textd);
+      font-size: 0.95rem;
+      flex-grow: 1;
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: linear-gradient(135deg, var(--eme), #059669);
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .complexity-indicator {
+      font-size: 0.75rem;
+      color: var(--amb);
+      text-align: center;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .price-tiers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: var(--g1);
+      border-radius: 8px;
+      border: 1px solid var(--gb);
+    }
+
+    .price-tier {
+      text-align: center;
+    }
+
+    .tier-label {
+      color: var(--textm);
+      font-size: 0.7rem;
+      margin-bottom: 0.3rem;
+      font-weight: 500;
+    }
+
+    .tier-price {
+      color: var(--eme);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    /* ─── Buttons ─── */
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: auto;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.2rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      gap: 0.5rem;
+      flex: 1;
+      font-family: var(--fd);
+      letter-spacing: -0.5px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(212, 165, 116, 0.2);
+    }
+
+    .btn.demo {
+      background: linear-gradient(135deg, var(--gold), var(--teal));
+    }
+
+    .btn.github {
+      background: var(--surface);
+      border: 1px solid var(--gb);
+    }
+
+    .btn.github:hover {
+      background: var(--surf2);
+      border-color: var(--gold);
+    }
+
+    .payment-label {
+      font-size: 0.75rem;
+      color: var(--textm);
+      margin-bottom: 0.6rem;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .payment-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+
+    .btn.stripe {
+      background: linear-gradient(135deg, #635bff, #5851db);
+      font-size: 0.75rem;
+      padding: 0.5rem;
+    }
+
+    .btn.stripe:hover {
+      background: linear-gradient(135deg, #5851db, #4c47c7);
+    }
+
+    .btn.paypal {
+      background: linear-gradient(135deg, #0070ba, #005a94);
+      font-size: 0.75rem;
+      padding: 0.5rem;
+    }
+
+    .btn.paypal:hover {
+      background: linear-gradient(135deg, #005a94, #004680);
+    }
+
+    .btn.apple {
+      background: #1a1a1a;
+      font-size: 0.75rem;
+      padding: 0.5rem;
+      border: 1px solid #333;
+    }
+
+    .btn.apple:hover {
+      background: #2a2a2a;
+      border-color: var(--gold);
+    }
+
+    .btn.saudi {
+      background: linear-gradient(135deg, #1a7f5a, #156648);
+      font-size: 0.75rem;
+      padding: 0.5rem;
+    }
+
+    .btn.saudi:hover {
+      background: linear-gradient(135deg, #156648, #114236);
+    }
+
+    /* ─── Modal ─── */
+    .payment-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 2000;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 500px;
+      width: 90%;
+      border: 1px solid var(--gb);
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .modal-header h3 {
+      margin: 0 0 0.5rem;
+      color: var(--gold-l);
+    }
+
+    .modal-header p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: var(--textd);
+      font-size: 2rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      font-weight: 300;
+    }
+
+    .close-modal:hover {
+      color: var(--gold);
+    }
+
+    .complexity-selector {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .complexity-option {
+      flex: 1;
+      padding: 1rem;
+      border: 2px solid var(--gb);
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: var(--g1);
+    }
+
+    .complexity-option:hover {
+      border-color: var(--gold);
+      background: var(--g2);
+    }
+
+    .complexity-option.selected {
+      border-color: var(--gold);
+      background: var(--gold-dim);
+    }
+
+    .complexity-option .price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--eme);
+      margin-bottom: 0.5rem;
+    }
+
+    .complexity-option .label {
+      font-size: 0.8rem;
+      color: var(--textd);
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      margin-top: 4rem;
+      padding: 2rem 1rem;
+      background: var(--navy);
+      border-top: 1px solid var(--gb);
+      text-align: center;
+      color: var(--textm);
+      font-size: 0.85rem;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 768px) {
+      .app-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .price-tiers {
+        grid-template-columns: 1fr;
+      }
+
+      .payment-buttons {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-row {
+        flex-direction: column;
+      }
+
+      .complexity-selector {
+        flex-direction: column;
+      }
+
+      .nl {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 100px 1rem 40px;
+      }
+
+      .app-card {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<header>
+  <div class="ni" style="gap: 2rem;">
+    <a href="/" class="nb" aria-label="BrainSAIT Home">
+      <span style="font-size: 1.5rem;">B</span>
+      <span>BRAIN<em>SAIT</em></span>
+    </a>
+    <div class="nl" role="menubar">
+      <a href="/" role="menuitem">Home</a>
+      <a href="#products" role="menuitem">Products</a>
+      <a href="/appstore" role="menuitem" class="active">App Store</a>
+    </div>
+    <div style="display: flex; gap: 1rem; align-items: center;">
+      <button class="lang-btn" id="langToggle" aria-label="Switch language" style="background: linear-gradient(135deg, var(--gold), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; border: none; font-weight: 600; cursor: pointer; font-family: var(--fd);">العربية</button>
+      <a href="https://portal.elfadil.com" target="_blank" rel="noopener noreferrer" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Portal →</a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div>
+    <h1>BrainSAIT App Store</h1>
+    <p>Enterprise-ready AI applications designed for healthcare digital transformation. Production-tested, fully supported, with flexible payment options including Stripe, PayPal, Apple Pay, and Saudi payment methods.</p>
+  </div>
+</section>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<main>
+  <section>
+    <div class="c">
+      <div class="sec-head">
+        <span class="stag">MARKETPLACE</span>
+        <h2>Our Products</h2>
+        <p class="ssub">Fully tested, enterprise-grade solutions ready for immediate deployment. Each product includes live demos, source code options, and comprehensive support.</p>
+      </div>
+
+      <div class="app-grid" id="appGrid">
+        <!-- Apps will be inserted here by JavaScript -->
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ═══ PAYMENT MODAL ═══ -->
+<div id="paymentModal" class="payment-modal">
+  <div class="modal-content">
+    <button class="close-modal" onclick="closePaymentModal()">×</button>
+    <div class="modal-header">
+      <h3 id="modalTitle">Select Payment Option</h3>
+      <p id="modalDescription">Choose your package and payment method</p>
+    </div>
+
+    <div class="complexity-selector" id="complexitySelector">
+      <!-- Options inserted by JavaScript -->
+    </div>
+
+    <div class="payment-section">
+      <div class="payment-label">💳 COMPLETE PURCHASE</div>
+      <div class="payment-buttons">
+        <button class="btn stripe" onclick="processPayment('stripe')">💳 Stripe</button>
+        <button class="btn paypal" onclick="processPayment('paypal')">🅿️ PayPal</button>
+        <button class="btn apple" onclick="processPayment('apple')">🍎 Apple</button>
+        <button class="btn saudi" onclick="processPayment('saudi')">🇸🇦 Saudi</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <p>© 2026 BrainSAIT LTD — All rights reserved. | <a href="/privacy" style="color: var(--gold); text-decoration: none;">Privacy Policy</a> | <a href="/terms" style="color: var(--gold); text-decoration: none;">Terms of Service</a></p>
+</footer>
+
+<script>
+  // App Store Data
+  const APPS = [
+    {
+      id: 'clinics',
+      name: 'Clinics Digital Transformation',
+      icon: '🏥',
+      description: 'Complete clinic booking and digital transformation platform for healthcare facilities. Includes appointment scheduling, patient management, and multi-clinic coordination.',
+      demo: 'https://clinics.brainsait.org',
+      github: 'https://github.com/Fadil369/Clinics-pages',
+      tier: 'enterprise',
+      category: 'healthcare'
+    },
+    {
+      id: 'business-plan',
+      name: 'Business Plan Template',
+      icon: '📋',
+      description: 'AI-driven professional business plan generator. Create compelling business plans with customizable templates and AI-powered insights.',
+      demo: 'https://web-fadil-site.pages.dev/',
+      github: 'https://github.com/Fadil369/business-plan-template',
+      tier: 'basic',
+      category: 'tools'
+    },
+    {
+      id: 'bookforge',
+      name: 'BookForge SaaS',
+      icon: '📚',
+      description: 'Complete book publishing and monetization platform. Write, design, publish, and sell your books with integrated payment processing.',
+      demo: 'https://bookforge-saas.pages.dev/',
+      github: 'https://github.com/Fadil369/bookforge-saas',
+      tier: 'advanced',
+      category: 'publishing'
+    },
+    {
+      id: 'wathq',
+      name: 'Enhanced Wathq ID',
+      icon: '🆔',
+      description: 'Advanced OID identity system with enhanced security, compliance, and user experience. Enterprise-grade digital identity platform.',
+      demo: 'https://brainsait-wathq-platform.pages.dev/brainsait_demo_app_enhanced',
+      github: 'https://github.com/Fadil369/enhanced-wathq-id',
+      tier: 'enterprise',
+      category: 'security'
+    },
+    {
+      id: 'oi-vs-ai',
+      name: 'OI vs AI Platform',
+      icon: '🧠',
+      description: 'Publish and monetize online e-books and courses. Comprehensive platform for content creators and educators.',
+      demo: 'https://oi-vs-ai-fresh.pages.dev/',
+      github: 'https://github.com/Fadil369/oi-vs-ai-fresh',
+      tier: 'advanced',
+      category: 'education'
+    },
+    {
+      id: 'healthcare',
+      name: 'Integrated Healthcare Platform',
+      icon: '⚕️',
+      description: 'Fully integrated healthcare system with patient management, billing, compliance, and analytics. Complete digital transformation solution.',
+      demo: 'https://brainsait-healthcare-platform.pages.dev/',
+      github: 'https://github.com/Fadil369/HealthLinc',
+      tier: 'enterprise',
+      category: 'healthcare'
+    },
+    {
+      id: 'claims',
+      name: 'Claims Intelligence AI',
+      icon: '🤖',
+      description: 'AI-powered insurance claims analysis and processing. Instant processing, automated reporting, and compliance checking.',
+      demo: 'https://0fb445fa.tawnia-insurance-analyzer.pages.dev/main',
+      github: 'https://github.com/Fadil369/al-tawnia-claims-intelligence',
+      tier: 'advanced',
+      category: 'insurance'
+    }
+  ];
+
+  const PRICING = {
+    basic: { app: 25000, source: 32000, enterprise: 40000 },
+    advanced: { app: 50000, source: 67000, enterprise: 85000 },
+    enterprise: { app: 100000, source: 135000, enterprise: 170000 }
+  };
+
+  let currentProduct = {};
+  let selectedComplexity = 'app';
+
+  // Render app grid
+  function renderAppGrid() {
+    const grid = document.getElementById('appGrid');
+    grid.innerHTML = APPS.map(app => `
+      <div class="app-card">
+        <div class="pricing-badge">${PRICING[app.tier].app.toLocaleString()} SAR</div>
+        <div class="app-icon">${app.icon}</div>
+        <h3>${app.name}</h3>
+        <p>${app.description}</p>
+        
+        <div class="complexity-indicator">
+          ${app.tier === 'basic' ? '⚡ Basic' : app.tier === 'advanced' ? '🚀 Advanced' : '👑 Enterprise'} Complexity
+        </div>
+
+        <div class="price-tiers">
+          <div class="price-tier">
+            <div class="tier-label">App Only</div>
+            <div class="tier-price">${PRICING[app.tier].app.toLocaleString()}</div>
+          </div>
+          <div class="price-tier">
+            <div class="tier-label">+ Source</div>
+            <div class="tier-price">${PRICING[app.tier].source.toLocaleString()}</div>
+          </div>
+          <div class="price-tier">
+            <div class="tier-label">Enterprise</div>
+            <div class="tier-price">${PRICING[app.tier].enterprise.toLocaleString()}</div>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <div class="btn-row">
+            <a href="${app.demo}" target="_blank" class="btn demo">🚀 Live Demo</a>
+            <a href="${app.github}" target="_blank" class="btn github">📂 GitHub</a>
+          </div>
+          
+          <div style="border-top: 1px solid var(--gb); padding-top: 0.8rem;">
+            <div class="payment-label">💳 PURCHASE</div>
+            <div class="payment-buttons">
+              <button class="btn stripe" onclick="openPaymentModal('${app.name}', '${app.tier}', '${app.demo}')">Buy</button>
+              <button class="btn paypal" onclick="openPaymentModal('${app.name}', '${app.tier}', '${app.demo}')">Buy</button>
+              <button class="btn apple" onclick="openPaymentModal('${app.name}', '${app.tier}', '${app.demo}')">Buy</button>
+              <button class="btn saudi" onclick="openPaymentModal('${app.name}', '${app.tier}', '${app.demo}')">Buy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Open payment modal
+  function openPaymentModal(productName, tier, demoUrl) {
+    currentProduct = { name: productName, tier: tier, demoUrl: demoUrl };
+    
+    document.getElementById('modalTitle').textContent = productName;
+    document.getElementById('modalDescription').textContent = `Select your package for ${productName}`;
+    
+    const pricing = PRICING[tier];
+    const selector = document.getElementById('complexitySelector');
+    selector.innerHTML = `
+      <div class="complexity-option" onclick="selectComplexity('app', this)">
+        <div class="price">${pricing.app.toLocaleString()} SAR</div>
+        <div class="label">App Only</div>
+      </div>
+      <div class="complexity-option" onclick="selectComplexity('source', this)">
+        <div class="price">${pricing.source.toLocaleString()} SAR</div>
+        <div class="label">+ Source Code</div>
+      </div>
+      <div class="complexity-option" onclick="selectComplexity('enterprise', this)">
+        <div class="price">${pricing.enterprise.toLocaleString()} SAR</div>
+        <div class="label">Enterprise Package</div>
+      </div>
+    `;
+    
+    selectComplexity('app', selector.firstChild);
+    document.getElementById('paymentModal').style.display = 'flex';
+  }
+
+  // Close payment modal
+  function closePaymentModal() {
+    document.getElementById('paymentModal').style.display = 'none';
+  }
+
+  // Select complexity
+  function selectComplexity(type, element) {
+    document.querySelectorAll('.complexity-option').forEach(opt => opt.classList.remove('selected'));
+    element.classList.add('selected');
+    selectedComplexity = type;
+  }
+
+  // Process payment
+  async function processPayment(provider) {
+    const pricing = PRICING[currentProduct.tier];
+    const amount = pricing[selectedComplexity];
+    
+    const paymentData = {
+      provider: provider,
+      amount: amount,
+      product: currentProduct.name,
+      tier: currentProduct.tier,
+      complexity: selectedComplexity
+    };
+
+    console.log('Processing payment:', paymentData);
+    alert(`Demo Mode: Processing ${provider.toUpperCase()} payment\n\nProduct: ${paymentData.product}\nAmount: ${amount.toLocaleString()} SAR\nPackage: ${selectedComplexity.toUpperCase()}`);
+    closePaymentModal();
+  }
+
+  // Close modal on outside click
+  document.getElementById('paymentModal').addEventListener('click', function(e) {
+    if (e.target === this) closePaymentModal();
+  });
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', function() {
+    renderAppGrid();
+    console.log('✅ BrainSAIT App Store initialized');
+  });
+</script>
+
+</body>
+</html>
