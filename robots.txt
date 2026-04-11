@@ -1,0 +1,36 @@
+# BrainSAIT robots.txt for SEO optimization
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.php
+Disallow: /?*
+Disallow: /*?*sort=
+Disallow: /*?*compare=
+Disallow: /*?*limit=
+Disallow: /search/
+Disallow: /cart/
+Disallow: /.env
+Disallow: /config/
+
+# Allow search engines for specific paths
+Allow: /
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.svg$
+Allow: /*.json$
+
+# Sitemaps
+Sitemap: https://brainsait.org/sitemap.xml
+Sitemap: https://brainsait.org/sitemap-mobile.xml
+
+# Crawl delay for slower bots
+User-agent: AhrefsBot
+Crawl-delay: 1
+User-agent: MJ12bot
+Crawl-delay: 1
+
+# Respect for all others
+User-agent: *
+Crawl-delay: 0.5
+

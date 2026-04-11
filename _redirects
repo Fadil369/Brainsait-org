@@ -1,9 +1,36 @@
-# Cloudflare Pages Redirects
-# https://developers.cloudflare.com/pages/configuration/redirects/
+# Cloudflare Redirects Configuration
+# Unified routing for www and non-www variants
+# All traffic redirects to https://brainsait.org (canonical)
 
-# Redirect trailing slashes
-/index.html   /   301
+# WWW to non-WWW redirect (permanent)
+https://www.brainsait.org/* https://brainsait.org/:splat 301
 
-# Docs redirect to GitHub Pages docs
-/docs         https://fadil369.github.io/brainsait-docs   302
-/docs/*       https://fadil369.github.io/brainsait-docs/:splat   302
+# HTTP to HTTPS redirect
+http://brainsait.org/* https://brainsait.org/:splat 301
+http://www.brainsait.org/* https://brainsait.org/:splat 301
+
+# Clinics subdomain routing
+https://clinics.brainsait.org/* https://clinics-pages.pages.dev/:splat 301
+
+# Portal subdomain routing
+https://portal.brainsait.org/* https://portal.elfadil.com/:splat 301
+
+# Docs routing
+https://docs.brainsait.org/* https://fadil369.github.io/brainsait-docs/:splat 301
+
+# API future routing
+https://api.brainsait.org/* https://api.brainsait.org/:splat 200
+
+# Dashboard routing
+https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
+
+# Careers page
+https://brainsait.org/careers https://careers.brainsait.org 301
+
+# Privacy and Terms
+https://brainsait.org/privacy /privacy 200
+https://brainsait.org/terms /terms 200
+
+# 404 handling
+/* /index.html 200
+

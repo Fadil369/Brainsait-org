@@ -1,14 +1,33 @@
 /*
-  X-Frame-Options: DENY
+  # Security Headers
+  X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
   X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'
-  Cache-Control: public, max-age=3600
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
+  
+  # Performance & Caching
+  Cache-Control: public, max-age=3600, stale-while-revalidate=604800
+  
+  # SEO Headers
+  Vary: Accept-Encoding, Accept-Language
+  
+  # Content Security Policy - Enhanced
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' www.googletagmanager.com www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' www.google-analytics.com; frame-src calendar.app.google.com
 
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
 
+/*.js
+  Cache-Control: public, max-age=604800
+  Content-Type: application/javascript
+
+/*.css
+  Cache-Control: public, max-age=604800
+  Content-Type: text/css
+
 /favicon.ico
   Cache-Control: public, max-age=86400
+
+/og-image.png
+  Cache-Control: public, max-age=2592000
