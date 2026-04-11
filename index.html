@@ -278,5 +278,26 @@
       document.getElementById('poly-title').textContent = isArabic ? 'Multi-Specialty Clinics' : 'العيادات المتعددة';
     }
   </script>
+  
+  <!-- GA4 Configuration -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-R2Q0LYQTQS', {
+      'page_path': window.location.pathname,
+      'page_title': document.title,
+      'allow_google_signals': false,
+      'allow_ad_personalization_signals': false
+    });
+    
+    // Track page view event
+    gtag('event', 'page_view', {
+      'page_location': window.location.href,
+      'page_title': document.title,
+      'page_referrer': document.referrer || 'direct'
+    });
+  </script>
+  <!-- End GA4 Configuration -->
 </body>
 </html>
