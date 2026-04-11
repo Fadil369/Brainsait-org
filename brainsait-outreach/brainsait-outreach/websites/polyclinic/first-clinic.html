@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First Clinic — عيادة متعددة التخصصات في الرياض | BRAINSAIT</title>
+  <meta name="description" content="First Clinic - Executive Health متخصصة في King Abdullah Rd. احجز موعدك أونلاين بسهولة. خدمات طبية شاملة مع أتمتة كاملة.">
+  <meta name="keywords" content="عيادة متعددة التخصصات، طب شامل، Executive Health، King Abdullah Rd، الرياض، حجز مواعيد">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #f3faff;
+      --surface: #ffffff;
+      --container-low: #fef3e6;
+      --container-high: #fce5c8;
+      --primary: #003b42;
+      --accent: #d4970f;
+      --accent-light: rgba(212, 151, 15, 0.08);
+      --on-surface: #071e27;
+      --muted: #49617b;
+      --glass-blur: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: 'Inter', 'Noto Kufi Arabic', sans-serif;
+      background: 
+        radial-gradient(42rem 30rem at 0% -10%, var(--accent-light), transparent 68%),
+        radial-gradient(32rem 20rem at 100% 100%, rgba(212, 151, 15, 0.04), transparent 72%),
+        var(--bg-base);
+      color: var(--on-surface);
+      line-height: 1.6;
+    }
+
+    html[dir="ltr"] body {
+      background: 
+        radial-gradient(42rem 30rem at 100% -10%, var(--accent-light), transparent 68%),
+        radial-gradient(32rem 20rem at 0% 100%, rgba(212, 151, 15, 0.04), transparent 72%),
+        var(--bg-base);
+    }
+
+    .container {
+      width: min(1200px, 94vw);
+      margin: 0 auto;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(243, 250, 255, 0.9);
+      backdrop-filter: blur(var(--glass-blur));
+      border-bottom: 1px solid rgba(212, 151, 15, 0.12);
+      padding: 1rem 0;
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      font-family: 'Manrope', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--primary);
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-book {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-book:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(212, 151, 15, 0.2);
+    }
+
+    .lang-toggle {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .lang-toggle:hover {
+      background: var(--accent-light);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-content {
+        gap: 1rem;
+      }
+
+      .btn-book {
+        padding: 0.5rem 0.9rem;
+        font-size: 0.813rem;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4rem 0 2rem;
+      text-align: right;
+    }
+
+    .hero h1 {
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      color: var(--primary);
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      color: var(--on-surface);
+      line-height: 1.7;
+      max-width: 65ch;
+      margin-left: auto;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      margin-bottom: 2rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.938rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(212, 151, 15, 0.25);
+    }
+
+    .btn-secondary {
+      background: var(--container-low);
+      color: var(--primary);
+      border: 1px solid rgba(212, 151, 15, 0.2);
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.938rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .btn-secondary:hover {
+      background: var(--container-high);
+      transform: translateY(-2px);
+    }
+
+    /* KPI Grid */
+    .hero-kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(212, 151, 15, 0.1);
+      border-bottom: 1px solid rgba(212, 151, 15, 0.1);
+    }
+
+    .kpi {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212, 151, 15, 0.12);
+      border-radius: 16px;
+      padding: 1rem;
+      text-align: right;
+    }
+
+    .kpi-number {
+      font-family: 'Manrope', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--accent);
+      display: block;
+    }
+
+    .kpi-label {
+      font-size: 0.813rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    /* Services Section */
+    .section {
+      padding: 3rem 0;
+    }
+
+    .section-head {
+      text-align: right;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-desc {
+      font-size: 0.938rem;
+      color: var(--muted);
+      max-width: 70ch;
+      margin-right: 0;
+      margin-left: auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: linear-gradient(135deg, var(--accent-light), rgba(255,255,255,0.6));
+      border: 1px solid var(--accent);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: right;
+      transition: all 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px rgba(212, 151, 15, 0.15);
+      border-color: var(--accent);
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .service-card p {
+      font-size: 0.938rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* Feature Cards */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212, 151, 15, 0.12);
+      border-right: 4px solid var(--accent);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: right;
+    }
+
+    .feature-card h3 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-card p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Contact Section */
+    .contact-box {
+      background: linear-gradient(135deg, var(--accent-light), rgba(255,255,255,0.5));
+      border: 1px solid var(--accent);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      text-align: right;
+      margin: 3rem 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-item {
+      text-align: right;
+    }
+
+    .contact-label {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .contact-value {
+      font-size: 1rem;
+      color: var(--on-surface);
+      word-break: break-word;
+    }
+
+    .contact-value a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-value a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    /* WhatsApp FAB */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 2rem;
+      left: 2rem;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #d4970f, #e0a820);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      box-shadow: 0 8px 24px rgba(212, 151, 15, 0.35);
+      cursor: pointer;
+      transition: all 0.3s;
+      animation: pulse-fab 2s infinite;
+      z-index: 90;
+    }
+
+    .whatsapp-fab:hover {
+      transform: scale(1.12);
+      animation: none;
+    }
+
+    @keyframes pulse-fab {
+      0%, 100% { box-shadow: 0 8px 24px rgba(212, 151, 15, 0.35); }
+      50% { box-shadow: 0 8px 40px rgba(212, 151, 15, 0.5); }
+    }
+
+    /* Mobile Bottom Bar */
+    .mobile-actions {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(243, 250, 255, 0.95);
+      backdrop-filter: blur(var(--glass-blur));
+      border-top: 1px solid rgba(212, 151, 15, 0.12);
+      padding: 1rem;
+      display: none;
+      gap: 0.75rem;
+      z-index: 80;
+    }
+
+    .mobile-actions button,
+    .mobile-actions a {
+      flex: 1;
+      padding: 0.75rem;
+      border-radius: 8px;
+      border: none;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .mobile-actions .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      padding: 0.75rem;
+    }
+
+    .mobile-actions .btn-secondary {
+      background: var(--container-low);
+      color: var(--primary);
+      padding: 0.75rem;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      body {
+        padding-bottom: 5rem;
+      }
+
+      .whatsapp-fab {
+        bottom: 5.5rem;
+        width: 52px;
+        height: 52px;
+        font-size: 1.5rem;
+      }
+
+      .hero {
+        padding: 2rem 0 1rem;
+      }
+
+      .hero h1 {
+        font-size: 1.75rem;
+      }
+
+      .hero-actions {
+        justify-content: flex-end;
+      }
+
+      .btn-primary, .btn-secondary {
+        padding: 0.7rem 1rem;
+      }
+
+      .hero-kpis {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        padding: 1.5rem 0;
+      }
+
+      .kpi {
+        padding: 0.75rem;
+      }
+
+      .kpi-number {
+        font-size: 1.5rem;
+      }
+
+      .section {
+        padding: 2rem 0;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .service-card {
+        padding: 1.5rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .contact-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(212, 151, 15, 0.12);
+      padding: 2rem 0;
+      margin-top: 3rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.813rem;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    /* LTR Adjustments */
+    [dir="ltr"] .nav-content {
+      flex-direction: row-reverse;
+    }
+
+    [dir="ltr"] .hero,
+    [dir="ltr"] .section-head,
+    [dir="ltr"] .contact-item {
+      text-align: left;
+    }
+
+    [dir="ltr"] .hero-tagline,
+    [dir="ltr"] .section-desc {
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    [dir="ltr"] .hero-actions {
+      justify-content: flex-start;
+    }
+
+    [dir="ltr"] .service-card,
+    [dir="ltr"] .feature-card {
+      text-align: left;
+    }
+
+    [dir="ltr"] .feature-card {
+      border-right: none;
+      border-left: 4px solid var(--accent);
+    }
+
+    [dir="ltr"] .contact-label {
+      text-align: left;
+    }
+
+    [dir="ltr"] .whatsapp-fab {
+      left: auto;
+      right: 2rem;
+    }
+
+    [dir="ltr"] .mobile-actions {
+      left: 0;
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-content">
+      <div class="nav-actions">
+        <button class="btn-book" onclick="scrollToBooking()">احجز الآن</button>
+        <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+      </div>
+      <div class="logo">First Clinic</div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>First Clinic</h1>
+      <p class="hero-subtitle">Executive Health · King Abdullah Rd</p>
+      <p class="hero-tagline">تجربة طبية متكاملة مع فريق متخصص وحجز ذكي وأتمتة كاملة، نضمن أفضل رعاية لعائلتك.</p>
+      
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="openWhatsApp()">
+          💬 احجز موعدك
+        </button>
+        <button class="btn-secondary" onclick="scrollToBooking()">
+          📞 استفسر مباشر
+        </button>
+      </div>
+
+      <div class="hero-kpis">
+        <div class="kpi">
+          <span class="kpi-number">24/7</span>
+          <span class="kpi-label">حجز مؤتمت</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-number">AR+EN</span>
+          <span class="kpi-label">ثنائي اللغة</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-number">📱</span>
+          <span class="kpi-label">واتساب بيزنس</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section">
+      <div class="section-head">
+        <h2 class="section-title">تخصصاتنا الطبية</h2>
+        <p class="section-desc">نقدم خدمات طبية شاملة ومتكاملة عبر عدة تخصصات بأعلى معايير الجودة والمهنية.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="service-icon">🏥</span>
+          <h3>الطب العام والوقاية</h3>
+          <p>خدمات طبية عامة شاملة مع برامج وقائية متقدمة والكشف المبكر.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">👨‍⚕️</span>
+          <h3>الاستشارات المتخصصة</h3>
+          <p>استشارات من أطباء متخصصين في مختلف المجالات الطبية.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🔬</span>
+          <h3>الفحوصات والتحاليل</h3>
+          <p>مختبر حديث ومجهز بأحدث الأجهزة لفحوصات دقيقة وسريعة.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">📋</span>
+          <h3>المتابعة الدورية</h3>
+          <p>برامج متابعة شاملة لصحتك العامة مع تقارير دورية منتظمة.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">💊</span>
+          <h3>إدارة الأمراض المزمنة</h3>
+          <p>علاج متكامل وإدارة طويلة الأمد للأمراض المزمنة مع دعم مستمر.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🚀</span>
+          <h3>الرعاية الصحية المتقدمة</h3>
+          <p>برامج متقدمة للصحة الشاملة مع أحدث الأساليب العلاجية.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+      <div class="section-head">
+        <h2 class="section-title">نظام إدارة الرعاية الصحية</h2>
+        <p class="section-desc">منصة متكاملة لإدارة رحلتك الصحية مع أتمتة شاملة وخدمة عملاء متفانية.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>دورة رعاية متكاملة</h3>
+          <p>من التسجيل الأول إلى المتابعة الدورية، رحلة صحية منظمة وسلسة.</p>
+        </div>
+        <div class="feature-card">
+          <h3>توجيه ذكي بين التخصصات</h3>
+          <p>نظام توجيه ذكي يربط بين التخصصات المختلفة ليضمن أفضل رعاية.</p>
+        </div>
+        <div class="feature-card">
+          <h3>تجربة ثنائية اللغة الكاملة</h3>
+          <p>واجهة عربية وإنجليزية كاملة مع دعم عملاء متواصل بكلا اللغتين.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-box" id="booking">
+      <div class="section-head" style="margin-bottom: 1.5rem;">
+        <h2 class="section-title">التواصل والحجز</h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-item">
+          <span class="contact-label">📍 الموقع</span>
+          <span class="contact-value">King Abdullah Rd</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">📞 الهاتف</span>
+          <span class="contact-value"><a href="tel:0112222111">0112222111</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">🌐 الموقع الرسمي</span>
+          <span class="contact-value"><a href="https://firstclinic.com.sa" target="_blank">زيارة الموقع</a></span>
+        </div>
+      </div>
+
+      <div class="contact-actions">
+        <button class="btn-primary" onclick="openWhatsApp()">
+          💬 احجز عبر واتس
+        </button>
+        <a href="tel:0112222111" class="btn-secondary">
+          📞 اتصل بنا
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <div class="whatsapp-fab" onclick="openWhatsApp()">💬</div>
+
+  <div class="mobile-actions">
+    <button class="btn-primary" onclick="openWhatsApp()">واتس 💬</button>
+    <button class="btn-secondary" onclick="scrollToBooking()">استفسار 📞</button>
+    <button class="lang-toggle" onclick="toggleLanguage()" style="background: var(--container-high); border: none; color: var(--primary); width: 100%;">EN</button>
+  </div>
+
+  <footer>
+    <p>مدعوم من BRAINSAIT · منصة الحجز الذكي للعيادات · <a href="https://brainsait.org" target="_blank">brainsait.org</a></p>
+  </footer>
+
+  <script>
+    const clinic = {
+      name: 'First Clinic',
+      phone: '0112222111',
+      specialty: 'Executive Health'
+    };
+
+    function openWhatsApp() {
+      const phone = clinic.phone.replace(/\D/g, '');
+      const phoneWithCode = phone.startsWith('966') ? phone : '966' + phone.slice(1);
+      const msg = encodeURIComponent(`السلام عليكم، أود الحجز في ${clinic.name} - ${clinic.specialty}`);
+      window.open(`https://wa.me/${phoneWithCode}?text=${msg}`, '_blank');
+    }
+
+    function scrollToBooking() {
+      document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function toggleLanguage() {
+      const html = document.documentElement;
+      const isArabic = html.dir === 'rtl';
+      html.dir = isArabic ? 'ltr' : 'rtl';
+      html.lang = isArabic ? 'en' : 'ar';
+      updateLanguageToggle();
+    }
+
+    function updateLanguageToggle() {
+      const toggles = document.querySelectorAll('.lang-toggle');
+      toggles.forEach(t => {
+        const isArabic = document.documentElement.dir === 'rtl';
+        t.textContent = isArabic ? 'EN' : 'العربية';
+      });
+    }
+
+    // Smooth scroll fix
+    window.addEventListener('load', () => {
+      updateLanguageToggle();
+    });
+  </script>
+</body>
+</html>

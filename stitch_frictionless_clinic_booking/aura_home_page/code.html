@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aura Medical &amp; Dental | Clinical Precision</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#fabd00",
+                        "surface-dim": "#c7dde9",
+                        "on-tertiary-fixed-variant": "#5b4300",
+                        "on-secondary-fixed-variant": "#00468c",
+                        "secondary-fixed-dim": "#a9c7ff",
+                        "inverse-primary": "#75d5e2",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#cfe6f2",
+                        "on-secondary-container": "#003670",
+                        "on-primary-container": "#6acad7",
+                        "surface-container-high": "#d5ecf8",
+                        "outline": "#737783",
+                        "on-background": "#071e27",
+                        "surface-tint": "#006972",
+                        "on-tertiary-container": "#eeb300",
+                        "primary": "#003b42",
+                        "secondary-container": "#64a1ff",
+                        "primary-fixed-dim": "#75d5e2",
+                        "tertiary": "#453200",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f3faff",
+                        "primary-fixed": "#92f1fe",
+                        "on-surface-variant": "#434652",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c3c6d4",
+                        "on-primary-fixed-variant": "#004f56",
+                        "surface-variant": "#cfe6f2",
+                        "primary-container": "#00545c",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#1e333c",
+                        "surface-container": "#dbf1fe",
+                        "tertiary-fixed": "#ffdf9e",
+                        "inverse-on-surface": "#dff4ff",
+                        "secondary-fixed": "#d6e3ff",
+                        "secondary": "#005db7",
+                        "on-tertiary-fixed": "#261a00",
+                        "on-surface": "#071e27",
+                        "on-primary-fixed": "#001f23",
+                        "tertiary-container": "#614800",
+                        "surface-container-low": "#e6f6ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#001b3d",
+                        "surface-bright": "#f3faff",
+                        "surface": "#f3faff",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="bg-[#f3faff]/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-[0px_10px_30px_rgba(7,30,39,0.06)] docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#003b42] dark:text-[#92f1fe] text-3xl">medical_services</span>
+<h1 class="text-2xl font-bold tracking-tighter text-[#003b42] dark:text-[#92f1fe] font-headline">Atelier Care</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#003b42] dark:text-[#92f1fe] border-b-2 border-[#003b42] font-medium transition-colors duration-300" href="#">Home</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-[#00545c] transition-colors duration-300" href="#">Specialties</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-[#00545c] transition-colors duration-300" href="#">My Health</a>
+<a class="bg-gradient-to-br from-[#003b42] to-[#00545c] text-white px-6 py-2.5 rounded-xl font-semibold scale-95 active:opacity-80 transition-transform" href="#">Book Now</a>
+</nav>
+<div class="flex items-center">
+<span class="text-[#003b42] dark:text-[#92f1fe] font-headline tracking-tight font-semibold">Emergency: 911</span>
+</div>
+</div>
+</header>
+<main class="space-y-0">
+<!-- Hero Section -->
+<section class="relative min-h-[751px] flex items-center overflow-hidden bg-surface">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-20 mix-blend-multiply" data-alt="Modern clinical treatment room with soft daylight, high-end medical equipment, and a serene minimalist interior design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9hj6aS7y0Nd1HpddBEo1_TM5WxAiJjAFjeyEN083ItYhR_91g6MA4a_tw2wTiZ3u7Ou-7JkiLETxcwIdLWHvu6PT8yXne9f15woHoH1pbqUDoMD0SaiFyNtgNTGMb7XpmphCO2Q3UJNWowAdPmfrEMoTKHu0gTow9wwKSSUmIILo9AuXUv19XunOM9L3oloXVCdSMqIr1xABQPZHQEvIBMhugVP7ZuDpNQQWDHcU3TJJL1Akk82nsZd7PSM6ZeCOeEqrChEzPJhDl"/>
+<div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/90 to-transparent"></div>
+</div>
+<div class="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+<div class="max-w-2xl">
+<span class="font-label text-xs tracking-[0.2em] uppercase text-primary mb-6 block font-bold">The Gold Standard in Medicine</span>
+<h2 class="font-headline text-5xl md:text-7xl font-extrabold text-on-surface leading-[1.1] tracking-tight mb-8">
+                        Excellence in Care, <span class="text-primary italic">Precision</span> in Results
+                    </h2>
+<p class="font-body text-xl text-on-surface-variant leading-relaxed mb-10 max-w-lg">
+                        Bespoke multi-specialty expertise combining advanced clinical science with boutique patient care. Experience the future of personalized wellness.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl transition-all scale-95 active:scale-90">
+                            Book Your Consultation
+                        </button>
+<button class="bg-surface-container-high text-primary px-8 py-4 rounded-2xl font-bold text-lg hover:bg-surface-container-highest transition-colors">
+                            Explore Specialties
+                        </button>
+</div>
+</div>
+<div class="hidden lg:block relative">
+<div class="glass-card rounded-[3rem] p-8 shadow-[0px_40px_80px_rgba(7,30,39,0.1)] border border-white/20 transform translate-x-12">
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary-fixed rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">verified</span>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface">99.8% Patient Care Score</p>
+<p class="text-sm text-on-surface-variant">Top-rated clinical excellence 2024</p>
+</div>
+</div>
+<div class="h-px bg-outline-variant opacity-20"></div>
+<img class="w-full h-64 object-cover rounded-2xl shadow-inner" data-alt="Professional female surgeon in blue scrubs smiling confidently in a modern clinical setting with soft background bokeh" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKi3b3UbZW7p4zCfkOrruczWtSnUhb5rC_qYmgJcj8zJBRTqb1LetNB0nUrjUq6keL5SAKmSw9wIt4Nz5X3U3z3WkCLQKHRjByecIlo4mCdf56PfHjCKG8mtiBJXaJ5Mhmq0g7TWE8ncdJmOo7rZSA1RpnQNXlMRQVBvSqzItv6Nmo-YphaCmppxSucwYS6A1Qb8Crqh8D08qoeaYTaRY4gs7IQT2F2jqCYn-tBY2uOLbTsehtwRUsJReVvBu-z4JR3zLWCihhQHc6"/>
+<div class="flex justify-between items-center bg-surface-container-lowest p-4 rounded-xl">
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant font-bold">Next Available</span>
+<span class="text-primary font-bold">Today, 4:30 PM</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Specialties Quick Links - Bento Grid Layout -->
+<section class="py-24 bg-surface-container-low">
+<div class="container mx-auto px-6">
+<div class="mb-16 text-center max-w-2xl mx-auto">
+<h3 class="font-headline text-3xl font-bold text-on-surface mb-4">World-Class Specialties</h3>
+<p class="text-on-surface-variant">Access a curated network of experts dedicated to your long-term health and aesthetic vitality.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<!-- Dental -->
+<div class="group bg-surface-container-lowest p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-primary/10">
+<span class="material-symbols-outlined text-primary text-4xl mb-6 block transition-transform group-hover:scale-110">dentistry</span>
+<h4 class="font-headline text-xl font-bold mb-3">Dental Atelier</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Advanced cosmetic dentistry and restorative oral surgery for a precise smile.</p>
+</div>
+<!-- Dermatology -->
+<div class="group bg-surface-container-lowest p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-primary/10">
+<span class="material-symbols-outlined text-primary text-4xl mb-6 block transition-transform group-hover:scale-110">dermatology</span>
+<h4 class="font-headline text-xl font-bold mb-3">Dermatology</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Medical-grade skincare and diagnostics powered by state-of-the-art laser tech.</p>
+</div>
+<!-- Cosmetic -->
+<div class="group bg-primary text-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+<span class="material-symbols-outlined text-primary-fixed text-4xl mb-6 block">face_6</span>
+<h4 class="font-headline text-xl font-bold mb-3 text-white">Cosmetic Art</h4>
+<p class="text-sm text-on-primary-container leading-relaxed">Subtle, natural enhancements designed to reveal your most radiant self.</p>
+</div>
+<!-- General -->
+<div class="group bg-surface-container-lowest p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent hover:border-primary/10">
+<span class="material-symbols-outlined text-primary text-4xl mb-6 block transition-transform group-hover:scale-110">stethoscope</span>
+<h4 class="font-headline text-xl font-bold mb-3">General Practice</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Comprehensive primary care with a focus on preventative longevity and health data.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Us - Asymmetric Layout -->
+<section class="py-32 bg-surface">
+<div class="container mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+<div class="relative">
+<div class="rounded-[3rem] overflow-hidden shadow-2xl">
+<img class="w-full aspect-square object-cover" data-alt="High-tech medical diagnostic screen showing detailed anatomical scans in a dark, professional medical laboratory" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrcsk0MszbNkaSPL9TOn5TcD9iR54kMh8FzGS1UB8gHiM0bxEyLmNVcSx5x1mxJepP7Dw13xDpc5_wsI9-VYYusmuIqyQAr4thy_KzDhq3nGf2SjZTxtP22lRs06z_iyQpnQ33zn2_lzI9EBsf-J-TSfcNkvKOckF6w4qvsq9aOVrsIkk94w9zUsELOIOB0XYxXLZ5XBl3XNEn897ed_u868Gkvg8UIozLj1Od69lK-UTJ5fMhGc0zAp_sSKrhIB7LcAafeDq5Las8"/>
+</div>
+<div class="absolute -bottom-10 -right-10 bg-tertiary-fixed p-10 rounded-3xl shadow-xl max-w-xs hidden md:block">
+<h5 class="font-headline font-bold text-on-tertiary-fixed text-lg mb-2">Patient-First Ethics</h5>
+<p class="text-on-tertiary-fixed-variant text-sm">Every treatment plan is bespoke, data-driven, and focused on your unique anatomy.</p>
+</div>
+</div>
+<div>
+<h3 class="font-headline text-4xl font-bold text-on-surface mb-12">The Precision Standard</h3>
+<div class="space-y-10">
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-14 h-14 bg-surface-container-high rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary font-bold">biotech</span>
+</div>
+<div>
+<h6 class="font-headline text-xl font-bold mb-2">Advanced Tech</h6>
+<p class="text-on-surface-variant">Equipped with the latest 3D imaging, non-invasive diagnostics, and AI-assisted care monitoring.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-14 h-14 bg-surface-container-high rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary font-bold">clinical_notes</span>
+</div>
+<div>
+<h6 class="font-headline text-xl font-bold mb-2">Expert Clinicians</h6>
+<p class="text-on-surface-variant">Our team consists of internationally board-certified specialists with over 150 years of combined experience.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-14 h-14 bg-surface-container-high rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary font-bold">ecg_heart</span>
+</div>
+<div>
+<h6 class="font-headline text-xl font-bold mb-2">Holistic Monitoring</h6>
+<p class="text-on-surface-variant">Post-treatment follow-up is integrated into our platform, ensuring long-term success and peace of mind.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-24 bg-surface-container-highest/30">
+<div class="container mx-auto px-6">
+<h3 class="font-headline text-3xl font-bold text-center mb-16">Trusted by Thousands</h3>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="glass-card p-10 rounded-[2rem] border border-white/50">
+<div class="flex gap-1 text-tertiary-fixed-dim mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body text-lg italic text-on-surface-variant mb-8 leading-relaxed">"The level of clinical detail and care I received at Aura was unmatched. It feels more like a private lounge than a clinic."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-dim rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Headshot of a middle-aged male executive looking relaxed and professional in a light grey suit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7JkBXbpP88SiLU2J3mRC__NJNp5Nh_fLbr-rYaQ_WRKlQOJSIw1qSLELX8umpZ_kVLDmaIiKyaKwahKJb-c9m4awlelkzDG6-Tqp71sEy1adHZQhcVIvTt-zVNHIWN0Ti-W1XaDZxca5Vv-Z9Z1noDq4vyWLPSs2dat1pixcuI7sHielmlxmN6ViAOPadnK-_ZxGeyI09WIMPJEv4OrnZ5Ka0rfZmXBbnINitTbDCjPwKWLb0_vDLgEMloB053Y-3m1Ri7_iFX-Lz"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">Dr. James Richardson</p>
+<p class="text-xs font-label uppercase tracking-tighter text-outline">Business Strategy Lead</p>
+</div>
+</div>
+</div>
+<div class="glass-card p-10 rounded-[2rem] border border-white/50 relative transform -translate-y-4 shadow-xl">
+<div class="absolute -top-4 right-10 bg-primary text-white text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-[0.2em]">Verified Visit</div>
+<div class="flex gap-1 text-tertiary-fixed-dim mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body text-lg italic text-on-surface-variant mb-8 leading-relaxed">"The Dental Atelier team completely transformed my confidence. Precision results and absolutely painless. Highly recommend!"</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-dim rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Headshot of a smiling young woman with a clear complexion and warm expression in soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdYlI4l-0HstDfnRis5SnmtdLWz7UB5kVlOZIDfB4gj40twWPzCjpQ1ukzaZYd1bDoLkZu9CgPiN5B6kHlot92qpG6Ro9W2neaRplfz-Wfg38bacJtWMm3LD0dHDDie2hRpXaDvcRxgFjBCond95Tu2kEFB-h39AlKU9nbnBAkMC12tMnpXWSYhjYng-q3XvxeHb99Hl_YZtaAxRdC0JKVnMErhseFCH1CB4DmRp7GM7t-sY6QAOC_u_2n_GuLT1RPFDN51coKHMua"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">Sarah Al-Qahtani</p>
+<p class="text-xs font-label uppercase tracking-tighter text-outline">Architect</p>
+</div>
+</div>
+</div>
+<div class="glass-card p-10 rounded-[2rem] border border-white/50">
+<div class="flex gap-1 text-tertiary-fixed-dim mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body text-lg italic text-on-surface-variant mb-8 leading-relaxed">"Transparent pricing, incredible tech, and a truly patient-first approach. Finally, a healthcare experience that respects your time."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-dim rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a mature man with distinguished features and a kind, professional appearance" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9Q9MrVbIDAGHfZ7WVhzbC_r0VEKKGfNb9MKlu8h_Jhju991t3tf0XYZFswz3Ai6HCCLVxN5hsLXirKbOSkT3zvd52m2e9MayBhuZWr_3_DCGhqRCpHBCp0A4muSGBBeJnpqn3pOx9bSxsxlY-V1N3LAG6nJfv8JtoafstMBV9FWCi947QNMKhx36izcXwDQwU-AxmYbfMHxZcbFmrx1rFJ2YkzzZXglGdhVnPSMo5LB5upvj63KnlF7FXIgjzZM7BN71Ojtvv505R"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">Robert Chen</p>
+<p class="text-xs font-label uppercase tracking-tighter text-outline">Tech Consultant</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact/Location Section -->
+<section class="py-24 bg-surface">
+<div class="container mx-auto px-6">
+<div class="bg-primary-container rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+<div class="lg:w-1/2 p-12 lg:p-20 text-white">
+<h3 class="font-headline text-4xl font-bold mb-8">Visit Our Clinics</h3>
+<div class="space-y-12">
+<div>
+<p class="font-headline text-xl font-bold mb-2 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-fixed">location_on</span> Al-Sahafa Hub
+                                </p>
+<p class="text-on-primary-container leading-relaxed">District 4, King Abdulaziz Road<br/>Riyadh, Saudi Arabia</p>
+</div>
+<div>
+<p class="font-headline text-xl font-bold mb-2 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-fixed">location_on</span> Al-Olaya Boutique
+                                </p>
+<p class="text-on-primary-container leading-relaxed">Sky Tower, Level 18<br/>Riyadh, Saudi Arabia</p>
+</div>
+<div class="pt-8 flex flex-col sm:flex-row gap-6">
+<a class="flex items-center gap-4 text-white font-bold hover:text-primary-fixed transition-colors" href="tel:911">
+<span class="material-symbols-outlined">call</span> Call Center
+                                </a>
+<a class="flex items-center gap-4 text-white font-bold hover:text-primary-fixed transition-colors" href="mailto:care@auraclinic.com">
+<span class="material-symbols-outlined">mail</span> Email Support
+                                </a>
+</div>
+</div>
+</div>
+<div class="lg:w-1/2 min-h-[400px]">
+<div class="w-full h-full bg-surface-dim relative grayscale hover:grayscale-0 transition-all duration-700">
+<img class="w-full h-full object-cover" data-alt="Modern architectural exterior of a minimalist medical building with glass facade in Riyadh Al-Sahafa district" data-location="Riyadh" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsEuEPfujCPtv86dZ8Cv947o2Sf80YoylXcXkQToykHaUwhjcIlmeYi3vTiZMmjsqdWXouG4OnPQOmXGQv7IMMR4c8S209jeApaf_o6x9jUjV75SBHyaU25TE3zVvGQaE_DMLbdOOzrrq6sDgJY3PBP_PXNYkXh6uX04cTCHEMGt3ASk9ko0PFzXgvMPjXvmOxDblL5a0ZBFSPQaUWsera4nfoA4tdGiF7LhGthKpr1UCBVJzmdsd5-JGHwfldHLOlxvMFQ1o5y5qt"/>
+<div class="absolute inset-0 bg-primary/20 pointer-events-none"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#071e27] dark:bg-black py-12">
+<div class="grid md:flex justify-between items-start w-full px-8 max-w-7xl mx-auto gap-8">
+<div class="space-y-6 max-w-sm">
+<span class="text-[#f3faff] font-headline font-bold text-2xl tracking-tighter">Atelier Care</span>
+<p class="text-slate-400 font-body text-sm leading-relaxed">Clinical precision. Curated care. Aura Medical &amp; Dental is a sanctuary for health and aesthetic excellence.</p>
+</div>
+<div class="grid grid-cols-2 gap-12 sm:gap-24">
+<div>
+<h5 class="text-white font-bold mb-6 text-sm uppercase tracking-widest">Connect</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-400 hover:text-[#92f1fe] text-sm transition-colors duration-300" href="#">Instagram</a></li>
+<li><a class="text-slate-400 hover:text-[#92f1fe] text-sm transition-colors duration-300" href="#">LinkedIn</a></li>
+<li><a class="text-slate-400 hover:text-[#92f1fe] text-sm transition-colors duration-300" href="#">WhatsApp</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-white font-bold mb-6 text-sm uppercase tracking-widest">Legal</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-400 hover:text-[#92f1fe] text-sm transition-colors duration-300" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-400 hover:text-[#92f1fe] text-sm transition-colors duration-300" href="#">Patient Portal</a></li>
+<li><a class="text-slate-400 hover:text-[#92f1fe] text-sm transition-colors duration-300" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="container mx-auto px-8 mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-slate-500 text-xs">© 2024 Clinical Atelier Precision Care. All rights reserved.</p>
+<div class="flex gap-6">
+<span class="text-slate-500 text-xs">Lic. #88921-X</span>
+<span class="text-slate-500 text-xs">MOH Accredited</span>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#f3faff]/90 dark:bg-slate-900/90 backdrop-blur-md shadow-[0_-10px_40px_rgba(7,30,39,0.08)] rounded-t-[2rem] border-t border-[#c3c6d4]/15">
+<button class="flex flex-col items-center justify-center bg-gradient-to-br from-[#003b42] to-[#00545c] text-white rounded-2xl px-5 py-2.5 shadow-lg active:scale-90 duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label text-[11px] font-bold uppercase tracking-wider mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-2 hover:bg-[#e6f6ff] dark:hover:bg-slate-800 rounded-xl transition-all">
+<span class="material-symbols-outlined">stethoscope</span>
+<span class="font-label text-[11px] font-bold uppercase tracking-wider mt-1">Specialties</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-2 hover:bg-[#e6f6ff] dark:hover:bg-slate-800 rounded-xl transition-all">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label text-[11px] font-bold uppercase tracking-wider mt-1">Health</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-2 hover:bg-[#e6f6ff] dark:hover:bg-slate-800 rounded-xl transition-all">
+<span class="material-symbols-outlined">event_upcoming</span>
+<span class="font-label text-[11px] font-bold uppercase tracking-wider mt-1">Book</span>
+</button>
+</nav>
+</body></html>

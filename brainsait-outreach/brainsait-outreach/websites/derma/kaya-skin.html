@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaya Skin Clinic Riyadh — Premium Dermatology & Cosmetic Center in Riyadh</title>
+    <meta name="description" content="Kaya Skin Clinic Riyadh — Leading dermatology, laser, and cosmetic surgery center in Riyadh. Book consultation today.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rose: { 50:'#fff1f2', 100:'#ffe4e6', 200:'#fecdd3', 300:'#fda4af', 400:'#fb7185', 500:'#f43f5e', 600:'#e11d48', 700:'#be123c', 800:'#9f1239', 900:'#881337' },
+                        gold: { 50:'#fefce8', 100:'#fef9c3', 200:'#fef08a', 300:'#fde047', 400:'#facc15', 500:'#eab308', 600:'#ca8a04', 700:'#a16207', 800:'#854d0e', 900:'#713f12' },
+                        cream: '#fefdfb'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans Arabic', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes scaleIn { from{opacity:0;transform:scale(0.9)} to{opacity:1;transform:scale(1)} }
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-15px)} }
+        .fade-in { animation: fadeInUp 0.8s ease-out forwards; }
+        .scale-in { animation: scaleIn 0.6s ease-out forwards; }
+        .float-anim { animation: float 8s ease-in-out infinite; }
+        .glass-card { background: rgba(255,255,255,0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.8); }
+        .gradient-border { position:relative; }
+        .gradient-border::before { content:''; position:absolute; inset:-2px; background:linear-gradient(135deg, #f43f5e, #eab308, #f43f5e); border-radius:inherit; z-index:-1; background-size:200% 200%; animation:shimmer 3s ease-in-out infinite; }
+        .before-after-slider { position:relative; overflow:hidden; border-radius:1.5rem; }
+        html { scroll-behavior: smooth; }
+        .ar { direction:rtl; font-family:'Noto Sans Arabic',sans-serif; }
+    </style>
+</head>
+<body class="bg-cream text-gray-900 antialiased" id="top">
+
+<!-- Nav -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="#top" class="text-2xl font-bold">
+            <span class="bg-gradient-to-r from-rose-500 to-gold-500 bg-clip-text text-transparent">Kaya Skin Clinic Riyadh</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+            <a href="#services" class="text-gray-700 hover:text-rose-500 transition font-medium" data-en="Treatments" data-ar="العلاجات">Treatments</a>
+            <a href="#gallery" class="text-gray-700 hover:text-rose-500 transition font-medium" data-en="Gallery" data-ar="معرض الأعمال">Gallery</a>
+            <a href="#doctors" class="text-gray-700 hover:text-rose-500 transition font-medium" data-en="Doctors" data-ar="الأطباء">Doctors</a>
+            <a href="#testimonials" class="text-gray-700 hover:text-rose-500 transition font-medium" data-en="Reviews" data-ar="آراء">Reviews</a>
+        </div>
+        <div class="flex items-center gap-3">
+            <button onclick="toggleLang()" id="langBtn" class="text-sm text-gray-500 hover:text-gray-900 transition px-3 py-1.5 rounded-full border border-gray-200 hover:border-gray-400">🌐 العربية</button>
+            <a href="#booking" class="bg-gradient-to-r from-rose-500 to-rose-600 text-white px-6 py-2.5 rounded-full font-semibold hover:shadow-lg hover:shadow-rose-500/25 transition-all duration-300" data-en="Book Consultation" data-ar="احجز استشارة">Book Consultation</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="min-h-screen flex items-center relative overflow-hidden bg-gradient-to-br from-rose-50 via-white to-gold-50">
+    <div class="absolute top-20 right-10 w-72 h-72 bg-rose-200/30 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 left-10 w-96 h-96 bg-gold-200/20 rounded-full blur-3xl"></div>
+    
+    <div class="max-w-7xl mx-auto px-6 py-32 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="fade-in">
+                <div class="inline-flex items-center gap-2 bg-rose-100 text-rose-700 px-4 py-2 rounded-full text-sm font-medium mb-8">
+                    <span class="w-2 h-2 bg-rose-500 rounded-full animate-pulse"></span>
+                    <span data-en="Riyadh's Premier Aesthetic Center" data-ar="مركز التجميل الأول في الرياض">Riyadh's Premier Aesthetic Center</span>
+                </div>
+                <h1 class="text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                    <span data-en="Reveal Your" data-ar="اكتشفي">Reveal Your</span><br>
+                    <span class="bg-gradient-to-r from-rose-500 to-gold-500 bg-clip-text text-transparent" data-en="Natural Beauty" data-ar="جمالكِ الطبيعي">Natural Beauty</span>
+                </h1>
+                <p class="text-xl text-gray-600 mb-10 max-w-lg leading-relaxed" data-en="Advanced dermatology, laser treatments, and cosmetic procedures by board-certified specialists. Science meets artistry." data-ar="طب جلدية متقدم، علاجات ليزر، وإجراءات تجميلية على يد متخصصين معتمدين. العلم يلتقي بالإبداع.">
+                    Advanced dermatology, laser treatments, and cosmetic procedures by board-certified specialists. Science meets artistry.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#booking" class="group inline-flex items-center gap-3 bg-gradient-to-r from-rose-500 to-rose-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl hover:shadow-rose-500/30 transition-all duration-300 hover:-translate-y-1">
+                        <span data-en="Free Consultation" data-ar="استشارة مجانية">Free Consultation</span>
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                    <a href="tel:0114810233" class="inline-flex items-center gap-3 border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-full font-semibold text-lg hover:border-rose-300 hover:text-rose-600 transition-all">
+                        📞 0114810233
+                    </a>
+                </div>
+                <div class="flex items-center gap-8 mt-10 text-sm text-gray-500">
+                    <div class="flex items-center gap-2"><span class="text-rose-500">★★★★★</span> 4.9/5 (2,400+ reviews)</div>
+                    <div>🏥 15+ Years</div>
+                    <div>👨‍⚕️ 20+ Specialists</div>
+                </div>
+            </div>
+
+            <div class="relative hidden lg:block">
+                <div class="float-anim">
+                    <div class="w-full aspect-[4/5] rounded-3xl bg-gradient-to-br from-rose-100 to-gold-100 overflow-hidden shadow-2xl">
+                        <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-rose-50 to-white">
+                            <div class="text-center">
+                                <div class="text-9xl mb-4">✨</div>
+                                <div class="text-2xl font-light text-gray-400" data-en="Beauty & Science" data-ar="الجمال والعلم">Beauty & Science</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute -top-6 -left-6 glass-card px-5 py-3 rounded-2xl shadow-lg">
+                    <div class="text-sm font-semibold text-rose-600">🏆 #1 Rated</div>
+                    <div class="text-xs text-gray-500" data-en="Dermatology Riyadh" data-ar="طب جلدية الرياض">Dermatology Riyadh</div>
+                </div>
+                <div class="absolute -bottom-6 -right-6 glass-card px-5 py-3 rounded-2xl shadow-lg">
+                    <div class="text-sm font-semibold text-gold-600">💉 50K+</div>
+                    <div class="text-xs text-gray-500" data-en="Procedures Done" data-ar="إجراء مكتمل">Procedures Done</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Treatments Grid -->
+<section id="services" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <span class="inline-block bg-rose-100 text-rose-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-4" data-en="Our Treatments" data-ar="علاجاتنا">Our Treatments</span>
+            <h2 class="text-4xl lg:text-5xl font-bold mb-4" data-en="Transform Your Skin" data-ar="حوّلي بشرتك">Transform Your Skin</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Dermatology -->
+            <div class="group relative bg-gradient-to-br from-rose-50 to-white rounded-3xl p-8 border border-rose-100 hover:border-rose-300 transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+                <div class="w-16 h-16 bg-gradient-to-br from-rose-400 to-rose-500 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">🧴</div>
+                <h3 class="text-xl font-bold mb-3" data-en="Clinical Dermatology" data-ar="طب الجلدية السريري">Clinical Dermatology</h3>
+                <p class="text-gray-500 leading-relaxed mb-4" data-en="Expert diagnosis and treatment for acne, eczema, psoriasis, and all skin conditions." data-ar="تشخيص وعلاج متخصص لحب الشباب، الأكزيما، الصدفية، وجميع حالات الجلد.">Expert diagnosis and treatment for acne, eczema, psoriasis, and all skin conditions.</p>
+                <div class="flex items-center gap-2 text-rose-500 font-semibold group-hover:gap-3 transition-all">
+                    <span data-en="Learn More →" data-ar="اعرف المزيد →">Learn More →</span>
+                </div>
+            </div>
+
+            <!-- Laser -->
+            <div class="group relative bg-gradient-to-br from-gold-50 to-white rounded-3xl p-8 border border-gold-100 hover:border-gold-300 transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+                <div class="w-16 h-16 bg-gradient-to-br from-gold-400 to-gold-500 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">⚡</div>
+                <h3 class="text-xl font-bold mb-3" data-en="Laser Treatments" data-ar="علاجات الليزر">Laser Treatments</h3>
+                <p class="text-gray-500 leading-relaxed mb-4" data-en="Hair removal, skin resurfacing, scar treatment, and pigmentation correction with latest laser tech." data-ar="إزالة الشعر، تقشير الجلد، علاج الندوب، وتصحيح التصبغ بأحدث تقنيات الليزر.">Hair removal, skin resurfacing, scar treatment, and pigmentation correction.</p>
+                <div class="flex items-center gap-2 text-gold-600 font-semibold group-hover:gap-3 transition-all">
+                    <span data-en="Learn More →" data-ar="اعرف المزيد →">Learn More →</span>
+                </div>
+            </div>
+
+            <!-- Botox & Fillers -->
+            <div class="group relative bg-gradient-to-br from-purple-50 to-white rounded-3xl p-8 border border-purple-100 hover:border-purple-300 transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+                <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-500 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">💉</div>
+                <h3 class="text-xl font-bold mb-3" data-en="Botox & Fillers" data-ar="بوتوكس وفيلر">Botox & Fillers</h3>
+                <p class="text-gray-500 leading-relaxed mb-4" data-en="FDA-approved injectables for wrinkle reduction, volume restoration, and facial contouring." data-ar="حقن معتمد من هيئة الغذاء والدواء لتقليل التجاعيد، استعادة الحجم، ونحت الوجه.">FDA-approved injectables for wrinkle reduction, volume restoration, and facial contouring.</p>
+                <div class="flex items-center gap-2 text-purple-500 font-semibold group-hover:gap-3 transition-all">
+                    <span data-en="Learn More →" data-ar="اعرف المزيد →">Learn More →</span>
+                </div>
+            </div>
+
+            <!-- Body Contouring -->
+            <div class="group relative bg-gradient-to-br from-blue-50 to-white rounded-3xl p-8 border border-blue-100 hover:border-blue-300 transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+                <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-500 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">💎</div>
+                <h3 class="text-xl font-bold mb-3" data-en="Body Contouring" data-ar="نحت الجسم">Body Contouring</h3>
+                <p class="text-gray-500 leading-relaxed mb-4" data-en="Non-surgical fat reduction, skin tightening, and body sculpting with CoolSculpting & RF." data-ar="تقليل الدهون غير الجراحي، شد الجلد، ونحت الجسم بتقنية كول سكالبتينج و RF.">Non-surgical fat reduction, skin tightening, and body sculpting.</p>
+                <div class="flex items-center gap-2 text-blue-500 font-semibold group-hover:gap-3 transition-all">
+                    <span data-en="Learn More →" data-ar="اعرف المزيد →">Learn More →</span>
+                </div>
+            </div>
+
+            <!-- Skin Rejuvenation -->
+            <div class="group relative bg-gradient-to-br from-green-50 to-white rounded-3xl p-8 border border-green-100 hover:border-green-300 transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+                <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-500 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">🌿</div>
+                <h3 class="text-xl font-bold mb-3" data-en="Skin Rejuvenation" data-ar="تجديد البشرة">Skin Rejuvenation</h3>
+                <p class="text-gray-500 leading-relaxed mb-4" data-en="PRP, microneedling, chemical peels, and HydraFacial for radiant, youthful skin." data-ar="بلازما، ميكرونيدلينغ، تقشير كيميائي، و هيدرافيشل لبشرة مشرقة وشبابية.">PRP, microneedling, chemical peels, and HydraFacial for radiant skin.</p>
+                <div class="flex items-center gap-2 text-green-500 font-semibold group-hover:gap-3 transition-all">
+                    <span data-en="Learn More →" data-ar="اعرف المزيد →">Learn More →</span>
+                </div>
+            </div>
+
+            <!-- Hair Restoration -->
+            <div class="group relative bg-gradient-to-br from-amber-50 to-white rounded-3xl p-8 border border-amber-100 hover:border-amber-300 transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+                <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-amber-500 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">💇</div>
+                <h3 class="text-xl font-bold mb-3" data-en="Hair Restoration" data-ar="استعادة الشعر">Hair Restoration</h3>
+                <p class="text-gray-500 leading-relaxed mb-4" data-en="FUE hair transplant, PRP therapy, and mesotherapy for natural hair regrowth." data-ar="زراعة شعر FUE، علاج بالبلازما، و ميزوثيرابي لإنبات الشعر الطبيعي.">FUE hair transplant, PRP therapy, and mesotherapy for natural hair regrowth.</p>
+                <div class="flex items-center gap-2 text-amber-500 font-semibold group-hover:gap-3 transition-all">
+                    <span data-en="Learn More →" data-ar="اعرف المزيد →">Learn More →</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Before/After Gallery -->
+<section id="gallery" class="py-24 bg-gradient-to-br from-gray-50 to-rose-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <span class="inline-block bg-gold-100 text-gold-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-4" data-en="Results" data-ar="النتائج">Results</span>
+            <h2 class="text-4xl lg:text-5xl font-bold mb-4" data-en="Real Transformations" data-ar="تحولات حقيقية">Real Transformations</h2>
+            <p class="text-gray-500 text-lg" data-en="Actual patient results — with consent. Every face tells a story." data-ar="نتائج فعلية للمرضى — بموافقة. كل وجه يروي قصة.">Actual patient results — with consent.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-3xl overflow-hidden shadow-lg">
+                <div class="aspect-square bg-gradient-to-br from-rose-100 to-rose-50 flex items-center justify-center">
+                    <div class="text-center">
+                        <div class="text-6xl mb-3">✨</div>
+                        <div class="text-lg font-medium text-gray-400" data-en="Before / After" data-ar="قبل / بعد">Before / After</div>
+                        <div class="text-sm text-gray-300 mt-2" data-en="Skin Rejuvenation" data-ar="تجديد البشرة">Skin Rejuvenation</div>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold" data-en="HydraFacial + Microneedling" data-ar="هيدرافيشل + ميكرونيدلينغ">HydraFacial + Microneedling</h4>
+                    <p class="text-gray-500 text-sm" data-en="6 sessions over 3 months" data-ar="6 جلسات على مدى 3 أشهر">6 sessions over 3 months</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-3xl overflow-hidden shadow-lg">
+                <div class="aspect-square bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center">
+                    <div class="text-center">
+                        <div class="text-6xl mb-3">💎</div>
+                        <div class="text-lg font-medium text-gray-400" data-en="Before / After" data-ar="قبل / بعد">Before / After</div>
+                        <div class="text-sm text-gray-300 mt-2" data-en="Botox & Fillers" data-ar="بوتوكس وفيلر">Botox & Fillers</div>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold" data-en="Full Face Rejuvenation" data-ar="تجديد كامل للوجه">Full Face Rejuvenation</h4>
+                    <p class="text-gray-500 text-sm" data-en="Dermal fillers + Botox" data-ar="فيلر + بوتوكس">Dermal fillers + Botox</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-3xl overflow-hidden shadow-lg">
+                <div class="aspect-square bg-gradient-to-br from-amber-100 to-amber-50 flex items-center justify-center">
+                    <div class="text-center">
+                        <div class="text-6xl mb-3">💇</div>
+                        <div class="text-lg font-medium text-gray-400" data-en="Before / After" data-ar="قبل / بعد">Before / After</div>
+                        <div class="text-sm text-gray-300 mt-2" data-en="Hair Transplant" data-ar="زراعة شعر">Hair Transplant</div>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold" data-en="FUE Hair Transplant" data-ar="زراعة شعر FUE">FUE Hair Transplant</h4>
+                    <p class="text-gray-500 text-sm" data-en="3,500 grafts — 12 month result" data-ar="3,500 graft — نتيجة 12 شهر">3,500 grafts — 12 month result</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Booking -->
+<section id="booking" class="py-24 bg-gradient-to-br from-rose-500 to-rose-700 text-white">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-4xl lg:text-5xl font-bold mb-4" data-en="Book Your Consultation" data-ar="احجز استشارتك">Book Your Consultation</h2>
+        <p class="text-white/80 text-lg mb-12" data-en="Complimentary first consultation. Discuss your goals with our specialists." data-ar="استشارة أولى مجانية.ناقش أهدافك مع متخصصينا.">Complimentary first consultation. Discuss your goals with our specialists.</p>
+        
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+            <a href="#" class="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-8 hover:bg-white/20 transition">
+                <div class="text-4xl mb-4">📅</div>
+                <h3 class="text-xl font-bold mb-2" data-en="Online" data-ar="أونلاين">Online</h3>
+                <p class="text-white/70 text-sm" data-en="Instant booking" data-ar="حجز فوري">Instant booking</p>
+            </a>
+            <a href="https://wa.me/966114810233" class="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-8 hover:bg-white/20 transition">
+                <div class="text-4xl mb-4">💬</div>
+                <h3 class="text-xl font-bold mb-2">WhatsApp</h3>
+                <p class="text-white/70 text-sm" data-en="Chat with us" data-ar="تحدث معنا">Chat with us</p>
+            </a>
+            <a href="tel:0114810233" class="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-8 hover:bg-white/20 transition">
+                <div class="text-4xl mb-4">📞</div>
+                <h3 class="text-xl font-bold mb-2" data-en="Call" data-ar="اتصل">Call</h3>
+                <p class="text-white/70 text-sm">0114810233</p>
+            </a>
+        </div>
+
+        <div class="bg-white/10 backdrop-blur border border-white/20 rounded-3xl p-8 md:p-12">
+            <form class="grid md:grid-cols-2 gap-6">
+                <input type="text" placeholder="Name / الاسم" class="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50">
+                <input type="tel" placeholder="Phone / الجوال" class="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50">
+                <select class="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white/80 focus:outline-none">
+                    <option value="" class="text-slate-900">Treatment / نوع العلاج</option>
+                    <option class="text-slate-900">Dermatology / جلدية</option>
+                    <option class="text-slate-900">Laser / ليزر</option>
+                    <option class="text-slate-900">Botox & Fillers / بوتوكس وفيلر</option>
+                    <option class="text-slate-900">Body Contouring / نحت الجسم</option>
+                    <option class="text-slate-900">Hair Transplant / زراعة شعر</option>
+                    <option class="text-slate-900">Skin Rejuvenation / تجديد البشرة</option>
+                </select>
+                <input type="date" class="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white/80 focus:outline-none">
+                <textarea placeholder="Your goals / أهدافك" rows="3" class="md:col-span-2 w-full bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder-white/50 focus:outline-none"></textarea>
+                <button type="submit" class="md:col-span-2 bg-white text-rose-600 font-bold py-4 px-8 rounded-xl hover:shadow-2xl hover:shadow-white/20 transition-all duration-300">
+                    <span data-en="Request Free Consultation →" data-ar="اطلب استشارة مجانية →">Request Free Consultation →</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <h3 class="text-2xl font-bold bg-gradient-to-r from-rose-400 to-gold-400 bg-clip-text text-transparent">Kaya Skin Clinic Riyadh</h3>
+                <p class="text-gray-400 mt-2" data-en="Riyadh's Premier Dermatology & Cosmetic Center" data-ar="مركز الجلدية والتجميل الأول في الرياض">Riyadh's Premier Dermatology & Cosmetic Center</p>
+            </div>
+            <div class="flex items-center gap-6 text-gray-400">
+                <span>0114810233</span>
+                <span>riyadh@kayaskinclinic.com</span>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+            © 2026 Kaya Skin Clinic Riyadh. <span data-en="All rights reserved." data-ar="جميع الحقوق محفوظة.">All rights reserved.</span> | <span data-en="Powered by" data-ar="بدعم من">Powered by</span> <span class="text-rose-400">BRAINSAIT</span>
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/966114810233" class="fixed bottom-6 right-6 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition z-50">💬</a>
+
+<script>
+let lang = 'en';
+function toggleLang() {
+    lang = lang === 'en' ? 'ar' : 'en';
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.getElementById('langBtn').textContent = lang === 'ar' ? '🌐 English' : '🌐 العربية';
+    document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+        el.textContent = lang === 'ar' ? el.dataset.ar : el.dataset.en;
+    });
+}
+</script>
+</body>
+</html>
