@@ -798,6 +798,94 @@
     </div>
   </section>
 
+  <!-- ══════════════════════════════════════════════════════════════════════════
+       BRAINSAIT CLINIC BOOKING SERVICES
+       Premium integration for clinic appointment scheduling
+       ══════════════════════════════════════════════════════════════════════════ -->
+  <section id="clinic-booking" style="padding: var(--sp) 0; border-top: 1px solid var(--gb); margin-top: var(--sp);">
+    <div class="c">
+      <!-- Section Header -->
+      <div class="sec-head">
+        <span class="stag ar">خدمات عيادات متخصصة</span>
+        <span class="stag en">CLINIC BOOKING SERVICES</span>
+        <h2 class="ar">احجز موعدك مع عياداتنا المتخصصة</h2>
+        <h2 class="en">Book Your Appointment with Our Specialty Clinics</h2>
+        <p class="ssub ar">نوفر خدمات طبية متخصصة في طب الأسنان والأمراض الجلدية والعيادات الشاملة. احجز موعدك الآن مع أفضل المتخصصين في الرياض.</p>
+        <p class="ssub en">We offer specialized medical services in dental, dermatology, and polyclinic. Book your appointment now with the best specialists in Riyadh.</p>
+      </div>
+
+      <!-- Clinic Segments Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-bottom: 48px;">
+        
+        <!-- Dental Segment Card -->
+        <div class="rev d1" style="background: var(--g2); border: 1px solid var(--gb); border-radius: var(--rx); padding: 32px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.borderColor='#00c4b4'; this.style.background='var(--g3)'" onmouseout="this.style.borderColor='var(--gb)'; this.style.background='var(--g2)'">
+          <div style="font-size: 48px; margin-bottom: 16px;">🦷</div>
+          <h3 class="ar" style="color: #00c4b4; margin-bottom: 8px;">عيادات الأسنان</h3>
+          <h3 class="en" style="color: #00c4b4; margin-bottom: 8px;">Dental Clinics</h3>
+          <p style="color: var(--textd); font-size: 14px; margin-bottom: 20px; line-height: 1.6;">
+            <span class="ar">تنظيف وتبييض وتقويم وحشو الأسنان مع أحدث التقنيات. 5 عيادات متخصصة في الرياض.</span>
+            <span class="en">Cleaning, whitening, orthodontics, and fillings with latest technology. 5 specialized clinics in Riyadh.</span>
+          </p>
+          <button class="btn btn-p" style="width: 100%;" onclick="openClinicCategory('dental')">
+            <span class="ar">اختر عيادة أسنان</span>
+            <span class="en">Select Dental Clinic</span>
+          </button>
+        </div>
+
+        <!-- Dermatology Segment Card -->
+        <div class="rev d2" style="background: var(--g2); border: 1px solid var(--gb); border-radius: var(--rx); padding: 32px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.borderColor='#f43f5e'; this.style.background='var(--g3)'" onmouseout="this.style.borderColor='var(--gb)'; this.style.background='var(--g2)'">
+          <div style="font-size: 48px; margin-bottom: 16px;">💆</div>
+          <h3 class="ar" style="color: #f43f5e; margin-bottom: 8px;">عيادات الجلدية</h3>
+          <h3 class="en" style="color: #f43f5e; margin-bottom: 8px;">Dermatology Clinics</h3>
+          <p style="color: var(--textd); font-size: 14px; margin-bottom: 20px; line-height: 1.6;">
+            <span class="ar">علاج حب الشباب والتقشير والليزر والعناية الشاملة بالبشرة. 5 عيادات متخصصة.</span>
+            <span class="en">Acne treatment, peels, laser therapy, and comprehensive skin care. 5 specialized clinics.</span>
+          </p>
+          <button class="btn btn-p" style="width: 100%;" onclick="openClinicCategory('dermatology')">
+            <span class="ar">اختر عيادة جلدية</span>
+            <span class="en">Select Dermatology Clinic</span>
+          </button>
+        </div>
+
+        <!-- Polyclinic Segment Card -->
+        <div class="rev d3" style="background: var(--g2); border: 1px solid var(--gb); border-radius: var(--rx); padding: 32px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.borderColor='#f59e0b'; this.style.background='var(--g3)'" onmouseout="this.style.borderColor='var(--gb)'; this.style.background='var(--g2)'">
+          <div style="font-size: 48px; margin-bottom: 16px;">🏥</div>
+          <h3 class="ar" style="color: #f59e0b; margin-bottom: 8px;">العيادات الشاملة</h3>
+          <h3 class="en" style="color: #f59e0b; margin-bottom: 8px;">Polyclinics</h3>
+          <p style="color: var(--textd); font-size: 14px; margin-bottom: 20px; line-height: 1.6;">
+            <span class="ar">الطب العام وطب الأطفال والتحاليل والصيدلية. 4 عيادات شاملة بخدمات متعددة.</span>
+            <span class="en">General medicine, pediatrics, lab tests, and pharmacy. 4 comprehensive clinics.</span>
+          </p>
+          <button class="btn btn-p" style="width: 100%;" onclick="openClinicCategory('polyclinic')">
+            <span class="ar">اختر عيادة شاملة</span>
+            <span class="en">Select Polyclinic</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Google Calendar Booking Section -->
+      <div class="rev" style="background: linear-gradient(135deg, var(--g1) 0%, var(--g2) 100%); border: 1px solid var(--gb); border-radius: var(--rx); padding: 48px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); text-align: center;">
+        <div style="margin-bottom: 32px;">
+          <div class="stag" style="text-align: center;">📅 DIRECT BOOKING</div>
+          <h3 class="ar" style="margin-bottom: 12px;">احجز موعدك مباشرة</h3>
+          <h3 class="en" style="margin-bottom: 12px;">Schedule Directly</h3>
+          <p style="color: var(--textd); max-width: 600px; margin: 0 auto;">
+            <span class="ar">استخدم تقويمنا المباشر لحجز موعد في الوقت المناسب لك</span>
+            <span class="en">Use our direct calendar to book at your convenient time</span>
+          </p>
+        </div>
+        <button class="btn btn-p btn-lg" onclick="openDirectBooking()" style="margin: 0 auto; display: inline-flex;">
+          <span style="font-size: 18px; margin-right: 8px;">📅</span>
+          <span class="ar">افتح تقويم الحجز</span>
+          <span class="en">Open Booking Calendar</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+
   <!-- ── CTA ── -->
   <section class="cta-sec" aria-labelledby="cta-h">
     <div class="c">
@@ -1066,6 +1154,48 @@ sections.forEach(s => activeObs.observe(s));
   }
   setTimeout(tick, 2400);
 })();
+
+// ─── Clinic Booking Functions ───
+function openClinicCategory(category) {
+  const clinicPageBaseURL = 'https://clinics-pages.pages.dev/clinic-embed-wrapper.html';
+  window.open(`${clinicPageBaseURL}?segment=${category}`, '_blank', 'width=1200,height=800');
+  
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'brainsait_clinic_category_click', {
+      'clinic_category': category
+    });
+  }
+}
+
+function openDirectBooking() {
+  const calendarURL = 'https://calendar.app.google/V9KcXPcD1PeWDQHH8';
+  window.open(calendarURL, 'calendar', 'width=800,height=600');
+  
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'brainsait_direct_booking_click');
+  }
+}
+
+function initClinicBookingSection() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('vis');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('#clinic-booking .rev').forEach((el) => {
+    observer.observe(el);
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initClinicBookingSection);
+} else {
+  initClinicBookingSection();
+}
+
 </script>
 </body>
 </html>
