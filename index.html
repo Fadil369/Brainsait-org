@@ -198,8 +198,26 @@
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-TP24GSTF');</script>
-  <!-- End Google Tag Manager -->
+   })(window,document,'script','dataLayer','GTM-TP24GSTF');</script>
+   <!-- End Google Tag Manager -->
+   
+   <!-- Google Analytics 4 (gtag.js) - Direct Installation -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2Q0LYQTQS"></script>
+   <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+     
+     // Configure GA4 for both brainsait.org and elfadil.com domains
+     gtag('config', 'G-R2Q0LYQTQS', {
+       'page_path': window.location.pathname,
+       'page_title': document.title,
+       'allow_google_signals': false,
+       'allow_ad_personalization_signals': false,
+       'cookie_flags': 'SameSite=None;Secure'
+     });
+   </script>
+   <!-- End Google Analytics 4 -->
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
