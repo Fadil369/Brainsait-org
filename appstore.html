@@ -383,19 +383,49 @@
       border-color: var(--gold);
     }
 
-    .payment-label {
-      font-size: 0.75rem;
-      color: var(--textm);
-      margin-bottom: 0.6rem;
-      text-align: center;
-      font-weight: 600;
+     .payment-label {
+       font-size: 0.75rem;
+       color: var(--textm);
+       margin-bottom: 0.6rem;
+       text-align: center;
+       font-weight: 600;
+     }
+
+    /* ─── Category Filter ─── */
+    .category-filter {
+      padding: 8px 16px;
+      background: var(--g2);
+      border: 1px solid var(--gb);
+      border-radius: var(--rx);
+      color: var(--text);
+      cursor: pointer;
+      font-family: var(--fi);
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      white-space: nowrap;
     }
 
-    .payment-buttons {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.5rem;
+    .category-filter:hover {
+      background: var(--g3);
+      border-color: var(--gbh);
     }
+
+    .category-filter.active {
+      background: var(--gold);
+      color: var(--void);
+      border-color: var(--gold);
+    }
+
+    .app-card.hidden {
+      display: none;
+    }
+
+     .payment-buttons {
+       display: grid;
+       grid-template-columns: repeat(2, 1fr);
+       gap: 0.5rem;
+     }
 
     .btn.stripe {
       background: linear-gradient(135deg, #635bff, #5851db);
@@ -617,19 +647,49 @@
 
 <!-- ═══ MAIN CONTENT ═══ -->
 <main>
-  <section>
-    <div class="c">
-      <div class="sec-head">
-        <span class="stag">MARKETPLACE</span>
-        <h2>Our Products</h2>
-        <p class="ssub">Fully tested, enterprise-grade solutions ready for immediate deployment. Each product includes live demos, source code options, and comprehensive support.</p>
-      </div>
+   <section>
+     <div class="c">
+       <div class="sec-head">
+         <span class="stag">MARKETPLACE</span>
+         <h2>Our Products</h2>
+         <p class="ssub">Fully tested, enterprise-grade solutions ready for immediate deployment. Each product includes live demos, source code options, and comprehensive support.</p>
+       </div>
 
-      <div class="app-grid" id="appGrid">
-        <!-- Apps will be inserted here by JavaScript -->
-      </div>
-    </div>
-  </section>
+       <!-- Search and Filter Section -->
+       <div style="display: flex; gap: 16px; margin-bottom: 32px; flex-wrap: wrap; align-items: center;">
+         <div style="flex: 1; min-width: 250px;">
+           <input 
+             id="searchInput" 
+             type="text" 
+             placeholder="🔍 Search products..." 
+             style="
+               width: 100%;
+               padding: 12px 16px;
+               background: var(--surface);
+               border: 1px solid var(--gb);
+               border-radius: var(--rx);
+               color: var(--text);
+               font-family: var(--fi);
+               font-size: 14px;
+               transition: all 0.3s ease;
+             "
+             oninput="filterAndSearchProducts()"
+           >
+         </div>
+         <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+           <button onclick="filterByCategory('all')" class="category-filter active" data-category="all">All</button>
+           <button onclick="filterByCategory('healthcare')" class="category-filter" data-category="healthcare">Healthcare</button>
+           <button onclick="filterByCategory('business')" class="category-filter" data-category="business">Business</button>
+           <button onclick="filterByCategory('publishing')" class="category-filter" data-category="publishing">Publishing</button>
+           <button onclick="filterByCategory('security')" class="category-filter" data-category="security">Security</button>
+         </div>
+       </div>
+
+       <div class="app-grid" id="appGrid">
+         <!-- Apps will be inserted here by JavaScript -->
+       </div>
+     </div>
+   </section>
 </main>
 
 <!-- ═══ PAYMENT MODAL ═══ -->
@@ -661,6 +721,63 @@
 <footer>
   <p>© 2026 BrainSAIT LTD — All rights reserved. | <a href="/privacy" style="color: var(--gold); text-decoration: none;">Privacy Policy</a> | <a href="/terms" style="color: var(--gold); text-decoration: none;">Terms of Service</a></p>
 </footer>
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GA_MEASUREMENT_ID', {
+    'page_path': '/appstore',
+    'page_title': 'BrainSAIT App Store',
+    'allow_google_signals': true,
+    'allow_ad_personalization_signals': true
+  });
+</script>
+
+<!-- Stripe.js -->
+<script src="https://js.stripe.com/v3/"></script>
+
+<!-- PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=PAYPAL_CLIENT_ID&currency=SAR&disable-funding=credit,card"></script>
+
+<!-- Payment Configuration -->
+<script>
+  // Payment Provider Keys - REPLACE WITH ACTUAL KEYS
+  window.STRIPE_PUBLIC_KEY = 'pk_live_YOUR_STRIPE_PUBLIC_KEY'; // Replace with live key
+  window.PAYPAL_CLIENT_ID = 'PAYPAL_CLIENT_ID'; // Already loaded in SDK
+  
+  // API Endpoint Configuration
+  window.API_BASE_URL = 'https://api.brainsait.org';
+  
+  // Payment Configuration
+  window.PAYMENT_CONFIG = {
+    stripe: {
+      enabled: false, // Set to true once keys are configured
+      publicKey: window.STRIPE_PUBLIC_KEY,
+      businessProfile: {
+        url: 'https://brainsait.org'
+      }
+    },
+    paypal: {
+      enabled: false, // Set to true once clientId is configured
+      clientId: window.PAYPAL_CLIENT_ID,
+      currency: 'SAR'
+    },
+    apple: {
+      enabled: true,
+      merchantId: 'merchant.brainsait.org',
+      displayName: 'BrainSAIT',
+      supportedNetworks: ['visa', 'masterCard', 'amex']
+    },
+    saudi: {
+      enabled: true,
+      methods: ['mada', 'stc_pay', 'bank_transfer', 'tabby'],
+      currency: 'SAR'
+    }
+  };
+</script>
 
 <script>
   // App Store Data
@@ -746,56 +863,167 @@
   let currentProduct = {};
   let selectedComplexity = 'app';
 
-  // Render app grid
-  function renderAppGrid() {
-    const grid = document.getElementById('appGrid');
-    grid.innerHTML = APPS.map(app => `
-      <div class="app-card">
-        <div class="pricing-badge">${PRICING[app.tier].app.toLocaleString()} SAR</div>
-        <div class="app-icon">${app.icon}</div>
-        <h3>${app.name}</h3>
-        <p>${app.description}</p>
-        
-        <div class="complexity-indicator">
-          ${app.tier === 'basic' ? '⚡ Basic' : app.tier === 'advanced' ? '🚀 Advanced' : '👑 Enterprise'} Complexity
-        </div>
+   // Render app grid
+   function renderAppGrid() {
+     const grid = document.getElementById('appGrid');
+     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+     
+     grid.innerHTML = APPS.map(app => {
+       const isFavorited = favorites.includes(app.id);
+       return `
+       <div class="app-card" data-app-id="${app.id}">
+         <div style="display: flex; justify-content: space-between; align-items: start;">
+           <div class="pricing-badge">${PRICING[app.tier].app.toLocaleString()} SAR</div>
+           <button onclick="toggleFavorite('${app.id}')" style="background: none; border: none; font-size: 24px; cursor: pointer; padding: 4px 8px;" title="${isFavorited ? 'Remove from favorites' : 'Add to favorites'}">
+             ${isFavorited ? '❤️' : '🤍'}
+           </button>
+         </div>
+         <div class="app-icon">${app.icon}</div>
+         <h3>${app.name}</h3>
+         <p>${app.description}</p>
+         
+         <div class="complexity-indicator">
+           ${app.tier === 'basic' ? '⚡ Basic' : app.tier === 'advanced' ? '🚀 Advanced' : '👑 Enterprise'} Complexity
+         </div>
 
-        <div class="price-tiers">
-          <div class="price-tier">
-            <div class="tier-label">App Only</div>
-            <div class="tier-price">${PRICING[app.tier].app.toLocaleString()}</div>
-          </div>
-          <div class="price-tier">
-            <div class="tier-label">+ Source</div>
-            <div class="tier-price">${PRICING[app.tier].source.toLocaleString()}</div>
-          </div>
-          <div class="price-tier">
-            <div class="tier-label">Enterprise</div>
-            <div class="tier-price">${PRICING[app.tier].enterprise.toLocaleString()}</div>
-          </div>
-        </div>
+         <div class="price-tiers">
+           <div class="price-tier">
+             <div class="tier-label">App Only</div>
+             <div class="tier-price">${PRICING[app.tier].app.toLocaleString()}</div>
+           </div>
+           <div class="price-tier">
+             <div class="tier-label">+ Source</div>
+             <div class="tier-price">${PRICING[app.tier].source.toLocaleString()}</div>
+           </div>
+           <div class="price-tier">
+             <div class="tier-label">Enterprise</div>
+             <div class="tier-price">${PRICING[app.tier].enterprise.toLocaleString()}</div>
+           </div>
+         </div>
 
-        <div class="btn-group">
-          <div class="btn-row">
-            <a href="${app.demo}" target="_blank" class="btn demo">🚀 Live Demo</a>
-            <a href="${app.github}" target="_blank" class="btn github">📂 GitHub</a>
-          </div>
-          
-          <div style="border-top: 1px solid var(--gb); padding-top: 0.8rem;">
-            <div class="payment-label">💳 PURCHASE</div>
-            <div class="payment-buttons">
-              <button class="btn stripe" onclick="openPaymentModal('${app.name}', '${app.tier}', '${app.demo}')">Buy</button>
-              <button class="btn paypal" onclick="openPaymentModal('${app.name}', '${app.tier}', '${app.demo}')">Buy</button>
+         <div class="btn-group">
+           <div class="btn-row">
+             <a href="${app.demo}" target="_blank" class="btn demo">🚀 Live Demo</a>
+             <a href="${app.github}" target="_blank" class="btn github">📂 GitHub</a>
+           </div>
+           
+           <div style="border-top: 1px solid var(--gb); padding-top: 0.8rem;">
+             <div class="payment-label">💳 PURCHASE</div>
+             <div class="payment-buttons">
+               <button class="btn stripe" onclick="openPaymentModal('${app.name}', '${app.tier}', '${app.demo}')">Buy</button>
+               <button class="btn paypal" onclick="openPaymentModal('${app.name}', '${app.tier}', '${app.demo}')">Buy</button>
               <button class="btn apple" onclick="openPaymentModal('${app.name}', '${app.tier}', '${app.demo}')">Buy</button>
               <button class="btn saudi" onclick="openPaymentModal('${app.name}', '${app.tier}', '${app.demo}')">Buy</button>
             </div>
           </div>
-        </div>
-      </div>
-    `).join('');
-  }
+         </div>
+       </div>
+     `).join('');
+   }
 
-  // Open payment modal
+   // Filter and search products
+   function filterAndSearchProducts() {
+     const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+     const activeCategory = document.querySelector('.category-filter.active')?.dataset.category || 'all';
+     const appCards = document.querySelectorAll('.app-card');
+     let visibleCount = 0;
+
+     appCards.forEach((card, index) => {
+       const app = APPS[index];
+       const matchesSearch = app.name.toLowerCase().includes(searchTerm) || 
+                           app.description.toLowerCase().includes(searchTerm);
+       const matchesCategory = activeCategory === 'all' || app.category === activeCategory;
+
+       if (matchesSearch && matchesCategory) {
+         card.classList.remove('hidden');
+         visibleCount++;
+         // Track search result view
+         if (window.gtag && searchTerm.length > 0) {
+           gtag('event', 'search', {
+             search_term: searchTerm,
+             item_id: app.id,
+             item_name: app.name
+           });
+         }
+       } else {
+         card.classList.add('hidden');
+       }
+     });
+
+     // Show empty state if no results
+     if (visibleCount === 0 && (searchTerm || activeCategory !== 'all')) {
+       const grid = document.getElementById('appGrid');
+       if (!document.getElementById('noResults')) {
+         const noResults = document.createElement('div');
+         noResults.id = 'noResults';
+         noResults.style.cssText = 'grid-column: 1/-1; text-align: center; padding: 60px 20px; color: var(--textm);';
+         noResults.innerHTML = `
+           <p style="font-size: 18px; margin-bottom: 10px;">No products found</p>
+           <p style="font-size: 14px;">Try adjusting your search or filters</p>
+         `;
+         grid.appendChild(noResults);
+       }
+     } else {
+       const noResults = document.getElementById('noResults');
+       if (noResults) noResults.remove();
+     }
+   }
+
+   // Filter by category
+   function filterByCategory(category) {
+     // Update active filter button
+     document.querySelectorAll('.category-filter').forEach(btn => {
+       btn.classList.remove('active');
+     });
+     document.querySelector(`[data-category="${category}"]`).classList.add('active');
+
+     // Reset search
+     document.getElementById('searchInput').value = '';
+
+     // Filter products
+     filterAndSearchProducts();
+
+     // Track category filter
+     if (window.gtag) {
+       gtag('event', 'view_item_list', {
+         item_list_name: 'product_category',
+         item_list_id: category
+       });
+      }
+    }
+
+    // Toggle favorite
+    function toggleFavorite(appId) {
+      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+      const index = favorites.indexOf(appId);
+
+      if (index > -1) {
+        favorites.splice(index, 1);
+      } else {
+        favorites.push(appId);
+      }
+
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+
+      // Update UI
+      const button = document.querySelector(`[data-app-id="${appId}"] button[title*="favorites"]`);
+      if (button) {
+        button.textContent = index > -1 ? '🤍' : '❤️';
+        button.title = index > -1 ? 'Add to favorites' : 'Remove from favorites';
+      }
+
+      // Track event
+      if (window.gtag) {
+        gtag('event', index > -1 ? 'remove_from_favorites' : 'add_to_favorites', {
+          item_id: appId,
+          value: 1
+        });
+      }
+
+      console.log(`${index > -1 ? 'Removed from' : 'Added to'} favorites:`, appId);
+    }
+
+    // Open payment modal
   function openPaymentModal(productName, tier, demoUrl) {
     currentProduct = { name: productName, tier: tier, demoUrl: demoUrl };
     
@@ -837,32 +1065,364 @@
 
   // Process payment
   async function processPayment(provider) {
-    const pricing = PRICING[currentProduct.tier];
-    const amount = pricing[selectedComplexity];
-    
-    const paymentData = {
-      provider: provider,
-      amount: amount,
-      product: currentProduct.name,
-      tier: currentProduct.tier,
-      complexity: selectedComplexity
-    };
+     const pricing = PRICING[currentProduct.tier];
+     const amount = pricing[selectedComplexity];
+     
+     const paymentData = {
+       provider: provider,
+       amount: amount,
+       product: currentProduct.name,
+       tier: currentProduct.tier,
+       complexity: selectedComplexity
+     };
 
-    console.log('Processing payment:', paymentData);
-    alert(`Demo Mode: Processing ${provider.toUpperCase()} payment\n\nProduct: ${paymentData.product}\nAmount: ${amount.toLocaleString()} SAR\nPackage: ${selectedComplexity.toUpperCase()}`);
-    closePaymentModal();
-  }
+     console.log('Processing payment:', paymentData);
+     
+     // Track payment initiation
+     if (window.gtag) {
+       gtag('event', 'initiate_checkout', {
+         value: amount,
+         currency: 'SAR',
+         items: [{
+           item_id: currentProduct.name,
+           item_name: currentProduct.name,
+           item_category: currentProduct.tier,
+           price: amount,
+           quantity: 1
+         }]
+       });
+     }
 
-  // Close modal on outside click
-  document.getElementById('paymentModal').addEventListener('click', function(e) {
-    if (e.target === this) closePaymentModal();
-  });
+     try {
+       switch(provider) {
+         case 'stripe':
+           initializeStripeCheckout(paymentData);
+           break;
+         case 'paypal':
+           initializePayPalCheckout(paymentData);
+           break;
+         case 'apple':
+           initializeAppleCheckout(paymentData);
+           break;
+         case 'saudi':
+           initializeSaudiCheckout(paymentData);
+           break;
+       }
+     } catch (error) {
+       console.error('Payment error:', error);
+       alert('Payment processing failed. Please try again.');
+     }
+   }
 
-  // Initialize
-  document.addEventListener('DOMContentLoaded', function() {
-    renderAppGrid();
-    console.log('✅ BrainSAIT App Store initialized');
-  });
+   // Stripe Payment Handler
+   async function initializeStripeCheckout(paymentData) {
+     // Create or retrieve Stripe session
+     try {
+       const response = await fetch('https://api.brainsait.org/payments/stripe/checkout', {
+         method: 'POST',
+         headers: {
+           'Content-Type': 'application/json',
+         },
+         body: JSON.stringify({
+           product: paymentData.product,
+           amount: paymentData.amount,
+           complexity: paymentData.complexity,
+           tier: paymentData.tier,
+           metadata: {
+             source: 'appstore',
+             timestamp: new Date().toISOString()
+           }
+         })
+       });
+
+       if (!response.ok) throw new Error('Stripe session creation failed');
+       
+       const session = await response.json();
+       
+       // Redirect to Stripe checkout
+       if (window.Stripe) {
+         const stripe = Stripe(window.STRIPE_PUBLIC_KEY);
+         stripe.redirectToCheckout({ sessionId: session.id });
+       } else {
+         // Fallback: direct redirect
+         window.location.href = session.url;
+       }
+
+       // Track event
+       if (window.gtag) {
+         gtag('event', 'add_payment_info', {
+           value: paymentData.amount,
+           currency: 'SAR',
+           payment_type: 'stripe'
+         });
+       }
+
+     } catch (error) {
+       console.error('Stripe error:', error);
+       alert('Unable to initialize Stripe payment. Please ensure Stripe is configured correctly.');
+     }
+   }
+
+   // PayPal Payment Handler
+   async function initializePayPalCheckout(paymentData) {
+     try {
+       const response = await fetch('https://api.brainsait.org/payments/paypal/checkout', {
+         method: 'POST',
+         headers: {
+           'Content-Type': 'application/json',
+         },
+         body: JSON.stringify({
+           product: paymentData.product,
+           amount: paymentData.amount,
+           complexity: paymentData.complexity,
+           tier: paymentData.tier,
+           returnUrl: window.location.href + '?payment=success',
+           cancelUrl: window.location.href + '?payment=cancelled'
+         })
+       });
+
+       if (!response.ok) throw new Error('PayPal session creation failed');
+       
+       const session = await response.json();
+       
+       // Redirect to PayPal
+       window.location.href = session.approvalUrl;
+
+       // Track event
+       if (window.gtag) {
+         gtag('event', 'add_payment_info', {
+           value: paymentData.amount,
+           currency: 'SAR',
+           payment_type: 'paypal'
+         });
+       }
+
+     } catch (error) {
+       console.error('PayPal error:', error);
+       alert('Unable to initialize PayPal payment. Please try again or use another payment method.');
+     }
+   }
+
+   // Apple Pay Handler
+   async function initializeAppleCheckout(paymentData) {
+     // Check if Apple Pay is available
+     if (!window.ApplePaySession || !ApplePaySession.canMakePayments()) {
+       alert('Apple Pay is not available on this device.');
+       return;
+     }
+
+     try {
+       const request = {
+         countryCode: 'SA',
+         currencyCode: 'SAR',
+         supportedNetworks: ['visa', 'masterCard', 'amex'],
+         merchantCapabilities: ['supports3DS'],
+         total: {
+           label: 'BrainSAIT - ' + paymentData.product,
+           amount: (paymentData.amount / 100).toFixed(2),
+           type: 'final'
+         },
+         lineItems: [
+           {
+             label: paymentData.product,
+             amount: (paymentData.amount / 100).toFixed(2),
+             type: 'final'
+           }
+         ]
+       };
+
+       const session = new ApplePaySession(10, request);
+
+       session.onvalidatemerchant = async (event) => {
+         try {
+           const response = await fetch('https://api.brainsait.org/payments/apple/validate', {
+             method: 'POST',
+             headers: { 'Content-Type': 'application/json' },
+             body: JSON.stringify({ validationUrl: event.validationURL })
+           });
+           const data = await response.json();
+           session.completeMerchantValidation(data.merchantSession);
+         } catch (error) {
+           console.error('Apple merchant validation error:', error);
+           session.abort();
+         }
+       };
+
+       session.onpaymentauthorized = async (event) => {
+         try {
+           const response = await fetch('https://api.brainsait.org/payments/apple/charge', {
+             method: 'POST',
+             headers: { 'Content-Type': 'application/json' },
+             body: JSON.stringify({
+               payment: event.payment,
+               product: paymentData.product,
+               amount: paymentData.amount,
+               complexity: paymentData.complexity
+             })
+           });
+
+           const result = await response.json();
+
+           if (result.success) {
+             session.completePayment(ApplePaySession.STATUS_SUCCESS);
+             // Track conversion
+             if (window.gtag) {
+               gtag('event', 'purchase', {
+                 value: paymentData.amount,
+                 currency: 'SAR',
+                 transaction_id: result.transactionId,
+                 items: [{ item_name: paymentData.product, price: paymentData.amount }]
+               });
+             }
+             alert('Payment successful!');
+           } else {
+             session.completePayment(ApplePaySession.STATUS_FAILURE);
+             alert('Payment failed: ' + result.message);
+           }
+         } catch (error) {
+           console.error('Apple payment error:', error);
+           session.completePayment(ApplePaySession.STATUS_FAILURE);
+         }
+       };
+
+       session.begin();
+
+     } catch (error) {
+       console.error('Apple Pay setup error:', error);
+       alert('Unable to initialize Apple Pay.');
+     }
+   }
+
+   // Saudi Payment Methods Handler
+   async function initializeSaudiCheckout(paymentData) {
+     try {
+       const response = await fetch('https://api.brainsait.org/payments/saudi/checkout', {
+         method: 'POST',
+         headers: {
+           'Content-Type': 'application/json',
+         },
+         body: JSON.stringify({
+           product: paymentData.product,
+           amount: paymentData.amount,
+           complexity: paymentData.complexity,
+           tier: paymentData.tier,
+           methods: ['mada', 'stc_pay', 'bank_transfer', 'tabby']
+         })
+       });
+
+       if (!response.ok) throw new Error('Saudi payment session creation failed');
+       
+       const session = await response.json();
+       
+       // Open Saudi payment methods modal or redirect
+       displaySaudiPaymentOptions(session, paymentData);
+
+       // Track event
+       if (window.gtag) {
+         gtag('event', 'add_payment_info', {
+           value: paymentData.amount,
+           currency: 'SAR',
+           payment_type: 'saudi_methods'
+         });
+       }
+
+     } catch (error) {
+       console.error('Saudi payment error:', error);
+       alert('Unable to initialize Saudi payment methods. Please try again or use another payment method.');
+     }
+   }
+
+   // Display Saudi Payment Options
+   function displaySaudiPaymentOptions(session, paymentData) {
+     const modalHTML = `
+       <div id="saudiPaymentModal" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 10000;">
+         <div style="background: var(--void); border: 1px solid var(--gb); border-radius: var(--rx); padding: 32px; max-width: 500px; color: var(--text);">
+           <h3 style="font-family: var(--fd); margin-bottom: 24px; font-size: 24px;">Saudi Payment Methods</h3>
+           <div style="display: flex; flex-direction: column; gap: 12px;">
+             <button onclick="processSaudiMethod('mada', '${session.sessionId}')" style="padding: 12px 16px; background: linear-gradient(135deg, #FF5F00, #FF8800); border: none; border-radius: 6px; color: white; font-weight: 600; cursor: pointer;">💳 Mada Card</button>
+             <button onclick="processSaudiMethod('stc_pay', '${session.sessionId}')" style="padding: 12px 16px; background: linear-gradient(135deg, #FF6B35, #FFA726); border: none; border-radius: 6px; color: white; font-weight: 600; cursor: pointer;">📱 STC Pay</button>
+             <button onclick="processSaudiMethod('bank_transfer', '${session.sessionId}')" style="padding: 12px 16px; background: linear-gradient(135deg, #0EA5E9, #38BDF8); border: none; border-radius: 6px; color: white; font-weight: 600; cursor: pointer;">🏦 Bank Transfer</button>
+             <button onclick="processSaudiMethod('tabby', '${session.sessionId}')" style="padding: 12px 16px; background: linear-gradient(135deg, #667EEA, #764BA2); border: none; border-radius: 6px; color: white; font-weight: 600; cursor: pointer;">💰 Tabby (Buy Now, Pay Later)</button>
+           </div>
+           <button onclick="document.getElementById('saudiPaymentModal').remove()" style="margin-top: 16px; padding: 8px 16px; background: var(--g3); border: 1px solid var(--gb); border-radius: 6px; color: var(--text); cursor: pointer; width: 100%;">Cancel</button>
+         </div>
+       </div>
+     `;
+     document.body.insertAdjacentHTML('beforeend', modalHTML);
+   }
+
+   // Process Saudi Payment Method
+   async function processSaudiMethod(method, sessionId) {
+     try {
+       const response = await fetch('https://api.brainsait.org/payments/saudi/process', {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify({
+           method: method,
+           sessionId: sessionId
+         })
+       });
+
+       const result = await response.json();
+       
+       if (result.redirectUrl) {
+         window.location.href = result.redirectUrl;
+       } else {
+         alert('Payment processing initiated. Please follow the instructions on your device.');
+       }
+
+     } catch (error) {
+       console.error('Saudi payment method error:', error);
+       alert('Error processing payment method. Please try again.');
+     }
+   }
+
+   // Close modal on outside click
+   document.getElementById('paymentModal').addEventListener('click', function(e) {
+     if (e.target === this) closePaymentModal();
+   });
+
+   // Initialize
+   document.addEventListener('DOMContentLoaded', function() {
+     renderAppGrid();
+     
+     // GA4 Page View
+     if (window.gtag) {
+       gtag('event', 'page_view', {
+         page_path: '/appstore',
+         page_title: 'BrainSAIT App Store',
+         location: window.location.href
+       });
+     }
+     
+     // Track product grid impressions
+     const appCards = document.querySelectorAll('.app-card');
+     appCards.forEach((card, index) => {
+       const observer = new IntersectionObserver(entries => {
+         entries.forEach(entry => {
+           if (entry.isIntersecting) {
+             const productName = card.querySelector('h3').textContent;
+             if (window.gtag) {
+               gtag('event', 'view_item', {
+                 items: [{
+                   item_id: productName.toLowerCase().replace(/\s+/g, '-'),
+                   item_name: productName,
+                   item_category: 'app_store_product',
+                   index: index
+                 }]
+               });
+             }
+             observer.unobserve(entry.target);
+           }
+         });
+       }, { threshold: 0.5 });
+       observer.observe(card);
+     });
+     
+     console.log('✅ BrainSAIT App Store initialized');
+     console.log('📊 GA4 tracking enabled');
+     console.log('💳 Payment providers configured:', Object.keys(window.PAYMENT_CONFIG));
+   });
 </script>
 
 </body>
