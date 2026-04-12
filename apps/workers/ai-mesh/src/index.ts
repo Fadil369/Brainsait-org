@@ -16,14 +16,17 @@ import { cors } from 'hono/cors';
 import { logger } from 'hono/logger';
 import { MasterLincSession } from './durable-objects/master-linc';
 import { ClaimStateMachine } from './durable-objects/claim-state';
+import { BrowserSessionDO } from './durable-objects/browser-session';
 import { ragMiddleware } from './middleware/rag';
 import { authMiddleware } from './middleware/auth';
 import { rateLimitMiddleware } from './middleware/rate-limit';
 import { auditLog } from './lib/audit';
 import { routeToProvider } from './lib/providers';
 import { ingestDocument } from './lib/ingest';
+import { PortalClient } from './lib/portal-client';
+import { storeCredentials, loadCredentials } from './lib/vault';
 
-export { MasterLincSession, ClaimStateMachine };
+export { MasterLincSession, ClaimStateMachine, BrowserSessionDO };
 
 export interface Env {
   // AI
@@ -57,6 +60,7 @@ export interface Env {
   // Durable Objects
   MASTER_LINC: DurableObjectNamespace;
   CLAIM_STATE: DurableObjectNamespace;
+  BROWSER_SESSION: DurableObjectNamespace;
 
   // Secrets / Vars
   ANTHROPIC_API_KEY: string;
@@ -64,6 +68,9 @@ export interface Env {
   GITHUB_MODELS_TOKEN: string;
   CF_AIG_TOKEN: string;
   JWT_SECRET: string;
+  BROWSER_SERVICE_URL: string;
+  BROWSER_SERVICE_SECRET: string;
+  ENCRYPTION_KEY: string;
   AI_GATEWAY_ID: string;
   ACCOUNT_ID: string;
   CACHE_TTL: string;
@@ -363,6 +370,248 @@ app.post('/v1/storage/upload', authMiddleware, async (c) => {
   });
 
   return c.json({ key, bucket, size: file.size, contentType: file.type });
+});
+
+// ── PORTAL CREDENTIAL MANAGEMENT ─────────────────────────────────────────────
+// Store encrypted portal credentials (admin-only, requires auth)
+
+app.post('/v1/portals/credentials', authMiddleware, async (c) => {
+  const env = c.env;
+  const body = await c.req.json<{
+    portal: string;
+    branch: string;
+    username: string;
+    password: string;
+    extraFields?: Record<string, string>;
+  }>();
+
+  if (!body.portal || !body.branch || !body.username || !body.password) {
+    return c.json({ error: 'portal, branch, username, password required' }, 400);
+  }
+
+  await storeCredentials(env, body.portal, body.branch, {
+    username: body.username,
+    password: body.password,
+    extraFields: body.extraFields,
+  });
+
+  await auditLog(env, {
+    action: 'credentials.store',
+    resource: `portal:${body.portal}:${body.branch}`,
+    actor: c.req.header('x-user-id') ?? 'system',
+    timestamp: Date.now(),
+  });
+
+  return c.json({ ok: true, portal: body.portal, branch: body.branch });
+});
+
+// ── ORACLE PORTAL ROUTES ──────────────────────────────────────────────────────
+
+app.post('/v1/portals/oracle/login', authMiddleware, async (c) => {
+  const env = c.env;
+  const { branch = 'riyadh', sessionId: existingId } = await c.req.json<{
+    branch?: string;
+    sessionId?: string;
+  }>();
+
+  const creds = await loadCredentials(env, 'oracle', branch);
+  if (!creds) {
+    return c.json({ error: `No credentials stored for oracle:${branch}. POST /v1/portals/credentials first.` }, 404);
+  }
+
+  const requestId = c.req.header('x-request-id') ?? crypto.randomUUID();
+  const sessionId = existingId ?? crypto.randomUUID();
+
+  // Register session in Durable Object
+  const doId = env.BROWSER_SESSION.idFromName('portal-sessions');
+  const stub = env.BROWSER_SESSION.get(doId);
+  await stub.fetch('https://internal/session', {
+    method: 'POST',
+    body: JSON.stringify({ sessionId, portal: 'oracle', branch }),
+  });
+
+  const client = new PortalClient({ env, requestId });
+  try {
+    const result = await client.post<{ sessionId: string; status: string }>('/portal/oracle/login', {
+      branch,
+      username: creds.username,
+      password: creds.password,
+      sessionId,
+    });
+
+    await auditLog(env, {
+      action: 'portal.oracle.login',
+      resource: `oracle:${branch}`,
+      actor: c.req.header('x-user-id') ?? 'system',
+      timestamp: Date.now(),
+    });
+
+    return c.json(result);
+  } catch (err: any) {
+    return c.json({ error: err.message, code: err.code ?? 'LOGIN_FAILED' }, 401);
+  }
+});
+
+app.post('/v1/portals/oracle/patient/search', authMiddleware, async (c) => {
+  const env = c.env;
+  const { sessionId, query, branch = 'riyadh' } = await c.req.json<{
+    sessionId: string;
+    query: string;
+    branch?: string;
+  }>();
+
+  if (!sessionId || !query) {
+    return c.json({ error: 'sessionId and query required' }, 400);
+  }
+
+  const requestId = c.req.header('x-request-id') ?? crypto.randomUUID();
+  const client = new PortalClient({ env, requestId });
+
+  try {
+    const result = await client.post('/portal/oracle/patient/search', { sessionId, query, branch });
+    return c.json(result);
+  } catch (err: any) {
+    if (err.status === 401) return c.json({ error: 'Session expired', code: 'SESSION_EXPIRED' }, 401);
+    return c.json({ error: err.message, code: err.code }, 500);
+  }
+});
+
+app.post('/v1/portals/oracle/appointments', authMiddleware, async (c) => {
+  const env = c.env;
+  const { sessionId, patientId, date, branch = 'riyadh' } = await c.req.json<{
+    sessionId: string;
+    patientId?: string;
+    date?: string;
+    branch?: string;
+  }>();
+
+  if (!sessionId) return c.json({ error: 'sessionId required' }, 400);
+
+  const requestId = c.req.header('x-request-id') ?? crypto.randomUUID();
+  const client = new PortalClient({ env, requestId });
+
+  try {
+    const result = await client.post('/portal/oracle/appointments', { sessionId, patientId, date, branch });
+    return c.json(result);
+  } catch (err: any) {
+    return c.json({ error: err.message, code: err.code }, 500);
+  }
+});
+
+// ── NPHIES PORTAL ROUTES ──────────────────────────────────────────────────────
+
+app.post('/v1/portals/nphies/login', authMiddleware, async (c) => {
+  const env = c.env;
+  const { sessionId: existingId } = await c.req.json<{ sessionId?: string }>();
+
+  const creds = await loadCredentials(env, 'nphies', 'main');
+  if (!creds) {
+    return c.json({ error: 'No credentials stored for nphies. POST /v1/portals/credentials first.' }, 404);
+  }
+
+  const requestId = c.req.header('x-request-id') ?? crypto.randomUUID();
+  const sessionId = existingId ?? crypto.randomUUID();
+
+  const doId = env.BROWSER_SESSION.idFromName('portal-sessions');
+  const stub = env.BROWSER_SESSION.get(doId);
+  await stub.fetch('https://internal/session', {
+    method: 'POST',
+    body: JSON.stringify({ sessionId, portal: 'nphies' }),
+  });
+
+  const client = new PortalClient({ env, requestId });
+  try {
+    const result = await client.post('/portal/nphies/login', {
+      sessionId,
+      username: creds.username,
+      password: creds.password,
+    });
+
+    await auditLog(env, {
+      action: 'portal.nphies.login',
+      resource: 'nphies:main',
+      actor: c.req.header('x-user-id') ?? 'system',
+      timestamp: Date.now(),
+    });
+
+    return c.json(result);
+  } catch (err: any) {
+    return c.json({ error: err.message, code: err.code ?? 'LOGIN_FAILED' }, 401);
+  }
+});
+
+app.post('/v1/portals/nphies/eligibility', authMiddleware, async (c) => {
+  const env = c.env;
+  const { sessionId, memberId, nationalId } = await c.req.json<{
+    sessionId: string;
+    memberId: string;
+    nationalId?: string;
+  }>();
+
+  if (!sessionId || !memberId) {
+    return c.json({ error: 'sessionId and memberId required' }, 400);
+  }
+
+  const requestId = c.req.header('x-request-id') ?? crypto.randomUUID();
+  const client = new PortalClient({ env, requestId });
+
+  try {
+    const result = await client.post('/portal/nphies/eligibility', { sessionId, memberId, nationalId });
+    return c.json(result);
+  } catch (err: any) {
+    if (err.status === 401) return c.json({ error: 'Session expired', code: 'SESSION_EXPIRED' }, 401);
+    return c.json({ error: err.message, code: err.code }, 500);
+  }
+});
+
+app.post('/v1/portals/nphies/claim-status', authMiddleware, async (c) => {
+  const env = c.env;
+  const { sessionId, claimId } = await c.req.json<{ sessionId: string; claimId: string }>();
+
+  if (!sessionId || !claimId) return c.json({ error: 'sessionId and claimId required' }, 400);
+
+  const requestId = c.req.header('x-request-id') ?? crypto.randomUUID();
+  const client = new PortalClient({ env, requestId });
+
+  try {
+    const result = await client.post('/portal/nphies/claim-status', { sessionId, claimId });
+    return c.json(result);
+  } catch (err: any) {
+    return c.json({ error: err.message, code: err.code }, 500);
+  }
+});
+
+app.post('/v1/portals/nphies/preauth', authMiddleware, async (c) => {
+  const env = c.env;
+  const body = await c.req.json<{
+    sessionId: string;
+    patientId: string;
+    diagnosis: string[];
+    procedures: string[];
+    clinician?: string;
+  }>();
+
+  if (!body.sessionId || !body.patientId) {
+    return c.json({ error: 'sessionId and patientId required' }, 400);
+  }
+
+  const requestId = c.req.header('x-request-id') ?? crypto.randomUUID();
+  const client = new PortalClient({ env, requestId });
+
+  try {
+    const result = await client.post('/portal/nphies/preauth', body);
+
+    await auditLog(env, {
+      action: 'portal.nphies.preauth.submit',
+      resource: `nphies:patient:${body.patientId}`,
+      actor: c.req.header('x-user-id') ?? 'system',
+      timestamp: Date.now(),
+    });
+
+    return c.json(result);
+  } catch (err: any) {
+    return c.json({ error: err.message, code: err.code }, 500);
+  }
 });
 
 // ── QUEUE CONSUMER ────────────────────────────────────────────────────────────
