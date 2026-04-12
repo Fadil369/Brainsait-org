@@ -662,6 +662,7 @@
              id="searchInput" 
              type="text" 
              placeholder="🔍 Search products..." 
+             aria-label="Search products"
              style="
                width: 100%;
                padding: 12px 16px;
@@ -693,9 +694,9 @@
 </main>
 
 <!-- ═══ PAYMENT MODAL ═══ -->
-<div id="paymentModal" class="payment-modal">
+<div id="paymentModal" class="payment-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal-content">
-    <button class="close-modal" onclick="closePaymentModal()">×</button>
+    <button class="close-modal" onclick="closePaymentModal()" aria-label="Close dialog">×</button>
     <div class="modal-header">
       <h3 id="modalTitle">Select Payment Option</h3>
       <p id="modalDescription">Choose your package and payment method</p>
@@ -756,8 +757,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Stripe.js -->
 <script src="https://js.stripe.com/v3/"></script>
 
-<!-- PayPal SDK -->
-<script src="https://www.paypal.com/sdk/js?client-id=PAYPAL_CLIENT_ID&currency=SAR&disable-funding=credit,card"></script>
+<!-- PayPal SDK — loaded dynamically once a real client-id is provided -->
+<!-- <script src="https://www.paypal.com/sdk/js?client-id=PAYPAL_CLIENT_ID&currency=SAR&disable-funding=credit,card"></script> -->
 
 <!-- Payment Configuration -->
 <script>
@@ -817,7 +818,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       demo: 'https://web-fadil-site.pages.dev/',
       github: 'https://github.com/Fadil369/business-plan-template',
       tier: 'basic',
-      category: 'tools'
+      category: 'business'
     },
     {
       id: 'bookforge',
@@ -847,7 +848,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       demo: 'https://oi-vs-ai-fresh.pages.dev/',
       github: 'https://github.com/Fadil369/oi-vs-ai-fresh',
       tier: 'advanced',
-      category: 'education'
+      category: 'publishing'
     },
     {
       id: 'healthcare',
@@ -867,7 +868,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       demo: 'https://0fb445fa.tawnia-insurance-analyzer.pages.dev/main',
       github: 'https://github.com/Fadil369/al-tawnia-claims-intelligence',
       tier: 'advanced',
-      category: 'insurance'
+      category: 'healthcare'
     }
   ];
 
@@ -887,11 +888,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
      
      grid.innerHTML = APPS.map(app => {
        const isFavorited = favorites.includes(app.id);
+       const safeName = app.name.replace(/'/g, '&#39;');
        return `
        <div class="app-card" data-app-id="${app.id}">
          <div style="display: flex; justify-content: space-between; align-items: start;">
            <div class="pricing-badge">${PRICING[app.tier].app.toLocaleString()} SAR</div>
-           <button onclick="toggleFavorite('${app.id}')" style="background: none; border: none; font-size: 24px; cursor: pointer; padding: 4px 8px;" title="${isFavorited ? 'Remove from favorites' : 'Add to favorites'}">
+           <button onclick="toggleFavorite('${app.id}')" style="background: none; border: none; font-size: 24px; cursor: pointer; padding: 4px 8px;" title="${isFavorited ? 'Remove from favorites' : 'Add to favorites'}" aria-label="${isFavorited ? 'Remove from favorites' : 'Add to favorites'}">
              ${isFavorited ? '❤️' : '🤍'}
            </button>
          </div>
@@ -920,17 +922,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
          <div class="btn-group">
            <div class="btn-row">
-             <a href="${app.demo}" target="_blank" class="btn demo">🚀 Live Demo</a>
-             <a href="${app.github}" target="_blank" class="btn github">📂 GitHub</a>
+             <a href="${app.demo}" target="_blank" rel="noopener noreferrer" class="btn demo">🚀 Live Demo</a>
+             <a href="${app.github}" target="_blank" rel="noopener noreferrer" class="btn github">📂 GitHub</a>
            </div>
            
            <div style="border-top: 1px solid var(--gb); padding-top: 0.8rem;">
              <div class="payment-label">💳 PURCHASE</div>
              <div class="payment-buttons">
-               <button class="btn stripe" onclick="openPaymentModal('${app.name}', '${app.tier}', '${app.demo}')">Buy</button>
-               <button class="btn paypal" onclick="openPaymentModal('${app.name}', '${app.tier}', '${app.demo}')">Buy</button>
-               <button class="btn apple" onclick="openPaymentModal('${app.name}', '${app.tier}', '${app.demo}')">Buy</button>
-               <button class="btn saudi" onclick="openPaymentModal('${app.name}', '${app.tier}', '${app.demo}')">Buy</button>
+               <button class="btn stripe" onclick="openPaymentModal('${safeName}', '${app.tier}', '${app.demo}')">💳 Stripe</button>
+               <button class="btn paypal" onclick="openPaymentModal('${safeName}', '${app.tier}', '${app.demo}')">🅿️ PayPal</button>
+               <button class="btn apple" onclick="openPaymentModal('${safeName}', '${app.tier}', '${app.demo}')">🍎 Apple</button>
+               <button class="btn saudi" onclick="openPaymentModal('${safeName}', '${app.tier}', '${app.demo}')">🇸🇦 Saudi</button>
              </div>
            </div>
          </div>
@@ -1065,7 +1067,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
     `;
     
-    selectComplexity('app', selector.firstChild);
+    selectComplexity('app', selector.querySelector('.complexity-option'));
     document.getElementById('paymentModal').style.display = 'flex';
   }
 
@@ -1237,13 +1239,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
          merchantCapabilities: ['supports3DS'],
          total: {
            label: 'BrainSAIT - ' + paymentData.product,
-           amount: (paymentData.amount / 100).toFixed(2),
+           amount: paymentData.amount.toFixed(2),
            type: 'final'
          },
          lineItems: [
            {
              label: paymentData.product,
-             amount: (paymentData.amount / 100).toFixed(2),
+             amount: paymentData.amount.toFixed(2),
              type: 'final'
            }
          ]
@@ -1399,6 +1401,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
    document.getElementById('paymentModal').addEventListener('click', function(e) {
      if (e.target === this) closePaymentModal();
    });
+
+   // Close modal on Escape key
+   document.addEventListener('keydown', function(e) {
+     if (e.key === 'Escape' && document.getElementById('paymentModal').style.display === 'flex') {
+       closePaymentModal();
+     }
+   });
+
+   // Language toggle
+   (function() {
+     const langBtn = document.getElementById('langToggle');
+     if (!langBtn) return;
+     let isArabic = false;
+     langBtn.addEventListener('click', function() {
+       isArabic = !isArabic;
+       const html = document.documentElement;
+       html.setAttribute('lang', isArabic ? 'ar' : 'en');
+       html.setAttribute('dir', isArabic ? 'rtl' : 'ltr');
+       langBtn.textContent = isArabic ? 'English' : 'العربية';
+     });
+   })();
 
    // Initialize
    document.addEventListener('DOMContentLoaded', function() {
