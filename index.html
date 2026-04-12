@@ -317,7 +317,7 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
       html { scroll-behavior: auto; }
-      .rev { opacity: 1 !important; transform: none !important; }
+      .rev, .stage-lights, .clinic-card, .clinic-card::before { opacity: 1 !important; transform: none !important; }
     }
 
     /* ─── Canvas / Atmosphere ─── */
@@ -360,8 +360,12 @@
     section { padding: var(--sp) 0; }
 
     /* ─── Scroll Reveal ─── */
-    .rev { opacity: 0; transform: translateY(24px); transition: opacity .7s ease-out, transform .7s ease-out; }
-    .rev.vis { opacity: 1; transform: translateY(0); }
+    .rev {
+      opacity: 0;
+      transform: translate3d(0, 24px, 0) scale(.985);
+      transition: opacity .68s cubic-bezier(.22,.61,.36,1), transform .82s cubic-bezier(.22,.61,.36,1);
+    }
+    .rev.vis { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
     .d1 { transition-delay: .10s; }
     .d2 { transition-delay: .20s; }
     .d3 { transition-delay: .30s; }
@@ -417,7 +421,7 @@
     @keyframes blink { 0%,49% { opacity:1; } 50%,100% { opacity:0; } }
 
     /* ─── Stage Lights ─── */
-    .stage-lights { position: absolute; top: 0; left: 0; right: 0; height: 100%; pointer-events: none; overflow: hidden; z-index: 0; }
+    .stage-lights { position: absolute; top: 0; left: 0; right: 0; height: 100%; pointer-events: none; overflow: hidden; z-index: 0; will-change: transform; }
     .sl { position: absolute; top: 0; transform-origin: top center; }
     .sl::before { content: ''; position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.6); box-shadow: 0 0 18px 6px rgba(255,255,255,0.25); }
     .sl1 { left: 8%;  width: 260px; height: 75%; clip-path: polygon(46% 0%, 54% 0%, 92% 100%, 8% 100%);  background: linear-gradient(to bottom, rgba(212,165,116,.18) 0%, transparent 70%); animation: swayL 14s ease-in-out infinite; }
@@ -520,6 +524,51 @@
     .tech-icon { font-size: 28px; margin-bottom: 10px; }
     .tech-name { font-size: 12px; font-weight: 600; color: var(--textd); text-transform: uppercase; letter-spacing: 1px; }
     .tech-det  { font-size: 11px; color: var(--textm); margin-top: 4px; }
+
+    /* ─── CLINIC BOOKING ─── */
+    .clinic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-bottom: 48px; }
+    .clinic-card {
+      --clinic-accent: var(--gold);
+      --clinic-border-hover: rgba(212,165,116,.58);
+      --clinic-ring: rgba(212,165,116,.22);
+      --clinic-glow: rgba(212,165,116,.16);
+      --clinic-dur: .35s;
+      --clinic-fast: .28s;
+      --clinic-ease: cubic-bezier(.22,.61,.36,1);
+      background: var(--g2);
+      border: 1px solid var(--gb);
+      border-radius: var(--rx);
+      padding: 32px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: transform var(--clinic-dur) var(--clinic-ease), border-color var(--clinic-fast) ease, background var(--clinic-fast) ease, box-shadow var(--clinic-dur) var(--clinic-ease);
+      box-shadow: 0 10px 28px rgba(0,0,0,.18);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .clinic-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% -20%, var(--clinic-glow), transparent 55%);
+      opacity: 0;
+      transition: opacity .3s ease;
+      pointer-events: none;
+    }
+    .clinic-card:hover {
+      border-color: var(--clinic-border-hover);
+      background: rgba(255,255,255,0.06);
+      transform: translate3d(0, -6px, 0);
+      box-shadow: 0 18px 38px rgba(0,0,0,.28), 0 0 0 1px var(--clinic-ring);
+    }
+    .clinic-card:hover::before { opacity: 1; }
+    .clinic-card.dental { --clinic-accent: #00c4b4; --clinic-border-hover: rgba(0,196,180,.58); --clinic-ring: rgba(0,196,180,.22); --clinic-glow: rgba(0,196,180,.16); }
+    .clinic-card.dermatology { --clinic-accent: #f43f5e; --clinic-border-hover: rgba(244,63,94,.58); --clinic-ring: rgba(244,63,94,.22); --clinic-glow: rgba(244,63,94,.16); }
+    .clinic-card.polyclinic { --clinic-accent: #f59e0b; --clinic-border-hover: rgba(245,158,11,.58); --clinic-ring: rgba(245,158,11,.22); --clinic-glow: rgba(245,158,11,.16); }
+    .clinic-icon { font-size: 48px; margin-bottom: 16px; }
+    .clinic-title { margin-bottom: 8px; }
+    .clinic-copy { color: var(--textd); font-size: 14px; margin-bottom: 20px; line-height: 1.6; }
 
     /* ─── CTA ─── */
     .cta-sec { background: var(--deep); position: relative; overflow: hidden; }
@@ -1009,14 +1058,14 @@
       </div>
 
       <!-- Clinic Segments Grid -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-bottom: 48px;">
+      <div class="clinic-grid">
         
         <!-- Dental Segment Card -->
-        <div class="rev d1" style="background: var(--g2); border: 1px solid var(--gb); border-radius: var(--rx); padding: 32px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.borderColor='#00c4b4'; this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.background='rgba(255,255,255,0.04)'">
-          <div style="font-size: 48px; margin-bottom: 16px;">🦷</div>
-          <h3 class="ar" style="color: #00c4b4; margin-bottom: 8px;">عيادات الأسنان</h3>
-          <h3 class="en" style="color: #00c4b4; margin-bottom: 8px;">Dental Clinics</h3>
-          <p style="color: var(--textd); font-size: 14px; margin-bottom: 20px; line-height: 1.6;">
+        <div class="rev d1 clinic-card dental">
+          <div class="clinic-icon">🦷</div>
+          <h3 class="ar clinic-title" style="color: #00c4b4;">عيادات الأسنان</h3>
+          <h3 class="en clinic-title" style="color: #00c4b4;">Dental Clinics</h3>
+          <p class="clinic-copy">
             <span class="ar">تنظيف وتبييض وتقويم وحشو الأسنان مع أحدث التقنيات. 5 عيادات متخصصة في الرياض.</span>
             <span class="en">Cleaning, whitening, orthodontics, and fillings with latest technology. 5 specialized clinics in Riyadh.</span>
           </p>
@@ -1027,11 +1076,11 @@
         </div>
 
         <!-- Dermatology Segment Card -->
-        <div class="rev d2" style="background: var(--g2); border: 1px solid var(--gb); border-radius: var(--rx); padding: 32px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.borderColor='#f43f5e'; this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.background='rgba(255,255,255,0.04)'">
-          <div style="font-size: 48px; margin-bottom: 16px;">💆</div>
-          <h3 class="ar" style="color: #f43f5e; margin-bottom: 8px;">عيادات الجلدية</h3>
-          <h3 class="en" style="color: #f43f5e; margin-bottom: 8px;">Dermatology Clinics</h3>
-          <p style="color: var(--textd); font-size: 14px; margin-bottom: 20px; line-height: 1.6;">
+        <div class="rev d2 clinic-card dermatology">
+          <div class="clinic-icon">💆</div>
+          <h3 class="ar clinic-title" style="color: #f43f5e;">عيادات الجلدية</h3>
+          <h3 class="en clinic-title" style="color: #f43f5e;">Dermatology Clinics</h3>
+          <p class="clinic-copy">
             <span class="ar">علاج حب الشباب والتقشير والليزر والعناية الشاملة بالبشرة. 5 عيادات متخصصة.</span>
             <span class="en">Acne treatment, peels, laser therapy, and comprehensive skin care. 5 specialized clinics.</span>
           </p>
@@ -1042,11 +1091,11 @@
         </div>
 
         <!-- Polyclinic Segment Card -->
-        <div class="rev d3" style="background: var(--g2); border: 1px solid var(--gb); border-radius: var(--rx); padding: 32px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.borderColor='#f59e0b'; this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.background='rgba(255,255,255,0.04)'">
-          <div style="font-size: 48px; margin-bottom: 16px;">🏥</div>
-          <h3 class="ar" style="color: #f59e0b; margin-bottom: 8px;">العيادات الشاملة</h3>
-          <h3 class="en" style="color: #f59e0b; margin-bottom: 8px;">Polyclinics</h3>
-          <p style="color: var(--textd); font-size: 14px; margin-bottom: 20px; line-height: 1.6;">
+        <div class="rev d3 clinic-card polyclinic">
+          <div class="clinic-icon">🏥</div>
+          <h3 class="ar clinic-title" style="color: #f59e0b;">العيادات الشاملة</h3>
+          <h3 class="en clinic-title" style="color: #f59e0b;">Polyclinics</h3>
+          <p class="clinic-copy">
             <span class="ar">الطب العام وطب الأطفال والتحاليل والصيدلية. 4 عيادات شاملة بخدمات متعددة.</span>
             <span class="en">General medicine, pediatrics, lab tests, and pharmacy. 4 comprehensive clinics.</span>
           </p>
@@ -1183,6 +1232,7 @@
   if (!cvs || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const ctx = cvs.getContext('2d');
   let W, H;
+  let particleAnimationId = null;
   const COLS = ['212,165,116', '14,165,233', '37,99,235', '139,92,246'];
   const pts = Array.from({ length: 75 }, () => ({
     x: Math.random() * window.innerWidth,
@@ -1223,14 +1273,25 @@
       ctx.fillStyle = `rgba(${p.col},${p.a})`;
       ctx.fill();
     });
-    requestAnimationFrame(draw);
+    particleAnimationId = requestAnimationFrame(draw);
   }
   draw();
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && particleAnimationId !== null) {
+      cancelAnimationFrame(particleAnimationId);
+      particleAnimationId = null;
+    } else if (!document.hidden && particleAnimationId === null && cvs.isConnected && ctx) draw();
+  });
 })();
 
 // ─── Scroll Reveal ───
 const revObs = new IntersectionObserver(
-  es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }),
+  (es, obs) => es.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('vis');
+      obs.unobserve(e.target);
+    }
+  }),
   { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
 );
 document.querySelectorAll('.rev').forEach(el => revObs.observe(el));
@@ -1250,10 +1311,11 @@ function animateCounter(el) {
   })(t0);
 }
 const cntObs = new IntersectionObserver(
-  es => es.forEach(e => {
+  (es, obs) => es.forEach(e => {
     if (e.isIntersecting && !e.target.dataset.done) {
       e.target.dataset.done = '1';
       animateCounter(e.target);
+      obs.unobserve(e.target);
     }
   }),
   { threshold: 0.5 }
@@ -1271,9 +1333,29 @@ window.addEventListener('scroll', () => {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const heroEl = document.querySelector('.hero');
   if (!heroEl) return;
-  window.addEventListener('scroll', () => {
-    heroEl.style.backgroundPositionY = (window.pageYOffset * 0.3) + 'px';
-  }, { passive: true });
+  const lightsEl = heroEl.querySelector('.stage-lights');
+  if (!lightsEl) return;
+  // Maximum pixel offset once hero scroll progress reaches 1 (hero top fully travels its own height).
+  const PARALLAX_INTENSITY = 36; // pixels
+  let isParallaxUpdateQueued = false;
+  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+
+  function updateHeroParallax() {
+    const rect = heroEl.getBoundingClientRect();
+    const progress = clamp(-rect.top / Math.max(rect.height, 1), 0, 1);
+    lightsEl.style.transform = `translate3d(0, ${progress * PARALLAX_INTENSITY}px, 0)`;
+    isParallaxUpdateQueued = false;
+  }
+
+  function requestParallaxUpdate() {
+    if (isParallaxUpdateQueued) return;
+    isParallaxUpdateQueued = true;
+    requestAnimationFrame(updateHeroParallax);
+  }
+
+  updateHeroParallax();
+  window.addEventListener('scroll', requestParallaxUpdate, { passive: true });
+  window.addEventListener('resize', requestParallaxUpdate, { passive: true });
 })();
 
 // ─── Mobile Menu ───
@@ -1379,26 +1461,6 @@ function openDirectBooking() {
   if (typeof gtag !== 'undefined') {
     gtag('event', 'brainsait_direct_booking_click');
   }
-}
-
-function initClinicBookingSection() {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('vis');
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('#clinic-booking .rev').forEach((el) => {
-    observer.observe(el);
-  });
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initClinicBookingSection);
-} else {
-  initClinicBookingSection();
 }
 
 </script>
