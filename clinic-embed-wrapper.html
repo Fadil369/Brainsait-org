@@ -332,12 +332,21 @@
 
     // Load iframe with full clinic URL
     iframe.src = baseURL + clinicURL;
-    
-    // Show iframe after 1 second (simulating load)
-    setTimeout(() => {
+
+    // Show iframe on load (replaces the artificial 1-second timeout)
+    iframe.onload = function () {
+      clearTimeout(fallback);
       loading.style.display = 'none';
       iframe.style.display = 'block';
-    }, 1000);
+    };
+
+    // Fallback: reveal after 5 s in case onload doesn't fire (cross-origin)
+    const fallback = setTimeout(() => {
+      if (iframe.style.display !== 'block') {
+        loading.style.display = 'none';
+        iframe.style.display = 'block';
+      }
+    }, 5000);
 
     // Update full page button
     fullBtn.onclick = () => {
@@ -405,6 +414,9 @@
     loadClinic('ram-clinics', 'brainsait-outreach/brainsait-outreach/websites/dental/ram-clinics.html');
   });
 </script>
+
+<!-- BrainSAIT AI Booking Guide -->
+<script src="/ai-agent.js" data-lang="ar"></script>
 
 </body>
 </html>
