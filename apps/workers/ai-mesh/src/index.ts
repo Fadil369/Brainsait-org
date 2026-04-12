@@ -62,6 +62,7 @@ export interface Env {
   ANTHROPIC_API_KEY: string;
   OPENAI_API_KEY: string;
   GITHUB_MODELS_TOKEN: string;
+  CF_AIG_TOKEN: string;
   JWT_SECRET: string;
   AI_GATEWAY_ID: string;
   ACCOUNT_ID: string;
@@ -221,8 +222,8 @@ app.post('/v1/chat/completions', authMiddleware, rateLimitMiddleware, async (c) 
 
 // ── RAG QUERY — direct vector search ─────────────────────────────────────────
 app.post('/v1/rag/query', authMiddleware, async (c) => {
-  const { query, index = 'search', topK = 5, limit } = await c.req.json<{
-    query: string; index?: string; topK?: number; limit?: number;
+  const { query, model, index = 'search', topK = 5, limit } = await c.req.json<{
+    query: string; model?: string; index?: string; topK?: number; limit?: number;
   }>();
 
   const k = limit ?? topK;
@@ -241,6 +242,25 @@ app.post('/v1/rag/query', authMiddleware, async (c) => {
     .filter(Boolean)
     .join('\n\n');
 
+  // If model specified, return RAG-augmented chat completion (OpenAI format)
+  if (model) {
+    const requestId = crypto.randomUUID();
+    const messages = [
+      {
+        role: 'system' as const,
+        content: `You are ${model.toUpperCase()}, a BrainSAIT AI agent. Use the following knowledge base context to answer accurately:\n\n${context}`,
+      },
+      { role: 'user' as const, content: query },
+    ];
+
+    const result = await routeToProvider({ model, messages, stream: false, temperature: 0.3, env: c.env, requestId });
+    return c.json({
+      ...result.response,
+      _rag: { context_chunks: matches.matches.length, top_score: matches.matches[0]?.score },
+    });
+  }
+
+  // Raw context response (no LLM call)
   return c.json({
     query,
     count: matches.matches.length,

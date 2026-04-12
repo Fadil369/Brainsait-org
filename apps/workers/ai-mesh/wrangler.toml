@@ -104,6 +104,7 @@ MAX_RAG_RESULTS = "5"
 # ANTHROPIC_API_KEY
 # OPENAI_API_KEY
 # GITHUB_MODELS_TOKEN
+# CF_AIG_TOKEN          — Cloudflare AI Gateway token (cfut_...)
 # JWT_SECRET
 
 # Custom domain — auto-creates DNS record in the zone
