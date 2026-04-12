@@ -96,6 +96,42 @@ app.get('/health', async (c) => {
   });
 });
 
+// ── MODELS — OpenAI-compatible model list for open-webui discovery ───────────
+app.get('/v1/models', async (c) => {
+  const created = Math.floor(Date.now() / 1000);
+  const models = [
+    // LINC Orchestrator
+    { id: 'masterlinc', name: '🧠 MasterLINC — AI Orchestrator', group: 'Orchestrator' },
+    // Insurance & Revenue Cycle
+    { id: 'claimlinc', name: '📋 ClaimLINC — Claims AI', group: 'Revenue Cycle' },
+    { id: 'authlinc', name: '✅ AuthLINC — Prior Authorization', group: 'Revenue Cycle' },
+    { id: 'drglinc', name: '💰 DRGLINC — Saudi DRG Optimizer', group: 'Revenue Cycle' },
+    // Clinical Intelligence
+    { id: 'clinicallinc', name: '🩺 ClinicalLINC — Clinical AI', group: 'Clinical' },
+    { id: 'healthcarelinc', name: '🏥 HealthcareLINC — Workflow AI', group: 'Clinical' },
+    { id: 'radiolinc', name: '🔬 RadioLINC — Radiology AI', group: 'Clinical' },
+    { id: 'codelinc', name: '🏷️ CodeLINC — Medical Coding AI', group: 'Clinical' },
+    // Infrastructure
+    { id: 'bridgelinc', name: '🌉 BridgeLINC — FHIR Interop', group: 'Infrastructure' },
+    { id: 'compliancelinc', name: '🛡️ ComplianceLINC — Compliance', group: 'Infrastructure' },
+    { id: 'ttlinc', name: '🔗 TTLINC — Integration Layer', group: 'Infrastructure' },
+    // Communication
+    { id: 'basma', name: '📞 Basma — Patient Communication', group: 'Communication' },
+    { id: 'brainsait-nphies-agent', name: '🏛️ NPHIES Agent — Insurance Portal', group: 'Infrastructure' },
+    // Direct Workers AI access
+    { id: 'workers-ai', name: '⚡ Workers AI — Llama 3.3 70B', group: 'AI Models' },
+  ].map((m) => ({
+    id: m.id,
+    object: 'model',
+    created,
+    owned_by: 'brainsait',
+    name: m.name,
+    description: `BrainSAIT LINC Agent — ${m.group}`,
+  }));
+
+  return c.json({ object: 'list', data: models });
+});
+
 // ── STATUS — per-agent live health ────────────────────────────────────────────
 app.get('/v1/agents/status', authMiddleware, async (c) => {
   const agents = [
