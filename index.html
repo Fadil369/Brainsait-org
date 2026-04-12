@@ -1230,7 +1230,7 @@
   if (!cvs || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const ctx = cvs.getContext('2d');
   let W, H;
-  let rafId = null;
+  let particleAnimationId = null;
   const COLS = ['212,165,116', '14,165,233', '37,99,235', '139,92,246'];
   const pts = Array.from({ length: 75 }, () => ({
     x: Math.random() * window.innerWidth,
@@ -1271,16 +1271,16 @@
       ctx.fillStyle = `rgba(${p.col},${p.a})`;
       ctx.fill();
     });
-    rafId = requestAnimationFrame(draw);
+    particleAnimationId = requestAnimationFrame(draw);
   }
   draw();
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden && rafId !== null) {
-      cancelAnimationFrame(rafId);
-      rafId = null;
+    if (document.hidden && particleAnimationId !== null) {
+      cancelAnimationFrame(particleAnimationId);
+      particleAnimationId = null;
       return;
     }
-    if (!document.hidden && rafId === null) draw();
+    if (!document.hidden && particleAnimationId === null) draw();
   });
 })();
 
@@ -1334,18 +1334,19 @@ window.addEventListener('scroll', () => {
   const heroEl = document.querySelector('.hero');
   const lightsEl = heroEl?.querySelector('.stage-lights');
   if (!heroEl || !lightsEl) return;
-  let rafQueued = false;
+  const PARALLAX_INTENSITY = 36;
+  let parallaxUpdateQueued = false;
 
   function updateHeroParallax() {
     const rect = heroEl.getBoundingClientRect();
     const progress = Math.max(-1, Math.min(1, -rect.top / Math.max(rect.height, 1)));
-    lightsEl.style.transform = `translate3d(0, ${progress * 36}px, 0)`;
-    rafQueued = false;
+    lightsEl.style.transform = `translate3d(0, ${progress * PARALLAX_INTENSITY}px, 0)`;
+    parallaxUpdateQueued = false;
   }
 
   function onScroll() {
-    if (rafQueued) return;
-    rafQueued = true;
+    if (parallaxUpdateQueued) return;
+    parallaxUpdateQueued = true;
     requestAnimationFrame(updateHeroParallax);
   }
 
