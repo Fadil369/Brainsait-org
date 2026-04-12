@@ -678,18 +678,46 @@
     btn.classList.add('selected');
   }
 
+  async function validatePaymentAndShowSuccess() {
+    const status = params.get('status');
+    const paymentId = params.get('id') || params.get('payment_id');
+
+    if (status !== 'paid' || !paymentId || !/^[A-Za-z0-9_-]{6,}$/.test(paymentId)) {
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/payments/verify?id=' + encodeURIComponent(paymentId), {
+        method: 'GET',
+        credentials: 'same-origin',
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Payment verification failed');
+      }
+
+      const result = await response.json();
+      if (result && (result.paid === true || result.status === 'paid')) {
+        showSuccess();
+      }
+    } catch (error) {
+      console.warn('Unable to verify payment result.', error);
+    }
+  }
+
   /* ═══════════════════════════════════════════════════════
    * INIT ON LOAD
    * ═══════════════════════════════════════════════════════ */
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', async function () {
     applyPayLang();
     populateSummary();
     initMoyasar();
 
-    // Check if returning from payment callback
-    if (params.get('status') === 'paid') {
-      showSuccess();
-    }
+    // Check if returning from payment callback and verify the payment server-side
+    await validatePaymentAndShowSuccess();
 
     // Live update summary as user types
     document.getElementById('p-name').addEventListener('input', function () {
