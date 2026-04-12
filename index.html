@@ -406,14 +406,25 @@
     .mob-menu .btn { justify-content: center; margin-top: 4px; }
 
     /* ─── HERO ─── */
-    .hero { padding: 160px 0 100px; text-align: center; }
+    .hero { padding: 160px 0 100px; text-align: center; position: relative; overflow: hidden; }
     .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: var(--g1); border: 1px solid var(--gb); border-radius: var(--rnd); font-size: 12px; font-weight: 600; color: var(--textd); margin-bottom: 32px; animation: fadeUp .7s ease-out both; }
-    .pulse { width: 8px; height: 8px; background: var(--eme); border-radius: 50%; box-shadow: 0 0 12px var(--eme); animation: pulseA 2s infinite; flex-shrink: 0; }
-    @keyframes pulseA { 0%,100% { opacity:1; transform: scale(1); } 50% { opacity:.5; transform: scale(.8); } }
+    .pulse { width: 8px; height: 8px; background: var(--eme); border-radius: 50%; box-shadow: 0 0 12px var(--eme); flex-shrink: 0; position: relative; }
+    .pulse::before { content: ''; position: absolute; inset: -4px; border-radius: 50%; background: var(--eme); opacity: 0; animation: pingRing 2.2s ease-out infinite; }
+    @keyframes pingRing { 0% { transform: scale(0.6); opacity: 0.7; } 100% { transform: scale(2.8); opacity: 0; } }
     @keyframes fadeUp  { from { opacity:0; transform: translateY(24px); } to { opacity:1; transform: translateY(0); } }
     h1 { animation: fadeUp .7s ease-out .1s both; }
-    .tw-cursor { display: inline-block; width: 3px; height: .88em; background: var(--gold); margin-left: 2px; animation: blink 1s infinite; vertical-align: text-bottom; border-radius: 2px; }
+    .tw-cursor { display: inline-block; width: 3px; height: .88em; background: var(--gold); margin-left: 2px; animation: blink 1s step-start infinite; vertical-align: text-bottom; border-radius: 2px; }
     @keyframes blink { 0%,49% { opacity:1; } 50%,100% { opacity:0; } }
+
+    /* ─── Stage Lights ─── */
+    .stage-lights { position: absolute; top: 0; left: 0; right: 0; height: 100%; pointer-events: none; overflow: hidden; z-index: 0; }
+    .sl { position: absolute; top: 0; transform-origin: top center; }
+    .sl::before { content: ''; position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.6); box-shadow: 0 0 18px 6px rgba(255,255,255,0.25); }
+    .sl1 { left: 8%;  width: 260px; height: 75%; clip-path: polygon(46% 0%, 54% 0%, 92% 100%, 8% 100%);  background: linear-gradient(to bottom, rgba(212,165,116,.18) 0%, transparent 70%); animation: swayL 14s ease-in-out infinite; }
+    .sl2 { left: 42%; width: 300px; height: 80%; clip-path: polygon(46% 0%, 54% 0%, 88% 100%, 12% 100%); background: linear-gradient(to bottom, rgba(14,165,233,.14)  0%, transparent 65%); animation: swayL 18s ease-in-out infinite 3s reverse; }
+    .sl3 { right: 8%; width: 240px; height: 70%; clip-path: polygon(46% 0%, 54% 0%, 94% 100%, 6% 100%);  background: linear-gradient(to bottom, rgba(139,92,246,.13)  0%, transparent 60%); animation: swayL 11s ease-in-out infinite 6s; }
+    @keyframes swayL { 0%, 100% { transform: rotate(-6deg); opacity: .85; } 50% { transform: rotate(6deg); opacity: 1; } }
+    .hero .c { position: relative; z-index: 1; }
     .hero-sub { font-size: clamp(15px, 2vw, 18px); color: var(--textd); max-width: 680px; margin: 0 auto 48px; line-height: 1.75; animation: fadeUp .7s ease-out .2s both; }
     .hero-acts { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; animation: fadeUp .7s ease-out .3s both; }
     .hero-chips { margin-top: 64px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; animation: fadeUp .7s ease-out .5s both; }
@@ -568,7 +579,7 @@
       .stats-grid { grid-template-columns: 1fr; }
     }
     @media print {
-      #nav, .orb, #cvs, .hbg { display: none !important; }
+      #nav, .orb, #cvs, .hbg, .stage-lights { display: none !important; }
       body { background: white; color: black; }
     }
   </style>
@@ -624,6 +635,11 @@
 
   <!-- ── HERO ── -->
   <section class="hero" aria-label="Hero">
+    <div class="stage-lights" aria-hidden="true">
+      <div class="sl sl1"></div>
+      <div class="sl sl2"></div>
+      <div class="sl sl3"></div>
+    </div>
     <div class="c">
       <div class="hero-badge">
         <div class="pulse" aria-hidden="true"></div>
@@ -1326,7 +1342,8 @@ sections.forEach(s => activeObs.observe(s));
   const el = document.getElementById('tw-target');
   if (!el) return;
   const phrases = ['Automated & Compliant.', 'FHIR R4 Native.', 'Vision 2030 Ready.', 'Scalable & Secure.', 'Bilingual & Accessible.'];
-  let pi = 0, ci = phrases[0].length, del = false;
+  let pi = 0, ci = 0, del = false;
+  el.textContent = '';
 
   function tick() {
     const phrase = phrases[pi];
@@ -1340,7 +1357,7 @@ sections.forEach(s => activeObs.observe(s));
       else { del = false; pi = (pi + 1) % phrases.length; setTimeout(tick, 450); }
     }
   }
-  setTimeout(tick, 2400);
+  setTimeout(tick, 800);
 })();
 
 // ─── Clinic Booking Functions ───
