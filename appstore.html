@@ -1466,11 +1466,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
      renderAppGrid();
 
      // ─── Scroll Reveal ───
-     const revObs = new IntersectionObserver(
-       es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }),
-       { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
-     );
-     document.querySelectorAll('.rev').forEach(el => revObs.observe(el));
+     const revealElements = document.querySelectorAll('.rev');
+     const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+     if (prefersReducedMotion) {
+       revealElements.forEach(el => el.classList.add('vis'));
+     } else {
+       const revObs = new IntersectionObserver(
+         es => es.forEach(e => {
+           if (e.isIntersecting) {
+             e.target.classList.add('vis');
+             revObs.unobserve(e.target);
+           }
+         }),
+         { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+       );
+       revealElements.forEach(el => revObs.observe(el));
+     }
      
      // GA4 Page View
      if (window.gtag) {
