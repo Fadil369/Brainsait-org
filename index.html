@@ -227,8 +227,6 @@
       --rx:   6px;
       --rnd: 100px;
       --sp:  clamp(60px, 10vw, 120px);
-      --ease-smooth: cubic-bezier(.22,.61,.36,1);
-      --ease-soft: cubic-bezier(.34,1.1,.64,1);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -319,7 +317,7 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
       html { scroll-behavior: auto; }
-      .rev, .stage-lights, .clinic-card { opacity: 1 !important; transform: none !important; filter: none !important; }
+      .rev, .stage-lights, .clinic-card { opacity: 1 !important; transform: none !important; }
     }
 
     /* ─── Canvas / Atmosphere ─── */
@@ -365,11 +363,9 @@
     .rev {
       opacity: 0;
       transform: translate3d(0, 24px, 0) scale(.985);
-      filter: blur(2px);
-      will-change: transform, opacity, filter;
-      transition: opacity .68s var(--ease-smooth), transform .82s var(--ease-soft), filter .82s var(--ease-smooth);
+      transition: opacity .68s cubic-bezier(.22,.61,.36,1), transform .82s cubic-bezier(.34,1.1,.64,1);
     }
-    .rev.vis { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+    .rev.vis { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
     .d1 { transition-delay: .10s; }
     .d2 { transition-delay: .20s; }
     .d3 { transition-delay: .30s; }
@@ -533,13 +529,16 @@
     .clinic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-bottom: 48px; }
     .clinic-card {
       --clinic-accent: var(--gold);
+      --clinic-border-hover: rgba(212,165,116,.58);
+      --clinic-ring: rgba(212,165,116,.22);
+      --clinic-glow: rgba(212,165,116,.16);
       background: var(--g2);
       border: 1px solid var(--gb);
       border-radius: var(--rx);
       padding: 32px;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      transition: transform .35s var(--ease-soft), border-color .28s ease, background .28s ease, box-shadow .35s var(--ease-smooth);
+      transition: transform .35s cubic-bezier(.34,1.1,.64,1), border-color .28s ease, background .28s ease, box-shadow .35s cubic-bezier(.22,.61,.36,1);
       box-shadow: 0 10px 28px rgba(0,0,0,.18);
       cursor: pointer;
       position: relative;
@@ -549,21 +548,21 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 50% -20%, color-mix(in srgb, var(--clinic-accent) 16%, transparent), transparent 55%);
+      background: radial-gradient(circle at 50% -20%, var(--clinic-glow), transparent 55%);
       opacity: 0;
       transition: opacity .3s ease;
       pointer-events: none;
     }
     .clinic-card:hover {
-      border-color: color-mix(in srgb, var(--clinic-accent) 60%, white 6%);
+      border-color: var(--clinic-border-hover);
       background: rgba(255,255,255,0.06);
       transform: translate3d(0, -6px, 0);
-      box-shadow: 0 18px 38px rgba(0,0,0,.28), 0 0 0 1px color-mix(in srgb, var(--clinic-accent) 22%, transparent);
+      box-shadow: 0 18px 38px rgba(0,0,0,.28), 0 0 0 1px var(--clinic-ring);
     }
     .clinic-card:hover::before { opacity: 1; }
-    .clinic-card.dental { --clinic-accent: #00c4b4; }
-    .clinic-card.dermatology { --clinic-accent: #f43f5e; }
-    .clinic-card.polyclinic { --clinic-accent: #f59e0b; }
+    .clinic-card.dental { --clinic-accent: #00c4b4; --clinic-border-hover: rgba(0,196,180,.58); --clinic-ring: rgba(0,196,180,.22); --clinic-glow: rgba(0,196,180,.16); }
+    .clinic-card.dermatology { --clinic-accent: #f43f5e; --clinic-border-hover: rgba(244,63,94,.58); --clinic-ring: rgba(244,63,94,.22); --clinic-glow: rgba(244,63,94,.16); }
+    .clinic-card.polyclinic { --clinic-accent: #f59e0b; --clinic-border-hover: rgba(245,158,11,.58); --clinic-ring: rgba(245,158,11,.22); --clinic-glow: rgba(245,158,11,.16); }
     .clinic-icon { font-size: 48px; margin-bottom: 16px; }
     .clinic-title { margin-bottom: 8px; }
     .clinic-copy { color: var(--textd); font-size: 14px; margin-bottom: 20px; line-height: 1.6; }
@@ -1278,9 +1277,7 @@
     if (document.hidden && particleAnimationId !== null) {
       cancelAnimationFrame(particleAnimationId);
       particleAnimationId = null;
-      return;
-    }
-    if (!document.hidden && particleAnimationId === null) draw();
+    } else if (!document.hidden && particleAnimationId === null) draw();
   });
 })();
 
@@ -1332,14 +1329,16 @@ window.addEventListener('scroll', () => {
 (function () {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const heroEl = document.querySelector('.hero');
-  const lightsEl = heroEl?.querySelector('.stage-lights');
-  if (!heroEl || !lightsEl) return;
+  if (!heroEl) return;
+  const lightsEl = heroEl.querySelector('.stage-lights');
+  if (!lightsEl) return;
   const PARALLAX_INTENSITY = 36;
   let parallaxUpdateQueued = false;
+  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
   function updateHeroParallax() {
     const rect = heroEl.getBoundingClientRect();
-    const progress = Math.max(-1, Math.min(1, -rect.top / Math.max(rect.height, 1)));
+    const progress = clamp(-rect.top / Math.max(rect.height, 1), -1, 1);
     lightsEl.style.transform = `translate3d(0, ${progress * PARALLAX_INTENSITY}px, 0)`;
     parallaxUpdateQueued = false;
   }
