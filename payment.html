@@ -447,6 +447,9 @@
    * ═══════════════════════════════════════════════════════ */
   const params = new URLSearchParams(window.location.search);
 
+  // Business WhatsApp number — update with the actual clinic/business number
+  const WA_BUSINESS_NUMBER = '966500000000';
+
   const SERVICE_LABELS = {
     dental:      { ar: '🦷 طب الأسنان',    en: '🦷 Dental'       },
     dermatology: { ar: '💎 الجلدية',       en: '💎 Dermatology'  },
@@ -643,13 +646,12 @@
     const phone = document.getElementById('p-phone').value || params.get('phone')   || '';
     const clinic = params.get('name') || params.get('clinic') || 'BrainSAIT Clinic';
     const date   = document.getElementById('p-date').value || params.get('date') || '';
-    const wpNumber = '966500000000';
     const wpMsg = encodeURIComponent(
       payLang === 'ar'
         ? `مرحباً، أود تأكيد حجزي في ${clinic}\nالاسم: ${name}\nالموعد: ${date}\nالمرجع: ${ref}`
         : `Hello, I'd like to confirm my appointment at ${clinic}\nName: ${name}\nDate: ${date}\nRef: ${ref}`
     );
-    document.getElementById('wa-confirm-btn').href = `https://wa.me/${wpNumber}?text=${wpMsg}`;
+    document.getElementById('wa-confirm-btn').href = `https://wa.me/${WA_BUSINESS_NUMBER}?text=${wpMsg}`;
 
     // Track with GA4
     if (typeof gtag !== 'undefined') {

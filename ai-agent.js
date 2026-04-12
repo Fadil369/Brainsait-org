@@ -7,6 +7,7 @@
  * Optional attr on the script tag:
  *   data-payment-url  (default: /payment.html)
  *   data-lang         (default: auto-detect from <html lang>)
+ *   data-whatsapp     (default: 966500000000)
  */
 (function () {
   'use strict';
@@ -22,6 +23,10 @@
     (document.currentScript && document.currentScript.getAttribute('data-lang')) ||
     document.documentElement.lang ||
     'ar';
+  // Business WhatsApp number — override via data-whatsapp attribute on the script tag
+  const WA_NUMBER =
+    (document.currentScript && document.currentScript.getAttribute('data-whatsapp')) ||
+    '966500000000';
 
   /* ─────────────────────────────────────────────
    * CLINIC KNOWLEDGE BASE
@@ -226,6 +231,21 @@
   };
 
   let STATE = loadState();
+
+  /* ─────────────────────────────────────────────
+   * SECURITY: HTML ESCAPING
+   * Prevents XSS when user-supplied text is
+   * inserted into innerHTML templates.
+   * ───────────────────────────────────────────── */
+  function esc(str) {
+    if (str == null) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
 
   function loadState() {
     try {
@@ -569,42 +589,42 @@
 
   function showPaymentSummary() {
     const lang = STATE.lang;
+    // All user-supplied values are HTML-escaped to prevent XSS
     const summaryHTML = `
       <div class="bs-summary-card">
-        <strong>${t('payment_intro')}</strong>
+        <strong>${esc(t('payment_intro'))}</strong>
         <div class="bs-summary-row">
           <span>${lang === 'ar' ? 'العيادة:' : 'Clinic:'}</span>
-          <span><b>${STATE.clinicName}</b></span>
+          <span><b>${esc(STATE.clinicName)}</b></span>
         </div>
         <div class="bs-summary-row">
           <span>${lang === 'ar' ? 'الاسم:' : 'Name:'}</span>
-          <span>${STATE.userName}</span>
+          <span>${esc(STATE.userName)}</span>
         </div>
         <div class="bs-summary-row">
           <span>${lang === 'ar' ? 'الهاتف:' : 'Phone:'}</span>
-          <span>${STATE.userPhone}</span>
+          <span>${esc(STATE.userPhone)}</span>
         </div>
         <div class="bs-summary-row">
           <span>${lang === 'ar' ? 'الموعد:' : 'Date:'}</span>
-          <span>${STATE.preferredDate}</span>
+          <span>${esc(STATE.preferredDate)}</span>
         </div>
         <div class="bs-summary-row">
-          <span>${t('price_label')}</span>
-          <span><b>${STATE.price} ${t('sar')}</b></span>
+          <span>${esc(t('price_label'))}</span>
+          <span><b>${esc(String(STATE.price))} ${esc(t('sar'))}</b></span>
         </div>
       </div>
     `;
     addMessage('', 'agent', summaryHTML);
 
-    // CTA button
-    const ctaHTML = `<a class="bs-cta-btn" href="${buildPaymentURL()}" target="_self">${t('payment_cta')}</a>`;
+    // CTA button — payment URL is built from known-safe URLSearchParams
+    const ctaHTML = `<a class="bs-cta-btn" href="${esc(buildPaymentURL())}" target="_self">${esc(t('payment_cta'))}</a>`;
     addMessage('', 'agent', ctaHTML);
 
-    // WhatsApp fallback
-    const wpNumber = '966500000000';
-    const wpMsg = encodeURIComponent(t('whatsapp_msg').replace('{clinic}', STATE.clinicName));
+    // WhatsApp fallback — use configured WA_NUMBER constant
+    const wpMsg = encodeURIComponent(t('whatsapp_msg').replace('{clinic}', STATE.clinicName || ''));
     const wpFallbackHTML = `<a class="bs-cta-btn" style="background:linear-gradient(135deg,#128c7e,#25d366);margin-top:4px"
-      href="https://wa.me/${wpNumber}?text=${wpMsg}" target="_blank">
+      href="https://wa.me/${esc(WA_NUMBER)}?text=${wpMsg}" target="_blank">
       💬 ${lang === 'ar' ? 'تواصل عبر واتساب' : 'Chat on WhatsApp'}
     </a>`;
     addMessage('', 'agent', wpFallbackHTML);
