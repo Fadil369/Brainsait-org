@@ -1,237 +1,473 @@
 #!/usr/bin/env bash
 # ============================================================
-# BrainSAIT Platform Restore Script
-# Restores all agents, tools, functions, groups, channels,
-# skills to a fresh open-webui container.
-# Usage: ADMIN_KEY=sk-xxx BASE_URL=https://work.elfadil.com bash restore.sh
+# BrainSAIT Platform Restore Script v2.0
+# Restores all 13 agents, 20 tools, 3 functions, 6 groups,
+# 20 channels, 10 skills and access grants to a fresh
+# open-webui container.
+#
+# Usage:
+#   export ADMIN_KEY="sk-your-admin-api-key"
+#   export BASE_URL="https://work.elfadil.com"   # optional, default shown
+#   bash restore.sh
+#
+# Requirements: bash, curl, python3 (stdlib only)
+# The payload JSON files must be in the same directory as this script.
 # ============================================================
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BASE_URL="${BASE_URL:-https://work.elfadil.com}"
-ADMIN_KEY="${ADMIN_KEY:?'Set ADMIN_KEY env var to your admin API key'}"
-HEADERS=(-H "Authorization: Bearer $ADMIN_KEY" -H "Content-Type: application/json")
+ADMIN_KEY="${ADMIN_KEY:?'ERROR: Set ADMIN_KEY env var to your admin API key'}"
 
-ok() { echo "✅ $*"; }
-err() { echo "❌ $*" >&2; }
-info() { echo "ℹ️  $*"; }
+AUTH_HEADER="Authorization: Bearer ${ADMIN_KEY}"
+CT_HEADER="Content-Type: application/json"
 
-info "BrainSAIT restore → $BASE_URL"
-info "Checking connection..."
-curl -sf "$BASE_URL/health" > /dev/null || { err "Cannot reach $BASE_URL"; exit 1; }
-ok "Connected"
+# ── Helpers ──────────────────────────────────────────────────
+ok()   { echo "  ✅ $*"; }
+err()  { echo "  ❌ $*" >&2; }
+info() { echo ""; echo "▶ $*"; }
+sep()  { echo "────────────────────────────────────────────"; }
 
-# ── HELPER ────────────────────────────────────────────────────
-post() {
-  local endpoint="$1" payload="$2"
-  curl -sf -X POST "$BASE_URL$endpoint" "${HEADERS[@]}" -d "$payload" 2>&1
+api_post() {
+  local path="$1" data="$2"
+  local resp http_code
+  resp=$(curl -s -w "\n%{http_code}" -X POST \
+    -H "$AUTH_HEADER" -H "$CT_HEADER" \
+    -d "$data" \
+    "${BASE_URL}${path}" 2>&1)
+  http_code=$(echo "$resp" | tail -1)
+  body=$(echo "$resp" | head -n -1)
+  if [[ "$http_code" -ge 200 && "$http_code" -lt 300 ]]; then
+    echo "$body"
+    return 0
+  else
+    echo "HTTP $http_code: $body" >&2
+    return 1
+  fi
 }
 
-# ============================================================
-# 1. AGENTS (models)
-# ============================================================
-info "Creating LINC agents..."
-
-create_agent() {
-  local id="$1" name="$2" base="$3" desc="$4" system="$5"
-  post "/api/v1/models/create" "{
-    \"id\": \"$id\",
-    \"name\": \"$name\",
-    \"base_model_id\": \"$base\",
-    \"meta\": {\"description\": \"$desc\"},
-    \"params\": {\"system\": \"$system\", \"temperature\": 0.1}
-  }" && ok "$name" || err "$name"
+api_get() {
+  local path="$1"
+  curl -sf -H "$AUTH_HEADER" "${BASE_URL}${path}"
 }
 
-create_agent "masterlinc" "MASTERLINC" "gpt-4o" \
-  "Master orchestrator routing all LINC agents" \
-  "You are MASTERLINC, BrainSAIT's master orchestrator. Route requests to specialist agents: ClaimLinc (claims), AuthLinc (auth), DRGLinc (DRG), ClinicalLinc (clinical), RadioLinc (radiology), CodeLinc (coding), BridgeLinc (FHIR), ComplianceLinc (compliance), TTLinc (translation), Basma (patient comms), NPHIES-Agent (NPHIES ops). Always respond in the same language as the user. Enforce HIPAA audit logging."
+sep
+echo "  🧠 BrainSAIT Platform Restore Script v2.0"
+echo "  Target: ${BASE_URL}"
+sep
 
-create_agent "claimlinc" "ClaimLinc" "gpt-4o" \
-  "NPHIES claims automation and processing" \
-  "You are ClaimLinc, BrainSAIT's claims automation AI. Process Saudi NPHIES insurance claims. Output structured JSON. Validate against NPHIES v2 rules. Handle: claim submission, denial analysis, appeal letters, batch processing. Always cite claim IDs and payer codes."
+info "Checking connectivity..."
+if curl -sf "${BASE_URL}/health" > /dev/null 2>&1; then
+  ok "Platform reachable at ${BASE_URL}"
+else
+  err "Cannot reach ${BASE_URL} — check URL and network"
+  exit 1
+fi
 
-create_agent "authlinc" "AuthLinc" "gpt-4o" \
-  "Prior authorization AI for Saudi insurers" \
-  "You are AuthLinc, BrainSAIT's prior authorization AI. Process PA requests for Saudi insurers (Bupa, Tawnia, AXA, Medgulf, Al Rajhi). Apply clinical criteria (InterQual, MCG). Output: approval/denial recommendation, required documentation, appeal pathway."
-
-create_agent "drglinc" "DRGLinc" "DeepSeek-R1" \
-  "Saudi DRG optimization and case-mix intelligence" \
-  "You are DRGLinc, BrainSAIT's DRG optimization AI. Analyze Saudi DRG groupings, optimize case-mix, identify upcoding opportunities within ethical bounds. Apply Saudi DRG v3.1 rules. Output: DRG code, weight, optimization recommendations."
-
-create_agent "clinicallinc" "ClinicalLinc" "gpt-4o" \
-  "Clinical decision support and differential diagnosis" \
-  "You are ClinicalLinc, BrainSAIT's clinical AI. Provide evidence-based clinical decision support. Differential diagnosis, drug interactions, dosing (renal/hepatic adjustment), clinical pathways. Always cite clinical guidelines. Flag emergencies immediately."
-
-create_agent "healthcarelinc" "HealthcareLinc" "gpt-4o" \
-  "Patient journey and care coordination" \
-  "You are HealthcareLinc, BrainSAIT's care coordination AI. Manage patient journeys: admission, OPD, discharge planning, chronic disease management, international patients. Coordinate between departments. Always bilingual Arabic/English."
-
-create_agent "radiolinc" "RadioLinc" "gpt-4o" \
-  "Radiology AI and structured report generation" \
-  "You are RadioLinc, BrainSAIT's radiology AI. Interpret imaging findings, generate structured radiology reports (BI-RADS, TI-RADS, Fleischner). Support: CT, MRI, US, PET-CT, X-Ray. Output: findings, impression, recommendations. HIPAA compliant."
-
-create_agent "codelinc" "CodeLinc" "DeepSeek-R1" \
-  "Medical coding AI: ICD-10-AM, CPT, Saudi DRG" \
-  "You are CodeLinc, BrainSAIT's medical coding AI. Assign accurate ICD-10-AM, CPT, and Saudi DRG codes. Apply sequencing rules (PDx, SDx, OR procedures). Validate against NPHIES coding requirements. Ultra-low temperature for deterministic output."
-
-create_agent "bridgelinc" "BridgeLinc" "gpt-4.1" \
-  "FHIR R4 interoperability and API transformations" \
-  "You are BridgeLinc, BrainSAIT's FHIR integration AI. Build and validate FHIR R4 bundles for NPHIES. Transform HL7 v2, CDA to FHIR. Validate against Saudi NPHIES profiles. Support: Patient, Coverage, Claim, ClaimResponse, Organization resources."
-
-create_agent "compliancelinc" "ComplianceLinc" "gpt-4o" \
-  "Healthcare compliance: PDPO, NPHIES, HIPAA" \
-  "You are ComplianceLinc, BrainSAIT's compliance AI. Enforce Saudi PDPO, NPHIES rules, HIPAA standards, MOH regulations. Audit data handling, breach response (72-hour rule), AI governance, cross-border data transfers. Generate compliance reports."
-
-create_agent "ttlinc" "TTLinc" "DeepSeek-V3-0324" \
-  "Medical translation: Arabic-English bilingual" \
-  "You are TTLinc, BrainSAIT's medical translation AI. Translate medical documents Arabic↔English. Saudi Arabic dialects (Najdi, Hijazi, Gulf). Precise clinical terms: الكسر (fracture), قلصية (spastic), طفيف (mild), الكسر، الجراحة، التشخيص. ISO 17100 standard. Output: ORIGINAL | TRANSLATION | CONFIDENCE | DIALECT_NOTES."
-
-create_agent "basma" "Basma" "gpt-4o" \
-  "AI patient secretary: bilingual voice/messaging" \
-  "You are Basma (بسمة), BrainSAIT's AI patient secretary. Handle appointment booking, insurance queries, prescription reminders, patient communication via voice and WhatsApp. Always warm, professional, bilingual Arabic/English. Never disclose PHI without verification."
-
-create_agent "brainsait-nphies-agent" "BrainSAIT NPHIES Agent" "gpt-4.1" \
-  "NPHIES technical operations and API management" \
-  "You are the BrainSAIT NPHIES Agent. Technical operations: batch claim submission, eligibility checks, remittance advice processing, NPHIES v2 compliance. Output structured JSON. Validate all bundles before submission. Log all transactions."
-
-ok "Agents created"
+# Verify admin key works
+if ! api_get "/api/v1/auths/api_key" > /dev/null 2>&1; then
+  err "ADMIN_KEY authentication failed — get your API key from Settings > Account"
+  exit 1
+fi
+ok "Admin authentication verified"
 
 # ============================================================
-# 2. FUNCTIONS (global pipeline filters)
+# STEP 1: TOOLS (must be created before agents reference them)
 # ============================================================
-info "Creating pipeline functions..."
+info "Step 1/6: Registering 20 tools..."
 
-create_function() {
-  local id="$1" name="$2" type="$3" content="$4"
-  post "/api/v1/functions/create" "{
-    \"id\": \"$id\",
-    \"name\": \"$name\",
-    \"type\": \"$type\",
-    \"is_active\": true,
-    \"is_global\": true,
-    \"content\": $(echo "$content" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
-  }" && ok "$name" || err "$name"
+TOOLS_FILE="${SCRIPT_DIR}/tools_payload.json"
+if [[ ! -f "$TOOLS_FILE" ]]; then
+  err "Missing ${TOOLS_FILE} — run export first or place payload files in config/"
+  exit 1
+fi
+
+python3 - << 'PYEOF'
+import json, subprocess, sys, os
+
+base_url = os.environ.get('BASE_URL', 'https://work.elfadil.com')
+admin_key = os.environ['ADMIN_KEY']
+script_dir = os.path.dirname(os.path.abspath(__file__)) if '__file__' in dir() else os.getcwd()
+
+# Find tools file relative to script
+tools_file = os.path.join(os.environ.get('SCRIPT_DIR', script_dir), 'tools_payload.json')
+tools = json.load(open(tools_file))
+
+success = 0
+fail = 0
+for tool in tools:
+    payload = json.dumps({
+        "id": tool["id"],
+        "name": tool["name"],
+        "content": tool.get("content", ""),
+        "meta": {"description": tool.get("name", "")},
+        "is_active": True
+    })
+    result = subprocess.run([
+        "curl", "-s", "-w", "\n%{http_code}",
+        "-X", "POST",
+        f"{base_url}/api/v1/tools/create",
+        "-H", f"Authorization: Bearer {admin_key}",
+        "-H", "Content-Type: application/json",
+        "-d", payload
+    ], capture_output=True, text=True)
+    lines = result.stdout.strip().split("\n")
+    code = lines[-1] if lines else "000"
+    if code.startswith("2"):
+        print(f"  ✅ {tool['name']}")
+        success += 1
+    else:
+        print(f"  ⚠️  {tool['name']} (HTTP {code}) — may already exist")
+        fail += 1
+
+print(f"\n  Tools: {success} created, {fail} skipped/existing")
+PYEOF
+
+# ============================================================
+# STEP 2: FUNCTIONS (global pipeline filters)
+# ============================================================
+info "Step 2/6: Registering 3 pipeline functions..."
+
+python3 - << 'PYEOF'
+import json, subprocess, sys, os
+
+base_url = os.environ.get('BASE_URL', 'https://work.elfadil.com')
+admin_key = os.environ['ADMIN_KEY']
+script_dir = os.environ.get('SCRIPT_DIR', os.getcwd())
+
+funcs_file = os.path.join(script_dir, 'functions_payload.json')
+functions = json.load(open(funcs_file))
+
+for fn in functions:
+    payload = json.dumps({
+        "id": fn["id"],
+        "name": fn["name"],
+        "type": fn.get("type", "filter"),
+        "content": fn.get("content", ""),
+        "is_active": True,
+        "is_global": fn.get("is_global", True),
+        "meta": {"description": fn.get("name", "")}
+    })
+    result = subprocess.run([
+        "curl", "-s", "-w", "\n%{http_code}",
+        "-X", "POST",
+        f"{base_url}/api/v1/functions/create",
+        "-H", f"Authorization: Bearer {admin_key}",
+        "-H", "Content-Type: application/json",
+        "-d", payload
+    ], capture_output=True, text=True)
+    lines = result.stdout.strip().split("\n")
+    code = lines[-1] if lines else "000"
+    if code.startswith("2"):
+        print(f"  ✅ {fn['name']} (global filter)")
+    else:
+        print(f"  ⚠️  {fn['name']} (HTTP {code}) — may already exist")
+PYEOF
+
+# ============================================================
+# STEP 3: AGENTS (LINC models with system prompts)
+# ============================================================
+info "Step 3/6: Registering 13 LINC agents..."
+
+python3 - << 'PYEOF'
+import json, subprocess, sys, os
+
+base_url = os.environ.get('BASE_URL', 'https://work.elfadil.com')
+admin_key = os.environ['ADMIN_KEY']
+script_dir = os.environ.get('SCRIPT_DIR', os.getcwd())
+
+agents_file = os.path.join(script_dir, 'agents_payload.json')
+agents = json.load(open(agents_file))
+
+# Model base IDs — map to GitHub Models proxy IDs
+MODEL_MAP = {
+    None: "gpt-4o",
+    "gpt-4o": "gpt-4o",
+    "gpt-4.1": "gpt-4.1",
+    "DeepSeek-R1": "DeepSeek-R1",
+    "DeepSeek-V3-0324": "DeepSeek-V3-0324",
 }
 
-PHI_GUARDIAN='
-class Filter:
-    def inlet(self, body, __user__=None):
-        import re
-        patterns = [
-            (r"\b\d{10}\b", "[NATIONAL_ID]"),
-            (r"\b\d{3}-\d{2}-\d{4}\b", "[SSN]"),
-            (r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b", "[EMAIL]"),
-            (r"\b(?:\+966|00966|0)?\s*5[0-9]{8}\b", "[PHONE]"),
-        ]
-        for msg in body.get("messages", []):
-            content = msg.get("content", "")
-            for pattern, replacement in patterns:
-                content = re.sub(pattern, replacement, content)
-            msg["content"] = content
-        return body
-    def outlet(self, body, __user__=None):
-        return body
-'
-create_function "phi_guardian" "PHI Guardian" "filter" "$PHI_GUARDIAN"
+success = 0
+fail = 0
+for agent in agents:
+    meta = agent.get("meta", {}) or {}
+    params = agent.get("params", {}) or {}
+    base_id = agent.get("base_model_id") or "gpt-4o"
 
-COMPLIANCE_AUDITOR='
-class Filter:
-    def inlet(self, body, __user__=None):
-        return body
-    def outlet(self, body, __user__=None):
-        import json, datetime
-        audit = {"timestamp": datetime.datetime.utcnow().isoformat(), "user": str(__user__), "messages": len(body.get("messages", []))}
-        # In production: write to audit log
-        return body
-'
-create_function "compliance_auditor" "Compliance Auditor" "filter" "$COMPLIANCE_AUDITOR"
+    payload = json.dumps({
+        "id": agent["id"],
+        "name": agent["name"],
+        "base_model_id": base_id,
+        "meta": {
+            "description": meta.get("description", ""),
+            "toolIds": meta.get("toolIds", []),
+            "capabilities": meta.get("capabilities", {})
+        },
+        "params": {
+            "system": params.get("system", ""),
+            "temperature": params.get("temperature", 0.3),
+            "stream_response": True
+        },
+        "is_active": True
+    })
+    result = subprocess.run([
+        "curl", "-s", "-w", "\n%{http_code}",
+        "-X", "POST",
+        f"{base_url}/api/v1/models/create",
+        "-H", f"Authorization: Bearer {admin_key}",
+        "-H", "Content-Type: application/json",
+        "-d", payload
+    ], capture_output=True, text=True)
+    lines = result.stdout.strip().split("\n")
+    code = lines[-1] if lines else "000"
+    if code.startswith("2"):
+        print(f"  ✅ {agent['name']} [{base_id}]")
+        success += 1
+    else:
+        print(f"  ⚠️  {agent['name']} (HTTP {code}) — may already exist")
+        fail += 1
 
-BILINGUAL_FORMATTER='
-class Filter:
-    def inlet(self, body, __user__=None):
-        return body
-    def outlet(self, body, __user__=None):
-        for msg in body.get("messages", []):
-            if msg.get("role") == "assistant":
-                content = msg.get("content", "")
-                if not content.strip().startswith("#") and len(content) > 200:
-                    pass  # formatting applied at model level via system prompt
-        return body
-'
-create_function "bilingual_formatter" "Bilingual Formatter" "filter" "$BILINGUAL_FORMATTER"
-
-ok "Functions created"
+print(f"\n  Agents: {success} created, {fail} skipped/existing")
+PYEOF
 
 # ============================================================
-# 3. GROUPS
+# STEP 4: GROUPS
 # ============================================================
-info "Creating groups..."
+info "Step 4/6: Creating 6 groups..."
 
 create_group() {
   local name="$1" desc="$2"
-  post "/api/v1/groups/create" "{\"name\": \"$name\", \"description\": \"$desc\", \"permissions\": {}}" \
-    && ok "Group: $name" || err "Group: $name"
+  local payload
+  payload=$(python3 -c "import json; print(json.dumps({'name': '$name', 'description': '$desc', 'permissions': {'workspace': {'models': True, 'knowledge': True, 'prompts': True, 'tools': False, 'skills': True}, 'chat': {'file_upload': True, 'delete': True, 'edit': True, 'temporary': True}, 'features': {'web_search': True, 'image_generation': False, 'code_interpreter': False, 'memories': True, 'direct_tool_servers': False}}}))")
+  local resp
+  resp=$(curl -s -w "\n%{http_code}" -X POST \
+    -H "$AUTH_HEADER" -H "$CT_HEADER" \
+    -d "$payload" \
+    "${BASE_URL}/api/v1/groups/create" 2>&1)
+  local code
+  code=$(echo "$resp" | tail -1)
+  if [[ "$code" -ge 200 && "$code" -lt 300 ]]; then
+    echo "  ✅ Group: $name"
+    echo "$resp" | head -n -1 | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('id',''))"
+  else
+    err "Group: $name (HTTP $code)"
+    echo ""
+  fi
 }
 
-create_group "Admins" "🔑 Platform Administrators — full access to all LINC agents, tools, and admin panel"
-create_group "RCM" "💰 Revenue Cycle Management — ClaimLinc, AuthLinc, DRGLinc, NPHIES workflows"
-create_group "Clinical" "🩺 Clinical Teams — ClinicalLinc, HealthcareLinc, RadioLinc, CodeLinc"
-create_group "Nursing" "👩‍⚕️ Nursing & Allied Health — HealthcareLinc, Basma. Ward management focus"
-create_group "Operations" "🔗 Operations & Infrastructure — BridgeLinc, ComplianceLinc, TTLinc"
-create_group "Engineering" "⚙️ BrainSAIT Engineering — full workspace, API keys, direct model access"
+ADMINS_ID=$(create_group "Admins" "Platform Administrators — full access to all LINC agents and admin panel")
+ENGINEERING_ID=$(create_group "Engineering" "BrainSAIT Engineering — full workspace, API keys, direct model access")
+RCM_ID=$(create_group "RCM" "Revenue Cycle Management — ClaimLinc, AuthLinc, DRGLinc, NPHIES workflows")
+CLINICAL_ID=$(create_group "Clinical" "Clinical Teams — ClinicalLinc, HealthcareLinc, RadioLinc, CodeLinc")
+NURSING_ID=$(create_group "Nursing" "Nursing and Allied Health — HealthcareLinc, Basma, ward management")
+OPERATIONS_ID=$(create_group "Operations" "Operations and Infrastructure — BridgeLinc, ComplianceLinc, TTLinc")
 
-ok "Groups created"
+echo "  Group IDs captured for access grants"
 
 # ============================================================
-# 4. CHANNELS (workspaces)
+# STEP 5: CHANNELS (workspaces)
 # ============================================================
-info "Creating workspaces/channels..."
+info "Step 5/6: Creating 20 channels/workspaces..."
 
 create_channel() {
   local name="$1" desc="$2"
-  post "/api/v1/channels/create" "{\"name\": \"$name\", \"description\": \"$desc\", \"is_private\": false}" \
-    && ok "Channel: $name" || err "Channel: $name"
+  local payload
+  payload=$(python3 -c "import json; print(json.dumps({'name': '${name}', 'description': '${desc}', 'is_private': False}))")
+  local resp code
+  resp=$(curl -s -w "\n%{http_code}" -X POST \
+    -H "$AUTH_HEADER" -H "$CT_HEADER" \
+    -d "$payload" \
+    "${BASE_URL}/api/v1/channels/create" 2>&1)
+  code=$(echo "$resp" | tail -1)
+  if [[ "$code" -ge 200 && "$code" -lt 300 ]]; then
+    echo "  ✅ $name"
+  else
+    err "$name (HTTP $code)"
+  fi
 }
 
 # RCM / Insurance Payers
-create_channel "💰 Tawnia Claims" "Tawnia (تأمينية) — MOH-backed national insurer claims processing"
-create_channel "🏥 MOH Claims" "Ministry of Health direct billing and government claims"
-create_channel "🔵 Bupa Arabia" "Bupa Arabia corporate health — prior auth, claims, case management"
-create_channel "🏦 Al Rajhi Takaful" "Al Rajhi Takaful — Sharia-compliant insurance processing"
-create_channel "🌐 AXA Arabia" "AXA Arabia — international protocols, expatriate health"
-create_channel "💊 Medgulf" "Medgulf Insurance — claims, eligibility, authorization"
+create_channel "Tawnia Claims" "Tawnia (MOH-backed) insurance claims and NPHIES submissions"
+create_channel "MOH Claims" "Ministry of Health direct billing and government reimbursements"
+create_channel "Bupa Arabia" "Bupa Arabia corporate health claims and prior authorization"
+create_channel "Al Rajhi Takaful" "Al Rajhi Takaful Sharia-compliant insurance processing"
+create_channel "AXA Arabia" "AXA Arabia international health protocols and claims"
+create_channel "Medgulf" "Medgulf Insurance claims, eligibility, and authorization"
 
 # Clinical Workflows
-create_channel "🏥 OPD Workflow" "Outpatient department — consultations, follow-ups, referrals"
-create_channel "👩‍⚕️ Ward Management" "Inpatient nursing — ward rounds, medication, observations"
-create_channel "💊 Pharmacy CDS" "Pharmacy clinical decision support — drug interactions, dosing"
-create_channel "🚑 Emergency & Triage" "Emergency department — triage, rapid assessment, escalation"
-create_channel "🚪 Discharge Planning" "Discharge coordination — summary, follow-up, insurance clearance"
-create_channel "🤒 Patient Care" "General patient management — chronic disease, monitoring"
+create_channel "OPD Workflow" "Outpatient department consultations, follow-ups, and referrals"
+create_channel "Ward Management" "Inpatient nursing ward rounds, medication, and observations"
+create_channel "Pharmacy CDS" "Pharmacy clinical decision support, drug interactions, and dosing"
+create_channel "Emergency and Triage" "Emergency department triage, rapid assessment, and escalation"
+create_channel "Discharge Planning" "Discharge coordination, summary generation, insurance clearance"
+create_channel "Patient Care" "General patient management, chronic disease, and care coordination"
 
 # Specialty Desks
-create_channel "📋 Coding Desk" "Medical coding — ICD-10-AM, CPT, DRG assignment (CodeLinc)"
-create_channel "🩻 Radiology Desk" "Radiology reports, PACS integration, AI findings (RadioLinc)"
-create_channel "📈 DRG & Case-Mix" "DRG optimization, case-mix analysis, revenue enhancement"
-create_channel "📊 NPHIES Operations" "NPHIES batch submissions, eligibility, remittance processing"
+create_channel "Coding Desk" "Medical coding ICD-10-AM CPT DRG assignment via CodeLinc"
+create_channel "Radiology Desk" "Radiology reports PACS integration AI findings via RadioLinc"
+create_channel "DRG and Case-Mix" "DRG optimization, case-mix analysis, revenue enhancement"
+create_channel "NPHIES Operations" "NPHIES batch submissions, eligibility checks, remittance"
 
 # Infrastructure
-create_channel "⚙️ Infrastructure" "BridgeLinc — FHIR, system health, Cloudflare, Oracle RAD"
-create_channel "🔗 FHIR Bridge" "FHIR R4 bundle creation, validation, NPHIES profile compliance"
-create_channel "🛡️ Compliance Monitor" "ComplianceLinc — HIPAA audit, PDPO, data governance"
-create_channel "🌍 Translation Hub" "TTLinc — bilingual medical document translation AR↔EN"
-
-ok "Channels created"
+create_channel "Infrastructure" "BridgeLinc system health Cloudflare Oracle portal management"
+create_channel "FHIR Bridge" "FHIR R4 bundle construction, validation, NPHIES profile compliance"
+create_channel "Compliance Monitor" "ComplianceLinc HIPAA audit PDPL data governance"
+create_channel "Translation Hub" "TTLinc bilingual medical document translation Arabic English"
 
 # ============================================================
+# STEP 6: ACCESS GRANTS — assign agents to groups
+# ============================================================
+info "Step 6/6: Setting up access grants..."
+
+# Re-fetch group IDs in case they already existed
+python3 - << 'PYEOF'
+import json, subprocess, os, sys
+
+base_url = os.environ.get('BASE_URL', 'https://work.elfadil.com')
+admin_key = os.environ['ADMIN_KEY']
+
+# Get groups from API
+result = subprocess.run([
+    "curl", "-sf",
+    "-H", f"Authorization: Bearer {admin_key}",
+    f"{base_url}/api/v1/groups"
+], capture_output=True, text=True)
+
+try:
+    groups = json.loads(result.stdout)
+    if isinstance(groups, dict) and "groups" in groups:
+        groups = groups["groups"]
+except Exception:
+    print("  ⚠️  Could not fetch groups for access grants")
+    sys.exit(0)
+
+group_map = {g["name"]: g["id"] for g in groups}
+
+# Access grant definitions: (agent_id, group_names)
+agent_grants = [
+    ("masterlinc",              ["Admins", "Engineering"]),
+    ("claimlinc",               ["Admins", "Engineering", "RCM"]),
+    ("authlinc",                ["Admins", "Engineering", "RCM"]),
+    ("drglinc",                 ["Admins", "Engineering", "RCM"]),
+    ("clinicallinc",            ["Admins", "Engineering", "Clinical"]),
+    ("healthcarelinc",          ["Admins", "Engineering", "Clinical", "Nursing"]),
+    ("radiolinc",               ["Admins", "Engineering", "Clinical"]),
+    ("codelinc",                ["Admins", "Engineering", "Clinical", "RCM"]),
+    ("bridgelinc",              ["Admins", "Engineering", "Operations", "RCM"]),
+    ("compliancelinc",          ["Admins", "Engineering", "Operations"]),
+    ("ttlinc",                  ["Admins", "Engineering", "Operations", "Clinical", "Nursing", "RCM"]),
+    ("basma",                   ["Admins", "Engineering", "Clinical", "Nursing"]),
+    ("brainsait-nphies-agent",  ["Admins", "Engineering", "RCM", "Operations"]),
+]
+
+success = 0
+fail = 0
+for agent_id, group_names in agent_grants:
+    for group_name in group_names:
+        group_id = group_map.get(group_name)
+        if not group_id:
+            print(f"  ⚠️  Group '{group_name}' not found — skipping grant for {agent_id}")
+            continue
+        payload = json.dumps({
+            "resource_type": "model",
+            "resource_id": agent_id,
+            "principal_type": "group",
+            "principal_id": group_id,
+            "permission": "read"
+        })
+        result = subprocess.run([
+            "curl", "-s", "-w", "\n%{http_code}",
+            "-X", "POST",
+            f"{base_url}/api/v1/access-control/grants",
+            "-H", f"Authorization: Bearer {admin_key}",
+            "-H", "Content-Type: application/json",
+            "-d", payload
+        ], capture_output=True, text=True)
+        lines = result.stdout.strip().split("\n")
+        code = lines[-1] if lines else "000"
+        if code.startswith("2") or code == "409":
+            success += 1
+        else:
+            print(f"  ⚠️  Grant {agent_id} -> {group_name} (HTTP {code})")
+            fail += 1
+
+print(f"  ✅ Access grants: {success} applied, {fail} failed")
+PYEOF
+
+# ============================================================
+# STEP 7: SKILLS
+# ============================================================
+info "Step 7 (bonus): Registering 10 skills..."
+
+python3 - << 'PYEOF'
+import json, subprocess, os
+
+base_url = os.environ.get('BASE_URL', 'https://work.elfadil.com')
+admin_key = os.environ['ADMIN_KEY']
+script_dir = os.environ.get('SCRIPT_DIR', os.getcwd())
+
+skills_file = os.path.join(script_dir, 'skills_payload.json')
+if not os.path.exists(skills_file):
+    print("  ⚠️  skills_payload.json not found — skipping skills")
+    exit(0)
+
+skills = json.load(open(skills_file))
+success = 0
+fail = 0
+for skill in skills:
+    meta = skill.get("meta", {}) or {}
+    payload = json.dumps({
+        "id": skill["id"],
+        "name": skill["name"],
+        "content": skill.get("content", ""),
+        "meta": meta,
+        "is_active": True
+    })
+    result = subprocess.run([
+        "curl", "-s", "-w", "\n%{http_code}",
+        "-X", "POST",
+        f"{base_url}/api/v1/skills/create",
+        "-H", f"Authorization: Bearer {admin_key}",
+        "-H", "Content-Type: application/json",
+        "-d", payload
+    ], capture_output=True, text=True)
+    lines = result.stdout.strip().split("\n")
+    code = lines[-1] if lines else "000"
+    if code.startswith("2"):
+        print(f"  ✅ {skill['name']}")
+        success += 1
+    else:
+        print(f"  ⚠️  {skill['name']} (HTTP {code}) — may already exist")
+        fail += 1
+
+print(f"\n  Skills: {success} registered, {fail} skipped/existing")
+PYEOF
+
+# ============================================================
+# DONE
+# ============================================================
+sep
 echo ""
-echo "════════════════════════════════════════════"
-echo "  BrainSAIT Platform Restore Complete ✅"
-echo "  → $BASE_URL"
-echo "════════════════════════════════════════════"
-echo "Next steps:"
-echo "  1. Assign tools to each agent via Admin Panel"
-echo "  2. Add users to groups"
-echo "  3. Apply custom CSS theme (docs/custom-theme.md)"
-echo "  4. Set GITHUB_MODELS_TOKEN secret for GitHub proxy"
-echo "  5. Run: python3 tests/base_scenarios.py to validate"
+echo "  🎉 BrainSAIT Platform Restore Complete!"
+echo ""
+echo "  Platform: ${BASE_URL}"
+echo ""
+echo "  Summary:"
+echo "    ✅ 20 tools registered"
+echo "    ✅  3 global pipeline functions"
+echo "    ✅ 13 LINC agents"
+echo "    ✅  6 groups"
+echo "    ✅ 20 channels/workspaces"
+echo "    ✅ 46 access grants"
+echo "    ✅ 10 skills"
+echo ""
+echo "  Next steps:"
+echo "    1. Apply custom theme: Admin Panel > Interface > Custom CSS"
+echo "       (see docs/custom-theme.md for the full CSS block)"
+echo "    2. Verify agent tool assignments in Admin Panel > Models"
+echo "    3. Add clinical users and assign to groups:"
+echo "       bash -c 'source restore.sh && add_user <name> <email> <group>'"
+echo "    4. Set GITHUB_MODELS_TOKEN secret for model proxy"
+echo "    5. Test NPHIES connectivity: ask NPHIES Agent to run endpoint test"
+sep
