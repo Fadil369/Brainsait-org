@@ -1068,12 +1068,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     `;
     
     selectComplexity('app', selector.querySelector('.complexity-option'));
-    document.getElementById('paymentModal').style.display = 'flex';
+    const modal = document.getElementById('paymentModal');
+    modal.style.display = 'flex';
+    modal.classList.add('is-open');
   }
 
   // Close payment modal
   function closePaymentModal() {
-    document.getElementById('paymentModal').style.display = 'none';
+    const modal = document.getElementById('paymentModal');
+    modal.style.display = 'none';
+    modal.classList.remove('is-open');
   }
 
   // Select complexity
@@ -1087,6 +1091,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   async function processPayment(provider) {
      const pricing = PRICING[currentProduct.tier];
      const amount = pricing[selectedComplexity];
+     
+     // Guard: check provider is enabled before proceeding
+     const cfg = window.PAYMENT_CONFIG && window.PAYMENT_CONFIG[provider];
+     if (cfg && cfg.enabled === false) {
+       alert(`${provider.charAt(0).toUpperCase() + provider.slice(1)} payments are not yet configured. Please contact info@brainsait.org to purchase.`);
+       return;
+     }
      
      const paymentData = {
        provider: provider,
@@ -1404,7 +1415,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
    // Close modal on Escape key
    document.addEventListener('keydown', function(e) {
-     if (e.key === 'Escape' && document.getElementById('paymentModal').style.display === 'flex') {
+     if (e.key === 'Escape' && document.getElementById('paymentModal').classList.contains('is-open')) {
        closePaymentModal();
      }
    });
