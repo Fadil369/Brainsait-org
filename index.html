@@ -1280,7 +1280,7 @@
     if (document.hidden && particleAnimationId !== null) {
       cancelAnimationFrame(particleAnimationId);
       particleAnimationId = null;
-    } else if (!document.hidden && particleAnimationId === null) draw();
+    } else if (!document.hidden && particleAnimationId === null && cvs.isConnected && ctx) draw();
   });
 })();
 
@@ -1335,8 +1335,8 @@ window.addEventListener('scroll', () => {
   if (!heroEl) return;
   const lightsEl = heroEl.querySelector('.stage-lights');
   if (!lightsEl) return;
-  // Maximum pixel offset once hero scroll progress reaches 1 (hero top fully traverses its own height).
-  const PARALLAX_INTENSITY = 36;
+  // Maximum pixel offset once hero scroll progress reaches 1 (hero top fully travels its own height).
+  const PARALLAX_INTENSITY = 36; // pixels
   let isParallaxUpdateQueued = false;
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
