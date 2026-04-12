@@ -842,6 +842,11 @@
       document.getElementById('dental-title').textContent = isArabic ? 'Dental Clinics' : 'عيادات الأسنان';
       document.getElementById('derma-title').textContent = isArabic ? 'Dermatology Clinics' : 'عيادات الجلدية';
       document.getElementById('poly-title').textContent = isArabic ? 'Multi-Specialty Clinics' : 'العيادات المتعددة';
+
+      // Sync consent banner language with page language
+      if (typeof updateConsentLanguage === 'function') {
+        updateConsentLanguage(isArabic ? 'en' : 'ar');
+      }
     }
   </script>
   
@@ -992,23 +997,20 @@
     }
     
     /**
-     * Toggle individual consent category
+     * Toggle individual consent category.
+     * Reads current state from the DOM toggle (not stale storage) so that
+     * multiple toggles before saving all work correctly.
      */
     function toggleConsent(category) {
       const toggle = document.getElementById(category + '-toggle');
-      const consent = getConsentState();
-      
-      // Toggle the category
-      if (consent[category] === 'granted') {
-        consent[category] = 'denied';
+      // Use the live DOM class as source of truth (not stale localStorage)
+      const isCurrentlyGranted = toggle.classList.contains('active');
+      if (isCurrentlyGranted) {
         toggle.classList.remove('active');
       } else {
-        consent[category] = 'granted';
         toggle.classList.add('active');
       }
-      
       // Note: We don't auto-save on toggle, only on Save button
-      console.log('Toggled', category, 'to', consent[category]);
     }
     
     // ========== CONSENT SETTINGS MODAL ==========
@@ -1172,3 +1174,8 @@
     }
   </script>
   <!-- ========== END CONSENT MANAGEMENT JAVASCRIPT ========== -->
+
+  <!-- BrainSAIT AI Booking Guide -->
+  <script src="/ai-agent.js" data-lang="ar"></script>
+</body>
+</html>
