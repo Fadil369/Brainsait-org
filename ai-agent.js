@@ -422,7 +422,14 @@
     scrollToBottom();
 
     // Persist
-    STATE.messages.push({ text: text || '', role, ts: Date.now() });
+    let persistedText = text || '';
+    const persistedHtml = html || '';
+    if (!persistedText && persistedHtml) {
+      const temp = document.createElement('div');
+      temp.innerHTML = persistedHtml;
+      persistedText = temp.textContent || temp.innerText || '';
+    }
+    STATE.messages.push({ text: persistedText, html: persistedHtml, role, ts: Date.now() });
     if (STATE.messages.length > 40) STATE.messages.shift();
     saveState();
   }
