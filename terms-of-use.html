@@ -6,182 +6,281 @@
   <title>شروط الاستخدام | Terms of Use - BRAINSAIT</title>
   <meta name="description" content="شروط الاستخدام الكاملة لموقع BRAINSAIT. اقرأ الشروط والأحكام قبل استخدام الخدمة.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    body {
-      font-family: 'Inter', 'Noto Kufi Arabic', sans-serif;
-      background: linear-gradient(135deg, rgba(0,196,180,0.08), transparent 68%), 
-                  linear-gradient(135deg, rgba(212,151,15,0.04), transparent 72%),
-                  #f3faff;
-      color: #071e27;
-      line-height: 1.8;
+    :root {
+      --void:    #02040a;
+      --deep:    #060913;
+      --navy:    #0a0f1d;
+      --surface: #0f1524;
+      --g1: rgba(255,255,255,0.02);
+      --g2: rgba(255,255,255,0.04);
+      --g3: rgba(255,255,255,0.06);
+      --gb: rgba(255,255,255,0.08);
+      --gbh: rgba(255,255,255,0.16);
+      --gold:     #d4a574;
+      --gold-l:   #e8c49a;
+      --teal:     #0ea5e9;
+      --rose:     #f43f5e;
+      --text:  #f8fafc;
+      --textd: #cbd5e1;
+      --textm: #64748b;
+      --fd: 'Syne', sans-serif;
+      --fa: 'IBM Plex Sans Arabic', sans-serif;
+      --fi: 'Inter', sans-serif;
+      --r: 16px;
+      --rx: 6px;
     }
     
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    
+    body {
+      font-family: var(--fi);
+      background: var(--void);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 15px;
+      overflow-x: hidden;
+    }
+
+    [dir="rtl"] body { font-family: var(--fa); }
+
+    /* ─── Noise Overlay ─── */
+    .noise-overlay { position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+
+    /* ─── Nav ─── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(2,4,10,.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--gb);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 16px;
+    }
+    .nav-brand {
+      font-family: var(--fd);
+      font-weight: 800;
+      font-size: 17px;
+      text-decoration: none;
+      color: var(--text);
+      letter-spacing: .3px;
+    }
+    .nav-brand em { color: var(--gold); font-style: normal; }
+    .nav-back {
+      font-size: 13px;
+      color: var(--textm);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color .2s;
+    }
+    .nav-back:hover { color: var(--gold); }
+
+    /* ─── Container ─── */
     .container {
       width: min(900px, 94vw);
       margin: 0 auto;
-      padding: 2rem 1rem;
+      padding: 3rem 1.5rem 5rem;
+      position: relative;
+      z-index: 1;
     }
     
-    header {
-      background: rgba(243,250,255,0.95);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(0,196,180,0.12);
-      padding: 2rem 0;
-      margin-bottom: 2rem;
+    /* ─── Page Header ─── */
+    .page-header {
+      text-align: center;
+      padding: 3rem 0 2.5rem;
+      border-bottom: 1px solid var(--gb);
+      margin-bottom: 2.5rem;
     }
-    
+
+    .page-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
     h1 {
-      font-family: 'Manrope', sans-serif;
-      font-size: 2.5rem;
+      font-family: var(--fd);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
       font-weight: 800;
-      background: linear-gradient(135deg, #d4970f, #c47c5f);
+      background: linear-gradient(135deg, var(--gold-l), var(--teal));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       margin-bottom: 0.5rem;
-      text-align: center;
+      letter-spacing: -1px;
     }
     
     .lang-switch {
       text-align: center;
-      margin: 1rem 0;
+      margin: 1.25rem 0 0;
     }
     
     .lang-switch a {
       display: inline-block;
-      padding: 0.5rem 1rem;
-      background: rgba(0,196,180,0.1);
-      border-radius: 6px;
-      color: #003b42;
+      padding: 0.4rem 1rem;
+      background: var(--g2);
+      border: 1px solid var(--gb);
+      border-radius: var(--rx);
+      color: var(--textd);
       text-decoration: none;
       font-weight: 600;
-      transition: all 0.3s;
+      font-size: 13px;
+      transition: all 0.2s;
     }
     
     .lang-switch a:hover {
-      background: rgba(0,196,180,0.2);
+      background: var(--g3);
+      border-color: var(--gbh);
+      color: var(--gold);
     }
     
     .subtitle {
       text-align: center;
-      color: #49617b;
-      margin-bottom: 2rem;
+      color: var(--textm);
+      font-size: 14px;
+      margin-top: 0.5rem;
     }
     
     h2 {
-      font-family: 'Manrope', sans-serif;
-      font-size: 1.8rem;
+      font-family: var(--fd);
+      font-size: 1.4rem;
       font-weight: 700;
-      color: #d4970f;
-      margin: 2rem 0 1rem;
-      border-bottom: 3px solid rgba(212,151,15,0.2);
+      color: var(--gold-l);
+      margin: 2.5rem 0 1rem;
       padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--gb);
+      letter-spacing: -0.5px;
     }
     
     h3 {
-      font-family: 'Manrope', sans-serif;
-      font-size: 1.3rem;
+      font-family: var(--fd);
+      font-size: 1.1rem;
       font-weight: 700;
-      color: #003b42;
+      color: var(--textd);
       margin: 1.5rem 0 0.75rem;
     }
     
     p {
       margin-bottom: 1rem;
       text-align: justify;
+      color: var(--textd);
+      font-size: 15px;
+      line-height: 1.75;
     }
     
     ul, ol {
-      margin-left: 2rem;
+      margin-inline-start: 2rem;
       margin-bottom: 1rem;
     }
     
     li {
       margin-bottom: 0.5rem;
       text-align: justify;
+      color: var(--textd);
+      font-size: 15px;
+      line-height: 1.7;
     }
+
+    a { color: var(--gold); text-decoration: none; transition: color .2s; }
+    a:hover { color: var(--gold-l); }
+
+    strong, b { color: var(--gold-l); font-weight: 600; }
     
     .highlight {
-      background: rgba(212,151,15,0.1);
-      padding: 1.5rem;
-      border-left: 4px solid #d4970f;
-      border-radius: 6px;
+      background: rgba(212,165,116,0.06);
+      padding: 1.25rem 1.5rem;
+      border-inline-start: 3px solid var(--gold);
+      border-radius: var(--rx);
       margin: 1.5rem 0;
     }
-    
+
     .warning {
-      background: rgba(244,63,94,0.1);
-      padding: 1.5rem;
-      border-left: 4px solid #f43f5e;
-      border-radius: 6px;
+      background: rgba(244,63,94,0.06);
+      padding: 1.25rem 1.5rem;
+      border-inline-start: 3px solid var(--rose);
+      border-radius: var(--rx);
       margin: 1.5rem 0;
     }
-    
-    .footer-info {
-      background: rgba(0,196,180,0.05);
-      padding: 2rem;
-      border-radius: 8px;
-      margin-top: 2rem;
-      text-align: center;
-    }
+
+    .warning strong { color: var(--rose); }
     
     .back-link {
-      display: inline-block;
-      margin-top: 2rem;
-      padding: 0.75rem 1.5rem;
-      background: linear-gradient(135deg, #003b42, #00c4b4);
-      color: white;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 1.5rem;
+      padding: 0.65rem 1.5rem;
+      background: linear-gradient(135deg, var(--gold), var(--gold-l));
+      color: var(--void);
       text-decoration: none;
-      border-radius: 6px;
-      font-weight: 600;
-      transition: all 0.3s;
+      border-radius: var(--rx);
+      font-weight: 700;
+      font-family: var(--fd);
+      font-size: 14px;
+      transition: all 0.2s;
     }
     
     .back-link:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,196,180,0.2);
+      box-shadow: 0 8px 24px rgba(212,165,116,.3);
+      color: var(--void);
     }
-    
-    [dir="ltr"] {
-      text-align: left;
+
+    /* ─── Site Footer ─── */
+    .site-footer {
+      border-top: 1px solid var(--gb);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: var(--textm);
+      font-size: 12px;
+      background: var(--deep);
+      position: relative;
+      z-index: 1;
     }
-    
-    [dir="ltr"] ul, [dir="ltr"] ol {
-      margin-left: 0;
-      margin-right: 2rem;
-    }
-    
-    [dir="ltr"] .highlight {
-      border-left: none;
-      border-right: 4px solid #d4970f;
-    }
-    
-    [dir="ltr"] .warning {
-      border-left: none;
-      border-right: 4px solid #f43f5e;
-    }
+    .site-footer a { color: var(--textm); }
+    .site-footer a:hover { color: var(--gold); }
     
     @media (max-width: 768px) {
-      h1 { font-size: 1.8rem; }
-      h2 { font-size: 1.3rem; }
-      .container { padding: 1rem; }
+      h1 { font-size: 1.6rem; }
+      h2 { font-size: 1.2rem; }
+      .container { padding: 2rem 1rem 4rem; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1>⚖️ شروط الاستخدام</h1>
-      <p class="subtitle">Terms of Use</p>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- ─── Navigation ─── -->
+  <nav class="site-nav" aria-label="Site navigation">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">BRAIN<em>SAIT</em></a>
+      <a href="/" class="nav-back">← <span>Back to Home</span></a>
     </div>
-  </header>
-  
+  </nav>
+
+  <!-- ─── Page Header ─── -->
   <div class="container">
-    <div class="lang-switch">
-      <a href="?lang=ar">العربية</a> | <a href="?lang=en">English</a>
+    <div class="page-header">
+      <span class="page-icon">⚖️</span>
+      <h1>شروط الاستخدام</h1>
+      <p class="subtitle">Terms of Use</p>
+      <div class="lang-switch">
+        <a href="?lang=ar">العربية</a> | <a href="?lang=en">English</a>
+      </div>
     </div>
     
     <!-- ARABIC VERSION -->
@@ -522,6 +621,14 @@
     
     <a href="/" class="back-link" id="back-link">← العودة للرئيسية / Back to Home</a>
   </div>
+
+  <footer class="site-footer">
+    <p>© 2026 BrainSAIT LTD — All rights reserved. |
+      <a href="/">Home</a> ·
+      <a href="/privacy">Privacy Policy</a> ·
+      <a href="mailto:legal@brainsait.org">legal@brainsait.org</a>
+    </p>
+  </footer>
   
   <script>
     // Language switching
