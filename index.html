@@ -317,7 +317,7 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
       html { scroll-behavior: auto; }
-      .rev, .stage-lights, .clinic-card { opacity: 1 !important; transform: none !important; }
+      .rev, .stage-lights, .clinic-card, .clinic-card::before { opacity: 1 !important; transform: none !important; }
     }
 
     /* ─── Canvas / Atmosphere ─── */
@@ -363,7 +363,7 @@
     .rev {
       opacity: 0;
       transform: translate3d(0, 24px, 0) scale(.985);
-      transition: opacity .68s cubic-bezier(.22,.61,.36,1), transform .82s cubic-bezier(.34,1.1,.64,1);
+      transition: opacity .68s cubic-bezier(.22,.61,.36,1), transform .82s cubic-bezier(.22,.61,.36,1);
     }
     .rev.vis { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
     .d1 { transition-delay: .10s; }
@@ -532,13 +532,16 @@
       --clinic-border-hover: rgba(212,165,116,.58);
       --clinic-ring: rgba(212,165,116,.22);
       --clinic-glow: rgba(212,165,116,.16);
+      --clinic-dur: .35s;
+      --clinic-fast: .28s;
+      --clinic-ease: cubic-bezier(.22,.61,.36,1);
       background: var(--g2);
       border: 1px solid var(--gb);
       border-radius: var(--rx);
       padding: 32px;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      transition: transform .35s cubic-bezier(.34,1.1,.64,1), border-color .28s ease, background .28s ease, box-shadow .35s cubic-bezier(.22,.61,.36,1);
+      transition: transform var(--clinic-dur) var(--clinic-ease), border-color var(--clinic-fast) ease, background var(--clinic-fast) ease, box-shadow var(--clinic-dur) var(--clinic-ease);
       box-shadow: 0 10px 28px rgba(0,0,0,.18);
       cursor: pointer;
       position: relative;
