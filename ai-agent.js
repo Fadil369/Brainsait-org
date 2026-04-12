@@ -23,7 +23,9 @@
     (document.currentScript && document.currentScript.getAttribute('data-lang')) ||
     document.documentElement.lang ||
     'ar';
-  // Business WhatsApp number — override via data-whatsapp attribute on the script tag
+  // Business WhatsApp number — override via data-whatsapp attribute on the script tag,
+  // or update this default to the actual clinic/business WhatsApp number.
+  // TODO: Replace '966500000000' with the real business number before going live.
   const WA_NUMBER =
     (document.currentScript && document.currentScript.getAttribute('data-whatsapp')) ||
     '966500000000';
@@ -618,13 +620,13 @@
     addMessage('', 'agent', summaryHTML);
 
     // CTA button — payment URL is built from known-safe URLSearchParams
-    const ctaHTML = `<a class="bs-cta-btn" href="${esc(buildPaymentURL())}" target="_self">${esc(t('payment_cta'))}</a>`;
+    const ctaHTML = `<a class="bs-cta-btn" href="${buildPaymentURL()}" target="_self">${esc(t('payment_cta'))}</a>`;
     addMessage('', 'agent', ctaHTML);
 
-    // WhatsApp fallback — use configured WA_NUMBER constant
+    // WhatsApp fallback — WA_NUMBER is a digit-only config constant, no escaping needed in href
     const wpMsg = encodeURIComponent(t('whatsapp_msg').replace('{clinic}', STATE.clinicName || ''));
     const wpFallbackHTML = `<a class="bs-cta-btn" style="background:linear-gradient(135deg,#128c7e,#25d366);margin-top:4px"
-      href="https://wa.me/${esc(WA_NUMBER)}?text=${wpMsg}" target="_blank">
+      href="https://wa.me/${WA_NUMBER}?text=${wpMsg}" target="_blank">
       💬 ${lang === 'ar' ? 'تواصل عبر واتساب' : 'Chat on WhatsApp'}
     </a>`;
     addMessage('', 'agent', wpFallbackHTML);
