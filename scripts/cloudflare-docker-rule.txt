@@ -1,0 +1,25 @@
+# Cloudflare Firewall Rule for Docker Desktop
+# Navigate to: Cloudflare Dashboard > Security > WAF > Custom Rules
+
+Rule Name: Allow Docker Desktop Domains
+Expression:
+(http.host in {
+  "api.segment.io"
+  "cdn.segment.com"
+  "notify.bugsnag.com"
+  "sessions.bugsnag.com"
+  "auth.docker.io"
+  "cdn.auth0.com"
+  "login.docker.com"
+  "auth.docker.com"
+  "desktop.docker.com"
+  "hub.docker.com"
+  "registry-1.docker.io"
+  "production.cloudflare.docker.com"
+  "docker-images-prod.6aa30f8b08e16409b46e0173d6de2f56.r2.cloudflarestorage.com"
+  "docker-pinata-support.s3.amazonaws.com"
+  "api.dso.docker.com"
+  "api.docker.com"
+}) and (cf.threat_score < 10)
+
+Action: Allow
