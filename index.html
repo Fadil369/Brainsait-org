@@ -1337,19 +1337,19 @@ window.addEventListener('scroll', () => {
   if (!lightsEl) return;
   // Maximum pixel offset once hero scroll progress reaches 1 (hero top fully traverses its own height).
   const PARALLAX_INTENSITY = 36;
-  let parallaxUpdateQueued = false;
-  const clampValue = (value, min, max) => Math.max(min, Math.min(max, value));
+  let isParallaxUpdateQueued = false;
+  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
   function updateHeroParallax() {
     const rect = heroEl.getBoundingClientRect();
-    const progress = clampValue(-rect.top / Math.max(rect.height, 1), 0, 1);
+    const progress = clamp(-rect.top / Math.max(rect.height, 1), 0, 1);
     lightsEl.style.transform = `translate3d(0, ${progress * PARALLAX_INTENSITY}px, 0)`;
-    parallaxUpdateQueued = false;
+    isParallaxUpdateQueued = false;
   }
 
   function requestParallaxUpdate() {
-    if (parallaxUpdateQueued) return;
-    parallaxUpdateQueued = true;
+    if (isParallaxUpdateQueued) return;
+    isParallaxUpdateQueued = true;
     requestAnimationFrame(updateHeroParallax);
   }
 
