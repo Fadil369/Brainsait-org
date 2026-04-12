@@ -1,0 +1,20 @@
+{
+  "name": "brainsait-ai-mesh",
+  "version": "1.0.0",
+  "description": "BrainSAIT unified AI intelligence mesh — AI Gateway + AutoRAG + Durable Objects",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev --port 8890",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "secret:set": "wrangler secret put"
+  },
+  "dependencies": {
+    "hono": "^4.7.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250409.0",
+    "typescript": "^5.8.0",
+    "wrangler": "^4.10.0"
+  }
+}
