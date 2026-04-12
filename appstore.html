@@ -578,6 +578,29 @@
       font-size: 0.85rem;
     }
 
+    /* ─── Search Input ─── */
+    #searchInput:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(212,165,116,0.12);
+    }
+
+    /* ─── Noise Overlay ─── */
+    .noise-overlay { position: fixed; inset: 0; pointer-events: none; z-index: 2; opacity: .025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+
+    /* ─── Scroll Reveal ─── */
+    .rev { opacity: 0; transform: translateY(24px); transition: opacity .7s ease-out, transform .7s ease-out; }
+    .rev.vis { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: .10s; }
+    .d2 { transition-delay: .20s; }
+    .d3 { transition-delay: .30s; }
+
+    /* ─── Reduced Motion ─── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .rev { opacity: 1 !important; transform: none !important; }
+    }
+
     /* ─── Responsive ─── */
     @media (max-width: 768px) {
       .app-grid {
@@ -618,6 +641,8 @@
 </head>
 <body>
 
+<div class="noise-overlay" aria-hidden="true"></div>
+
 <!-- ═══ NAVBAR ═══ -->
 <header>
   <div class="ni" style="gap: 2rem;">
@@ -639,7 +664,7 @@
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
-  <div>
+  <div class="rev">
     <h1>BrainSAIT App Store</h1>
     <p>Enterprise-ready AI applications designed for healthcare digital transformation. Production-tested, fully supported, with flexible payment options including Stripe, PayPal, Apple Pay, and Saudi payment methods.</p>
   </div>
@@ -649,7 +674,7 @@
 <main>
    <section>
      <div class="c">
-       <div class="sec-head">
+       <div class="sec-head rev">
          <span class="stag">MARKETPLACE</span>
          <h2>Our Products</h2>
          <p class="ssub">Fully tested, enterprise-grade solutions ready for immediate deployment. Each product includes live demos, source code options, and comprehensive support.</p>
@@ -885,12 +910,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
    function renderAppGrid() {
      const grid = document.getElementById('appGrid');
      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+     const delays = ['d1', 'd2', 'd3'];
      
-     grid.innerHTML = APPS.map(app => {
+     grid.innerHTML = APPS.map((app, idx) => {
        const isFavorited = favorites.includes(app.id);
        const safeName = app.name.replace(/'/g, '&#39;');
+       const delayClass = delays[idx % delays.length];
        return `
-       <div class="app-card" data-app-id="${app.id}">
+       <div class="app-card rev ${delayClass}" data-app-id="${app.id}">
          <div style="display: flex; justify-content: space-between; align-items: start;">
            <div class="pricing-badge">${PRICING[app.tier].app.toLocaleString()} SAR</div>
            <button onclick="toggleFavorite('${app.id}')" style="background: none; border: none; font-size: 24px; cursor: pointer; padding: 4px 8px;" title="${isFavorited ? 'Remove from favorites' : 'Add to favorites'}" aria-label="${isFavorited ? 'Remove from favorites' : 'Add to favorites'}">
@@ -1437,6 +1464,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
    // Initialize
    document.addEventListener('DOMContentLoaded', function() {
      renderAppGrid();
+
+     // ─── Scroll Reveal ───
+     const revealElements = document.querySelectorAll('.rev');
+     const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+     if (prefersReducedMotion) {
+       revealElements.forEach(el => el.classList.add('vis'));
+     } else {
+       const revObs = new IntersectionObserver(
+         es => es.forEach(e => {
+           if (e.isIntersecting) {
+             e.target.classList.add('vis');
+             revObs.unobserve(e.target);
+           }
+         }),
+         { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+       );
+       revealElements.forEach(el => revObs.observe(el));
+     }
      
      // GA4 Page View
      if (window.gtag) {
