@@ -122,6 +122,20 @@ Required secrets (set via `wrangler secret put`):
 - `WHATSAPP_BUSINESS_TOKEN` / `WHATSAPP_PHONE_NUMBER_ID`
 - `JWT_SECRET` / `ENCRYPTION_KEY`
 
+### Oracle Portal MCP Starter Pack
+
+Cross-repo Oracle integration artifacts are included for branch-safe claims operations:
+
+- Shared contract: `config/oracle-portal.env.contract`
+- Example env file: `.env.oracle-portal.example`
+- MCP connector config: `config/mcp/oracle-portal.connector.json`
+
+The connector is pre-wired for the multi-branch Oracle portal MCP server and supports:
+
+- Built-in branches: `abha`, `riyadh`
+- Optional branch extension via `BRANCHES_JSON`
+- Safety guardrails through `ORACLE_PORTAL_ALLOWED_BRANCHES` and `ORACLE_PORTAL_ALLOW_LIVE_SUBMIT`
+
 ---
 
 ## Tech Stack
