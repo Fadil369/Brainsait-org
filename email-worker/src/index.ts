@@ -274,11 +274,16 @@ function isValidPartnerApplication(data: unknown): data is PartnerApplication {
 }
 
 function isValidEmail(email: string): boolean {
+  if (email.length === 0) return false;
+  if (/[\u0000-\u001F\u007F\s]/.test(email)) return false;
+  if (/[<>"]/.test(email)) return false;
+
   const atIndex = email.indexOf("@");
   if (atIndex <= 0 || atIndex !== email.lastIndexOf("@")) return false;
+
   const domain = email.slice(atIndex + 1);
   const dotIndex = domain.lastIndexOf(".");
-  return dotIndex > 0 && dotIndex < domain.length - 1 && !domain.includes(" ");
+  return dotIndex > 0 && dotIndex < domain.length - 1;
 }
 
 export default {
