@@ -164,7 +164,14 @@ export default {
       });
     }
 
-    const subject = `[Partner Application] ${body.firstName} ${body.lastName} — ${body.organization}`;
+    // Sanitize header values: strip newlines and carriage returns to prevent header injection
+    const sanitizeHeader = (value: string) => value.replace(/[\r\n]+/g, " ").trim();
+    const safeFirstName = sanitizeHeader(body.firstName);
+    const safeLastName = sanitizeHeader(body.lastName);
+    const safeOrg = sanitizeHeader(body.organization);
+    const safeEmail = sanitizeHeader(body.email);
+
+    const subject = `[Partner Application] ${safeFirstName} ${safeLastName} — ${safeOrg}`;
     const htmlBody = buildEmailHtml(body);
     const textBody = buildEmailText(body);
 
@@ -172,7 +179,7 @@ export default {
     const rawEmail = [
       `From: PartnerLinc <no-reply@brainsait.org>`,
       `To: partner@brainsait.org`,
-      `Reply-To: ${body.firstName} ${body.lastName} <${body.email}>`,
+      `Reply-To: ${safeFirstName} ${safeLastName} <${safeEmail}>`,
       `Subject: ${subject}`,
       `MIME-Version: 1.0`,
       `Content-Type: multipart/alternative; boundary="boundary_alt"`,
