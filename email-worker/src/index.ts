@@ -160,7 +160,7 @@ function buildConfirmationHtml(app: PartnerApplication): string {
                 </tr>
                 <tr>
                   <td style="padding:10px 0;color:#64748b;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">Reference</td>
-                  <td style="padding:10px 0;color:#94a3b8;font-size:13px;font-family:monospace;">${app.firstName.toLowerCase()}.${app.lastName.toLowerCase()}-${Date.now().toString(36)}</td>
+                  <td style="padding:10px 0;color:#94a3b8;font-size:13px;font-family:monospace;">${crypto.randomUUID().split("-")[0]}</td>
                 </tr>
               </table>
             </div>
