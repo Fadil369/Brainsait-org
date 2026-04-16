@@ -1289,13 +1289,20 @@ function showFormError(message) {
   errEl.textContent = message;
 }
 
-// Reset field highlight on user input
+// Reset field highlight on user input/change
+function clearFieldErrorState(el) {
+  el.style.borderColor = '';
+  el.removeAttribute('aria-invalid');
+  const errEl = el.parentElement.querySelector('.field-error');
+  if (errEl) errEl.remove();
+}
+
 form.querySelectorAll('input, select, textarea').forEach(el => {
   el.addEventListener('input', () => {
-    el.style.borderColor = '';
-    el.removeAttribute('aria-invalid');
-    const errEl = el.parentElement.querySelector('.field-error');
-    if (errEl) errEl.remove();
+    clearFieldErrorState(el);
+  });
+  el.addEventListener('change', () => {
+    clearFieldErrorState(el);
   });
 });
 
