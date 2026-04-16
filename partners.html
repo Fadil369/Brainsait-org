@@ -1257,7 +1257,7 @@ form.addEventListener('submit', async (e) => {
 
   // Basic validation
   for (const [key, val] of Object.entries(data)) {
-    if (!val.trim()) {
+    if (typeof val !== 'string' || !val.trim()) {
       const input = form.querySelector(`[name="${key}"]`);
       if (input) { input.focus(); input.style.borderColor = '#f43f5e'; }
       return;
@@ -1490,12 +1490,14 @@ const heroMsgs = [
   '"Once approved, I coordinate automated project merging via Cloudflare Workers and GitHub APIs. Your integration can be live in under 72 hours."',
 ];
 let heroIdx = 0;
-setInterval(() => {
+const heroInterval = setInterval(() => {
   heroIdx = (heroIdx + 1) % heroMsgs.length;
   const el = document.getElementById('hero-msg');
   if (el) {
     el.style.opacity = '0';
     setTimeout(() => { el.textContent = heroMsgs[heroIdx]; el.style.opacity = '1'; }, 300);
+  } else {
+    clearInterval(heroInterval);
   }
 }, 5000);
 document.getElementById('hero-msg').style.transition = 'opacity .3s ease';
