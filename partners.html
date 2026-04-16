@@ -1267,9 +1267,27 @@ form.addEventListener('submit', async (e) => {
   submitBtn.textContent = 'Processing with PartnerLinc...';
   submitBtn.disabled = true;
 
-  // Simulate API call to Cloudflare Worker (partner onboarding endpoint)
-  // In production: await fetch('https://partners-api.brainsait.org/apply', { method:'POST', body:JSON.stringify(data) })
-  await new Promise(r => setTimeout(r, 2000));
+  try {
+    const res = await fetch('https://partners-api.brainsait.org/apply', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error || `Server error ${res.status}`);
+    }
+  } catch (err) {
+    submitBtn.textContent = 'Submit Partnership Application →';
+    submitBtn.disabled = false;
+    const msg = err instanceof Error ? err.message : 'Submission failed. Please try again.';
+    const errEl = form.querySelector('.form-error') || document.createElement('p');
+    errEl.className = 'form-error';
+    errEl.style.cssText = 'color:#f43f5e;font-size:13px;margin-top:12px;text-align:center;';
+    errEl.textContent = msg;
+    if (!form.querySelector('.form-error')) form.appendChild(errEl);
+    return;
+  }
 
   form.style.display = 'none';
   formSuccess.style.display = 'block';

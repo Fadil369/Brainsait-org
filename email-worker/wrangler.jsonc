@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "email-worker",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-02-04",
+  "observability": {
+    "enabled": true
+  },
+  "routes": [
+    {
+      "pattern": "partners-api.brainsait.org/apply",
+      "zone_name": "brainsait.org"
+    }
+  ],
+  "send_email": [
+    {
+      "name": "SEND_EMAIL",
+      "destination_address": "partner@brainsait.org"
+    }
+  ]
+}
