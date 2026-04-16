@@ -540,18 +540,42 @@
   <div class="filter-row">
     <span class="filter-label" id="filterLabel">Filter by department:</span>
     <div class="filter-chips" id="filterChips" role="group" aria-label="Department filter">
-      <button class="chip active" data-dept="all">All</button>
-      <button class="chip" data-dept="leadership">Leadership</button>
-      <button class="chip" data-dept="engineering">Engineering</button>
-      <button class="chip" data-dept="product">Product</button>
-      <button class="chip" data-dept="clinical">Clinical</button>
-      <button class="chip" data-dept="operations">Operations</button>
-      <button class="chip" data-dept="partnerships">Partnerships</button>
+      <button type="button" class="chip active" data-dept="all" aria-pressed="true">All</button>
+      <button type="button" class="chip" data-dept="leadership" aria-pressed="false">Leadership</button>
+      <button type="button" class="chip" data-dept="engineering" aria-pressed="false">Engineering</button>
+      <button type="button" class="chip" data-dept="product" aria-pressed="false">Product</button>
+      <button type="button" class="chip" data-dept="clinical" aria-pressed="false">Clinical</button>
+      <button type="button" class="chip" data-dept="operations" aria-pressed="false">Operations</button>
+      <button type="button" class="chip" data-dept="partnerships" aria-pressed="false">Partnerships</button>
     </div>
     <span class="results-count" id="resultsCount" aria-live="polite"></span>
   </div>
 </div>
 
+<script>
+  (function () {
+    var filterChips = document.getElementById('filterChips');
+    if (!filterChips) return;
+
+    function syncPressedState() {
+      var chips = filterChips.querySelectorAll('.chip');
+      chips.forEach(function (chip) {
+        chip.setAttribute('aria-pressed', chip.classList.contains('active') ? 'true' : 'false');
+      });
+    }
+
+    syncPressedState();
+
+    filterChips.addEventListener('click', function (event) {
+      var chip = event.target.closest('.chip');
+      if (!chip || !filterChips.contains(chip)) return;
+
+      filterChips.querySelectorAll('.chip').forEach(function (button) {
+        button.setAttribute('aria-pressed', button === chip ? 'true' : 'false');
+      });
+    });
+  })();
+</script>
 <!-- ── Staff Grid ── -->
 <main>
   <div id="staffGrid" role="list" aria-label="Staff directory">
