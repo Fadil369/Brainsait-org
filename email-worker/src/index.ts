@@ -385,7 +385,7 @@ export default {
     try {
       await Promise.all([
         env.SEND_EMAIL_TEAM.send(new EmailMessage("no-reply@brainsait.org", "partner@brainsait.org", teamRawEmail)),
-        env.SEND_EMAIL_APPLICANT.send(new EmailMessage("partner@brainsait.org", body.email, confirmRawEmail)),
+        env.SEND_EMAIL_APPLICANT.send(new EmailMessage("partner@brainsait.org", safeEmail, confirmRawEmail)),
       ]);
     } catch (err) {
       console.error("Failed to send email(s):", err);
