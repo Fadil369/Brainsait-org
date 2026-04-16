@@ -14,8 +14,11 @@
   ],
   "send_email": [
     {
-      "name": "SEND_EMAIL",
+      "name": "SEND_EMAIL_TEAM",
       "destination_address": "partner@brainsait.org"
+    },
+    {
+      "name": "SEND_EMAIL_APPLICANT"
     }
   ]
 }
