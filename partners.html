@@ -1283,6 +1283,8 @@ function showFormError(message) {
   if (!errEl) {
     errEl = document.createElement('p');
     errEl.className = 'form-error';
+    errEl.setAttribute('role', 'alert');
+    errEl.setAttribute('aria-atomic', 'true');
     errEl.style.cssText = 'color:#f43f5e;font-size:13px;margin-top:12px;text-align:center;padding:10px;background:rgba(244,63,94,0.08);border-radius:8px;border:1px solid rgba(244,63,94,0.2);';
     form.appendChild(errEl);
   }
