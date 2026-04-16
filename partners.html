@@ -645,6 +645,7 @@
       <a href="/#vision"       role="menuitem">Vision 2030</a>
       <a href="/appstore"      role="menuitem" style="color:#d4a574;font-weight:600;">Store</a>
       <a href="/partners"      role="menuitem" class="active" style="color:#a78bfa;font-weight:600;">Partners</a>
+      <a href="/staff"         role="menuitem">Team</a>
     </div>
     <div class="na">
       <button class="lang-btn" id="langToggle" aria-label="Switch language / تبديل اللغة">العربية</button>
@@ -662,6 +663,7 @@
   <a href="/#solutions">Solutions</a>
   <a href="/appstore">App Store</a>
   <a href="/partners" style="color:#a78bfa;">Partners</a>
+  <a href="/staff">Team</a>
   <div class="mob-sep"></div>
   <a href="#apply" class="btn btn-vio">Apply as Partner →</a>
 </div>
@@ -1251,18 +1253,76 @@ const form        = document.getElementById('partnerForm');
 const formSuccess = document.getElementById('form-success');
 const submitBtn   = document.getElementById('submitBtn');
 
+function setFieldError(fieldName, message) {
+  const input = form.querySelector(`[name="${fieldName}"]`);
+  if (!input) return;
+  input.style.borderColor = '#f43f5e';
+  input.setAttribute('aria-invalid', 'true');
+  let errEl = input.parentElement.querySelector('.field-error');
+  if (!errEl) {
+    errEl = document.createElement('span');
+    errEl.className = 'field-error';
+    errEl.style.cssText = 'display:block;color:#f43f5e;font-size:12px;margin-top:6px;';
+    input.parentElement.appendChild(errEl);
+  }
+  errEl.textContent = message;
+}
+
+function clearFieldErrors() {
+  form.querySelectorAll('[aria-invalid]').forEach(el => {
+    el.style.borderColor = '';
+    el.removeAttribute('aria-invalid');
+  });
+  form.querySelectorAll('.field-error').forEach(el => el.remove());
+  const globalErr = form.querySelector('.form-error');
+  if (globalErr) globalErr.remove();
+}
+
+function showFormError(message) {
+  let errEl = form.querySelector('.form-error');
+  if (!errEl) {
+    errEl = document.createElement('p');
+    errEl.className = 'form-error';
+    errEl.style.cssText = 'color:#f43f5e;font-size:13px;margin-top:12px;text-align:center;padding:10px;background:rgba(244,63,94,0.08);border-radius:8px;border:1px solid rgba(244,63,94,0.2);';
+    form.appendChild(errEl);
+  }
+  errEl.textContent = message;
+}
+
+// Reset field highlight on user input
+form.querySelectorAll('input, select, textarea').forEach(el => {
+  el.addEventListener('input', () => {
+    el.style.borderColor = '';
+    el.removeAttribute('aria-invalid');
+    const errEl = el.parentElement.querySelector('.field-error');
+    if (errEl) errEl.remove();
+  });
+});
+
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const data = Object.fromEntries(new FormData(form));
+  clearFieldErrors();
 
-  // Basic validation
-  for (const [key, val] of Object.entries(data)) {
-    if (typeof val !== 'string' || !val.trim()) {
-      const input = form.querySelector(`[name="${key}"]`);
-      if (input) { input.focus(); input.style.borderColor = '#f43f5e'; }
-      return;
+  const data = Object.fromEntries(new FormData(form));
+  const fieldLabels = {
+    firstName: 'First name', lastName: 'Last name', email: 'Work email',
+    organization: 'Organization', country: 'Country', partnerType: 'Partnership type',
+    description: 'Partnership vision'
+  };
+
+  // Per-field validation with descriptive messages
+  let firstInvalid = null;
+  for (const [key, label] of Object.entries(fieldLabels)) {
+    const val = typeof data[key] === 'string' ? data[key].trim() : '';
+    if (!val) {
+      setFieldError(key, `${label} is required`);
+      if (!firstInvalid) firstInvalid = form.querySelector(`[name="${key}"]`);
+    } else if (key === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+      setFieldError(key, 'Please enter a valid email address');
+      if (!firstInvalid) firstInvalid = form.querySelector('[name="email"]');
     }
   }
+  if (firstInvalid) { firstInvalid.focus(); return; }
 
   submitBtn.textContent = 'Processing with PartnerLinc...';
   submitBtn.disabled = true;
@@ -1280,12 +1340,11 @@ form.addEventListener('submit', async (e) => {
   } catch (err) {
     submitBtn.textContent = 'Submit Partnership Application →';
     submitBtn.disabled = false;
-    const msg = err instanceof Error ? err.message : 'Submission failed. Please try again.';
-    const errEl = form.querySelector('.form-error') || document.createElement('p');
-    errEl.className = 'form-error';
-    errEl.style.cssText = 'color:#f43f5e;font-size:13px;margin-top:12px;text-align:center;';
-    errEl.textContent = msg;
-    if (!form.querySelector('.form-error')) form.appendChild(errEl);
+    const isNetwork = err instanceof TypeError && err.message.includes('fetch');
+    const msg = isNetwork
+      ? 'Unable to connect. Please check your internet connection and try again.'
+      : (err instanceof Error ? err.message : 'Submission failed. Please try again.');
+    showFormError(msg);
     return;
   }
 
