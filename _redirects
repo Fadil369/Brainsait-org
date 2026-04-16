@@ -27,6 +27,9 @@ https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 # Partners page
 https://brainsait.org/partners /partners.html 200
 
+# Staff directory
+https://brainsait.org/staff /staff.html 200
+
 # Careers page
 https://brainsait.org/careers https://careers.brainsait.org 301
 
