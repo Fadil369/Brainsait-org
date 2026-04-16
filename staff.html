@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Primary Meta -->
+  <title>BrainSAIT Team — Meet the People Behind the Platform</title>
+  <meta name="description" content="Meet the BrainSAIT team — the engineers, clinicians, and AI specialists building the future of healthcare automation for Saudi Arabia and MENA.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://brainsait.org/staff">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://brainsait.org/staff">
+  <meta property="og:title" content="BrainSAIT Team Directory">
+  <meta property="og:description" content="Meet the BrainSAIT team building AI-native healthcare for Saudi Arabia and MENA.">
+  <meta property="og:image" content="https://brainsait.org/og-image.png">
+  <meta property="og:site_name" content="BrainSAIT">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a365d'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='%23d4a574' font-size='20' font-weight='bold' font-family='system-ui'%3EB%3C/text%3E%3C/svg%3E">
+
+  <style>
+    /* ═══════════════════════════════════════════════════════
+       BRAINSAIT STAFF DIRECTORY — DESIGN SYSTEM
+    ═══════════════════════════════════════════════════════ */
+
+    :root {
+      --void:    #02040a;
+      --deep:    #060913;
+      --navy:    #0a0f1d;
+      --surface: #0f1524;
+      --surf2:   #141929;
+
+      --g1: rgba(255,255,255,0.02);
+      --g2: rgba(255,255,255,0.04);
+      --g3: rgba(255,255,255,0.06);
+      --gb: rgba(255,255,255,0.08);
+      --gbh: rgba(255,255,255,0.16);
+
+      --gold:     #d4a574;
+      --gold-l:   #e8c49a;
+      --gold-b:   #f0d5b5;
+      --gold-dim: rgba(212,165,116,0.10);
+      --gold-glow:rgba(212,165,116,0.15);
+
+      --teal:     #0ea5e9;
+      --teal-l:   #38bdf8;
+      --teal-dim: rgba(14,165,233,0.10);
+
+      --eme:      #10b981;
+      --eme-dim:  rgba(16,185,129,0.10);
+      --vio:      #8b5cf6;
+      --vio-dim:  rgba(139,92,246,0.10);
+      --rose:     #f43f5e;
+      --amb:      #f59e0b;
+
+      --text:  #f8fafc;
+      --textd: #cbd5e1;
+      --textm: #64748b;
+      --texts: #334155;
+
+      --fd: 'Syne', sans-serif;
+      --fa: 'IBM Plex Sans Arabic', sans-serif;
+      --fi: 'Inter', sans-serif;
+      --fm: 'JetBrains Mono', monospace;
+
+      --r:  16px;
+      --rs:  8px;
+      --rx:  6px;
+      --sp:  clamp(16px, 4vw, 80px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--fi);
+      background: var(--void);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Noise Texture ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 16px var(--sp);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background .3s, backdrop-filter .3s, box-shadow .3s;
+    }
+    nav.scrolled {
+      background: rgba(2,4,10,0.85);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.05);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo-mark {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, #1a365d, #2d4a7a);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--fd);
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--gold);
+      border: 1px solid rgba(212,165,116,0.2);
+    }
+    .logo-text { font-family: var(--fd); font-weight: 700; font-size: 18px; color: var(--text); letter-spacing: -0.3px; }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .nav-link {
+      color: var(--textd);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: var(--rx);
+      transition: color .2s, background .2s;
+    }
+    .nav-link:hover { color: var(--text); background: var(--g2); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold), var(--gold-l));
+      color: var(--void);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: var(--rx);
+      transition: opacity .2s, transform .2s;
+    }
+    .nav-cta:hover { opacity: .9; transform: translateY(-1px); }
+    #langToggle {
+      background: var(--g2);
+      border: 1px solid var(--gb);
+      color: var(--textd);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: var(--rx);
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+    #langToggle:hover { background: var(--g3); color: var(--text); }
+
+    /* ── Page Sections ── */
+    .page-hero {
+      position: relative;
+      padding: 140px var(--sp) 72px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 900px; height: 600px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .stag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border: 1px solid rgba(212,165,116,0.25);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--gold-dim);
+      margin-bottom: 24px;
+    }
+    .page-title {
+      font-family: var(--fd);
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+    .page-title span { background: linear-gradient(135deg, var(--gold), var(--gold-l)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-sub {
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--textd);
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── Search & Filter Bar ── */
+    .controls {
+      position: relative;
+      z-index: 2;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 var(--sp) 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .search-wrap {
+      position: relative;
+    }
+    .search-icon {
+      position: absolute;
+      left: 16px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--textm);
+      pointer-events: none;
+    }
+    #searchInput {
+      width: 100%;
+      background: var(--surf2);
+      border: 1px solid var(--gb);
+      border-radius: var(--r);
+      color: var(--text);
+      font-family: var(--fi);
+      font-size: 15px;
+      padding: 14px 14px 14px 48px;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    #searchInput::placeholder { color: var(--textm); }
+    #searchInput:focus {
+      border-color: var(--vio);
+      box-shadow: 0 0 0 3px rgba(139,92,246,0.12);
+    }
+    .filter-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .filter-label { font-size: 13px; color: var(--textm); font-weight: 500; }
+    .filter-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip {
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 1px solid var(--gb);
+      background: var(--g2);
+      color: var(--textd);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all .18s;
+      user-select: none;
+    }
+    .chip:hover { border-color: var(--gbh); color: var(--text); }
+    .chip.active {
+      background: var(--vio-dim);
+      border-color: var(--vio);
+      color: #c4b5fd;
+    }
+    .results-count {
+      font-size: 13px;
+      color: var(--textm);
+      margin-left: auto;
+    }
+
+    /* ── Staff Grid ── */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--sp) 100px;
+      position: relative;
+      z-index: 1;
+    }
+    #staffGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    /* ── Staff Card ── */
+    .staff-card {
+      background: linear-gradient(145deg, var(--surf2), var(--surface));
+      border: 1px solid var(--gb);
+      border-radius: var(--r);
+      padding: 28px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+      animation: fadeUp .4s ease both;
+    }
+    .staff-card:hover {
+      border-color: rgba(139,92,246,0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(139,92,246,0.1);
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .card-avatar {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1e1b4b, #2d2061);
+      border: 2px solid var(--gb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--fd);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--vio);
+      margin-bottom: 16px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .card-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .card-name {
+      font-family: var(--fd);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .card-role {
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .card-dept {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .6px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+      margin-bottom: 14px;
+    }
+    .card-bio {
+      font-size: 13px;
+      color: var(--textd);
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: 18px;
+    }
+    .card-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .tag {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 100px;
+      background: var(--g2);
+      border: 1px solid var(--gb);
+      color: var(--textm);
+      font-family: var(--fm);
+    }
+    .card-links {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding-top: 14px;
+      border-top: 1px solid var(--g2);
+    }
+    .card-link {
+      width: 32px; height: 32px;
+      border-radius: var(--rx);
+      background: var(--g2);
+      border: 1px solid var(--gb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--textm);
+      text-decoration: none;
+      transition: background .18s, color .18s, border-color .18s;
+      flex-shrink: 0;
+    }
+    .card-link:hover { background: var(--vio-dim); border-color: var(--vio); color: #c4b5fd; }
+    .card-link svg { width: 15px; height: 15px; fill: currentColor; }
+    .card-location {
+      font-size: 12px;
+      color: var(--textm);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-left: auto;
+    }
+    .card-location svg { width: 12px; height: 12px; fill: currentColor; flex-shrink: 0; }
+
+    /* Dept colors */
+    .dept-engineering  { background: var(--teal-dim); border: 1px solid rgba(14,165,233,0.2); color: var(--teal-l); }
+    .dept-product      { background: var(--vio-dim);  border: 1px solid rgba(139,92,246,0.2); color: #c4b5fd; }
+    .dept-clinical     { background: var(--eme-dim);  border: 1px solid rgba(16,185,129,0.2); color: #6ee7b7; }
+    .dept-operations   { background: var(--gold-dim); border: 1px solid rgba(212,165,116,0.2); color: var(--gold-l); }
+    .dept-leadership   { background: rgba(244,63,94,0.08); border: 1px solid rgba(244,63,94,0.2); color: #fda4af; }
+    .dept-partnerships { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); color: #fcd34d; }
+
+    /* ── Empty State ── */
+    #emptyState {
+      display: none;
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    #emptyState .empty-icon { font-size: 56px; margin-bottom: 16px; opacity: .5; }
+    #emptyState p { color: var(--textm); font-size: 15px; }
+
+    /* ── Join Banner ── */
+    .join-banner {
+      max-width: 1200px;
+      margin: 0 auto 80px;
+      padding: 0 var(--sp);
+      position: relative;
+      z-index: 1;
+    }
+    .join-inner {
+      background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(14,165,233,0.06));
+      border: 1px solid rgba(139,92,246,0.2);
+      border-radius: 20px;
+      padding: clamp(32px, 5vw, 56px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .join-text h3 { font-family: var(--fd); font-size: clamp(20px, 3vw, 28px); font-weight: 700; margin-bottom: 8px; }
+    .join-text p { color: var(--textd); font-size: 15px; max-width: 480px; }
+    .join-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--vio), #a78bfa);
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 13px 26px;
+      border-radius: var(--rs);
+      white-space: nowrap;
+      transition: opacity .2s, transform .2s;
+    }
+    .join-btn:hover { opacity: .9; transform: translateY(-2px); }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--g2);
+      padding: 32px var(--sp);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    footer p { font-size: 13px; color: var(--textm); }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── RTL ── */
+    [dir="rtl"] body { font-family: var(--fa); }
+    [dir="rtl"] .search-icon { left: auto; right: 16px; }
+    [dir="rtl"] #searchInput { padding: 14px 48px 14px 14px; }
+    [dir="rtl"] .results-count { margin-left: 0; margin-right: auto; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .nav-link { display: none; }
+      .join-inner { flex-direction: column; text-align: center; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav id="nav">
+  <a href="/" class="nav-logo" aria-label="BrainSAIT Home">
+    <div class="logo-mark">B</div>
+    <span class="logo-text">BrainSAIT</span>
+  </a>
+  <div class="nav-actions">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/partners" class="nav-link">Partners</a>
+    <button id="langToggle" aria-label="Toggle language">العربية</button>
+    <a href="/partners#apply" class="nav-cta">Partner With Us</a>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="page-hero">
+  <div class="stag">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+    Our Team
+  </div>
+  <h1 class="page-title" id="heroTitle">Meet the <span>BrainSAIT</span> Team</h1>
+  <p class="page-sub" id="heroSub">Engineers, clinicians, and AI specialists building the future of healthcare automation for Saudi Arabia and MENA.</p>
+</section>
+
+<!-- ── Controls ── -->
+<div class="controls">
+  <div class="search-wrap">
+    <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="search" id="searchInput" placeholder="Search by name, role, or expertise…" aria-label="Search staff" autocomplete="off">
+  </div>
+  <div class="filter-row">
+    <span class="filter-label" id="filterLabel">Filter by department:</span>
+    <div class="filter-chips" id="filterChips" role="group" aria-label="Department filter">
+      <button class="chip active" data-dept="all">All</button>
+      <button class="chip" data-dept="leadership">Leadership</button>
+      <button class="chip" data-dept="engineering">Engineering</button>
+      <button class="chip" data-dept="product">Product</button>
+      <button class="chip" data-dept="clinical">Clinical</button>
+      <button class="chip" data-dept="operations">Operations</button>
+      <button class="chip" data-dept="partnerships">Partnerships</button>
+    </div>
+    <span class="results-count" id="resultsCount" aria-live="polite"></span>
+  </div>
+</div>
+
+<!-- ── Staff Grid ── -->
+<main>
+  <div id="staffGrid" role="list" aria-label="Staff directory">
+    <div id="emptyState" role="status">
+      <div class="empty-icon">🔍</div>
+      <p id="emptyMsg">No team members match your search. Try different keywords.</p>
+    </div>
+  </div>
+</main>
+
+<!-- ── Join CTA ── -->
+<section class="join-banner">
+  <div class="join-inner">
+    <div class="join-text">
+      <h3 id="joinTitle">Want to join the team?</h3>
+      <p id="joinSub">We're building AI-native healthcare infrastructure for Saudi Arabia and MENA. If you're passionate about making a difference, we'd love to hear from you.</p>
+    </div>
+    <a href="https://careers.brainsait.org" class="join-btn" id="joinBtn">
+      View Open Roles
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <p>© <span id="year"></span> BrainSAIT LTD · <a href="https://brainsait.org">brainsait.org</a></p>
+  <p>
+    <a href="/privacy-policy.html">Privacy Policy</a> ·
+    <a href="/terms-of-use.html">Terms of Use</a> ·
+    <a href="/partners">Partner Program</a>
+  </p>
+</footer>
+
+<script>
+// ─────────────────────────────────────────────────────────
+//   BRAINSAIT STAFF DIRECTORY — DATA & LOGIC
+// ─────────────────────────────────────────────────────────
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// ─── Staff Data ───
+const STAFF = [
+  {
+    id: 1,
+    name: 'Dr. Fadil Al-Rashidi',
+    nameAr: 'د. فاضل الراشدي',
+    role: 'Founder & Chief Executive Officer',
+    roleAr: 'المؤسس والرئيس التنفيذي',
+    dept: 'leadership',
+    location: 'Riyadh, SA',
+    bio: 'Physician-turned-technologist driving BrainSAIT\'s mission to automate healthcare workflows across MENA. Decade of experience in clinical informatics and health AI.',
+    bioAr: 'طبيب تحوّل إلى رائد تقنية، يقود مهمة برينسايت في أتمتة سير العمل الصحي عبر منطقة الشرق الأوسط وشمال أفريقيا.',
+    initials: 'FA',
+    tags: ['Vision 2030', 'NPHIES', 'Clinical AI'],
+    linkedin: '#',
+    email: 'mailto:ceo@brainsait.org'
+  },
+  {
+    id: 2,
+    name: 'Sara Al-Otaibi',
+    nameAr: 'سارة العتيبي',
+    role: 'Chief Technology Officer',
+    roleAr: 'المديرة التقنية التنفيذية',
+    dept: 'leadership',
+    location: 'Riyadh, SA',
+    bio: 'Full-stack systems architect specializing in Cloudflare Workers and Durable Objects. Leads engineering for ClaimLinc and LINC agent infrastructure.',
+    bioAr: 'مهندسة أنظمة متكاملة متخصصة في حلول Cloudflare، تقود هندسة بنية البيانات والوكلاء الذكيين.',
+    initials: 'SO',
+    tags: ['Cloudflare', 'TypeScript', 'FHIR R4'],
+    linkedin: '#',
+    email: 'mailto:cto@brainsait.org'
+  },
+  {
+    id: 3,
+    name: 'Omar Khalil',
+    nameAr: 'عمر خليل',
+    role: 'Head of Engineering',
+    roleAr: 'رئيس قسم الهندسة',
+    dept: 'engineering',
+    location: 'Dubai, AE',
+    bio: 'Platform engineering lead with expertise in distributed systems, edge computing, and HL7 FHIR interoperability layers. Contributor to NPHIES integration specs.',
+    bioAr: 'قائد هندسة المنصة مع خبرة في الأنظمة الموزعة وتقنيات الحافة وطبقات التشغيل البيني.',
+    initials: 'OK',
+    tags: ['Rust', 'Cloudflare Workers', 'HL7'],
+    linkedin: '#',
+    email: '#'
+  },
+  {
+    id: 4,
+    name: 'Nour Al-Hussain',
+    nameAr: 'نور الحسين',
+    role: 'Senior AI/ML Engineer',
+    roleAr: 'مهندسة ذكاء اصطناعي أولى',
+    dept: 'engineering',
+    location: 'Riyadh, SA',
+    bio: 'Designs and trains the AI models powering ClaimLinc\'s automated claims review. Focuses on NLP pipelines for Arabic clinical text and ICD-10 code mapping.',
+    bioAr: 'تصمم وتدرّب نماذج الذكاء الاصطناعي التي تشغّل مراجعة المطالبات الآلية في ClaimLinc.',
+    initials: 'NH',
+    tags: ['Python', 'PyTorch', 'Arabic NLP'],
+    linkedin: '#',
+    email: '#'
+  },
+  {
+    id: 5,
+    name: 'Khaled Mansoor',
+    nameAr: 'خالد منصور',
+    role: 'Backend Engineer',
+    roleAr: 'مهندس خلفية برمجية',
+    dept: 'engineering',
+    location: 'Cairo, EG',
+    bio: 'Builds the API backbone for BrainSAIT\'s partner and claims platforms. Passionate about performance at the edge and zero-trust security architecture.',
+    bioAr: 'يبني العمود الفقري لواجهات برمجة التطبيقات لمنصتَي الشركاء والمطالبات في برينسايت.',
+    initials: 'KM',
+    tags: ['TypeScript', 'Hono', 'PostgreSQL'],
+    linkedin: '#',
+    email: '#'
+  },
+  {
+    id: 6,
+    name: 'Layla Aboud',
+    nameAr: 'ليلى عبود',
+    role: 'Product Manager',
+    roleAr: 'مديرة المنتج',
+    dept: 'product',
+    location: 'Riyadh, SA',
+    bio: 'Bridges clinical requirements and engineering delivery. Previously at Saudi Ministry of Health shaping NPHIES rollout across 200+ healthcare facilities.',
+    bioAr: 'تربط بين المتطلبات السريرية والتسليم الهندسي، سبق لها العمل في وزارة الصحة السعودية.',
+    initials: 'LA',
+    tags: ['NPHIES', 'Agile', 'UX Research'],
+    linkedin: '#',
+    email: '#'
+  },
+  {
+    id: 7,
+    name: 'Tariq Al-Ghamdi',
+    nameAr: 'طارق الغامدي',
+    role: 'UX / Design Lead',
+    roleAr: 'قائد تصميم تجربة المستخدم',
+    dept: 'product',
+    location: 'Jeddah, SA',
+    bio: 'Crafts accessible, bilingual interfaces for healthcare professionals under pressure. Champion of Arabic-first design and WCAG compliance.',
+    bioAr: 'يصمم واجهات ثنائية اللغة وسهلة الوصول للمهنيين الصحيين في بيئات عمل مكثفة.',
+    initials: 'TG',
+    tags: ['Figma', 'Arabic UX', 'WCAG 2.2'],
+    linkedin: '#',
+    email: '#'
+  },
+  {
+    id: 8,
+    name: 'Dr. Hana Al-Zahrani',
+    nameAr: 'د. هناء الزهراني',
+    role: 'Chief Clinical Officer',
+    roleAr: 'المديرة السريرية التنفيذية',
+    dept: 'clinical',
+    location: 'Riyadh, SA',
+    bio: 'Practicing hospitalist and clinical informatics specialist. Oversees all clinical logic, coding accuracy, and compliance with MOH standards and CCHI requirements.',
+    bioAr: 'طبيبة ممارسة ومتخصصة في المعلوماتية السريرية، تشرف على المنطق السريري ودقة الترميز.',
+    initials: 'HZ',
+    tags: ['ICD-10', 'CCHI', 'Clinical Coding'],
+    linkedin: '#',
+    email: 'mailto:clinical@brainsait.org'
+  },
+  {
+    id: 9,
+    name: 'Yousef Al-Mutairi',
+    nameAr: 'يوسف المطيري',
+    role: 'Clinical Informatics Analyst',
+    roleAr: 'محلل معلوماتية سريرية',
+    dept: 'clinical',
+    location: 'Riyadh, SA',
+    bio: 'Maps clinical workflows to FHIR R4 resources and maintains the BrainSAIT clinical terminology server. Author of internal ICD-10/SNOMED mapping tables.',
+    bioAr: 'يربط سير العمل السريري بموارد FHIR R4 ويدير خادم المصطلحات السريرية.',
+    initials: 'YM',
+    tags: ['FHIR R4', 'SNOMED CT', 'HL7 v2'],
+    linkedin: '#',
+    email: '#'
+  },
+  {
+    id: 10,
+    name: 'Reem Al-Dossari',
+    nameAr: 'ريم الدوسري',
+    role: 'Head of Partnerships',
+    roleAr: 'رئيسة قسم الشراكات',
+    dept: 'partnerships',
+    location: 'Riyadh, SA',
+    bio: 'Drives BrainSAIT\'s ecosystem growth across MENA. Manages relationships with technology vendors, health system integrators, and government stakeholders.',
+    bioAr: 'تقود نمو منظومة برينسايت عبر المنطقة، وتدير العلاقات مع الشركاء التقنيين ومتكاملي الأنظمة.',
+    initials: 'RD',
+    tags: ['Business Development', 'MENA', 'GovTech'],
+    linkedin: '#',
+    email: 'mailto:partner@brainsait.org'
+  },
+  {
+    id: 11,
+    name: 'Ali Hassan',
+    nameAr: 'علي حسن',
+    role: 'DevOps & Infrastructure Engineer',
+    roleAr: 'مهندس عمليات تقنية وبنية تحتية',
+    dept: 'engineering',
+    location: 'Amman, JO',
+    bio: 'Runs zero-downtime CI/CD pipelines on Cloudflare Pages and Workers. Obsessed with edge performance, observability, and infrastructure-as-code.',
+    bioAr: 'يدير خطوط تسليم متواصلة على Cloudflare Pages وWorkers، متخصص في الأداء والمراقبة.',
+    initials: 'AH',
+    tags: ['CI/CD', 'Terraform', 'Cloudflare'],
+    linkedin: '#',
+    email: '#'
+  },
+  {
+    id: 12,
+    name: 'Fatima Al-Shamsi',
+    nameAr: 'فاطمة الشامسي',
+    role: 'Head of Operations',
+    roleAr: 'رئيسة العمليات',
+    dept: 'operations',
+    location: 'Abu Dhabi, AE',
+    bio: 'Oversees day-to-day operations, HR, and company compliance. Keeps BrainSAIT running smoothly across three time zones and multiple regulatory frameworks.',
+    bioAr: 'تشرف على العمليات اليومية والموارد البشرية والامتثال المؤسسي عبر مناطق زمنية متعددة.',
+    initials: 'FS',
+    tags: ['HR', 'Compliance', 'Finance'],
+    linkedin: '#',
+    email: '#'
+  }
+];
+
+// ─── i18n Labels ───
+const I18N = {
+  en: {
+    heroTitle: 'Meet the <span>BrainSAIT</span> Team',
+    heroSub: 'Engineers, clinicians, and AI specialists building the future of healthcare automation for Saudi Arabia and MENA.',
+    searchPlaceholder: 'Search by name, role, or expertise…',
+    filterLabel: 'Filter by department:',
+    filterAll: 'All',
+    emptyMsg: 'No team members match your search. Try different keywords.',
+    resultsOf: (n, t) => `${n} of ${t} people`,
+    joinTitle: 'Want to join the team?',
+    joinSub: "We're building AI-native healthcare infrastructure for Saudi Arabia and MENA. If you're passionate about making a difference, we'd love to hear from you.",
+    joinBtn: 'View Open Roles',
+  },
+  ar: {
+    heroTitle: 'تعرّف على فريق <span>برينسايت</span>',
+    heroSub: 'مهندسون وأطباء ومتخصصو ذكاء اصطناعي يبنون مستقبل أتمتة الرعاية الصحية في السعودية ومنطقة الشرق الأوسط.',
+    searchPlaceholder: 'ابحث بالاسم أو الدور أو التخصص…',
+    filterLabel: 'تصفية حسب القسم:',
+    filterAll: 'الكل',
+    emptyMsg: 'لا يوجد أعضاء يطابقون بحثك. جرّب كلمات مختلفة.',
+    resultsOf: (n, t) => `${n} من ${t} شخصاً`,
+    joinTitle: 'تريد الانضمام إلى الفريق؟',
+    joinSub: 'نبني بنية تحتية صحية قائمة على الذكاء الاصطناعي للسعودية والشرق الأوسط. إذا كنت شغوفاً بإحداث فارق، نودّ سماعك.',
+    joinBtn: 'استعرض الوظائف المتاحة',
+  }
+};
+
+const DEPT_LABELS = {
+  en: { all: 'All', leadership: 'Leadership', engineering: 'Engineering', product: 'Product', clinical: 'Clinical', operations: 'Operations', partnerships: 'Partnerships' },
+  ar: { all: 'الكل', leadership: 'القيادة', engineering: 'الهندسة', product: 'المنتج', clinical: 'السريري', operations: 'العمليات', partnerships: 'الشراكات' }
+};
+
+// ─── State ───
+let lang        = 'en';
+let activeDept  = 'all';
+let searchQuery = '';
+
+// ─── DOM Refs ───
+const searchInput  = document.getElementById('searchInput');
+const filterChips  = document.getElementById('filterChips');
+const staffGrid    = document.getElementById('staffGrid');
+const emptyState   = document.getElementById('emptyState');
+const resultsCount = document.getElementById('resultsCount');
+const langToggle   = document.getElementById('langToggle');
+const htmlRoot     = document.getElementById('html-root');
+const navEl        = document.getElementById('nav');
+
+// ─── Nav Scroll ───
+window.addEventListener('scroll', () => navEl.classList.toggle('scrolled', scrollY > 40), { passive: true });
+
+// ─── Render ───
+function getInitialsColor(dept) {
+  const map = { leadership: '#fda4af', engineering: '#38bdf8', product: '#c4b5fd', clinical: '#6ee7b7', operations: '#fcd34d', partnerships: '#fdba74' };
+  return map[dept] || '#c4b5fd';
+}
+function getDeptClass(dept) { return 'dept-' + dept; }
+
+function buildCard(person) {
+  const t = lang;
+  const name = t === 'ar' ? person.nameAr : person.name;
+  const role = t === 'ar' ? person.roleAr : person.role;
+  const bio  = t === 'ar' ? person.bioAr  : person.bio;
+  const deptLabel = DEPT_LABELS[t][person.dept] || person.dept;
+  const color = getInitialsColor(person.dept);
+
+  const tagsHtml = person.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+
+  const linkedinHtml = person.linkedin && person.linkedin !== '#'
+    ? `<a href="${person.linkedin}" class="card-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>` : '';
+
+  const emailHtml = person.email && person.email !== '#'
+    ? `<a href="${person.email}" class="card-link" aria-label="Email">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>` : '';
+
+  return `<article class="staff-card" role="listitem" data-id="${person.id}">
+    <div class="card-avatar" style="color:${color};border-color:${color}33;">${person.initials}</div>
+    <div class="card-name">${name}</div>
+    <div class="card-role">${role}</div>
+    <span class="card-dept ${getDeptClass(person.dept)}">${deptLabel}</span>
+    <p class="card-bio">${bio}</p>
+    <div class="card-tags">${tagsHtml}</div>
+    <div class="card-links">
+      ${linkedinHtml}${emailHtml}
+      <span class="card-location">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        ${person.location}
+      </span>
+    </div>
+  </article>`;
+}
+
+function renderStaff() {
+  const q = searchQuery.toLowerCase().trim();
+  const filtered = STAFF.filter(p => {
+    const deptMatch = activeDept === 'all' || p.dept === activeDept;
+    if (!deptMatch) return false;
+    if (!q) return true;
+    const name = (lang === 'ar' ? p.nameAr : p.name).toLowerCase();
+    const role = (lang === 'ar' ? p.roleAr : p.role).toLowerCase();
+    const bio  = (lang === 'ar' ? p.bioAr  : p.bio).toLowerCase();
+    const tags = p.tags.join(' ').toLowerCase();
+    return name.includes(q) || role.includes(q) || bio.includes(q) || tags.includes(q);
+  });
+
+  // Clear grid (keep emptyState element)
+  const existing = staffGrid.querySelectorAll('.staff-card');
+  existing.forEach(c => c.remove());
+
+  if (filtered.length === 0) {
+    emptyState.style.display = 'block';
+  } else {
+    emptyState.style.display = 'none';
+    filtered.forEach((p, i) => {
+      const div = document.createElement('div');
+      div.innerHTML = buildCard(p);
+      const card = div.firstElementChild;
+      card.style.animationDelay = `${i * 40}ms`;
+      staffGrid.appendChild(card);
+    });
+  }
+
+  const t = I18N[lang];
+  resultsCount.textContent = filtered.length < STAFF.length
+    ? t.resultsOf(filtered.length, STAFF.length)
+    : t.resultsOf(STAFF.length, STAFF.length);
+}
+
+// ─── Filter Chips ───
+filterChips.addEventListener('click', e => {
+  const btn = e.target.closest('.chip');
+  if (!btn) return;
+  filterChips.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  activeDept = btn.dataset.dept;
+  renderStaff();
+});
+
+// ─── Search ───
+searchInput.addEventListener('input', () => {
+  searchQuery = searchInput.value;
+  renderStaff();
+});
+
+// ─── Language Toggle ───
+function applyLang(l) {
+  lang = l;
+  const t = I18N[l];
+  const dl = DEPT_LABELS[l];
+  htmlRoot.setAttribute('lang', l);
+  htmlRoot.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+  langToggle.textContent = l === 'ar' ? 'English' : 'العربية';
+
+  document.getElementById('heroTitle').innerHTML = t.heroTitle;
+  document.getElementById('heroSub').textContent = t.heroSub;
+  document.getElementById('filterLabel').textContent = t.filterLabel;
+  document.getElementById('emptyMsg').textContent = t.emptyMsg;
+  document.getElementById('joinTitle').textContent = t.joinTitle;
+  document.getElementById('joinSub').textContent = t.joinSub;
+  document.getElementById('joinBtn').childNodes[0].textContent = t.joinBtn + ' ';
+  searchInput.placeholder = t.searchPlaceholder;
+
+  filterChips.querySelectorAll('.chip').forEach(btn => {
+    const key = btn.dataset.dept;
+    btn.textContent = dl[key] || btn.textContent;
+  });
+
+  renderStaff();
+}
+
+langToggle.addEventListener('click', () => applyLang(lang === 'en' ? 'ar' : 'en'));
+
+// ─── Init ───
+renderStaff();
+</script>
+</body>
+</html>
