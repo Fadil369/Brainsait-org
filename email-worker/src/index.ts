@@ -335,51 +335,54 @@ export default {
     const safeLastName = sanitizeHeader(body.lastName);
     const safeOrg = sanitizeHeader(body.organization);
     const safeEmail = sanitizeHeader(body.email);
+    const createMimeBoundary = (prefix: string) => `${prefix}_${crypto.randomUUID()}`;
 
     // Build team notification email (internal, to partner@brainsait.org)
     const teamSubject = `[Partner Application] ${safeFirstName} ${safeLastName} — ${safeOrg}`;
+    const teamBoundary = createMimeBoundary("team_boundary");
     const teamRawEmail = [
       `From: PartnerLinc <no-reply@brainsait.org>`,
       `To: partner@brainsait.org`,
       `Reply-To: ${safeFirstName} ${safeLastName} <${safeEmail}>`,
       `Subject: ${teamSubject}`,
       `MIME-Version: 1.0`,
-      `Content-Type: multipart/alternative; boundary="team_boundary"`,
+      `Content-Type: multipart/alternative; boundary="${teamBoundary}"`,
       ``,
-      `--team_boundary`,
+      `--${teamBoundary}`,
       `Content-Type: text/plain; charset=UTF-8`,
       `Content-Transfer-Encoding: quoted-printable`,
       ``,
       buildEmailText(body),
-      `--team_boundary`,
+      `--${teamBoundary}`,
       `Content-Type: text/html; charset=UTF-8`,
       `Content-Transfer-Encoding: quoted-printable`,
       ``,
       buildEmailHtml(body),
-      `--team_boundary--`,
+      `--${teamBoundary}--`,
     ].join("\r\n");
 
     // Build applicant confirmation email (branded, to the applicant)
     const confirmSubject = `Your BrainSAIT Partner Application — We've Received It!`;
+    const confirmBoundary = createMimeBoundary("confirm_boundary");
     const confirmRawEmail = [
       `From: BrainSAIT Partners <partner@brainsait.org>`,
       `To: ${safeFirstName} ${safeLastName} <${safeEmail}>`,
       `Reply-To: partner@brainsait.org`,
       `Subject: ${confirmSubject}`,
       `MIME-Version: 1.0`,
-      `Content-Type: multipart/alternative; boundary="confirm_boundary"`,
+      `Content-Type: multipart/alternative; boundary="${confirmBoundary}"`,
       ``,
-      `--confirm_boundary`,
+      `--${confirmBoundary}`,
       `Content-Type: text/plain; charset=UTF-8`,
       `Content-Transfer-Encoding: quoted-printable`,
       ``,
       buildConfirmationText(body),
-      `--confirm_boundary`,
+      `--${confirmBoundary}`,
       `Content-Type: text/html; charset=UTF-8`,
       `Content-Transfer-Encoding: quoted-printable`,
       ``,
       buildConfirmationHtml(body),
-      `--confirm_boundary--`,
+      `--${confirmBoundary}--`,
     ].join("\r\n");
 
     try {
