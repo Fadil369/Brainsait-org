@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" dir="ltr" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collective Brainpower | BrainSAIT Training</title>
+  <meta name="description" content="Engineering the future of health and technology. Join the BrainSAIT Collective Brainpower cohort — AI-driven, integrated, automated solutions for healthcare transformation.">
+  <link rel="canonical" href="https://brainsait.org/training/courses/collective-brainpower/">
+  <meta property="og:title" content="Collective Brainpower | BrainSAIT Training">
+  <meta property="og:description" content="Engineering the future of health and technology. Premium BrainSAIT cohort for healthcare founders and AI transformation teams.">
+  <meta property="og:url" content="https://brainsait.org/training/courses/collective-brainpower/">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#050505">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            obsidian: '#050505',
+            surface: '#0a0a0a',
+            surface2: '#0e1726',
+            brand: { cyan: '#06b6d4', blue: '#3b82f6', violet: '#8b5cf6', gold: '#d4a574' }
+          },
+          animation: {
+            blob: 'blob 12s infinite alternate',
+            shine: 'shine 4s linear infinite',
+            ping2: 'ping 2s infinite',
+          },
+          keyframes: {
+            blob: { '0%': { transform: 'translate(0,0) scale(1)' }, '100%': { transform: 'translate(40px,-40px) scale(1.08)' } },
+            shine: { '0%': { backgroundPosition: '200% center' }, '100%': { backgroundPosition: '-200% center' } }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { background: #050505; color: #a3a3a3; }
+    .glass-nav { background: rgba(5,5,5,0.65); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .bento-card { background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(255,255,255,0.07); border-radius: 24px; backdrop-filter: blur(10px); transition: all 0.4s cubic-bezier(.175,.885,.32,1.275); position: relative; overflow: hidden; }
+    .bento-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(800px circle at var(--mouse-x,50%) var(--mouse-y,50%), rgba(255,255,255,0.055), transparent 40%); opacity: 0; transition: opacity .5s; }
+    .bento-card:hover::before { opacity: 1; }
+    .bento-card:hover { transform: translateY(-4px); border-color: rgba(6,182,212,.28); box-shadow: 0 20px 40px -20px rgba(6,182,212,.14); }
+    .text-gradient-primary { background: linear-gradient(to right,#fff,#a3a3a3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .text-gradient-accent { background: linear-gradient(to right,#06b6d4,#3b82f6,#8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .shimmer-text { background: linear-gradient(90deg,#a3a3a3 0%,#fff 50%,#a3a3a3 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 4s linear infinite; }
+    .orb-1 { position: fixed; top: -10%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle,rgba(6,182,212,0.07) 0%,transparent 60%); filter: blur(60px); z-index: -1; }
+    .orb-2 { position: fixed; bottom: 0; right: -10%; width: 40vw; height: 40vw; background: radial-gradient(circle,rgba(139,92,246,0.07) 0%,transparent 60%); filter: blur(60px); z-index: -1; }
+    .module-chip { display: inline-flex; align-items: center; padding: 3px 12px; border-radius: 999px; background: rgba(6,182,212,0.12); color: #67e8f9; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 10px; }
+    .instructor-img-mask { mask-image: linear-gradient(to bottom, black 70%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%); }
+    /* Back to top smooth */
+    html { scroll-behavior: smooth; }
+    /* Code badge */
+    .code-badge { font-family: 'JetBrains Mono', 'Courier New', monospace; background: rgba(6,182,212,0.12); color: #67e8f9; padding: 2px 10px; border-radius: 6px; font-weight: 800; letter-spacing: 1.5px; font-size: 1rem; border: 1px solid rgba(6,182,212,0.25); }
+  </style>
+</head>
+<body class="antialiased relative overflow-x-hidden selection:bg-brand-cyan/30 selection:text-white">
+
+  <!-- Ambient Background -->
+  <div class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden" aria-hidden="true">
+    <div class="orb-1 animate-blob"></div>
+    <div class="orb-2 animate-blob" style="animation-delay:2.5s;"></div>
+    <div class="absolute inset-0 opacity-20 mix-blend-overlay" style="background-image:url('https://grainy-gradients.vercel.app/noise.svg');"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="fixed w-full z-50 glass-nav transition-all duration-300" role="navigation" aria-label="Main navigation" id="nav">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="/" class="flex items-center gap-3 text-white no-underline" aria-label="BrainSAIT Home">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-cyan to-brand-violet p-[1px]">
+            <div class="w-full h-full bg-obsidian rounded-xl flex items-center justify-center">
+              <span class="font-display font-bold text-lg text-white">B</span>
+            </div>
+          </div>
+          <span class="font-display font-semibold text-xl text-white tracking-tight">BRAINSAIT<span class="text-brand-cyan">.</span></span>
+        </a>
+        <div class="hidden md:flex items-center gap-6">
+          <a href="/#products" class="text-neutral-400 hover:text-white transition-colors text-sm font-medium">Platform</a>
+          <a href="/training/courses/" class="text-brand-cyan text-sm font-semibold">Training</a>
+          <a href="https://portal.elfadil.com" target="_blank" rel="noopener noreferrer" class="px-5 py-2 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:border-brand-cyan/40 text-sm font-medium transition-all">Launch App</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative pt-40 pb-20 lg:pt-52 lg:pb-28 flex flex-col items-center justify-center min-h-[90vh] text-center px-6" aria-label="Hero">
+    <!-- Back breadcrumb -->
+    <nav aria-label="Breadcrumb" class="mb-8 flex items-center gap-2 text-sm text-neutral-500">
+      <a href="/" class="hover:text-white transition-colors">BrainSAIT</a>
+      <span>/</span>
+      <a href="/training/courses/" class="hover:text-white transition-colors">Training</a>
+      <span>/</span>
+      <span class="text-neutral-300">Collective Brainpower</span>
+    </nav>
+
+    <!-- Live badge -->
+    <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-10">
+      <span class="relative flex h-2.5 w-2.5">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-cyan opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-cyan"></span>
+      </span>
+      <span class="text-xs font-display tracking-widest uppercase text-white/80">Cohort Registration Open</span>
+    </div>
+
+    <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[1.05] mb-6 max-w-5xl">
+      <span class="text-gradient-primary">Engineering the Future of</span><br>
+      <span class="text-gradient-accent shimmer-text">Health &amp; Technology.</span>
+    </h1>
+
+    <p class="mt-4 text-lg md:text-xl text-neutral-400 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+      Join an elite collective brainpower program engineered by BRAINSAIT to deliver solutions that are
+      <strong class="text-white font-medium">automated</strong>,
+      <strong class="text-white font-medium">integrated</strong>, and
+      <strong class="text-white font-medium">technology-driven</strong>.
+    </p>
+
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row gap-5 justify-center items-center w-full sm:w-auto mb-10">
+      <a href="https://classroom.google.com/c/ODYwNTAyNzAzMTky?cjc=4oc22gvm" target="_blank" rel="noopener noreferrer"
+         class="w-full sm:w-auto relative group overflow-hidden rounded-full p-[1px]" id="enroll-btn-hero">
+        <span class="absolute inset-0 bg-gradient-to-r from-brand-cyan via-brand-blue to-brand-violet rounded-full opacity-70 group-hover:opacity-100 transition-opacity duration-300"></span>
+        <div class="relative bg-obsidian px-8 py-4 rounded-full flex items-center justify-center gap-3 transition-all duration-300">
+          <span class="text-white font-display font-medium text-lg">Enroll in Google Classroom</span>
+          <i data-lucide="external-link" class="w-5 h-5 text-white"></i>
+        </div>
+      </a>
+      <div class="flex items-center gap-3 px-6 py-4 rounded-full bg-surface2 border border-white/5">
+        <span class="text-sm text-neutral-500 font-medium">Class Code:</span>
+        <code class="code-badge" id="course-code">4oc22gvm</code>
+        <button onclick="navigator.clipboard.writeText('4oc22gvm').then(()=>{this.title='Copied!'})" class="text-neutral-500 hover:text-white transition-colors" title="Copy Code" id="copy-code-btn" aria-label="Copy class code">
+          <i data-lucide="copy" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Jump links -->
+    <div class="flex gap-4 flex-wrap justify-center">
+      <a href="#curriculum" class="text-sm text-neutral-400 hover:text-white transition-colors flex items-center gap-1.5"><i data-lucide="book-open" class="w-4 h-4"></i>Curriculum</a>
+      <a href="#overview" class="text-sm text-neutral-400 hover:text-white transition-colors flex items-center gap-1.5"><i data-lucide="layout-grid" class="w-4 h-4"></i>Overview</a>
+      <a href="#instructor" class="text-sm text-neutral-400 hover:text-white transition-colors flex items-center gap-1.5"><i data-lucide="user" class="w-4 h-4"></i>Instructor</a>
+      <a href="/training/courses/" class="text-sm text-neutral-400 hover:text-white transition-colors flex items-center gap-1.5"><i data-lucide="arrow-left" class="w-4 h-4"></i>All Courses</a>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section id="overview" class="py-24 relative z-10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="mb-16">
+        <span class="text-xs font-display tracking-widest uppercase text-brand-cyan mb-3 block">What You'll Learn</span>
+        <h2 class="font-display text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">Curriculum <span class="text-brand-cyan font-light italic">Architecture</span></h2>
+        <p class="text-neutral-400 text-lg max-w-2xl">Harness collective intelligence for digital transformation across healthcare, AI, and entrepreneurship.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[280px]">
+        <!-- Large card -->
+        <div class="bento-card md:col-span-2 md:row-span-2 p-8 flex flex-col justify-between group" id="card-automated">
+          <div class="w-12 h-12 bg-brand-cyan/10 rounded-full flex items-center justify-center border border-brand-cyan/20 mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="cpu" class="w-6 h-6 text-brand-cyan"></i>
+          </div>
+          <div>
+            <h3 class="text-3xl font-display font-bold text-white mb-3">Automated Solutions</h3>
+            <p class="text-neutral-400 text-lg leading-relaxed max-w-md">Leverage state-of-the-art AI and machine learning to construct clinical and operational workflows that require zero manual intervention.</p>
+          </div>
+          <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-gradient-to-br from-brand-cyan/20 to-transparent rounded-full blur-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
+        </div>
+
+        <!-- Integrated Systems -->
+        <div class="bento-card md:col-span-1 md:row-span-1 p-8 flex flex-col justify-center group" id="card-integrated">
+          <i data-lucide="network" class="w-8 h-8 text-brand-blue mb-5 group-hover:text-white transition-colors"></i>
+          <h3 class="text-xl font-display font-semibold text-white mb-2">Integrated Systems</h3>
+          <p class="text-neutral-400 text-sm">Bridge healthcare needs with global business strategies through deep tech interoperability.</p>
+        </div>
+
+        <!-- Tech-Driven Growth -->
+        <div class="bento-card md:col-span-1 md:row-span-1 p-8 flex flex-col justify-center group" id="card-growth">
+          <i data-lucide="rocket" class="w-8 h-8 text-brand-violet mb-5 group-hover:text-white transition-colors"></i>
+          <h3 class="text-xl font-display font-semibold text-white mb-2">Tech-Driven Growth</h3>
+          <p class="text-neutral-400 text-sm">Master the entrepreneurial frameworks necessary to scale health-tech ventures.</p>
+        </div>
+
+        <!-- Collective Brainpower -->
+        <div class="bento-card md:col-span-2 md:row-span-1 p-8 flex items-center justify-between overflow-hidden group" id="card-collective">
+          <div class="relative z-10 max-w-sm">
+            <h3 class="text-2xl font-display font-bold text-white mb-2">Collective Brainpower</h3>
+            <p class="text-neutral-400 text-sm">Tap into a network of forward-thinking peers and innovators in healthcare and AI.</p>
+          </div>
+          <div class="relative z-10 flex -space-x-4 opacity-80 group-hover:opacity-100 transition-opacity hidden sm:flex">
+            <div class="w-12 h-12 rounded-full bg-surface2 border-2 border-surface flex items-center justify-center"><i data-lucide="user" class="w-5 h-5 text-neutral-500"></i></div>
+            <div class="w-12 h-12 rounded-full bg-surface2 border-2 border-surface flex items-center justify-center"><i data-lucide="user" class="w-5 h-5 text-neutral-500"></i></div>
+            <div class="w-12 h-12 rounded-full bg-brand-cyan/20 border-2 border-surface flex items-center justify-center"><i data-lucide="plus" class="w-5 h-5 text-brand-cyan"></i></div>
+          </div>
+          <div class="absolute top-0 right-0 w-full h-full bg-gradient-to-l from-brand-violet/10 to-transparent"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRICULUM -->
+  <section id="curriculum" class="py-24 relative z-10 bg-gradient-to-b from-transparent to-white/[0.01]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="mb-16">
+        <span class="text-xs font-display tracking-widest uppercase text-brand-cyan mb-3 block">4 Modules</span>
+        <h2 class="font-display text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">Course <span class="text-brand-cyan font-light italic">Curriculum</span></h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Module 1 -->
+        <div class="bento-card p-8 group" id="module-1">
+          <div class="module-chip">Module 01</div>
+          <h3 class="text-xl font-display font-bold text-white mb-3">Collective Brainpower Foundations</h3>
+          <p class="text-neutral-400">Build a decision-making model that aligns physicians, operators, founders, and technical teams around a shared digital roadmap.</p>
+        </div>
+        <!-- Module 2 -->
+        <div class="bento-card p-8 group" id="module-2">
+          <div class="module-chip">Module 02</div>
+          <h3 class="text-xl font-display font-bold text-white mb-3">Automation in Healthcare Operations</h3>
+          <p class="text-neutral-400">Identify high-leverage automation opportunities across patient journeys, compliance workflows, analytics, and back-office execution.</p>
+        </div>
+        <!-- Module 3 -->
+        <div class="bento-card p-8 group" id="module-3">
+          <div class="module-chip">Module 03</div>
+          <h3 class="text-xl font-display font-bold text-white mb-3">Integrated Digital Health Systems</h3>
+          <p class="text-neutral-400">Design interoperable systems that connect clinical requirements, data contracts, AI services, and business processes.</p>
+        </div>
+        <!-- Module 4 -->
+        <div class="bento-card p-8 group" id="module-4">
+          <div class="module-chip">Module 04</div>
+          <h3 class="text-xl font-display font-bold text-white mb-3">AI Strategy for Health-Tech Growth</h3>
+          <p class="text-neutral-400">Translate AI capabilities into product strategy, founder positioning, and scalable market execution for healthcare ventures.</p>
+        </div>
+      </div>
+
+      <!-- Outcomes -->
+      <div class="mt-10 bento-card p-8 md:p-10" id="outcomes">
+        <span class="text-xs font-display tracking-widest uppercase text-brand-gold mb-3 block">Outcomes</span>
+        <h3 class="font-display text-2xl md:text-3xl font-bold text-white mb-6">You Will Leave With</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="flex items-start gap-3">
+            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-cyan mt-0.5 shrink-0"></i>
+            <p class="text-neutral-300">Map automation opportunities across healthcare workflows and business operations.</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-cyan mt-0.5 shrink-0"></i>
+            <p class="text-neutral-300">Design interoperable digital systems that connect product, data, and service delivery.</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-cyan mt-0.5 shrink-0"></i>
+            <p class="text-neutral-300">Create an actionable AI adoption plan aligned with real startup or enterprise priorities.</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-cyan mt-0.5 shrink-0"></i>
+            <p class="text-neutral-300">Turn collective expertise into repeatable execution systems for growth and transformation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTRUCTOR -->
+  <section id="instructor" class="py-32 relative z-10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="bento-card p-0 overflow-hidden">
+        <div class="grid lg:grid-cols-5 items-stretch">
+          <!-- Text -->
+          <div class="lg:col-span-3 p-10 md:p-16 lg:p-20 flex flex-col justify-center">
+            <div class="inline-flex items-center gap-2 mb-6 text-brand-cyan">
+              <i data-lucide="zap" class="w-5 h-5 fill-brand-cyan"></i>
+              <span class="font-display font-semibold tracking-wide uppercase text-sm">Course Director</span>
+            </div>
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">Dr. Mohamed El Fadil</h2>
+            <h3 class="text-xl text-neutral-400 font-light mb-8">Physician, Tech Entrepreneur &amp; Founder of BRAINSAIT LTD.</h3>
+            <div class="space-y-6 text-neutral-300 text-lg font-light leading-relaxed mb-10">
+              <p>Based in Riyadh, SA, Dr. El Fadil operates at the cutting-edge intersection of healthcare, business, and technology.</p>
+              <p>With a profound focus on artificial intelligence and digital transformation, he leverages collective brainpower to forge automated and integrated systems designed to revolutionize modern healthcare infrastructures.</p>
+            </div>
+            <div class="flex flex-wrap gap-4">
+              <a href="https://linkedin.com/in/fadil369" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-all text-sm font-medium" id="linkedin-link">
+                <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
+              </a>
+              <a href="https://x.com/brainsait369" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-all text-sm font-medium" id="twitter-link">
+                <i data-lucide="twitter" class="w-4 h-4"></i> X (Twitter)
+              </a>
+              <a href="https://github.com/fadil369" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-all text-sm font-medium" id="github-link">
+                <i data-lucide="github" class="w-4 h-4"></i> GitHub
+              </a>
+              <a href="https://calendly.com/fadil369" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-all text-sm font-medium" id="calendly-link">
+                <i data-lucide="calendar" class="w-4 h-4"></i> Book Consultation
+              </a>
+            </div>
+          </div>
+          <!-- Image -->
+          <div class="lg:col-span-2 relative bg-surface2 min-h-[400px] lg:min-h-full overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-tr from-brand-cyan/20 to-brand-violet/20 mix-blend-overlay z-10"></div>
+            <img src="https://gravatar.com/avatar/2e2a22838382d5a371c1b18342416b7f?s=1000&d=mp"
+                 alt="Dr. Mohamed El Fadil — Course Director"
+                 class="absolute inset-0 w-full h-full object-cover object-center instructor-img-mask grayscale-[30%] hover:grayscale-0 transition-all duration-700 hover:scale-105"
+                 loading="lazy"
+                 onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=1000'; this.onerror=null;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALSO EXPLORE: NPHIES-AI Mastery -->
+  <section class="py-16 relative z-10" aria-label="Also Explore">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <span class="text-xs font-display tracking-widest uppercase text-brand-cyan mb-4 block">Also Explore</span>
+      <div class="bento-card p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6" id="also-nphies">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-violet/10 border border-brand-violet/20 text-brand-violet text-xs font-semibold mb-3">Advanced Track</div>
+          <h3 class="font-display text-2xl font-bold text-white mb-2">NPHIES-AI Mastery</h3>
+          <p class="text-neutral-400 max-w-xl">AI-driven NPHIES claims automation, FHIR R4 integration, and Oracle bridge for Saudi healthcare revenue cycle teams.</p>
+          <p class="text-sm text-neutral-500 mt-2">Class code: <code class="code-badge">pohzx7a6</code></p>
+        </div>
+        <div class="flex flex-col gap-3 shrink-0">
+          <a href="/training/courses/nphies-ai-mastery/" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-violet/10 border border-brand-violet/20 text-white hover:bg-brand-violet/20 transition-all text-sm font-medium whitespace-nowrap" id="nphies-course-link">
+            Course Page <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <a href="https://classroom.google.com/c/ODYwNTQ0NDEyNjMw?cjc=pohzx7a6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all text-sm font-medium whitespace-nowrap" id="nphies-classroom-link">
+            Google Classroom <i data-lucide="external-link" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="py-32 relative z-10 text-center px-6" aria-labelledby="cta-heading">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-brand-cyan/5 -z-10"></div>
+    <h2 id="cta-heading" class="font-display text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">Initiate <span class="italic font-light">Transformation.</span></h2>
+    <p class="text-xl text-neutral-400 mb-10 max-w-2xl mx-auto">Access the curriculum immediately via Google Classroom using your exclusive cohort code.</p>
+    <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+      <a href="https://classroom.google.com/c/ODYwNTAyNzAzMTky?cjc=4oc22gvm" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center justify-center gap-3 px-8 py-4 text-obsidian bg-white hover:bg-neutral-200 rounded-full text-lg font-display font-semibold transition-colors duration-300"
+         id="final-enroll-btn">
+        Enter Cohort Space
+        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+      </a>
+      <div class="text-left">
+        <p class="text-sm text-neutral-500 uppercase tracking-widest font-semibold mb-1">Use Code</p>
+        <p class="text-white font-mono text-xl">4oc22gvm</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-10 border-t border-white/5 mt-10" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <a href="/" class="font-display font-semibold text-lg text-white no-underline">BRAINSAIT<span class="text-brand-cyan">.</span></a>
+      <p class="text-neutral-500 text-sm">&copy; 2026 BRAINSAIT LTD. Riyadh, SA. All rights reserved.</p>
+      <nav class="flex gap-6 text-sm text-neutral-400" aria-label="Footer navigation">
+        <a href="/training/courses/" class="hover:text-white transition-colors">Training</a>
+        <a href="https://calendly.com/fadil369" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-2">
+          <i data-lucide="calendar" class="w-4 h-4"></i> Book
+        </a>
+        <a href="mailto:info@brainsait.org" class="hover:text-white transition-colors">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Init icons
+    lucide.createIcons();
+
+    // Bento mouse-glow effect
+    document.querySelectorAll('.bento-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+      });
+    });
+
+    // Navbar scroll state
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.background = window.scrollY > 30
+        ? 'rgba(5,5,5,0.9)'
+        : 'rgba(5,5,5,0.65)';
+    }, { passive: true });
+  </script>
+</body>
+</html>
