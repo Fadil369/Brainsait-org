@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specialized Medical Center — Multi-Specialty Healthcare in Riyadh</title>
+    <meta name="description" content="Specialized Medical Center — Comprehensive multi-specialty healthcare in Riyadh. 30+ specialties, executive health packages, bilingual care.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: { 50:'#f0f4ff', 100:'#dbe4ff', 200:'#bac8ff', 300:'#91a7ff', 400:'#748ffc', 500:'#5c7cfa', 600:'#4c6ef5', 700:'#4263eb', 800:'#3b5bdb', 900:'#364fc7', 950:'#1e3a8a' },
+                        teal: { 50:'#e6fcf5', 100:'#c3fae8', 500:'#20c997', 600:'#12b886' },
+                        slate: { 850:'#172033' }
+                    },
+                    fontFamily: { sans:['Inter','Noto Sans Arabic','sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes counter{from{opacity:0}to{opacity:1}}
+        @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+        .fade-up{animation:fadeInUp .7s ease-out forwards}
+        .marquee{animation:marquee 30s linear infinite}
+        .stat-card{position:relative;overflow:hidden}
+        .stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#4c6ef5,#20c997)}
+        html{scroll-behavior:smooth}
+    </style>
+</head>
+<body class="bg-white text-gray-900 antialiased" id="top">
+
+<!-- Top Bar -->
+<div class="bg-navy-950 text-white/80 text-sm py-2">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <div class="flex items-center gap-6">
+            <span>📞 0114343800</span>
+            <span>📧 info@smc.com.sa</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <button onclick="toggleLang()" id="langBtn" class="hover:text-white transition">🌐 العربية</button>
+            <a href="#" class="hover:text-white transition">Patient Portal</a>
+        </div>
+    </div>
+</div>
+
+<!-- Nav -->
+<nav id="navbar" class="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-gray-100 transition-shadow">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="#top" class="text-2xl font-black">
+            <span class="text-navy-700">Specialized Medical Center</span>
+        </a>
+        <div class="hidden lg:flex items-center gap-6">
+            <a href="#specialties" class="text-gray-600 hover:text-navy-600 transition font-medium" data-en="Specialties" data-ar="التخصصات">Specialties</a>
+            <a href="#services" class="text-gray-600 hover:text-navy-600 transition font-medium" data-en="Services" data-ar="الخدمات">Services</a>
+            <a href="#executive" class="text-gray-600 hover:text-navy-600 transition font-medium" data-en="Executive Health" data-ar="الصحة الإدارية">Executive Health</a>
+            <a href="#doctors" class="text-gray-600 hover:text-navy-600 transition font-medium" data-en="Doctors" data-ar="الأطباء">Doctors</a>
+            <a href="#contact" class="text-gray-600 hover:text-navy-600 transition font-medium" data-en="Contact" data-ar="تواصل">Contact</a>
+        </div>
+        <a href="#booking" class="bg-navy-700 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-navy-800 transition" data-en="Book Appointment" data-ar="احجز موعد">Book Appointment</a>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="relative min-h-[90vh] flex items-center bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800 text-white overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-teal-500 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-navy-500 rounded-full blur-[100px]"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 py-32 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="fade-up">
+                <div class="inline-flex items-center gap-2 bg-teal-500/10 border border-teal-500/20 text-teal-400 px-4 py-2 rounded-full text-sm font-medium mb-8">
+                    <span class="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></span>
+                    <span data-en="30+ Medical Specialties Under One Roof" data-ar="30+ تخصص طبي تحت سقف واحد">30+ Medical Specialties Under One Roof</span>
+                </div>
+                <h1 class="text-5xl lg:text-6xl font-black leading-tight mb-6">
+                    <span data-en="Complete Healthcare" data-ar="رعاية صحية">Complete Healthcare</span><br>
+                    <span class="bg-gradient-to-r from-teal-400 to-navy-400 bg-clip-text text-transparent" data-en="For Your Family" data-ar="لعائلتك">For Your Family</span>
+                </h1>
+                <p class="text-xl text-white/70 mb-10 max-w-lg leading-relaxed" data-en="From routine checkups to specialized treatments — world-class medical care in Arabic and English, all in one destination." data-ar="من الفحوصات الروتينية إلى العلاجات المتخصصة — رعاية طبية عالمية المستوى بالعربية والإنجليزية، كل شيء في مكان واحد.">
+                    From routine checkups to specialized treatments — world-class medical care in Arabic and English, all in one destination.
+                </p>
+                <div class="flex flex-wrap gap-4 mb-12">
+                    <a href="#booking" class="bg-white text-navy-900 px-8 py-4 rounded-xl font-bold text-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300" data-en="Book Appointment" data-ar="احجز موعد">Book Appointment</a>
+                    <a href="tel:0114343800" class="border-2 border-white/30 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition" data-en="Call 0114343800" data-ar="اتصل 0114343800">Call 0114343800</a>
+                </div>
+                <!-- Trust Badges -->
+                <div class="flex flex-wrap gap-6 text-sm text-white/50">
+                    <div class="flex items-center gap-2"><span class="text-teal-400">✓</span> <span data-en="CBAHI Accredited" data-ar="معتمد من CBAHI">CBAHI Accredited</span></div>
+                    <div class="flex items-center gap-2"><span class="text-teal-400">✓</span> <span data-en="Insurance Accepted" data-ar="نقبل التأمين">Insurance Accepted</span></div>
+                    <div class="flex items-center gap-2"><span class="text-teal-400">✓</span> <span data-en="24/7 Emergency" data-ar="طوارئ ٢٤/٧">24/7 Emergency</span></div>
+                </div>
+            </div>
+
+            <!-- Stats Panel -->
+            <div class="grid grid-cols-2 gap-4">
+                <div class="stat-card bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-8 text-center">
+                    <div class="text-5xl font-black text-teal-400 mb-2">30+</div>
+                    <div class="text-white/60" data-en="Specialties" data-ar="تخصص">Specialties</div>
+                </div>
+                <div class="stat-card bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-8 text-center">
+                    <div class="text-5xl font-black text-teal-400 mb-2">100+</div>
+                    <div class="text-white/60" data-en="Doctors" data-ar="طبيب">Doctors</div>
+                </div>
+                <div class="stat-card bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-8 text-center">
+                    <div class="text-5xl font-black text-teal-400 mb-2">20+</div>
+                    <div class="text-white/60" data-en="Years" data-ar="سنة">Years</div>
+                </div>
+                <div class="stat-card bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-8 text-center">
+                    <div class="text-5xl font-black text-teal-400 mb-2">98%</div>
+                    <div class="text-white/60" data-en="Satisfaction" data-ar="رضا">Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Specialties Marquee -->
+<section class="py-6 bg-navy-50 border-y border-navy-100 overflow-hidden">
+    <div class="marquee flex items-center gap-8 whitespace-nowrap">
+        <span class="text-navy-700 font-semibold px-4">🦷 Dentistry</span>
+        <span class="text-navy-700 font-semibold px-4">👁️ Ophthalmology</span>
+        <span class="text-navy-700 font-semibold px-4">🩺 Internal Medicine</span>
+        <span class="text-navy-700 font-semibold px-4">👶 Pediatrics</span>
+        <span class="text-navy-700 font-semibold px-4">🦴 Orthopedics</span>
+        <span class="text-navy-700 font-semibold px-4">🧠 Neurology</span>
+        <span class="text-navy-700 font-semibold px-4">❤️ Cardiology</span>
+        <span class="text-navy-700 font-semibold px-4">🧬 Dermatology</span>
+        <span class="text-navy-700 font-semibold px-4">🏥 General Surgery</span>
+        <span class="text-navy-700 font-semibold px-4">💉 Endocrinology</span>
+        <span class="text-navy-700 font-semibold px-4">🫁 Pulmonology</span>
+        <span class="text-navy-700 font-semibold px-4">🧫 Gastroenterology</span>
+        <span class="text-navy-700 font-semibold px-4">🦷 Dentistry</span>
+        <span class="text-navy-700 font-semibold px-4">👁️ Ophthalmology</span>
+        <span class="text-navy-700 font-semibold px-4">🩺 Internal Medicine</span>
+        <span class="text-navy-700 font-semibold px-4">👶 Pediatrics</span>
+        <span class="text-navy-700 font-semibold px-4">🦴 Orthopedics</span>
+        <span class="text-navy-700 font-semibold px-4">🧠 Neurology</span>
+    </div>
+</section>
+
+<!-- Specialties Grid -->
+<section id="specialties" class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <span class="inline-block bg-navy-100 text-navy-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-4" data-en="Our Specialties" data-ar="تخصصاتنا">Our Specialties</span>
+            <h2 class="text-4xl lg:text-5xl font-bold mb-4" data-en="Medical Excellence Across Specialties" data-ar="تميز طبي عبر التخصصات">Medical Excellence Across Specialties</h2>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            <a href="#" class="group bg-white border border-gray-200 rounded-2xl p-6 text-center hover:border-navy-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="text-4xl mb-3 group-hover:scale-110 transition-transform">❤️</div>
+                <div class="font-semibold text-sm" data-en="Cardiology" data-ar="قلب">Cardiology</div>
+            </a>
+            <a href="#" class="group bg-white border border-gray-200 rounded-2xl p-6 text-center hover:border-navy-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="text-4xl mb-3 group-hover:scale-110 transition-transform">🧠</div>
+                <div class="font-semibold text-sm" data-en="Neurology" data-ar="أعصاب">Neurology</div>
+            </a>
+            <a href="#" class="group bg-white border border-gray-200 rounded-2xl p-6 text-center hover:border-navy-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="text-4xl mb-3 group-hover:scale-110 transition-transform">🦷</div>
+                <div class="font-semibold text-sm" data-en="Dentistry" data-ar="أسنان">Dentistry</div>
+            </a>
+            <a href="#" class="group bg-white border border-gray-200 rounded-2xl p-6 text-center hover:border-navy-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="text-4xl mb-3 group-hover:scale-110 transition-transform">👁️</div>
+                <div class="font-semibold text-sm" data-en="Ophthalmology" data-ar="عيون">Ophthalmology</div>
+            </a>
+            <a href="#" class="group bg-white border border-gray-200 rounded-2xl p-6 text-center hover:border-navy-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="text-4xl mb-3 group-hover:scale-110 transition-transform">👶</div>
+                <div class="font-semibold text-sm" data-en="Pediatrics" data-ar="أطفال">Pediatrics</div>
+            </a>
+            <a href="#" class="group bg-white border border-gray-200 rounded-2xl p-6 text-center hover:border-navy-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="text-4xl mb-3 group-hover:scale-110 transition-transform">🦴</div>
+                <div class="font-semibold text-sm" data-en="Orthopedics" data-ar="عظام">Orthopedics</div>
+            </a>
+            <a href="#" class="group bg-white border border-gray-200 rounded-2xl p-6 text-center hover:border-navy-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="text-4xl mb-3 group-hover:scale-110 transition-transform">🧬</div>
+                <div class="font-semibold text-sm" data-en="Dermatology" data-ar="جلدية">Dermatology</div>
+            </a>
+            <a href="#" class="group bg-white border border-gray-200 rounded-2xl p-6 text-center hover:border-navy-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="text-4xl mb-3 group-hover:scale-110 transition-transform">🏥</div>
+                <div class="font-semibold text-sm" data-en="General Surgery" data-ar="جراحة عامة">General Surgery</div>
+            </a>
+            <a href="#" class="group bg-white border border-gray-200 rounded-2xl p-6 text-center hover:border-navy-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="text-4xl mb-3 group-hover:scale-110 transition-transform">🫁</div>
+                <div class="font-semibold text-sm" data-en="Pulmonology" data-ar="صدرية">Pulmonology</div>
+            </a>
+            <a href="#" class="group bg-white border border-gray-200 rounded-2xl p-6 text-center hover:border-navy-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="text-4xl mb-3 group-hover:scale-110 transition-transform">💉</div>
+                <div class="font-semibold text-sm" data-en="Endocrinology" data-ar="غدد">Endocrinology</div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Executive Health -->
+<section id="executive" class="py-24 bg-gradient-to-br from-navy-900 to-navy-950 text-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <span class="inline-block bg-teal-500/10 text-teal-400 px-4 py-1.5 rounded-full text-sm font-semibold mb-4" data-en="Premium" data-ar="متميز">Premium</span>
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6" data-en="Executive Health Program" data-ar="برنامج الصحة الإدارية">Executive Health Program</h2>
+                <p class="text-white/70 text-lg mb-8 leading-relaxed" data-en="Comprehensive health screening designed for busy professionals. Full-body assessment, personalized health report, and ongoing wellness monitoring — all in one visit." data-ar="فحص صحي شامل مصمم للمهندسين المشغولين. تقييم كامل للجسم، تقرير صحي شخصي، ومتابعة صحية مستمرة — كل ذلك في زيارة واحدة.">
+                    Comprehensive health screening designed for busy professionals. Full-body assessment, personalized health report, and ongoing wellness monitoring — all in one visit.
+                </p>
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 bg-teal-500/20 rounded-lg flex items-center justify-center text-teal-400">✓</span>
+                        <span data-en="Complete blood work & cardiac screening" data-ar="تحاليل دم شاملة وفحص قلبي">Complete blood work & cardiac screening</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 bg-teal-500/20 rounded-lg flex items-center justify-center text-teal-400">✓</span>
+                        <span data-en="Advanced imaging (CT, MRI available)" data-ar="تصوير متقدم (CT، MRI متاح)">Advanced imaging (CT, MRI available)</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 bg-teal-500/20 rounded-lg flex items-center justify-center text-teal-400">✓</span>
+                        <span data-en="Same-day results with specialist consultation" data-ar="نتائج في نفس اليوم مع استشارة متخصص">Same-day results with specialist consultation</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 bg-teal-500/20 rounded-lg flex items-center justify-center text-teal-400">✓</span>
+                        <span data-en="Bilingual report (Arabic & English)" data-ar="تقرير ثنائي اللغة (عربي وإنجليزي)">Bilingual report (Arabic & English)</span>
+                    </div>
+                </div>
+                <a href="#booking" class="inline-flex items-center gap-3 bg-teal-500 text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-600 transition" data-en="Book Executive Screening →" data-ar="احجز الفحص التنفيذي →">Book Executive Screening →</a>
+            </div>
+            <div class="bg-white/5 backdrop-blur border border-white/10 rounded-3xl p-10">
+                <h3 class="text-2xl font-bold mb-6" data-en="What's Included" data-ar="ماذا يتضمن">What's Included</h3>
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div class="bg-white/5 rounded-xl p-4"><div class="text-2xl mb-2">🩸</div><span data-en="Complete Blood Panel" data-ar="فحص دم شامل">Complete Blood Panel</span></div>
+                    <div class="bg-white/5 rounded-xl p-4"><div class="text-2xl mb-2">❤️</div><span data-en="Cardiac Assessment" data-ar="تقييم قلبي">Cardiac Assessment</span></div>
+                    <div class="bg-white/5 rounded-xl p-4"><div class="text-2xl mb-2">🫁</div><span data-en="Pulmonary Function" data-ar="وظائف رئوية">Pulmonary Function</span></div>
+                    <div class="bg-white/5 rounded-xl p-4"><div class="text-2xl mb-2">👁️</div><span data-en="Vision Screening" data-ar="فحص بصر">Vision Screening</span></div>
+                    <div class="bg-white/5 rounded-xl p-4"><div class="text-2xl mb-2">🦴</div><span data-en="Bone Density" data-ar="كثافة العظام">Bone Density</span></div>
+                    <div class="bg-white/5 rounded-xl p-4"><div class="text-2xl mb-2">🧬</div><span data-en="Cancer Markers" data-ar="علامات سرطانية">Cancer Markers</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Booking -->
+<section id="booking" class="py-24 bg-navy-50">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold mb-4" data-en="Book Your Appointment" data-ar="احجز موعدك">Book Your Appointment</h2>
+        <p class="text-gray-500 text-lg mb-12" data-en="Choose your specialty and preferred time. We'll confirm within 30 minutes." data-ar="اختر تخصصك والوقت المفضل. سنؤكد خلال ٣٠ دقيقة.">Choose your specialty and preferred time. We'll confirm within 30 minutes.</p>
+
+        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12">
+            <form class="grid md:grid-cols-2 gap-6">
+                <input type="text" placeholder="Full Name / الاسم الكامل" class="w-full border border-gray-200 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-navy-500 focus:border-transparent">
+                <input type="tel" placeholder="Phone / رقم الجوال" class="w-full border border-gray-200 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-navy-500 focus:border-transparent">
+                <select class="w-full border border-gray-200 rounded-xl px-6 py-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-navy-500">
+                    <option>Select Specialty / اختر التخصص</option>
+                    <option>Internal Medicine / باطنية</option>
+                    <option>Cardiology / قلب</option>
+                    <option>Orthopedics / عظام</option>
+                    <option>Pediatrics / أطفال</option>
+                    <option>Dermatology / جلدية</option>
+                    <option>Ophthalmology / عيون</option>
+                    <option>Dentistry / أسنان</option>
+                    <option>Executive Health / فحص إداري</option>
+                    <option>Other / أخرى</option>
+                </select>
+                <input type="date" class="w-full border border-gray-200 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-navy-500">
+                <textarea placeholder="Reason for visit / سبب الزيارة" rows="3" class="md:col-span-2 w-full border border-gray-200 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-navy-500"></textarea>
+                <button type="submit" class="md:col-span-2 bg-navy-700 text-white font-bold py-4 px-8 rounded-xl hover:bg-navy-800 transition-all" data-en="Confirm Appointment →" data-ar="تأكيد الموعد →">Confirm Appointment →</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-navy-50 rounded-2xl p-8 text-center">
+                <div class="text-4xl mb-4">📍</div>
+                <h3 class="font-bold text-lg mb-2" data-en="Location" data-ar="الموقع">Location</h3>
+                <p class="text-gray-500">King Fahd Rd, Riyadh</p>
+            </div>
+            <div class="bg-navy-50 rounded-2xl p-8 text-center">
+                <div class="text-4xl mb-4">📞</div>
+                <h3 class="font-bold text-lg mb-2" data-en="Phone" data-ar="الهاتف">Phone</h3>
+                <p class="text-gray-500">0114343800</p>
+            </div>
+            <div class="bg-navy-50 rounded-2xl p-8 text-center">
+                <div class="text-4xl mb-4">🕐</div>
+                <h3 class="font-bold text-lg mb-2" data-en="Hours" data-ar="ساعات العمل">Hours</h3>
+                <p class="text-gray-500" data-en="Sun-Thu: 8AM - 10PM" data-ar="أحد-خميس: ٨ص - ١٠م">Sun-Thu: 8AM - 10PM</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-navy-950 text-white py-16">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <h3 class="text-2xl font-black">Specialized Medical Center</h3>
+                <p class="text-white/40 mt-2" data-en="Comprehensive Healthcare for Riyadh" data-ar="رعاية صحية شاملة للرياض">Comprehensive Healthcare for Riyadh</p>
+            </div>
+            <div class="text-white/40 text-sm">
+                © 2026 Specialized Medical Center | <span data-en="Powered by" data-ar="بدعم من">Powered by</span> <span class="text-teal-400">BRAINSAIT</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/966114343800" class="fixed bottom-6 right-6 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition z-50">💬</a>
+
+<script>
+let lang='en';
+function toggleLang(){
+    lang=lang==='en'?'ar':'en';
+    document.documentElement.lang=lang;
+    document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+    document.getElementById('langBtn').textContent=lang==='ar'?'🌐 English':'🌐 العربية';
+    document.querySelectorAll('[data-en][data-ar]').forEach(el=>{el.textContent=lang==='ar'?el.dataset.ar:el.dataset.en});
+}
+window.addEventListener('scroll',()=>{
+    const n=document.getElementById('navbar');
+    if(window.scrollY>100)n.classList.add('shadow-lg');
+    else n.classList.remove('shadow-lg');
+});
+</script>
+</body>
+</html>

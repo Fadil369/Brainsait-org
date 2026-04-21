@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BRAINSAIT - عيادات الرياض | Clinics Directory</title>
+  <meta name="description" content="دليل عيادات الرياض المتخصصة - Riyadh healthcare clinics directory with online booking">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', 'Noto Kufi Arabic', sans-serif;
+      background: linear-gradient(135deg, rgba(0,196,180,0.08), transparent 68%),
+                  linear-gradient(135deg, rgba(212,151,15,0.04), transparent 72%),
+                  #f3faff;
+      color: #071e27;
+      line-height: 1.6;
+    }
+    
+    .container { width: min(1200px, 94vw); margin: 0 auto; }
+    
+    header {
+      background: rgba(243,250,255,0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,196,180,0.12);
+      padding: 2rem 0;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    h1 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #003b42, #00c4b4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+      color: #49617b;
+      margin-bottom: 2rem;
+    }
+    
+    .segments {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .segment {
+      background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.5));
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0,196,180,0.12);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: right;
+    }
+    
+    .segment h2 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .segment-dental { border-top: 4px solid #00c4b4; }
+    .segment-dental h2 { color: #00c4b4; }
+    
+    .segment-derma { border-top: 4px solid #c47c5f; }
+    .segment-derma h2 { color: #c47c5f; }
+    
+    .segment-poly { border-top: 4px solid #d4970f; }
+    .segment-poly h2 { color: #d4970f; }
+    
+    .clinics-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .clinic-link {
+      display: block;
+      padding: 1rem;
+      background: rgba(0,196,180,0.05);
+      border-radius: 8px;
+      text-decoration: none;
+      color: #003b42;
+      font-weight: 600;
+      transition: all 0.3s;
+      border-left: 3px solid #00c4b4;
+    }
+    
+    .segment-derma .clinic-link {
+      background: rgba(196,124,95,0.05);
+      border-left-color: #c47c5f;
+    }
+    
+    .segment-poly .clinic-link {
+      background: rgba(212,151,15,0.05);
+      border-left-color: #d4970f;
+    }
+    
+    .clinic-link:hover {
+      transform: translateX(-8px);
+      box-shadow: 0 4px 12px rgba(0,196,180,0.15);
+    }
+    
+    .segment-derma .clinic-link:hover {
+      box-shadow: 0 4px 12px rgba(196,124,95,0.15);
+    }
+    
+    .segment-poly .clinic-link:hover {
+      box-shadow: 0 4px 12px rgba(212,151,15,0.15);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(0,196,180,0.12);
+      color: #49617b;
+      font-size: 0.875rem;
+    }
+    
+    footer a {
+      color: #003b42;
+      text-decoration: none;
+    }
+    
+    .lang-toggle {
+      position: fixed;
+      top: 2rem;
+      right: 2rem;
+      background: linear-gradient(135deg, #003b42, #00c4b4);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.875rem;
+      z-index: 100;
+      transition: all 0.3s;
+    }
+    
+    .lang-toggle:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,196,180,0.3);
+    }
+    
+    [dir="ltr"] .segment,
+    [dir="ltr"] .clinic-link {
+      text-align: left;
+    }
+    
+    [dir="ltr"] .segment h2,
+    [dir="ltr"] .clinic-link {
+      border-left: none;
+      border-right: 3px solid #00c4b4;
+    }
+    
+    [dir="ltr"] .segment-derma .clinic-link {
+      border-right-color: #c47c5f;
+    }
+    
+    [dir="ltr"] .segment-poly .clinic-link {
+      border-right-color: #d4970f;
+    }
+    
+    [dir="ltr"] .clinic-link:hover {
+      transform: translateX(8px);
+    }
+    
+     [dir="ltr"] .lang-toggle {
+       right: auto;
+       left: 2rem;
+     }
+     
+     /* ========== CONSENT BANNER STYLES (RTL-Ready) ========== */
+     .consent-banner {
+       position: fixed;
+       bottom: 0;
+       left: 0;
+       right: 0;
+       background: rgba(7, 30, 39, 0.98);
+       backdrop-filter: blur(10px);
+       border-top: 1px solid rgba(0, 196, 180, 0.2);
+       padding: 1.5rem 2rem;
+       z-index: 9999;
+       display: none;
+       box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+     }
+     
+     .consent-banner.show {
+       display: flex;
+       flex-direction: column;
+       gap: 1.5rem;
+       animation: slideUp 0.3s ease-out;
+     }
+     
+     @keyframes slideUp {
+       from {
+         transform: translateY(100%);
+         opacity: 0;
+       }
+       to {
+         transform: translateY(0);
+         opacity: 1;
+       }
+     }
+     
+     .consent-container {
+       max-width: 1200px;
+       margin: 0 auto;
+       width: 100%;
+     }
+     
+     .consent-content {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       gap: 2rem;
+       flex-wrap: wrap;
+     }
+     
+     .consent-text {
+       flex: 1;
+       min-width: 250px;
+       color: #e8f0f5;
+     }
+     
+     .consent-text h3 {
+       font-family: 'Manrope', sans-serif;
+       font-size: 1.1rem;
+       font-weight: 700;
+       margin-bottom: 0.5rem;
+       color: #00c4b4;
+     }
+     
+     .consent-text p {
+       font-size: 0.9rem;
+       line-height: 1.5;
+       margin-bottom: 0.75rem;
+     }
+     
+     .consent-text a {
+       color: #00c4b4;
+       text-decoration: none;
+       font-weight: 600;
+       border-bottom: 1px solid rgba(0, 196, 180, 0.3);
+       transition: all 0.3s;
+     }
+     
+     .consent-text a:hover {
+       border-bottom-color: #00c4b4;
+     }
+     
+     .consent-buttons {
+       display: flex;
+       gap: 1rem;
+       flex-wrap: wrap;
+       min-width: 350px;
+       align-items: center;
+     }
+     
+     .consent-btn {
+       padding: 0.75rem 1.5rem;
+       border: none;
+       border-radius: 8px;
+       font-weight: 600;
+       cursor: pointer;
+       font-size: 0.95rem;
+       transition: all 0.3s;
+       white-space: nowrap;
+     }
+     
+     .consent-btn-accept {
+       background: linear-gradient(135deg, #003b42, #00c4b4);
+       color: white;
+       flex: 1;
+       min-width: 120px;
+     }
+     
+     .consent-btn-accept:hover {
+       transform: translateY(-2px);
+       box-shadow: 0 4px 12px rgba(0, 196, 180, 0.3);
+     }
+     
+     .consent-btn-reject {
+       background: rgba(255, 255, 255, 0.1);
+       color: #e8f0f5;
+       border: 1px solid rgba(255, 255, 255, 0.2);
+       flex: 0 0 auto;
+     }
+     
+     .consent-btn-reject:hover {
+       background: rgba(255, 255, 255, 0.15);
+       border-color: rgba(255, 255, 255, 0.3);
+     }
+     
+     .consent-btn-settings {
+       background: rgba(255, 255, 255, 0.1);
+       color: #e8f0f5;
+       border: 1px solid rgba(255, 255, 255, 0.2);
+       flex: 0 0 auto;
+     }
+     
+     .consent-btn-settings:hover {
+       background: rgba(255, 255, 255, 0.15);
+       border-color: rgba(255, 255, 255, 0.3);
+     }
+     
+     /* Consent Preferences Modal */
+     .consent-modal {
+       display: none;
+       position: fixed;
+       top: 0;
+       left: 0;
+       right: 0;
+       bottom: 0;
+       background: rgba(0, 0, 0, 0.6);
+       z-index: 10000;
+       align-items: center;
+       justify-content: center;
+       animation: fadeIn 0.3s ease-out;
+     }
+     
+     .consent-modal.show {
+       display: flex;
+     }
+     
+     @keyframes fadeIn {
+       from { opacity: 0; }
+       to { opacity: 1; }
+     }
+     
+     .consent-modal-content {
+       background: white;
+       border-radius: 12px;
+       padding: 2rem;
+       max-width: 600px;
+       max-height: 90vh;
+       overflow-y: auto;
+       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+       animation: slideDown 0.3s ease-out;
+     }
+     
+     @keyframes slideDown {
+       from {
+         transform: translateY(-30px);
+         opacity: 0;
+       }
+       to {
+         transform: translateY(0);
+         opacity: 1;
+       }
+     }
+     
+     .consent-modal-header {
+       margin-bottom: 1.5rem;
+       padding-bottom: 1rem;
+       border-bottom: 1px solid rgba(0, 196, 180, 0.1);
+     }
+     
+     .consent-modal-header h2 {
+       font-family: 'Manrope', sans-serif;
+       font-size: 1.5rem;
+       font-weight: 700;
+       color: #003b42;
+       margin-bottom: 0.5rem;
+     }
+     
+     .consent-modal-header p {
+       color: #49617b;
+       font-size: 0.9rem;
+     }
+     
+     .consent-category {
+       margin-bottom: 1.5rem;
+       padding-bottom: 1.5rem;
+       border-bottom: 1px solid rgba(0, 196, 180, 0.1);
+     }
+     
+     .consent-category:last-child {
+       border-bottom: none;
+     }
+     
+     .consent-category-header {
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       margin-bottom: 0.75rem;
+     }
+     
+     .consent-category-title {
+       font-weight: 700;
+       color: #003b42;
+       display: flex;
+       align-items: center;
+       gap: 0.5rem;
+     }
+     
+     .consent-category-title.required::after {
+       content: 'مطلوب / Required';
+       font-size: 0.75rem;
+       background: rgba(0, 196, 180, 0.1);
+       color: #00c4b4;
+       padding: 0.25rem 0.75rem;
+       border-radius: 4px;
+       font-weight: 600;
+     }
+     
+     .consent-toggle {
+       width: 48px;
+       height: 28px;
+       background: #ccc;
+       border: none;
+       border-radius: 14px;
+       cursor: pointer;
+       position: relative;
+       transition: all 0.3s;
+       padding: 2px;
+     }
+     
+     .consent-toggle.active {
+       background: #00c4b4;
+     }
+     
+     .consent-toggle::after {
+       content: '';
+       position: absolute;
+       width: 24px;
+       height: 24px;
+       background: white;
+       border-radius: 12px;
+       top: 2px;
+       left: 2px;
+       transition: all 0.3s;
+     }
+     
+     .consent-toggle.active::after {
+       left: 22px;
+     }
+     
+     .consent-category-description {
+       color: #49617b;
+       font-size: 0.85rem;
+       line-height: 1.5;
+     }
+     
+     .consent-modal-buttons {
+       display: flex;
+       gap: 1rem;
+       margin-top: 2rem;
+       padding-top: 1.5rem;
+       border-top: 1px solid rgba(0, 196, 180, 0.1);
+     }
+     
+     .consent-modal-btn {
+       padding: 0.75rem 1.5rem;
+       border: none;
+       border-radius: 8px;
+       font-weight: 600;
+       cursor: pointer;
+       font-size: 0.95rem;
+       transition: all 0.3s;
+       flex: 1;
+     }
+     
+     .consent-modal-btn-save {
+       background: linear-gradient(135deg, #003b42, #00c4b4);
+       color: white;
+     }
+     
+     .consent-modal-btn-save:hover {
+       transform: translateY(-2px);
+       box-shadow: 0 4px 12px rgba(0, 196, 180, 0.3);
+     }
+     
+     .consent-modal-btn-cancel {
+       background: #f0f0f0;
+       color: #003b42;
+       border: 1px solid #ddd;
+     }
+     
+     .consent-modal-btn-cancel:hover {
+       background: #e8e8e8;
+     }
+     
+     /* RTL adjustments */
+     [dir="rtl"] .consent-banner {
+       direction: rtl;
+       text-align: right;
+     }
+     
+     [dir="rtl"] .consent-buttons {
+       flex-direction: row-reverse;
+     }
+     
+     [dir="rtl"] .consent-category-header {
+       direction: rtl;
+       text-align: right;
+     }
+     
+     [dir="rtl"] .consent-modal-buttons {
+       flex-direction: row-reverse;
+     }
+     
+     [dir="rtl"] .consent-modal-content {
+       direction: rtl;
+       text-align: right;
+     }
+     
+     [dir="ltr"] .consent-banner {
+       direction: ltr;
+       text-align: left;
+     }
+     
+     [dir="ltr"] .consent-buttons {
+       flex-direction: row;
+     }
+     
+     [dir="ltr"] .consent-category-header {
+       direction: ltr;
+       text-align: left;
+     }
+     
+     [dir="ltr"] .consent-modal-buttons {
+       flex-direction: row;
+     }
+     
+     [dir="ltr"] .consent-modal-content {
+       direction: ltr;
+       text-align: left;
+     }
+     
+     @media (max-width: 768px) {
+       h1 { font-size: 1.75rem; }
+       .segments { grid-template-columns: 1fr; }
+       .lang-toggle { top: 1rem; right: 1rem; padding: 0.5rem 1rem; font-size: 0.75rem; }
+       
+       .consent-banner {
+         padding: 1rem;
+       }
+       
+       .consent-content {
+         flex-direction: column;
+         gap: 1rem;
+       }
+       
+       .consent-buttons {
+         width: 100%;
+         flex-direction: column;
+         min-width: auto;
+       }
+       
+       .consent-btn {
+         width: 100%;
+       }
+       
+       .consent-modal-content {
+         margin: 1rem;
+         padding: 1.5rem;
+       }
+     }
+  </style>
+  
+   <!-- ========== CONSENT MODE V2 INITIALIZATION ========== -->
+   <!-- Must be placed BEFORE any GA4 or GTM scripts -->
+   <script>
+     // Initialize consent state in dataLayer BEFORE gtag library loads
+     window.dataLayer = window.dataLayer || [];
+     
+     // Check if user has previously given consent
+     const storedConsent = localStorage.getItem('consent_preferences');
+     const userConsent = storedConsent ? JSON.parse(storedConsent) : null;
+     
+     // Set default consent state (all denied for privacy-first compliance)
+     const defaultConsentState = {
+       'ad_user_data': 'denied',
+       'ad_personalization': 'denied',
+       'ad_storage': 'denied',
+       'analytics_storage': 'denied',
+       'wait_for_update': 500,
+     };
+     
+     // Use stored consent if available, otherwise use defaults
+     const consentState = userConsent || defaultConsentState;
+     
+     function gtag(){window.dataLayer.push(arguments);}
+     gtag('consent', 'default', consentState);
+     gtag('js', new Date());
+   </script>
+   <!-- ========== END CONSENT MODE INITIALIZATION ========== -->
+   
+   <!-- Google Tag Manager (with Consent Mode) -->
+   <script>
+     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TP24GSTF');
+   </script>
+   <!-- End Google Tag Manager -->
+   
+   <!-- Google Analytics 4 (gtag.js) - Direct Installation -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2Q0LYQTQS"></script>
+   <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     
+     // Configure GA4 for both brainsait.org and elfadil.com domains
+     gtag('config', 'G-R2Q0LYQTQS', {
+       'page_path': window.location.pathname,
+       'page_title': document.title,
+       'allow_google_signals': false,
+       'allow_ad_personalization_signals': false,
+       'cookie_flags': 'SameSite=None;Secure'
+      });
+    </script>
+    <!-- End Google Analytics 4 -->
+    
+    <!-- Google Analytics 4 (gtag.js) - Second Property ID (G-75ZCDM8R74) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-75ZCDM8R74"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      
+      // Configure second GA4 property
+      gtag('config', 'G-75ZCDM8R74', {
+        'page_path': window.location.pathname,
+        'page_title': document.title,
+        'allow_google_signals': false,
+        'allow_ad_personalization_signals': false,
+        'cookie_flags': 'SameSite=None;Secure'
+      });
+    </script>
+    <!-- End Google Analytics 4 (Second Property) -->
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TP24GSTF"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
+  <!-- ========== CONSENT BANNER (RTL-Ready) ========== -->
+  <div id="consent-banner" class="consent-banner">
+    <div class="consent-container">
+      <div class="consent-content">
+        <div class="consent-text">
+          <h3 id="consent-title">🔐 حماية خصوصيتك | Your Privacy</h3>
+          <p id="consent-description">
+            نستخدم الكوكيز لتحسين تجربتك. نحترم خصوصيتك ولا نشارك بيانات مع أطراف ثالثة دون موافقتك. 
+            <br>We use cookies to improve your experience. We respect your privacy and never share data without your consent.
+          </p>
+          <p style="font-size: 0.8rem; color: #99aab8; margin-top: 0.5rem;">
+            <a href="#" id="privacy-policy-link">سياسة الخصوصية / Privacy Policy</a>
+          </p>
+        </div>
+        <div class="consent-buttons">
+          <button class="consent-btn consent-btn-reject" id="consent-reject-btn" onclick="rejectConsent()">
+            <span id="reject-text">رفض / Reject</span>
+          </button>
+          <button class="consent-btn consent-btn-settings" id="consent-settings-btn" onclick="openConsentSettings()">
+            <span id="settings-text">الإعدادات / Settings</span>
+          </button>
+          <button class="consent-btn consent-btn-accept" id="consent-accept-btn" onclick="acceptConsent()">
+            <span id="accept-text">قبول الكل / Accept All</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ========== END CONSENT BANNER ========== -->
+  
+  <!-- ========== CONSENT PREFERENCES MODAL ========== -->
+  <div id="consent-modal" class="consent-modal" onclick="if(event.target === this) closeConsentSettings()">
+    <div class="consent-modal-content">
+      <div class="consent-modal-header">
+        <h2 id="modal-title">إدارة تفضيلات الخصوصية</h2>
+        <p id="modal-subtitle">Manage Your Privacy Preferences</p>
+      </div>
+      
+      <!-- Essential Cookies (Always Required) -->
+      <div class="consent-category">
+        <div class="consent-category-header">
+          <div class="consent-category-title required">
+            🔒 <span id="essential-title">الكوكيز الأساسية</span>
+          </div>
+          <button class="consent-toggle active" disabled></button>
+        </div>
+        <p class="consent-category-description" id="essential-desc">
+          ضرورية لعمل الموقع بشكل أساسي. لا يمكن تعطيلها.
+          <br>Required for the website to function properly. Cannot be disabled.
+        </p>
+      </div>
+      
+      <!-- Analytics -->
+      <div class="consent-category">
+        <div class="consent-category-header">
+          <div class="consent-category-title">
+            📊 <span id="analytics-title">التحليلات والأداء</span>
+          </div>
+          <button class="consent-toggle" id="analytics-toggle" onclick="toggleConsent('analytics_storage')"></button>
+        </div>
+        <p class="consent-category-description" id="analytics-desc">
+          تساعدنا على فهم كيفية استخدام الموقع لتحسينه.
+          <br>Helps us understand how you use the website to improve it.
+        </p>
+      </div>
+      
+      <!-- Marketing -->
+      <div class="consent-category">
+        <div class="consent-category-header">
+          <div class="consent-category-title">
+            📢 <span id="marketing-title">التسويق والإعلانات</span>
+          </div>
+          <button class="consent-toggle" id="marketing-toggle" onclick="toggleConsent('ad_storage')"></button>
+        </div>
+        <p class="consent-category-description" id="marketing-desc">
+          تتيح لنا عرض إعلانات ذات صلة باهتماماتك.
+          <br>Allows us to show you relevant advertisements.
+        </p>
+      </div>
+      
+      <!-- Personalization -->
+      <div class="consent-category">
+        <div class="consent-category-header">
+          <div class="consent-category-title">
+            ✨ <span id="personalization-title">التخصيص والتوصيات</span>
+          </div>
+          <button class="consent-toggle" id="personalization-toggle" onclick="toggleConsent('ad_personalization')"></button>
+        </div>
+        <p class="consent-category-description" id="personalization-desc">
+          يحسن تجربتك بمحتوى وتوصيات مخصصة.
+          <br>Improves your experience with personalized content and recommendations.
+        </p>
+      </div>
+      
+      <!-- User Data -->
+      <div class="consent-category">
+        <div class="consent-category-header">
+          <div class="consent-category-title">
+            👤 <span id="userdata-title">بيانات المستخدم الإعلانية</span>
+          </div>
+          <button class="consent-toggle" id="userdata-toggle" onclick="toggleConsent('ad_user_data')"></button>
+        </div>
+        <p class="consent-category-description" id="userdata-desc">
+          بيانات آمنة لتحسين استهداف الإعلانات.
+          <br>Secure data to improve ad targeting.
+        </p>
+      </div>
+      
+      <div class="consent-modal-buttons">
+        <button class="consent-modal-btn consent-modal-btn-cancel" id="modal-cancel-btn" onclick="rejectConsent()">
+          <span id="cancel-text">رفض الكل / Reject All</span>
+        </button>
+        <button class="consent-modal-btn consent-modal-btn-save" id="modal-save-btn" onclick="saveConsentPreferences()">
+          <span id="save-text">حفظ التفضيلات / Save Preferences</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- ========== END CONSENT PREFERENCES MODAL ========== -->
+  
+  <button class="lang-toggle" onclick="toggleLang()">EN</button>
+  
+  <header>
+    <div class="container">
+      <h1>BRAINSAIT</h1>
+      <p class="subtitle" id="subtitle">🏥 دليل عيادات الرياض المتخصصة | Riyadh Clinics Directory</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="segments">
+      <!-- Dental Segment -->
+      <div class="segment segment-dental">
+        <h2>🦷 <span id="dental-title">عيادات الأسنان</span></h2>
+        <ul class="clinics-list">
+          <li><a href="brainsait-outreach/brainsait-outreach/websites/dental/ram-clinics.html" class="clinic-link">Ram Clinics - رام كلينكس</a></li>
+          <li><a href="brainsait-outreach/brainsait-outreach/websites/dental/sigal-dental-clinic.html" class="clinic-link">Sigal Dental - سيجال</a></li>
+          <li><a href="brainsait-outreach/brainsait-outreach/websites/dental/imtiaz-dental-center.html" class="clinic-link">Imtiaz Dental - امتياز</a></li>
+          <li><a href="brainsait-outreach/brainsait-outreach/websites/dental/avicena-dental-center.html" class="clinic-link">Avicena Dental - أفيسينا</a></li>
+          <li><a href="brainsait-outreach/brainsait-outreach/websites/dental/star-smiles.html" class="clinic-link">Star Smiles - ستار سمايلز</a></li>
+        </ul>
+      </div>
+
+      <!-- Dermatology Segment -->
+      <div class="segment segment-derma">
+        <h2>💎 <span id="derma-title">عيادات الجلدية</span></h2>
+        <ul class="clinics-list">
+          <li><a href="brainsait-outreach/brainsait-outreach/websites/dermatology/derma-clinic.html" class="clinic-link">Derma Clinic - ديرما</a></li>
+          <li><a href="brainsait-outreach/brainsait-outreach/websites/dermatology/elite-medical-center.html" class="clinic-link">Elite Medical - إيليت</a></li>
+          <li><a href="brainsait-outreach/brainsait-outreach/websites/dermatology/kaya-skin-clinic.html" class="clinic-link">Kaya Skin - كايا</a></li>
+          <li><a href="brainsait-outreach/brainsait-outreach/websites/dermatology/medica-clinics.html" class="clinic-link">Medica Clinics - ميديكا</a></li>
+          <li><a href="brainsait-outreach/brainsait-outreach/websites/dermatology/renewal-reshape.html" class="clinic-link">Renewal Reshape - رينيوال</a></li>
+        </ul>
+      </div>
+
+      <!-- Polyclinic Segment -->
+      <div class="segment segment-poly">
+        <h2>🏢 <span id="poly-title">العيادات المتعددة</span></h2>
+        <ul class="clinics-list">
+          <li><a href="brainsait-outreach/brainsait-outreach/websites/polyclinic/consulting-clinics.html" class="clinic-link">Consulting Clinics - كونسلتنج</a></li>
+          <li><a href="brainsait-outreach/brainsait-outreach/websites/polyclinic/dallah-health.html" class="clinic-link">Dallah Health - دله</a></li>
+          <li><a href="brainsait-outreach/brainsait-outreach/websites/polyclinic/first-clinic.html" class="clinic-link">First Clinic - فيرست</a></li>
+          <li><a href="brainsait-outreach/brainsait-outreach/websites/polyclinic/specialized-medical-center.html" class="clinic-link">Specialized Medical - المركز الطبي</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>مدعوم من BRAINSAIT · BRAINSAIT Smart Booking Platform · <a href="https://brainsait.org" target="_blank">brainsait.org</a></p>
+  </footer>
+
+  <script>
+    function toggleLang() {
+      const html = document.documentElement;
+      const isArabic = html.dir === 'rtl';
+      html.dir = isArabic ? 'ltr' : 'rtl';
+      html.lang = isArabic ? 'en' : 'ar';
+      
+      const toggle = document.querySelector('.lang-toggle');
+      toggle.textContent = isArabic ? 'العربية' : 'EN';
+      
+      document.getElementById('subtitle').textContent = isArabic 
+        ? 'Riyadh Clinics Directory | دليل عيادات الرياض'
+        : '🏥 دليل عيادات الرياض المتخصصة | Riyadh Clinics Directory';
+      
+      document.getElementById('dental-title').textContent = isArabic ? 'Dental Clinics' : 'عيادات الأسنان';
+      document.getElementById('derma-title').textContent = isArabic ? 'Dermatology Clinics' : 'عيادات الجلدية';
+      document.getElementById('poly-title').textContent = isArabic ? 'Multi-Specialty Clinics' : 'العيادات المتعددة';
+
+      // Sync consent banner language with page language
+      if (typeof updateConsentLanguage === 'function') {
+        updateConsentLanguage(isArabic ? 'en' : 'ar');
+      }
+    }
+  </script>
+  
+  <!-- GA4 Configuration -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-R2Q0LYQTQS', {
+      'page_path': window.location.pathname,
+      'page_title': document.title,
+      'allow_google_signals': false,
+      'allow_ad_personalization_signals': false
+    });
+    
+    // Track page view event
+    gtag('event', 'page_view', {
+      'page_location': window.location.href,
+      'page_title': document.title,
+      'page_referrer': document.referrer || 'direct'
+    });
+  </script>
+  <!-- End GA4 Configuration -->
+  
+  <!-- ========== CONSENT MANAGEMENT JAVASCRIPT ========== -->
+  <script>
+    // ========== CONSENT STATE MANAGEMENT ==========
+    const CONSENT_STORAGE_KEY = 'consent_preferences';
+    const CONSENT_BANNER_SHOWN_KEY = 'consent_banner_shown';
+    const CONSENT_EXPIRY_DAYS = 365;
+    
+    // Default consent state (all denied for privacy-first MENA compliance)
+    const DEFAULT_CONSENT = {
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied',
+      'timestamp': new Date().getTime()
+    };
+    
+    // ========== UTILITY FUNCTIONS ==========
+    
+    /**
+     * Get current consent preferences
+     */
+    function getConsentState() {
+      const stored = localStorage.getItem(CONSENT_STORAGE_KEY);
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored);
+          const age = (new Date().getTime() - (parsed.timestamp || 0)) / (1000 * 60 * 60 * 24);
+          if (age > CONSENT_EXPIRY_DAYS) {
+            localStorage.removeItem(CONSENT_STORAGE_KEY);
+            return DEFAULT_CONSENT;
+          }
+          return parsed;
+        } catch (e) {
+          console.warn('Failed to parse stored consent:', e);
+          return DEFAULT_CONSENT;
+        }
+      }
+      return DEFAULT_CONSENT;
+    }
+    
+    /**
+     * Save consent preferences
+     */
+    function saveConsentState(consent) {
+      consent.timestamp = new Date().getTime();
+      localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify(consent));
+      localStorage.setItem(CONSENT_BANNER_SHOWN_KEY, 'true');
+      
+      // Update GA4 consent
+      updateGAConsent(consent);
+      
+      // Log consent decision for compliance audit
+      console.log('Consent saved:', consent);
+    }
+    
+    /**
+     * Update Google Analytics consent settings
+     */
+    function updateGAConsent(consent) {
+      if (typeof gtag !== 'undefined') {
+        gtag('consent', 'update', {
+          'ad_user_data': consent.ad_user_data,
+          'ad_personalization': consent.ad_personalization,
+          'ad_storage': consent.ad_storage,
+          'analytics_storage': consent.analytics_storage
+        });
+        console.log('GA consent updated');
+      }
+    }
+    
+    // ========== BANNER MANAGEMENT ==========
+    
+    /**
+     * Show consent banner if user hasn't made a choice
+     */
+    function initializeConsentBanner() {
+      const alreadyShown = localStorage.getItem(CONSENT_BANNER_SHOWN_KEY);
+      const banner = document.getElementById('consent-banner');
+      
+      // Show banner only if user hasn't made a decision
+      if (!alreadyShown && banner) {
+        banner.classList.add('show');
+      }
+    }
+    
+    /**
+     * Hide consent banner
+     */
+    function hideConsentBanner() {
+      const banner = document.getElementById('consent-banner');
+      if (banner) {
+        banner.classList.remove('show');
+      }
+    }
+    
+    // ========== CONSENT DECISION HANDLERS ==========
+    
+    /**
+     * Accept all consent
+     */
+    function acceptConsent() {
+      const consent = {
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+        'ad_storage': 'granted',
+        'analytics_storage': 'granted'
+      };
+      saveConsentState(consent);
+      hideConsentBanner();
+      updateConsentToggleUI(consent);
+      console.log('All consent accepted');
+    }
+    
+    /**
+     * Reject all consent (privacy-first default)
+     */
+    function rejectConsent() {
+      const consent = DEFAULT_CONSENT;
+      saveConsentState(consent);
+      closeConsentSettings();
+      hideConsentBanner();
+      updateConsentToggleUI(consent);
+      console.log('All consent rejected');
+    }
+    
+    /**
+     * Toggle individual consent category.
+     * Reads current state from the DOM toggle (not stale storage) so that
+     * multiple toggles before saving all work correctly.
+     */
+    function toggleConsent(category) {
+      const toggle = document.getElementById(category + '-toggle');
+      // Use the live DOM class as source of truth (not stale localStorage)
+      const isCurrentlyGranted = toggle.classList.contains('active');
+      if (isCurrentlyGranted) {
+        toggle.classList.remove('active');
+      } else {
+        toggle.classList.add('active');
+      }
+      // Note: We don't auto-save on toggle, only on Save button
+    }
+    
+    // ========== CONSENT SETTINGS MODAL ==========
+    
+    /**
+     * Open consent preferences modal
+     */
+    function openConsentSettings() {
+      const modal = document.getElementById('consent-modal');
+      if (modal) {
+        modal.classList.add('show');
+        updateConsentToggleUI(getConsentState());
+      }
+    }
+    
+    /**
+     * Close consent preferences modal
+     */
+    function closeConsentSettings() {
+      const modal = document.getElementById('consent-modal');
+      if (modal) {
+        modal.classList.remove('show');
+      }
+    }
+    
+    /**
+     * Update toggle UI based on current consent state
+     */
+    function updateConsentToggleUI(consent) {
+      const categories = ['analytics_storage', 'ad_storage', 'ad_personalization', 'ad_user_data'];
+      
+      categories.forEach(category => {
+        const toggle = document.getElementById(category + '-toggle');
+        if (toggle) {
+          if (consent[category] === 'granted') {
+            toggle.classList.add('active');
+          } else {
+            toggle.classList.remove('active');
+          }
+        }
+      });
+    }
+    
+    /**
+     * Save consent preferences from modal
+     */
+    function saveConsentPreferences() {
+      const consent = {
+        'analytics_storage': document.getElementById('analytics_storage-toggle').classList.contains('active') ? 'granted' : 'denied',
+        'ad_storage': document.getElementById('ad_storage-toggle').classList.contains('active') ? 'granted' : 'denied',
+        'ad_personalization': document.getElementById('ad_personalization-toggle').classList.contains('active') ? 'granted' : 'denied',
+        'ad_user_data': document.getElementById('ad_user_data-toggle').classList.contains('active') ? 'granted' : 'denied'
+      };
+      
+      saveConsentState(consent);
+      closeConsentSettings();
+      hideConsentBanner();
+      console.log('Preferences saved:', consent);
+    }
+    
+    // ========== LANGUAGE SUPPORT (Arabic/English) ==========
+    
+    /**
+     * Update consent banner text based on language
+     */
+    function updateConsentLanguage(lang) {
+      const isArabic = lang === 'ar';
+      
+      if (isArabic) {
+        document.getElementById('consent-title').innerHTML = '🔐 حماية خصوصيتك';
+        document.getElementById('consent-description').innerHTML = 'نستخدم الكوكيز لتحسين تجربتك. نحترم خصوصيتك ولا نشارك بيانات مع أطراف ثالثة دون موافقتك.';
+        document.getElementById('accept-text').innerHTML = 'قبول الكل';
+        document.getElementById('reject-text').innerHTML = 'رفض';
+        document.getElementById('settings-text').innerHTML = 'الإعدادات';
+        document.getElementById('modal-title').innerHTML = 'إدارة تفضيلات الخصوصية';
+        document.getElementById('modal-subtitle').innerHTML = '';
+        document.getElementById('essential-title').innerHTML = 'الكوكيز الأساسية';
+        document.getElementById('essential-desc').innerHTML = 'ضرورية لعمل الموقع بشكل أساسي. لا يمكن تعطيلها.';
+        document.getElementById('analytics-title').innerHTML = 'التحليلات والأداء';
+        document.getElementById('analytics-desc').innerHTML = 'تساعدنا على فهم كيفية استخدام الموقع لتحسينه.';
+        document.getElementById('marketing-title').innerHTML = 'التسويق والإعلانات';
+        document.getElementById('marketing-desc').innerHTML = 'تتيح لنا عرض إعلانات ذات صلة باهتماماتك.';
+        document.getElementById('personalization-title').innerHTML = 'التخصيص والتوصيات';
+        document.getElementById('personalization-desc').innerHTML = 'يحسن تجربتك بمحتوى وتوصيات مخصصة.';
+        document.getElementById('userdata-title').innerHTML = 'بيانات المستخدم الإعلانية';
+        document.getElementById('userdata-desc').innerHTML = 'بيانات آمنة لتحسين استهداف الإعلانات.';
+        document.getElementById('cancel-text').innerHTML = 'رفض الكل';
+        document.getElementById('save-text').innerHTML = 'حفظ التفضيلات';
+      } else {
+        document.getElementById('consent-title').innerHTML = '🔐 Your Privacy';
+        document.getElementById('consent-description').innerHTML = 'We use cookies to improve your experience. We respect your privacy and never share data without your consent.';
+        document.getElementById('accept-text').innerHTML = 'Accept All';
+        document.getElementById('reject-text').innerHTML = 'Reject';
+        document.getElementById('settings-text').innerHTML = 'Settings';
+        document.getElementById('modal-title').innerHTML = 'Manage Privacy Preferences';
+        document.getElementById('modal-subtitle').innerHTML = '';
+        document.getElementById('essential-title').innerHTML = 'Essential Cookies';
+        document.getElementById('essential-desc').innerHTML = 'Required for the website to function properly. Cannot be disabled.';
+        document.getElementById('analytics-title').innerHTML = 'Analytics & Performance';
+        document.getElementById('analytics-desc').innerHTML = 'Helps us understand how you use the website to improve it.';
+        document.getElementById('marketing-title').innerHTML = 'Marketing & Ads';
+        document.getElementById('marketing-desc').innerHTML = 'Allows us to show you relevant advertisements.';
+        document.getElementById('personalization-title').innerHTML = 'Personalization & Recommendations';
+        document.getElementById('personalization-desc').innerHTML = 'Improves your experience with personalized content and recommendations.';
+        document.getElementById('userdata-title').innerHTML = 'Advertising User Data';
+        document.getElementById('userdata-desc').innerHTML = 'Secure data to improve ad targeting.';
+        document.getElementById('cancel-text').innerHTML = 'Reject All';
+        document.getElementById('save-text').innerHTML = 'Save Preferences';
+      }
+    }
+    
+    // ========== INITIALIZATION ==========
+    
+    // Initialize consent banner on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Initializing consent management...');
+      
+      // Set initial language
+      const htmlLang = document.documentElement.lang || 'ar';
+      updateConsentLanguage(htmlLang);
+      
+      // Show banner if needed
+      initializeConsentBanner();
+      
+      // Set up privacy policy link
+      const policyLink = document.getElementById('privacy-policy-link');
+      if (policyLink) {
+        policyLink.href = '/privacy-policy.html';
+        policyLink.target = '_blank';
+      }
+      
+      console.log('Consent management initialized');
+      console.log('Current consent state:', getConsentState());
+    });
+    
+    // ========== COMPLIANCE AUDIT LOG ==========
+    
+    /**
+     * Get full consent audit trail
+     * Can be used for PDPL/UAE Data Protection Law compliance reporting
+     */
+    function getConsentAuditTrail() {
+      const consent = getConsentState();
+      return {
+        timestamp: new Date(consent.timestamp).toISOString(),
+        consent_state: {
+          analytics_storage: consent.analytics_storage,
+          ad_storage: consent.ad_storage,
+          ad_personalization: consent.ad_personalization,
+          ad_user_data: consent.ad_user_data
+        },
+        user_agent: navigator.userAgent,
+        page_url: window.location.href,
+        compliance: {
+          gdpr_applicable: false,
+          pdpl_applicable: true,
+          uae_law_applicable: true,
+          consent_type: 'explicit_opt_in'
+        }
+      };
+    }
+  </script>
+  <!-- ========== END CONSENT MANAGEMENT JAVASCRIPT ========== -->
+
+  <!-- BrainSAIT AI Booking Guide -->
+  <script src="/ai-agent.js" data-lang="ar"></script>
+</body>
+</html>

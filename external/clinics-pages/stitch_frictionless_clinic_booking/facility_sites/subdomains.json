@@ -1,0 +1,240 @@
+[
+  {
+    "name": "Ram Clinics",
+    "arabicName": "رام كلينكس",
+    "segment": "dental-medical",
+    "specialty": "Dental & Medical",
+    "website": "https://ramclinics.com",
+    "phone": "920004567",
+    "location": "Al-Sahafa / Al-Rawdah",
+    "tagline": "High-volume care network with precision booking orchestration.",
+    "signaturePrograms": [
+      "Family Dental Flows",
+      "Specialty Referral Routing",
+      "Branch-Aware Slot Intelligence"
+    ],
+    "slug": "ram-clinics",
+    "subdomain": "ram-clinics.brainsait.org"
+  },
+  {
+    "name": "Sigal Dental Clinic",
+    "arabicName": "عيادة سيجال",
+    "segment": "dental-medical",
+    "specialty": "Premium Dentistry",
+    "website": "https://sigal.sa",
+    "phone": "0114831111",
+    "location": "Al-Takhassusi St",
+    "tagline": "Premium dentistry experience with concierge-grade appointment design.",
+    "signaturePrograms": [
+      "VIP Smile Journeys",
+      "Consult-to-Chair Compression",
+      "White-Glove Follow-up Loops"
+    ],
+    "slug": "sigal-dental-clinic",
+    "subdomain": "sigal-dental-clinic.brainsait.org"
+  },
+  {
+    "name": "Imtiaz Dental Center",
+    "arabicName": "مركز امتياز للأسنان",
+    "segment": "dental-medical",
+    "specialty": "Specialized Dentistry",
+    "website": "https://imtiaz.com.sa",
+    "phone": "0114626633",
+    "location": "Al-Olaya District",
+    "tagline": "Specialized dental pathways engineered to eliminate booking leakage.",
+    "signaturePrograms": [
+      "Complex Case Prioritization",
+      "Specialist Calendar Fusion",
+      "Pre-visit Readiness Automation"
+    ],
+    "slug": "imtiaz-dental-center",
+    "subdomain": "imtiaz-dental-center.brainsait.org"
+  },
+  {
+    "name": "Avicena Dental Center",
+    "arabicName": "مركز أفيسينا للأسنان",
+    "segment": "dental-medical",
+    "specialty": "Orthodontics / Implants",
+    "website": "https://avicena.com.sa",
+    "phone": "0112005577",
+    "location": "King Fahd Road",
+    "tagline": "Orthodontic and implant journeys with conversion-safe scheduling.",
+    "signaturePrograms": [
+      "Implant Case Funnels",
+      "Ortho Program Sequencing",
+      "Treatment Milestone Reminders"
+    ],
+    "slug": "avicena-dental-center",
+    "subdomain": "avicena-dental-center.brainsait.org"
+  },
+  {
+    "name": "Star Smiles",
+    "arabicName": "ستار سمايلز",
+    "segment": "dental-medical",
+    "specialty": "Pediatric / Cosmetic",
+    "website": "https://starsmiles.com.sa",
+    "phone": "0114164433",
+    "location": "Al-Sulaimaniyah",
+    "tagline": "Pediatric and cosmetic flows designed for speed, trust, and continuity.",
+    "signaturePrograms": [
+      "Parent-Friendly Booking UX",
+      "Aesthetic Consult Fast Lanes",
+      "No-Show Rescue Sequences"
+    ],
+    "slug": "star-smiles",
+    "subdomain": "star-smiles.brainsait.org"
+  },
+  {
+    "name": "Derma Clinic",
+    "arabicName": "عيادة ديرما",
+    "segment": "derma-cosmetic",
+    "specialty": "Dermatology / Laser",
+    "website": "https://dermaclinic.com.sa",
+    "phone": "0114651919",
+    "location": "Olaya St, Al-Murooj",
+    "tagline": "Clinical skin journeys that qualify leads before the first consult.",
+    "signaturePrograms": [
+      "Skin Concern Triage",
+      "Laser Candidacy Scoring",
+      "Authority Content Pipelines"
+    ],
+    "slug": "derma-clinic",
+    "subdomain": "derma-clinic.brainsait.org"
+  },
+  {
+    "name": "Elite Medical Center",
+    "arabicName": "إيليت ميديكال سنتر",
+    "segment": "derma-cosmetic",
+    "specialty": "Aesthetic Surgery",
+    "website": "https://elitemc.com",
+    "phone": "0114616777",
+    "location": "Prince Muhammad St",
+    "tagline": "Aesthetic surgery conversion systems with premium authority storytelling.",
+    "signaturePrograms": [
+      "Surgery Readiness Qualification",
+      "Consult Confidence Framework",
+      "Decision-Stage Nurture Paths"
+    ],
+    "slug": "elite-medical-center",
+    "subdomain": "elite-medical-center.brainsait.org"
+  },
+  {
+    "name": "Kaya Skin Clinic",
+    "arabicName": "كايا سكين كلينك",
+    "segment": "derma-cosmetic",
+    "specialty": "Clinical Skincare",
+    "website": "https://kayaskinclinic.com",
+    "phone": "0114810233",
+    "location": "Al-Takhassusi St",
+    "tagline": "Evidence-led skincare engagement with automated intake intelligence.",
+    "signaturePrograms": [
+      "Concern-to-Protocol Mapping",
+      "Clinical Education Funnels",
+      "Productive Follow-up Cadence"
+    ],
+    "slug": "kaya-skin-clinic",
+    "subdomain": "kaya-skin-clinic.brainsait.org"
+  },
+  {
+    "name": "Medica Clinics",
+    "arabicName": "ميديكا كلينكس",
+    "segment": "derma-cosmetic",
+    "specialty": "Plastic Surgery",
+    "website": "https://medicaclinic.com.sa",
+    "phone": "0112120000",
+    "location": "Al-Mu'tamar Dist",
+    "tagline": "Surgical lead qualification that protects doctor time and boosts closure.",
+    "signaturePrograms": [
+      "Procedure Intent Matrix",
+      "Risk-Aware Pre-screening",
+      "Consult Utilization Optimization"
+    ],
+    "slug": "medica-clinics",
+    "subdomain": "medica-clinics.brainsait.org"
+  },
+  {
+    "name": "Renewal Reshape",
+    "arabicName": "رينيوال ريشيب",
+    "segment": "derma-cosmetic",
+    "specialty": "Cosmetic Surgery",
+    "website": "https://renewalreshape.com.sa",
+    "phone": "0112001144",
+    "location": "Northern Ring Rd",
+    "tagline": "Cosmetic surgery lifecycle journeys built for trust and conversion velocity.",
+    "signaturePrograms": [
+      "Aesthetic Funnel Segmentation",
+      "Pre-op Conversion Tracks",
+      "Post-op Retention Automation"
+    ],
+    "slug": "renewal-reshape",
+    "subdomain": "renewal-reshape.brainsait.org"
+  },
+  {
+    "name": "Consulting Clinics",
+    "arabicName": "كونسلتنج كلينكس",
+    "segment": "premium-polyclinic",
+    "specialty": "Multi-Specialty",
+    "website": "https://consultingclinics.com",
+    "phone": "0114646330",
+    "location": "Makkah Al-Mukarramah Rd",
+    "tagline": "Multi-specialty executive journeys with full-lifecycle orchestration.",
+    "signaturePrograms": [
+      "Cross-Specialty Navigation",
+      "Executive Care Concierge",
+      "Retention Intelligence Loops"
+    ],
+    "slug": "consulting-clinics",
+    "subdomain": "consulting-clinics.brainsait.org"
+  },
+  {
+    "name": "Dallah Health",
+    "arabicName": "دله الصحية",
+    "segment": "premium-polyclinic",
+    "specialty": "Multi-Specialty",
+    "website": "https://dallah-health.com",
+    "phone": "920012222",
+    "location": "Al-Nakheel / Al-Namudajiyah",
+    "tagline": "Enterprise-grade care delivery with bilingual patient growth automation.",
+    "signaturePrograms": [
+      "Enterprise Intake Streams",
+      "Arabic/English Journey Control",
+      "Lifecycle Revenue Protection"
+    ],
+    "slug": "dallah-health",
+    "subdomain": "dallah-health.brainsait.org"
+  },
+  {
+    "name": "First Clinic",
+    "arabicName": "فيرست كلينك",
+    "segment": "premium-polyclinic",
+    "specialty": "Executive Health",
+    "website": "https://firstclinic.com.sa",
+    "phone": "0112222111",
+    "location": "King Abdullah Rd",
+    "tagline": "Executive health experiences designed with precision and continuity.",
+    "signaturePrograms": [
+      "VIP Intake Architecture",
+      "Priority Care Timelines",
+      "Executive Preventive Programs"
+    ],
+    "slug": "first-clinic",
+    "subdomain": "first-clinic.brainsait.org"
+  },
+  {
+    "name": "Specialized Medical Center",
+    "arabicName": "المركز الطبي التخصصي",
+    "segment": "premium-polyclinic",
+    "specialty": "Comprehensive Care",
+    "website": "https://smc.com.sa",
+    "phone": "0114343800",
+    "location": "King Fahd Rd",
+    "tagline": "Comprehensive care platform powered by full-funnel patient automation.",
+    "signaturePrograms": [
+      "Holistic Care Routing",
+      "Continuity-of-Care Flows",
+      "Bilingual Growth Expansion"
+    ],
+    "slug": "specialized-medical-center",
+    "subdomain": "specialized-medical-center.brainsait.org"
+  }
+]
