@@ -1,0 +1,36 @@
+services:
+  redis-stack:
+    image: redis/redis-stack-server:7.2.0-v18
+    container_name: brainsait-redis-stack
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: >-
+      sh -lc "redis-stack-server /usr/local/etc/redis/redis-stack.conf
+      --requirepass \"$REDIS_PASSWORD\"
+      --masterauth \"$REDIS_PASSWORD\"
+      --appendfsync \"${REDIS_APPEND_FSYNC:-everysec}\"
+      --save \"${REDIS_SAVE_SCHEDULE:-900 1 300 10 60 10000}\"
+      --maxmemory \"${REDIS_MAXMEMORY:-2gb}\"
+      --maxmemory-policy \"${REDIS_MAXMEMORY_POLICY:-allkeys-lfu}\""
+    ports:
+      - "${REDIS_STACK_PORT:-6379}:6379"
+      - "${REDIS_STACK_HTTP_PORT:-8001}:8001"
+    volumes:
+      - ./config/redis-stack.conf:/usr/local/etc/redis/redis-stack.conf:ro
+      - ./data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  redis-insight:
+    image: redis/redisinsight:latest
+    container_name: brainsait-redis-insight
+    restart: unless-stopped
+    ports:
+      - "${REDIS_INSIGHT_PORT:-5540}:5540"
+    depends_on:
+      redis-stack:
+        condition: service_healthy

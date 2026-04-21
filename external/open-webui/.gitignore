@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+bun.lockb
+
+# Build outputs
+build/
+dist/
+dist_worker/
+.next/
+out/
+*.wasm
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+.dev.vars
+identity-services-env.local
+wrangler.toml.local
+
+# Cloudflare / Wrangler
+.wrangler/
+.wrangler-env
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Test coverage
+coverage/
+
+# Certificates
+*.pem
+*.p12
+*.pfx

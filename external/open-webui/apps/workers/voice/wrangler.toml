@@ -1,0 +1,98 @@
+name = "basma-voice"
+main = "src/index.ts"
+compatibility_date = "2024-06-20"
+
+[env.production]
+name = "basma-voice-prod"
+vars = { ENVIRONMENT = "production", ANTHROPIC_PROVIDER = "claude" }
+
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "basma_production"
+database_id = "your-d1-database-id"
+
+[[env.production.r2_buckets]]
+binding = "R2_STORAGE"
+bucket_name = "basma-storage"
+
+[[env.production.kv_namespaces]]
+binding = "CACHE"
+id = "your-kv-namespace-id"
+
+[[env.production.kv_namespaces]]
+binding = "SESSIONS"
+id = "your-sessions-kv-id"
+
+[[env.production.kv_namespaces]]
+binding = "RATE_LIMIT"
+id = "your-rate-limit-kv-id"
+
+[env.vllm]
+name = "basma-voice-vllm"
+vars = { ENVIRONMENT = "development", ANTHROPIC_PROVIDER = "vllm", VLLM_BASE_URL = "http://localhost:8000/v1", VLLM_API_KEY = "sk-local" }
+
+[env.github]
+name = "basma-voice-github"
+vars = { ENVIRONMENT = "development", ANTHROPIC_PROVIDER = "github", GITHUB_MODEL = "deepseek/DeepSeek-V3-0324", GITHUB_MODELS_BASE_URL = "https://models.github.ai/inference" }
+
+[[env.vllm.d1_databases]]
+binding = "DB"
+database_name = "basma_development"
+database_id = "your-d1-dev-id"
+
+[[env.vllm.r2_buckets]]
+binding = "R2_STORAGE"
+bucket_name = "basma-storage-dev"
+
+[[env.vllm.kv_namespaces]]
+binding = "CACHE"
+id = "your-kv-namespace-dev-id"
+
+[[env.vllm.kv_namespaces]]
+binding = "SESSIONS"
+id = "your-sessions-kv-dev-id"
+
+[[env.vllm.kv_namespaces]]
+binding = "RATE_LIMIT"
+id = "your-rate-limit-kv-dev-id"
+
+[[env.github.d1_databases]]
+binding = "DB"
+database_name = "basma_development"
+database_id = "your-d1-dev-id"
+
+[[env.github.r2_buckets]]
+binding = "R2_STORAGE"
+bucket_name = "basma-storage-dev"
+
+[[env.github.kv_namespaces]]
+binding = "CACHE"
+id = "your-kv-namespace-dev-id"
+
+[[env.github.kv_namespaces]]
+binding = "SESSIONS"
+id = "your-sessions-kv-dev-id"
+
+[[env.github.kv_namespaces]]
+binding = "RATE_LIMIT"
+id = "your-rate-limit-kv-dev-id"
+
+# Route bindings for Cloudflare
+# Production routes - WebSocket and streaming
+[[env.production.routes]]
+pattern = "voice.bsma.elfadil.com/*"
+zone_id = "2df8e1ec714a9612535cdb04ef84c9d1"
+
+# Fallback for twilio webhooks
+[[env.production.routes]]
+pattern = "webhooks.bsma.elfadil.com/*"
+zone_id = "2df8e1ec714a9612535cdb04ef84c9d1"
+
+# Development/vLLM routes
+[[env.vllm.routes]]
+pattern = "voice-dev.bsma.elfadil.com/*"
+zone_id = "2df8e1ec714a9612535cdb04ef84c9d1"
+
+[[env.vllm.routes]]
+pattern = "webhooks-dev.bsma.elfadil.com/*"
+zone_id = "2df8e1ec714a9612535cdb04ef84c9d1"

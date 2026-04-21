@@ -1,0 +1,120 @@
+services:
+  redis-primary:
+    image: redis/redis-stack-server:7.2.0-v18
+    container_name: brainsait-redis-primary
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: >-
+      sh -lc "redis-stack-server /usr/local/etc/redis/redis-stack.conf
+      --requirepass \"$REDIS_PASSWORD\"
+      --masterauth \"$REDIS_PASSWORD\"
+      --appendfsync \"${REDIS_APPEND_FSYNC:-everysec}\"
+      --save \"${REDIS_SAVE_SCHEDULE:-900 1 300 10 60 10000}\"
+      --maxmemory \"${REDIS_MAXMEMORY:-2gb}\"
+      --maxmemory-policy \"${REDIS_MAXMEMORY_POLICY:-allkeys-lfu}\""
+    ports:
+      - "6379:6379"
+      - "8001:8001"
+    volumes:
+      - ./config/redis-stack.conf:/usr/local/etc/redis/redis-stack.conf:ro
+      - ./data/primary:/data
+
+  redis-replica-1:
+    image: redis/redis-stack-server:7.2.0-v18
+    container_name: brainsait-redis-replica-1
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: >-
+      sh -lc "redis-stack-server /usr/local/etc/redis/redis-stack.conf
+      --replicaof redis-primary 6379
+      --requirepass \"$REDIS_PASSWORD\"
+      --masterauth \"$REDIS_PASSWORD\"
+      --appendfsync \"${REDIS_APPEND_FSYNC:-everysec}\"
+      --save \"${REDIS_SAVE_SCHEDULE:-900 1 300 10 60 10000}\"
+      --maxmemory \"${REDIS_MAXMEMORY:-2gb}\"
+      --maxmemory-policy \"${REDIS_MAXMEMORY_POLICY:-allkeys-lfu}\""
+    ports:
+      - "6380:6379"
+      - "8002:8001"
+    volumes:
+      - ./config/redis-stack.conf:/usr/local/etc/redis/redis-stack.conf:ro
+      - ./data/replica1:/data
+    depends_on:
+      - redis-primary
+
+  redis-replica-2:
+    image: redis/redis-stack-server:7.2.0-v18
+    container_name: brainsait-redis-replica-2
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: >-
+      sh -lc "redis-stack-server /usr/local/etc/redis/redis-stack.conf
+      --replicaof redis-primary 6379
+      --requirepass \"$REDIS_PASSWORD\"
+      --masterauth \"$REDIS_PASSWORD\"
+      --appendfsync \"${REDIS_APPEND_FSYNC:-everysec}\"
+      --save \"${REDIS_SAVE_SCHEDULE:-900 1 300 10 60 10000}\"
+      --maxmemory \"${REDIS_MAXMEMORY:-2gb}\"
+      --maxmemory-policy \"${REDIS_MAXMEMORY_POLICY:-allkeys-lfu}\""
+    ports:
+      - "6381:6379"
+      - "8003:8001"
+    volumes:
+      - ./config/redis-stack.conf:/usr/local/etc/redis/redis-stack.conf:ro
+      - ./data/replica2:/data
+    depends_on:
+      - redis-primary
+
+  sentinel-1:
+    image: redis:7-alpine
+    container_name: brainsait-sentinel-1
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: >-
+      sh -lc "cp /etc/redis/sentinel.conf /tmp/sentinel.conf
+      && sed -i 's|${REDIS_PASSWORD}|'\"$REDIS_PASSWORD\"'|g' /tmp/sentinel.conf
+      && redis-server /tmp/sentinel.conf --sentinel"
+    ports:
+      - "${REDIS_SENTINEL_PORT1:-26379}:26379"
+    volumes:
+      - ./config/sentinel.conf:/etc/redis/sentinel.conf:ro
+    depends_on:
+      - redis-primary
+
+  sentinel-2:
+    image: redis:7-alpine
+    container_name: brainsait-sentinel-2
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: >-
+      sh -lc "cp /etc/redis/sentinel.conf /tmp/sentinel.conf
+      && sed -i 's|${REDIS_PASSWORD}|'\"$REDIS_PASSWORD\"'|g' /tmp/sentinel.conf
+      && redis-server /tmp/sentinel.conf --sentinel"
+    ports:
+      - "${REDIS_SENTINEL_PORT2:-26380}:26379"
+    volumes:
+      - ./config/sentinel.conf:/etc/redis/sentinel.conf:ro
+    depends_on:
+      - redis-primary
+
+  sentinel-3:
+    image: redis:7-alpine
+    container_name: brainsait-sentinel-3
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: >-
+      sh -lc "cp /etc/redis/sentinel.conf /tmp/sentinel.conf
+      && sed -i 's|${REDIS_PASSWORD}|'\"$REDIS_PASSWORD\"'|g' /tmp/sentinel.conf
+      && redis-server /tmp/sentinel.conf --sentinel"
+    ports:
+      - "${REDIS_SENTINEL_PORT3:-26381}:26379"
+    volumes:
+      - ./config/sentinel.conf:/etc/redis/sentinel.conf:ro
+    depends_on:
+      - redis-primary
