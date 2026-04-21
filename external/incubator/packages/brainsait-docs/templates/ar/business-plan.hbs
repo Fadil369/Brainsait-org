@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خطة العمل - {{companyName}}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Noto Sans Arabic', 'IBM Plex Sans Arabic', 'Tajawal', 'Cairo', sans-serif;
+            line-height: 1.8;
+            color: #2c2c2c;
+            direction: rtl;
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 21cm;
+            margin: 0 auto;
+            padding: 2cm;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #2E7D32;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #1976D2, #2E7D32);
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #2E7D32, #1976D2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .document-title {
+            font-size: 2.8em;
+            font-weight: 700;
+            color: #2E7D32;
+            margin: 20px 0 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .company-name {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #1976D2;
+            margin: 10px 0;
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            color: #666;
+            margin: 15px 0;
+        }
+        
+        .date-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #e3f2fd);
+            border-radius: 10px;
+            border-right: 4px solid #2E7D32;
+        }
+        
+        .hijri-date {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #2E7D32;
+            margin-bottom: 8px;
+        }
+        
+        .gregorian-date {
+            font-size: 1em;
+            color: #666;
+        }
+        
+        .section {
+            margin: 50px 0;
+            page-break-inside: avoid;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            font-weight: 700;
+            color: #2E7D32;
+            margin-bottom: 25px;
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #f1f8e9, #e8f5e8);
+            border-radius: 12px;
+            border-right: 6px solid #2E7D32;
+            position: relative;
+        }
+        
+        .section-title::before {
+            content: counter(section-counter, arabic-indic);
+            counter-increment: section-counter;
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: #2E7D32;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+        
+        .subsection {
+            margin: 30px 0;
+        }
+        
+        .subsection-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #1976D2;
+            margin-bottom: 15px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            border-radius: 8px;
+            border-right: 4px solid #1976D2;
+        }
+        
+        .content {
+            line-height: 2;
+            text-align: justify;
+            margin: 20px 0;
+            padding: 0 10px;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #fff3e0, #fff8e1);
+            padding: 20px;
+            border-radius: 10px;
+            border-right: 4px solid #F57C00;
+            margin: 25px 0;
+            position: relative;
+        }
+        
+        .highlight::before {
+            content: "⭐";
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5em;
+        }
+        
+        .financial-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 25px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .financial-table th {
+            background: linear-gradient(135deg, #2E7D32, #388E3C);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        .financial-table td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+            font-weight: 500;
+        }
+        
+        .financial-table tr:nth-child(even) td {
+            background: #f8f9fa;
+        }
+        
+        .financial-table tr:hover td {
+            background: #e8f5e8;
+        }
+        
+        .amount {
+            font-weight: 700;
+            color: #2E7D32;
+            font-size: 1.1em;
+        }
+        
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .metric-card {
+            background: linear-gradient(135deg, #f8f9fa, #e3f2fd);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            border-color: #2E7D32;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.2);
+        }
+        
+        .metric-value {
+            font-size: 2em;
+            font-weight: 700;
+            color: #2E7D32;
+            margin-bottom: 10px;
+        }
+        
+        .metric-label {
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .timeline {
+            margin: 30px 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin: 20px 0;
+            position: relative;
+            padding-right: 40px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            background: #2E7D32;
+            border-radius: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            right: 20px;
+            top: 22px;
+            width: 2px;
+            height: 40px;
+            background: #e0e0e0;
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-right: 4px solid #2E7D32;
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: #2E7D32;
+            margin-bottom: 5px;
+        }
+        
+        ul, ol {
+            margin: 20px 0;
+            padding-right: 30px;
+        }
+        
+        li {
+            margin: 10px 0;
+            line-height: 1.8;
+        }
+        
+        .risk-matrix {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .risk-item {
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid;
+        }
+        
+        .risk-high {
+            background: #ffebee;
+            border-color: #f44336;
+            color: #d32f2f;
+        }
+        
+        .risk-medium {
+            background: #fff3e0;
+            border-color: #ff9800;
+            color: #f57c00;
+        }
+        
+        .risk-low {
+            background: #e8f5e8;
+            border-color: #4caf50;
+            color: #388e3c;
+        }
+        
+        .contact-info {
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .footer {
+            margin-top: 60px;
+            padding: 30px 0;
+            border-top: 2px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+        }
+        
+        .arabic-number {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-weight: 600;
+        }
+        
+        @media print {
+            .container {
+                box-shadow: none;
+                margin: 0;
+                padding: 1.5cm;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            .section-title {
+                page-break-after: avoid;
+            }
+        }
+        
+        body {
+            counter-reset: section-counter;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="logo">
+                {{#if companyLogo}}
+                    <img src="{{companyLogo}}" alt="{{companyName}}" style="width: 100%; height: 100%; object-fit: contain;">
+                {{else}}
+                    برين سايت
+                {{/if}}
+            </div>
+            <h1 class="document-title">خطة العمل</h1>
+            <h2 class="company-name">{{companyName}}</h2>
+            <p class="subtitle">خطة شاملة للأعمال في المملكة العربية السعودية</p>
+            
+            <div class="date-section">
+                <div class="hijri-date">{{hijriDate}}</div>
+                <div class="gregorian-date">الموافق {{gregorianDate}}</div>
+            </div>
+        </div>
+
+        <!-- Executive Summary -->
+        <div class="section">
+            <h2 class="section-title">الملخص التنفيذي</h2>
+            <div class="content">
+                <p>{{executiveSummary}}</p>
+            </div>
+            
+            <div class="highlight">
+                <h3>الهدف الرئيسي</h3>
+                <p>{{mainObjective}}</p>
+            </div>
+            
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-value arabic-number">{{investmentAmount}}</div>
+                    <div class="metric-label">رأس المال المطلوب (ريال)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value arabic-number">{{expectedROI}}%</div>
+                    <div class="metric-label">العائد المتوقع على الاستثمار</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value arabic-number">{{timeframe}}</div>
+                    <div class="metric-label">المدة الزمنية (سنوات)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Company Overview -->
+        <div class="section">
+            <h2 class="section-title">نظرة عامة على الشركة</h2>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">رؤية الشركة</h3>
+                <div class="content">{{companyVision}}</div>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">رسالة الشركة</h3>
+                <div class="content">{{companyMission}}</div>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">القيم الأساسية</h3>
+                <div class="content">
+                    <ul>
+                        {{#each coreValues}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">المعلومات الأساسية</h3>
+                <div class="contact-info">
+                    <p><strong>رقم السجل التجاري:</strong> <span class="arabic-number">{{crNumber}}</span></p>
+                    <p><strong>الرقم الضريبي:</strong> <span class="arabic-number">{{vatNumber}}</span></p>
+                    <p><strong>العنوان الوطني:</strong> {{nationalAddress}}</p>
+                    <p><strong>رقم الهاتف:</strong> <span class="arabic-number">{{phoneNumber}}</span></p>
+                    <p><strong>البريد الإلكتروني:</strong> {{email}}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products and Services -->
+        <div class="section">
+            <h2 class="section-title">المنتجات والخدمات</h2>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">الخدمات الأساسية</h3>
+                <div class="content">
+                    {{#each services}}
+                    <div class="highlight">
+                        <h4>{{name}}</h4>
+                        <p>{{description}}</p>
+                        <p><strong>السعر المتوقع:</strong> <span class="amount arabic-number">{{price}} ريال</span></p>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">الميزة التنافسية</h3>
+                <div class="content">{{competitiveAdvantage}}</div>
+            </div>
+        </div>
+
+        <!-- Market Analysis -->
+        <div class="section">
+            <h2 class="section-title">تحليل السوق</h2>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">السوق المستهدف</h3>
+                <div class="content">{{targetMarket}}</div>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">حجم السوق</h3>
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-value arabic-number">{{marketSize}}</div>
+                        <div class="metric-label">حجم السوق (مليون ريال)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value arabic-number">{{marketGrowthRate}}%</div>
+                        <div class="metric-label">معدل نمو السوق السنوي</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value arabic-number">{{marketShare}}%</div>
+                        <div class="metric-label">الحصة السوقية المستهدفة</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">تحليل المنافسين</h3>
+                <div class="content">
+                    {{#each competitors}}
+                    <div style="margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                        <h4>{{name}}</h4>
+                        <p><strong>نقاط القوة:</strong> {{strengths}}</p>
+                        <p><strong>نقاط الضعف:</strong> {{weaknesses}}</p>
+                        <p><strong>الحصة السوقية:</strong> <span class="arabic-number">{{marketShare}}%</span></p>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+        <!-- Marketing Strategy -->
+        <div class="section">
+            <h2 class="section-title">استراتيجية التسويق</h2>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">استراتيجية التسعير</h3>
+                <div class="content">{{pricingStrategy}}</div>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">قنوات التوزيع</h3>
+                <div class="content">
+                    <ul>
+                        {{#each distributionChannels}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">استراتيجية الترويج</h3>
+                <div class="content">{{promotionStrategy}}</div>
+            </div>
+        </div>
+
+        <!-- Financial Projections -->
+        <div class="section">
+            <h2 class="section-title">التوقعات المالية</h2>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">توقعات الإيرادات والمصروفات (بالريال السعودي)</h3>
+                <table class="financial-table">
+                    <thead>
+                        <tr>
+                            <th>البيان</th>
+                            <th>السنة الأولى</th>
+                            <th>السنة الثانية</th>
+                            <th>السنة الثالثة</th>
+                            <th>السنة الرابعة</th>
+                            <th>السنة الخامسة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>إجمالي الإيرادات</strong></td>
+                            <td class="amount arabic-number">{{financials.year1.revenue}}</td>
+                            <td class="amount arabic-number">{{financials.year2.revenue}}</td>
+                            <td class="amount arabic-number">{{financials.year3.revenue}}</td>
+                            <td class="amount arabic-number">{{financials.year4.revenue}}</td>
+                            <td class="amount arabic-number">{{financials.year5.revenue}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>إجمالي المصروفات</strong></td>
+                            <td class="amount arabic-number">{{financials.year1.expenses}}</td>
+                            <td class="amount arabic-number">{{financials.year2.expenses}}</td>
+                            <td class="amount arabic-number">{{financials.year3.expenses}}</td>
+                            <td class="amount arabic-number">{{financials.year4.expenses}}</td>
+                            <td class="amount arabic-number">{{financials.year5.expenses}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>صافي الربح</strong></td>
+                            <td class="amount arabic-number">{{financials.year1.netProfit}}</td>
+                            <td class="amount arabic-number">{{financials.year2.netProfit}}</td>
+                            <td class="amount arabic-number">{{financials.year3.netProfit}}</td>
+                            <td class="amount arabic-number">{{financials.year4.netProfit}}</td>
+                            <td class="amount arabic-number">{{financials.year5.netProfit}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">متطلبات التمويل</h3>
+                <div class="content">
+                    <div class="metric-grid">
+                        <div class="metric-card">
+                            <div class="metric-value arabic-number">{{fundingRequirements.initialInvestment}}</div>
+                            <div class="metric-label">الاستثمار الأولي (ريال)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value arabic-number">{{fundingRequirements.workingCapital}}</div>
+                            <div class="metric-label">رأس المال العامل (ريال)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value arabic-number">{{fundingRequirements.totalFunding}}</div>
+                            <div class="metric-label">إجمالي التمويل المطلوب (ريال)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Management Team -->
+        <div class="section">
+            <h2 class="section-title">فريق الإدارة</h2>
+            
+            {{#each managementTeam}}
+            <div class="subsection">
+                <h3 class="subsection-title">{{name}} - {{position}}</h3>
+                <div class="content">
+                    <p><strong>الخبرة:</strong> {{experience}}</p>
+                    <p><strong>التعليم:</strong> {{education}}</p>
+                    <p><strong>المسؤوليات:</strong> {{responsibilities}}</p>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
+        <!-- Implementation Timeline -->
+        <div class="section">
+            <h2 class="section-title">الجدول الزمني للتنفيذ</h2>
+            
+            <div class="timeline">
+                {{#each implementationPhases}}
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">{{date}}</div>
+                        <h4>{{phase}}</h4>
+                        <p>{{description}}</p>
+                        <p><strong>المدة:</strong> {{duration}}</p>
+                        <p><strong>التكلفة المتوقعة:</strong> <span class="amount arabic-number">{{cost}} ريال</span></p>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+
+        <!-- Risk Analysis -->
+        <div class="section">
+            <h2 class="section-title">تحليل المخاطر</h2>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">مصفوفة المخاطر</h3>
+                <div class="risk-matrix">
+                    {{#each riskAnalysis}}
+                    <div class="risk-item {{riskLevel}}">
+                        <h4>{{riskType}}</h4>
+                        <p>{{description}}</p>
+                        <p><strong>التأثير:</strong> {{impact}}</p>
+                        <p><strong>الاحتمالية:</strong> {{probability}}</p>
+                        <p><strong>استراتيجية التخفيف:</strong> {{mitigationStrategy}}</p>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+        <!-- Saudi Regulatory Compliance -->
+        <div class="section">
+            <h2 class="section-title">الامتثال التنظيمي السعودي</h2>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">التراخيص المطلوبة</h3>
+                <div class="content">
+                    <ul>
+                        {{#each requiredLicenses}}
+                        <li>
+                            <strong>{{name}}:</strong> {{description}}
+                            <br><small>الجهة المصدرة: {{issuingAuthority}} | المدة: {{duration}}</small>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">متطلبات الامتثال</h3>
+                <div class="content">
+                    <ul>
+                        {{#each complianceRequirements}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conclusion and Recommendations -->
+        <div class="section">
+            <h2 class="section-title">الخلاصة والتوصيات</h2>
+            
+            <div class="content">
+                <p>{{conclusion}}</p>
+            </div>
+            
+            <div class="highlight">
+                <h3>التوصيات الرئيسية</h3>
+                <ul>
+                    {{#each recommendations}}
+                    <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">الخطوات التالية</h3>
+                <div class="timeline">
+                    {{#each nextSteps}}
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">{{timeline}}</div>
+                            <h4>{{action}}</h4>
+                            <p>{{details}}</p>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>تم إعداد هذه الخطة بواسطة منصة برين سايت للتحول الرقمي</p>
+            <p>للشركات الصغيرة والمتوسطة في قطاع الرعاية الصحية - المملكة العربية السعودية</p>
+            <p class="arabic-number">{{currentDate}}</p>
+        </div>
+    </div>
+</body>
+</html>

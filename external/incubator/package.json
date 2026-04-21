@@ -1,0 +1,58 @@
+{
+  "name": "brainsait-platform",
+  "version": "1.0.0",
+  "description": "BrainSAIT Healthcare SME Digital Transformation Platform",
+  "private": true,
+  "workspaces": [
+    "packages/brainsait-frontend",
+    "packages/brainsait-backend",
+    "packages/brainsait-shared",
+    "packages/brainsait-docs",
+    "packages/brainsait-ai"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\" \"npm run dev:docs\" \"npm run dev:ai\"",
+    "dev:frontend": "npm run dev --workspace=brainsait-frontend",
+    "dev:backend": "npm run dev --workspace=brainsait-backend",
+    "dev:docs": "npm run dev --workspace=brainsait-docs",
+    "dev:ai": "npm run dev --workspace=@brainsait/ai",
+    "build": "npm run build --workspace=@brainsait/shared && npm run build --workspace=brainsait-frontend && npm run build --workspace=brainsait-backend && npm run build --workspace=brainsait-docs && npm run build --workspace=@brainsait/ai",
+    "build:shared": "npm run build --workspace=@brainsait/shared",
+    "build:frontend": "npm run build --workspace=brainsait-frontend",
+    "build:backend": "npm run build --workspace=@brainsait/shared && npm run build --workspace=brainsait-backend",
+    "build:docs": "npm run build --workspace=@brainsait/shared && npm run build --workspace=brainsait-docs",
+    "build:ai": "npm run build --workspace=@brainsait/ai",
+    "test": "npm run test --workspaces",
+    "test:cf": "npm run test --workspace=brainsait-backend",
+    "lint": "npm run lint --workspaces",
+    "lint:cf": "eslint packages/brainsait-backend/src/worker.ts packages/brainsait-backend/src/routes/workers/**/*.ts packages/brainsait-backend/src/globals.d.ts packages/brainsait-frontend/functions/**/*.ts",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up",
+    "docker:down": "docker-compose down",
+    "stitch:export": "node scripts/stitch/export-screens.mjs",
+    "clean": "npm run clean --workspaces && rm -rf node_modules",
+    "deploy": "npm run deploy:frontend && npm run deploy:backend",
+    "deploy:frontend": "npm run deploy:frontend --workspace=brainsait-frontend",
+    "deploy:backend": "npm run deploy:backend --workspace=brainsait-backend"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.2",
+    "eslint-plugin-prettier": "^5.5.4",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2"
+  },
+  "overrides": {
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^9.0.7"
+    }
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

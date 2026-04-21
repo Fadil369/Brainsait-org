@@ -1,0 +1,123 @@
+{
+  "title": "Incubation Program",
+  "phases": {
+    "diagnosis": {
+      "title": "Diagnosis Phase",
+      "description": "Comprehensive assessment of your SME's current state and potential",
+      "sections": {
+        "business_assessment": "Business Assessment",
+        "market_analysis": "Market Analysis",
+        "financial_health": "Financial Health",
+        "operational_capacity": "Operational Capacity",
+        "technology_readiness": "Technology Readiness",
+        "regulatory_compliance": "Regulatory Compliance"
+      },
+      "questions": {
+        "company_age": "How long has your company been operating?",
+        "revenue_model": "What is your primary revenue model?",
+        "target_market": "Who is your target market?",
+        "competitive_advantage": "What is your key competitive advantage?",
+        "funding_status": "What is your current funding status?",
+        "team_size": "How many employees do you have?",
+        "intellectual_property": "Do you have any intellectual property?",
+        "regulatory_approvals": "What regulatory approvals do you need?",
+        "technology_stack": "What technology stack do you use?",
+        "market_validation": "How have you validated your market?"
+      }
+    },
+    "planning": {
+      "title": "Planning Phase",
+      "description": "Develop a comprehensive roadmap for your SME's growth and development",
+      "sections": {
+        "strategic_planning": "Strategic Planning",
+        "business_model": "Business Model Development",
+        "market_strategy": "Market Strategy",
+        "financial_planning": "Financial Planning",
+        "operational_planning": "Operational Planning",
+        "risk_management": "Risk Management"
+      },
+      "milestones": {
+        "vision_mission": "Define Vision and Mission",
+        "swot_analysis": "Complete SWOT Analysis",
+        "business_model_canvas": "Create Business Model Canvas",
+        "financial_projections": "Develop Financial Projections",
+        "go_to_market": "Plan Go-to-Market Strategy",
+        "operational_plan": "Design Operational Plan",
+        "risk_assessment": "Conduct Risk Assessment"
+      }
+    },
+    "implementation": {
+      "title": "Implementation Phase",
+      "description": "Execute your business plan with systematic task management and tracking",
+      "categories": {
+        "product_development": "Product Development",
+        "market_entry": "Market Entry",
+        "operations": "Operations",
+        "finance": "Finance",
+        "team_building": "Team Building",
+        "partnerships": "Partnerships"
+      },
+      "task_types": {
+        "milestone": "Milestone",
+        "deliverable": "Deliverable",
+        "meeting": "Meeting",
+        "review": "Review",
+        "training": "Training",
+        "documentation": "Documentation"
+      },
+      "priority_levels": {
+        "critical": "Critical",
+        "high": "High",
+        "medium": "Medium",
+        "low": "Low"
+      }
+    },
+    "monitoring": {
+      "title": "Monitoring Phase",
+      "description": "Track performance and measure progress against key indicators",
+      "kpi_categories": {
+        "financial": "Financial KPIs",
+        "operational": "Operational KPIs",
+        "customer": "Customer KPIs",
+        "growth": "Growth KPIs",
+        "quality": "Quality KPIs"
+      },
+      "metrics": {
+        "revenue_growth": "Revenue Growth",
+        "customer_acquisition": "Customer Acquisition Rate",
+        "churn_rate": "Churn Rate",
+        "profit_margin": "Profit Margin",
+        "market_share": "Market Share",
+        "employee_satisfaction": "Employee Satisfaction",
+        "product_quality": "Product Quality Score",
+        "time_to_market": "Time to Market",
+        "cost_per_acquisition": "Cost per Acquisition",
+        "lifetime_value": "Customer Lifetime Value"
+      },
+      "dashboard": {
+        "overview": "Performance Overview",
+        "trends": "Trends Analysis",
+        "benchmarks": "Benchmarks",
+        "alerts": "Alerts & Notifications",
+        "reports": "Reports",
+        "forecasts": "Forecasts"
+      }
+    }
+  },
+  "progress": {
+    "not_started": "Not Started",
+    "in_progress": "In Progress",
+    "completed": "Completed",
+    "on_track": "On Track",
+    "behind": "Behind Schedule",
+    "at_risk": "At Risk"
+  },
+  "forms": {
+    "save_progress": "Save Progress",
+    "submit_assessment": "Submit Assessment",
+    "request_review": "Request Review",
+    "schedule_session": "Schedule Session",
+    "add_note": "Add Note",
+    "upload_document": "Upload Document"
+  }
+}

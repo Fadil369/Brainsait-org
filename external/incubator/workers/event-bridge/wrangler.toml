@@ -1,0 +1,81 @@
+# BrainSAIT Event Bridge — GitHub Webhooks → CF Queues
+name = "brainsait-event-bridge"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+account_id = "d7b99530559ab4f2545e9bdc72a7ab9b"
+
+[env.production]
+name = "brainsait-event-bridge-prod"
+routes = [{ pattern = "events.brainsait.org", custom_domain = true, zone_name = "brainsait.org" }]
+
+[env.production.vars]
+EVENT_TTL_SECONDS = "604800"
+ALLOWED_REPOS = "brainsait-incubator/*"
+
+[[env.production.kv_namespaces]]
+binding = "WEBHOOK_SECRETS"
+id = "07ea6ec79f2f46ebbc8076a2000fcfa9"
+
+[[env.production.kv_namespaces]]
+binding = "EVENT_LOG"
+id = "079016c359c348e180724cdd76f29129"
+
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "brainsait-unified-api"
+database_id = "925780db-b119-42f2-a3ca-2aea98712168"
+
+[[env.production.queues.producers]]
+binding = "GITHUB_EVENTS"
+queue = "brainsait-claims"
+
+[[env.production.queues.producers]]
+binding = "PIPELINE_EVENTS"
+queue = "brainsait-notifications"
+
+[[env.production.queues.producers]]
+binding = "NOTIFICATION_QUEUE"
+queue = "brainsait-notifications"
+# Note: PIPELINE_EVENTS and NOTIFICATION_QUEUE both target brainsait-notifications intentionally
+# PIPELINE_EVENTS = CI/CD pipeline events; NOTIFICATION_QUEUE = user-facing alert events
+
+[[env.production.analytics_engine_datasets]]
+binding = "EVENT_ANALYTICS"
+dataset = "brainsait_events"
+
+[env.staging]
+name = "brainsait-event-bridge-staging"
+workers_dev = true
+
+[[kv_namespaces]]
+binding = "WEBHOOK_SECRETS"
+id = "07ea6ec79f2f46ebbc8076a2000fcfa9"
+
+[[kv_namespaces]]
+binding = "EVENT_LOG"
+id = "079016c359c348e180724cdd76f29129"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "brainsait-unified-api"
+database_id = "925780db-b119-42f2-a3ca-2aea98712168"
+
+[[queues.producers]]
+binding = "GITHUB_EVENTS"
+queue = "brainsait-claims"
+
+[[queues.producers]]
+binding = "PIPELINE_EVENTS"
+queue = "brainsait-notifications"
+
+[[queues.producers]]
+binding = "NOTIFICATION_QUEUE"
+queue = "brainsait-notifications"
+
+[[analytics_engine_datasets]]
+binding = "EVENT_ANALYTICS"
+dataset = "brainsait_events"
+
+[vars]
+EVENT_TTL_SECONDS = "604800"
+ALLOWED_REPOS = "*"

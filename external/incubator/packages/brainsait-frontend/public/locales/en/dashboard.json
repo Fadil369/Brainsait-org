@@ -1,0 +1,85 @@
+{
+  "title": "Dashboard",
+  "welcome": "Welcome to BrainSAIT",
+  "sme": {
+    "title": "SME Dashboard",
+    "metrics": {
+      "program_progress": "Program Progress",
+      "completed_modules": "Completed Modules",
+      "mentor_sessions": "Mentor Sessions",
+      "documents_generated": "Documents Generated",
+      "upcoming_deadlines": "Upcoming Deadlines",
+      "total_hours": "Total Hours Invested"
+    },
+    "sections": {
+      "overview": "Overview",
+      "current_program": "Current Program",
+      "mentor_sessions": "Mentor Sessions",
+      "documents": "Documents",
+      "progress_tracking": "Progress Tracking",
+      "notifications": "Notifications"
+    }
+  },
+  "entrepreneur": {
+    "title": "Entrepreneur Dashboard",
+    "metrics": {
+      "active_projects": "Active Projects",
+      "total_smes": "Total SMEs",
+      "success_rate": "Success Rate",
+      "avg_completion_time": "Average Completion Time"
+    },
+    "sections": {
+      "portfolio_overview": "Portfolio Overview",
+      "project_status": "Project Status",
+      "performance_metrics": "Performance Metrics",
+      "resource_allocation": "Resource Allocation"
+    }
+  },
+  "mentor": {
+    "title": "Mentor Dashboard",
+    "metrics": {
+      "assigned_smes": "Assigned SMEs",
+      "completed_sessions": "Completed Sessions",
+      "avg_rating": "Average Rating",
+      "total_mentoring_hours": "Total Mentoring Hours",
+      "upcoming_sessions": "Upcoming Sessions"
+    },
+    "sections": {
+      "mentoring_overview": "Mentoring Overview",
+      "assigned_smes": "Assigned SMEs",
+      "session_schedule": "Session Schedule",
+      "performance_analytics": "Performance Analytics",
+      "feedback_summary": "Feedback Summary"
+    }
+  },
+  "analytics": {
+    "title": "Analytics",
+    "charts": {
+      "program_enrollment": "Program Enrollment Trends",
+      "completion_rates": "Completion Rates",
+      "mentor_performance": "Mentor Performance",
+      "sme_progress": "SME Progress Distribution",
+      "document_generation": "Document Generation Stats",
+      "user_activity": "User Activity",
+      "revenue_tracking": "Revenue Tracking",
+      "geographic_distribution": "Geographic Distribution"
+    },
+    "filters": {
+      "time_period": "Time Period",
+      "program_type": "Program Type",
+      "industry_focus": "Industry Focus",
+      "mentor": "Mentor",
+      "status": "Status"
+    }
+  },
+  "widgets": {
+    "recent_activities": "Recent Activities",
+    "upcoming_events": "Upcoming Events",
+    "quick_stats": "Quick Stats",
+    "performance_summary": "Performance Summary",
+    "notifications": "Notifications",
+    "calendar": "Calendar",
+    "tasks": "Tasks",
+    "messages": "Messages"
+  }
+}

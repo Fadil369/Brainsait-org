@@ -1,0 +1,123 @@
+{
+  "title": "برنامج الحضانة",
+  "phases": {
+    "diagnosis": {
+      "title": "مرحلة التشخيص",
+      "description": "تقييم شامل للحالة الحالية والإمكانات المستقبلية لمشروعك",
+      "sections": {
+        "business_assessment": "تقييم الأعمال",
+        "market_analysis": "تحليل السوق",
+        "financial_health": "الصحة المالية",
+        "operational_capacity": "القدرة التشغيلية",
+        "technology_readiness": "الجاهزية التقنية",
+        "regulatory_compliance": "الامتثال التنظيمي"
+      },
+      "questions": {
+        "company_age": "منذ متى تعمل شركتك؟",
+        "revenue_model": "ما هو نموذج إيراداتك الأساسي؟",
+        "target_market": "من هو السوق المستهدف؟",
+        "competitive_advantage": "ما هي ميزتك التنافسية الرئيسية؟",
+        "funding_status": "ما هو وضع التمويل الحالي؟",
+        "team_size": "كم عدد الموظفين لديك؟",
+        "intellectual_property": "هل لديك أي ملكية فكرية؟",
+        "regulatory_approvals": "ما هي الموافقات التنظيمية التي تحتاجها؟",
+        "technology_stack": "ما هي المنصة التقنية التي تستخدمها؟",
+        "market_validation": "كيف تحققت من صحة السوق؟"
+      }
+    },
+    "planning": {
+      "title": "مرحلة التخطيط",
+      "description": "تطوير خارطة طريق شاملة لنمو وتطوير مشروعك",
+      "sections": {
+        "strategic_planning": "التخطيط الاستراتيجي",
+        "business_model": "تطوير النموذج التجاري",
+        "market_strategy": "استراتيجية السوق",
+        "financial_planning": "التخطيط المالي",
+        "operational_planning": "التخطيط التشغيلي",
+        "risk_management": "إدارة المخاطر"
+      },
+      "milestones": {
+        "vision_mission": "تحديد الرؤية والرسالة",
+        "swot_analysis": "إكمال تحليل SWOT",
+        "business_model_canvas": "إنشاء نموذج الأعمال التجارية",
+        "financial_projections": "تطوير الإسقاطات المالية",
+        "go_to_market": "تخطيط استراتيجية دخول السوق",
+        "operational_plan": "تصميم الخطة التشغيلية",
+        "risk_assessment": "إجراء تقييم المخاطر"
+      }
+    },
+    "implementation": {
+      "title": "مرحلة التنفيذ",
+      "description": "تنفيذ خطة أعمالك مع إدارة وتتبع المهام بشكل منهجي",
+      "categories": {
+        "product_development": "تطوير المنتج",
+        "market_entry": "دخول السوق",
+        "operations": "العمليات",
+        "finance": "المالية",
+        "team_building": "بناء الفريق",
+        "partnerships": "الشراكات"
+      },
+      "task_types": {
+        "milestone": "معلم رئيسي",
+        "deliverable": "مخرج",
+        "meeting": "اجتماع",
+        "review": "مراجعة",
+        "training": "تدريب",
+        "documentation": "توثيق"
+      },
+      "priority_levels": {
+        "critical": "حرج",
+        "high": "عالي",
+        "medium": "متوسط",
+        "low": "منخفض"
+      }
+    },
+    "monitoring": {
+      "title": "مرحلة المراقبة",
+      "description": "تتبع الأداء وقياس التقدم مقابل المؤشرات الرئيسية",
+      "kpi_categories": {
+        "financial": "المؤشرات المالية",
+        "operational": "المؤشرات التشغيلية",
+        "customer": "مؤشرات العملاء",
+        "growth": "مؤشرات النمو",
+        "quality": "مؤشرات الجودة"
+      },
+      "metrics": {
+        "revenue_growth": "نمو الإيرادات",
+        "customer_acquisition": "معدل اكتساب العملاء",
+        "churn_rate": "معدل الفقدان",
+        "profit_margin": "هامش الربح",
+        "market_share": "حصة السوق",
+        "employee_satisfaction": "رضا الموظفين",
+        "product_quality": "نقاط جودة المنتج",
+        "time_to_market": "وقت الوصول للسوق",
+        "cost_per_acquisition": "تكلفة الاكتساب",
+        "lifetime_value": "القيمة الدائمة للعميل"
+      },
+      "dashboard": {
+        "overview": "نظرة عامة على الأداء",
+        "trends": "تحليل الاتجاهات",
+        "benchmarks": "معايير المقارنة",
+        "alerts": "التنبيهات والإشعارات",
+        "reports": "التقارير",
+        "forecasts": "التوقعات"
+      }
+    }
+  },
+  "progress": {
+    "not_started": "لم يبدأ",
+    "in_progress": "قيد التنفيذ",
+    "completed": "مكتمل",
+    "on_track": "في المسار الصحيح",
+    "behind": "متأخر عن الجدول",
+    "at_risk": "في خطر"
+  },
+  "forms": {
+    "save_progress": "حفظ التقدم",
+    "submit_assessment": "إرسال التقييم",
+    "request_review": "طلب مراجعة",
+    "schedule_session": "جدولة جلسة",
+    "add_note": "إضافة ملاحظة",
+    "upload_document": "رفع مستند"
+  }
+}

@@ -1,0 +1,100 @@
+# BrainSAIT AI — Cloudflare Workers Configuration
+name = "brainsait-ai"
+main = "packages/brainsait-ai/dist/index.js"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+account_id = "d7b99530559ab4f2545e9bdc72a7ab9b"
+
+[env.production]
+name = "brainsait-ai-production"
+workers_dev = true
+
+[env.staging]
+name = "brainsait-ai-staging"
+workers_dev = true
+
+[env.preview]
+name = "brainsait-ai-preview"
+workers_dev = true
+
+# ── KV ──
+[[kv_namespaces]]
+binding = "AI_CACHE"
+id = "9201cf6a9b1143d8822250dc24e8c8ba"
+
+[[kv_namespaces]]
+binding = "MODEL_REGISTRY"
+id = "96d5b2ec726244f88d99153c308351eb"
+
+[[kv_namespaces]]
+binding = "PROMPT_TEMPLATES"
+id = "3955e252772c4e3faa0f34f14217eb52"
+
+# ── R2 ──
+[[r2_buckets]]
+binding = "AI_OUTPUTS"
+bucket_name = "brainsait-healthcare-files"
+
+[[r2_buckets]]
+binding = "MODEL_STORE"
+bucket_name = "brainsait-storage"
+
+[[r2_buckets]]
+binding = "TRAINING_DATA"
+bucket_name = "brainsait-healthcare-media"
+
+# ── Queues ──
+[[queues.producers]]
+binding = "INFERENCE_QUEUE"
+queue = "brainsait-claims"
+
+[[queues.producers]]
+binding = "NOTIFICATION_QUEUE"
+queue = "brainsait-notifications"
+
+# ── Durable Objects ──
+[[durable_objects.bindings]]
+name = "USAGE_TRACKER"
+class_name = "AIUsageTracker"
+
+[[durable_objects.bindings]]
+name = "SESSION_CONTEXT"
+class_name = "AISessionContext"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["AIUsageTracker", "AISessionContext"]
+
+# ── Vectorize ──
+[[vectorize]]
+binding = "EMBEDDINGS_INDEX"
+index_name = "brainsait-embeddings"
+
+[[vectorize]]
+binding = "KNOWLEDGE_GRAPH"
+index_name = "brainsait-knowledge-graph"
+
+# ── AI ──
+[ai]
+binding = "AI"
+
+# ── Analytics ──
+[[analytics_engine_datasets]]
+binding = "AI_ANALYTICS"
+dataset = "brainsait_ai_usage"
+
+# ── Variables ──
+[vars]
+SERVICE_NAME = "brainsait-ai"
+MAX_TOKENS_PER_REQUEST = "4000"
+MAX_REQUESTS_PER_MINUTE = "60"
+SUPPORTED_MODELS = "@cf/meta/llama-3.1-8b-instruct,@cf/mistral/mistral-7b-instruct-v0.2,@cf/qwen/qwen1.5-14b-chat-awq"
+
+[env.production.vars]
+ENVIRONMENT = "production"
+LOG_LEVEL = "info"
+EMBEDDING_MODEL = "@cf/baai/bge-base-en-v1.5"
+
+[env.staging.vars]
+ENVIRONMENT = "staging"
+LOG_LEVEL = "debug"

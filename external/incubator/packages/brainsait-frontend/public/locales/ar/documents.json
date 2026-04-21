@@ -1,0 +1,128 @@
+{
+  "title": "توليد المستندات",
+  "templates": {
+    "feasibility_study": {
+      "title": "دراسة الجدوى",
+      "description": "تحليل شامل لجدوى المشروع والنجاح المحتمل",
+      "sections": {
+        "executive_summary": "الملخص التنفيذي",
+        "project_overview": "نظرة عامة على المشروع",
+        "market_analysis": "تحليل السوق",
+        "technical_analysis": "التحليل الفني",
+        "financial_analysis": "التحليل المالي",
+        "risk_assessment": "تقييم المخاطر",
+        "implementation_plan": "خطة التنفيذ",
+        "conclusions": "الاستنتاجات والتوصيات"
+      }
+    },
+    "business_plan": {
+      "title": "خطة الأعمال",
+      "description": "خطة مفصلة تحدد أهداف واستراتيجيات العمل",
+      "sections": {
+        "executive_summary": "الملخص التنفيذي",
+        "company_description": "وصف الشركة",
+        "market_analysis": "تحليل السوق",
+        "organization_management": "التنظيم والإدارة",
+        "products_services": "المنتجات والخدمات",
+        "marketing_sales": "استراتيجية التسويق والمبيعات",
+        "financial_projections": "الإسقاطات المالية",
+        "funding_request": "طلب التمويل",
+        "appendix": "الملحق"
+      }
+    },
+    "market_analysis": {
+      "title": "تحليل السوق",
+      "description": "تحليل متعمق للسوق المستهدف والمشهد التنافسي",
+      "sections": {
+        "market_overview": "نظرة عامة على السوق",
+        "target_market": "تحليل السوق المستهدف",
+        "competitive_analysis": "التحليل التنافسي",
+        "market_trends": "اتجاهات السوق",
+        "customer_analysis": "تحليل العملاء",
+        "market_size": "حجم السوق والنمو",
+        "market_segmentation": "تجزئة السوق",
+        "swot_analysis": "تحليل SWOT"
+      }
+    },
+    "financial_projection": {
+      "title": "الإسقاط المالي",
+      "description": "توقعات وإسقاطات مالية مفصلة",
+      "sections": {
+        "revenue_projections": "إسقاطات الإيرادات",
+        "cost_analysis": "تحليل التكاليف",
+        "cash_flow": "بيان التدفق النقدي",
+        "profit_loss": "بيان الأرباح والخسائر",
+        "balance_sheet": "الميزانية العمومية",
+        "break_even_analysis": "تحليل نقطة التعادل",
+        "funding_requirements": "متطلبات التمويل",
+        "financial_ratios": "النسب المالية"
+      }
+    }
+  },
+  "form": {
+    "wizard": {
+      "step_1": "اختيار القالب",
+      "step_2": "المعلومات الأساسية",
+      "step_3": "توليد المحتوى",
+      "step_4": "المراجعة والتعديل",
+      "step_5": "الإنهاء والتحميل"
+    },
+    "fields": {
+      "company_name": "اسم الشركة",
+      "project_title": "عنوان المشروع",
+      "industry": "الصناعة",
+      "target_market": "السوق المستهدف",
+      "project_description": "وصف المشروع",
+      "budget": "الميزانية",
+      "timeline": "الجدول الزمني",
+      "team_size": "حجم الفريق",
+      "contact_info": "معلومات الاتصال",
+      "additional_notes": "ملاحظات إضافية"
+    },
+    "placeholders": {
+      "enter_company_name": "أدخل اسم شركتك",
+      "describe_project": "اوصف مشروعك بالتفصيل",
+      "specify_target_market": "حدد السوق المستهدف",
+      "enter_budget_range": "أدخل نطاق الميزانية",
+      "select_industry": "اختر صناعتك"
+    }
+  },
+  "preview": {
+    "title": "معاينة المستند",
+    "actions": {
+      "edit_section": "تعديل القسم",
+      "add_content": "إضافة محتوى",
+      "remove_section": "إزالة القسم",
+      "reorder_sections": "إعادة ترتيب الأقسام",
+      "save_draft": "حفظ المسودة",
+      "generate_pdf": "توليد PDF",
+      "download": "تحميل",
+      "share": "مشاركة"
+    },
+    "status": {
+      "draft": "مسودة",
+      "in_review": "قيد المراجعة",
+      "approved": "معتمد",
+      "final": "نهائي"
+    }
+  },
+  "language_selector": {
+    "title": "لغة المستند",
+    "english": "الإنجليزية",
+    "arabic": "العربية",
+    "bilingual": "ثنائي اللغة (إنجليزي وعربي)"
+  },
+  "generation": {
+    "generating": "جاري توليد المستند...",
+    "success": "تم توليد المستند بنجاح!",
+    "error": "خطأ في توليد المستند. يرجى المحاولة مرة أخرى.",
+    "estimated_time": "الوقت المقدر: {{minutes}} دقائق",
+    "progress": "التقدم: {{percentage}}%"
+  },
+  "validation": {
+    "required_fields": "يرجى ملء جميع الحقول المطلوبة",
+    "invalid_data": "يرجى التحقق من بيانات الإدخال",
+    "template_required": "يرجى اختيار قالب",
+    "language_required": "يرجى اختيار لغة المستند"
+  }
+}
