@@ -38,5 +38,17 @@ https://brainsait.org/privacy /privacy 200
 https://brainsait.org/terms /terms 200
 
 # 404 handling
+# App path mappings (consolidated external repos)
+/incubator/* /external/incubator/:splat 200
+/givc/* /external/givc/:splat 200
+/doctor/* /external/doctor/:splat 200
+/store/* /external/brainsait-store/:splat 200
+/sbs/* /external/sbs/:splat 200
+/docs/* /external/brainsait-docs/:splat 200
+/masterlinc/* /external/masterlinc/:splat 200
+/open-webui/* /external/open-webui/:splat 200
+/solutions/* /external/solutions/:splat 200
+/clinics/* /external/clinics-pages/:splat 200
+
 /* /index.html 200
 
