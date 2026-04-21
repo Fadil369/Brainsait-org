@@ -1,0 +1,50 @@
+{
+  "name": "sbs-landing",
+  "version": "1.0.0",
+  "description": "SBS Landing - Healthcare Integration Gateway",
+  "type": "module",
+  "main": "server.cjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node server.cjs",
+    "server": "node server.cjs",
+    "oracle:scan": "node scripts/oracle-portal-integration.mjs",
+    "nphies:scan": "node scripts/nphies-portal-scan.mjs",
+    "smoke:e2e": "node scripts/smoke-e2e.mjs",
+    "qa:agent": "node scripts/continuous-qa-agent.mjs",
+    "test": "echo \"No tests configured yet\" && exit 0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.13.5",
+    "body-parser": "^1.20.3",
+    "compression": "^1.8.1",
+    "cors": "^2.8.6",
+    "dotenv": "^16.4.0",
+    "express": "^4.21.0",
+    "express-rate-limit": "^7.4.0",
+    "helmet": "^8.0.0",
+    "lucide-react": "^0.563.0",
+    "multer": "^2.1.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "react-router-dom": "^6.27.0",
+    "recharts": "^2.13.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260207.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^5.1.3",
+    "autoprefixer": "^10.4.24",
+    "playwright": "^1.58.2",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1"
+  }
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Enhanced Claim Workflow | SBS Integration Engine</title>
+  <meta name="description" content="Premium claim workflow experience for submission, validation, AI assistance, and real-time tracking.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg-0: #05070c;
+      --bg-1: #0a1220;
+      --card: rgba(255, 255, 255, 0.06);
+      --line: rgba(148, 163, 184, 0.24);
+      --text-1: rgba(241, 245, 249, 0.94);
+      --text-2: rgba(226, 232, 240, 0.68);
+      --accent: #22d3ee;
+      --success: #34d399;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text-1);
+      background:
+        radial-gradient(1200px 700px at 10% 10%, rgba(34, 211, 238, 0.16), transparent 55%),
+        radial-gradient(900px 700px at 90% 30%, rgba(52, 211, 153, 0.16), transparent 60%),
+        linear-gradient(180deg, var(--bg-0), var(--bg-1));
+      min-height: 100vh;
+    }
+
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05));
+      border: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+    }
+
+    .stage-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .stage-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--success);
+      box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.45);
+      animation: pulse 2.1s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.35); }
+      70% { box-shadow: 0 0 0 10px rgba(52, 211, 153, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+    }
+  </style>
+</head>
+<body>
+  <header class="sticky top-0 z-30 border-b border-slate-700/50 bg-slate-950/70 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
+      <div>
+        <div class="text-lg font-extrabold tracking-tight">SBS Integration Engine</div>
+        <div class="text-xs text-slate-400">Enhanced Workflow Console</div>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <a href="/" class="rounded-xl border border-slate-600/60 bg-slate-900/70 px-3 py-2 text-sm font-semibold text-slate-100 hover:border-cyan-400/50">Command Center</a>
+        <a href="/sbs/dashboard.html" class="rounded-xl border border-cyan-400/50 bg-cyan-500/20 px-3 py-2 text-sm font-semibold text-cyan-200 hover:bg-cyan-500/30">Dashboard</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl space-y-5 px-4 py-5 sm:px-6 sm:py-8">
+    <section class="glass rounded-2xl p-5 sm:p-7">
+      <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-400/40 bg-cyan-500/10 px-3 py-1 text-xs font-semibold text-cyan-200">
+        <span class="stage-dot"></span>
+        Premium Mobile-First Workflow
+      </div>
+      <h1 class="text-2xl font-black tracking-tight sm:text-3xl">Submit, Validate, and Track Claims with AI Guidance</h1>
+      <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-300 sm:text-base">
+        This page is optimized for desktop and mobile operations teams. It simplifies claim submission, keeps workflow stages visible,
+        and provides AI-assisted decisions for faster and safer NPHIES-ready processing.
+      </p>
+    </section>
+
+    <section class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <article class="stage-card">
+        <div class="text-xs font-semibold uppercase text-cyan-300">Stage 1</div>
+        <div class="text-base font-bold">Validation Intake</div>
+        <div class="text-xs text-slate-300">Patient, payer, and claim structure checks before processing.</div>
+      </article>
+      <article class="stage-card">
+        <div class="text-xs font-semibold uppercase text-cyan-300">Stage 2</div>
+        <div class="text-base font-bold">Normalization</div>
+        <div class="text-xs text-slate-300">Internal codes converted to SBS-compatible mappings with fallback safety.</div>
+      </article>
+      <article class="stage-card">
+        <div class="text-xs font-semibold uppercase text-cyan-300">Stage 3</div>
+        <div class="text-base font-bold">Financial Rules</div>
+        <div class="text-xs text-slate-300">Rule engine validates policy and pricing logic with transparent outcomes.</div>
+      </article>
+      <article class="stage-card">
+        <div class="text-xs font-semibold uppercase text-cyan-300">Stage 4</div>
+        <div class="text-base font-bold">Signing + NPHIES</div>
+        <div class="text-xs text-slate-300">Digital signature and upstream submission-ready payload orchestration.</div>
+      </article>
+    </section>
+
+    <section class="glass rounded-2xl p-5 sm:p-7">
+      <div class="mb-3 text-sm font-bold text-emerald-300">AI Capabilities</div>
+      <div class="grid grid-cols-1 gap-2 text-sm text-slate-200 sm:grid-cols-2">
+        <div class="rounded-xl border border-slate-600/60 bg-slate-900/50 p-3">Copilot guidance for prior-auth and rejection prevention.</div>
+        <div class="rounded-xl border border-slate-600/60 bg-slate-900/50 p-3">Risk analyzer with explainable claim-level safety scoring.</div>
+      </div>
+    </section>
+
+    <section id="enhancedClaimFormContainer" class="rounded-2xl"></section>
+  </main>
+
+  <div id="toast-container"></div>
+
+  <script src="/config.js"></script>
+  <script src="/toast.js"></script>
+  <script src="/enhanced-claim-form.js"></script>
+  <script>
+    const toast = new ToastManager();
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const response = await fetch(`${window.SBS_API_BASE_URL || ''}/api/simulation/scenarios`);
+        if (response.ok) toast.success('Simulation service is online.');
+      } catch {
+        toast.info('Simulation service is currently unavailable.');
+      }
+      if (typeof claimForm !== 'undefined' && claimForm) {
+        await claimForm.init();
+      }
+    });
+  </script>
+</body>
+</html>
