@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  basePath: '/rcm',
   reactStrictMode: true,
   transpilePackages: [
     '@brainsait/rejection-tracker',

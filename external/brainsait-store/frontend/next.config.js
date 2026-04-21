@@ -4,6 +4,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  basePath: '/store',
   experimental: {
     // appDir is now default in Next.js 14
   },

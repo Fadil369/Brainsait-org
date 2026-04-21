@@ -50,5 +50,6 @@ https://brainsait.org/terms /terms 200
 /solutions/* /external/solutions/:splat 200
 /clinics/* /external/clinics-pages/:splat 200
 
+/rcm/* /external/brainsait-rcm/:splat 200
 /* /index.html 200
 
