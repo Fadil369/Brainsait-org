@@ -36,8 +36,6 @@ https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 # Privacy and Terms
 /privacy /privacy-policy.html 200
 /terms /terms-of-use.html 200
-/pdf-to-excel /pdf-to-excel.html 200
-/tawnia-reconciliation /tawnia-reconciliation.html 200
 /docs https://fadil369.github.io/brainsait-docs/ 302
 /docs/* https://fadil369.github.io/brainsait-docs/:splat 302
 /clinics /external/clinics-pages/index.html 200
