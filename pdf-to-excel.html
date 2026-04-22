@@ -3,33 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>BrainSAIT PDF to Excel Extractor</title>
-<meta name="description" content="Convert structured PDFs into searchable, exportable Excel data directly in your browser. Built for BrainSAIT operational workflows including claims, contracts, and report extraction.">
-<meta name="robots" content="index, follow">
-<meta name="author" content="BrainSAIT LTD">
-<meta name="theme-color" content="#f8f7f4">
-<link rel="canonical" href="https://brainsait.org/pdf-to-excel">
-<meta property="og:type" content="website">
-<meta property="og:title" content="BrainSAIT PDF to Excel Extractor">
-<meta property="og:description" content="Upload structured PDFs, extract records automatically, and export Excel files securely in-browser.">
-<meta property="og:url" content="https://brainsait.org/pdf-to-excel">
-<meta property="og:image" content="https://brainsait.org/og-image.png">
+<title>PDF Data Extractor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <style>
 :root{--ink:#1a1a2e;--ink-s:#4a4a6a;--ink-m:#8888a8;--bg:#f8f7f4;--card:#fff;--sunken:#eeeee8;--accent:#e85d26;--accent-s:#fef0ea;--accent-d:#c44d1e;--green:#2d8a4e;--green-s:#e8f5ec;--yellow:#c9960b;--yellow-s:#fef9e6;--red:#d63031;--red-s:#fce8e8;--blue:#2d6bc4;--blue-s:#e8f0fc;--purple:#7c3aed;--purple-s:#f0ebff;--border:#e0ddd6;--border-s:#ccc8be;--r:10px;--rs:6px;--sh:0 1px 3px rgba(26,26,46,.06);--shm:0 4px 16px rgba(26,26,46,.08);--font:'DM Sans',-apple-system,sans-serif;--mono:'JetBrains Mono',monospace}
 *{margin:0;padding:0;box-sizing:border-box}
-html{font-size:15px;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+html{font-size:15px;-webkit-font-smoothing:antialiased}
 body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:100dvh;line-height:1.5}
 .app{max-width:1280px;margin:0 auto;padding:0 16px}
 .header{padding:24px 0 16px;border-bottom:1.5px solid var(--border);margin-bottom:24px}
 .header__top{display:flex;align-items:center;gap:12px;margin-bottom:6px}
 .header__icon{width:40px;height:40px;background:var(--accent);border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.header__home{display:inline-flex;align-items:center;gap:6px;margin-bottom:12px;color:var(--ink-s);font-size:.82rem;font-weight:600;text-decoration:none}
-.header__home:hover{color:var(--accent)}
 h1{font-size:clamp(1.3rem,3vw,1.6rem);font-weight:700;letter-spacing:-.03em;line-height:1.2}
 .header__sub{font-size:.85rem;color:var(--ink-m);margin-top:4px;padding-left:52px}
 .badge{display:none;align-items:center;gap:6px;margin:12px 0 0 52px;padding:6px 14px;border-radius:99px;font-size:.82rem;font-weight:600;width:fit-content}
@@ -46,7 +33,7 @@ h1{font-size:clamp(1.3rem,3vw,1.6rem);font-weight:700;letter-spacing:-.03em;line
 .upload input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
 .prog{display:none;margin-bottom:24px}.prog.on{display:block}
 .prog__trk{height:6px;background:var(--sunken);border-radius:99px;overflow:hidden;margin-bottom:10px}
-.prog__fill{height:100%;background:linear-gradient(90deg,var(--accent),#f5a23);border-radius:99px;width:0%;transition:width .3s}
+.prog__fill{height:100%;background:linear-gradient(90deg,var(--accent),#f5a623);border-radius:99px;width:0%;transition:width .3s}
 .prog__txt{font-size:.85rem;color:var(--ink-s);font-family:var(--mono)}
 .stats{display:none;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:20px}.stats.on{display:grid}
 .sc{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:14px 16px}
@@ -77,12 +64,10 @@ tbody tr:hover{background:var(--accent-s)}tbody tr:nth-child(even){background:va
 td{padding:10px 14px;vertical-align:top;color:var(--ink-s);line-height:1.4}
 .nc{font-family:var(--mono);font-size:.78rem;color:var(--ink-m);text-align:center;width:40px}
 .dc{font-family:var(--mono);font-size:.8rem;white-space:nowrap}
-.sb2{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:99px;font-size:.75rem;font-weight:600;white-space:nowrap}
-.sb2--r{background:var(--red-s);color:var(--red)}.sb2--y{background:var(--yellow-s);color:var(--yellow)}.sb2--g{background:var(--green-s);color:var(--green)}.sb2--b{background:var(--blue-s);color:var(--blue)}.sb2--s{background:var(--sunken);color:var(--ink-m)}
 .ft{text-align:center;padding:24px 0 32px;font-size:.78rem;color:var(--ink-m);border-top:1px solid var(--border);margin-top:16px}
 @media(max-width:640px){html{font-size:14px}.app{padding:0 12px}.header{padding:16px 0 12px}.upload{padding:32px 16px}.upload__icon{font-size:36px}.stats{grid-template-columns:repeat(2,1fr);gap:8px}.sc{padding:10px 12px}.sc__v{font-size:1.25rem}.bar{gap:6px}.sb{min-width:100%;order:-1}
 .tw{border:0;background:0;box-shadow:none}table,thead,tbody,tr,td,th{display:block}thead{display:none}
-tbody tr{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);margin-bottom:10px;box-shadow:var(--sh);overflow:hidden}tbody tr:hover{background:var(--card)}tbody tr:nth-child(even){background:var(--card)}
+tbody tr{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);margin-bottom:10px;box-shadow:var(--sh);overflow:hidden}tbody tr:hover,tbody tr:nth-child(even){background:var(--card)}
 td{padding:8px 14px;display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid var(--border);text-align:right}
 td:last-child{border-bottom:none}
 td::before{content:attr(data-label);font-weight:600;font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-m);text-align:left;flex-shrink:0;margin-right:12px}
@@ -94,9 +79,8 @@ td.nc{justify-content:center}td.nc::before{content:none}}
 <body>
 <div class="app">
 <header class="header">
-<a class="header__home" href="/appstore">← Back to BrainSAIT Store</a>
-<div class="header__top"><div class="header__icon">📄</div><h1>BrainSAIT PDF to Excel</h1></div>
-<p class="header__sub">Upload structured PDFs and export clean Excel data locally in your browser.</p>
+<div class="header__top"><div class="header__icon">📄</div><h1>PDF Data Extractor</h1></div>
+<p class="header__sub">Upload any structured PDF — auto-detected, extracted &amp; exportable</p>
 <div class="badge" id="badge"></div>
 </header>
 <div class="upload" id="uz"><input type="file" id="fi" accept=".pdf">
@@ -112,13 +96,12 @@ td.nc{justify-content:center}td.nc::before{content:none}}
 <button class="rb" onclick="reset()">✕ Reset</button>
 </div>
 <div class="tw" id="tw"><table><thead id="th"></thead><tbody id="tb2"></tbody></table></div>
-<footer class="ft">BrainSAIT PDF to Excel — secure browser-side extraction with no server upload required</footer>
+<footer class="ft">PDF Data Extractor — everything runs in your browser</footer>
 </div>
 <script>
 pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 let allR=[],cols=[],pdfT='generic',sCol=0,sDir=1,cFilt='all';
 
-// Upload
 const uz=document.getElementById('uz'),fi=document.getElementById('fi'),bb=document.getElementById('bb');
 bb.onclick=e=>{e.stopPropagation();fi.click()};
 ['dragenter','dragover'].forEach(ev=>uz.addEventListener(ev,e=>{e.preventDefault();uz.classList.add('over')}));
@@ -127,40 +110,34 @@ uz.addEventListener('drop',e=>{const f=e.dataTransfer.files[0];if(f?.type==='app
 fi.addEventListener('change',e=>{if(e.target.files[0])go(e.target.files[0])});
 
 async function go(file){
-  sp(true);up(5,`Loading ${file.name} (${(file.size/1048576).toFixed(1)} MB)…`);
+  sp(true);up(5,'Loading '+file.name+' ('+(file.size/1048576).toFixed(1)+' MB)…');
   try{
     const buf=await file.arrayBuffer();
     const pdf=await pdfjsLib.getDocument({data:buf}).promise;
-    const np=pdf.numPages;up(10,`Reading ${np} pages…`);
+    const np=pdf.numPages;up(10,'Reading '+np+' pages…');
     let fullText='';
     for(let i=1;i<=np;i++){
-      up(10+Math.round((i/np)*75),`Page ${i}/${np}…`);
+      up(10+Math.round((i/np)*75),'Page '+i+'/'+np+'…');
       const p=await pdf.getPage(i);const tc=await p.getTextContent();
-      // Build text preserving line breaks by y-coordinate
-      const items=tc.items;
-      const byY={};
-      items.forEach(it=>{
+      let lastY=-1;
+      tc.items.forEach(it=>{
         const y=Math.round(it.transform[5]);
-        const yk=Math.round(y/4)*4;
-        if(!byY[yk])byY[yk]=[];
-        byY[yk].push({x:it.transform[4],text:it.str});
+        if(lastY>=0&&Math.abs(y-lastY)>3)fullText+='\n';
+        fullText+=it.str+' ';
+        lastY=y;
       });
-      Object.keys(byY).sort((a,b)=>b-a).forEach(yk=>{
-        const line=byY[yk].sort((a,b)=>a.x-b.x).map(w=>w.text).join(' ');
-        fullText+=line+'\n';
-      });
-      fullText+='\n';
+      fullText+='\n\n';
       await sl(10);
     }
     up(88,'Analyzing structure…');await sl(30);
-    pdfT=detect(fullText);up(92,`Detected: ${pdfT}`);await sl(30);
+    pdfT=detect(fullText);up(92,'Detected: '+pdfT);await sl(30);
     switch(pdfT){
       case'contract-expiry':extractCE(fullText);break;
       case'batch-claims':extractBC(fullText);break;
       default:extractGen(fullText);
     }
-    up(100,`Done — ${allR.length} records`);await sl(80);sp(false);render();
-  }catch(err){up(100,`Error: ${err.message}`);console.error(err)}
+    up(100,'Done — '+allR.length+' records');await sl(80);sp(false);render();
+  }catch(err){up(100,'Error: '+err.message);console.error(err)}
 }
 
 function detect(t){
@@ -171,141 +148,172 @@ function detect(t){
   return'generic';
 }
 
-// ===== CONTRACT EXPIRY EXTRACTOR =====
+// ===== CONTRACT EXPIRY =====
 function extractCE(text){
   cols=['#','Group Purchaser','Purchaser','Contract Class','Start Date','End Date','Status'];
   allR=[];
   const lines=text.split('\n').map(l=>l.trim()).filter(Boolean);
   let cg=null,cp=null;
   const isD=s=>/^\d{2}-\d{2}-\d{4}$/.test(s);
-  const getStatus=end=>{
+  const st=end=>{
     if(!end||!isD(end))return'—';
     const[d,m,y]=end.split('-').map(Number);
-    const dt=new Date(y,m-1,1);const td=new Date(2026,3,21);
-    const days=Math.round((dt-td)/864e5);
-    if(days<0)return`⛔ ${Math.abs(days)}d ago`;
-    if(days<=30)return`🔴 ${days}d left`;
-    if(days<=90)return`🟡 ${days}d left`;
-    if(days<=180)return`🟢 ${days}d left`;
-    return`✅ ${days}d left`;
+    const days=Math.round((new Date(y,m-1,1)-new Date(2026,3,21))/864e5);
+    if(days<0)return'⛔ '+Math.abs(days)+'d ago';if(days<=30)return'🔴 '+days+'d left';
+    if(days<=90)return'🟡 '+days+'d left';if(days<=180)return'🟢 '+days+'d left';return'✅ '+days+'d left';
   };
   lines.forEach(l=>{
-    if(l.includes('Group Purchaser:')){
-      const n=l.replace(/.*Group Purchaser:\s*/,'').trim();
-      if(n){cg=n;cp=null}
-      return;
-    }
-    if(l.includes('Purchaser:')){
-      cp=l.replace(/.*Purchaser:\s*/,'').trim();
-      return;
-    }
+    if(l.includes('Group Purchaser:')){const n=l.replace(/.*Group Purchaser:\s*/,'').trim();if(n){cg=n;cp=null}return}
+    if(l.includes('Purchaser:')){cp=l.replace(/.*Purchaser:\s*/,'').trim();return}
     if(/^(ADT|OPD)/.test(l)){
       const dates=l.match(/\d{2}-\d{2}-\d{4}/g)||[];
-      const cls=l.replace(/\d{2}-\d{2}-\d{4}/g,'').trim();
-      const s=dates[0]||'',e=dates[1]||'';
-      allR.push([allR.length+1,cg||'',cp||'',cls,s,e,getStatus(e)]);
+      allR.push([allR.length+1,cg||'',cp||'',l.replace(/\d{2}-\d{2}-\d{4}/g,'').trim(),dates[0]||'',dates[1]||'',st(dates[1]||'')]);
     }
   });
 }
 
-// ===== BATCH CLAIMS EXTRACTOR =====
+// ===== BATCH CLAIMS =====
 function extractBC(text){
-  cols=['#','Member Name','National ID','Service Date','Service Code','Service Name','Bundle ID','Rejection Reason','Status'];
+  cols=['#','Bundle ID','Member Name','National ID','Service Date','Service Code','Service Name','Rejection Reason'];
   allR=[];
   const lines=text.split('\n').map(l=>l.trim()).filter(Boolean);
   const rcRe=/([A-Z]{2}-\d+-\d+)/;
   const bundleRe=/^[0-9a-f]{8}-[0-9a-f]{4}/;
   const bundleCR=/^[0-9a-f]{4,8}$/;
-  const nidRe=/^\d{10}$/;
-  const dateRe=/^\d{2}\/\d{2}\/\d{4}$/;
-  // Skip header lines
-  const isHeader=l=>{
-    return/^(Bundle ID|Member Name|National ID|Service Date|Service Code|Service Name|Rejection Reason|Report:|Date:|User:|Batch No|From Date|Total Claims|Approved Amount|Rejected Claims|Rejected Amount|To Date|Provider Name|Batch Ref|Returned Claims|Batch Status|Received Date|Settlement Date|Net Claimed|Gross Amount|Discount Variance|Deductible Variance|Total Claims Variance|Returned Claim|VAT Rejected|VAT Approved|MCL\d|ADMIN|BAT-\d|Hayat National|مسترد|Bundle)/i.test(l);
-  };
+  const nidStart=/^(\d{10})\s+(.+)/;
+  const dateRe=/\d{2}\/\d{2}\/\d{4}/;
+  const skip=/^(Bundle ID|Member Name|National ID|Service Date|Service Code|Service Name|Rejection Reason|Report:|Date:|User:|Batch No|From Date|Total Claims|Approved|Rejected|To Date|Provider Name|Batch Ref|Returned|Batch Status|Received Date|Settlement Date|Net Claimed|Gross Amount|Discount Variance|Deductible Variance|Total Claims Variance|Returned Claim|VAT |MCL\d|ADMIN|BAT-|Hayat National|مسترد|^:)/i;
+
   let i=0;
   while(i<lines.length){
     const line=lines[i];
-    if(isHeader(line)){i++;continue}
-    const rcM=rcRe.exec(line);
-    if(rcM){
-      const rc=rcM[1];
-      const parts=line.split(rc,1);
-      let mn=parts[0].trim(),rr=rc+' '+(parts[1]||'').trim();
-      let bid='',nid='',sc='',sn='',sd='';
-      let j=i+1;
-      while(j<lines.length&&j<i+15){
-        const l=lines[j];
-        if(isHeader(l)){j++;continue}
-        // New record?
-        if(rcRe.test(l)&&(bid||nid))break;
-        if(bundleRe.test(l)&&!bid){bid=l;j++;if(j<lines.length&&bundleCR.test(lines[j])&&!rcRe.test(lines[j])){bid+=lines[j];j++}continue}
-        if(nidRe.test(l)&&!nid){nid=l;j++;continue}
-        if(dateRe.test(l)&&!sd){sd=l;j++;continue}
-        if(nid&&!sc&&!sd&&/^[A-Z0-9][A-Z0-9\-.]{1,25}$/.test(l)){sc=l;j++;continue}
-        if(sc&&!sd&&l&&!dateRe.test(l)&&!nidRe.test(l)){sn=(sn+' '+l).trim();j++;continue}
-        if(!bid&&!nidRe.test(l)&&l){rr=(rr+' '+l).trim();j++;continue}
-        if(!mn&&!bid&&!rcRe.test(l)&&l){mn=l;j++;continue}
-        j++;
+    if(skip.test(line)){i++;continue}
+
+    // Record start: line begins with 10-digit national ID
+    const nm=line.match(nidStart);
+    if(!nm){i++;continue}
+
+    const nationalId=nm[1];
+    const rest=nm[2];
+
+    // Extract service code (first token after NID)
+    const scM=rest.match(/^([A-Z0-9][A-Z0-9\-.]{0,25})\s*(.*)/);
+    const serviceCode=scM?scM[1]:'';
+    let svcNameRaw=scM?scM[2].trim():rest;
+
+    // Check for embedded date on same line
+    let serviceDate='';
+    const dm=svcNameRaw.match(dateRe);
+    if(dm){
+      serviceDate=dm[0];
+      svcNameRaw=(svcNameRaw.substring(0,dm.index)+' '+svcNameRaw.substring(dm.index+dm[0].length)).trim();
+    }
+
+    // Continue collecting service name from following lines
+    let serviceName=svcNameRaw;
+    let dateLineAfter='';
+    i++;
+    while(i<lines.length){
+      const l=lines[i];
+      if(skip.test(l)){i++;continue}
+      // Standalone date (or date + name on same line)
+      if(dateRe.test(l)&&!rcRe.test(l)&&!bundleRe.test(l)&&!nidStart.test(l)){
+        const d2=l.match(dateRe);
+        if(!serviceDate)serviceDate=d2[0];
+        const b=l.substring(0,d2.index).trim();
+        const a=l.substring(d2.index+d2[0].length).trim();
+        if(b)serviceName+=' '+b;
+        if(a)dateLineAfter=a; // text after date is likely member name
+        i++;break;
       }
-      allR.push([allR.length+1,mn,nid,sd,sc,sn,bid,rr,'⛔ Rejected']);
-      i=j;
-    }else i++;
+      // Hit next record or bundle or rejection → stop
+      if(rcRe.test(l)||bundleRe.test(l)||nidStart.test(l))break;
+      serviceName+=' '+l;i++;
+    }
+
+    // Member name (standalone line before rejection code, or from date line)
+    let memberName=dateLineAfter;
+    if(i<lines.length&&!rcRe.test(lines[i])&&!bundleRe.test(lines[i])&&!nidStart.test(lines[i])&&!skip.test(lines[i])){
+      memberName=lines[i];i++;
+      // Multi-line name
+      if(i<lines.length&&!rcRe.test(lines[i])&&!bundleRe.test(lines[i])&&!nidStart.test(lines[i])&&!skip.test(lines[i])&&!dateRe.test(lines[i])){
+        memberName+=' '+lines[i];i++;
+      }
+    }
+
+    // Rejection code + reason
+    let rejectionText='';
+    if(i<lines.length){
+      const rcM=lines[i].match(rcRe);
+      if(rcM){
+        rejectionText=rcM[1]+' '+(lines[i].split(rcM[1])[1]||'').trim();
+        i++;
+        while(i<lines.length&&!bundleRe.test(lines[i])&&!nidStart.test(lines[i])&&!skip.test(lines[i])){
+          rejectionText+=' '+lines[i];i++;
+        }
+      }
+    }
+
+    // Bundle ID (2 hex lines)
+    let bundleId='';
+    if(i<lines.length&&bundleRe.test(lines[i])){
+      bundleId=lines[i];i++;
+      if(i<lines.length&&bundleCR.test(lines[i])){bundleId+=lines[i];i++}
+    }
+
+    if(serviceCode||nationalId){
+      allR.push([allR.length+1,bundleId,memberName,nationalId,serviceDate,serviceCode,serviceName.trim(),rejectionText.trim()]);
+    }
   }
-  // Fill missing member names
-  const n2m={};allR.forEach(r=>{if(r[1]&&r[2])n2m[r[2]]=r[1]});
-  allR.forEach(r=>{if(!r[1]&&r[2]&&n2m[r[2]])r[1]=n2m[r[2]]});
+
+  // Fill missing names: by national ID, by bundle ID, then by last name per NID
+  var n2m={},b2m={};
+  allR.forEach(function(r){if(r[2]&&r[3])n2m[r[3]]=r[2];if(r[2]&&r[1])b2m[r[1]]=r[2]});
+  allR.forEach(function(r){if(!r[2]&&r[3]&&n2m[r[3]])r[2]=n2m[r[3]];if(!r[2]&&r[1]&&b2m[r[1]])r[2]=b2m[r[1]]});
+  // Second pass: fill by last known name for same national ID
+  var nidLast={};
+  allR.forEach(function(r){if(r[2]&&r[3])nidLast[r[3]]=r[2]});
+  allR.forEach(function(r){if(!r[2]&&r[3]&&nidLast[r[3]])r[2]=nidLast[r[3]]});
 }
 
-// ===== GENERIC EXTRACTOR =====
+// ===== GENERIC =====
 function extractGen(text){
   allR=[];cols=[];
   const lines=text.split('\n').map(l=>l.trim()).filter(l=>l.length>2);
-  // Detect columns from first few lines
-  const headerLine=lines.find(l=>/\t/.test(l)||/\s{3,}/.test(l))||lines[0];
-  const sep=/\t/.test(headerLine)?'\t':/\s{3,}/;
-  cols=headerLine.split(sep).map(c=>c.trim()).filter(Boolean);
+  const hLine=lines.find(l=>/\t/.test(l)||/\s{3,}/.test(l))||lines[0];
+  const sep=/\t/.test(hLine)?'\t':/\s{3,}/;
+  cols=hLine.split(sep).map(c=>c.trim()).filter(Boolean);
   if(cols.length<2){cols=['Content'];allR=lines.map((l,i)=>[i+1,l])}
-  else{
-    const hi=lines.indexOf(headerLine);
-    lines.slice(hi+1).forEach((l,i)=>{
-      const cells=l.split(sep).map(c=>c.trim());
-      if(cells.some(c=>c))allR.push([i+1,...cells]);
-    });
-  }
+  else{const hi=lines.indexOf(hLine);lines.slice(hi+1).forEach((l,i)=>{const c=l.split(sep).map(x=>x.trim());if(c.some(x=>x))allR.push([i+1,...c])})}
   cols.unshift('#');
 }
 
 // ===== RENDER =====
 function render(){
-  // Badge
   const b=document.getElementById('badge');
   const lb={'contract-expiry':'📋 Contract Expiry','batch-claims':'🏥 Batch Claims Report','generic':'📊 Table Data'};
   const cl={'contract-expiry':'badge--c','batch-claims':'badge--k','generic':'badge--g'};
-  b.textContent=`Detected: ${lb[pdfT]||'Unknown'}`;b.className=`badge on ${cl[pdfT]||''}`;
-  // Stats
+  b.textContent='Detected: '+(lb[pdfT]||'Unknown');b.className='badge on '+(cl[pdfT]||'');
   const st=document.getElementById('st');
-  let h=`<div class="sc sc--a fi"><div class="sc__v">${allR.length.toLocaleString()}</div><div class="sc__l">Records</div></div>
-  <div class="sc fi" style="animation-delay:50ms"><div class="sc__v">${cols.length-1}</div><div class="sc__l">Columns</div></div>`;
+  let h='<div class="sc sc--a fi"><div class="sc__v">'+allR.length.toLocaleString()+'</div><div class="sc__l">Records</div></div>'+
+  '<div class="sc fi" style="animation-delay:50ms"><div class="sc__v">'+(cols.length-1)+'</div><div class="sc__l">Columns</div></div>';
   if(pdfT==='batch-claims'){
-    const mems=new Set(allR.map(r=>r[1]).filter(Boolean)).size;
-    const rcs={};allR.forEach(r=>{const c=(r[7]||'').match(/[A-Z]{2}-\d+-\d+/);if(c)rcs[c[0]]=(rcs[c[0]]||0)+1});
-    h+=`<div class="sc sc--p fi" style="animation-delay:100ms"><div class="sc__v">${mems}</div><div class="sc__l">Members</div></div>
-    <div class="sc sc--r fi" style="animation-delay:150ms"><div class="sc__v">${Object.keys(rcs).length}</div><div class="sc__l">Rejection Types</div></div>`;
+    const mems=new Set(allR.map(r=>r[2]).filter(Boolean)).size;
+    const bundles=new Set(allR.map(r=>r[1]).filter(Boolean)).size;
+    h+='<div class="sc sc--p fi" style="animation-delay:100ms"><div class="sc__v">'+mems+'</div><div class="sc__l">Members</div></div>'+
+    '<div class="sc sc--g fi" style="animation-delay:150ms"><div class="sc__v">'+bundles+'</div><div class="sc__l">Bundles</div></div>';
   }
   if(pdfT==='contract-expiry'){
-    const exp=allR.filter(r=>r[6]?.includes('⛔')).length;
-    const cr=allR.filter(r=>r[6]?.includes('🔴')).length;
-    h+=`<div class="sc sc--r fi" style="animation-delay:100ms"><div class="sc__v">${exp}</div><div class="sc__l">Expired</div></div>
-    <div class="sc sc--g fi" style="animation-delay:150ms"><div class="sc__v">${cr}</div><div class="sc__l">≤30 Days</div></div>`;
+    const exp=allR.filter(r=>r[6]&&r[6].includes('⛔')).length;
+    const cr=allR.filter(r=>r[6]&&r[6].includes('🔴')).length;
+    h+='<div class="sc sc--r fi" style="animation-delay:100ms"><div class="sc__v">'+exp+'</div><div class="sc__l">Expired</div></div>'+
+    '<div class="sc sc--g fi" style="animation-delay:150ms"><div class="sc__v">'+cr+'</div><div class="sc__l">≤30 Days</div></div>';
   }
   st.innerHTML=h;
-  // Filter buttons for claims
   const fbd=document.getElementById('fb');
   if(pdfT==='batch-claims'){
-    const rcs={};allR.forEach(r=>{const c=(r[7]||'').match(/[A-Z]{2}-\d+-\d+/);if(c)rcs[c[0]]=(rcs[c[0]]||0)+1});
-    fbd.innerHTML=Object.entries(rcs).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([c,n])=>
-      `<button class="fb" onclick="filt('${c}')">${c} (${n})</button>`
-    ).join('')+`<button class="fb on" onclick="filt('all')">All</button>`;
+    const rcs={};allR.forEach(r=>{const m=String(r[7]||'').match(/[A-Z]{2}-\d+-\d+/);if(m)rcs[m[0]]=(rcs[m[0]]||0)+1});
+    fbd.innerHTML=Object.entries(rcs).sort((a,b)=>b[1]-a[1]).slice(0,8).map(c=>'<button class="fb" onclick="filt(\''+c[0]+'\')">'+c[0]+' ('+c[1]+')</button>').join('')+'<button class="fb on" onclick="filt(\'all\')">All</button>';
   }else fbd.innerHTML='';
   rTable();
   document.getElementById('tb').classList.add('on','fi');
@@ -315,13 +323,13 @@ function render(){
 
 function rTable(){
   const th=document.getElementById('th'),tb=document.getElementById('tb2');
-  th.innerHTML='<tr>'+cols.map((c,i)=>`<th onclick="srt(${i})">${c} <span class="sa">▼</span></th>`).join('')+'</tr>';
+  th.innerHTML='<tr>'+cols.map((c,i)=>'<th onclick="srt('+i+')">'+c+' <span class="sa">▼</span></th>').join('')+'</tr>';
   let data=[...allR];
   const q=document.getElementById('si').value.toLowerCase().trim();
   if(q)data=data.filter(r=>r.some(c=>String(c).toLowerCase().includes(q)));
   if(cFilt!=='all')data=data.filter(r=>String(r[7]||'').includes(cFilt));
   data.sort((a,b)=>{
-    let va=a[sCol]??'',vb=b[sCol]??'';
+    let va=a[sCol]||'',vb=b[sCol]||'';
     const na=parseFloat(String(va).replace(/[^\d.-]/g,'')),nb=parseFloat(String(vb).replace(/[^\d.-]/g,''));
     if(!isNaN(na)&&!isNaN(nb))return(na-nb)*sDir;
     return String(va).localeCompare(String(vb))*sDir;
@@ -330,41 +338,39 @@ function rTable(){
     return'<tr class="fi" style="animation-delay:'+Math.min(ri*2,200)+'ms">'+
     r.map((c,ci)=>{
       const lb=cols[ci]||'',s=String(c);
-      const isS=s.includes('⛔')||s.includes('🔴')||s.includes('🟡')||s.includes('🟢')||s.includes('✅');
-      if(isS){const t=s.includes('⛔')||s.includes('🔴')?'r':s.includes('🟡')?'y':s.includes('🟢')?'g':'b';return`<td data-label="${lb}"><span class="sb2 sb2--${t}">${s}</span></td>`}
-      if(/^\d{2}[\/\-]\d{2}[\/\-]\d{4}$/.test(s))return`<td data-label="${lb}" class="dc">${s}</td>`;
-      if(ci===0)return`<td data-label="${lb}" class="nc">${s}</td>`;
-      return`<td data-label="${lb}">${esc(c)}</td>`;
+      if(/^\d{2}[\/\-]\d{2}[\/\-]\d{4}$/.test(s))return'<td data-label="'+lb+'" class="dc">'+s+'</td>';
+      if(ci===0)return'<td data-label="'+lb+'" class="nc">'+s+'</td>';
+      return'<td data-label="'+lb+'">'+esc(c)+'</td>';
     }).join('')+'</tr>';
   }).join('');
-  if(!data.length)tb.innerHTML=`<tr><td colspan="${cols.length}" style="text-align:center;padding:40px;color:var(--ink-m);">No matching records</td></tr>`;
+  if(!data.length)tb.innerHTML='<tr><td colspan="'+cols.length+'" style="text-align:center;padding:40px;color:var(--ink-m);">No matching records</td></tr>';
 }
 
-function esc(s){const d=document.createElement('div');d.textContent=s??'';return d.innerHTML}
+function esc(s){const d=document.createElement('div');d.textContent=s==null?'':s;return d.innerHTML}
 function srt(c){if(sCol===c)sDir*=-1;else{sCol=c;sDir=1}rTable()}
 document.getElementById('si').addEventListener('input',()=>rTable());
-function filt(v){cFilt=v;document.querySelectorAll('.fb').forEach(b=>b.classList.toggle('on',b.textContent.includes(v)||v==='all'&&/All/.test(b.textContent)));rTable()}
+function filt(v){cFilt=v;document.querySelectorAll('.fb').forEach(b=>b.classList.toggle('on',b.textContent.includes(v)||(v==='all'&&/All/.test(b.textContent))));rTable()}
 function reset(){document.getElementById('si').value='';cFilt='all';sCol=0;sDir=1;document.querySelectorAll('.fb').forEach(b=>b.classList.toggle('on',/All/.test(b.textContent)));rTable()}
 
 function dl(){
   const wb=XLSX.utils.book_new();
   const d=[cols,...allR];const ws=XLSX.utils.aoa_to_sheet(d);
-  ws['!cols']=cols.map((_,i)=>({wch:i===0?5:25}));
+  ws['!cols']=cols.map(function(_,i){return{wch:i===0?5:i<=1?38:i<=2?28:20}});
   XLSX.utils.book_append_sheet(wb,ws,'Data');
-  const sm=[['PDF DATA EXTRACTION'],[''],['Type',pdfT],['Records',allR.length],['']];
+  var sm=[['PDF DATA EXTRACTION SUMMARY'],[''],['Type',pdfT],['Records',allR.length],['']];
   if(pdfT==='batch-claims'){
-    sm.push(['REJECTION BREAKDOWN'],['']);
-    const rcs={};allR.forEach(r=>{const c=(r[7]||'').match(/[A-Z]{2}-\d+-\d+/);if(c)rcs[c[0]]=(rcs[c[0]]||0)+1});
-    Object.entries(rcs).sort((a,b)=>b[1]-a[1]).forEach(([c,n])=>sm.push([c,n]));
+    sm.push(['REJECTION CODE BREAKDOWN'],['']);
+    var rcs={};allR.forEach(function(r){var m=String(r[7]||'').match(/[A-Z]{2}-\d+-\d+/);if(m)rcs[m[0]]=(rcs[m[0]]||0)+1});
+    Object.entries(rcs).sort(function(a,b){return b[1]-a[1]}).forEach(function(e){sm.push([e[0],e[1]])});
   }
-  const ws2=XLSX.utils.aoa_to_sheet(sm);ws2['!cols']=[{wch:60},{wch:10}];
+  var ws2=XLSX.utils.aoa_to_sheet(sm);ws2['!cols']=[{wch:60},{wch:10}];
   XLSX.utils.book_append_sheet(wb,ws2,'Summary');
-  XLSX.writeFile(wb,`Extracted_${pdfT}_${Date.now()}.xlsx`);
+  XLSX.writeFile(wb,'Extracted_'+pdfT+'_'+Date.now()+'.xlsx');
 }
 
 function sp(s){document.getElementById('pr').classList.toggle('on',s)}
 function up(p,t){document.getElementById('pf').style.width=p+'%';document.getElementById('pt').textContent=t}
-function sl(ms){return new Promise(r=>setTimeout(r,ms))}
+function sl(ms){return new Promise(function(r){setTimeout(r,ms)})}
 </script>
 </body>
 </html>
