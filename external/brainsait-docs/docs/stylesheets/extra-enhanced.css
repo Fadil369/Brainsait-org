@@ -1,0 +1,170 @@
+﻿/*
+  BrainSAIT Design System - Enhanced Components v1.0
+  Additional premium components and animations
+  Last Updated: January 2026
+*/
+
+/* ==========================================
+   ENHANCED CARD COMPONENTS
+   ========================================== */
+
+.card-elevated {
+  background: var(--color-surface-elevated, #334155);
+  border-radius: var(--border-radius-lg, 12px);
+  padding: var(--spacing-lg, 24px);
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.card-elevated:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* ==========================================
+   ENHANCED ANIMATIONS
+   ========================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Apply fade-in to main content */
+.md-content {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* ==========================================
+   ENHANCED NAVIGATION
+   ========================================== */
+
+.md-nav__item--active > .md-nav__link {
+  background: rgba(96, 165, 250, 0.1);
+  border-radius: var(--border-radius-md, 8px);
+}
+
+.md-nav__link:focus-visible {
+  outline: 2px solid var(--color-focus-ring, #60A5FA);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm, 6px);
+}
+
+/* ==========================================
+   ENHANCED CODE BLOCKS
+   ========================================== */
+
+.highlight pre {
+  border-radius: var(--border-radius-lg, 12px);
+  border: 1px solid var(--color-border-subtle, rgba(248, 250, 252, 0.15));
+}
+
+.highlight pre:focus-within {
+  outline: 2px solid var(--color-focus-ring, #60A5FA);
+  outline-offset: 2px;
+}
+
+/* ==========================================
+   ENHANCED TABLES
+   ========================================== */
+
+.md-typeset table:not([class]) th {
+  background: var(--color-surface-elevated, #334155);
+  font-weight: var(--font-weight-semibold, 600);
+}
+
+.md-typeset table:not([class]) tr:hover td {
+  background: rgba(96, 165, 250, 0.05);
+}
+
+/* ==========================================
+   ENHANCED ADMONITIONS
+   ========================================== */
+
+.md-typeset .admonition {
+  border-radius: var(--border-radius-lg, 12px);
+  box-shadow: var(--shadow-sm);
+}
+
+.md-typeset .admonition-title {
+  border-radius: var(--border-radius-lg, 12px) var(--border-radius-lg, 12px) 0 0;
+}
+
+/* ==========================================
+   PRINT STYLES
+   ========================================== */
+
+@media print {
+  .md-header,
+  .md-sidebar,
+  .md-footer {
+    display: none !important;
+  }
+
+  .md-content {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .md-typeset a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+}
+
+/* ==========================================
+   REDUCED MOTION SUPPORT
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================
+   HIGH CONTRAST MODE SUPPORT
+   ========================================== */
+
+@media (prefers-contrast: high) {
+  :root {
+    --color-border-subtle: rgba(248, 250, 252, 0.4);
+    --color-border-medium: rgba(248, 250, 252, 0.6);
+  }
+
+  .md-typeset a {
+    text-decoration: underline !important;
+  }
+}

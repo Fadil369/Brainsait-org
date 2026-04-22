@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#0a0e1a">
+<title>BrainSAIT Tawnia Claims Reconciliation</title>
+<meta name="description" content="BrainSAIT's Tawnia reconciliation workspace for analyzing claims, applying AGREE or DISAGREE logic, and exporting review results from Google Sheets or Excel.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="BrainSAIT LTD">
+<link rel="canonical" href="https://brainsait.org/tawnia-reconciliation">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BrainSAIT Tawnia Claims Reconciliation">
+<meta property="og:description" content="Upload or link claims data, review Saudi RCM rejection patterns, and export reconciled decisions directly from the browser.">
+<meta property="og:url" content="https://brainsait.org/tawnia-reconciliation">
+<meta property="og:image" content="https://brainsait.org/og-image.png">
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0a0e1a;color:#e2e8f0;min-height:100vh;overflow-x:hidden}
+.bg{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(14,165,233,.08) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at 80% 90%,rgba(43,108,184,.1) 0%,transparent 60%)}
+.app{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:20px 16px 40px}
+.home-link{display:inline-flex;align-items:center;gap:6px;margin-bottom:14px;color:#94a3b8;font-size:12px;font-weight:600;text-decoration:none}
+.home-link:hover{color:#0ea5e9}
+.hdr{margin-bottom:24px}.hdr-r{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#1a365d,#0ea5e9);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.bl{font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:#0ea5e9;font-weight:500}
+.bt{font-size:20px;font-weight:700;letter-spacing:-.02em}.bd{font-size:13px;color:#94a3b8;line-height:1.5;margin-top:4px}
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px;backdrop-filter:blur(12px)}
+.ch{display:flex;align-items:center;gap:8px;margin-bottom:14px}.ch svg{color:#0ea5e9}.ch span{font-size:13px;font-weight:500}
+.ir{display:flex;gap:8px}.inp{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:10px 14px;font-size:14px;color:#e2e8f0;outline:none;font-family:inherit;transition:border-color .2s}
+.inp:focus{border-color:rgba(14,165,233,.5)}.inp::placeholder{color:rgba(255,255,255,.2)}
+.hint{font-size:11px;color:rgba(255,255,255,.3);margin-top:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 16px;border-radius:12px;font-size:13px;font-weight:500;border:none;cursor:pointer;font-family:inherit;transition:all .2s;white-space:nowrap}
+.bp{background:linear-gradient(135deg,#1a365d,#2b6cb8);color:#fff}.bp:disabled{opacity:.4;cursor:not-allowed}
+.br{background:linear-gradient(135deg,#0ea5e9,#2b6cb8);color:#fff}
+.bg2{background:linear-gradient(135deg,#166534,#15803d);color:#fff}
+.bgh{background:transparent;color:#94a3b8;border:1px solid rgba(255,255,255,.08)}.bgh:hover{color:#fff;border-color:rgba(255,255,255,.2)}
+.dz{border:2px dashed rgba(255,255,255,.1);border-radius:16px;padding:32px 20px;text-align:center;cursor:pointer;transition:all .2s;background:rgba(255,255,255,.02);margin-top:14px}
+.dz.active{border-color:#0ea5e9;background:rgba(14,165,233,.05)}
+.dz svg{color:#475569;margin-bottom:8px;display:block;margin:0 auto 8px}.dz.active svg{color:#0ea5e9}
+.dz p{font-size:13px;font-weight:500;color:rgba(255,255,255,.7)}.dz .sub{font-size:11px;color:rgba(255,255,255,.3);margin-top:4px}
+.tabs{display:flex;gap:6px;margin-bottom:14px}.tab{flex:1;padding:10px 8px;border-radius:12px;font-size:12px;font-weight:500;text-align:center;cursor:pointer;border:1px solid rgba(255,255,255,.08);background:transparent;color:#94a3b8;transition:all .2s;font-family:inherit}
+.tab.active{background:rgba(14,165,233,.1);border-color:rgba(14,165,233,.3);color:#0ea5e9}
+.tw{border-radius:16px;border:1px solid rgba(255,255,255,.08);overflow:hidden;background:rgba(255,255,255,.02)}
+.ts{overflow-x:auto;overflow-y:auto;max-height:50vh;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:11px}thead{position:sticky;top:0;z-index:2}
+th{background:rgba(255,255,255,.04);padding:10px 12px;text-align:left;color:#94a3b8;font-weight:500;white-space:nowrap;border-bottom:1px solid rgba(255,255,255,.05)}
+td{padding:8px 12px;color:rgba(255,255,255,.7);white-space:nowrap;max-width:180px;overflow:hidden;text-overflow:ellipsis;border-bottom:1px solid rgba(255,255,255,.03)}
+tr:hover td{background:rgba(255,255,255,.02)}
+.rc{text-align:center;font-size:11px;color:rgba(255,255,255,.3);padding:8px}
+.ph{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.pi h2{font-size:15px;font-weight:600}.pi p{font-size:11px;color:rgba(255,255,255,.3);margin-top:2px}
+.pa{display:flex;gap:8px}
+.ar{text-align:center;padding:40px 20px}
+.pr{width:56px;height:56px;border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(14,165,233,.15),rgba(43,108,184,.15));border:1px solid rgba(14,165,233,.2)}
+.pr svg{animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.ar h2{font-size:17px;font-weight:600;margin-bottom:6px}.ar .sub{font-size:13px;color:rgba(255,255,255,.3);margin-bottom:24px}
+.pb{max-width:280px;margin:0 auto}.pl{display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.3);margin-bottom:6px}
+.pt{height:6px;border-radius:3px;background:rgba(255,255,255,.05);overflow:hidden}.pf{height:100%;border-radius:3px;transition:width .4s;background:linear-gradient(90deg,#1a365d,#0ea5e9)}
+.pd{font-size:11px;color:rgba(255,255,255,.2);margin-top:8px}
+.sg{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px}
+.sc{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px}
+.si{font-size:18px;margin-bottom:6px}.sv{font-size:22px;font-weight:700;line-height:1}.sl{font-size:11px;color:rgba(255,255,255,.3);margin-top:4px}
+.ra{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.sb{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:6px;font-size:11px;font-weight:500}
+.sa{background:rgba(34,197,94,.1);color:#22c55e;border:1px solid rgba(34,197,94,.2)}
+.sd{background:rgba(245,158,11,.1);color:#f59e0b;border:1px solid rgba(245,158,11,.2)}
+.se{background:rgba(239,68,68,.1);color:#ef4444;border:1px solid rgba(239,68,68,.2)}
+.cm{color:rgba(255,255,255,.6);line-height:1.5;white-space:normal;min-width:180px;max-width:320px;font-size:11px}
+.ft{margin-top:32px;padding-top:16px;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,.2)}
+.err{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:12px;border:1px solid rgba(239,68,68,.2);background:rgba(239,68,68,.05);margin-bottom:16px}
+.err svg{color:#ef4444;flex-shrink:0;margin-top:1px}.err p{font-size:13px;color:#fca5a5}
+.hidden{display:none!important}.mt{margin-top:14px}.fade{animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.mo{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:100;display:flex;align-items:flex-end;justify-content:center;backdrop-filter:blur(4px)}
+.ms{background:#111827;border-radius:20px 20px 0 0;width:100%;max-width:560px;max-height:80vh;overflow-y:auto;padding:24px 16px 32px;animation:su .3s ease}
+@keyframes su{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.mh{width:36px;height:4px;border-radius:2px;background:rgba(255,255,255,.2);margin:0 auto 16px}
+.mt2{font-size:16px;font-weight:600;margin-bottom:16px}
+.dr{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:13px}
+.dk{color:#94a3b8}.dv{color:#e2e8f0;text-align:right;max-width:60%;word-break:break-all}
+.tb{display:flex;gap:4px;margin-bottom:12px;background:rgba(255,255,255,.03);border-radius:12px;padding:3px}
+.tt{flex:1;padding:8px;border-radius:10px;font-size:12px;font-weight:500;text-align:center;cursor:pointer;color:#94a3b8;transition:all .2s;border:none;background:none;font-family:inherit}
+.tt.active{background:rgba(14,165,233,.1);color:#0ea5e9}.tt .cn{font-size:10px;opacity:.6}
+.pc{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600}
+.pc-c{background:rgba(239,68,68,.12);color:#ef4444}.pc-h{background:rgba(245,158,11,.12);color:#f59e0b}.pc-m{background:rgba(234,179,8,.12);color:#eab308}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="app">
+<a class="home-link" href="/appstore">← Back to BrainSAIT Store</a>
+<div class="hdr"><div class="hdr-r"><div class="logo">⚕</div><div><div class="bl">BrainSAIT x Al Tawuniya</div><div class="bt">AI Claims Reconciliation</div></div></div>
+<p class="bd">Upload claims data or paste a Google Sheets link. Apply AGREE/DISAGREE logic with intelligent comments based on Saudi RCM rejection patterns.</p></div>
+
+<div id="eBox" class="err hidden"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p id="eTxt"></p></div>
+
+<div id="sI">
+<div class="tabs">
+<button class="tab active" data-t="s" onclick="sw('s')">Google Sheets</button>
+<button class="tab" data-t="f" onclick="sw('f')">Upload Excel</button>
+</div>
+<div id="tS" class="card fade">
+<div class="ch"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/></svg><span>Google Sheets Link</span></div>
+<div class="ir"><input type="text" id="sUrl" class="inp" placeholder="https://docs.google.com/spreadsheets/d/..." oninput="oS()"><button id="lB" class="btn bp" disabled onclick="lS()">Load</button></div>
+<p class="hint">Sheet must be set to "Anyone with the link can view"</p>
+</div>
+<div id="tF" class="card hidden fade">
+<div class="dz" id="dz" onclick="document.getElementById('fI').click()">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12"/><path d="m17 8-5-5-5 5"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/></svg>
+<p>Drop Excel file here or tap to browse</p><p class="sub">.xlsx files supported</p>
+</div><input type="file" id="fI" accept=".xlsx,.xls,.csv" class="hidden" onchange="hF(this.files[0])">
+</div>
+<div class="mt" style="text-align:center"><button class="btn bgh" onclick="lSamp()" style="font-size:11px">Load Sample Data</button></div>
+</div>
+
+<div id="sL" class="hidden"><div class="card" style="text-align:center;padding:40px 20px"><div class="pr"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></div><h2>Loading Data</h2><p class="sub">Parsing spreadsheet...</p></div></div>
+
+<div id="sP" class="hidden fade">
+<div class="ph"><div class="pi"><h2>Data Preview</h2><p id="pM"></p></div><div class="pa"><button class="btn bgh" onclick="rst()">Reset</button><button class="btn br" onclick="runA()">Analyze</button></div></div>
+<div class="tw"><div class="ts" id="pT"></div></div></div>
+
+<div id="sA" class="hidden fade"><div class="card ar"><div class="pr"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></div><h2>Analyzing Claims</h2><p class="sub">Applying AGREE/DISAGREE logic with Saudi RCM rejection patterns...</p><div class="pb"><div class="pl"><span>Progress</span><span id="pp">0%</span></div><div class="pt"><div class="pf" id="pF" style="width:0%"></div></div><p class="pd" id="pD">Preparing...</p></div></div></div>
+
+<div id="sD" class="hidden fade">
+<div class="sg" id="sG"></div>
+<div class="ra"><button class="btn bg2" onclick="expX()">Download Excel</button><button class="btn bgh" onclick="rst()">New Analysis</button></div>
+<div class="tb" id="rT"></div>
+<div class="tw"><div class="ts" id="rTbl"></div></div>
+</div>
+
+<div class="ft"><span>BrainSAIT LTD - Tawnia Reconciliation</span><span>Saudi RCM v2.0</span></div>
+</div>
+
+<div id="dM" class="mo hidden" onclick="if(event.target===this)cM()"><div class="ms"><div class="mh"></div><div class="mt2" id="mT">Claim Detail</div><div id="mC"></div></div></div>
+
+<script>
+var st='idle',aR=[],aC=[],res=[],cF='all';
+
+// ===== REJECTION CATEGORIES from advanced_enhanced_system.py =====
+var RC={
+'Clinical Diagnosis Mismatch':{pats:['inconsistent with given diagnosis','inconsistent with diagnosis','diagnosis mismatch','does not match diagnosis','not match the diagnosis','inconsistent','without additional supporting diagnosis'],pri:'CRITICAL',act:'Submit complete medical records, physician notes, diagnostic reports demonstrating clinical appropriateness'},
+'Technical/System Error':{pats:['action taken by review unit system','action by review unit system','system error','automated rejection','system','technical'],pri:'CRITICAL',act:'Request immediate escalation to manual review by qualified clinical reviewer'},
+'Pricing/Fee Schedule Issue':{pats:['out of price list','not in price list','price list','pricing','fee schedule','cost'],pri:'CRITICAL',act:'Provide contract documentation, fee schedules, and pricing verification requests'},
+'Clinical Justification Required':{pats:['not clinically justified','lacks clinical support','clinical practice guideline','clinical guideline','not justified','meets all criteria','not clinically indicated'],pri:'HIGH',act:'Submit detailed clinical notes, physician orders, clinical guidelines, and medical necessity documentation'},
+'Coverage Verification Required':{pats:['not covered','not coverd','coverage','excluded','service is not covered','screening not covered','sickle-cell anaemia without crisis not covered'],pri:'HIGH',act:'Request policy clarification with member benefits documentation and coverage verification'},
+'Duplicate Service Clarification':{pats:['duplicated service','same physician','same physicain','duplicate','already billed','repeat service','repeated'],pri:'MEDIUM',act:'Provide detailed service dates, encounter documentation showing distinct services'},
+'Service Limit Exception Request':{pats:['exceed service special limit','exceed special limit','exceeds','exceed the approved amount','limit','maximum','benefit maximum','frequency limit'],pri:'MEDIUM',act:'Submit exception request with clinical documentation justifying increased frequency/quantity'},
+'Provider Network Issue':{pats:['provider is not appointed','provider not appointed','not appointed to this policy','not network','network','this provider is not appointed'],pri:'MEDIUM',act:'Verify provider network status, submit contract documentation or emergency/referral authorization'},
+'Authorization Issue':{pats:['prior approval is required and was not obtained','prior approval','prior auth','authorization','pre-authorization','approval required','authorization validity date'],pri:'HIGH',act:'Provide authorization numbers, approval documentation, or policy exception justification'},
+'Drug Interaction Alert':{pats:['severe interactions','high alert','member health might severely harmed','therapeutic duplication','interaction'],pri:'CRITICAL',act:'Immediate pharmacist review required. Provide medication reconciliation documentation and clinical justification for co-prescription'},
+'Billing Regime Error':{pats:['incorrect billing regime','billing regime'],pri:'HIGH',act:'Review billing codes and submission format. Resubmit with correct billing regime per contractual agreement'},
+'Contractual Compliance':{pats:['submission not compliant with contractual agreement','not compliant'],pri:'HIGH',act:'Review contractual terms and provide compliance documentation per provider-payer agreement'},
+'Free Follow-Up Period':{pats:['consultation within free follow up period','free follow up'],pri:'MEDIUM',act:'Verify follow-up visit timeline. Provide documentation of distinct clinical encounter beyond free follow-up period'}
+};
+
+// ===== AGREE PATTERNS from apply_status_comments.py & AGREE_DISAGREE_LOGIC.md =====
+var AP=['not covered by policy','excluded benefit','cosmetic procedure','experimental treatment','investigational','elective procedure','beyond policy scope','outside coverage','pre-existing condition','prior condition','waiting period not met','policy expired','coverage terminated','inactive policy','membership inactive'];
+
+// ===== SERVICE KEYWORDS from advanced_enhanced_system.py =====
+var SK={consultation:['consultation','follow up','visit','examination','consult','clinic visit'],laboratory:['lab','blood','test','analysis','culture','cbc','glucose','lipid','panel','bilirubin','aminotransferase','creatinine','potassium','sodium','hemoglobin','urinalysis','serum','uric acid','ammonia','lipase','cholesterol','sedimentation'],radiology:['x-ray','xray','ct','mri','ultrasound','scan','imaging','radiolog','doppler','dorsal spine','chest','forearm','ankle','shoulder'],medication:['medication','drug','injection','pharmaceutical','capsule','tablet','syrup','cream','plaster','supp','infusion','pen','patch','drops','suspension','granule','powder','vial','solution'],surgery:['surgery','surgical','operation','procedure','operative','arthroscopy','endoscopy'],therapy:['therapy','treatment','rehabilitation','physio','rehab'],dental:['dental','teeth','tooth','oral','dent'],emergency:['emergency','urgent','trauma','acute','er'],maternity:['maternity','delivery','antenatal','newborn','obstetric','prenatal','ctg','vaginal','epidural','nicu'],diagnostic:['diagnostic','diagnosis','evaluation','assessment','ecg','metabolic screen']};
+
+// ===== COMMENT TEMPLATES from advanced_enhanced_system.py =====
+var CT={laboratory:{'Clinical Diagnosis Mismatch':'We disagree with this rejection. The {s} is medically necessary for proper diagnosis and management of the patient condition. Laboratory investigations are essential for confirming the clinical diagnosis and guiding treatment decisions. Request review with physician orders and clinical indication.','Pricing/Fee Schedule Issue':'We disagree with this rejection. The {s} is a routine laboratory test that should be in the approved fee schedule. Laboratory services are essential covered benefits. Request price list update or exception approval.','Duplicate Service Clarification':'We disagree with this rejection. This {s} is not a duplicate test. Each laboratory service was medically necessary at the time it was ordered based on clinical indication. Provide dates of service and clinical justification for each test.','default':'We disagree with this rejection. The {s} laboratory test is clinically indicated and medically necessary. Laboratory services support proper diagnosis and treatment monitoring. Request clinical review.'},
+radiology:{'Clinical Diagnosis Mismatch':'We disagree with this rejection. The {s} is clinically indicated based on the patient diagnosis and symptoms. Imaging studies are required to evaluate, diagnose, or rule out conditions consistent with the documented diagnosis. Request radiology review with complete clinical notes.','Pricing/Fee Schedule Issue':'We disagree with this rejection. The {s} is a standard imaging study that should be covered. Diagnostic imaging services are approved benefits. Request pricing verification and approval.','Duplicate Service Clarification':'We disagree with this rejection. This {s} is not a duplicate study. Each imaging study was clinically indicated for different reasons or time periods. Provide imaging dates and clinical indication for each study.','default':'We disagree with this rejection. The {s} imaging study is medically necessary for proper patient evaluation. Request radiology review with clinical indication.'},
+medication:{'Clinical Diagnosis Mismatch':'We disagree with this rejection. The {s} is appropriately prescribed for the patient diagnosed condition according to evidence-based clinical guidelines. The medication is a standard treatment for this diagnosis. Request pharmaceutical review with prescribing guidelines.','Coverage Verification Required':'We disagree with this rejection. The {s} should be a covered pharmaceutical benefit. Medication is medically necessary for the patient condition. Request formulary review and coverage verification.','Drug Interaction Alert':'We acknowledge the interaction alert for {s}. However, this combination is clinically justified under specialist supervision with appropriate monitoring. Provide clinical rationale and monitoring plan for co-prescription.','default':'We disagree with this rejection. The {s} is medically necessary and appropriately prescribed. Request pharmaceutical review.'},
+consultation:{'Clinical Diagnosis Mismatch':'We disagree with this rejection. The {s} is clinically appropriate based on the patient presenting complaints and condition. Physician consultations are necessary for proper medical evaluation and management. Request review with encounter documentation.','Pricing/Fee Schedule Issue':'We disagree with this rejection. The {s} is a standard medical service that should be included in the approved price list. Physician consultations are covered services under the policy terms. Request pricing verification and approval.','Provider Network Issue':'We disagree with this rejection. The {s} was provided by a qualified physician within the network or under valid referral. Verify provider credentials and network status. Request network exception or retrospective approval.','default':'We disagree with this rejection. The {s} is medically necessary for proper patient care. Request clinical review.'},
+maternity:{'Clinical Diagnosis Mismatch':'We disagree with this rejection. The {s} is a standard obstetric service that is medically necessary for maternal and fetal health monitoring. Antenatal and delivery services are essential covered benefits. Request obstetric review.','default':'We disagree with this rejection. The {s} is a medically necessary maternity service. Request obstetric review with clinical documentation.'},
+'default':{'Clinical Diagnosis Mismatch':'We disagree with this rejection. The {s} is medically necessary and clinically appropriate for the patient documented condition. Request clinical review with supporting medical documentation.','Technical/System Error':'We disagree with this rejection. This appears to be an automated system rejection without proper clinical review. The {s} requires manual evaluation by a qualified reviewer. Request immediate manual review by clinical staff.','Pricing/Fee Schedule Issue':'We disagree with this rejection. The {s} should be covered under the approved fee schedule. Request contract verification and pricing approval.','Clinical Justification Required':'We disagree with this rejection. The {s} is clinically justified based on evidence-based medical practice. Request review with comprehensive clinical documentation.','Coverage Verification Required':'We disagree with this rejection. The {s} should be a covered benefit under the policy terms. Request policy review and coverage verification.','Duplicate Service Clarification':'We disagree with this rejection. The {s} represents distinct medical services, not duplicates. Each service was medically necessary. Provide detailed service documentation.','Service Limit Exception Request':'We disagree with this rejection. The {s} exceeds standard limits due to medical necessity and patient complexity. Request exception review with clinical justification.','Provider Network Issue':'We disagree with this rejection. The {s} was provided appropriately. Request network verification or emergency services exception.','Authorization Issue':'We disagree with this rejection. The {s} was medically necessary. Request authorization review or retroactive approval.','Billing Regime Error':'We disagree with this rejection. The {s} billing appears to be correct per the service rendered. Request billing code verification and resubmission review.','Contractual Compliance':'We disagree with this rejection. The {s} submission follows standard protocols. Request contractual terms review and compliance verification.','Free Follow-Up Period':'We disagree with this rejection. This {s} represents a distinct clinical encounter beyond the free follow-up period. Provide documentation of separate clinical indication.','Drug Interaction Alert':'We acknowledge the alert for {s}. This combination is managed under clinical supervision. Request pharmacist review with monitoring documentation.','default':'We disagree with this rejection. The {s} is medically necessary and appropriate. Request comprehensive review.'}};
+
+// AGREE TEMPLATES
+var AT={default:'We accept the rejection of {s}. This service is excluded from policy coverage or does not meet eligibility requirements. This is a valid rejection per policy terms and exclusions. Category: Policy Exclusion - Valid Rejection. No further action recommended.',coverage:'We accept this rejection. The {s} is excluded from policy coverage. This is a valid rejection per policy terms. No further action recommended.',preexisting:'We accept this rejection. The {s} is related to a pre-existing condition excluded from coverage per policy terms. Category: Pre-existing Condition Exclusion. No further action recommended.',billing:'We accept the rejection related to billing for {s}. We will review our billing processes and ensure proper coding protocols are followed going forward.'};
+
+function $(id){return document.getElementById(id)}
+function sh(id){$(id).classList.remove('hidden')}
+function hd(id){$(id).classList.add('hidden')}
+function ss(s){st=s;['sI','sL','sP','sA','sD'].forEach(hd);var m={idle:'sI',loading:'sL',preview:'sP',analyzing:'sA',done:'sD'};sh(m[s])}
+function sE(m){$('eTxt').textContent=m;sh('eBox');setTimeout(function(){hd('eBox')},8000)}
+function sw(t){document.querySelectorAll('.tab').forEach(function(x){x.classList.toggle('active',x.dataset.t===t)});if(t==='s'){sh('tS');hd('tF')}else{hd('tS');sh('tF')}}
+function oS(){$('lB').disabled=!$('sUrl').value.trim()}
+
+var dz=$('dz');
+dz.addEventListener('dragover',function(e){e.preventDefault();dz.classList.add('active')});
+dz.addEventListener('dragleave',function(){dz.classList.remove('active')});
+dz.addEventListener('drop',function(e){e.preventDefault();dz.classList.remove('active');if(e.dataTransfer.files[0])hF(e.dataTransfer.files[0])});
+
+async function lS(){var u=$('sUrl').value.trim();if(!u)return;var c=u;var m=u.match(/\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/);if(m){var g=u.match(/[#&]gid=(\d+)/);c='https://docs.google.com/spreadsheets/d/'+m[1]+'/export?format=csv'+(g?'&gid='+g[1]:'')}ss('loading');try{var r=await fetch(c);if(!r.ok)throw new Error('Cannot access sheet. Ensure it is shared publicly.');pCSV(await r.text())}catch(e){ss('idle');sE(e.message)}}
+
+function hF(f){if(!f)return;ss('loading');var r=new FileReader();r.onload=function(e){try{var wb=XLSX.read(e.target.result,{type:'array'});var ws=wb.Sheets[wb.SheetNames[0]];var d=XLSX.utils.sheet_to_json(ws,{header:1});if(d.length<2)throw new Error('Need header + data rows');aC=d[0].map(String);aR=d.slice(1).map(function(row){var o={};aC.forEach(function(c,i){o[c]=row[i]!=null?row[i]:''});return o});sP()}catch(err){ss('idle');sE('Parse error: '+err.message)}};r.readAsArrayBuffer(f)}
+
+function pCSV(t){var ls=t.split('\n').filter(function(l){return l.trim()});if(ls.length<2){ss('idle');sE('Need header + data');return}
+function pR(r){var c=[],cur='',iq=false;for(var i=0;i<r.length;i++){var ch=r[i];if(ch==='"')iq=!iq;else if(ch===','&&!iq){c.push(cur.trim());cur=''}else cur+=ch}c.push(cur.trim());return c}
+aC=pR(ls[0]);aR=ls.slice(1).map(function(l){var cells=pR(l);var o={};aC.forEach(function(c,i){o[c]=cells[i]!=null?cells[i]:''});return o});sP()}
+
+function lSamp(){
+aC=['Waseel Batch','Doctor Code','Claim No.','Provider Ref','Service Code','Service','Exceed Price','Rejected Amount','Patient Id','Patient File No.','Invoice Number','Member Id','Member Name','Nphies Rejection Code','Nphies Rejection Description','Tawuniya Reply','Reason','Payer Comment','Service ID'];
+var d=[
+['','7300179027','N180909635','2470656','B01376','Serum Direct Bilirubin (D.Bil)','0.00 SAR','36.00 SAR','','','2470656','001077081519101','SHAHAD ABDULLAH ALMASUDI','','','','inconsistent with given diagnosis .','','N180909635-3'],
+['','7300179027','N180901470','2470657','10-149-91','Normal Saline I.V. Infusion','0.00 SAR','7.68 SAR','','','2470657','001077081519101','SHAHAD ABDULLAH ALMASUDI','','','','Medication 10-149-91 is not indicated with diagnosis code D57.0','','N180901470-3'],
+['','7301868272','N181785773','2471600','014','Dental Consultation By Consultant','0.00 SAR','28.00 SAR','','','2471600','002225306964001','AHMAD HASAN ALTAIF','','','','Out Of Price List','','N181785773-1'],
+['','7300318005','N179336930','2468484','1411246225','Epimag Effervescent Granule Sachet','0.00 SAR','4.61 SAR','','','2468484','002433642317001','DOMINADOR PEROCHO','','','','Medication 1411246225 is not indicated with diagnosis code E11.65','','N179336930-1'],
+['','7300155563','N179337214','2468504','150-212-01','Klavox 1gm Tab','0.00 SAR','52.56 SAR','','','2468504','001064652884211','G MOHAMMED ALI MUQRI','','','','Medication 150-212-01 is not indicated with diagnosis code S42.40','','N179337214-2'],
+['','7300424147','N179338101','2468524','10-328-25','Versatis 5% Medicated Plaster','0.00 SAR','155.24 SAR','','','2468524','001084493244101','RENAD OMAR OBAID BASUDAN','','','','Out Of Price List','','N179338101-2'],
+['','7300363068','N179338125','2468526','D00016','Ultrasound-Antenatal Study (Follow-Up)','0.00 SAR','120.00 SAR','','','2468526','001100901543111','NAJLAA AHMED EISA ZEHEIRI','','','','Benefit maximum for this time period or occurrence has been reached','','N179338125-2'],
+['','7300435371','N179337243','2468506','2504221977','Deslor 5 Mg Film Coated Tablet','0.00 SAR','34.68 SAR','','','2468506','002060442551201','ALI HAKAMI','','','','Medication 2504221977 is not indicated with diagnosis code J32.4','','N179337243-2'],
+['','7301773689','N179338134','2468905','193-186-03','Laxocodyl 10mg Supp','0.00 SAR','7.07 SAR','','','2468905','001069719274101','SHIMA AHMAD MKRTA','','','','Out Of Price List','','N179338134-4'],
+['','7300349468','N179338180','2468789','170001','Regular Admission 1st-2nd Day (Per Diem)','0.00 SAR','700.00 SAR','','','2468789','001063347411501','MOHAMED YAHYA SUMAILY','','','','Exceed service special limit','','N179338180-2'],
+['','7300363068','N179338162','2468528','N00005','Consultation Fee (Consultant)','0.00 SAR','80.00 SAR','','','2468528','001100901543111','NAJLAA AHMED EISA ZEHEIRI','','','','Consultation within free follow up period','','N179338162-1'],
+['','7300363068','N179338162','2468528','155029','Ctg Monitoring (Opd)','0.00 SAR','86.40 SAR','','','2468528','001100901543111','NAJLAA AHMED EISA ZEHEIRI','','','','Service is not clinically justified based on clinical practice guideline, without additional supporting diagnosis','','N179338162-2'],
+['','7300308467','N179337032','2468490','N00005','Consultation Fee (Consultant)','0.00 SAR','80.00 SAR','','','2468490','001097271256001','YAHYA AHMED ABDU QAHL','','','','Sickle-cell anaemia without crisis not covered','','N179337032-1'],
+['','7300308467','N179337032','2468490','B00113','Alanine Aminotransferase (Alt/Sgpt)','0.00 SAR','33.60 SAR','','','2468490','001097271256001','YAHYA AHMED ABDU QAHL','','','','Sickle-cell anaemia without crisis not covered','','N179337032-2'],
+['','7300212667','N179334745','2468446','277-277-14','Depralex 10mg Film Coated Tablet','0.00 SAR','93.16 SAR','','','2468446','002100342779001','SAHZAD BAHUAYAN','','','','Out Of Price List','','N179334745-2'],
+['','7300212667','N179334745','2468446','0309245854','Dompy 10mg Tablet','0.00 SAR','11.96 SAR','','','2468446','002100342779001','SAHZAD BAHUAYAN','','','','Requested drug 0309245854 with 277-277-14 has Severe Interactions, HIGH ALERT: MEMBER HEALTH MIGHT SEVERELY HARMED','','N179334745-3'],
+['','7300400885','N179334548','2468435','N00006','Consultation Fee (Family Medicine)','0.00 SAR','56.00 SAR','','','2468435','002423094081001','INTEKHAB AHMAD WARSI','','','','This Provider is not appointed to this policy','','N179334548-1'],
+['','7301301728','N179332295','2468408','21-1171-2007','Avalon Salinose Nasal Gel','0.00 SAR','23.18 SAR','','','2468408','001080440868001','MAJED HASSAN MANSOUB','','','','Duplicated Service','','N179332295-1'],
+['','7300308467','N179337342','2468659','170001','Regular Admission 1st-2nd Day (Per Diem)','0.00 SAR','900.00 SAR','','','2468659','001057032235101','NASHTA ALI AL SHAHRANI','','','','Exceed service special limit','','N179337342-1'],
+['','7300308467','N179337342','2468659','D00296','Ultrasound-Breast (Two Sides)','0.00 SAR','330.00 SAR','','','2468659','001057032235101','NASHTA ALI AL SHAHRANI','','','','Submission not compliant with contractual agreement between provider & payer','','N179337342-2'],
+['','7300211872','N179336968','2468486','1501256661','Neuro-B Film Coated Tablets','0.00 SAR','9.97 SAR','','','2468486','002448200762001','KASHINDRA RAM','','','','Medication 1501256661 is not indicated with diagnosis code M51.1','','N179336968-1'],
+['','140009801','N179337306','2468579','D00008','C.T-Abdomen And Pelvis W/O Contrast','0.00 SAR','600.00 SAR','','','2468579','001064421363511','MARYAM AHMED ALI HARTHI','','','','Exceed the approved amount.','','N179337306-1'],
+['','7300352701','N179352032','2468712','3008222563','Omecure 40 Mg Powder For I.V. Injection','0.00 SAR','39.88 SAR','','','2468712','001101329215001','MENAH EBRAHIM YAHYA JELAN','','','','Incorrect billing regime','','N179352032-3'],
+['','7300156350','N179347252','2468635','N00005','Consultation Fee (Consultant)','0.00 SAR','80.00 SAR','','','2468635','002523676118001','HEMANTH THAKRE','','','','Same Physicain','','N179347252-1']
+];
+aR=d.map(function(row){var o={};aC.forEach(function(c,i){o[c]=row[i]||''});return o});sP()}
+
+function sP(){ss('preview');$('pM').textContent=aR.length+' rows, '+aC.length+' columns';var h='<table><thead><tr>';var dc=aC.slice(0,8);dc.forEach(function(c){h+='<th>'+e(c)+'</th>'});if(aC.length>8)h+='<th>+'+(aC.length-8)+'</th>';h+='</tr></thead><tbody>';aR.slice(0,15).forEach(function(r){h+='<tr>';dc.forEach(function(c){h+='<td>'+e(String(r[c]!=null?r[c]:'-'))+'</td>'});if(aC.length>8)h+='<td>...</td>';h+='</tr>'});h+='</tbody></table>';if(aR.length>15)h+='<div class="rc">Showing 15 of '+aR.length+' rows</div>';$('pT').innerHTML=h}
+function e(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+// ===== DETECT SERVICE TYPE =====
+function dST(desc){if(!desc)return'unknown';var sl=String(desc).toLowerCase();for(var t in SK){for(var i=0;i<SK[t].length;i++){if(sl.indexOf(SK[t][i])>=0)return t}}return'unknown'}
+
+// ===== EXTRACT SERVICE NAME =====
+function eSN(desc){if(!desc)return'service';var s=String(desc).trim();s=s.replace(/^(the|a|an)\s+/i,'');s=s.replace(/\s*\([^)]*\)\s*$/,'');return s.substring(0,100)||'service'}
+
+// ===== CATEGORIZE REJECTION =====
+function cR(row){
+var reason=String(row['Reason']||'').toLowerCase();
+var payer=String(row['Payer Comment']||'').toLowerCase();
+var nphies=String(row['Nphies Rejection Description']||'').toLowerCase();
+var combined=reason+' '+payer+' '+nphies;
+for(var cat in RC){for(var i=0;i<RC[cat].pats.length;i++){if(combined.indexOf(RC[cat].pats[i])>=0)return{cat:cat,pri:RC[cat].pri,act:RC[cat].act}}}
+return{cat:'Comprehensive Review Required',pri:'HIGH',act:'Manual review and comprehensive appeal with all supporting documentation'}}
+
+// ===== CHECK AGREE PATTERNS =====
+function cAP(row){
+var reason=String(row['Reason']||'').toLowerCase();
+var payer=String(row['Payer Comment']||'').toLowerCase();
+var nphies=String(row['Nphies Rejection Description']||'').toLowerCase();
+var combined=reason+' '+payer+' '+nphies;
+for(var i=0;i<AP.length;i++){if(combined.indexOf(AP[i])>=0)return true}
+// Specific pattern: "not covered" at end of reason, "exclusion" etc
+if(/not covered\s*$/.test(reason.trim()))return true;
+if(/not covered\s*$/.test(nphies.trim()))return true;
+return false}
+
+// ===== GENERATE INTELLIGENT COMMENT =====
+function gIC(row,st2,cat,sName){
+if(st2==='AGREE'){
+if(/not covered/i.test(String(row['Reason']||''))||/excluded/i.test(String(row['Reason']||'')))
+return AT.coverage.replace('{s}',sName);
+if(/pre-existing/i.test(String(row['Reason']||'')))
+return AT.preexisting.replace('{s}',sName);
+if(/billing/i.test(String(row['Reason']||'')))
+return AT.billing.replace('{s}',sName);
+return AT.default.replace('{s}',sName);
+}
+// DISAGREE
+var svc=dST(row['Service']||row['Service Description']||'');
+var templates=CT[svc]||CT['default'];
+var template=templates[cat]||templates['default']||CT['default']['default'];
+return template.replace(/\{s\}/g,sName)}
+
+// ===== MAIN ANALYSIS =====
+function runA(){
+ss('analyzing');res=[];var total=aR.length;
+var idx=0;
+function pN(){
+if(idx>=total){finA();return}
+var row=aR[idx];var prog=(idx+1)/total;
+$('pp').textContent=Math.round(prog*100)+'%';$('pF').style.width=(prog*100)+'%';$('pD').textContent='Processing row '+(idx+1)+' of '+total;
+
+var result={};aC.forEach(function(c){result[c]=row[c]});result._RI=idx;
+
+var reason=String(row['Reason']||'');
+var sName=eSN(row['Service']||'');
+
+// Check AGREE first (per decision tree in AGREE_DISAGREE_LOGIC.md)
+var isAgree=cAP(row);
+var status=isAgree?'AGREE':'DISAGREE';
+var catInfo=isAgree?{cat:'Valid Rejection',pri:'LOW',act:'No further action - accept rejection'}:cR(row);
+var comment=gIC(row,status,catInfo.cat,sName);
+
+result._S=status;result._P=catInfo.pri;result._Cmt=comment;result._Cat=catInfo.cat;result._Act=catInfo.act;
+res.push(result);idx++;
+if(idx%5===0)setTimeout(pN,10);else pN()}
+setTimeout(pN,200)}
+
+function finA(){$('pp').textContent='100%';$('pF').style.width='100%';$('pD').textContent='Complete!';setTimeout(showR,400)}
+
+function showR(){
+ss('done');
+var agr=res.filter(function(r){return r._S==='AGREE'}).length;
+var dis=res.filter(function(r){return r._S==='DISAGREE'}).length;
+var tot=res.length;
+// Count priorities
+var crit=res.filter(function(r){return r._P==='CRITICAL'}).length;
+var high=res.filter(function(r){return r._P==='HIGH'}).length;
+var med=res.filter(function(r){return r._P==='MEDIUM'}).length;
+
+// Total rejected amount
+var totalAmt=0;res.forEach(function(r){var a=String(r['Rejected Amount']||'0').replace(/[^0-9.\-]/g,'');totalAmt+=parseFloat(a)||0});
+
+$('sG').innerHTML=[
+{l:'Total Claims',v:tot,c:'#94a3b8',i:'&#128203;'},
+{l:'Disagree',v:dis,c:'#f59e0b',i:'&#9888;'},
+{l:'Agree',v:agr,c:'#22c55e',i:'&#9989;'},
+{l:'Recovery SAR',v:totalAmt.toFixed(0),c:'#0ea5e9',i:'&#128176;'}
+].map(function(s){return'<div class="sc"><div class="si">'+s.i+'</div><div class="sv" style="color:'+s.c+'">'+s.v+'</div><div class="sl">'+s.l+'</div></div>'}).join('');
+
+var filters=[{k:'all',l:'All',c:tot},{k:'DISAGREE',l:'Disagree',c:dis},{k:'AGREE',l:'Agree',c:agr},{k:'CRITICAL',l:'Critical',c:crit},{k:'HIGH',l:'High',c:high}];
+$('rT').innerHTML=filters.map(function(f){return'<button class="tt '+(cF===f.k?'active':'')+'" onclick="fR(\''+f.k+'\')">'+f.l+' <span class="cn">('+f.c+')</span></button>'}).join('');
+rTbl()}
+
+function fR(f){cF=f;document.querySelectorAll('.tt').forEach(function(t){t.classList.remove('active')});event.target.closest('.tt').classList.add('active');rTbl()}
+
+function rTbl(){
+var filtered=cF==='all'?res:cF==='DISAGREE'||cF==='AGREE'?res.filter(function(r){return r._S===cF}):res.filter(function(r){return r._P===cF});
+var h='<table><thead><tr><th>#</th><th>Status</th><th>Priority</th>';
+var oc=aC.filter(function(c){return['Service','Service Code','Claim No.','Rejected Amount','Reason','Member Name'].indexOf(c)>=0}).slice(0,3);
+oc.forEach(function(c){h+='<th>'+e(c)+'</th>'});h+='<th>Comments</th></tr></thead><tbody>';
+filtered.forEach(function(r){
+var sc=r._S==='AGREE'?sa:sd;var icon=r._S==='AGREE'?'&#10003;':'!';
+var pc=r._P==='CRITICAL'?'pc-c':r._P==='HIGH'?'pc-h':'pc-m';
+h+='<tr onclick="sD2('+r._RI+')" style="cursor:pointer">';
+h+='<td>'+(r._RI+1)+'</td>';
+h+='<td><span class="sb '+sc+'">'+icon+' '+r._S+'</span></td>';
+h+='<td><span class="pc '+pc+'">'+r._P+'</span></td>';
+oc.forEach(function(c){h+='<td>'+e(String(r[c]!=null?r[c]:'-'))+'</td>'});
+h+='<td class="cm">'+e(r._Cmt.substring(0,120))+(r._Cmt.length>120?'...':'')+'</td></tr>'});
+h+='</tbody></table>';$('rTbl').innerHTML=h}
+
+var sa='sa',sd='sd';
+
+function sD2(idx){var r=res.find(function(r){return r._RI===idx});if(!r)return;
+$('mT').textContent='Claim '+(r['Claim No.']||r._RI+1);
+var sc=r._S==='AGREE'?'sa':'sd';
+var pc=r._P==='CRITICAL'?'pc-c':r._P==='HIGH'?'pc-h':'pc-m';
+var h='<div class="dr"><span class="dk">Status</span><span class="sb '+sc+'">'+r._S+'</span></div>';
+h+='<div class="dr"><span class="dk">Priority</span><span class="pc '+pc+'">'+r._P+'</span></div>';
+h+='<div class="dr"><span class="dk">Category</span><span class="dv">'+e(r._Cat)+'</span></div>';
+aC.forEach(function(c){h+='<div class="dr"><span class="dk">'+e(c)+'</span><span class="dv">'+e(String(r[c]!=null?r[c]:'-'))+'</span></div>'});
+h+='<div style="margin-top:16px;padding:12px;background:rgba(255,255,255,.03);border-radius:10px;font-size:13px;color:rgba(255,255,255,.7);line-height:1.6">'+e(r._Cmt)+'</div>';
+h+='<div style="margin-top:12px;padding:12px;background:rgba(14,165,233,.05);border:1px solid rgba(14,165,233,.1);border-radius:10px;font-size:12px;color:rgba(14,165,233,.8);line-height:1.6"><strong>Action Required:</strong> '+e(r._Act)+'</div>';
+$('mC').innerHTML=h;sh('dM')}
+
+function cM(){hd('dM')}
+
+function expX(){var ed=res.map(function(r){var o={};aC.forEach(function(c){o[c]=r[c]});o['Status']=r._S;o['Priority']=r._P;o['Category']=r._Cat;o['Comments']=r._Cmt;o['Action Required']=r._Act;return o});var ws=XLSX.utils.json_to_sheet(ed);var wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'Reconciliation');XLSX.writeFile(wb,'Tawnia_Reconciliation_'+new Date().toISOString().slice(0,10)+'.xlsx')}
+
+function rst(){aR=[];aC=[];res=[];cF='all';$('sUrl').value='';hd('eBox');ss('idle')}
+ss('idle');
+</script>
+</body>
+</html>

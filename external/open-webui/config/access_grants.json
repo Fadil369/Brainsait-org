@@ -1,0 +1,416 @@
+[
+  {
+    "id": "4896f87b-fe0a-4a80-9e60-75e0bae02591",
+    "resource_type": "model",
+    "resource_id": "claimlinc",
+    "principal_type": "group",
+    "principal_id": "16f46a1c-a8d5-4ad8-93d8-4d8508b77810",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "ee56b2a7-06db-44bd-8407-c1aba4188ecc",
+    "resource_type": "model",
+    "resource_id": "claimlinc",
+    "principal_type": "group",
+    "principal_id": "f8a1c2d3-e4f5-6789-abcd-ef0123456789",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "d104e3cb-4f42-496d-809a-26016fea2f45",
+    "resource_type": "model",
+    "resource_id": "claimlinc",
+    "principal_type": "group",
+    "principal_id": "b2c3d4e5-f6a7-8901-bcde-f01234567890",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "15c880f9-ce9e-4769-8de0-21b78ab84db6",
+    "resource_type": "model",
+    "resource_id": "authlinc",
+    "principal_type": "group",
+    "principal_id": "16f46a1c-a8d5-4ad8-93d8-4d8508b77810",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "f8ac96c1-d4e6-478f-9629-5ac5e4d41dbd",
+    "resource_type": "model",
+    "resource_id": "authlinc",
+    "principal_type": "group",
+    "principal_id": "f8a1c2d3-e4f5-6789-abcd-ef0123456789",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "42d73957-929c-491a-a2c3-35bfb27f1372",
+    "resource_type": "model",
+    "resource_id": "authlinc",
+    "principal_type": "group",
+    "principal_id": "b2c3d4e5-f6a7-8901-bcde-f01234567890",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "00d756b6-65fe-41c7-9129-0ac27aacefc7",
+    "resource_type": "model",
+    "resource_id": "drglinc",
+    "principal_type": "group",
+    "principal_id": "16f46a1c-a8d5-4ad8-93d8-4d8508b77810",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "cdd0af66-d80f-487e-ad43-105f7413a28f",
+    "resource_type": "model",
+    "resource_id": "drglinc",
+    "principal_type": "group",
+    "principal_id": "f8a1c2d3-e4f5-6789-abcd-ef0123456789",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "72df1b1a-cc32-4448-af49-fa6e7a178e32",
+    "resource_type": "model",
+    "resource_id": "drglinc",
+    "principal_type": "group",
+    "principal_id": "b2c3d4e5-f6a7-8901-bcde-f01234567890",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "d80dfcfa-8c4d-45ba-9386-c140892f8ea4",
+    "resource_type": "model",
+    "resource_id": "brainsait-nphies-agent",
+    "principal_type": "group",
+    "principal_id": "16f46a1c-a8d5-4ad8-93d8-4d8508b77810",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "5d0a1766-9568-4282-8de0-ac4a538b8816",
+    "resource_type": "model",
+    "resource_id": "brainsait-nphies-agent",
+    "principal_type": "group",
+    "principal_id": "8f696cff-def9-4b9f-9e3d-6609d8dd8161",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "86243667-3790-4282-aa82-b7eb3f51d8dd",
+    "resource_type": "model",
+    "resource_id": "brainsait-nphies-agent",
+    "principal_type": "group",
+    "principal_id": "f8a1c2d3-e4f5-6789-abcd-ef0123456789",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "32b1b54a-e355-4751-837c-75e4d070c17a",
+    "resource_type": "model",
+    "resource_id": "brainsait-nphies-agent",
+    "principal_type": "group",
+    "principal_id": "b2c3d4e5-f6a7-8901-bcde-f01234567890",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "00e6583b-53d8-4ad8-8004-52dd663b4118",
+    "resource_type": "model",
+    "resource_id": "clinicallinc",
+    "principal_type": "group",
+    "principal_id": "6c4d469b-00ee-4f73-970c-a935ae82a095",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "199ec40b-0a93-44b2-98f6-b88df733dcc4",
+    "resource_type": "model",
+    "resource_id": "clinicallinc",
+    "principal_type": "group",
+    "principal_id": "f8a1c2d3-e4f5-6789-abcd-ef0123456789",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "a07116d6-33db-4bd9-9ba4-d995bce95866",
+    "resource_type": "model",
+    "resource_id": "clinicallinc",
+    "principal_type": "group",
+    "principal_id": "b2c3d4e5-f6a7-8901-bcde-f01234567890",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "61174834-b941-43e9-b96b-f9b0c575e209",
+    "resource_type": "model",
+    "resource_id": "healthcarelinc",
+    "principal_type": "group",
+    "principal_id": "6c4d469b-00ee-4f73-970c-a935ae82a095",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "5d5bb309-026b-4e23-b8e3-77e405abac7b",
+    "resource_type": "model",
+    "resource_id": "healthcarelinc",
+    "principal_type": "group",
+    "principal_id": "71b69b61-80f3-4fb4-83c0-a7552eba52ee",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "2f00d16e-7cb2-4f42-816f-e4e72c6ee7fc",
+    "resource_type": "model",
+    "resource_id": "healthcarelinc",
+    "principal_type": "group",
+    "principal_id": "f8a1c2d3-e4f5-6789-abcd-ef0123456789",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "0353762e-c6c4-49a6-98dd-251f5fc30e8e",
+    "resource_type": "model",
+    "resource_id": "healthcarelinc",
+    "principal_type": "group",
+    "principal_id": "b2c3d4e5-f6a7-8901-bcde-f01234567890",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "19d4d818-92ea-4696-8b17-2817485b64d3",
+    "resource_type": "model",
+    "resource_id": "radiolinc",
+    "principal_type": "group",
+    "principal_id": "6c4d469b-00ee-4f73-970c-a935ae82a095",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "a2db612f-124e-472e-b907-54c8825d0208",
+    "resource_type": "model",
+    "resource_id": "radiolinc",
+    "principal_type": "group",
+    "principal_id": "f8a1c2d3-e4f5-6789-abcd-ef0123456789",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "6b1612d8-48df-4a4b-b6a2-24cbf4ffb810",
+    "resource_type": "model",
+    "resource_id": "radiolinc",
+    "principal_type": "group",
+    "principal_id": "b2c3d4e5-f6a7-8901-bcde-f01234567890",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "d4c0adc5-ff15-4ef4-8074-904398a542c7",
+    "resource_type": "model",
+    "resource_id": "codelinc",
+    "principal_type": "group",
+    "principal_id": "6c4d469b-00ee-4f73-970c-a935ae82a095",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "2b8fb94a-8948-451e-a971-685b5afd8979",
+    "resource_type": "model",
+    "resource_id": "codelinc",
+    "principal_type": "group",
+    "principal_id": "16f46a1c-a8d5-4ad8-93d8-4d8508b77810",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "0a68fca7-a464-4dc1-b688-05059d2509f8",
+    "resource_type": "model",
+    "resource_id": "codelinc",
+    "principal_type": "group",
+    "principal_id": "f8a1c2d3-e4f5-6789-abcd-ef0123456789",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "11c43246-c91e-4596-84d5-dd58cce2a7fd",
+    "resource_type": "model",
+    "resource_id": "codelinc",
+    "principal_type": "group",
+    "principal_id": "b2c3d4e5-f6a7-8901-bcde-f01234567890",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "667253d2-8851-477c-a480-ea26497853dc",
+    "resource_type": "model",
+    "resource_id": "bridgelinc",
+    "principal_type": "group",
+    "principal_id": "8f696cff-def9-4b9f-9e3d-6609d8dd8161",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "0742ad07-162a-4187-88f1-9b8ce62c499d",
+    "resource_type": "model",
+    "resource_id": "bridgelinc",
+    "principal_type": "group",
+    "principal_id": "16f46a1c-a8d5-4ad8-93d8-4d8508b77810",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "e2cdc482-e8ba-473c-9f41-e99352502e16",
+    "resource_type": "model",
+    "resource_id": "bridgelinc",
+    "principal_type": "group",
+    "principal_id": "f8a1c2d3-e4f5-6789-abcd-ef0123456789",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "a52eb81a-0005-4fe8-b8f6-38c4c20395bc",
+    "resource_type": "model",
+    "resource_id": "bridgelinc",
+    "principal_type": "group",
+    "principal_id": "b2c3d4e5-f6a7-8901-bcde-f01234567890",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "7d200970-2a53-4f51-b691-630920ff8028",
+    "resource_type": "model",
+    "resource_id": "compliancelinc",
+    "principal_type": "group",
+    "principal_id": "8f696cff-def9-4b9f-9e3d-6609d8dd8161",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "98a84730-7353-438a-99f8-bd93a2b19219",
+    "resource_type": "model",
+    "resource_id": "compliancelinc",
+    "principal_type": "group",
+    "principal_id": "f8a1c2d3-e4f5-6789-abcd-ef0123456789",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "c927e4a9-cc78-4048-9d9c-26088b709c8c",
+    "resource_type": "model",
+    "resource_id": "compliancelinc",
+    "principal_type": "group",
+    "principal_id": "b2c3d4e5-f6a7-8901-bcde-f01234567890",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "ae6d4485-4fb3-4e97-9dbf-9926b42e2dec",
+    "resource_type": "model",
+    "resource_id": "ttlinc",
+    "principal_type": "group",
+    "principal_id": "8f696cff-def9-4b9f-9e3d-6609d8dd8161",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "8c135747-d0eb-413c-a7fc-2255449ffdc3",
+    "resource_type": "model",
+    "resource_id": "ttlinc",
+    "principal_type": "group",
+    "principal_id": "6c4d469b-00ee-4f73-970c-a935ae82a095",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "5593c40d-2f69-43b0-99d6-a85fb9ad114c",
+    "resource_type": "model",
+    "resource_id": "ttlinc",
+    "principal_type": "group",
+    "principal_id": "71b69b61-80f3-4fb4-83c0-a7552eba52ee",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "0672070c-a207-4df2-a35d-12bc53935e73",
+    "resource_type": "model",
+    "resource_id": "ttlinc",
+    "principal_type": "group",
+    "principal_id": "16f46a1c-a8d5-4ad8-93d8-4d8508b77810",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "ca1e7200-12f9-443c-aa8e-c2040a2324ee",
+    "resource_type": "model",
+    "resource_id": "ttlinc",
+    "principal_type": "group",
+    "principal_id": "f8a1c2d3-e4f5-6789-abcd-ef0123456789",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "e7beea8d-52bf-4840-98eb-39bc922f011b",
+    "resource_type": "model",
+    "resource_id": "ttlinc",
+    "principal_type": "group",
+    "principal_id": "b2c3d4e5-f6a7-8901-bcde-f01234567890",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "1bf3c859-6f53-4bf5-8134-91722a9addea",
+    "resource_type": "model",
+    "resource_id": "basma",
+    "principal_type": "group",
+    "principal_id": "71b69b61-80f3-4fb4-83c0-a7552eba52ee",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "77543f36-0aac-4c87-9a68-1eac8523894e",
+    "resource_type": "model",
+    "resource_id": "basma",
+    "principal_type": "group",
+    "principal_id": "6c4d469b-00ee-4f73-970c-a935ae82a095",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "978916a3-cccc-42f9-afe6-5fcecbd85ec1",
+    "resource_type": "model",
+    "resource_id": "basma",
+    "principal_type": "group",
+    "principal_id": "f8a1c2d3-e4f5-6789-abcd-ef0123456789",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "3e27b9f3-6e8c-4531-9b99-d26c03fdb956",
+    "resource_type": "model",
+    "resource_id": "basma",
+    "principal_type": "group",
+    "principal_id": "b2c3d4e5-f6a7-8901-bcde-f01234567890",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "02170707-d89b-4b05-9831-502446dfaa10",
+    "resource_type": "model",
+    "resource_id": "masterlinc",
+    "principal_type": "group",
+    "principal_id": "f8a1c2d3-e4f5-6789-abcd-ef0123456789",
+    "permission": "read",
+    "created_at": 1775849406
+  },
+  {
+    "id": "3709ec93-c3dc-44c2-94ae-351c41c1bd7d",
+    "resource_type": "model",
+    "resource_id": "masterlinc",
+    "principal_type": "group",
+    "principal_id": "b2c3d4e5-f6a7-8901-bcde-f01234567890",
+    "permission": "read",
+    "created_at": 1775849406
+  }
+]

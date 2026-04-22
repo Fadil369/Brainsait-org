@@ -1,0 +1,112 @@
+[
+  {
+    "id": "rajhi_claims_skill",
+    "name": "Al Rajhi Takaful Claims Processor",
+    "content": "# Al Rajhi Takaful Claims Processor\nProcess Al Rajhi Takaful claims — Sharia-compliant insurance.\n\n## Filing Requirements\n- Filing window: 60 days from DOS (strict — no extensions)\n- IQAMA: mandatory for all members\n- PAN (Policy Account Number): required on all submissions\n\n## Common Rejection Codes\n- R001: PAN inactive — verify policy renewal date\n- R010: Dependent not enrolled — update policy list\n- R020: Exclusion applied — review policy terms\n- R030: Network provider required — verify network\n\n## Arabic Communication\nAll appeal letters must be in Arabic (formal Najdi dialect).",
+    "meta": {
+      "tags": [
+        "payer"
+      ]
+    }
+  },
+  {
+    "id": "bupa_claims_skill",
+    "name": "Bupa Arabia Claims Processor",
+    "content": "# Bupa Arabia Claims Processor\nProcess Bupa Arabia corporate claims with clinical documentation requirements.\n\n## Portal Integration\n- Pre-auth threshold: SAR 2,000 (outpatient), SAR 500 (pharmacy)\n\n## Clinical Justification Requirements\n- All surgical procedures: clinical notes mandatory\n- High-cost medications: prescribing physician letter\n- Out-of-network: pre-approval required before service\n- Specialist referrals: GP referral letter\n\n## Appeal Process\n1. First appeal: within 30 days of denial\n2. Second appeal: clinical committee (45 days)\n3. Final: CCHI arbitration (90 days)",
+    "meta": {
+      "tags": [
+        "payer"
+      ]
+    }
+  },
+  {
+    "id": "bilingual_summary_skill",
+    "name": "Clinical Summary Generator (AR/EN)",
+    "content": "\"\"\"\ntitle: Clinical Summary Generator (AR/EN)\nauthor: BrainSAIT (fadil369)\nversion: 1.0.0\ndescription: Bilingual patient clinical summaries for Saudi MOH standards.\n\"\"\"\nfrom typing import Optional\n\nclass Skill:\n    def generate_discharge_summary(self, patient_name_ar: str, diagnosis_ar: str, diagnosis_en: str,\n                                    treatment: str, follow_up: str, physician: str) -> str:\n        \"\"\"\n        Generates a bilingual discharge summary (Arabic + English) per Saudi MOH format.\n        :param patient_name_ar: Patient name in Arabic\n        :param diagnosis_ar: Diagnosis in Arabic\n        :param diagnosis_en: Diagnosis in English (ICD-10)\n        :param treatment: Treatment provided\n        :param follow_up: Follow-up instructions\n        :param physician: Attending physician name\n        \"\"\"\n        return f\"\"\"\nملخص الخروج | DISCHARGE SUMMARY\n{'='*50}\nالمريض / Patient: {patient_name_ar}\nالتشخيص / Diagnosis: {diagnosis_ar} ({diagnosis_en})\nالعلاج / Treatment: {treatment}\nالمتابعة / Follow-up: {follow_up}\nالطبيب المعالج / Physician: {physician}\n\n⚕️ هذا الملخص ملتزم بمعايير وزارة الصحة السعودية وبروتوكول NPHIES.\nThis summary complies with Saudi MOH standards and NPHIES protocol.\n\"\"\"\n",
+    "meta": {
+      "tags": [
+        "brainsait",
+        "healthcare",
+        "saudi"
+      ]
+    }
+  },
+  {
+    "id": "fhir_builder_skill",
+    "name": "FHIR R4 Bundle Constructor",
+    "content": "\"\"\"\ntitle: FHIR R4 Bundle Constructor\nauthor: BrainSAIT (fadil369)\nversion: 1.0.0\ndescription: Constructs FHIR R4 bundles for NPHIES submission.\n\"\"\"\nimport json, datetime\nfrom typing import List\n\nclass Skill:\n    def build_fhir_claim_bundle(self, patient_nhi: str, hospital_oid: str, diagnosis: List[str], procedures: List[str], amount_sar: float) -> str:\n        \"\"\"\n        Builds a minimal FHIR R4 Claim Bundle for NPHIES submission.\n        :param patient_nhi: National Health ID\n        :param hospital_oid: Hospital OID (e.g., 1.3.6.1.4.1.61026)\n        :param diagnosis: List of ICD-10-AM codes\n        :param procedures: List of CPT procedure codes\n        :param amount_sar: Claim amount in SAR\n        \"\"\"\n        bundle = {\n            \"resourceType\": \"Bundle\",\n            \"type\": \"transaction\",\n            \"timestamp\": datetime.datetime.utcnow().isoformat() + \"Z\",\n            \"entry\": [\n                {\n                    \"resource\": {\n                        \"resourceType\": \"Claim\",\n                        \"status\": \"active\",\n                        \"use\": \"claim\",\n                        \"patient\": {\"identifier\": {\"value\": patient_nhi}},\n                        \"insurer\": {\"identifier\": {\"system\": \"http://nphies.sa/license/payer-license\"}},\n                        \"provider\": {\"identifier\": {\"system\": \"http://nphies.sa/license/provider-license\", \"value\": hospital_oid}},\n                        \"diagnosis\": [{\"sequence\": i+1, \"diagnosisCodeableConcept\": {\"coding\": [{\"system\": \"http://hl7.org/fhir/sid/icd-10\", \"code\": d}]}} for i, d in enumerate(diagnosis)],\n                        \"procedure\": [{\"sequence\": i+1, \"procedureCodeableConcept\": {\"coding\": [{\"system\": \"http://www.ama-assn.org/go/cpt\", \"code\": p}]}} for i, p in enumerate(procedures)],\n                        \"total\": {\"value\": amount_sar, \"currency\": \"SAR\"}\n                    }\n                }\n            ]\n        }\n        return json.dumps(bundle, indent=2, ensure_ascii=False)\n",
+    "meta": {
+      "tags": [
+        "brainsait",
+        "healthcare",
+        "saudi"
+      ]
+    }
+  },
+  {
+    "id": "moh_billing_skill",
+    "name": "MOH Direct Billing Protocol",
+    "content": "# MOH Direct Billing Protocol\nMOH government hospital billing through NPHIES and SCHS portal.\n\n## MOH Billing Framework\n- Cost-based reimbursement: actual cost + overhead ratio\n- NPHIES mandate: all MOH facilities since 2022\n- DRG-based prospective payment pilot active\n\n## Service Categories\n1. Emergency: 100% covered for Saudi nationals\n2. OPD: co-pay waived for citizens\n3. Maternity: full coverage MOH family health program\n4. Chronic disease: diabetes, hypertension, oncology programs\n5. Mental health: Tawasul program referrals\n\n## Exemption Codes\n- MOH-EX01: Saudi national emergency\n- MOH-EX02: MOH employee benefit\n- MOH-EX03: Social affairs referral (waived)\n- MOH-EX04: Hajj/Umrah medical services",
+    "meta": {
+      "tags": [
+        "payer"
+      ]
+    }
+  },
+  {
+    "id": "nphies_claims_skill",
+    "name": "NPHIES Claims Submission",
+    "content": "\"\"\"\ntitle: NPHIES Claims Submission Skill\nauthor: BrainSAIT (fadil369)\nversion: 1.0.0\ndescription: Full NPHIES claim lifecycle automation.\n\"\"\"\nimport json\nfrom typing import Optional\n\nclass Skill:\n    def nphies_claim_lifecycle(self, patient_id: str, encounter_id: str, diagnosis_codes: str, procedure_codes: str) -> str:\n        \"\"\"\n        Executes full NPHIES claim lifecycle: eligibility -> FHIR bundle -> submission.\n        :param patient_id: Hashed patient identifier\n        :param encounter_id: Hospital encounter/visit ID\n        :param diagnosis_codes: Comma-separated ICD-10-AM codes\n        :param procedure_codes: Comma-separated CPT/HCPCS codes\n        \"\"\"\n        steps = [\n            f\"1. ELIGIBILITY: Verify {patient_id} against NPHIES payer database\",\n            f\"2. FHIR BUNDLE: Construct R4 Claim bundle for encounter {encounter_id}\",\n            f\"3. ICD-10 VALIDATION: Validate {diagnosis_codes} against Saudi MOH approved list\",\n            f\"4. CPT MAPPING: Map procedures {procedure_codes} to NPHIES activity codes\",\n            \"5. SUBMISSION: POST to NPHIES endpoint with OAuth2 token\",\n            \"6. TRACKING: Log claim ID, TAT, and adjudication outcome\",\n        ]\n        return \"\\n\".join(steps) + \"\\n\\nREADY: Initiate ClaimLinc RAD Pipeline.\"\n",
+    "meta": {
+      "tags": [
+        "brainsait",
+        "healthcare",
+        "saudi"
+      ]
+    }
+  },
+  {
+    "id": "prior_auth_skill",
+    "name": "Prior Authorization Workflow",
+    "content": "\"\"\"\ntitle: Prior Authorization Workflow\nauthor: BrainSAIT (fadil369)\nversion: 1.0.0\ndescription: Saudi CCHI/NPHIES prior authorization management.\n\"\"\"\nimport datetime\nfrom typing import Optional\n\nclass Skill:\n    PA_REQUIREMENTS = {\n        \"surgery\": [\"clinical notes\", \"imaging reports\", \"lab results\", \"second opinion if elective\"],\n        \"oncology\": [\"pathology report\", \"oncologist letter\", \"treatment plan\", \"RECIST criteria\"],\n        \"cardiology\": [\"echo report\", \"catheterization results\", \"cardiology consult\"],\n        \"orthopedics\": [\"X-ray/MRI\", \"physiotherapy notes\", \"conservative treatment record\"],\n    }\n\n    def create_pa_request(self, specialty: str, procedure_cpt: str, diagnosis_icd: str, patient_nhi: str, urgency: str = \"routine\") -> str:\n        \"\"\"\n        Creates a structured NPHIES prior authorization request.\n        :param specialty: Medical specialty (surgery, oncology, cardiology, orthopedics)\n        :param procedure_cpt: CPT code for the requested procedure\n        :param diagnosis_icd: ICD-10-AM principal diagnosis code\n        :param patient_nhi: Patient National Health ID (hashed)\n        :param urgency: routine | urgent | emergency\n        \"\"\"\n        reqs = self.PA_REQUIREMENTS.get(specialty.lower(), [\"clinical justification letter\", \"supporting documentation\"])\n        pa = {\n            \"PA_REF\": f\"PA-{datetime.date.today().strftime('%Y%m%d')}-{procedure_cpt}\",\n            \"PATIENT\": patient_nhi, \"DIAGNOSIS\": diagnosis_icd,\n            \"PROCEDURE\": procedure_cpt, \"URGENCY\": urgency.upper(),\n            \"REQUIRED_DOCS\": reqs, \"SUBMIT_TO\": \"NPHIES /pre-auth endpoint\",\n            \"SLA\": \"24h urgent / 5 days routine\"\n        }\n        import json\n        return json.dumps(pa, indent=2, ensure_ascii=False)\n",
+    "meta": {
+      "tags": [
+        "brainsait",
+        "healthcare",
+        "saudi"
+      ]
+    }
+  },
+  {
+    "id": "medical_coding_skill",
+    "name": "Saudi Medical Coding Assistant",
+    "content": "\"\"\"\ntitle: Saudi Medical Coding Assistant\nauthor: BrainSAIT (fadil369)\nversion: 1.0.0\ndescription: ICD-10-AM, CPT, and DRG coding with NPHIES mapping.\n\"\"\"\nfrom typing import Dict\n\nclass Skill:\n    COMMON_DENIAL_CODES = {\n        \"BE-1-4\": \"Missing clinical documentation — attach supporting notes\",\n        \"MN-1-1\": \"Medical necessity not established — clinical justification required\",\n        \"PR-1-1\": \"Provider credentials not verified — resubmit with NPI\",\n        \"EL-1-1\": \"Patient not eligible on service date — verify insurance card\",\n        \"CD-1-2\": \"Diagnosis code invalid or not payable — review ICD-10-AM mapping\",\n    }\n\n    def lookup_denial_code(self, code: str) -> str:\n        \"\"\"\n        Looks up NPHIES denial/rejection code and provides corrective action.\n        :param code: NPHIES rejection code (e.g., BE-1-4, MN-1-1)\n        \"\"\"\n        action = self.COMMON_DENIAL_CODES.get(code.upper(), \"Unknown code — consult NPHIES business rules document.\")\n        return f\"DENIAL CODE: {code}\\nACTION: {action}\\nAGENT: Escalate to ClaimLinc for RAD Pipeline correction.\"\n\n    def suggest_drg(self, principal_diagnosis: str, age: int, los_days: int) -> str:\n        \"\"\"\n        Suggests Saudi DRG code based on principal diagnosis and patient factors.\n        :param principal_diagnosis: ICD-10-AM principal diagnosis code\n        :param age: Patient age in years\n        :param los_days: Length of stay in days\n        \"\"\"\n        complexity = \"CC\" if los_days > 5 else (\"MCC\" if los_days > 10 else \"no-CC\")\n        return f\"DRG SUGGESTION: {principal_diagnosis} | Age: {age} | LOS: {los_days}d | Complexity: {complexity}\\nReview with DRGLinc for final AR-DRG assignment.\"\n",
+    "meta": {
+      "tags": [
+        "brainsait",
+        "healthcare",
+        "saudi"
+      ]
+    }
+  },
+  {
+    "id": "radiology_protocol_skill",
+    "name": "Saudi Radiology Protocol Guide",
+    "content": "# Saudi Radiology Protocol\nSaudi-adapted ACR radiology protocols for examination and reporting.\n\n## Pre-Examination Screening\n- Contrast media: creatinine check (eGFR >30 for IV contrast)\n- Pregnancy: all females 12-55y → pregnancy test or LMP verification\n- Pacemaker/implants: MRI safety screening form (AR/EN)\n\n## Saudi DRL 2025\n| Exam | DRL |\n|------|-----|\n| Chest X-ray | 0.2 mSv |\n| CT Chest | 7 mSv |\n| CT Abd+Pelvis | 10 mSv |\n| Mammogram | 3 mGy |\n\n## Critical Value Reporting\n- STAT report: within 1 hour\n- Urgent: within 4 hours\n- Critical (pneumothorax, PE, ICH): call within 10 minutes\n\nCPT range for NPHIES: 70000-79999. Add modifier -26 for professional component.",
+    "meta": {
+      "tags": [
+        "payer"
+      ]
+    }
+  },
+  {
+    "id": "tawnia_claims_skill",
+    "name": "Tawnia Claims Processor",
+    "content": "# Tawnia Claims Processor\nHandles Tawnia (MOH government insurance) claims via NPHIES.\n\n## Workflow\n1. Verify patient eligibility: IQAMA + Insurance Card + Date of Service\n2. Check PA requirement: Tawnia threshold = SAR 1,500\n3. Build FHIR Claim bundle with Tawnia-specific extensions\n4. Submit to NPHIES /Claim endpoint\n5. Poll ClaimResponse (max 30s, retry x3)\n6. Handle: QUEUED → PARTIAL → COMPLETE | REJECTED\n\n## Tawnia Rules\n- Filing deadline: 90 days from DOS\n- Emergency claims: 30 days, emergency indicator required\n- Government employees: CCHI code GOV-001\n\n## Rejection Codes\n- T001: Expired coverage\n- T010: Missing referral\n- T020: Procedure not covered\n- T030: IQAMA mismatch",
+    "meta": {
+      "tags": [
+        "payer"
+      ]
+    }
+  }
+]

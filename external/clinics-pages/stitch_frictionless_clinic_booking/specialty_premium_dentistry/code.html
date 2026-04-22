@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Premium Dentistry | Atelier Care</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#fabd00",
+                        "surface-dim": "#c7dde9",
+                        "on-tertiary-fixed-variant": "#5b4300",
+                        "on-secondary-fixed-variant": "#00468c",
+                        "secondary-fixed-dim": "#a9c7ff",
+                        "inverse-primary": "#75d5e2",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#cfe6f2",
+                        "on-secondary-container": "#003670",
+                        "on-primary-container": "#6acad7",
+                        "surface-container-high": "#d5ecf8",
+                        "outline": "#737783",
+                        "on-background": "#071e27",
+                        "surface-tint": "#006972",
+                        "on-tertiary-container": "#eeb300",
+                        "primary": "#003b42",
+                        "secondary-container": "#64a1ff",
+                        "primary-fixed-dim": "#75d5e2",
+                        "tertiary": "#453200",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f3faff",
+                        "primary-fixed": "#92f1fe",
+                        "on-surface-variant": "#434652",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c3c6d4",
+                        "on-primary-fixed-variant": "#004f56",
+                        "surface-variant": "#cfe6f2",
+                        "primary-container": "#00545c",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#1e333c",
+                        "surface-container": "#dbf1fe",
+                        "tertiary-fixed": "#ffdf9e",
+                        "inverse-on-surface": "#dff4ff",
+                        "secondary-fixed": "#d6e3ff",
+                        "secondary": "#005db7",
+                        "on-tertiary-fixed": "#261a00",
+                        "on-surface": "#071e27",
+                        "on-primary-fixed": "#001f23",
+                        "tertiary-container": "#614800",
+                        "surface-container-low": "#e6f6ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#001b3d",
+                        "surface-bright": "#f3faff",
+                        "surface": "#f3faff",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f3faff; }
+        .font-headline { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(195, 198, 212, 0.15); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background">
+<!-- TopAppBar -->
+<nav class="bg-[#f3faff]/80 dark:bg-slate-950/80 backdrop-blur-xl sticky top-0 z-50 shadow-[0px_10px_30px_rgba(7,30,39,0.06)]">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#003b42] text-3xl" data-icon="medical_services">medical_services</span>
+<span class="text-2xl font-bold tracking-tighter text-[#003b42] font-headline">Atelier Care</span>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-slate-600 font-medium hover:text-[#00545c] transition-colors duration-300 font-headline" href="#">Home</a>
+<a class="text-[#003b42] border-b-2 border-[#003b42] font-medium transition-colors duration-300 font-headline" href="#">Specialties</a>
+<a class="text-slate-600 font-medium hover:text-[#00545c] transition-colors duration-300 font-headline" href="#">My Health</a>
+<a class="text-slate-600 font-medium hover:text-[#00545c] transition-colors duration-300 font-headline" href="#">Book Now</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden lg:block text-[#003b42] font-semibold text-sm px-4 py-2 bg-primary-fixed rounded-xl scale-95 active:opacity-80 transition-transform">Emergency: 911</button>
+<button class="md:hidden material-symbols-outlined" data-icon="menu">menu</button>
+</div>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[618px] flex items-center overflow-hidden bg-surface">
+<div class="absolute inset-0 z-0">
+<img alt="Modern Dental Facility" class="w-full h-full object-cover opacity-80" data-alt="Ultra-modern clinical dental surgery with floor to ceiling windows, sleek white equipment, and soft morning sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0rv358QRlwsP1JQvV03Nsp53hijXAeftogCHodPL-27aiImJnnSb8c0WGn9Taa6x0nykMHAk3r0UUiPpDVVl0fAo8wLkJwOlnpxHu0F0F5AAts6E0mMNFDNFl7tMmEAmxZZ7O2HmHk7WlI5T5nwbkJpFinlJ78CH6G4D1BRSPIcIeyF8qRhNiy1j5O7D0NWzI9qbttLHrVW-ewj-w_PCHIV52MzHb9aFZbznBtHDvhBdT29lAEtK1gLWkboYGwcLm8dzgUUVRtpeS"/>
+<div class="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent"></div>
+</div>
+<div class="container mx-auto px-6 relative z-10 max-w-7xl">
+<div class="max-w-2xl">
+<span class="inline-block text-primary tracking-[0.2em] text-xs font-bold font-label uppercase mb-4">Precision Aesthetics</span>
+<h1 class="text-5xl md:text-7xl font-extrabold font-headline text-primary tracking-tight mb-6 leading-[1.1]">
+                        Premium <br/><span class="text-secondary">Dentistry</span>
+</h1>
+<p class="text-lg text-on-surface-variant font-body leading-relaxed mb-8 max-w-lg">
+                        Where clinical excellence meets artistic vision. We provide bespoke dental solutions designed for lasting health and a signature smile.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-8 py-4 rounded-xl font-bold shadow-lg scale-95 active:opacity-80 transition-transform">
+                            Consult Specialist
+                        </button>
+<button class="bg-surface-container-highest text-primary px-8 py-4 rounded-xl font-bold scale-95 active:opacity-80 transition-transform">
+                            View Gallery
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Content Pillars: Bento Grid -->
+<section class="py-24 bg-surface-container-low">
+<div class="container mx-auto px-6 max-w-7xl">
+<div class="mb-16 text-center max-w-3xl mx-auto">
+<h2 class="text-3xl md:text-4xl font-bold font-headline text-primary mb-4">Clinical Authority</h2>
+<p class="text-on-surface-variant">Our practice is built on three pillars of specialized care, utilizing state-of-the-art diagnostic imaging and micro-surgical techniques.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Dental Implants -->
+<div class="md:col-span-8 glass-card p-10 rounded-[2rem] flex flex-col justify-between hover:shadow-xl transition-all duration-500">
+<div>
+<div class="w-14 h-14 bg-secondary-container/20 rounded-2xl flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="settings_input_component">settings_input_component</span>
+</div>
+<h3 class="text-2xl font-bold font-headline text-primary mb-4">Advanced Implantology</h3>
+<p class="text-on-surface-variant font-body leading-relaxed max-w-xl">
+                                We utilize 3D-guided surgical templates to place implants with sub-millimeter precision. Our bio-integrated materials ensure natural aesthetics and permanent structural integrity for a lifetime of confidence.
+                            </p>
+</div>
+<div class="mt-8 flex gap-4 overflow-x-auto pb-2">
+<span class="bg-white/50 px-4 py-2 rounded-full text-xs font-bold text-primary whitespace-nowrap">TITANIUM G5</span>
+<span class="bg-white/50 px-4 py-2 rounded-full text-xs font-bold text-primary whitespace-nowrap">ZIRCONIA BRIDGES</span>
+<span class="bg-white/50 px-4 py-2 rounded-full text-xs font-bold text-primary whitespace-nowrap">3D GUIDED SURGERY</span>
+</div>
+</div>
+<!-- Orthodontics -->
+<div class="md:col-span-4 bg-primary text-white p-10 rounded-[2rem] flex flex-col justify-between shadow-2xl relative overflow-hidden group">
+<div class="absolute -right-10 -bottom-10 opacity-10 group-hover:scale-110 transition-transform duration-700">
+<span class="material-symbols-outlined text-[12rem]" data-icon="grid_guides">grid_guides</span>
+</div>
+<div class="relative z-10">
+<h3 class="text-2xl font-bold font-headline mb-4">Discrete Orthodontics</h3>
+<p class="text-primary-fixed-dim text-sm font-body leading-relaxed">
+                                Correcting alignment with nearly invisible clear aligners or high-performance ceramic brackets.
+                            </p>
+</div>
+<button class="relative z-10 mt-8 flex items-center gap-2 text-primary-fixed font-bold hover:gap-4 transition-all">
+                            Learn About Aligners <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Cosmetic Dentistry -->
+<div class="md:col-span-12 glass-card p-10 rounded-[2rem] flex flex-col md:flex-row gap-12 items-center">
+<div class="md:w-1/2">
+<div class="w-14 h-14 bg-tertiary-fixed/30 rounded-2xl flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="brush">brush</span>
+</div>
+<h3 class="text-3xl font-bold font-headline text-primary mb-4">Artisan Cosmetic Design</h3>
+<p class="text-on-surface-variant font-body leading-relaxed mb-6">
+                                Digital Smile Design (DSD) allows us to preview your results before we begin. From hand-layered porcelain veneers to clinical whitening, we curate smiles that are authentically you.
+                            </p>
+<div class="space-y-3">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+<span class="text-primary font-medium">Digital Color Matching</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+<span class="text-primary font-medium">Minimal Prep Veneers</span>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 rounded-[1.5rem] overflow-hidden aspect-video">
+<img alt="Smile Design Studio" class="w-full h-full object-cover" data-alt="Extreme close-up of a high-tech digital monitor displaying a 3D dental scan and smile reconstruction" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQQaRp0J2Mfg1KvXL-1BOcTnJstBNCDbjALVhapisS3FJVt_rRUnOr0vcE7tgFcD90F2lvl4oAwz8DbRWBRSFf4ecSmGQoJgtR_MQZvAK6z87bhz_fFnFe1W26MfUB7sTv__afOtQVsdxWfIunttjA76-N6-4sEwdS4WLGv4Rg2p62lBoJSh_HQse10_RTCmYBgMa5x8Hyd9Nk8z4L8KkkX4rsN5OvME0AU8d9VzkzkQryGdA3uGguY5Q7An9LJjUB8BeyYO_F9nHn"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Lead Qualification -->
+<section class="py-20">
+<div class="container mx-auto px-6 max-w-5xl">
+<div class="bg-surface-container-highest rounded-[3rem] p-12 text-center border-2 border-primary/5">
+<h2 class="text-3xl font-bold font-headline text-primary mb-6">Am I a candidate for Premium Care?</h2>
+<p class="text-on-surface-variant mb-10 text-lg max-w-2xl mx-auto">Take our 2-minute digital assessment to receive a personalized specialist recommendation and treatment overview.</p>
+<div class="inline-flex flex-col sm:flex-row items-center gap-6">
+<a class="bg-primary text-white px-10 py-5 rounded-full font-bold text-lg hover:shadow-xl transition-all flex items-center gap-3" href="#">
+                            Start Assessment
+                            <span class="material-symbols-outlined" data-icon="clinical_notes">clinical_notes</span>
+</a>
+<span class="text-slate-400 font-medium italic">No obligation. Result in seconds.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Meet the Specialists -->
+<section class="py-24 bg-surface">
+<div class="container mx-auto px-6 max-w-7xl">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div class="max-w-2xl">
+<span class="text-secondary font-bold font-label tracking-widest text-xs uppercase mb-2 block">Our Clinical Faculty</span>
+<h2 class="text-4xl font-bold font-headline text-primary">Master Artisans</h2>
+</div>
+<button class="text-primary font-bold border-b-2 border-primary/20 pb-1 hover:border-primary transition-all">View Full Faculty</button>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+<!-- Specialist 1 -->
+<div class="flex flex-col md:flex-row gap-8 items-center md:items-start group">
+<div class="w-64 h-80 rounded-[2rem] overflow-hidden flex-shrink-0 shadow-lg group-hover:scale-[1.02] transition-transform duration-500">
+<img alt="Dr. Julian Vane" class="w-full h-full object-cover" data-alt="Professional portrait of a male dentist in a clean white coat with a friendly smile, medical laboratory background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWB_ol28KEojUZEk0TW8zjzGklv9NFbQK_ay8KluSq5LrnF3-XD2pElsetIqYezoFkUEnlAnjj5sBuGD7cZR751CYHBpsug28CRqaACsFDnmizQ7aHVe5xa672IbB96blU1jNGwjpt1DOl6Ye1iHEhG9lkUHfFXp41NX9BYbwHuwD0qPAGhGV3gdbdDBeJq89VNYNPDbKzq9o3yYYdCIXltKxwR6zG5Tm-WEl_f2GFgHXEq6BOUpF1bwqwUDAVfnGs2YTFVpfNNRMz"/>
+</div>
+<div class="pt-4 text-center md:text-left">
+<span class="text-tertiary-container bg-tertiary-fixed font-bold text-[10px] uppercase px-3 py-1 rounded-full">Chief Implantologist</span>
+<h3 class="text-3xl font-bold font-headline text-primary mt-4 mb-2">Dr. Julian Vane</h3>
+<p class="text-on-surface-variant font-body mb-6 text-sm leading-relaxed">
+                                With over 20 years in reconstructive surgery, Dr. Vane specializes in complex full-arch rehabilitations and micro-implant placement.
+                            </p>
+<div class="flex justify-center md:justify-start gap-4">
+<div class="text-center">
+<p class="text-primary font-bold text-xl">4k+</p>
+<p class="text-[10px] text-slate-500 font-bold uppercase">Procedures</p>
+</div>
+<div class="w-[1px] bg-outline-variant/20 h-10"></div>
+<div class="text-center">
+<p class="text-primary font-bold text-xl">DDS</p>
+<p class="text-[10px] text-slate-500 font-bold uppercase">Certification</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Specialist 2 -->
+<div class="flex flex-col md:flex-row gap-8 items-center md:items-start group">
+<div class="w-64 h-80 rounded-[2rem] overflow-hidden flex-shrink-0 shadow-lg group-hover:scale-[1.02] transition-transform duration-500">
+<img alt="Dr. Elena Rossi" class="w-full h-full object-cover" data-alt="Professional female dentist with stethoscope, wearing a navy medical scrubs, professional clinic setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5ayOZLb2MzVsE5Fp0pufz4TQKDYb5qUTYPKPekEIBmjJE5_PgVvs0-Q4AtIiYPYKl28zP5UMibtp5E1lbBf6lYyITeV5JHXfSOb9Bp8OBd69IB7h4v_Pa97DUctsHqmEw4EQYsxz5EH2Avju4huLIQXdqTdowQ4ZkFdG06P5I1XXpjF_alAdXCkiy51rORpTD59rxtTyF_Yjh_AEv2IPRS5wI2gWFwloU3-JZm-X68Y1QYFBPxpICyH1b9iEBQ210WN7MsXngwpez"/>
+</div>
+<div class="pt-4 text-center md:text-left">
+<span class="text-secondary bg-secondary-fixed font-bold text-[10px] uppercase px-3 py-1 rounded-full">Cosmetic Director</span>
+<h3 class="text-3xl font-bold font-headline text-primary mt-4 mb-2">Dr. Elena Rossi</h3>
+<p class="text-on-surface-variant font-body mb-6 text-sm leading-relaxed">
+                                A master of Digital Smile Design, Dr. Rossi focuses on minimally invasive aesthetic enhancements that preserve natural tooth structure.
+                            </p>
+<div class="flex justify-center md:justify-start gap-4">
+<div class="text-center">
+<p class="text-primary font-bold text-xl">15+</p>
+<p class="text-[10px] text-slate-500 font-bold uppercase">Awards</p>
+</div>
+<div class="w-[1px] bg-outline-variant/20 h-10"></div>
+<div class="text-center">
+<p class="text-primary font-bold text-xl">Ph.D</p>
+<p class="text-[10px] text-slate-500 font-bold uppercase">Prosthodontics</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-24 bg-surface-container-high/30">
+<div class="container mx-auto px-6 max-w-4xl">
+<h2 class="text-3xl font-bold font-headline text-primary mb-12 text-center">Patient Concerns &amp; Expertise</h2>
+<div class="space-y-6">
+<div class="bg-white p-8 rounded-[1.5rem] shadow-sm hover:shadow-md transition-shadow">
+<button class="flex justify-between items-center w-full text-left">
+<span class="text-lg font-bold text-primary">How long does the dental implant process typically take?</span>
+<span class="material-symbols-outlined text-secondary" data-icon="expand_more">expand_more</span>
+</button>
+<div class="mt-4 text-on-surface-variant leading-relaxed font-body">
+                            The timeline varies by patient but usually ranges from 3 to 6 months. This allows for osseointegration—the process where your bone heals around the implant—to ensure a foundation as strong as a natural root.
+                        </div>
+</div>
+<div class="bg-white p-8 rounded-[1.5rem] shadow-sm hover:shadow-md transition-shadow">
+<button class="flex justify-between items-center w-full text-left">
+<span class="text-lg font-bold text-primary">Are veneers permanent, and do they damage my teeth?</span>
+<span class="material-symbols-outlined text-secondary" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+<div class="bg-white p-8 rounded-[1.5rem] shadow-sm hover:shadow-md transition-shadow">
+<button class="flex justify-between items-center w-full text-left">
+<span class="text-lg font-bold text-primary">Does the clinic offer sedation for anxious patients?</span>
+<span class="material-symbols-outlined text-secondary" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#071e27] text-[#92f1fe] py-16">
+<div class="grid md:flex justify-between items-start w-full px-8 max-w-7xl mx-auto gap-8">
+<div class="max-w-xs">
+<div class="text-[#f3faff] font-headline font-bold text-2xl mb-4 italic">Atelier Care</div>
+<p class="text-slate-400 text-sm leading-relaxed mb-6 font-body">Clinical excellence for the discerning patient. Redefining the standard of bespoke healthcare through precision and empathy.</p>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="text-white font-bold mb-2">Practice</h4>
+<a class="text-slate-400 hover:text-[#92f1fe] transition-colors text-sm" href="#">Privacy Policy</a>
+<a class="text-slate-400 hover:text-[#92f1fe] transition-colors text-sm" href="#">Terms of Service</a>
+<a class="text-slate-400 hover:text-[#92f1fe] transition-colors text-sm" href="#">Accessibility</a>
+<a class="text-slate-400 hover:text-[#92f1fe] transition-colors text-sm" href="#">Patient Portal</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="text-white font-bold mb-2">Specialties</h4>
+<a class="text-slate-400 hover:text-[#92f1fe] transition-colors text-sm" href="#">Cardiology</a>
+<a class="text-[#92f1fe] underline underline-offset-4 transition-colors text-sm" href="#">Dentistry</a>
+<a class="text-slate-400 hover:text-[#92f1fe] transition-colors text-sm" href="#">Dermatology</a>
+<a class="text-slate-400 hover:text-[#92f1fe] transition-colors text-sm" href="#">Internal Medicine</a>
+</div>
+</div>
+<div class="mt-16 pt-8 border-t border-slate-800 text-center text-slate-500 text-xs font-label uppercase tracking-widest px-8">
+            © 2024 Clinical Atelier Precision Care. All rights reserved.
+        </div>
+</footer>
+<!-- Mobile Bottom Nav (Suppressed on large screens) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#f3faff]/90 backdrop-blur-md rounded-t-[2rem] border-t border-[#c3c6d4]/15 shadow-[0_-10px_40px_rgba(7,30,39,0.08)]">
+<div class="flex flex-col items-center justify-center text-slate-500 px-4 py-2">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#003b42] to-[#00545c] text-white rounded-2xl px-5 py-2.5 shadow-lg">
+<span class="material-symbols-outlined mb-1" data-icon="Stethoscope">stethoscope</span>
+<span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider">Specialties</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 px-4 py-2">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider">Health</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 px-4 py-2">
+<span class="material-symbols-outlined mb-1" data-icon="event_upcoming">event_upcoming</span>
+<span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider">Book</span>
+</div>
+</nav>
+</body></html>

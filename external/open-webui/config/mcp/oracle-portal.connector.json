@@ -1,0 +1,28 @@
+{
+  "id": "oracle-portal",
+  "name": "Oracle Portal MCP",
+  "transport": {
+    "type": "stdio",
+    "command": "node",
+    "args": ["../abha-nphies-session-deliverables-1/mcp-oracle-db/src/index.js"],
+    "cwd": "..",
+    "env": {
+      "PORTAL_USER": "${PORTAL_USER}",
+      "PORTAL_PASS": "${PORTAL_PASS}",
+      "ABHA_USER": "${ABHA_USER}",
+      "ABHA_PASS": "${ABHA_PASS}",
+      "RIYADH_USER": "${RIYADH_USER}",
+      "RIYADH_PASS": "${RIYADH_PASS}",
+      "BRANCHES_JSON": "${BRANCHES_JSON}",
+      "HEADLESS": "${HEADLESS}",
+      "TIMEOUT_MS": "${TIMEOUT_MS}"
+    }
+  },
+  "defaults": {
+    "branch": "${ORACLE_PORTAL_DEFAULT_BRANCH}"
+  },
+  "safety": {
+    "allowedBranches": "${ORACLE_PORTAL_ALLOWED_BRANCHES}",
+    "allowLiveSubmit": "${ORACLE_PORTAL_ALLOW_LIVE_SUBMIT}"
+  }
+}

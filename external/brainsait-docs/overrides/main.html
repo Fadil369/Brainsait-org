@@ -1,0 +1,325 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <!-- Font preconnection and loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Load Inter for English and IBM Plex Sans Arabic for Arabic -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Color scheme meta for dark theme -->
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0F172A">
+{% endblock %}
+
+{% block content %}
+  <!-- Skip to Content Link (Accessibility) -->
+  <a href="#main-content" class="skip-to-content" id="skipToContent">
+    {% if config.theme.language == 'ar' %}تخطي إلى المحتوى{% else %}Skip to content{% endif %}
+  </a>
+
+  <!-- Screen Reader Announcement Region -->
+  <div id="languageAnnouncement" class="language-announcement" aria-live="polite" aria-atomic="true"></div>
+
+  {{ super() }}
+
+  <!-- Prominent Language Toggle -->
+  <div class="language-toggle-wrapper" id="languageToggle" role="navigation" aria-label="Language selection">
+    <div class="language-toggle">
+      <a href="{{ config.site_url }}en/"
+         class="language-toggle__btn {% if config.theme.language == 'en' or page.url.startswith('en/') %}language-toggle__btn--active{% endif %}"
+         title="Switch to English"
+         aria-label="Switch to English"
+         lang="en"
+         hreflang="en"
+         data-lang="en">
+        <svg class="language-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        <span>EN</span>
+      </a>
+      <a href="{{ config.site_url }}ar/"
+         class="language-toggle__btn {% if config.theme.language == 'ar' or page.url.startswith('ar/') %}language-toggle__btn--active{% endif %}"
+         title="التبديل إلى العربية"
+         aria-label="التبديل إلى العربية"
+         lang="ar"
+         hreflang="ar"
+         dir="rtl"
+         data-lang="ar">
+        <svg class="language-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        <span>عربي</span>
+      </a>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script>
+    // Language Toggle Enhancement Script v3.0
+    // Enhanced with accessibility and complete language separation
+    (function() {
+      'use strict';
+
+      // Detect current language from URL
+      function getCurrentLanguage() {
+        const path = window.location.pathname;
+        if (path.includes('/ar/')) return 'ar';
+        if (path.includes('/en/')) return 'en';
+        return 'en'; // Default to English
+      }
+
+      // Announce language change to screen readers
+      function announceLanguageChange(lang) {
+        const announcement = document.getElementById('languageAnnouncement');
+        if (announcement) {
+          const message = lang === 'ar'
+            ? 'تم التبديل إلى اللغة العربية'
+            : 'Switched to English';
+          announcement.textContent = message;
+
+          // Clear after announcement
+          setTimeout(() => {
+            announcement.textContent = '';
+          }, 1000);
+        }
+      }
+
+      // Update skip link text based on language
+      function updateSkipLinkText(lang) {
+        const skipLink = document.getElementById('skipToContent');
+        if (skipLink) {
+          skipLink.textContent = lang === 'ar' ? 'تخطي إلى المحتوى' : 'Skip to content';
+        }
+      }
+
+      // Add main content ID for skip link
+      function ensureMainContentId() {
+        const mainContent = document.querySelector('.md-content__inner');
+        if (mainContent && !mainContent.id) {
+          mainContent.id = 'main-content';
+          mainContent.setAttribute('tabindex', '-1');
+        }
+      }
+
+      // Update toggle state based on current language
+      function updateToggleState() {
+        const currentLang = getCurrentLanguage();
+        const toggleBtns = document.querySelectorAll('.language-toggle__btn');
+
+        toggleBtns.forEach(btn => {
+          const btnLang = btn.getAttribute('data-lang');
+          btn.classList.remove('language-toggle__btn--active');
+          btn.setAttribute('aria-current', 'false');
+
+          if (btnLang === currentLang) {
+            btn.classList.add('language-toggle__btn--active');
+            btn.setAttribute('aria-current', 'page');
+          }
+        });
+
+        // Set document direction and language
+        if (currentLang === 'ar') {
+          document.documentElement.setAttribute('dir', 'rtl');
+          document.documentElement.setAttribute('lang', 'ar');
+          document.body.classList.add('ar-mode');
+          document.body.classList.remove('en-mode');
+        } else {
+          document.documentElement.setAttribute('dir', 'ltr');
+          document.documentElement.setAttribute('lang', 'en');
+          document.body.classList.add('en-mode');
+          document.body.classList.remove('ar-mode');
+        }
+
+        // Update skip link and ensure main content ID
+        updateSkipLinkText(currentLang);
+        ensureMainContentId();
+      }
+
+      // Handle toggle click with smooth page transition
+      function handleToggleClick(event) {
+        const btn = event.currentTarget;
+        const targetLang = btn.getAttribute('data-lang');
+        const currentLang = getCurrentLanguage();
+
+        // Prevent navigation if already on the target language
+        if (targetLang === currentLang) {
+          event.preventDefault();
+          return;
+        }
+
+        // Announce language change before navigation
+        announceLanguageChange(targetLang);
+
+        // Add transition effect (respects prefers-reduced-motion via CSS)
+        document.body.style.opacity = '0.7';
+        document.body.style.transition = 'opacity 0.2s ease';
+      }
+
+      // Get corresponding page in other language
+      function getCorrespondingPage(targetLang) {
+        const currentPath = window.location.pathname;
+        const baseUrl = '{{ config.site_url }}';
+
+        // Extract the page path without language prefix
+        let pagePath = currentPath
+          .replace(/^\/brainsait-docs\/(en|ar)\//, '/')
+          .replace(/^\//, '');
+
+        // If we're on index, keep it simple
+        if (!pagePath || pagePath === '' || pagePath === 'index.html') {
+          pagePath = '';
+        }
+
+        return baseUrl + targetLang + '/' + pagePath;
+      }
+
+      function localizeNavLabels(root = document) {
+        const currentLang = getCurrentLanguage();
+        const isArabic = currentLang === 'ar';
+        const selectors = [
+          '.md-tabs__link',
+          '.md-nav__link',
+          '.md-nav__title',
+          '.md-footer__link'
+        ];
+        root.querySelectorAll(selectors.join(',')).forEach(node => {
+          const labelEl = node.querySelector('.md-ellipsis') || node;
+          if (!labelEl) return;
+          const raw = labelEl.dataset.originalLabel || labelEl.textContent.trim();
+          if (!labelEl.dataset.originalLabel) {
+            labelEl.dataset.originalLabel = raw;
+          }
+          const hasSeparator = raw.includes('|');
+          if (!hasSeparator && !labelEl.dataset.labelEn) return;
+          if (hasSeparator && !labelEl.dataset.labelEn) {
+            const [en, ar] = raw.split('|').map(part => part.trim());
+            labelEl.dataset.labelEn = en || raw.trim();
+            labelEl.dataset.labelAr = ar || en || raw.trim();
+          }
+          const label = isArabic
+            ? (labelEl.dataset.labelAr || labelEl.dataset.labelEn)
+            : (labelEl.dataset.labelEn || labelEl.dataset.labelAr);
+          if (label) {
+            labelEl.textContent = label;
+          }
+        });
+      }
+
+      function renderPageHierarchy() {
+        const container = document.querySelector('.md-content__inner');
+        if (!container) return;
+
+        const existing = container.querySelector('.page-hierarchy');
+        if (existing) existing.remove();
+
+        const activeLinks = document.querySelectorAll('.md-nav__item--active > .md-nav__link');
+        if (!activeLinks.length) return;
+
+        const crumbs = Array.from(activeLinks).map(link => {
+          const labelEl = link.querySelector('.md-ellipsis') || link;
+          const text = labelEl ? labelEl.textContent.trim() : link.textContent.trim();
+          return {
+            text,
+            href: link.getAttribute('href')
+          };
+        }).filter(crumb => crumb.text);
+
+        if (!crumbs.length) return;
+
+        const wrapper = document.createElement('section');
+        wrapper.className = 'page-hierarchy';
+
+        const isArabic = getCurrentLanguage() === 'ar';
+        const labelText = isArabic ? 'مسار الصفحة' : 'Page hierarchy';
+        const separator = document.documentElement.getAttribute('dir') === 'rtl' ? '‹' : '›';
+
+        const label = document.createElement('div');
+        label.className = 'page-hierarchy__label';
+        label.textContent = labelText;
+        wrapper.appendChild(label);
+
+        const crumbNav = document.createElement('nav');
+        crumbNav.className = 'page-hierarchy__crumbs';
+
+        crumbs.forEach(function(crumb, index) {
+          if (index > 0) {
+            const sep = document.createElement('span');
+            sep.className = 'page-hierarchy__separator';
+            sep.textContent = separator;
+            crumbNav.appendChild(sep);
+          }
+
+          if (crumb.href && index < crumbs.length - 1) {
+            const link = document.createElement('a');
+            link.href = crumb.href;
+            link.textContent = crumb.text;
+            crumbNav.appendChild(link);
+          } else {
+            const span = document.createElement('span');
+            span.textContent = crumb.text;
+            crumbNav.appendChild(span);
+          }
+        });
+
+        wrapper.appendChild(crumbNav);
+        container.insertBefore(wrapper, container.firstChild);
+      }
+
+      function refreshEnterpriseUI() {
+        localizeNavLabels();
+        renderPageHierarchy();
+      }
+
+      // Initialize
+      document.addEventListener('DOMContentLoaded', function() {
+        updateToggleState();
+        refreshEnterpriseUI();
+
+        // Add click handlers
+        const toggleBtns = document.querySelectorAll('.language-toggle__btn');
+        toggleBtns.forEach(btn => {
+          btn.addEventListener('click', handleToggleClick);
+
+          // Update href to point to corresponding page
+          const href = btn.getAttribute('href');
+          if (href) {
+            const targetLang = href.includes('/ar/') ? 'ar' : 'en';
+            const correspondingPage = getCorrespondingPage(targetLang);
+            btn.setAttribute('href', correspondingPage);
+          }
+        });
+
+        // Show toggle with animation
+        const toggle = document.getElementById('languageToggle');
+        if (toggle) {
+          toggle.style.opacity = '0';
+          toggle.style.transform = 'translateY(-50%) translateX(20px)';
+
+          setTimeout(function() {
+            toggle.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            toggle.style.opacity = '1';
+            toggle.style.transform = 'translateY(-50%) translateX(0)';
+          }, 300);
+        }
+      });
+
+      // Update on navigation (for instant loading)
+      if (typeof document$ !== 'undefined') {
+        document$.subscribe(function() {
+          updateToggleState();
+          refreshEnterpriseUI();
+        });
+      }
+    })();
+  </script>
+{% endblock %}
+
+{% block footer %}
+  {{ super() }}
+{% endblock %}

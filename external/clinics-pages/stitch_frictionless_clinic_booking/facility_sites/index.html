@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BRAINSAIT | تحول الرعاية الصحية الرقمية في الرياض</title>
+  <meta name="description" content="منصة BRAINSAIT الرقمية لتحويل العيادات والمستشفيات في الرياض. 14 عيادة متخصصة مع حجز ذكي ثنائي اللغة وأتمتة المواعيد." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-base: #f3faff;
+      --surface: #ffffff;
+      --container-low: #e6f6ff;
+      --container-high: #cfe6f2;
+      --primary: #003b42;
+      --on-surface: #071e27;
+      --muted: #49617b;
+      --accent-dental: #00c4b4;
+      --accent-derma: #c47c5f;
+      --accent-poly: #d4970f;
+      --glass-blur: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --font-display: 'Manrope', sans-serif;
+      --font-body: 'Inter', 'Noto Kufi Arabic', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: var(--font-body);
+      background: 
+        radial-gradient(42rem 30rem at 0% -10%, rgba(0, 196, 180, 0.08), transparent 68%),
+        radial-gradient(32rem 20rem at 100% 100%, rgba(212, 151, 15, 0.06), transparent 72%),
+        var(--bg-base);
+      color: var(--on-surface);
+      line-height: 1.6;
+      letter-spacing: 0.01em;
+    }
+
+    .container {
+      width: min(1200px, 94vw);
+      margin: 0 auto;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(243, 250, 255, 0.85);
+      backdrop-filter: blur(var(--glass-blur));
+      border-bottom: 1px solid rgba(0, 196, 180, 0.12);
+      padding: 1rem 0;
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      font-family: var(--font-display);
+      background: linear-gradient(135deg, var(--primary), var(--accent-dental));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      white-space: nowrap;
+    }
+
+    .nav-middle {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      flex: 1;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--primary);
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-dental);
+    }
+
+    .lang-toggle {
+      background: linear-gradient(135deg, var(--primary), var(--accent-dental));
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.813rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .lang-toggle:hover {
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4rem 0;
+      text-align: right;
+    }
+
+    .hero-content {
+      max-width: 70ch;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--muted);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(0, 196, 180, 0.15);
+    }
+
+    .stat {
+      text-align: right;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    /* Filter Row */
+    .filter-section {
+      margin: 3rem 0;
+      text-align: right;
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      margin-top: 1rem;
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      border: 2px solid transparent;
+      background: var(--container-low);
+      color: var(--on-surface);
+      font-weight: 600;
+      font-size: 0.813rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      border-color: var(--primary);
+      background: linear-gradient(135deg, rgba(0, 196, 180, 0.1), rgba(212, 151, 15, 0.05));
+    }
+
+    /* Section Cluster */
+    .cluster {
+      margin: 4rem 0;
+    }
+
+    .cluster-head {
+      text-align: right;
+      margin-bottom: 2rem;
+    }
+
+    .cluster-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .cluster-desc {
+      font-size: 0.938rem;
+      color: var(--muted);
+      max-width: 70ch;
+      margin-right: 0;
+      margin-left: auto;
+    }
+
+    /* Card Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .clinic-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid rgba(0, 196, 180, 0.15);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      transition: all 0.3s;
+      border-right: 6px solid transparent;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .clinic-card.dental {
+      border-right-color: var(--accent-dental);
+    }
+
+    .clinic-card.derma {
+      border-right-color: var(--accent-derma);
+    }
+
+    .clinic-card.poly {
+      border-right-color: var(--accent-poly);
+    }
+
+    .clinic-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 196, 180, 0.12);
+      border-color: rgba(0, 196, 180, 0.25);
+    }
+
+    .card-badge {
+      display: inline-block;
+      font-size: 0.688rem;
+      font-weight: 700;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      width: fit-content;
+    }
+
+    .card-badge.dental {
+      background: rgba(0, 196, 180, 0.1);
+      color: var(--accent-dental);
+    }
+
+    .card-badge.derma {
+      background: rgba(196, 124, 95, 0.1);
+      color: var(--accent-derma);
+    }
+
+    .card-badge.poly {
+      background: rgba(212, 151, 15, 0.1);
+      color: var(--accent-poly);
+    }
+
+    .card-names {
+      text-align: right;
+    }
+
+    .card-name-en {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .card-name-ar {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .card-specialty {
+      font-size: 0.875rem;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-contact {
+      font-size: 0.813rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      justify-content: flex-end;
+      margin: 0.5rem 0;
+    }
+
+    .card-location {
+      font-size: 0.813rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .btn-demo {
+      flex: 1;
+      background: linear-gradient(135deg, var(--primary), var(--accent-dental));
+      color: white;
+      border: none;
+      padding: 0.65rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.813rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-demo:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 196, 180, 0.2);
+    }
+
+    .card-subdomain {
+      font-size: 0.688rem;
+      font-family: 'Courier New', monospace;
+      color: var(--muted);
+      background: var(--container-low);
+      padding: 0.4rem 0.7rem;
+      border-radius: 6px;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, rgba(0, 60, 66, 0.05), rgba(212, 151, 15, 0.03));
+      border: 1px solid rgba(0, 196, 180, 0.15);
+      border-radius: var(--radius-xl);
+      padding: 3rem;
+      margin: 4rem 0;
+      text-align: right;
+    }
+
+    .cta-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .cta-content p {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent-dental));
+      color: white;
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(0, 196, 180, 0.25);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(0, 196, 180, 0.12);
+      padding: 2rem 0;
+      margin-top: 4rem;
+      text-align: right;
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      justify-content: flex-end;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .cards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 2rem 0;
+      }
+
+      .hero h1 {
+        margin-bottom: 0.5rem;
+      }
+
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 2rem;
+        padding-top: 2rem;
+      }
+
+      .filter-buttons {
+        justify-content: flex-end;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-section {
+        padding: 2rem;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 0.5rem;
+        justify-content: flex-end;
+      }
+    }
+
+    /* Language direction */
+    [dir="ltr"] {
+      text-align: left;
+      direction: ltr;
+    }
+
+    [dir="ltr"] .nav-content {
+      justify-content: space-between;
+    }
+
+    [dir="ltr"] .filter-buttons {
+      justify-content: flex-start;
+    }
+
+    [dir="ltr"] .cluster-desc {
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    [dir="ltr"] .card-contact {
+      justify-content: flex-start;
+    }
+
+    [dir="ltr"] .footer-content {
+      flex-direction: row-reverse;
+    }
+
+    [dir="ltr"] .footer-links {
+      justify-content: flex-start;
+    }
+
+    [dir="ltr"] .clinic-card {
+      border-right: none;
+      border-left: 6px solid transparent;
+    }
+
+    [dir="ltr"] .clinic-card.dental {
+      border-left-color: var(--accent-dental);
+    }
+
+    [dir="ltr"] .clinic-card.derma {
+      border-left-color: var(--accent-derma);
+    }
+
+    [dir="ltr"] .clinic-card.poly {
+      border-left-color: var(--accent-poly);
+    }
+  </style>
+</head>
+<body dir="rtl">
+  <nav>
+    <div class="container nav-content">
+      <div class="logo">BRAINSAIT</div>
+      <div class="nav-middle">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#facilities">المرافق</a></li>
+          <li><a href="#about">عن البرنامج</a></li>
+          <li><a href="#contact">التواصل</a></li>
+        </ul>
+      </div>
+      <button class="lang-toggle" id="langToggle" onclick="toggleLanguage()">EN</button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 id="heroTitle">تحول الرعاية الصحية الرقمية</h1>
+        <p class="hero-subtitle" id="heroSubtitle">
+          منصة BRAINSAIT الشاملة لتحويل العيادات والمستشفيات في الرياض. 14 عيادة متخصصة مع حجز ذكي وأتمتة مواعيد ثنائية اللغة.
+        </p>
+        
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">14</span>
+            <span class="stat-label" id="statFacilities">عيادة متخصصة</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">3</span>
+            <span class="stat-label" id="statSegments">تخصصات رئيسية</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">100%</span>
+            <span class="stat-label" id="statBilingual">ثنائية اللغة</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">2026</span>
+            <span class="stat-label" id="statYear">رياض، المملكة</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="filter-section" id="facilities">
+      <h2 id="filterTitle" style="font-family: var(--font-display); font-size: 1.25rem; color: var(--primary); font-weight: 700; margin-bottom: 1rem;">استعرض حسب التخصص</h2>
+      <div class="filter-buttons">
+        <button class="filter-btn active" onclick="filterCards('all')" id="filterAll">الكل</button>
+        <button class="filter-btn" onclick="filterCards('dental')" id="filterDental">أسنان</button>
+        <button class="filter-btn" onclick="filterCards('derma')" id="filterDerma">جلدية</button>
+        <button class="filter-btn" onclick="filterCards('poly')" id="filterPoly">متعدد التخصص</button>
+      </div>
+    </section>
+
+    <!-- Dental Clinics -->
+    <section class="cluster" data-segment="dental">
+      <div class="cluster-head">
+        <h2 class="cluster-title" id="dentalTitle">عيادات الأسنان والطب العام</h2>
+        <p class="cluster-desc" id="dentalDesc">التركيز على أتمتة جدولة الحجوزات وعلاج تسريب الحجوزات اليدوية.</p>
+      </div>
+      <div class="cards-grid" id="dentalCards">
+        <!-- Generated by JS -->
+      </div>
+    </section>
+
+    <!-- Dermatology Clinics -->
+    <section class="cluster" data-segment="derma">
+      <div class="cluster-head">
+        <h2 class="cluster-title" id="dermaTitle">عيادات الجلدية والتجميل</h2>
+        <p class="cluster-desc" id="dermaDesc">التركيز على تأهيل العملاء المحتملين والمحتوى السريري المرجعي.</p>
+      </div>
+      <div class="cards-grid" id="dermaCards">
+        <!-- Generated by JS -->
+      </div>
+    </section>
+
+    <!-- Polyclinics -->
+    <section class="cluster" data-segment="poly">
+      <div class="cluster-head">
+        <h2 class="cluster-title" id="polyTitle">عيادات متعددة التخصص والرعاية التنفيذية</h2>
+        <p class="cluster-desc" id="polyDesc">التركيز على أتمتة دورة حياة المريض والتوسع ثنائي اللغة.</p>
+      </div>
+      <div class="cards-grid" id="polyCards">
+        <!-- Generated by JS -->
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+      <div class="cta-content">
+        <h2 id="ctaTitle">هيا بنا نحول قطاع الرعاية الصحية</h2>
+        <p id="ctaText">حدّد موعد عرض توضيحي شامل لمعرفة كيف يمكن لـ BRAINSAIT تحويل عيادتك رقميًا.</p>
+        <a href="mailto:hello@brainsait.org?subject=عرض%20توضيحي%20BRAINSAIT" class="btn-primary" id="ctaBtn">احجز عرضاً توضيحياً</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div>
+        <p id="footerText">© 2026 BRAINSAIT LTD · جميع الحقوق محفوظة</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="https://brainsait.org" target="_blank" id="footerSite">الموقع الرئيسي</a></li>
+        <li><a href="mailto:hello@brainsait.org" id="footerEmail">راسلنا</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    const clinics = [
+      // Dental
+      { segment: 'dental', name: 'Ram Clinics', nameAr: 'رام كلينكس', specialty: 'Dental & Medical', location: 'Al-Sahafa / Al-Rawdah', phone: '920004567', slug: 'ram-clinics' },
+      { segment: 'dental', name: 'Sigal Dental Clinic', nameAr: 'عيادة سيجال', specialty: 'Premium Dentistry', location: 'Al-Takhassusi St', phone: '0114831111', slug: 'sigal-dental-clinic' },
+      { segment: 'dental', name: 'Imtiaz Dental Center', nameAr: 'مركز امتياز للأسنان', specialty: 'Specialized Dentistry', location: 'Al-Olaya District', phone: '0114626633', slug: 'imtiaz-dental-center' },
+      { segment: 'dental', name: 'Avicena Dental Center', nameAr: 'مركز أفيسينا للأسنان', specialty: 'Orthodontics / Implants', location: 'King Fahd Road', phone: '0112005577', slug: 'avicena-dental-center' },
+      { segment: 'dental', name: 'Star Smiles', nameAr: 'ستار سمايلز', specialty: 'Pediatric / Cosmetic', location: 'Al-Sulaimaniyah', phone: '0114164433', slug: 'star-smiles' },
+      // Derma
+      { segment: 'derma', name: 'Derma Clinic', nameAr: 'عيادة ديرما', specialty: 'Dermatology / Laser', location: 'Olaya St, Al-Murooj', phone: '0114651919', slug: 'derma-clinic' },
+      { segment: 'derma', name: 'Elite Medical Center', nameAr: 'إيليت ميديكال سنتر', specialty: 'Aesthetic Surgery', location: 'Prince Muhammad St', phone: '0114616777', slug: 'elite-medical-center' },
+      { segment: 'derma', name: 'Kaya Skin Clinic', nameAr: 'كايا سكين كلينك', specialty: 'Clinical Skincare', location: 'Al-Takhassusi St', phone: '0114810233', slug: 'kaya-skin-clinic' },
+      { segment: 'derma', name: 'Medica Clinics', nameAr: 'ميديكا كلينكس', specialty: 'Plastic Surgery', location: 'Al-Mu\'tamar Dist', phone: '0112120000', slug: 'medica-clinics' },
+      { segment: 'derma', name: 'Renewal Reshape', nameAr: 'رينيوال ريشيب', specialty: 'Cosmetic Surgery', location: 'Northern Ring Rd', phone: '0112001144', slug: 'renewal-reshape' },
+      // Polyclinic
+      { segment: 'poly', name: 'Consulting Clinics', nameAr: 'كونسلتنج كلينكس', specialty: 'Multi-Specialty', location: 'Makkah Al-Mukarramah Rd', phone: '0114646330', slug: 'consulting-clinics' },
+      { segment: 'poly', name: 'Dallah Health', nameAr: 'دله الصحية', specialty: 'Multi-Specialty', location: 'Al-Nakheel / Al-Namudajiyah', phone: '920012222', slug: 'dallah-health' },
+      { segment: 'poly', name: 'First Clinic', nameAr: 'فيرست كلينك', specialty: 'Executive Health', location: 'King Abdullah Rd', phone: '0112222111', slug: 'first-clinic' },
+      { segment: 'poly', name: 'Specialized Medical Center', nameAr: 'المركز الطبي التخصصي', specialty: 'Comprehensive Care', location: 'King Fahd Rd', phone: '0114343800', slug: 'specialized-medical-center' }
+    ];
+
+    const lang = { ar: true };
+
+    function renderCards() {
+      const segments = { dental: 'dentalCards', derma: 'dermaCards', poly: 'polyCards' };
+      Object.entries(segments).forEach(([seg, id]) => {
+        const container = document.getElementById(id);
+        container.innerHTML = clinics
+          .filter(c => c.segment === seg)
+          .map(c => `
+            <div class="clinic-card ${c.segment}">
+              <span class="card-badge ${c.segment}">${c.segment === 'dental' ? 'أسنان' : c.segment === 'derma' ? 'جلدية' : 'متعدد'}</span>
+              <div class="card-names">
+                <div class="card-name-en">${c.name}</div>
+                <div class="card-name-ar">${c.nameAr}</div>
+              </div>
+              <span class="card-specialty">${c.specialty}</span>
+              <div class="card-contact">📍 ${c.location}</div>
+              <div class="card-contact">📞 ${c.phone}</div>
+              <div class="card-actions">
+                <a href="./${c.slug}/index.html" class="btn-demo">عرض توضيحي ↗</a>
+              </div>
+              <div class="card-subdomain">${c.slug}.brainsait.org</div>
+            </div>
+          `).join('');
+      });
+    }
+
+    function filterCards(segment) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      const show = segment === 'all';
+      document.querySelectorAll('.cluster').forEach(c => {
+        c.style.display = show || c.dataset.segment === segment ? 'block' : 'none';
+      });
+    }
+
+    function toggleLanguage() {
+      const html = document.documentElement;
+      lang.ar = !lang.ar;
+      html.dir = lang.ar ? 'rtl' : 'ltr';
+      html.lang = lang.ar ? 'ar' : 'en';
+      document.getElementById('langToggle').textContent = lang.ar ? 'EN' : 'العربية';
+      updateText();
+    }
+
+    function updateText() {
+      const ar = lang.ar;
+      document.getElementById('heroTitle').textContent = ar ? 'تحول الرعاية الصحية الرقمية' : 'Healthcare Digital Transformation';
+      document.getElementById('heroSubtitle').textContent = ar 
+        ? 'منصة BRAINSAIT الشاملة لتحويل العيادات والمستشفيات في الرياض. 14 عيادة متخصصة مع حجز ذكي وأتمتة مواعيد ثنائية اللغة.'
+        : 'BRAINSAIT\'s comprehensive digital transformation platform for clinics and hospitals in Riyadh. 14 specialized facilities with smart booking and bilingual appointment automation.';
+      document.getElementById('statFacilities').textContent = ar ? 'عيادة متخصصة' : 'specialized facilities';
+      document.getElementById('statSegments').textContent = ar ? 'تخصصات رئيسية' : 'core specialties';
+      document.getElementById('statBilingual').textContent = ar ? 'ثنائية اللغة' : 'bilingual';
+      document.getElementById('statYear').textContent = ar ? 'رياض، المملكة' : 'Riyadh, Saudi Arabia';
+      document.getElementById('filterTitle').textContent = ar ? 'استعرض حسب التخصص' : 'Filter by Specialty';
+      document.getElementById('filterAll').textContent = ar ? 'الكل' : 'All';
+      document.getElementById('filterDental').textContent = ar ? 'أسنان' : 'Dental';
+      document.getElementById('filterDerma').textContent = ar ? 'جلدية' : 'Dermatology';
+      document.getElementById('filterPoly').textContent = ar ? 'متعدد التخصص' : 'Polyclinic';
+      document.getElementById('dentalTitle').textContent = ar ? 'عيادات الأسنان والطب العام' : 'Dental & Medical Centers';
+      document.getElementById('dentalDesc').textContent = ar ? 'التركيز على أتمتة جدولة الحجوزات وعلاج تسريب الحجوزات اليدوية.' : 'Focus: automating high-volume scheduling and preventing manual booking leaks.';
+      document.getElementById('dermaTitle').textContent = ar ? 'عيادات الجلدية والتجميل' : 'Dermatology & Cosmetic Centers';
+      document.getElementById('dermaDesc').textContent = ar ? 'التركيز على تأهيل العملاء المحتملين والمحتوى السريري المرجعي.' : 'Focus: automated lead qualification and clinical authority content.';
+      document.getElementById('polyTitle').textContent = ar ? 'عيادات متعددة التخصص والرعاية التنفيذية' : 'Premium Polyclinics & Executive Health';
+      document.getElementById('polyDesc').textContent = ar ? 'التركيز على أتمتة دورة حياة المريض والتوسع ثنائي اللغة.' : 'Focus: full-lifecycle patient automation and bilingual expansion.';
+      document.getElementById('ctaTitle').textContent = ar ? 'هيا بنا نحول قطاع الرعاية الصحية' : 'Transform Healthcare Together';
+      document.getElementById('ctaText').textContent = ar 
+        ? 'حدّد موعد عرض توضيحي شامل لمعرفة كيف يمكن لـ BRAINSAIT تحويل عيادتك رقميًا.'
+        : 'Schedule a comprehensive demo to see how BRAINSAIT can digitally transform your healthcare facility.';
+      document.getElementById('ctaBtn').textContent = ar ? 'احجز عرضاً توضيحياً' : 'Book a Demo';
+      document.getElementById('footerText').textContent = ar ? '© 2026 BRAINSAIT LTD · جميع الحقوق محفوظة' : '© 2026 BRAINSAIT LTD · All rights reserved';
+      document.getElementById('footerSite').textContent = ar ? 'الموقع الرئيسي' : 'Main Site';
+      document.getElementById('footerEmail').textContent = ar ? 'راسلنا' : 'Contact Us';
+      
+      // Update nav links
+      if (document.getElementById('navLinks')) {
+        document.getElementById('navLinks').innerHTML = ar 
+          ? '<li><a href="#facilities">المرافق</a></li><li><a href="#about">عن البرنامج</a></li><li><a href="#contact">التواصل</a></li>'
+          : '<li><a href="#facilities">Facilities</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li>';
+      }
+    }
+
+    renderCards();
+  </script>
+</body>
+</html>

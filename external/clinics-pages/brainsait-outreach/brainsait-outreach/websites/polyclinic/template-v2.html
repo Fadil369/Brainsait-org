@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{CLINIC_NAME}} — عيادة أسنان متخصصة | BRAINSAIT</title>
+  <meta name="description" content="{{CLINIC_NAME}} في {{CLINIC_LOCATION}}. احجز موعدك الآن مع أفضل متخصصي طب الأسنان. تقنيات حديثة وخدمة عملاء ثنائية اللغة.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --void:#02040a;--deep:#060913;--navy:#0a0f1d;--surface:#0f1524;--surf2:#141929;
+      --g1:rgba(255,255,255,0.02);--g2:rgba(255,255,255,0.04);--g3:rgba(255,255,255,0.06);
+      --gb:rgba(255,255,255,0.08);--gbh:rgba(255,255,255,0.16);
+      --gold:#d4a574;--gold-l:#e8c49a;--gold-b:#f0d5b5;--gold-dim:rgba(212,165,116,0.10);
+      --teal:#0ea5e9;--teal-l:#38bdf8;--poly:#f59e0b;
+      --text:#f8fafc;--textd:#cbd5e1;--textm:#64748b;
+      --fd:'Syne',sans-serif;--fa:'IBM Plex Sans Arabic',sans-serif;--fi:'Inter',sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    body{background:var(--void);color:var(--text);font-family:var(--fi);font-size:15px;line-height:1.6;overflow-x:hidden}
+    [dir="rtl"] body{font-family:var(--fa)}
+    [dir="rtl"] h1,[dir="rtl"] h2,[dir="rtl"] h3{font-family:var(--fa)}
+    [dir="ltr"] .ar{display:none!important}
+    [dir="rtl"] .en{display:none!important}
+    .orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+    .o1{width:600px;height:600px;background:radial-gradient(circle,var(--gold) 0%,transparent 70%);opacity:.04;top:-15%;right:-10%;animation:drift 55s ease-in-out infinite}
+    .o2{width:500px;height:500px;background:radial-gradient(circle,var(--poly) 0%,transparent 70%);opacity:.04;bottom:-15%;left:-10%;animation:drift 48s ease-in-out infinite reverse}
+    .o3{width:400px;height:400px;background:radial-gradient(circle,var(--teal) 0%,transparent 70%);opacity:.03;top:40%;left:30%;animation:drift 65s ease-in-out infinite 20s}
+    @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(20px,-30px) scale(1.03)}66%{transform:translate(-15px,20px) scale(.98)}}
+    .page{position:relative;z-index:1}
+    .c{max-width:1200px;margin:0 auto;padding:0 24px}
+    h1,h2,h3,h4{font-family:var(--fd);font-weight:700}
+    h1{font-size:clamp(38px,6vw,76px);line-height:1.05;letter-spacing:-2px;margin-bottom:24px}
+    h2{font-size:clamp(28px,4vw,48px);line-height:1.15;letter-spacing:-1px;margin-bottom:20px}
+    h3{font-size:clamp(20px,2.5vw,28px);margin-bottom:12px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--fi);font-weight:600;font-size:14px;padding:10px 22px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:all .2s ease;white-space:nowrap}
+    .btn-p{background:linear-gradient(135deg,var(--gold),var(--gold-l));color:var(--void)}
+    .btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,165,116,.3)}
+    .btn-g{background:transparent;color:var(--text);border:1px solid var(--gb)}
+    .btn-g:hover{background:var(--g2);border-color:var(--gbh)}
+    .btn-lg{padding:14px 32px;font-size:15px}
+    .stag{display:block;font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:16px}
+    .sec-head{text-align:center;margin-bottom:72px}
+    .ssub{font-size:16px;color:var(--textd);max-width:580px;margin:0 auto;line-height:1.7}
+    section{padding:clamp(60px,10vw,120px) 0}
+    .rev{opacity:0;transform:translateY(24px);transition:opacity .7s ease-out,transform .7s ease-out}
+    .rev.vis{opacity:1;transform:translateY(0)}
+    #nav{position:fixed;top:0;width:100%;z-index:1000;backdrop-filter:blur(20px) saturate(1.8);-webkit-backdrop-filter:blur(20px) saturate(1.8);background:rgba(2,4,10,.80);border-bottom:1px solid var(--gb);padding:16px 24px}
+    .nav-c{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px}
+    .nav-logo{font-size:18px;font-weight:700;color:var(--gold);text-decoration:none}
+    .nav-lang{background:transparent;border:1px solid var(--gb);color:var(--text);padding:6px 12px;border-radius:6px;cursor:pointer;font-size:12px;transition:all .2s}
+    .nav-lang:hover{border-color:var(--gold);color:var(--gold)}
+    .hero{min-height:70vh;display:flex;align-items:center;padding-top:80px;position:relative}
+    .hero-c{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+    .hero-text h1{color:var(--text);margin-bottom:20px}
+    .hero-sub{font-size:18px;color:var(--textd);margin-bottom:32px;line-height:1.7}
+    .hero-kpi{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+    .kpi-tile{background:var(--g2);border:1px solid var(--gb);border-radius:6px;padding:20px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+    .kpi-num{font-size:24px;font-weight:700;color:var(--gold);margin-bottom:4px}
+    .kpi-label{font-size:12px;color:var(--textm)}
+    .hero-grad{width:100%;height:100%;background:radial-gradient(circle at 30% 50%,var(--poly) 0%,transparent 60%);border-radius:20px;opacity:0.2;filter:blur(40px)}
+    .cta-group{display:flex;gap:16px;margin-top:32px;flex-wrap:wrap}
+    .services{background:var(--g1)}
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .service-card{background:var(--g2);border:1px solid var(--gb);border-radius:6px;padding:32px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:all .3s ease;cursor:pointer}
+    .service-card:hover{transform:translateY(-4px);border-color:var(--poly);background:var(--g3);box-shadow:0 8px 32px rgba(0,196,180,0.15)}
+    .service-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--poly),var(--teal));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px}
+    .service-card h3{color:var(--text);margin-bottom:12px}
+    .service-card p{color:var(--textd);font-size:14px;line-height:1.6}
+    #calendar-section{background:linear-gradient(135deg,var(--g1) 0%,var(--g2) 100%);border-radius:6px;padding:48px;margin:48px 0;border:1px solid var(--gb);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+    .calendar-header{text-align:center;margin-bottom:40px}
+    .calendar-header h2{color:var(--text);margin-bottom:12px}
+    .calendar-header p{color:var(--textd);font-size:16px}
+    #calendar-widget{width:100%;max-width:600px;margin:0 auto}
+    footer{background:var(--navy);border-top:1px solid var(--gb);padding:48px 0 32px;margin-top:80px}
+    .footer-c{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+    .footer-col h4{color:var(--gold);margin-bottom:16px;font-size:14px}
+    .footer-col p{color:var(--textd);font-size:14px;line-height:1.7;margin-bottom:12px}
+    .footer-col a{color:var(--teal);text-decoration:none;font-size:14px;transition:color .2s}
+    .footer-col a:hover{color:var(--gold)}
+    .footer-bottom{text-align:center;padding-top:24px;margin-top:24px;border-top:1px solid var(--gb);color:var(--textm);font-size:12px}
+    .bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;height:72px;background:rgba(2,4,10,0.95);border-top:1px solid var(--gb);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:999;padding:8px 16px}
+    .bottom-nav-content{max-width:1200px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-around;gap:8px}
+    .bottom-nav-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:transparent;border:none;color:var(--textd);cursor:pointer;font-size:11px;font-weight:600;transition:all .2s;flex:1;padding:8px;border-radius:6px}
+    .bottom-nav-btn:hover,.bottom-nav-btn.active{color:var(--gold);background:var(--g2)}
+    .bottom-nav-icon{font-size:20px}
+    #fab{position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:linear-gradient(135deg,var(--gold),var(--gold-l));border:none;border-radius:50%;color:var(--void);font-size:24px;cursor:pointer;box-shadow:0 8px 24px rgba(212,165,116,0.4);display:flex;align-items:center;justify-content:center;transition:all .3s ease;z-index:100;animation:pulse 2s infinite}
+    #fab:hover{transform:scale(1.1);box-shadow:0 12px 32px rgba(212,165,116,0.6)}
+    @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.05);opacity:0.8}}
+    @media(max-width:1024px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:768px){
+      .hero-c{grid-template-columns:1fr;gap:32px}
+      .hero-grad{display:none}
+      .hero{min-height:60vh;padding-top:100px}
+      .services-grid{grid-template-columns:1fr}
+      .service-card{padding:24px}
+      .footer-c{grid-template-columns:1fr;gap:24px}
+      .bottom-nav{display:flex}
+      body{padding-bottom:72px}
+      #fab{bottom:88px;right:16px}
+    }
+  </style>
+</head>
+<body>
+  <div class="orb o1"></div>
+  <div class="orb o2"></div>
+  <div class="orb o3"></div>
+  <div class="page">
+    <nav id="nav">
+      <div class="nav-c">
+        <a href="/" class="nav-logo">BRAINSAIT</a>
+        <button class="nav-lang" id="lang-toggle" onclick="toggleLanguage()">EN / عربي</button>
+      </div>
+    </nav>
+    <main class="c">
+      <section class="hero rev">
+        <div class="hero-c">
+          <div class="hero-text">
+            <div class="stag ar">عيادة الأسنان</div>
+            <div class="stag en">DENTAL CLINIC</div>
+            <h1 class="ar">{{CLINIC_NAME}}</h1>
+            <h1 class="en">{{CLINIC_NAME}}</h1>
+            <p class="hero-sub ar">{{CLINIC_TAGLINE_AR}}</p>
+            <p class="hero-sub en">{{CLINIC_TAGLINE_EN}}</p>
+            <div class="hero-kpi">
+              <div class="kpi-tile"><div class="kpi-num">{{EXPERIENCE_YEARS}}</div><div class="kpi-label ar">سنة خبرة</div><div class="kpi-label en">Years</div></div>
+              <div class="kpi-tile"><div class="kpi-num">+{{PATIENTS_SERVED}}</div><div class="kpi-label ar">مريض</div><div class="kpi-label en">Patients</div></div>
+            </div>
+            <div class="cta-group">
+              <button class="btn btn-p btn-lg" onclick="openCalendar()"><span class="ar">احجز موعدك</span><span class="en">Book Now</span></button>
+              <button class="btn btn-g btn-lg" onclick="scrollToServices()"><span class="ar">خدماتنا</span><span class="en">Services</span></button>
+            </div>
+          </div>
+          <div class="hero-grad"></div>
+        </div>
+      </section>
+      <section class="services rev" id="services">
+        <div class="sec-head">
+          <div class="stag ar">الخدمات</div>
+          <div class="stag en">SERVICES</div>
+          <h2 class="ar">خدمات عالية الجودة</h2>
+          <h2 class="en">Premium Dental Care</h2>
+        </div>
+        <div class="services-grid">{{SERVICES_CARDS}}</div>
+      </section>
+      <section id="calendar-section" class="rev">
+        <div class="calendar-header">
+          <h2 class="ar">احجز موعدك الآن</h2>
+          <h2 class="en">Schedule Your Appointment</h2>
+        </div>
+        <iframe src="https://calendar.app.google/V9KcXPcD1PeWDQHH8" style="border:none;width:100%;height:600px;border-radius:8px;"></iframe>
+      </section>
+      <section class="rev" style="margin-bottom:100px">
+        <div class="sec-head"><h2 class="ar">تواصل معنا</h2><h2 class="en">Contact Us</h2></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px">
+          <div class="service-card"><div style="font-size:28px;margin-bottom:12px">📞</div><h3 class="ar">اتصل</h3><h3 class="en">Call</h3><p><a href="tel:{{CLINIC_PHONE}}" style="color:var(--gold);text-decoration:none">{{CLINIC_PHONE}}</a></p></div>
+          <div class="service-card"><div style="font-size:28px;margin-bottom:12px">💬</div><h3 class="ar">واتسآب</h3><h3 class="en">WhatsApp</h3><p><a href="https://wa.me/{{CLINIC_PHONE_INT}}" target="_blank" style="color:var(--teal);text-decoration:none">Chat</a></p></div>
+          <div class="service-card"><div style="font-size:28px;margin-bottom:12px">📍</div><h3 class="ar">موقعنا</h3><h3 class="en">Location</h3><p>{{CLINIC_LOCATION}}</p></div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="c footer-c">
+        <div class="footer-col"><h4>{{CLINIC_NAME}}</h4><p class="ar">{{CLINIC_SPECIALTY}}</p><p class="en">{{CLINIC_SPECIALTY}}</p></div>
+        <div class="footer-col"><h4 class="ar">الساعات</h4><h4 class="en">Hours</h4><p class="ar">السبت - الخميس: 9AM - 9PM</p><p class="en">Sat - Thu: 9AM - 9PM</p></div>
+        <div class="footer-col"><h4>BRAINSAIT</h4><p><a href="https://brainsait.org" target="_blank">Visit</a></p></div>
+      </div>
+      <div class="c footer-bottom"><p class="ar">© 2026 {{CLINIC_NAME}} جميع الحقوق محفوظة</p><p class="en">© 2026 {{CLINIC_NAME}} All rights reserved</p></div>
+    </footer>
+    <nav class="bottom-nav">
+      <div class="bottom-nav-content">
+        <button class="bottom-nav-btn" onclick="openCalendar()"><span class="bottom-nav-icon">📅</span><span class="ar">احجز</span><span class="en">Book</span></button>
+        <button class="bottom-nav-btn" onclick="openWhatsApp()"><span class="bottom-nav-icon">💬</span><span class="ar">واتسآب</span><span class="en">Chat</span></button>
+        <button class="bottom-nav-btn" onclick="callClinic()"><span class="bottom-nav-icon">☎️</span><span class="ar">اتصل</span><span class="en">Call</span></button>
+        <button class="bottom-nav-btn" onclick="toggleLanguage()"><span class="bottom-nav-icon">🌐</span><span class="ar">English</span><span class="en">عربي</span></button>
+      </div>
+    </nav>
+    <button id="fab" onclick="openCalendar()" title="Book">📅</button>
+  </div>
+  <script>
+    const CALENDAR_URL='https://calendar.app.google/V9KcXPcD1PeWDQHH8';
+    const CLINIC_PHONE='{{CLINIC_PHONE}}';
+    const CLINIC_PHONE_INT='{{CLINIC_PHONE_INT}}';
+    function toggleLanguage(){const html=document.documentElement;const dir=html.getAttribute('dir');if(dir==='rtl'){html.setAttribute('dir','ltr');html.setAttribute('lang','en');localStorage.setItem('lang','en')}else{html.setAttribute('dir','rtl');html.setAttribute('lang','ar');localStorage.setItem('lang','ar')}}
+    function loadLang(){const lang=localStorage.getItem('lang')||'ar';const html=document.documentElement;if(lang==='en'){html.setAttribute('dir','ltr');html.setAttribute('lang','en')}else{html.setAttribute('dir','rtl');html.setAttribute('lang','ar')}}
+    function openCalendar(){window.open(CALENDAR_URL,'calendar','width=800,height=600')}
+    function openWhatsApp(){const msg=encodeURIComponent('السلام عليكم، أود حجز موعد');window.open(`https://wa.me/${CLINIC_PHONE_INT}?text=${msg}`,'_blank')}
+    function callClinic(){window.location.href=`tel:${CLINIC_PHONE}`}
+    function scrollToServices(){document.getElementById('services')?.scrollIntoView({behavior:'smooth'})}
+    function revealOnScroll(){const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:0.1});document.querySelectorAll('.rev').forEach(el=>observer.observe(el))}
+    document.addEventListener('DOMContentLoaded',()=>{loadLang();revealOnScroll()});
+  </script>
+</body>
+</html>

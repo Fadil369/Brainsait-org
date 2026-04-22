@@ -1,0 +1,5 @@
+# Healthcare app env
+.env
+.env.local
+dist
+node_modules

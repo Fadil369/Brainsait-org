@@ -657,7 +657,7 @@
     </div>
     <div style="display: flex; gap: 1rem; align-items: center;">
       <button class="lang-btn" id="langToggle" aria-label="Switch language" style="background: linear-gradient(135deg, var(--gold), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; border: none; font-weight: 600; cursor: pointer; font-family: var(--fd);">العربية</button>
-      <a href="https://portal.elfadil.com" target="_blank" rel="noopener noreferrer" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Portal →</a>
+      <a href="/rcm" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">RCM Suite →</a>
     </div>
   </div>
 </header>
@@ -830,7 +830,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       name: 'Clinics Digital Transformation',
       icon: '🏥',
       description: 'Complete clinic booking and digital transformation platform for healthcare facilities. Includes appointment scheduling, patient management, and multi-clinic coordination.',
-      demo: 'https://clinics.brainsait.org',
+      demo: '/clinics',
       github: 'https://github.com/Fadil369/Clinics-pages',
       tier: 'enterprise',
       category: 'healthcare'
@@ -890,8 +890,58 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       name: 'Claims Intelligence AI',
       icon: '🤖',
       description: 'AI-powered insurance claims analysis and processing. Instant processing, automated reporting, and compliance checking.',
-      demo: 'https://0fb445fa.tawnia-insurance-analyzer.pages.dev/main',
+      demo: '/tawnia-reconciliation',
       github: 'https://github.com/Fadil369/al-tawnia-claims-intelligence',
+      tier: 'advanced',
+      category: 'healthcare'
+    },
+    {
+      id: 'rcm-suite',
+      name: 'BrainSAIT RCM Suite',
+      icon: '💼',
+      description: 'Merged path-hosted RCM workspace under brainsait.org/rcm with basePath-aware routing for claims, automation, and payer workflows.',
+      demo: '/rcm',
+      github: 'https://github.com/Fadil369/brainsait-rcm',
+      tier: 'enterprise',
+      category: 'healthcare'
+    },
+    {
+      id: 'brainsait-store',
+      name: 'BrainSAIT Store',
+      icon: '🛍️',
+      description: 'Consolidated commerce frontend served from brainsait.org/store with path-hosted assets and relative API routing.',
+      demo: '/store',
+      github: 'https://github.com/Fadil369/brainsait-store',
+      tier: 'advanced',
+      category: 'business'
+    },
+    {
+      id: 'incubator-platform',
+      name: 'BrainSAIT Incubator',
+      icon: '🚀',
+      description: 'Incubation and SME enablement platform integrated into the merged domain at brainsait.org/incubator.',
+      demo: '/incubator',
+      github: 'https://github.com/Fadil369/brainsait-incubator',
+      tier: 'advanced',
+      category: 'business'
+    },
+    {
+      id: 'pdf-to-excel',
+      name: 'PDF to Excel Extractor',
+      icon: '📄',
+      description: 'Structured PDF extraction tool running directly on brainsait.org. Upload contracts, claims, or reports and export the parsed output to Excel in-browser.',
+      demo: '/pdf-to-excel',
+      github: 'https://github.com/Fadil369/Brainsait-org/blob/main/pdf-to-excel.html',
+      tier: 'basic',
+      category: 'business'
+    },
+    {
+      id: 'tawnia-reconciliation',
+      name: 'Tawnia Reconciliation AI',
+      icon: '🧾',
+      description: 'Saudi RCM reconciliation workspace for reviewing Tawnia claims from Google Sheets or Excel with AGREE/DISAGREE decision support and exportable results.',
+      demo: '/tawnia-reconciliation',
+      github: 'https://github.com/Fadil369/Brainsait-org/blob/main/tawnia-reconciliation.html',
       tier: 'advanced',
       category: 'healthcare'
     }
@@ -910,14 +960,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
    function renderAppGrid() {
      const grid = document.getElementById('appGrid');
      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-     const delays = ['d1', 'd2', 'd3'];
-     
-     grid.innerHTML = APPS.map((app, idx) => {
-       const isFavorited = favorites.includes(app.id);
-       const safeName = app.name.replace(/'/g, '&#39;');
-       const delayClass = delays[idx % delays.length];
-       return `
-       <div class="app-card rev ${delayClass}" data-app-id="${app.id}">
+      const delays = ['d1', 'd2', 'd3'];
+      
+      grid.innerHTML = APPS.map((app, idx) => {
+        const isFavorited = favorites.includes(app.id);
+        const safeName = app.name.replace(/'/g, '&#39;');
+        const delayClass = delays[idx % delays.length];
+        const isLocalDemo = app.demo.startsWith('/');
+        return `
+        <div class="app-card rev ${delayClass}" data-app-id="${app.id}">
          <div style="display: flex; justify-content: space-between; align-items: start;">
            <div class="pricing-badge">${PRICING[app.tier].app.toLocaleString()} SAR</div>
            <button onclick="toggleFavorite('${app.id}')" style="background: none; border: none; font-size: 24px; cursor: pointer; padding: 4px 8px;" title="${isFavorited ? 'Remove from favorites' : 'Add to favorites'}" aria-label="${isFavorited ? 'Remove from favorites' : 'Add to favorites'}">
@@ -947,11 +998,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
            </div>
          </div>
 
-         <div class="btn-group">
-           <div class="btn-row">
-             <a href="${app.demo}" target="_blank" rel="noopener noreferrer" class="btn demo">🚀 Live Demo</a>
-             <a href="${app.github}" target="_blank" rel="noopener noreferrer" class="btn github">📂 GitHub</a>
-           </div>
+          <div class="btn-group">
+            <div class="btn-row">
+              <a href="${app.demo}" ${isLocalDemo ? '' : 'target="_blank" rel="noopener noreferrer"'} class="btn demo">🚀 Live Demo</a>
+              <a href="${app.github}" target="_blank" rel="noopener noreferrer" class="btn github">📂 GitHub</a>
+            </div>
            
            <div style="border-top: 1px solid var(--gb); padding-top: 0.8rem;">
              <div class="payment-label">💳 PURCHASE</div>

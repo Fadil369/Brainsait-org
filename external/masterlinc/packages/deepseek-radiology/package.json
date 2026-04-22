@@ -1,0 +1,24 @@
+{
+  "name": "@masterlinc/deepseek-radiology",
+  "version": "1.0.0",
+  "description": "DeepSeek AI-powered radiology analysis for BrainSAIT platform",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^1.2.12",
+    "ai": "^6.0.89",
+    "axios": "^1.13.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.25",
+    "@types/node": "^20.19.33",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainSAIT — Clinic Booking Integration Wrapper</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      background: #02040a;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .clinic-embed-container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0;
+      background: #02040a;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Desktop: iframe side-by-side with sidebar */
+    @media (min-width: 1200px) {
+      .clinic-embed-container {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 24px;
+        padding: 24px;
+      }
+
+      .clinic-sidebar {
+        position: sticky;
+        top: 80px;
+        height: fit-content;
+      }
+
+      .clinic-iframe-wrapper {
+        grid-column: 2;
+      }
+    }
+
+    /* Tablet & Mobile: stacked */
+    @media (max-width: 1199px) {
+      .clinic-embed-container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .clinic-sidebar {
+        order: 1;
+        padding: 16px;
+      }
+
+      .clinic-iframe-wrapper {
+        order: 2;
+      }
+    }
+
+    /* Sidebar Styles */
+    .clinic-sidebar {
+      background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 24px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .sidebar-title {
+      color: #d4a574;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .clinic-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .clinic-item {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 12px 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: #cbd5e1;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .clinic-item:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: #d4a574;
+      color: #d4a574;
+    }
+
+    .clinic-item.active {
+      background: rgba(212,165,116,0.15);
+      border-color: #d4a574;
+      color: #d4a574;
+    }
+
+    .clinic-segment {
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .clinic-segment:last-child {
+      border-bottom: none;
+    }
+
+    .segment-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #0ea5e9;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    /* Iframe Wrapper */
+    .clinic-iframe-wrapper {
+      position: relative;
+      background: #02040a;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.5);
+    }
+
+    .clinic-iframe {
+      width: 100%;
+      height: 800px;
+      border: none;
+      background: #02040a;
+    }
+
+    @media (max-width: 768px) {
+      .clinic-iframe {
+        height: 600px;
+      }
+    }
+
+    /* Loading state */
+    .iframe-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 600px;
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    /* Header/Nav for mobile */
+    .clinic-nav-mobile {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      height: 50px;
+      background: rgba(2,4,10,0.95);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      overflow-x: auto;
+      z-index: 100;
+      padding: 0 16px;
+    }
+
+    @media (max-width: 1199px) {
+      .clinic-nav-mobile {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .clinic-embed-container {
+        padding-top: 50px;
+      }
+    }
+
+    .clinic-nav-btn {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #cbd5e1;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .clinic-nav-btn:hover,
+    .clinic-nav-btn.active {
+      border-color: #d4a574;
+      color: #d4a574;
+      background: rgba(212,165,116,0.1);
+    }
+
+    /* View Full Page Link */
+    .view-full-page {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: linear-gradient(135deg, #d4a574, #e8c49a);
+      color: #02040a;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      z-index: 10;
+    }
+
+    .view-full-page:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(212,165,116,0.3);
+    }
+
+    @media (max-width: 768px) {
+      .view-full-page {
+        top: 12px;
+        right: 12px;
+        padding: 6px 12px;
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="clinic-embed-container">
+  <!-- Sidebar (Desktop) -->
+  <aside class="clinic-sidebar">
+    <div class="sidebar-title">Select Clinic</div>
+    <ul class="clinic-list">
+      <!-- DENTAL SEGMENT -->
+      <span class="segment-label">Dental</span>
+      <li class="clinic-item active" data-clinic="ram-clinics" data-url="brainsait-outreach/brainsait-outreach/websites/dental/ram-clinics.html">RAM Clinics</li>
+      <li class="clinic-item" data-clinic="sigal-dental-clinic" data-url="brainsait-outreach/brainsait-outreach/websites/dental/sigal-dental-clinic.html">Sigal Dental</li>
+      <li class="clinic-item" data-clinic="imtiaz-dental-center" data-url="brainsait-outreach/brainsait-outreach/websites/dental/imtiaz-dental-center.html">Imtiaz Dental</li>
+      <li class="clinic-item" data-clinic="avicena-dental-center" data-url="brainsait-outreach/brainsait-outreach/websites/dental/avicena-dental-center.html">Avicena Dental</li>
+      <li class="clinic-item" data-clinic="star-smiles" data-url="brainsait-outreach/brainsait-outreach/websites/dental/star-smiles.html">Star Smiles</li>
+
+      <div class="clinic-segment"></div>
+
+      <!-- DERMATOLOGY SEGMENT -->
+      <span class="segment-label">Dermatology</span>
+      <li class="clinic-item" data-clinic="derma-clinic" data-url="brainsait-outreach/brainsait-outreach/websites/dermatology/derma-clinic.html">Derma Clinic</li>
+      <li class="clinic-item" data-clinic="elite-medical-center" data-url="brainsait-outreach/brainsait-outreach/websites/dermatology/elite-medical-center.html">Elite Medical</li>
+      <li class="clinic-item" data-clinic="kaya-skin-clinic" data-url="brainsait-outreach/brainsait-outreach/websites/dermatology/kaya-skin-clinic.html">Kaya Skin</li>
+      <li class="clinic-item" data-clinic="medica-clinics" data-url="brainsait-outreach/brainsait-outreach/websites/dermatology/medica-clinics.html">Medica</li>
+      <li class="clinic-item" data-clinic="renewal-reshape" data-url="brainsait-outreach/brainsait-outreach/websites/dermatology/renewal-reshape.html">Renewal</li>
+
+      <div class="clinic-segment"></div>
+
+      <!-- POLYCLINIC SEGMENT -->
+      <span class="segment-label">Polyclinic</span>
+      <li class="clinic-item" data-clinic="consulting-clinics" data-url="brainsait-outreach/brainsait-outreach/websites/polyclinic/consulting-clinics.html">Consulting</li>
+      <li class="clinic-item" data-clinic="dallah-health" data-url="brainsait-outreach/brainsait-outreach/websites/polyclinic/dallah-health.html">Dallah</li>
+      <li class="clinic-item" data-clinic="first-clinic" data-url="brainsait-outreach/brainsait-outreach/websites/polyclinic/first-clinic.html">First Clinic</li>
+      <li class="clinic-item" data-clinic="specialized-medical-center" data-url="brainsait-outreach/brainsait-outreach/websites/polyclinic/specialized-medical-center.html">Specialized</li>
+    </ul>
+  </aside>
+
+  <!-- Mobile Navigation -->
+  <nav class="clinic-nav-mobile" id="mobile-nav"></nav>
+
+  <!-- Iframe Wrapper -->
+  <div class="clinic-iframe-wrapper">
+    <button class="view-full-page" id="view-full-btn" onclick="openFullPage()" title="Open full clinic page">Open Full Page ↗</button>
+    <div class="iframe-loading" id="loading">Loading clinic page...</div>
+    <iframe class="clinic-iframe" id="clinic-iframe" style="display:none"></iframe>
+  </div>
+</div>
+
+<script>
+  const clinicsList = [
+    { id: 'ram-clinics', name: 'RAM Clinics', segment: 'dental' },
+    { id: 'sigal-dental-clinic', name: 'Sigal Dental', segment: 'dental' },
+    { id: 'imtiaz-dental-center', name: 'Imtiaz Dental', segment: 'dental' },
+    { id: 'avicena-dental-center', name: 'Avicena Dental', segment: 'dental' },
+    { id: 'star-smiles', name: 'Star Smiles', segment: 'dental' },
+    { id: 'derma-clinic', name: 'Derma Clinic', segment: 'dermatology' },
+    { id: 'elite-medical-center', name: 'Elite Medical', segment: 'dermatology' },
+    { id: 'kaya-skin-clinic', name: 'Kaya Skin', segment: 'dermatology' },
+    { id: 'medica-clinics', name: 'Medica', segment: 'dermatology' },
+    { id: 'renewal-reshape', name: 'Renewal', segment: 'dermatology' },
+    { id: 'consulting-clinics', name: 'Consulting', segment: 'polyclinic' },
+    { id: 'dallah-health', name: 'Dallah', segment: 'polyclinic' },
+    { id: 'first-clinic', name: 'First Clinic', segment: 'polyclinic' },
+    { id: 'specialized-medical-center', name: 'Specialized', segment: 'polyclinic' }
+  ];
+
+  const baseURL = document.currentScript.getAttribute('data-base-url') || '/';
+  let currentClinic = 'ram-clinics';
+
+  function loadClinic(clinicId, clinicURL) {
+    const iframe = document.getElementById('clinic-iframe');
+    const loading = document.getElementById('loading');
+    const fullBtn = document.getElementById('view-full-btn');
+
+    currentClinic = clinicId;
+    loading.style.display = 'flex';
+    iframe.style.display = 'none';
+
+    // Update active state in sidebar
+    document.querySelectorAll('.clinic-item').forEach(item => {
+      item.classList.remove('active');
+    });
+    document.querySelector(`[data-clinic="${clinicId}"]`)?.classList.add('active');
+
+    // Update mobile nav active state
+    document.querySelectorAll('.clinic-nav-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    document.getElementById(`nav-${clinicId}`)?.classList.add('active');
+
+    // Load iframe with full clinic URL
+    iframe.src = baseURL + clinicURL;
+
+    // Show iframe on load (replaces the artificial 1-second timeout)
+    iframe.onload = function () {
+      clearTimeout(fallback);
+      loading.style.display = 'none';
+      iframe.style.display = 'block';
+    };
+
+    // Fallback: reveal after 5 s in case onload doesn't fire (cross-origin)
+    const fallback = setTimeout(() => {
+      if (iframe.style.display !== 'block') {
+        loading.style.display = 'none';
+        iframe.style.display = 'block';
+      }
+    }, 5000);
+
+    // Update full page button
+    fullBtn.onclick = () => {
+      window.open(baseURL + clinicURL, '_blank');
+    };
+
+    // Track event
+    trackClinicLoad(clinicId);
+  }
+
+  function openFullPage() {
+    const clinic = clinicsList.find(c => c.id === currentClinic);
+    const segment = clinic.segment;
+    const url = baseURL + `brainsait-outreach/brainsait-outreach/websites/${segment}/${currentClinic}.html`;
+    window.open(url, '_blank');
+  }
+
+  function trackClinicLoad(clinicId) {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'clinic_embedded_load', {
+        'clinic_id': clinicId,
+        'clinic_name': clinicsList.find(c => c.id === clinicId)?.name
+      });
+    }
+  }
+
+  // Initialize sidebar click handlers
+  document.querySelectorAll('.clinic-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      const clinicId = e.target.dataset.clinic;
+      const clinicURL = e.target.dataset.url;
+      loadClinic(clinicId, clinicURL);
+    });
+  });
+
+  // Build mobile navigation
+  function buildMobileNav() {
+    const mobileNav = document.getElementById('mobile-nav');
+    const segments = {};
+
+    clinicsList.forEach(clinic => {
+      if (!segments[clinic.segment]) segments[clinic.segment] = [];
+      segments[clinic.segment].push(clinic);
+    });
+
+    Object.entries(segments).forEach(([segment, clinics]) => {
+      clinics.forEach((clinic, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'clinic-nav-btn';
+        if (idx === 0 && segment === 'dental') btn.classList.add('active');
+        btn.textContent = clinic.name;
+        btn.id = `nav-${clinic.id}`;
+        btn.onclick = () => {
+          const url = `brainsait-outreach/brainsait-outreach/websites/${segment}/${clinic.id}.html`;
+          loadClinic(clinic.id, url);
+        };
+        mobileNav.appendChild(btn);
+      });
+    });
+  }
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', () => {
+    buildMobileNav();
+    loadClinic('ram-clinics', 'brainsait-outreach/brainsait-outreach/websites/dental/ram-clinics.html');
+  });
+</script>
+
+<!-- BrainSAIT AI Booking Guide -->
+<script src="/ai-agent.js" data-lang="ar"></script>
+
+</body>
+</html>

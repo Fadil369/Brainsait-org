@@ -1,0 +1,88 @@
+# BrainSAIT ML Inference — Workers AI + Vectorize
+name = "brainsait-ml-inference"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+account_id = "d7b99530559ab4f2545e9bdc72a7ab9b"
+
+[env.production]
+name = "brainsait-ml-inference-prod"
+routes = [{ pattern = "ml.brainsait.org", custom_domain = true, zone_name = "brainsait.org" }]
+
+[env.production.vars]
+DEFAULT_MODEL = "@cf/meta/llama-3.1-8b-instruct"
+EMBEDDING_MODEL = "@cf/baai/bge-base-en-v1.5"
+MAX_BATCH_SIZE = "100"
+INFERENCE_TIMEOUT_MS = "30000"
+
+[[env.production.kv_namespaces]]
+binding = "MODEL_CACHE"
+id = "9201cf6a9b1143d8822250dc24e8c8ba"
+
+[[env.production.kv_namespaces]]
+binding = "INFERENCE_CACHE"
+id = "079016c359c348e180724cdd76f29129"
+
+[[env.production.r2_buckets]]
+binding = "MODEL_STORE"
+bucket_name = "brainsait-storage"
+
+[[env.production.r2_buckets]]
+binding = "PREDICTION_LOGS"
+bucket_name = "brainsait-healthcare-audit"
+
+[[env.production.queues.producers]]
+binding = "BATCH_QUEUE"
+queue = "brainsait-claims"
+
+[[env.production.vectorize]]
+binding = "EMBEDDINGS"
+index_name = "brainsait-embeddings"
+
+[env.production.ai]
+binding = "AI"
+
+[[env.production.analytics_engine_datasets]]
+binding = "ML_ANALYTICS"
+dataset = "brainsait_ml_usage"
+
+[env.staging]
+name = "brainsait-ml-inference-staging"
+workers_dev = true
+
+[[kv_namespaces]]
+binding = "MODEL_CACHE"
+id = "9201cf6a9b1143d8822250dc24e8c8ba"
+
+[[kv_namespaces]]
+binding = "INFERENCE_CACHE"
+id = "079016c359c348e180724cdd76f29129"
+
+[[r2_buckets]]
+binding = "MODEL_STORE"
+bucket_name = "brainsait-storage"
+
+[[r2_buckets]]
+binding = "PREDICTION_LOGS"
+bucket_name = "brainsait-healthcare-audit"
+
+[[queues.producers]]
+binding = "BATCH_QUEUE"
+queue = "brainsait-claims"
+
+[[vectorize]]
+binding = "EMBEDDINGS"
+index_name = "brainsait-embeddings"
+
+[ai]
+binding = "AI"
+
+[[analytics_engine_datasets]]
+binding = "ML_ANALYTICS"
+dataset = "brainsait_ml_usage"
+
+[vars]
+DEFAULT_MODEL = "@cf/meta/llama-3.1-8b-instruct"
+EMBEDDING_MODEL = "@cf/baai/bge-base-en-v1.5"
+MAX_BATCH_SIZE = "100"
+INFERENCE_TIMEOUT_MS = "30000"

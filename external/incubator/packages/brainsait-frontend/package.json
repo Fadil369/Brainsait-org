@@ -1,0 +1,72 @@
+{
+  "name": "brainsait-frontend",
+  "version": "1.0.0",
+  "description": "BrainSAIT Platform Frontend - Healthcare SME Incubation Portal",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "node -e \"console.log('No frontend tests configured')\"",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf .next out node_modules",
+    "deploy:frontend": "npm run build && wrangler pages deploy out --project-name brainsait-frontend",
+    "preview:frontend": "wrangler pages deploy out --project-name brainsait-frontend-preview"
+  },
+  "dependencies": {
+    "@cloudflare/workers-types": "^4.20250830.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^5.18.0",
+    "@mui/material": "^5.18.0",
+    "@mui/system": "^5.18.0",
+    "@mui/x-data-grid": "^6.20.4",
+    "@mui/x-date-pickers": "^6.20.2",
+    "@next/bundle-analyzer": "^14.2.32",
+    "axios": "^1.11.0",
+    "@brainsait/shared": "file:../brainsait-shared",
+    "date-fns": "^3.3.1",
+    "formik": "^2.4.6",
+    "i18next": "^23.16.8",
+    "next": "15.5.15",
+    "next-i18next": "^15.4.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.62.0",
+    "react-hot-toast": "^2.6.0",
+    "react-i18next": "^14.1.3",
+    "react-query": "^3.39.3",
+    "recharts": "^2.15.4",
+    "styled-components": "^6.1.19",
+    "stylis-plugin-rtl": "^2.1.1",
+    "swr": "^2.3.6",
+    "yup": "^1.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.11",
+    "@types/react": "^18.3.24",
+    "@types/react-dom": "^18.3.7",
+    "@types/styled-components": "^5.1.34",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "14.1.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.9.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

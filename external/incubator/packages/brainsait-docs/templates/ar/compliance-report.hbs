@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقرير الامتثال التنظيمي - {{companyName}}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Noto Sans Arabic', 'IBM Plex Sans Arabic', 'Tajawal', 'Cairo', sans-serif;
+            line-height: 1.8;
+            color: #2c2c2c;
+            direction: rtl;
+            font-size: 14px;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 21cm;
+            margin: 0 auto;
+            padding: 1.5cm;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            min-height: 100vh;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #2E7D32;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, #1976D2, #2E7D32, #1976D2);
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #2E7D32, #1976D2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.3);
+        }
+        
+        .document-title {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #2E7D32;
+            margin: 20px 0 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .company-name {
+            font-size: 1.6em;
+            font-weight: 600;
+            color: #1976D2;
+            margin: 10px 0;
+        }
+        
+        .report-period {
+            font-size: 1.1em;
+            color: #666;
+            margin: 15px 0;
+            background: linear-gradient(135deg, #f8f9fa, #e3f2fd);
+            padding: 15px;
+            border-radius: 8px;
+            border-right: 4px solid #2E7D32;
+        }
+        
+        .date-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #e8f5e8, #f1f8e9);
+            border-radius: 10px;
+            border: 2px solid #2E7D32;
+        }
+        
+        .hijri-date, .gregorian-date {
+            font-weight: 600;
+            color: #2E7D32;
+        }
+        
+        .section {
+            margin: 40px 0;
+            page-break-inside: avoid;
+        }
+        
+        .section-title {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #2E7D32;
+            margin-bottom: 20px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #f1f8e9, #e8f5e8);
+            border-radius: 10px;
+            border-right: 5px solid #2E7D32;
+            position: relative;
+        }
+        
+        .section-title::before {
+            content: '📊';
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2em;
+        }
+        
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .summary-card {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .summary-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #2E7D32, #4CAF50);
+        }
+        
+        .summary-card.excellent {
+            border-color: #4CAF50;
+            background: linear-gradient(135deg, #e8f5e8, #f1f8e9);
+        }
+        
+        .summary-card.good {
+            border-color: #2196F3;
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+        }
+        
+        .summary-card.fair {
+            border-color: #FF9800;
+            background: linear-gradient(135deg, #fff3e0, #fff8e1);
+        }
+        
+        .summary-card.poor {
+            border-color: #f44336;
+            background: linear-gradient(135deg, #ffebee, #fce4ec);
+        }
+        
+        .card-value {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #2E7D32;
+            margin-bottom: 10px;
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+        
+        .card-label {
+            font-size: 1em;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .card-status {
+            margin-top: 10px;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        
+        .status-excellent {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .status-good {
+            background: #2196F3;
+            color: white;
+        }
+        
+        .status-fair {
+            background: #FF9800;
+            color: white;
+        }
+        
+        .status-poor {
+            background: #f44336;
+            color: white;
+        }
+        
+        .compliance-breakdown {
+            margin: 30px 0;
+        }
+        
+        .compliance-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            border-right: 4px solid #2E7D32;
+            transition: all 0.3s ease;
+        }
+        
+        .compliance-item:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transform: translateX(-5px);
+        }
+        
+        .compliance-name {
+            font-weight: 600;
+            color: #333;
+            flex: 1;
+        }
+        
+        .compliance-score {
+            font-weight: 700;
+            font-size: 1.2em;
+            padding: 5px 15px;
+            border-radius: 20px;
+            color: white;
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+        
+        .score-excellent {
+            background: linear-gradient(135deg, #4CAF50, #66BB6A);
+        }
+        
+        .score-good {
+            background: linear-gradient(135deg, #2196F3, #42A5F5);
+        }
+        
+        .score-fair {
+            background: linear-gradient(135deg, #FF9800, #FFB74D);
+        }
+        
+        .score-poor {
+            background: linear-gradient(135deg, #f44336, #EF5350);
+        }
+        
+        .issues-section {
+            margin: 30px 0;
+        }
+        
+        .issue-item {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            border: 2px solid;
+            position: relative;
+        }
+        
+        .issue-critical {
+            border-color: #f44336;
+            background: linear-gradient(135deg, #ffebee, #fce4ec);
+        }
+        
+        .issue-high {
+            border-color: #FF9800;
+            background: linear-gradient(135deg, #fff3e0, #fff8e1);
+        }
+        
+        .issue-medium {
+            border-color: #2196F3;
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+        }
+        
+        .issue-low {
+            border-color: #4CAF50;
+            background: linear-gradient(135deg, #e8f5e8, #f1f8e9);
+        }
+        
+        .issue-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .issue-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .issue-priority {
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .priority-critical {
+            background: #f44336;
+        }
+        
+        .priority-high {
+            background: #FF9800;
+        }
+        
+        .priority-medium {
+            background: #2196F3;
+        }
+        
+        .priority-low {
+            background: #4CAF50;
+        }
+        
+        .issue-description {
+            color: #666;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        
+        .issue-action {
+            background: rgba(255,255,255,0.7);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-right: 3px solid #2E7D32;
+        }
+        
+        .issue-deadline {
+            font-weight: 600;
+            color: #d32f2f;
+            margin-top: 10px;
+        }
+        
+        .recommendations-section {
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border: 2px solid #2196F3;
+        }
+        
+        .recommendation-item {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-right: 4px solid #2196F3;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .recommendation-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #1976D2;
+            margin-bottom: 10px;
+        }
+        
+        .recommendation-timeline {
+            display: inline-block;
+            background: #2196F3;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.9em;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        
+        .charts-section {
+            margin: 40px 0;
+        }
+        
+        .chart-container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .chart-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2E7D32;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .progress-bar {
+            background: #e0e0e0;
+            border-radius: 10px;
+            height: 20px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #2E7D32, #4CAF50);
+            transition: width 0.5s ease;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .government-apis {
+            margin: 30px 0;
+        }
+        
+        .api-status {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .api-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .api-name {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .api-status-badge {
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .status-connected {
+            background: #4CAF50;
+        }
+        
+        .status-error {
+            background: #f44336;
+        }
+        
+        .status-pending {
+            background: #FF9800;
+        }
+        
+        .footer {
+            margin-top: 60px;
+            padding: 30px 0;
+            border-top: 2px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+        }
+        
+        .footer-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .arabic-number {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-weight: 600;
+        }
+        
+        @media print {
+            .container {
+                box-shadow: none;
+                margin: 0;
+                padding: 1cm;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            .issue-item, .recommendation-item {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="logo">
+                {{#if companyLogo}}
+                    <img src="{{companyLogo}}" alt="{{companyName}}" style="width: 100%; height: 100%; object-fit: contain;">
+                {{else}}
+                    برين سايت
+                {{/if}}
+            </div>
+            <h1 class="document-title">تقرير الامتثال التنظيمي</h1>
+            <h2 class="company-name">{{companyName}}</h2>
+            <div class="report-period">
+                فترة التقرير: {{reportPeriod}}
+            </div>
+            
+            <div class="date-info">
+                <div class="hijri-date">تاريخ إعداد التقرير: {{hijriDate}}</div>
+                <div class="gregorian-date">الموافق {{gregorianDate}}</div>
+            </div>
+        </div>
+
+        <!-- Executive Summary -->
+        <div class="section">
+            <h2 class="section-title">الملخص التنفيذي</h2>
+            
+            <div class="summary-cards">
+                <div class="summary-card {{overallScoreClass}}">
+                    <div class="card-value arabic-number">{{overallScore}}</div>
+                    <div class="card-label">نقاط الامتثال الإجمالية</div>
+                    <div class="card-status status-{{overallScoreClass}}">{{overallScoreLabel}}</div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="card-value arabic-number">{{totalIssues}}</div>
+                    <div class="card-label">إجمالي المسائل المعلقة</div>
+                    <div class="card-status status-{{issuesStatusClass}}">{{issuesStatusLabel}}</div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="card-value arabic-number">{{criticalIssues}}</div>
+                    <div class="card-label">المسائل الحرجة</div>
+                    <div class="card-status status-{{criticalStatusClass}}">{{criticalStatusLabel}}</div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="card-value arabic-number">{{completionRate}}%</div>
+                    <div class="card-label">معدل الاكتمال</div>
+                    <div class="card-status status-{{completionStatusClass}}">{{completionStatusLabel}}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Compliance Breakdown -->
+        <div class="section">
+            <h2 class="section-title">تفصيل نقاط الامتثال</h2>
+            
+            <div class="compliance-breakdown">
+                {{#each complianceBreakdown}}
+                <div class="compliance-item">
+                    <div class="compliance-name">{{category}}</div>
+                    <div class="compliance-score score-{{scoreClass}}">
+                        <span class="arabic-number">{{score}}</span>/١٠٠
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+
+        <!-- Progress Charts -->
+        <div class="section charts-section">
+            <h2 class="section-title">مؤشرات الأداء</h2>
+            
+            <div class="chart-container">
+                <h3 class="chart-title">تقدم الامتثال حسب الفئة</h3>
+                {{#each progressCharts}}
+                <div style="margin: 20px 0;">
+                    <div class="progress-label">
+                        <span>{{category}}</span>
+                        <span class="arabic-number">{{percentage}}%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: {{percentage}}%;"></div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+
+        <!-- Issues and Non-Compliance -->
+        <div class="section issues-section">
+            <h2 class="section-title">المسائل المعلقة وعدم الامتثال</h2>
+            
+            {{#each issues}}
+            <div class="issue-item issue-{{priority}}">
+                <div class="issue-header">
+                    <div class="issue-title">{{title}}</div>
+                    <div class="issue-priority priority-{{priority}}">
+                        {{#if (eq priority 'critical')}}حرج{{/if}}
+                        {{#if (eq priority 'high')}}عالي{{/if}}
+                        {{#if (eq priority 'medium')}}متوسط{{/if}}
+                        {{#if (eq priority 'low')}}منخفض{{/if}}
+                    </div>
+                </div>
+                <div class="issue-description">{{description}}</div>
+                <div class="issue-action">
+                    <strong>الإجراء المطلوب:</strong> {{requiredAction}}
+                </div>
+                <div class="issue-deadline">
+                    <strong>الموعد النهائي:</strong> {{deadline}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
+        <!-- Government API Status -->
+        <div class="section government-apis">
+            <h2 class="section-title">حالة الربط مع الجهات الحكومية</h2>
+            
+            <div class="api-status">
+                {{#each governmentAPIs}}
+                <div class="api-item">
+                    <div class="api-name">{{name}}</div>
+                    <div class="api-status-badge status-{{status}}">
+                        {{#if (eq status 'connected')}}متصل{{/if}}
+                        {{#if (eq status 'error')}}خطأ{{/if}}
+                        {{#if (eq status 'pending')}}معلق{{/if}}
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+
+        <!-- Recommendations -->
+        <div class="section">
+            <h2 class="section-title">التوصيات وخطط التحسين</h2>
+            
+            <div class="recommendations-section">
+                <h3 style="color: #1976D2; margin-bottom: 20px; font-size: 1.3em;">توصيات تحسين الامتثال</h3>
+                
+                {{#each recommendations}}
+                <div class="recommendation-item">
+                    <div class="recommendation-title">{{title}}</div>
+                    <div>{{description}}</div>
+                    <div class="recommendation-timeline">{{timeline}}</div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+
+        <!-- Regulatory Updates -->
+        <div class="section">
+            <h2 class="section-title">التحديثات التنظيمية الحديثة</h2>
+            
+            <div style="background: linear-gradient(135deg, #fff3e0, #fff8e1); padding: 20px; border-radius: 10px; border: 2px solid #FF9800;">
+                <h3 style="color: #F57C00; margin-bottom: 15px;">آخر التحديثات التنظيمية</h3>
+                <ul style="padding-right: 20px;">
+                    {{#each regulatoryUpdates}}
+                    <li style="margin: 10px 0; line-height: 1.6;">
+                        <strong>{{date}}:</strong> {{update}}
+                        <br><small style="color: #666;">المصدر: {{source}}</small>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Action Plan -->
+        <div class="section">
+            <h2 class="section-title">خطة العمل والمتابعة</h2>
+            
+            <div style="background: linear-gradient(135deg, #e8f5e8, #f1f8e9); padding: 25px; border-radius: 12px; border: 2px solid #2E7D32;">
+                <h3 style="color: #2E7D32; margin-bottom: 20px;">الخطوات التالية</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    {{#each actionPlan}}
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-right: 4px solid #2E7D32;">
+                        <h4 style="color: #2E7D32; margin-bottom: 10px;">{{phase}}</h4>
+                        <p style="color: #666; margin-bottom: 10px;">{{description}}</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="background: #2E7D32; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.9em;">{{timeline}}</span>
+                            <span style="font-weight: 600; color: #2E7D32;">{{responsible}}</span>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact and Support -->
+        <div class="section">
+            <h2 class="section-title">معلومات الاتصال والدعم</h2>
+            
+            <div style="background: linear-gradient(135deg, #f8f9fa, #e3f2fd); padding: 25px; border-radius: 12px; border: 2px solid #e0e0e0;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
+                    <div>
+                        <h4 style="color: #2E7D32; margin-bottom: 10px;">مسؤول الامتثال</h4>
+                        <p><strong>الاسم:</strong> {{complianceOfficer.name}}</p>
+                        <p><strong>الهاتف:</strong> <span class="arabic-number">{{complianceOfficer.phone}}</span></p>
+                        <p><strong>البريد الإلكتروني:</strong> {{complianceOfficer.email}}</p>
+                    </div>
+                    
+                    <div>
+                        <h4 style="color: #1976D2; margin-bottom: 10px;">الدعم الفني</h4>
+                        <p><strong>البريد الإلكتروني:</strong> {{technicalSupport.email}}</p>
+                        <p><strong>الهاتف:</strong> <span class="arabic-number">{{technicalSupport.phone}}</span></p>
+                        <p><strong>ساعات العمل:</strong> {{technicalSupport.hours}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-info">
+                <div>
+                    <strong>تاريخ إعداد التقرير:</strong><br>
+                    {{hijriDate}}<br>
+                    الموافق {{gregorianDate}}
+                </div>
+                <div>
+                    <strong>رقم التقرير:</strong><br>
+                    <span class="arabic-number">{{reportNumber}}</span>
+                </div>
+                <div>
+                    <strong>صالح حتى:</strong><br>
+                    {{validUntil}}
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e0e0e0;">
+                <p>تم إنشاء هذا التقرير بواسطة منصة برين سايت للتحول الرقمي</p>
+                <p>للشركات الصغيرة والمتوسطة في قطاع الرعاية الصحية - المملكة العربية السعودية</p>
+                <p style="color: #999; font-size: 0.9em; margin-top: 10px;">
+                    هذا التقرير سري ومخصص للاستخدام الداخلي فقط
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

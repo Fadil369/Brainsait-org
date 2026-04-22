@@ -1,0 +1,128 @@
+{
+  "title": "Document Generation",
+  "templates": {
+    "feasibility_study": {
+      "title": "Feasibility Study",
+      "description": "Comprehensive analysis of project viability and potential success",
+      "sections": {
+        "executive_summary": "Executive Summary",
+        "project_overview": "Project Overview",
+        "market_analysis": "Market Analysis",
+        "technical_analysis": "Technical Analysis",
+        "financial_analysis": "Financial Analysis",
+        "risk_assessment": "Risk Assessment",
+        "implementation_plan": "Implementation Plan",
+        "conclusions": "Conclusions and Recommendations"
+      }
+    },
+    "business_plan": {
+      "title": "Business Plan",
+      "description": "Detailed plan outlining business objectives and strategies",
+      "sections": {
+        "executive_summary": "Executive Summary",
+        "company_description": "Company Description",
+        "market_analysis": "Market Analysis",
+        "organization_management": "Organization & Management",
+        "products_services": "Products & Services",
+        "marketing_sales": "Marketing & Sales Strategy",
+        "financial_projections": "Financial Projections",
+        "funding_request": "Funding Request",
+        "appendix": "Appendix"
+      }
+    },
+    "market_analysis": {
+      "title": "Market Analysis",
+      "description": "In-depth analysis of target market and competitive landscape",
+      "sections": {
+        "market_overview": "Market Overview",
+        "target_market": "Target Market Analysis",
+        "competitive_analysis": "Competitive Analysis",
+        "market_trends": "Market Trends",
+        "customer_analysis": "Customer Analysis",
+        "market_size": "Market Size & Growth",
+        "market_segmentation": "Market Segmentation",
+        "swot_analysis": "SWOT Analysis"
+      }
+    },
+    "financial_projection": {
+      "title": "Financial Projection",
+      "description": "Detailed financial forecasts and projections",
+      "sections": {
+        "revenue_projections": "Revenue Projections",
+        "cost_analysis": "Cost Analysis",
+        "cash_flow": "Cash Flow Statement",
+        "profit_loss": "Profit & Loss Statement",
+        "balance_sheet": "Balance Sheet",
+        "break_even_analysis": "Break-Even Analysis",
+        "funding_requirements": "Funding Requirements",
+        "financial_ratios": "Financial Ratios"
+      }
+    }
+  },
+  "form": {
+    "wizard": {
+      "step_1": "Template Selection",
+      "step_2": "Basic Information",
+      "step_3": "Content Generation",
+      "step_4": "Review & Edit",
+      "step_5": "Finalize & Download"
+    },
+    "fields": {
+      "company_name": "Company Name",
+      "project_title": "Project Title",
+      "industry": "Industry",
+      "target_market": "Target Market",
+      "project_description": "Project Description",
+      "budget": "Budget",
+      "timeline": "Timeline",
+      "team_size": "Team Size",
+      "contact_info": "Contact Information",
+      "additional_notes": "Additional Notes"
+    },
+    "placeholders": {
+      "enter_company_name": "Enter your company name",
+      "describe_project": "Describe your project in detail",
+      "specify_target_market": "Specify your target market",
+      "enter_budget_range": "Enter your budget range",
+      "select_industry": "Select your industry"
+    }
+  },
+  "preview": {
+    "title": "Document Preview",
+    "actions": {
+      "edit_section": "Edit Section",
+      "add_content": "Add Content",
+      "remove_section": "Remove Section",
+      "reorder_sections": "Reorder Sections",
+      "save_draft": "Save Draft",
+      "generate_pdf": "Generate PDF",
+      "download": "Download",
+      "share": "Share"
+    },
+    "status": {
+      "draft": "Draft",
+      "in_review": "In Review",
+      "approved": "Approved",
+      "final": "Final"
+    }
+  },
+  "language_selector": {
+    "title": "Document Language",
+    "english": "English",
+    "arabic": "Arabic",
+    "bilingual": "Bilingual (English & Arabic)"
+  },
+  "generation": {
+    "generating": "Generating document...",
+    "success": "Document generated successfully!",
+    "error": "Error generating document. Please try again.",
+    "estimated_time": "Estimated time: {{minutes}} minutes",
+    "progress": "Progress: {{percentage}}%"
+  },
+  "validation": {
+    "required_fields": "Please fill all required fields",
+    "invalid_data": "Please check your input data",
+    "template_required": "Please select a template",
+    "language_required": "Please select document language"
+  }
+}

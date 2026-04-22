@@ -1,0 +1,79 @@
+# Dependencies
+node_modules/
+
+# Local secrets
+.env
+.env.*
+services/notion-bridge/.env
+services/notion-bridge/.env.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Build outputs
+dist/
+build/
+*.log
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary
+tmp/
+temp/
+*.tmp
+
+# Personal/Config files
+.claude/
+.cursor/
+.rovodev/
+.github/copilot/
+.config/
+.aws/
+.azure/
+.ssh/
+.gnupg/
+*.pem
+*.key
+*.crt
+
+# Large directories
+Library/
+Applications/
+Documents/
+Downloads/
+Desktop/
+Movies/
+Music/
+Pictures/
+Public/
+
+# Misc
+*.rtf
+.CFUserTextEncoding
+.wrangler/
+.turbo/
+
+# BrainSAIT Service Build Artifacts
+services/*/dist/
+services/*/node_modules/
+file.md
+*.log
+
+# Ansible (infrastructure - managed separately)
+ansible/
+

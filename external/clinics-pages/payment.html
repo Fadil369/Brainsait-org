@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainSAIT — إتمام الدفع | Checkout</title>
+  <meta name="description" content="إتمام حجز موعد العيادة | Complete your clinic appointment payment">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Moyasar Payment Widget -->
+  <link rel="stylesheet" href="https://cdn.moyasar.com/mpf/1.14.0/moyasar.css">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:'Inter','Noto Kufi Arabic',sans-serif;
+      background:linear-gradient(135deg,#011a20 0%,#02040a 60%,#020a12 100%);
+      color:#e2e8f0;min-height:100vh;
+    }
+
+    /* ── Header ─────────────────────────────────────── */
+    .pay-header{
+      background:rgba(255,255,255,.03);
+      border-bottom:1px solid rgba(0,196,180,.15);
+      padding:18px 0;
+    }
+    .pay-header .inner{
+      max-width:1100px;margin:0 auto;padding:0 24px;
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+    }
+    .pay-logo{
+      font-family:'Manrope',sans-serif;font-size:22px;font-weight:800;
+      background:linear-gradient(135deg,#003b42,#00c4b4);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .lang-btn{
+      background:rgba(0,196,180,.1);border:1px solid rgba(0,196,180,.3);
+      color:#00c4b4;padding:6px 14px;border-radius:20px;cursor:pointer;
+      font-size:13px;font-weight:600;transition:all .2s;
+    }
+    .lang-btn:hover{background:rgba(0,196,180,.2)}
+
+    /* ── Progress Steps ──────────────────────────────── */
+    .steps{
+      max-width:1100px;margin:0 auto;padding:28px 24px 0;
+      display:flex;align-items:center;justify-content:center;gap:0;
+    }
+    .step-item{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;max-width:160px}
+    .step-circle{
+      width:36px;height:36px;border-radius:50%;display:flex;align-items:center;
+      justify-content:center;font-size:14px;font-weight:700;transition:all .3s;
+      border:2px solid rgba(255,255,255,.12);color:rgba(255,255,255,.35);background:rgba(255,255,255,.05);
+    }
+    .step-circle.active{background:linear-gradient(135deg,#003b42,#00c4b4);border-color:transparent;color:#fff}
+    .step-circle.done{background:rgba(0,196,180,.2);border-color:#00c4b4;color:#00c4b4}
+    .step-label{font-size:11px;color:rgba(255,255,255,.35);text-align:center;font-weight:600}
+    .step-label.active{color:#00c4b4}
+    .step-connector{flex:1;height:2px;background:rgba(255,255,255,.08);margin:0;position:relative;top:-14px;max-width:60px}
+    .step-connector.done{background:rgba(0,196,180,.4)}
+
+    /* ── Main Layout ─────────────────────────────────── */
+    .pay-main{
+      max-width:1100px;margin:28px auto 60px;padding:0 24px;
+      display:grid;grid-template-columns:1fr 380px;gap:28px;
+      align-items:start;
+    }
+    @media(max-width:800px){
+      .pay-main{grid-template-columns:1fr}
+      .order-summary{order:-1}
+    }
+
+    /* ── Cards ───────────────────────────────────────── */
+    .card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;padding:28px;
+    }
+    .card-title{
+      font-size:17px;font-weight:700;color:#f1f5f9;margin-bottom:22px;
+      display:flex;align-items:center;gap:8px;
+    }
+    .card-title span{font-size:20px}
+
+    /* ── Order Summary ───────────────────────────────── */
+    .order-summary .summary-row{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:10px 0;border-bottom:1px solid rgba(255,255,255,.07);
+      font-size:14px;
+    }
+    .order-summary .summary-row:last-child{border-bottom:none}
+    .order-summary .summary-row .label{color:#94a3b8}
+    .order-summary .summary-row .value{color:#e2e8f0;font-weight:600}
+    .order-total{
+      background:rgba(0,196,180,.08);border:1px solid rgba(0,196,180,.2);
+      border-radius:10px;padding:14px 16px;margin-top:16px;
+      display:flex;justify-content:space-between;align-items:center;
+    }
+    .order-total .tot-label{color:#00c4b4;font-weight:700;font-size:15px}
+    .order-total .tot-amount{color:#fff;font-weight:800;font-size:22px}
+    .currency-badge{
+      font-size:12px;font-weight:600;color:#94a3b8;margin-inline-start:4px;
+    }
+
+    .secure-badges{
+      display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;
+    }
+    .badge{
+      display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);border-radius:6px;
+      padding:5px 10px;font-size:11px;color:#94a3b8;
+    }
+    .badge span{font-size:14px}
+
+    /* ── Patient Form ────────────────────────────────── */
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media(max-width:520px){.form-grid{grid-template-columns:1fr}}
+    .form-group{display:flex;flex-direction:column;gap:6px}
+    .form-group.full{grid-column:1/-1}
+    .form-label{font-size:13px;font-weight:600;color:#94a3b8}
+    .form-input{
+      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+      color:#e2e8f0;border-radius:10px;padding:11px 14px;font-size:14px;
+      outline:none;transition:border-color .2s;
+      font-family:'Inter','Noto Kufi Arabic',sans-serif;
+    }
+    .form-input:focus{border-color:rgba(0,196,180,.5);background:rgba(0,196,180,.04)}
+    .form-input::placeholder{color:rgba(255,255,255,.25)}
+    .form-input.error{border-color:rgba(239,68,68,.5)}
+    .form-hint{font-size:11px;color:#64748b}
+    .form-error{font-size:11px;color:#ef4444;display:none}
+    .form-error.show{display:block}
+
+    /* ── Payment Methods Toggle ──────────────────────── */
+    .method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+    .method-btn{
+      background:rgba(255,255,255,.04);border:2px solid rgba(255,255,255,.1);
+      border-radius:10px;padding:12px 8px;cursor:pointer;
+      display:flex;flex-direction:column;align-items:center;gap:6px;
+      transition:all .2s;
+    }
+    .method-btn:hover{background:rgba(0,196,180,.05);border-color:rgba(0,196,180,.3)}
+    .method-btn.selected{background:rgba(0,196,180,.1);border-color:#00c4b4}
+    .method-icon{font-size:22px}
+    .method-label{font-size:11px;font-weight:600;color:#94a3b8;text-align:center}
+    .method-btn.selected .method-label{color:#00c4b4}
+
+    /* ── Moyasar Widget Wrapper ──────────────────────── */
+    #moyasar-payment-wrapper{margin-top:4px}
+    .mysr-form{direction:ltr}
+
+    /* ── Submit Button ───────────────────────────────── */
+    #btn-pay{
+      width:100%;background:linear-gradient(135deg,#003b42,#00c4b4);
+      border:none;color:#fff;padding:16px;border-radius:12px;
+      font-size:16px;font-weight:700;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;gap:10px;
+      transition:all .3s;margin-top:20px;
+    }
+    #btn-pay:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,196,180,.4)}
+    #btn-pay:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+    #btn-pay .spinner{
+      width:18px;height:18px;border:2px solid rgba(255,255,255,.3);
+      border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* ── Success Screen ──────────────────────────────── */
+    #success-screen{
+      display:none;text-align:center;padding:60px 24px;
+      max-width:560px;margin:0 auto;
+    }
+    #success-screen.show{display:block}
+    .success-icon{font-size:72px;margin-bottom:20px;animation:pop .5s ease-out}
+    @keyframes pop{0%{transform:scale(0)}80%{transform:scale(1.15)}100%{transform:scale(1)}}
+    .success-title{font-family:'Manrope',sans-serif;font-size:28px;font-weight:800;color:#fff;margin-bottom:12px}
+    .success-sub{color:#94a3b8;font-size:15px;line-height:1.7;margin-bottom:28px}
+    .success-ref{
+      display:inline-block;background:rgba(0,196,180,.1);border:1px solid rgba(0,196,180,.3);
+      border-radius:8px;padding:10px 20px;font-size:14px;color:#00c4b4;font-weight:700;
+      margin-bottom:28px;
+    }
+    .success-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .success-btn{
+      padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;
+      cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+      transition:all .2s;
+    }
+    .success-btn-primary{background:linear-gradient(135deg,#003b42,#00c4b4);color:#fff;border:none}
+    .success-btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,196,180,.4)}
+    .success-btn-wa{background:linear-gradient(135deg,#128c7e,#25d366);color:#fff;border:none}
+    .success-btn-wa:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,211,102,.4)}
+
+    /* ── RTL / LTR Overrides ─────────────────────────── */
+    [dir=ltr] .pay-header .inner{flex-direction:row}
+    [dir=ltr] .badge{flex-direction:row}
+
+    @media(max-width:600px){
+      .pay-main{padding:0 16px}
+      .card{padding:20px 16px}
+      .steps{padding:20px 16px 0}
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="pay-header">
+  <div class="inner">
+    <a href="/" class="pay-logo">🏥 BrainSAIT</a>
+    <button class="lang-btn" onclick="togglePayLang()" id="lang-btn">EN</button>
+  </div>
+</header>
+
+<!-- Progress Steps -->
+<div class="steps" id="steps-bar">
+  <div class="step-item">
+    <div class="step-circle done" id="step1-circle">✓</div>
+    <div class="step-label done" id="step1-label" data-ar="الاختيار" data-en="Selection">الاختيار</div>
+  </div>
+  <div class="step-connector done" id="conn1"></div>
+  <div class="step-item">
+    <div class="step-circle active" id="step2-circle">2</div>
+    <div class="step-label active" id="step2-label" data-ar="بياناتك" data-en="Your Info">بياناتك</div>
+  </div>
+  <div class="step-connector" id="conn2"></div>
+  <div class="step-item">
+    <div class="step-circle" id="step3-circle">3</div>
+    <div class="step-label" id="step3-label" data-ar="الدفع" data-en="Payment">الدفع</div>
+  </div>
+  <div class="step-connector" id="conn3"></div>
+  <div class="step-item">
+    <div class="step-circle" id="step4-circle">4</div>
+    <div class="step-label" id="step4-label" data-ar="تأكيد" data-en="Confirm">تأكيد</div>
+  </div>
+</div>
+
+<!-- Success Screen (hidden until payment completes) -->
+<div id="success-screen">
+  <div class="success-icon">🎉</div>
+  <h1 class="success-title" id="success-title">تم الدفع بنجاح!</h1>
+  <p class="success-sub" id="success-sub">
+    شكراً لك! تم تأكيد حجزك. سيتواصل معك فريقنا خلال ساعات قليلة لتأكيد الموعد.
+  </p>
+  <div class="success-ref" id="booking-ref">BKG-000000</div>
+  <div class="success-actions">
+    <a href="/" class="success-btn success-btn-primary">
+      🏠 <span id="go-home-text">العودة للرئيسية</span>
+    </a>
+    <a href="#" class="success-btn success-btn-wa" id="wa-confirm-btn" target="_blank">
+      💬 <span id="wa-btn-text">تأكيد عبر واتساب</span>
+    </a>
+  </div>
+</div>
+
+<!-- Main Checkout Content (hidden on success) -->
+<main class="pay-main" id="checkout-main">
+
+  <!-- LEFT: Patient Info + Payment -->
+  <div>
+    <!-- Patient Information -->
+    <div class="card" id="patient-card">
+      <h2 class="card-title"><span>👤</span> <span id="patient-info-title">بيانات المريض</span></h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" for="p-name" id="label-name">الاسم الكامل</label>
+          <input class="form-input" id="p-name" type="text" placeholder="محمد عبدالله" autocomplete="name" />
+          <span class="form-error" id="err-name" data-ar="يرجى إدخال الاسم" data-en="Name is required">يرجى إدخال الاسم</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="p-phone" id="label-phone">رقم الجوال</label>
+          <input class="form-input" id="p-phone" type="tel" placeholder="05XXXXXXXX" autocomplete="tel" dir="ltr" />
+          <span class="form-error" id="err-phone" data-ar="رقم الجوال غير صحيح" data-en="Invalid phone number">رقم الجوال غير صحيح</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="p-id" id="label-id">رقم الهوية / الإقامة</label>
+          <input class="form-input" id="p-id" type="text" placeholder="1XXXXXXXXX" dir="ltr" />
+          <span class="form-hint" id="hint-id">10 أرقام - للتحقق من الهوية</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="p-date" id="label-date">تاريخ الموعد المفضل</label>
+          <input class="form-input" id="p-date" type="date" dir="ltr" />
+        </div>
+        <div class="form-group full">
+          <label class="form-label" for="p-notes" id="label-notes">ملاحظات إضافية (اختياري)</label>
+          <input class="form-input" id="p-notes" type="text" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment Method -->
+    <div class="card" style="margin-top:20px" id="payment-card">
+      <h2 class="card-title"><span>💳</span> <span id="payment-method-title">طريقة الدفع</span></h2>
+
+      <div class="method-grid" id="method-grid">
+        <button class="method-btn selected" data-method="creditcard" onclick="selectMethod('creditcard',this)">
+          <span class="method-icon">💳</span>
+          <span class="method-label" data-ar="بطاقة ائتمان" data-en="Credit Card">بطاقة ائتمان</span>
+        </button>
+        <button class="method-btn" data-method="stcpay" onclick="selectMethod('stcpay',this)">
+          <span class="method-icon">📱</span>
+          <span class="method-label" data-ar="STC Pay" data-en="STC Pay">STC Pay</span>
+        </button>
+        <button class="method-btn" data-method="applepay" onclick="selectMethod('applepay',this)">
+          <span class="method-icon">🍎</span>
+          <span class="method-label" data-ar="Apple Pay" data-en="Apple Pay">Apple Pay</span>
+        </button>
+      </div>
+
+      <!-- Moyasar widget mounts here -->
+      <div id="moyasar-payment-wrapper">
+        <div class="mysr-form"></div>
+      </div>
+
+      <!-- Fallback manual pay button (shown when Moyasar key not configured) -->
+      <div id="manual-pay-section">
+        <button id="btn-pay" onclick="handleManualPay()">
+          <span class="spinner" id="pay-spinner"></span>
+          <span id="btn-pay-text">🔒 ادفع الآن</span>
+        </button>
+        <p style="text-align:center;font-size:12px;color:#64748b;margin-top:12px" id="secure-note">
+          🔐 جميع بياناتك محمية ومشفرة بـ TLS 256-bit
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: Order Summary -->
+  <aside class="order-summary card" id="order-card">
+    <h2 class="card-title"><span>🗒️</span> <span id="summary-title">ملخص الحجز</span></h2>
+
+    <div class="summary-row">
+      <span class="label" id="lbl-clinic">العيادة</span>
+      <span class="value" id="val-clinic">—</span>
+    </div>
+    <div class="summary-row">
+      <span class="label" id="lbl-service">الخدمة</span>
+      <span class="value" id="val-service">—</span>
+    </div>
+    <div class="summary-row">
+      <span class="label" id="lbl-date">الموعد</span>
+      <span class="value" id="val-date">—</span>
+    </div>
+    <div class="summary-row">
+      <span class="label" id="lbl-patient">المريض</span>
+      <span class="value" id="val-patient">—</span>
+    </div>
+    <div class="summary-row">
+      <span class="label" id="lbl-consult">الاستشارة</span>
+      <span class="value" id="val-price">150 ريال</span>
+    </div>
+
+    <div class="order-total">
+      <span class="tot-label" id="tot-label">الإجمالي</span>
+      <span class="tot-amount" id="tot-amount">150 <span class="currency-badge">SAR</span></span>
+    </div>
+
+    <div class="secure-badges">
+      <div class="badge"><span>🔒</span><span>SSL Secured</span></div>
+      <div class="badge"><span>✅</span><span>Moyasar</span></div>
+      <div class="badge"><span>🇸🇦</span><span>Saudi Verified</span></div>
+      <div class="badge"><span>💬</span><span>WhatsApp</span></div>
+    </div>
+  </aside>
+</main>
+
+<!-- AI Agent Widget -->
+<script src="/ai-agent.js" data-lang="ar"></script>
+
+<!-- Moyasar Payment SDK -->
+<script src="https://cdn.moyasar.com/mpf/1.14.0/moyasar.js"></script>
+
+<script>
+  /* ═══════════════════════════════════════════════════════
+   * LANGUAGE
+   * ═══════════════════════════════════════════════════════ */
+  let payLang = (new URLSearchParams(window.location.search).get('lang') || 'ar').startsWith('en') ? 'en' : 'ar';
+
+  function togglePayLang() {
+    payLang = payLang === 'ar' ? 'en' : 'ar';
+    applyPayLang();
+  }
+
+  function applyPayLang() {
+    const isAr = payLang === 'ar';
+    document.documentElement.lang = payLang;
+    document.documentElement.dir  = isAr ? 'rtl' : 'ltr';
+    document.getElementById('lang-btn').textContent = isAr ? 'EN' : 'عربي';
+
+    const labels = {
+      'patient-info-title':  { ar: 'بيانات المريض',          en: 'Patient Information' },
+      'label-name':          { ar: 'الاسم الكامل',            en: 'Full Name'           },
+      'label-phone':         { ar: 'رقم الجوال',              en: 'Mobile Number'       },
+      'label-id':            { ar: 'رقم الهوية / الإقامة',   en: 'ID / Iqama Number'   },
+      'label-date':          { ar: 'تاريخ الموعد المفضل',     en: 'Preferred Date'      },
+      'label-notes':         { ar: 'ملاحظات إضافية (اختياري)', en: 'Additional Notes (optional)' },
+      'hint-id':             { ar: '10 أرقام - للتحقق من الهوية', en: '10 digits - for identity verification' },
+      'payment-method-title':{ ar: 'طريقة الدفع',             en: 'Payment Method'      },
+      'summary-title':       { ar: 'ملخص الحجز',              en: 'Booking Summary'     },
+      'lbl-clinic':          { ar: 'العيادة',                 en: 'Clinic'              },
+      'lbl-service':         { ar: 'الخدمة',                  en: 'Service'             },
+      'lbl-date':            { ar: 'الموعد',                  en: 'Appointment'         },
+      'lbl-patient':         { ar: 'المريض',                  en: 'Patient'             },
+      'lbl-consult':         { ar: 'الاستشارة',               en: 'Consultation'        },
+      'tot-label':           { ar: 'الإجمالي',                en: 'Total'               },
+      'secure-note':         {
+        ar: '🔐 جميع بياناتك محمية ومشفرة بـ TLS 256-bit',
+        en: '🔐 Your data is secured with TLS 256-bit encryption',
+      },
+      'success-title':       { ar: 'تم الدفع بنجاح!',        en: 'Payment Successful!' },
+      'success-sub':         {
+        ar: 'شكراً لك! تم تأكيد حجزك. سيتواصل معك فريقنا خلال ساعات قليلة لتأكيد الموعد.',
+        en: 'Thank you! Your booking is confirmed. Our team will contact you shortly to confirm your appointment.',
+      },
+      'go-home-text':        { ar: 'العودة للرئيسية',         en: 'Back to Home'        },
+      'wa-btn-text':         { ar: 'تأكيد عبر واتساب',        en: 'Confirm via WhatsApp'},
+    };
+
+    Object.entries(labels).forEach(([id, text]) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = text[payLang];
+    });
+
+    // Step labels
+    ['step1','step2','step3','step4'].forEach((s, i) => {
+      const el = document.getElementById(s + '-label');
+      if (el) el.textContent = el.getAttribute('data-' + payLang);
+    });
+
+    // Method labels
+    document.querySelectorAll('.method-label').forEach((el) => {
+      el.textContent = el.getAttribute('data-' + payLang) || el.textContent;
+    });
+
+    // Pay button text
+    const btnText = document.getElementById('btn-pay-text');
+    if (btnText) btnText.textContent = payLang === 'ar' ? '🔒 ادفع الآن' : '🔒 Pay Now';
+
+    // Input placeholders
+    document.getElementById('p-name').placeholder  = isAr ? 'محمد عبدالله'   : 'John Doe';
+    document.getElementById('p-phone').placeholder = isAr ? '05XXXXXXXX'     : '+966 5X XXX XXXX';
+    document.getElementById('p-id').placeholder    = isAr ? '1XXXXXXXXX'     : '1XXXXXXXXX';
+  }
+
+  /* ═══════════════════════════════════════════════════════
+   * URL PARAMS → PRE-FILL FORM
+   * ═══════════════════════════════════════════════════════ */
+  const params = new URLSearchParams(window.location.search);
+
+  // Business WhatsApp number for booking confirmations.
+  // TODO: Replace '966500000000' with the actual clinic/business WhatsApp number before going live.
+  const WA_BUSINESS_NUMBER = '966500000000';
+
+  const SERVICE_LABELS = {
+    dental:      { ar: '🦷 طب الأسنان',    en: '🦷 Dental'       },
+    dermatology: { ar: '💎 الجلدية',       en: '💎 Dermatology'  },
+    polyclinic:  { ar: '🏥 عيادة شاملة',  en: '🏥 Polyclinic'   },
+  };
+
+  function populateSummary() {
+    const clinicName  = params.get('name')    || params.get('clinic') || '—';
+    const service     = params.get('service') || '';
+    const date        = params.get('date')    || '—';
+    const patient     = params.get('patient') || '—';
+    const price       = parseInt(params.get('price') || '150', 10);
+    const lang        = payLang;
+
+    document.getElementById('val-clinic').textContent  = clinicName;
+    document.getElementById('val-service').textContent = (SERVICE_LABELS[service] || {})[lang] || service || '—';
+    document.getElementById('val-date').textContent    = date;
+    document.getElementById('val-patient').textContent = patient;
+    document.getElementById('val-price').textContent   = price + ' ' + (lang === 'ar' ? 'ريال' : 'SAR');
+    document.getElementById('tot-amount').innerHTML    = price + ' <span class="currency-badge">SAR</span>';
+
+    // Pre-fill form from AI agent data
+    if (params.get('patient')) document.getElementById('p-name').value  = params.get('patient');
+    if (params.get('phone'))   document.getElementById('p-phone').value = params.get('phone');
+    if (params.get('date'))    {
+      const d = parseFlexDate(params.get('date'));
+      if (d) document.getElementById('p-date').value = d;
+    }
+
+    return { clinicName, service, date, patient, price };
+  }
+
+  function parseFlexDate(str) {
+    if (!str) return null;
+    // Already ISO format
+    if (/^\d{4}-\d{2}-\d{2}$/.test(str)) return str;
+    // Try Date parsing and format as a local calendar date for <input type="date">
+    const d = new Date(str);
+    if (!isNaN(d.getTime())) {
+      const year = d.getFullYear();
+      const month = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+    return null;
+  }
+
+  /* ═══════════════════════════════════════════════════════
+   * MOYASAR INIT
+   * ═══════════════════════════════════════════════════════ */
+  const MOYASAR_KEY = params.get('mpk') || window.MOYASAR_PUBLISHABLE_KEY || '';
+
+  function initMoyasar() {
+    if (!window.Moyasar || !MOYASAR_KEY || MOYASAR_KEY.startsWith('YOUR_')) {
+      // No key configured — show manual fallback button
+      document.getElementById('manual-pay-section').style.display = 'block';
+      document.querySelector('.mysr-form').style.display = 'none';
+      return;
+    }
+
+    const price = parseInt(params.get('price') || '150', 10);
+    const clinicName = params.get('name') || params.get('clinic') || 'Clinic';
+    const callbackBase = window.location.origin + window.location.pathname;
+
+    try {
+      Moyasar.init({
+        element: '.mysr-form',
+        amount: price * 100, // halalas
+        currency: 'SAR',
+        description: 'Clinic Appointment — ' + clinicName,
+        publishable_api_key: MOYASAR_KEY,
+        callback_url: callbackBase + '?status=paid&' + window.location.search.replace('?',''),
+        on_initiating: function (payment) {
+          advanceToPaymentStep();
+        },
+        methods: ['creditcard', 'stcpay', 'applepay'],
+        apple_pay: {
+          country: 'SA',
+          label: 'BrainSAIT — ' + clinicName,
+          validate_merchant_url: 'https://api.moyasar.com/v1/applepay/initiate',
+        },
+      });
+      document.getElementById('manual-pay-section').style.display = 'none';
+    } catch (err) {
+      console.warn('Moyasar init failed:', err);
+      document.getElementById('manual-pay-section').style.display = 'block';
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════════
+   * MANUAL PAY FALLBACK (demo / no key)
+   * ═══════════════════════════════════════════════════════ */
+  function handleManualPay() {
+    if (!validateForm()) return;
+
+    const btn   = document.getElementById('btn-pay');
+    const spin  = document.getElementById('pay-spinner');
+    const text  = document.getElementById('btn-pay-text');
+    btn.disabled = true;
+    spin.style.display = 'block';
+    text.style.display = 'none';
+
+    // Simulate processing
+    setTimeout(() => {
+      showSuccess();
+    }, 2200);
+  }
+
+  /* ═══════════════════════════════════════════════════════
+   * FORM VALIDATION
+   * ═══════════════════════════════════════════════════════ */
+  function validateForm() {
+    let ok = true;
+
+    const name = document.getElementById('p-name').value.trim();
+    if (!name) {
+      showFieldError('p-name', 'err-name');
+      ok = false;
+    } else {
+      clearFieldError('p-name', 'err-name');
+    }
+
+    const phone = document.getElementById('p-phone').value.trim();
+    if (!isValidPhone(phone)) {
+      showFieldError('p-phone', 'err-phone');
+      ok = false;
+    } else {
+      clearFieldError('p-phone', 'err-phone');
+    }
+
+    return ok;
+  }
+
+  function showFieldError(inputId, errId) {
+    document.getElementById(inputId).classList.add('error');
+    document.getElementById(errId).classList.add('show');
+  }
+
+  function clearFieldError(inputId, errId) {
+    document.getElementById(inputId).classList.remove('error');
+    document.getElementById(errId).classList.remove('show');
+  }
+
+  function isValidPhone(v) {
+    return /^[\+\d\s\-()]{7,17}$/.test(v);
+  }
+
+  /* ═══════════════════════════════════════════════════════
+   * STEP PROGRESSION
+   * ═══════════════════════════════════════════════════════ */
+  function advanceToPaymentStep() {
+    setStep(3);
+  }
+
+  function setStep(n) {
+    for (let i = 1; i <= 4; i++) {
+      const circle = document.getElementById('step' + i + '-circle');
+      const label  = document.getElementById('step' + i + '-label');
+      if (!circle) continue;
+      if (i < n) {
+        circle.className = 'step-circle done';
+        circle.textContent = '✓';
+        label.className = 'step-label done';
+      } else if (i === n) {
+        circle.className = 'step-circle active';
+        circle.textContent = String(i);
+        label.className = 'step-label active';
+      } else {
+        circle.className = 'step-circle';
+        circle.textContent = String(i);
+        label.className = 'step-label';
+      }
+    }
+    for (let i = 1; i <= 3; i++) {
+      const conn = document.getElementById('conn' + i);
+      if (conn) conn.className = 'step-connector' + (i < n ? ' done' : '');
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════════
+   * SUCCESS SCREEN
+   * ═══════════════════════════════════════════════════════ */
+  function showSuccess() {
+    document.getElementById('checkout-main').style.display = 'none';
+    document.getElementById('steps-bar').style.display     = 'none';
+    const ss = document.getElementById('success-screen');
+    ss.classList.add('show');
+
+    setStep(4);
+
+    // Generate reference number
+    const ref = 'BKG-' + Math.floor(100000 + Math.random() * 900000);
+    document.getElementById('booking-ref').textContent = ref;
+
+    // WhatsApp confirmation link
+    const name  = document.getElementById('p-name').value  || params.get('patient') || '';
+    const phone = document.getElementById('p-phone').value || params.get('phone')   || '';
+    const clinic = params.get('name') || params.get('clinic') || 'BrainSAIT Clinic';
+    const date   = document.getElementById('p-date').value || params.get('date') || '';
+    const wpMsg = encodeURIComponent(
+      payLang === 'ar'
+        ? `مرحباً، أود تأكيد حجزي في ${clinic}\nالاسم: ${name}\nالموعد: ${date}\nالمرجع: ${ref}`
+        : `Hello, I'd like to confirm my appointment at ${clinic}\nName: ${name}\nDate: ${date}\nRef: ${ref}`
+    );
+    document.getElementById('wa-confirm-btn').href = `https://wa.me/${WA_BUSINESS_NUMBER}?text=${wpMsg}`;
+
+    // Track with GA4
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'purchase', {
+        transaction_id: ref,
+        value: parseInt(params.get('price') || '150', 10),
+        currency: 'SAR',
+        items: [{ item_id: params.get('clinic'), item_name: clinic }],
+      });
+    }
+
+    applyPayLang();
+  }
+
+  /* ═══════════════════════════════════════════════════════
+   * PAYMENT METHOD SELECTION
+   * ═══════════════════════════════════════════════════════ */
+  function selectMethod(method, btn) {
+    document.querySelectorAll('.method-btn').forEach((b) => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  }
+
+  async function validatePaymentAndShowSuccess() {
+    const status = params.get('status');
+    const paymentId = params.get('id') || params.get('payment_id');
+
+    if (status !== 'paid' || !paymentId || !/^[A-Za-z0-9_-]{6,}$/.test(paymentId)) {
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/payments/verify?id=' + encodeURIComponent(paymentId), {
+        method: 'GET',
+        credentials: 'same-origin',
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Payment verification failed');
+      }
+
+      const result = await response.json();
+      if (result && (result.paid === true || result.status === 'paid')) {
+        showSuccess();
+      }
+    } catch (error) {
+      console.warn('Unable to verify payment result.', error);
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════════
+   * INIT ON LOAD
+   * ═══════════════════════════════════════════════════════ */
+  document.addEventListener('DOMContentLoaded', async function () {
+    applyPayLang();
+    populateSummary();
+    initMoyasar();
+
+    // Check if returning from payment callback and verify the payment server-side
+    await validatePaymentAndShowSuccess();
+
+    // Live update summary as user types
+    document.getElementById('p-name').addEventListener('input', function () {
+      document.getElementById('val-patient').textContent = this.value || '—';
+    });
+    document.getElementById('p-date').addEventListener('change', function () {
+      document.getElementById('val-date').textContent = this.value || '—';
+    });
+
+    // Clear validation errors on input
+    ['p-name', 'p-phone'].forEach((id) => {
+      document.getElementById(id).addEventListener('input', function () {
+        this.classList.remove('error');
+        const errId = 'err-' + id.replace('p-', '');
+        const errEl = document.getElementById(errId);
+        if (errEl) errEl.classList.remove('show');
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

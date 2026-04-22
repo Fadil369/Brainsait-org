@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0F172A"/>
+      <stop offset="50%" style="stop-color:#1E293B"/>
+      <stop offset="100%" style="stop-color:#0F172A"/>
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#60A5FA"/>
+      <stop offset="100%" style="stop-color:#93C5FD"/>
+    </linearGradient>
+    <linearGradient id="glowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60A5FA;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#60A5FA;stop-opacity:0"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Decorative grid pattern -->
+  <g opacity="0.05">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#60A5FA" stroke-width="0.5"/>
+    </pattern>
+    <rect width="1200" height="630" fill="url(#grid)"/>
+  </g>
+
+  <!-- Decorative circles -->
+  <circle cx="100" cy="530" r="200" fill="url(#glowGradient)"/>
+  <circle cx="1100" cy="100" r="150" fill="url(#glowGradient)"/>
+
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accentGradient)"/>
+
+  <!-- Brain icon placeholder (simplified) -->
+  <g transform="translate(500, 140)" filter="url(#glow)">
+    <circle cx="100" cy="80" r="60" fill="none" stroke="url(#accentGradient)" stroke-width="3"/>
+    <path d="M70 60 Q80 40 100 45 Q120 40 130 60 Q140 80 130 100 Q120 120 100 115 Q80 120 70 100 Q60 80 70 60"
+          fill="none" stroke="url(#accentGradient)" stroke-width="2"/>
+    <circle cx="85" cy="70" r="8" fill="#60A5FA" opacity="0.6"/>
+    <circle cx="115" cy="70" r="8" fill="#60A5FA" opacity="0.6"/>
+    <circle cx="100" cy="95" r="10" fill="#60A5FA" opacity="0.6"/>
+  </g>
+
+  <!-- Main Title -->
+  <text x="600" y="320" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="72" font-weight="700" fill="#FFFFFF">
+    BrainSAIT
+  </text>
+
+  <!-- Subtitle -->
+  <text x="600" y="380" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="28" font-weight="400" fill="#93C5FD">
+    Healthcare Intelligence, Delivered
+  </text>
+
+  <!-- Description -->
+  <text x="600" y="440" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="20" font-weight="400" fill="#94A3B8">
+    AI-Powered Healthcare Operations • NPHIES-Native • Arabic-First
+  </text>
+
+  <!-- Agent badges -->
+  <g transform="translate(300, 480)">
+    <rect x="0" y="0" width="120" height="32" rx="16" fill="rgba(96,165,250,0.2)"/>
+    <text x="60" y="21" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#60A5FA">ClaimLinc</text>
+  </g>
+  <g transform="translate(440" y="480)">
+    <rect x="0" y="0" width="120" height="32" rx="16" fill="rgba(96,165,250,0.2)"/>
+    <text x="60" y="21" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#60A5FA">PolicyLinc</text>
+  </g>
+  <g transform="translate(580, 480)">
+    <rect x="0" y="0" width="120" height="32" rx="16" fill="rgba(96,165,250,0.2)"/>
+    <text x="60" y="21" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#60A5FA">DocsLinc</text>
+  </g>
+  <g transform="translate(720, 480)">
+    <rect x="0" y="0" width="120" height="32" rx="16" fill="rgba(96,165,250,0.2)"/>
+    <text x="60" y="21" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#60A5FA">Voice2Care</text>
+  </g>
+
+  <!-- Bottom accent -->
+  <rect x="0" y="626" width="1200" height="4" fill="url(#accentGradient)"/>
+
+  <!-- URL -->
+  <text x="600" y="580" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="400" fill="#64748B">
+    brainsait.com • نظام معرفة برينسايت
+  </text>
+</svg>

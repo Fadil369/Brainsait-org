@@ -1,0 +1,3 @@
+
+[0;34mResolving Docker domains to IPs...[0m
+

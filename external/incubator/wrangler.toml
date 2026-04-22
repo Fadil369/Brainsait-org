@@ -1,0 +1,303 @@
+# Cloudflare Workers Configuration for BrainSAIT Platform
+# Root-level wrangler config (used for local dev from monorepo root).
+# The authoritative deploy config is packages/brainsait-backend/wrangler.toml.
+
+name = "brainsait-backend"
+main = "packages/brainsait-backend/dist/worker.js"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+upload_source_maps = true
+
+account_id = "d7b99530559ab4f2545e9bdc72a7ab9b"
+workers_dev = true
+
+[env.production]
+name = "brainsait-backend-production"
+routes = [
+	{ pattern = "api.brainsait.org", custom_domain = true, zone_name = "brainsait.org" },
+	{ pattern = "partners-api.brainsait.org", custom_domain = true, zone_name = "brainsait.org" }
+]
+
+# KV Namespaces
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "062eab539a7049c0b1e36049441a211d"
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "fcb1821540004213af95b95dbe9cf8b8"
+
+[[kv_namespaces]]
+binding = "RATE_LIMIT"
+id = "8c0682e8e21b4703b46fd1c1a3487ec0"
+
+[[kv_namespaces]]
+binding = "CONFIG"
+id = "9503c6ef49a2447f9f3f65f8d0ce5bbf"
+
+[[kv_namespaces]]
+binding = "FEATURE_FLAGS"
+id = "021ea635293a457b8dfaf854f10dbec4"
+
+[[kv_namespaces]]
+binding = "STARTUP_REGISTRY"
+id = "d4f74a1ca9a44cc082e2477d800496ab"
+
+[[kv_namespaces]]
+binding = "PARTNER_APPLICATIONS"
+id = "0e15d8583edb44cebef9c4f0ff5ba71a"
+
+[[env.production.kv_namespaces]]
+binding = "SESSIONS"
+id = "062eab539a7049c0b1e36049441a211d"
+
+[[env.production.kv_namespaces]]
+binding = "CACHE"
+id = "fcb1821540004213af95b95dbe9cf8b8"
+
+[[env.production.kv_namespaces]]
+binding = "RATE_LIMIT"
+id = "8c0682e8e21b4703b46fd1c1a3487ec0"
+
+[[env.production.kv_namespaces]]
+binding = "CONFIG"
+id = "9503c6ef49a2447f9f3f65f8d0ce5bbf"
+
+[[env.production.kv_namespaces]]
+binding = "FEATURE_FLAGS"
+id = "021ea635293a457b8dfaf854f10dbec4"
+
+[[env.production.kv_namespaces]]
+binding = "STARTUP_REGISTRY"
+id = "d4f74a1ca9a44cc082e2477d800496ab"
+
+[[env.production.kv_namespaces]]
+binding = "PARTNER_APPLICATIONS"
+id = "0e15d8583edb44cebef9c4f0ff5ba71a"
+
+[[env.staging.kv_namespaces]]
+binding = "SESSIONS"
+id = "062eab539a7049c0b1e36049441a211d"
+
+[[env.staging.kv_namespaces]]
+binding = "CACHE"
+id = "fcb1821540004213af95b95dbe9cf8b8"
+
+[[env.staging.kv_namespaces]]
+binding = "RATE_LIMIT"
+id = "8c0682e8e21b4703b46fd1c1a3487ec0"
+
+[[env.staging.kv_namespaces]]
+binding = "CONFIG"
+id = "9503c6ef49a2447f9f3f65f8d0ce5bbf"
+
+[[env.staging.kv_namespaces]]
+binding = "FEATURE_FLAGS"
+id = "021ea635293a457b8dfaf854f10dbec4"
+
+[[env.staging.kv_namespaces]]
+binding = "STARTUP_REGISTRY"
+id = "d4f74a1ca9a44cc082e2477d800496ab"
+
+[[env.staging.kv_namespaces]]
+binding = "PARTNER_APPLICATIONS"
+id = "0e15d8583edb44cebef9c4f0ff5ba71a"
+
+[[env.preview.kv_namespaces]]
+binding = "SESSIONS"
+id = "062eab539a7049c0b1e36049441a211d"
+
+[[env.preview.kv_namespaces]]
+binding = "CACHE"
+id = "fcb1821540004213af95b95dbe9cf8b8"
+
+[[env.preview.kv_namespaces]]
+binding = "RATE_LIMIT"
+id = "8c0682e8e21b4703b46fd1c1a3487ec0"
+
+[[env.preview.kv_namespaces]]
+binding = "CONFIG"
+id = "9503c6ef49a2447f9f3f65f8d0ce5bbf"
+
+[[env.preview.kv_namespaces]]
+binding = "FEATURE_FLAGS"
+id = "021ea635293a457b8dfaf854f10dbec4"
+
+[[env.preview.kv_namespaces]]
+binding = "STARTUP_REGISTRY"
+id = "d4f74a1ca9a44cc082e2477d800496ab"
+
+[[env.preview.kv_namespaces]]
+binding = "PARTNER_APPLICATIONS"
+id = "0e15d8583edb44cebef9c4f0ff5ba71a"
+
+# R2 Storage
+[[r2_buckets]]
+binding = "DOCUMENTS"
+bucket_name = "brainsait-documents"
+
+[[r2_buckets]]
+binding = "UPLOADS"
+bucket_name = "brainsait-files"
+
+[[r2_buckets]]
+binding = "DATA_CONTRACTS"
+bucket_name = "brainsait-storage"
+
+[[env.production.r2_buckets]]
+binding = "DOCUMENTS"
+bucket_name = "brainsait-documents"
+
+[[env.production.r2_buckets]]
+binding = "UPLOADS"
+bucket_name = "brainsait-files"
+
+[[env.production.r2_buckets]]
+binding = "DATA_CONTRACTS"
+bucket_name = "brainsait-storage"
+
+[[env.staging.r2_buckets]]
+binding = "DOCUMENTS"
+bucket_name = "brainsait-documents"
+
+[[env.staging.r2_buckets]]
+binding = "UPLOADS"
+bucket_name = "brainsait-files"
+
+[[env.staging.r2_buckets]]
+binding = "DATA_CONTRACTS"
+bucket_name = "brainsait-storage"
+
+[[env.preview.r2_buckets]]
+binding = "DOCUMENTS"
+bucket_name = "brainsait-documents"
+
+[[env.preview.r2_buckets]]
+binding = "UPLOADS"
+bucket_name = "brainsait-files"
+
+[[env.preview.r2_buckets]]
+binding = "DATA_CONTRACTS"
+bucket_name = "brainsait-storage"
+
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "brainsait-unified-api"
+database_id = "925780db-b119-42f2-a3ca-2aea98712168"
+
+[[d1_databases]]
+binding = "AUDIT_LOG"
+database_name = "brainsait-metrics"
+database_id = "7b66d89d-7846-4c75-b7f5-5ffd2ea62629"
+
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "brainsait-unified-api"
+database_id = "925780db-b119-42f2-a3ca-2aea98712168"
+
+[[env.production.d1_databases]]
+binding = "AUDIT_LOG"
+database_name = "brainsait-metrics"
+database_id = "7b66d89d-7846-4c75-b7f5-5ffd2ea62629"
+
+[[env.staging.d1_databases]]
+binding = "DB"
+database_name = "brainsait-unified-api"
+database_id = "925780db-b119-42f2-a3ca-2aea98712168"
+
+[[env.staging.d1_databases]]
+binding = "AUDIT_LOG"
+database_name = "brainsait-metrics"
+database_id = "7b66d89d-7846-4c75-b7f5-5ffd2ea62629"
+
+[[env.preview.d1_databases]]
+binding = "DB"
+database_name = "brainsait-unified-api"
+database_id = "925780db-b119-42f2-a3ca-2aea98712168"
+
+[[env.preview.d1_databases]]
+binding = "AUDIT_LOG"
+database_name = "brainsait-metrics"
+database_id = "7b66d89d-7846-4c75-b7f5-5ffd2ea62629"
+
+# Analytics Engine
+[[analytics_engine_datasets]]
+binding = "API_ANALYTICS"
+dataset = "brainsait_api_usage"
+
+[[env.production.analytics_engine_datasets]]
+binding = "API_ANALYTICS"
+dataset = "brainsait_api_usage"
+
+[[env.staging.analytics_engine_datasets]]
+binding = "API_ANALYTICS"
+dataset = "brainsait_api_usage"
+
+[[env.preview.analytics_engine_datasets]]
+binding = "API_ANALYTICS"
+dataset = "brainsait_api_usage"
+
+# AI Gateway
+[ai]
+binding = "AI"
+
+[env.production.ai]
+binding = "AI"
+
+[env.staging.ai]
+binding = "AI"
+
+[env.preview.ai]
+binding = "AI"
+
+[build]
+command = "npm run build:backend"
+watch_dir = ["packages/brainsait-backend/src"]
+
+[env.development.vars]
+NODE_ENV = "development"
+API_BASE_URL = "http://localhost:5000"
+FRONTEND_URL = "http://localhost:3000"
+AI_SERVICE_URL = "http://localhost:5001"
+DOCS_SERVICE_URL = "http://localhost:5002"
+ENABLE_DEBUG = "true"
+
+[env.staging]
+name = "brainsait-backend-staging"
+routes = [
+	{ pattern = "staging-api.brainsait.org", custom_domain = true, zone_name = "brainsait.org" },
+	{ pattern = "staging-partners-api.brainsait.org", custom_domain = true, zone_name = "brainsait.org" }
+]
+
+[env.staging.vars]
+NODE_ENV = "staging"
+API_BASE_URL = "https://staging-api.brainsait.org"
+FRONTEND_URL = "https://staging.brainsait.org"
+AI_SERVICE_URL = "https://staging-ai.brainsait.org"
+DOCS_SERVICE_URL = "https://staging-docs.brainsait.org"
+ENABLE_DEBUG = "false"
+GITHUB_ORG = "brainsait-incubator"
+GITHUB_REPO = "Fadil369/Incubator"
+
+[env.preview]
+name = "brainsait-backend-preview"
+workers_dev = true
+
+[env.preview.vars]
+NODE_ENV = "preview"
+API_BASE_URL = "https://preview-api.brainsait.org"
+FRONTEND_URL = "https://preview.brainsait.org"
+GITHUB_ORG = "brainsait-incubator"
+GITHUB_REPO = "Fadil369/Incubator"
+
+[env.production.vars]
+NODE_ENV = "production"
+API_BASE_URL = "https://api.brainsait.org"
+FRONTEND_URL = "https://brainsait.org"
+AI_SERVICE_URL = "https://ai.brainsait.org"
+DOCS_SERVICE_URL = "https://docs.brainsait.org"
+DOMAIN = "brainsait.org"
+CORS_ORIGINS = "https://brainsait.org,https://www.brainsait.org,https://dashboard.brainsait.org,https://docs.brainsait.org,https://portal.brainsait.org"
+GITHUB_ORG = "brainsait-incubator"
+GITHUB_REPO = "Fadil369/Incubator"

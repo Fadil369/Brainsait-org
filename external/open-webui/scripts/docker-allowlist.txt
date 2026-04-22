@@ -1,0 +1,3 @@
+# BrainSAIT Docker Desktop Firewall Allowlist
+# Generated on: Thu Nov  6 20:55:46 +03 2025
+

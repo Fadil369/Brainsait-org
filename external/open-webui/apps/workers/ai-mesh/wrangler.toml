@@ -1,0 +1,124 @@
+name = "brainsait-ai-mesh"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# ── AI ──────────────────────────────────────────────────────
+[ai]
+binding = "AI"
+
+# ── VECTORIZE ───────────────────────────────────────────────
+[[vectorize]]
+binding = "MEDICAL_INDEX"
+index_name = "medical-records-index"
+
+[[vectorize]]
+binding = "BRAINSAIT_INDEX"
+index_name = "brainsait-index"
+
+# 1024d — matches bge-large-en-v1.5 output, primary RAG index
+[[vectorize]]
+binding = "SEARCH_INDEX"
+index_name = "ai-search-brainsait-ai-search"
+
+# ── D1 DATABASES ────────────────────────────────────────────
+[[d1_databases]]
+binding = "DB"
+database_name = "brainsait-healthcare-d1"
+database_id = "0def24ea-658c-446a-bb05-61856eb5f3de"
+
+[[d1_databases]]
+binding = "METRICS_DB"
+database_name = "brainsait-metrics"
+database_id = "7b66d89d-7846-4c75-b7f5-5ffd2ea62629"
+
+# ── KV NAMESPACES ───────────────────────────────────────────
+[[kv_namespaces]]
+binding = "LINC_CACHE"
+id = "b7dda6ce2c104c679d19f40d36b9596c"
+
+[[kv_namespaces]]
+binding = "AGENT_CACHE"
+id = "e7d169e775b04b3e842aac71f2becfca"
+
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "062eab539a7049c0b1e36049441a211d"
+
+[[kv_namespaces]]
+binding = "RATE_LIMIT"
+id = "bfcb85398c4642f89602ec0dac7497cf"
+
+# ── R2 BUCKETS ──────────────────────────────────────────────
+[[r2_buckets]]
+binding = "HEALTHCARE_FILES"
+bucket_name = "brainsait-healthcare-files"
+
+[[r2_buckets]]
+binding = "RADIOLOGY"
+bucket_name = "brainsait-radiology"
+
+[[r2_buckets]]
+binding = "AUDIT_LOGS"
+bucket_name = "brainsait-healthcare-audit"
+
+[[r2_buckets]]
+binding = "DOCUMENTS"
+bucket_name = "brainsait-documents"
+
+# ── QUEUES ──────────────────────────────────────────────────
+[[queues.producers]]
+binding = "CLAIMS_QUEUE"
+queue = "brainsait-claims"
+
+[[queues.producers]]
+binding = "NOTIFY_QUEUE"
+queue = "brainsait-notifications"
+
+# Note: Queue consumers are managed by existing workers (oracle-claim-scanner, etc.)
+# This worker is a producer only. Consumer logic is in the queue export handler
+# but only registered once per queue.
+
+# ── DURABLE OBJECTS ─────────────────────────────────────────
+[[durable_objects.bindings]]
+name = "MASTER_LINC"
+class_name = "MasterLincSession"
+
+[[durable_objects.bindings]]
+name = "CLAIM_STATE"
+class_name = "ClaimStateMachine"
+
+[[durable_objects.bindings]]
+name = "BROWSER_SESSION"
+class_name = "BrowserSessionDO"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["MasterLincSession", "ClaimStateMachine"]
+
+[[migrations]]
+tag = "v2"
+new_classes = ["BrowserSessionDO"]
+
+# ── ENVIRONMENT ─────────────────────────────────────────────
+[vars]
+ENVIRONMENT = "production"
+AI_GATEWAY_ID = "brainsait-linc"
+ACCOUNT_ID = "d7b99530559ab4f2545e9bdc72a7ab9b"
+CACHE_TTL = "3600"
+MAX_RAG_RESULTS = "5"
+BROWSER_SERVICE_URL = "https://browser-agent.elfadil.com"
+
+# ── SECRETS (set via: wrangler secret put <NAME>) ───────────
+# ANTHROPIC_API_KEY
+# OPENAI_API_KEY
+# GITHUB_MODELS_TOKEN
+# CF_AIG_TOKEN            — Cloudflare AI Gateway token (cfut_...)
+# JWT_SECRET
+# BROWSER_SERVICE_SECRET  — Shared secret with browser-service for JWT auth
+# ENCRYPTION_KEY          — 64 hex chars (32 bytes) for credential vault AES-256-GCM
+
+# Custom domain — auto-creates DNS record in the zone
+[[routes]]
+pattern = "ai-mesh.elfadil.com"
+custom_domain = true

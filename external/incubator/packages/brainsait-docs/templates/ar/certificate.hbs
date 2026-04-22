@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شهادة الامتثال - {{companyName}}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Noto Sans Arabic', 'IBM Plex Sans Arabic', 'Tajawal', 'Cairo', sans-serif;
+            direction: rtl;
+            background: linear-gradient(45deg, #f8f9fa, #e3f2fd);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .certificate {
+            width: 29.7cm;
+            height: 21cm;
+            background: white;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .certificate-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 15px solid;
+            border-image: linear-gradient(45deg, #2E7D32, #1976D2, #2E7D32, #1976D2) 1;
+            border-radius: 20px;
+        }
+        
+        .certificate-inner {
+            padding: 60px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+        
+        .decorative-corner {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            opacity: 0.1;
+        }
+        
+        .decorative-corner.top-right {
+            top: 30px;
+            right: 30px;
+            background: radial-gradient(circle, #2E7D32, transparent);
+        }
+        
+        .decorative-corner.top-left {
+            top: 30px;
+            left: 30px;
+            background: radial-gradient(circle, #1976D2, transparent);
+        }
+        
+        .decorative-corner.bottom-right {
+            bottom: 30px;
+            right: 30px;
+            background: radial-gradient(circle, #2E7D32, transparent);
+        }
+        
+        .decorative-corner.bottom-left {
+            bottom: 30px;
+            left: 30px;
+            background: radial-gradient(circle, #1976D2, transparent);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .kingdom-emblem {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, #2E7D32, #1976D2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            border: 8px solid #fff;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        .ministry-name {
+            font-family: 'Amiri', 'Noto Sans Arabic', serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #2E7D32;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .authority-name {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #1976D2;
+            margin-bottom: 30px;
+        }
+        
+        .certificate-title {
+            font-family: 'Amiri', 'Noto Sans Arabic', serif;
+            font-size: 4em;
+            font-weight: 700;
+            color: #2E7D32;
+            text-align: center;
+            margin: 40px 0;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .certificate-title::before,
+        .certificate-title::after {
+            content: '✦';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.6em;
+            color: #1976D2;
+        }
+        
+        .certificate-title::before {
+            right: -80px;
+        }
+        
+        .certificate-title::after {
+            left: -80px;
+        }
+        
+        .certificate-subtitle {
+            font-size: 1.8em;
+            color: #666;
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 500;
+        }
+        
+        .certificate-content {
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .certification-text {
+            font-size: 1.6em;
+            line-height: 2.2;
+            color: #333;
+            margin: 30px 0;
+            font-weight: 500;
+        }
+        
+        .company-name {
+            font-family: 'Amiri', 'Noto Sans Arabic', serif;
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #2E7D32;
+            margin: 30px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #e8f5e8, #f1f8e9);
+            padding: 20px 40px;
+            border-radius: 15px;
+            border: 3px solid #2E7D32;
+            display: inline-block;
+        }
+        
+        .compliance-details {
+            background: linear-gradient(135deg, #f8f9fa, #e3f2fd);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .compliance-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin: 25px 0;
+        }
+        
+        .compliance-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-right: 4px solid #2E7D32;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .compliance-item h4 {
+            font-size: 1.2em;
+            color: #2E7D32;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .compliance-item p {
+            font-size: 1.1em;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .compliance-score {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2E7D32, #4CAF50);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.3);
+        }
+        
+        .score-number {
+            font-size: 3em;
+            font-weight: 700;
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+        
+        .score-label {
+            font-size: 0.9em;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+        
+        .score-description {
+            font-size: 1.3em;
+            color: #2E7D32;
+            font-weight: 600;
+        }
+        
+        .achievement-badges {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .badge {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1976D2, #42A5F5);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            box-shadow: 0 8px 20px rgba(25, 118, 210, 0.3);
+        }
+        
+        .footer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 3px solid #e0e0e0;
+        }
+        
+        .signature-section {
+            text-align: center;
+        }
+        
+        .signature-line {
+            width: 200px;
+            height: 2px;
+            background: #333;
+            margin: 40px auto 15px;
+        }
+        
+        .signature-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .signature-name {
+            font-size: 1.1em;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .date-section {
+            background: linear-gradient(135deg, #e8f5e8, #f1f8e9);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border: 2px solid #2E7D32;
+            text-align: center;
+        }
+        
+        .hijri-date {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #2E7D32;
+            margin-bottom: 10px;
+        }
+        
+        .gregorian-date {
+            font-size: 1.2em;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .certificate-number {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, #2E7D32, #4CAF50);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.1em;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+        }
+        
+        .validity-period {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #1976D2, #42A5F5);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.1em;
+            box-shadow: 0 4px 15px rgba(25, 118, 210, 0.3);
+        }
+        
+        .qr-code {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 80px;
+            height: 80px;
+            background: #333;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8em;
+            text-align: center;
+        }
+        
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 8em;
+            color: rgba(46, 125, 50, 0.05);
+            font-weight: 700;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .arabic-number {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-weight: 600;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .certificate {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .certificate-border {
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="certificate">
+        <div class="certificate-border"></div>
+        
+        <!-- Decorative corners -->
+        <div class="decorative-corner top-right"></div>
+        <div class="decorative-corner top-left"></div>
+        <div class="decorative-corner bottom-right"></div>
+        <div class="decorative-corner bottom-left"></div>
+        
+        <!-- Watermark -->
+        <div class="watermark">معتمد</div>
+        
+        <!-- Certificate Number -->
+        <div class="certificate-number">
+            رقم الشهادة: <span class="arabic-number">{{certificateNumber}}</span>
+        </div>
+        
+        <!-- Validity Period -->
+        <div class="validity-period">
+            صالحة حتى: <span class="arabic-number">{{validityDate}}</span>
+        </div>
+        
+        <!-- QR Code -->
+        <div class="qr-code">
+            {{#if qrCode}}
+                <img src="{{qrCode}}" alt="QR Code" style="width: 100%; height: 100%; object-fit: contain;">
+            {{else}}
+                QR<br>Code
+            {{/if}}
+        </div>
+        
+        <div class="certificate-inner">
+            <!-- Header -->
+            <div class="header">
+                <div class="kingdom-emblem">
+                    {{#if emblem}}
+                        <img src="{{emblem}}" alt="شعار المملكة" style="width: 80%; height: 80%; object-fit: contain;">
+                    {{else}}
+                        🏛️
+                    {{/if}}
+                </div>
+                <h1 class="ministry-name">المملكة العربية السعودية</h1>
+                <h2 class="authority-name">{{issuingAuthority}}</h2>
+            </div>
+            
+            <!-- Certificate Title -->
+            <div class="certificate-content">
+                <h1 class="certificate-title">شهادة امتثال</h1>
+                <p class="certificate-subtitle">شهادة امتثال للأنظمة واللوائح السعودية</p>
+                
+                <!-- Certification Text -->
+                <div class="certification-text">
+                    تشهد هذه الوثيقة بأن
+                </div>
+                
+                <!-- Company Name -->
+                <div class="company-name">{{companyName}}</div>
+                
+                <!-- More Certification Text -->
+                <div class="certification-text">
+                    قد استوفت جميع متطلبات الامتثال للأنظمة واللوائح المعمول بها<br>
+                    في المملكة العربية السعودية وحققت معايير الجودة المطلوبة
+                </div>
+                
+                <!-- Compliance Details -->
+                <div class="compliance-details">
+                    <div class="compliance-grid">
+                        <div class="compliance-item">
+                            <h4>رقم السجل التجاري</h4>
+                            <p class="arabic-number">{{crNumber}}</p>
+                        </div>
+                        <div class="compliance-item">
+                            <h4>الرقم الضريبي</h4>
+                            <p class="arabic-number">{{vatNumber}}</p>
+                        </div>
+                        <div class="compliance-item">
+                            <h4>نوع النشاط</h4>
+                            <p>{{businessActivity}}</p>
+                        </div>
+                        <div class="compliance-item">
+                            <h4>المنطقة</h4>
+                            <p>{{region}}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Compliance Score -->
+                <div class="compliance-score">
+                    <div class="score-circle">
+                        <div class="score-number arabic-number">{{complianceScore}}</div>
+                        <div class="score-label">من ١٠٠</div>
+                    </div>
+                    <div class="score-description">
+                        {{#if (gte complianceScore 90)}}
+                            مستوى امتثال ممتاز
+                        {{else if (gte complianceScore 75)}}
+                            مستوى امتثال جيد جداً
+                        {{else if (gte complianceScore 60)}}
+                            مستوى امتثال جيد
+                        {{else}}
+                            مستوى امتثال مقبول
+                        {{/if}}
+                    </div>
+                </div>
+                
+                <!-- Achievement Badges -->
+                <div class="achievement-badges">
+                    {{#if certifications.iso}}
+                    <div class="badge" title="شهادة الأيزو">
+                        ISO
+                    </div>
+                    {{/if}}
+                    {{#if certifications.healthcare}}
+                    <div class="badge" title="اعتماد صحي">
+                        🏥
+                    </div>
+                    {{/if}}
+                    {{#if certifications.quality}}
+                    <div class="badge" title="شهادة الجودة">
+                        ⭐
+                    </div>
+                    {{/if}}
+                </div>
+                
+                <!-- Date Section -->
+                <div class="date-section">
+                    <div class="hijri-date">{{hijriIssueDate}}</div>
+                    <div class="gregorian-date">الموافق {{gregorianIssueDate}}</div>
+                </div>
+                
+                <!-- Certification Areas -->
+                <div class="certification-text">
+                    <strong>مجالات الامتثال المعتمدة:</strong><br>
+                    {{#each complianceAreas}}
+                    • {{this}}<br>
+                    {{/each}}
+                </div>
+            </div>
+            
+            <!-- Footer with Signatures -->
+            <div class="footer">
+                <div class="signature-section">
+                    <div class="signature-line"></div>
+                    <div class="signature-title">مدير الامتثال</div>
+                    <div class="signature-name">{{complianceManagerName}}</div>
+                </div>
+                
+                <div class="signature-section">
+                    <div class="signature-line"></div>
+                    <div class="signature-title">المدير التنفيذي</div>
+                    <div class="signature-name">{{executiveDirectorName}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

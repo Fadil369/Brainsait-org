@@ -1,0 +1,328 @@
+name: SBS Premium - CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
+
+env:
+  NODE_VERSION: '20'
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}/sbs-landing
+
+jobs:
+  # ============================================
+  # BUILD & TEST
+  # ============================================
+  build-and-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: sbs-landing/package-lock.json
+
+      - name: Install dependencies
+        working-directory: sbs-landing
+        run: npm ci
+
+      - name: Run linting
+        working-directory: sbs-landing
+        run: npm run lint --if-present
+
+      - name: Run tests
+        working-directory: sbs-landing
+        run: npm test --if-present
+
+      - name: Build application
+        working-directory: sbs-landing
+        env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
+        run: npm run build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: sbs-landing-dist
+          path: sbs-landing/dist
+          retention-days: 7
+
+  # ============================================
+  # DOCKER BUILD
+  # ============================================
+  docker-build:
+    name: Build Docker Image
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    
+    outputs:
+      image-tag: ${{ steps.meta.outputs.tags }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: sbs-landing-dist
+          path: sbs-landing/dist
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=sha,prefix=
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./sbs-landing
+          file: ./sbs-landing/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # ============================================
+  # DEPLOY TO STAGING
+  # ============================================
+  deploy-staging:
+    name: Deploy to Staging
+    needs: docker-build
+    if: github.ref == 'refs/heads/develop' || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'staging')
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+      url: https://staging.brainsait.cloud
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Validate staging deployment secrets
+        id: preflight
+        env:
+          STAGING_HOST: ${{ secrets.STAGING_HOST }}
+          STAGING_USER: ${{ secrets.STAGING_USER }}
+          STAGING_SSH_KEY: ${{ secrets.STAGING_SSH_KEY }}
+        run: |
+          missing=()
+          [ -n "${STAGING_HOST}" ] || missing+=("STAGING_HOST")
+          [ -n "${STAGING_USER}" ] || missing+=("STAGING_USER")
+          [ -n "${STAGING_SSH_KEY}" ] || missing+=("STAGING_SSH_KEY")
+
+          if [ "${#missing[@]}" -gt 0 ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Skipping staging deploy because required secrets are missing: ${missing[*]}"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Deploy to Staging Server
+        if: steps.preflight.outputs.ready == 'true'
+        uses: appleboy/ssh-action@v1.2.5
+        with:
+          host: ${{ secrets.STAGING_HOST }}
+          username: ${{ secrets.STAGING_USER }}
+          key: ${{ secrets.STAGING_SSH_KEY }}
+          script: |
+            cd /opt/sbs-premium
+            
+            # Pull latest images
+            docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:develop
+            
+            # Update docker-compose
+            docker-compose -f docker-compose.staging.yml pull
+            docker-compose -f docker-compose.staging.yml up -d --remove-orphans
+            
+            # Cleanup old images
+            docker image prune -f
+            
+            echo "✅ Staging deployment complete!"
+
+      - name: Notify Staging Deployment
+        if: always()
+        continue-on-error: true
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          payload: |
+            {
+              "text": "🚀 SBS Premium deployed to Staging",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*SBS Premium - Staging Deployment*\n\n${{ job.status == 'success' && '✅ Success' || '❌ Failed' }}\n\n<https://staging.brainsait.cloud|View Staging>"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  # ============================================
+  # DEPLOY TO PRODUCTION
+  # ============================================
+  deploy-production:
+    name: Deploy to Production
+    needs: docker-build
+    if: github.ref == 'refs/heads/main' || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'production')
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://app.brainsait.cloud
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Validate production deployment secrets
+        id: preflight
+        env:
+          PROD_HOST: ${{ secrets.PROD_HOST }}
+          PROD_USER: ${{ secrets.PROD_USER }}
+          PROD_SSH_KEY: ${{ secrets.PROD_SSH_KEY }}
+        run: |
+          missing=()
+          [ -n "${PROD_HOST}" ] || missing+=("PROD_HOST")
+          [ -n "${PROD_USER}" ] || missing+=("PROD_USER")
+          [ -n "${PROD_SSH_KEY}" ] || missing+=("PROD_SSH_KEY")
+
+          if [ "${#missing[@]}" -gt 0 ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Skipping production deploy because required secrets are missing: ${missing[*]}"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Deploy to Production Server
+        if: steps.preflight.outputs.ready == 'true'
+        uses: appleboy/ssh-action@v1.2.5
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USER }}
+          key: ${{ secrets.PROD_SSH_KEY }}
+          script: |
+            cd /opt/sbs-premium
+            
+            # Backup current version
+            docker tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:backup-$(date +%Y%m%d%H%M%S) || true
+            
+            # Pull latest images
+            docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            
+            # Update docker-compose with zero-downtime
+            docker-compose -f docker-compose.prod.yml pull
+            docker-compose -f docker-compose.prod.yml up -d --remove-orphans
+            
+            # Wait for health check
+            sleep 10
+            curl -f http://localhost:3000/health || exit 1
+            
+            # Cleanup old images
+            docker image prune -f
+            
+            echo "✅ Production deployment complete!"
+
+      - name: Notify Production Deployment
+        if: always()
+        continue-on-error: true
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          payload: |
+            {
+              "text": "🚀 SBS Premium deployed to Production",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*SBS Premium - Production Deployment*\n\n${{ job.status == 'success' && '✅ Success' || '❌ Failed' }}\n\nCommit: `${{ github.sha }}`\nBy: ${{ github.actor }}\n\n<https://app.brainsait.cloud|View Production>"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  # ============================================
+  # HEALTH CHECK
+  # ============================================
+  health-check:
+    name: Post-Deployment Health Check
+    needs: [deploy-staging, deploy-production]
+    if: always() && (needs.deploy-staging.result == 'success' || needs.deploy-production.result == 'success')
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check Staging Health
+        if: needs.deploy-staging.result == 'success'
+        run: |
+          for i in {1..5}; do
+            if curl -sf https://staging.brainsait.cloud/health; then
+              echo "✅ Staging is healthy"
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "❌ Staging health check failed"
+          exit 1
+
+      - name: Check Production Health
+        if: needs.deploy-production.result == 'success'
+        run: |
+          URLS=(
+            "https://app.brainsait.cloud/health"
+            "https://api.brainsait.cloud/api/health"
+            "https://brainsait.cloud/api/health"
+          )
+          for i in {1..5}; do
+            for u in "${URLS[@]}"; do
+              if curl -sf "${u}" >/dev/null; then
+                echo "✅ Production is healthy via ${u}"
+                exit 0
+              fi
+            done
+            sleep 10
+          done
+          echo "❌ Production health check failed"
+          exit 1
