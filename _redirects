@@ -31,7 +31,7 @@ https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 /staff /staff.html 200
 
 # Careers page
-/careers https://careers.brainsait.org 301
+/careers /staff 302
 
 # Privacy and Terms
 /privacy /privacy-policy.html 200
@@ -43,7 +43,7 @@ https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 /clinics /external/clinics-pages/index.html 200
 /store /appstore 302
 /rcm https://portal.elfadil.com/ 302
-/open-webui https://work.elfadil.com/ 302
+/open-webui /appstore 302
 
 # 404 handling
 # App path mappings (consolidated external repos)
@@ -52,7 +52,7 @@ https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 /store/* /appstore 302
 /sbs/* /external/sbs/:splat 200
 /masterlinc/* /external/masterlinc/:splat 200
-/open-webui/* https://work.elfadil.com/:splat 302
+/open-webui/* /appstore 302
 /solutions/* /external/solutions/:splat 200
 /clinics/* /external/clinics-pages/:splat 200
 
