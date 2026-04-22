@@ -1,0 +1,8 @@
+name = "brainsait-app-router"
+main = "index.js"
+compatibility_date = "2026-04-22"
+account_id = "d7b99530559ab4f2545e9bdc72a7ab9b"
+
+routes = [
+  { pattern = "brainsait.org/incubator*", zone_name = "brainsait.org" }
+]
