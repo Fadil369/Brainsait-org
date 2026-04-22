@@ -7,9 +7,7 @@ export default {
 
     // Map path prefixes to origins (replace with your actual origins)
     const routes = [
-      { prefix: '/incubator', origin: 'https://brainsait-frontend-3kv.pages.dev', preservePrefix: true },
       { prefix: '/open-webui', origin: 'https://work.elfadil.com', preservePrefix: false },
-      { prefix: '/store', origin: 'https://store.brainsait.io', preservePrefix: false },
       { prefix: '/rcm', origin: 'https://portal.elfadil.com', preservePrefix: false },
       { prefix: '/doctor', origin: 'https://doctor.pages.dev' },
       { prefix: '/sbs', origin: 'https://api.brainsait.org' }
