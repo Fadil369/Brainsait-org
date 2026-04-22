@@ -13,7 +13,7 @@
   Vary: Accept-Encoding, Accept-Language
   
   # Content Security Policy - Enhanced
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://js.stripe.com https://www.paypal.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://api.brainsait.org https://partners-api.brainsait.org; frame-src https://js.stripe.com https://www.paypal.com
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://js.stripe.com https://www.paypal.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://api.brainsait.org https://partners-api.brainsait.org https://docs.google.com https://*.googleusercontent.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; frame-src https://js.stripe.com https://www.paypal.com
 
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
