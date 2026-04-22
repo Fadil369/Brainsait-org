@@ -7,10 +7,10 @@ export default {
 
     // Map path prefixes to origins (replace with your actual origins)
     const routes = [
-      { prefix: '/incubator', origin: 'https://incubator.pages.dev' },
-      { prefix: '/open-webui', origin: 'https://open-webui.pages.dev' },
-      { prefix: '/store', origin: 'https://brainsait-store.pages.dev' },
-      { prefix: '/rcm', origin: 'https://brainsait-rcm.pages.dev' },
+      { prefix: '/incubator', origin: 'https://brainsait-frontend-3kv.pages.dev', preservePrefix: true },
+      { prefix: '/open-webui', origin: 'https://work.elfadil.com', preservePrefix: false },
+      { prefix: '/store', origin: 'https://store.brainsait.io', preservePrefix: false },
+      { prefix: '/rcm', origin: 'https://portal.elfadil.com', preservePrefix: false },
       { prefix: '/doctor', origin: 'https://doctor.pages.dev' },
       { prefix: '/sbs', origin: 'https://api.brainsait.org' }
     ];
@@ -30,8 +30,10 @@ export default {
         forwardUrl.port = originUrl.port;
         forwardUrl.host = originUrl.host;
 
-        // Optionally strip the prefix before forwarding (depends on upstream app)
-        // forwardUrl.pathname = forwardUrl.pathname.replace(new RegExp('^' + r.prefix), '');
+        if (r.preservePrefix === false) {
+          const strippedPath = forwardUrl.pathname.replace(new RegExp('^' + r.prefix), '') || '/';
+          forwardUrl.pathname = strippedPath;
+        }
 
         const forwardReq = new Request(forwardUrl.toString(), {
           method: request.method,
@@ -46,7 +48,7 @@ export default {
     }
 
     // default: proxy to masterlinc shell (change origin as needed)
-    const defaultOrigin = 'https://masterlinc.pages.dev';
+    const defaultOrigin = 'https://portal.elfadil.com';
     const defaultUrl = defaultOrigin + path;
     const defaultReq = new Request(defaultUrl, { method: request.method, headers, body: request.body });
     return fetch(defaultReq);

@@ -41,23 +41,23 @@ https://brainsait.org/tawnia-reconciliation /tawnia-reconciliation.html 200
 https://brainsait.org/docs https://fadil369.github.io/brainsait-docs/ 302
 https://brainsait.org/docs/* https://fadil369.github.io/brainsait-docs/:splat 302
 https://brainsait.org/clinics /external/clinics-pages/index.html 200
-https://brainsait.org/incubator https://incubator.pages.dev/incubator/ 302
-https://brainsait.org/store https://brainsait-store.pages.dev/store/ 302
-https://brainsait.org/rcm https://brainsait-rcm.pages.dev/rcm/ 302
-https://brainsait.org/open-webui https://open-webui.pages.dev/open-webui/ 302
+https://brainsait.org/incubator https://brainsait-frontend-3kv.pages.dev/incubator/ 302
+https://brainsait.org/store https://store.brainsait.io/ 302
+https://brainsait.org/rcm https://portal.elfadil.com/ 302
+https://brainsait.org/open-webui https://work.elfadil.com/ 302
 
 # 404 handling
 # App path mappings (consolidated external repos)
-/incubator/* https://incubator.pages.dev/incubator/:splat 302
+/incubator/* https://brainsait-frontend-3kv.pages.dev/incubator/:splat 302
 /givc/* /external/givc/:splat 200
 /doctor/* /external/doctor/:splat 200
-/store/* https://brainsait-store.pages.dev/store/:splat 302
+/store/* https://store.brainsait.io/:splat 302
 /sbs/* /external/sbs/:splat 200
 /docs/* https://fadil369.github.io/brainsait-docs/:splat 302
 /masterlinc/* /external/masterlinc/:splat 200
-/open-webui/* https://open-webui.pages.dev/open-webui/:splat 302
+/open-webui/* https://work.elfadil.com/:splat 302
 /solutions/* /external/solutions/:splat 200
 /clinics/* /external/clinics-pages/:splat 200
 
-/rcm/* https://brainsait-rcm.pages.dev/rcm/:splat 302
+/rcm/* https://portal.elfadil.com/:splat 302
 /* /index.html 200
