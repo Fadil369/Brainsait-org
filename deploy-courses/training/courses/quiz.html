@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الاختبارات التفاعلية - BrainSAIT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap');
+        body { font-family: 'Noto Kufi Arabic', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #0c4a6e 0%, #1e3a5f 50%, #0f172a 100%); }
+        .quiz-card { transition: all 0.3s ease; }
+        .quiz-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .correct { background: #dcfce7 !important; border-color: #22c55e !important; }
+        .wrong { background: #fee2e2 !important; border-color: #ef4444 !important; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+<header class="gradient-bg text-white py-8 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+        <a href="index.html" class="text-blue-300 hover:text-white text-sm mb-4 inline-block">← العودة للرئيسية</a>
+        <h1 class="text-3xl font-extrabold mb-2">الاختبارات التفاعلية</h1>
+        <p class="text-blue-200">اختبر معلوماتك في الابتكار</p>
+    </div>
+</header>
+<main class="max-w-3xl mx-auto px-6 py-10">
+    <div id="quizContainer" class="space-y-6"></div>
+    <div id="scoreCard" class="hidden bg-white rounded-2xl shadow-lg p-8 text-center mt-8">
+        <div class="text-5xl mb-4" id="scoreEmoji"></div>
+        <h2 class="text-2xl font-bold mb-2">نتيجتك: <span id="scoreText"></span></h2>
+        <p class="text-gray-500" id="scoreMsg"></p>
+        <button onclick="resetQuiz()" class="mt-6 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-bold">إعادة الاختبار</button>
+    </div>
+</main>
+<script>
+const quizData = [
+    { q: 'كم عدد الأدوات في مجموعة أدوات الأمم المتحدة للابتكار؟', opts: ['15 أداة','21 أداة','27 أداة','30 أداة'], correct: 1, module: 'مقدمة' },
+    { q: 'ماذا يمثل اختصار S.P.A.C.E.؟', opts: ['Strategy, People, Architecture, Communication, Evaluation','Strategy, Partnerships, Architecture, Culture, Evaluation','Strategy, Planning, Architecture, Culture, Evaluation','Systems, Partnerships, Architecture, Culture, Evaluation'], correct: 1, module: 'S.P.A.C.E.' },
+    { q: 'أي مكون من S.P.A.C.E. يعتبر most cited كعائق للابتكار؟', opts: ['الاستراتيجية','الشراكات','البنية التحتية','الثقافة'], correct: 3, module: 'S.P.A.C.E.' },
+    { q: 'كم عدد الأسئلة في التشخيص الابتكاري؟', opts: ['10 أسئلة','15 سؤالاً','20 سؤالاً','27 سؤالاً'], correct: 3, module: 'التشخيص' },
+    { q: 'كم عدد ملفات الابتكار الشخصية؟', opts: ['4 ملفات','5 ملفات','6 ملفات','8 ملفات'], correct: 2, module: 'الملفات' },
+    { q: 'أي ملف شخصي يعتبر الأقوى في تطوير ثقافة الابتكار؟', opts: ['المحفِّز','الاستراتيجي','المتعاون','المنفِّذ'], correct: 0, module: 'الملفات' },
+    { q: 'ما هو الهدف الرئيسي لأداة "عناوين المستقبل"؟', opts: ['تحليل النظام البيئي','التفكير في أهداف الابتكار','تطوير شراكات','تقييم المشاريع'], correct: 1, module: 'الاستراتيجية' },
+    { q: 'كم عدد أدوات الاستراتيجية؟', opts: ['3 أدوات','4 أدوات','5 أدوات','6 أدوات'], correct: 2, module: 'الاستراتيجية' },
+    { q: 'ما هو الهدف الرئيسي لأداة "تحديد قيمة العرض"؟', opts: ['تحليل المخاطر','تطوير عرض مقنع للشركاء','تقييم الأثر','إنشاء ميزانية'], correct: 1, module: 'الشراكات' },
+    { q: 'أي أداة تساعد على تصميم اختبارات تجريبية للتوسع؟', opts: ['مسح الأفق','التصميم المرتكز على المستخدم','من الاختبار إلى التوسع','نموذج التشغيل'], correct: 2, module: 'البنية التحتية' },
+    { q: 'ما هي تقنية "FailFaire"؟', opts: ['تقنية لتحليل المخاطر','تقنية لمناقشة الإخفاقات','تقنية لتقييم المشاريع','تقنية لبناء الشراكات'], correct: 1, module: 'الثقافة' },
+    { q: 'ما هو الهدف الرئيسي لأداة "سرد قصص الابتكار"؟', opts: ['تحليل البيانات','التواصل الفعال مع أصحاب المصلحة','بناء فرق العمل','إدارة المشاريع'], correct: 1, module: 'التقييم' },
+    { q: 'ما هي المرحلة الأولى في دورة حياة الابتكار؟', opts: ['الاحتضان','الاختبار','التفكير','التوسع'], correct: 2, module: 'المفردات' },
+    { q: 'ما هو المقصود بالابتكار المزعزع؟', opts: ['تحسينات طفيفة','حل جديد يغير القواعد','حل موجود بطريقة جديدة','تكرار حلول ناجحة'], correct: 1, module: 'المفردات' },
+    { q: 'أي ملف شخصي يعتبر الأقوى في بناء الشراكات؟', opts: ['المحفِّز','الاستراتيجي','المتعاون','الرائد'], correct: 2, module: 'الملفات' }
+];
+
+let answers = new Array(quizData.length).fill(-1);
+let submitted = false;
+
+function renderQuiz() {
+    const c = document.getElementById('quizContainer');
+    c.innerHTML = '';
+    quizData.forEach((q, i) => {
+        const div = document.createElement('div');
+        div.className = 'bg-white rounded-2xl shadow-md p-6 quiz-card';
+        div.innerHTML = `
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">${q.module}</span>
+                <span class="text-gray-400 text-sm">السؤال ${i+1}</span>
+            </div>
+            <h3 class="font-bold text-lg mb-4">${q.q}</h3>
+            <div class="space-y-2" id="opts-${i}"></div>
+            <div id="feedback-${i}" class="hidden mt-3 text-sm font-bold"></div>
+        `;
+        c.appendChild(div);
+        const optsDiv = div.querySelector(`#opts-${i}`);
+        q.opts.forEach((opt, j) => {
+            const btn = document.createElement('button');
+            btn.className = 'w-full text-right p-3 rounded-xl border-2 border-gray-200 hover:border-blue-300 transition-all';
+            btn.textContent = opt;
+            btn.onclick = () => selectAnswer(i, j);
+            optsDiv.appendChild(btn);
+        });
+    });
+    // Add submit button
+    const submitDiv = document.createElement('div');
+    submitDiv.className = 'text-center mt-8';
+    submitDiv.innerHTML = '<button onclick="submitQuiz()" id="submitBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-xl text-lg font-bold transition-all">تحقق من الإجابات</button>';
+    c.appendChild(submitDiv);
+}
+
+function selectAnswer(qi, oi) {
+    if (submitted) return;
+    answers[qi] = oi;
+    const opts = document.querySelectorAll(`#opts-${qi} button`);
+    opts.forEach((btn, j) => {
+        btn.className = j === oi 
+            ? 'w-full text-right p-3 rounded-xl border-2 border-blue-500 bg-blue-50 text-blue-700 font-bold transition-all'
+            : 'w-full text-right p-3 rounded-xl border-2 border-gray-200 hover:border-blue-300 transition-all';
+    });
+}
+
+function submitQuiz() {
+    if (submitted) return;
+    submitted = true;
+    let correct = 0;
+    quizData.forEach((q, i) => {
+        const opts = document.querySelectorAll(`#opts-${i} button`);
+        const feedback = document.getElementById(`feedback-${i}`);
+        feedback.classList.remove('hidden');
+        opts.forEach((btn, j) => {
+            btn.onclick = null;
+            if (j === q.correct) {
+                btn.className = 'w-full text-right p-3 rounded-xl border-2 border-green-500 bg-green-50 text-green-700 font-bold transition-all';
+            } else if (j === answers[i] && j !== q.correct) {
+                btn.className = 'w-full text-right p-3 rounded-xl border-2 border-red-500 bg-red-50 text-red-700 transition-all';
+            } else {
+                btn.className = 'w-full text-right p-3 rounded-xl border-2 border-gray-200 text-gray-400 transition-all';
+            }
+        });
+        if (answers[i] === q.correct) {
+            correct++;
+            feedback.textContent = '✓ إجابة صحيحة';
+            feedback.className = 'mt-3 text-sm font-bold text-green-600';
+        } else {
+            feedback.textContent = '✗ الإجابة الصحيحة: ' + q.opts[q.correct];
+            feedback.className = 'mt-3 text-sm font-bold text-red-600';
+        }
+    });
+    const pct = Math.round((correct / quizData.length) * 100);
+    const scoreCard = document.getElementById('scoreCard');
+    scoreCard.classList.remove('hidden');
+    document.getElementById('scoreText').textContent = `${correct}/${quizData.length} (${pct}%)`;
+    if (pct >= 80) {
+        document.getElementById('scoreEmoji').textContent = '🏆';
+        document.getElementById('scoreMsg').textContent = 'ممتاز! لديك فهم قوي لمبادئ الابتكار';
+    } else if (pct >= 60) {
+        document.getElementById('scoreEmoji').textContent = '👍';
+        document.getElementById('scoreMsg').textContent = 'جيد! راجع الوحدات التي تحتاج تحسين';
+    } else {
+        document.getElementById('scoreEmoji').textContent = '📚';
+        document.getElementById('scoreMsg').textContent = 'تحتاج لمراجعة المحتوى، أعد المحاولة';
+    }
+    document.getElementById('submitBtn').disabled = true;
+    document.getElementById('submitBtn').className = 'bg-gray-400 text-white px-10 py-4 rounded-xl text-lg font-bold cursor-not-allowed';
+    scoreCard.scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetQuiz() {
+    submitted = false;
+    answers = new Array(quizData.length).fill(-1);
+    document.getElementById('scoreCard').classList.add('hidden');
+    renderQuiz();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+renderQuiz();
+</script>
+</body>
+</html>
