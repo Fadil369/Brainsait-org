@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Primary Meta -->
+  <title>BrainSAIT Partners — PartnerLinc AI-Powered Partnership Platform</title>
+  <meta name="title" content="BrainSAIT Partners — PartnerLinc AI-Powered Partnership Platform">
+  <meta name="description" content="Join the BrainSAIT partner ecosystem. AI-guided onboarding, automated integration, and intelligent collaboration powered by PartnerLinc — your AI partnership advisor.">
+  <meta name="keywords" content="BrainSAIT partners, PartnerLinc, AI partnership, healthcare technology partners, Cloudflare Workers, MENA healthcare, partnership program, integrate BrainSAIT">
+  <meta name="author" content="BrainSAIT LTD">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://brainsait.org/partners">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://brainsait.org/partners">
+  <meta property="og:title" content="BrainSAIT Partners — Intelligent Partnership Platform">
+  <meta property="og:description" content="Become a BrainSAIT partner. AI-guided onboarding with PartnerLinc, automated integration via Cloudflare Workers, and seamless project merging.">
+  <meta property="og:image" content="https://brainsait.org/og-image.png">
+  <meta property="og:site_name" content="BrainSAIT">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@brainsait369">
+  <meta name="twitter:title" content="BrainSAIT Partners — PartnerLinc AI Platform">
+  <meta name="twitter:description" content="AI-guided partner onboarding, automated project integration, and intelligent collaboration for healthcare tech.">
+  <meta name="twitter:image" content="https://brainsait.org/og-image.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a365d'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='%23d4a574' font-size='20' font-weight='bold' font-family='system-ui'%3EB%3C/text%3E%3C/svg%3E">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "BrainSAIT Partner Program",
+    "description": "AI-guided partner onboarding and integration platform powered by PartnerLinc.",
+    "url": "https://brainsait.org/partners",
+    "isPartOf": { "@type": "WebSite", "url": "https://brainsait.org" }
+  }
+  </script>
+
+  <style>
+    /* ═══════════════════════════════════════════════════════
+       BRAINSAIT PARTNERS — ENTERPRISE DESIGN SYSTEM
+       PartnerLinc AI · Cloudflare-Powered · Bilingual
+    ═══════════════════════════════════════════════════════ */
+
+    :root {
+      --void:    #02040a;
+      --deep:    #060913;
+      --navy:    #0a0f1d;
+      --surface: #0f1524;
+      --surf2:   #141929;
+
+      --g1: rgba(255,255,255,0.02);
+      --g2: rgba(255,255,255,0.04);
+      --g3: rgba(255,255,255,0.06);
+      --gb: rgba(255,255,255,0.08);
+      --gbh: rgba(255,255,255,0.16);
+
+      --gold:     #d4a574;
+      --gold-l:   #e8c49a;
+      --gold-b:   #f0d5b5;
+      --gold-dim: rgba(212,165,116,0.10);
+      --gold-glow:rgba(212,165,116,0.15);
+
+      --teal:     #0ea5e9;
+      --teal-l:   #38bdf8;
+      --teal-dim: rgba(14,165,233,0.10);
+
+      --eme:      #10b981;
+      --eme-dim:  rgba(16,185,129,0.10);
+      --vio:      #8b5cf6;
+      --vio-dim:  rgba(139,92,246,0.10);
+      --rose:     #f43f5e;
+      --amb:      #f59e0b;
+
+      --text:  #f8fafc;
+      --textd: #cbd5e1;
+      --textm: #64748b;
+      --texts: #334155;
+
+      --fd: 'Syne', sans-serif;
+      --fa: 'IBM Plex Sans Arabic', sans-serif;
+      --fi: 'Inter', sans-serif;
+      --fm: 'JetBrains Mono', monospace;
+
+      --r:   16px;
+      --rs:   8px;
+      --rx:   6px;
+      --rnd: 100px;
+      --sp:  clamp(60px, 10vw, 120px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      background: var(--void);
+      color: var(--text);
+      font-family: var(--fi);
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      letter-spacing: -0.3px;
+    }
+
+    h1, h2, h3, h4 { font-family: var(--fd); font-weight: 700; line-height: 1.2; }
+    h1 { font-size: clamp(36px, 6vw, 76px); letter-spacing: -2px; font-weight: 800; }
+    h2 { font-size: clamp(28px, 4.5vw, 52px); letter-spacing: -1.5px; }
+    h3 { font-size: clamp(18px, 3vw, 28px); letter-spacing: -1px; }
+    p  { font-size: 15px; line-height: 1.7; color: var(--textd); letter-spacing: -0.3px; }
+    em { font-style: normal; font-weight: 700; color: var(--gold); }
+    strong, b { font-weight: 600; color: var(--gold-l); }
+
+    /* RTL */
+    [dir="rtl"] body { font-family: var(--fa); }
+    [dir="ltr"] .ar  { display: none !important; }
+    [dir="rtl"] .en  { display: none !important; }
+
+    /* Layout */
+    .page { position: relative; z-index: 1; }
+    .c    { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* Typography helpers */
+    .tg      { background: linear-gradient(135deg, var(--gold), var(--gold-b)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .tg-teal { background: linear-gradient(135deg, var(--teal), var(--teal-l)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .tg-vio  { background: linear-gradient(135deg, var(--vio), #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .stag    { display: block; font-size: 11px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 16px; }
+    .sec-head { text-align: center; margin-bottom: 72px; }
+    .ssub    { font-size: 16px; color: var(--textd); max-width: 580px; margin: 0 auto; line-height: 1.7; }
+    section  { padding: var(--sp) 0; }
+
+    /* Atmosphere */
+    .orb { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; }
+    .o1  { width: 700px; height: 700px; background: radial-gradient(circle, var(--gold) 0%, transparent 70%); opacity: .04; top: -15%; right: -10%; animation: drift 55s ease-in-out infinite; }
+    .o2  { width: 600px; height: 600px; background: radial-gradient(circle, var(--vio) 0%, transparent 70%);  opacity: .04; bottom: -15%; left: -10%; animation: drift 48s ease-in-out infinite reverse; }
+    .o3  { width: 400px; height: 400px; background: radial-gradient(circle, var(--teal) 0%, transparent 70%); opacity: .03; top: 40%; left: 30%; animation: drift 65s ease-in-out infinite 20s; }
+    @keyframes drift { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(20px,-30px) scale(1.03); } 66% { transform: translate(-15px,20px) scale(.98); } }
+    .noise-overlay { position: fixed; inset: 0; pointer-events: none; z-index: 2; opacity: .025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+
+    /* Scroll Reveal */
+    .rev { opacity: 0; transform: translate3d(0, 24px, 0) scale(.985); transition: opacity .68s cubic-bezier(.22,.61,.36,1), transform .82s cubic-bezier(.22,.61,.36,1); }
+    .rev.vis { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+    .d1 { transition-delay: .10s; } .d2 { transition-delay: .20s; } .d3 { transition-delay: .30s; } .d4 { transition-delay: .40s; }
+
+    /* Accessibility */
+    .skip-link { position: absolute; top: -100px; left: 16px; background: var(--gold); color: var(--void); padding: 8px 16px; border-radius: var(--rx); text-decoration: none; font-weight: 600; z-index: 10000; transition: top .2s; }
+    .skip-link:focus { top: 16px; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: var(--rx); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      html { scroll-behavior: auto; }
+      .rev { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* ─── Buttons ─── */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--fi); font-weight: 600; font-size: 14px; padding: 10px 22px; border-radius: var(--rx); border: none; cursor: pointer; text-decoration: none; transition: all .2s ease; white-space: nowrap; }
+    .btn-p  { background: linear-gradient(135deg, var(--gold), var(--gold-l)); color: var(--void); }
+    .btn-p:hover  { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,165,116,.3); filter: brightness(1.06); }
+    .btn-g  { background: transparent; color: var(--text); border: 1px solid var(--gb); }
+    .btn-g:hover  { background: var(--g2); border-color: var(--gbh); }
+    .btn-teal { background: linear-gradient(135deg, var(--teal), var(--teal-l)); color: var(--void); }
+    .btn-teal:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(14,165,233,.3); }
+    .btn-vio  { background: linear-gradient(135deg, var(--vio), #a78bfa); color: white; }
+    .btn-vio:hover  { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(139,92,246,.3); }
+    .btn-lg { padding: 14px 32px; font-size: 15px; }
+    .btn-sm { padding: 6px 14px; font-size: 13px; }
+
+    /* ─── NAVBAR ─── */
+    #nav {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      backdrop-filter: blur(20px) saturate(1.8);
+      -webkit-backdrop-filter: blur(20px) saturate(1.8);
+      background: rgba(2,4,10,.80);
+      border-bottom: 1px solid var(--gb);
+      transition: background .3s, box-shadow .3s;
+    }
+    #nav.scrolled { background: rgba(2,4,10,.96); box-shadow: 0 4px 32px rgba(0,0,0,.5); }
+    .ni  { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; padding: 0 24px; gap: 24px; }
+    .nb  { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); flex-shrink: 0; }
+    .nlogo { width: 36px; height: 36px; background: linear-gradient(135deg, var(--gold), var(--teal)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: var(--fd); font-weight: 800; font-size: 18px; color: var(--void); }
+    .nn   { font-family: var(--fd); font-weight: 800; font-size: 18px; letter-spacing: .5px; }
+    .nn em { color: var(--gold); }
+    .nl  { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; }
+    .nl a { color: var(--textd); text-decoration: none; font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: var(--rx); transition: all .2s; white-space: nowrap; }
+    .nl a:hover, .nl a.active { color: var(--text); background: var(--g2); }
+    .nl a.active { color: var(--gold); }
+    .na  { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .lang-btn { background: var(--g1); border: 1px solid var(--gb); color: var(--textd); font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: var(--rx); cursor: pointer; transition: all .2s; font-family: var(--fi); }
+    .lang-btn:hover { background: var(--g2); color: var(--text); border-color: var(--gbh); }
+    .hbg { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 7px; border-radius: var(--rx); background: transparent; border: none; transition: background .2s; }
+    .hbg:hover { background: var(--g2); }
+    .hbg span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all .3s; }
+    .hbg.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hbg.open span:nth-child(2) { opacity: 0; }
+    .hbg.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile Menu */
+    .mob-menu { position: fixed; inset: 0; top: 72px; background: rgba(2,4,10,.98); backdrop-filter: blur(24px); z-index: 999; display: flex; flex-direction: column; gap: 8px; padding: 28px 24px; opacity: 0; pointer-events: none; transition: opacity .25s; }
+    .mob-menu.open { opacity: 1; pointer-events: all; }
+    .mob-menu a { color: var(--textd); text-decoration: none; font-size: 18px; font-weight: 500; padding: 12px 0; border-bottom: 1px solid var(--g2); transition: color .2s; }
+    .mob-menu a:hover { color: var(--gold); }
+    .mob-sep { height: 1px; background: var(--gb); margin: 8px 0; }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding: 140px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,165,116,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold-dim);
+      border: 1px solid rgba(212,165,116,.2);
+      border-radius: var(--rnd);
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 32px;
+    }
+    .pulse { width: 8px; height: 8px; background: var(--eme); border-radius: 50%; animation: pulse-ring 2s infinite; }
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(16,185,129,.6); }
+      70% { box-shadow: 0 0 0 8px rgba(16,185,129,0); }
+      100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+    }
+    .hero-content { max-width: 820px; }
+    .hero-acts { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 40px; }
+    .hero-stat { display: flex; flex-direction: column; }
+    .hero-stat .hs-val { font-family: var(--fd); font-size: 28px; font-weight: 800; color: var(--gold); letter-spacing: -1px; }
+    .hero-stat .hs-lbl { font-size: 12px; color: var(--textm); text-transform: uppercase; letter-spacing: 1px; }
+    .hero-split { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-card {
+      background: linear-gradient(135deg, var(--surface), var(--surf2));
+      border: 1px solid var(--gb);
+      border-radius: var(--r);
+      padding: 28px;
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .pl-avatar {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--vio), var(--teal));
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--fd); font-weight: 800; font-size: 22px; color: white;
+      margin-bottom: 16px;
+    }
+    .pl-name { font-family: var(--fd); font-weight: 700; font-size: 18px; margin-bottom: 4px; }
+    .pl-role { font-size: 12px; color: var(--textm); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+    .pl-msg { background: var(--g2); border-radius: var(--rs); padding: 14px 16px; font-size: 14px; line-height: 1.6; color: var(--textd); border-left: 3px solid var(--vio); }
+    .pl-status { display: flex; align-items: center; gap: 8px; margin-top: 16px; font-size: 12px; color: var(--textm); }
+    .pl-dot { width: 6px; height: 6px; background: var(--eme); border-radius: 50%; animation: pulse-ring 2s infinite; }
+
+    /* ─── PARTNERSHIP TIERS ─── */
+    .tier-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .tier-card {
+      background: linear-gradient(135deg, var(--surface), var(--surf2));
+      border: 1px solid var(--gb);
+      border-radius: var(--r);
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s, border-color .3s, box-shadow .3s;
+    }
+    .tier-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: var(--r) var(--r) 0 0;
+    }
+    .tier-card.tech::before   { background: linear-gradient(90deg, var(--teal), var(--teal-l)); }
+    .tier-card.health::before { background: linear-gradient(90deg, var(--eme), #34d399); }
+    .tier-card.dist::before   { background: linear-gradient(90deg, var(--gold), var(--gold-b)); }
+    .tier-card.integ::before  { background: linear-gradient(90deg, var(--vio), #a78bfa); }
+    .tier-card:hover { transform: translateY(-4px); border-color: var(--gbh); box-shadow: 0 16px 48px rgba(0,0,0,.3); }
+    .tier-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+    .tech .tier-icon   { background: var(--teal-dim); }
+    .health .tier-icon { background: var(--eme-dim); }
+    .dist .tier-icon   { background: var(--gold-dim); }
+    .integ .tier-icon  { background: var(--vio-dim); }
+    .tier-title { font-family: var(--fd); font-weight: 700; font-size: 17px; margin-bottom: 8px; }
+    .tier-desc  { font-size: 13px; color: var(--textm); line-height: 1.6; margin-bottom: 16px; }
+    .tier-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: var(--rnd); }
+    .tech .tier-badge   { background: var(--teal-dim); color: var(--teal-l); }
+    .health .tier-badge { background: var(--eme-dim); color: #34d399; }
+    .dist .tier-badge   { background: var(--gold-dim); color: var(--gold-l); }
+    .integ .tier-badge  { background: var(--vio-dim); color: #a78bfa; }
+
+    /* ─── BENEFITS ─── */
+    .benefits-bg {
+      background: linear-gradient(180deg, var(--navy) 0%, var(--deep) 100%);
+      border-top: 1px solid var(--gb);
+      border-bottom: 1px solid var(--gb);
+    }
+    .ben-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .ben-card {
+      background: var(--g2);
+      border: 1px solid var(--gb);
+      border-radius: var(--r);
+      padding: 28px;
+      transition: border-color .3s, background .3s;
+    }
+    .ben-card:hover { border-color: var(--gbh); background: var(--g3); }
+    .ben-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+    .ben-title { font-family: var(--fd); font-weight: 700; font-size: 16px; margin-bottom: 8px; color: var(--text); }
+    .ben-desc  { font-size: 13px; color: var(--textm); line-height: 1.6; }
+    .ben-tags  { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+    .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: var(--rnd); background: var(--g3); border: 1px solid var(--gb); color: var(--textm); font-family: var(--fm); }
+
+    /* ─── HOW IT WORKS ─── */
+    .hiw-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; position: relative; }
+    .hiw-grid::before {
+      content: '';
+      position: absolute;
+      top: 36px; left: calc(16.67% + 20px); right: calc(16.67% + 20px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--teal), var(--vio), var(--gold));
+      opacity: .4;
+    }
+    .hiw-step { text-align: center; }
+    .hiw-num {
+      width: 72px; height: 72px;
+      background: linear-gradient(135deg, var(--surface), var(--surf2));
+      border: 1px solid var(--gb);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--fd); font-weight: 800; font-size: 22px;
+      color: var(--gold);
+      margin: 0 auto 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .hiw-title { font-family: var(--fd); font-weight: 700; font-size: 17px; margin-bottom: 10px; }
+    .hiw-desc  { font-size: 13px; color: var(--textm); line-height: 1.6; }
+
+    /* ─── TECH STACK ─── */
+    .tech-bg {
+      background: linear-gradient(135deg, var(--navy), var(--surface));
+      border-top: 1px solid var(--gb);
+      border-bottom: 1px solid var(--gb);
+    }
+    .tech-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .tech-card {
+      background: var(--g2);
+      border: 1px solid var(--gb);
+      border-radius: var(--r);
+      padding: 24px;
+      text-align: center;
+      transition: all .3s;
+    }
+    .tech-card:hover { border-color: var(--gbh); background: var(--g3); transform: translateY(-2px); }
+    .tech-logo { font-size: 36px; margin-bottom: 14px; display: block; }
+    .tech-name { font-family: var(--fd); font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+    .tech-desc { font-size: 12px; color: var(--textm); line-height: 1.5; }
+    .tech-status { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; font-size: 11px; font-weight: 600; color: var(--eme); text-transform: uppercase; letter-spacing: 1px; }
+    .tech-status::before { content: ''; width: 6px; height: 6px; background: var(--eme); border-radius: 50%; }
+
+    /* ─── PARTNER FORM ─── */
+    .form-bg {
+      background: linear-gradient(180deg, var(--deep), var(--navy));
+      border-top: 1px solid var(--gb);
+    }
+    .form-split { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .form-info h2 { margin-bottom: 20px; }
+    .form-info p  { margin-bottom: 24px; }
+    .form-perks { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .form-perks li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--textd); }
+    .perk-icon { width: 28px; height: 28px; border-radius: 8px; background: var(--gold-dim); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+    .form-card {
+      background: linear-gradient(135deg, var(--surface), var(--surf2));
+      border: 1px solid var(--gb);
+      border-radius: var(--r);
+      padding: 36px;
+      position: relative;
+    }
+    .form-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--vio), var(--teal), var(--gold));
+      border-radius: var(--r) var(--r) 0 0;
+    }
+    .field { margin-bottom: 20px; }
+    .field label { display: block; font-size: 13px; font-weight: 600; color: var(--textd); margin-bottom: 8px; }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      background: var(--g2);
+      border: 1px solid var(--gb);
+      border-radius: var(--rs);
+      padding: 12px 16px;
+      font-family: var(--fi);
+      font-size: 14px;
+      color: var(--text);
+      outline: none;
+      transition: border-color .2s, background .2s;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); background: var(--g3); }
+    .field input::placeholder, .field textarea::placeholder { color: var(--textm); }
+    .field select option { background: var(--surface); }
+    .field textarea { resize: vertical; min-height: 100px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .submit-btn { width: 100%; padding: 14px; font-size: 15px; font-weight: 700; border-radius: var(--rs); background: linear-gradient(135deg, var(--vio), #a78bfa); color: white; border: none; cursor: pointer; transition: all .3s; font-family: var(--fd); letter-spacing: -0.5px; }
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(139,92,246,.35); filter: brightness(1.06); }
+    .submit-btn:active { transform: translateY(0); }
+
+    /* ─── STATS STRIP ─── */
+    .stats-strip {
+      background: var(--g1);
+      border-top: 1px solid var(--gb);
+      border-bottom: 1px solid var(--gb);
+      padding: 40px 0;
+    }
+    .stats-inner { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 32px; }
+    .stat-item { text-align: center; }
+    .stat-val { font-family: var(--fd); font-size: 36px; font-weight: 800; color: var(--gold); letter-spacing: -1.5px; line-height: 1; margin-bottom: 6px; }
+    .stat-lbl { font-size: 12px; color: var(--textm); text-transform: uppercase; letter-spacing: 1.5px; }
+
+    /* ─── CTA ─── */
+    .cta-sec {
+      background: linear-gradient(135deg, var(--surface), var(--surf2));
+      border-top: 1px solid var(--gb);
+      text-align: center;
+    }
+    .cta-acts { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--deep);
+      border-top: 1px solid var(--gb);
+      padding: 32px 0;
+    }
+    .f-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .f-copy { font-size: 13px; color: var(--textm); }
+    .f-links { display: flex; gap: 20px; }
+    .f-links a { font-size: 13px; color: var(--textm); text-decoration: none; transition: color .2s; }
+    .f-links a:hover { color: var(--gold); }
+
+    /* ─── PARTNERLINC CHAT WIDGET ─── */
+    #pl-widget {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 9000;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+    #pl-bubble {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--vio), var(--teal));
+      border: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px;
+      box-shadow: 0 8px 32px rgba(139,92,246,.4);
+      transition: transform .3s, box-shadow .3s;
+      position: relative;
+    }
+    #pl-bubble:hover { transform: scale(1.08); box-shadow: 0 12px 40px rgba(139,92,246,.5); }
+    #pl-bubble .pl-badge {
+      position: absolute;
+      top: -2px; right: -2px;
+      width: 18px; height: 18px;
+      background: var(--eme);
+      border-radius: 50%;
+      border: 2px solid var(--void);
+      font-size: 9px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      color: white;
+    }
+    #pl-panel {
+      width: 380px;
+      background: var(--navy);
+      border: 1px solid var(--gb);
+      border-radius: var(--r);
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0,0,0,.7);
+      display: none;
+      flex-direction: column;
+      max-height: 600px;
+      animation: slideUp .3s ease;
+    }
+    #pl-panel.open { display: flex; }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(16px) scale(.97); } to { opacity: 1; transform: none; } }
+    .pl-header {
+      background: linear-gradient(135deg, var(--surface), rgba(139,92,246,.15));
+      border-bottom: 1px solid var(--gb);
+      padding: 16px 20px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .pl-av {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--vio), var(--teal));
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--fd); font-weight: 800; font-size: 16px; color: white;
+      flex-shrink: 0;
+    }
+    .pl-hinfo { flex: 1; }
+    .pl-hname { font-family: var(--fd); font-weight: 700; font-size: 15px; }
+    .pl-hstatus { font-size: 12px; color: var(--eme); display: flex; align-items: center; gap: 6px; }
+    .pl-hstatus::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--eme); border-radius: 50%; animation: pulse-ring 2s infinite; }
+    #pl-close {
+      background: transparent; border: none; color: var(--textm); cursor: pointer;
+      width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      font-size: 18px; transition: background .2s, color .2s;
+    }
+    #pl-close:hover { background: var(--g3); color: var(--text); }
+    #pl-msgs {
+      flex: 1; overflow-y: auto; padding: 20px;
+      display: flex; flex-direction: column; gap: 14px;
+      scrollbar-width: thin; scrollbar-color: var(--gb) transparent;
+    }
+    #pl-msgs::-webkit-scrollbar { width: 4px; }
+    #pl-msgs::-webkit-scrollbar-thumb { background: var(--gb); border-radius: 4px; }
+    .msg { max-width: 85%; display: flex; flex-direction: column; gap: 4px; }
+    .msg.bot { align-self: flex-start; }
+    .msg.usr { align-self: flex-end; }
+    .msg-bubble {
+      padding: 12px 14px; border-radius: 12px; font-size: 13.5px; line-height: 1.55;
+    }
+    .msg.bot .msg-bubble { background: var(--g3); border: 1px solid var(--gb); color: var(--textd); border-bottom-left-radius: 4px; }
+    .msg.usr .msg-bubble { background: linear-gradient(135deg, var(--vio), #a78bfa); color: white; border-bottom-right-radius: 4px; }
+    .msg-meta { font-size: 11px; color: var(--textm); padding: 0 4px; }
+    .msg.usr .msg-meta { text-align: right; }
+    .typing-indicator { display: flex; gap: 4px; align-items: center; padding: 4px 0; }
+    .typing-dot { width: 6px; height: 6px; background: var(--textm); border-radius: 50%; animation: typing 1.2s infinite; }
+    .typing-dot:nth-child(2) { animation-delay: .2s; }
+    .typing-dot:nth-child(3) { animation-delay: .4s; }
+    @keyframes typing { 0%,60%,100% { transform: translateY(0); opacity: .4; } 30% { transform: translateY(-6px); opacity: 1; } }
+    .pl-quick { padding: 12px 20px; display: flex; flex-wrap: wrap; gap: 8px; border-top: 1px solid var(--g2); }
+    .pl-quick-btn {
+      background: var(--g2); border: 1px solid var(--gb); color: var(--textd);
+      font-size: 12px; font-weight: 500; padding: 6px 12px; border-radius: var(--rnd);
+      cursor: pointer; transition: all .2s; font-family: var(--fi);
+    }
+    .pl-quick-btn:hover { background: var(--vio-dim); border-color: var(--vio); color: var(--text); }
+    .pl-input-row {
+      display: flex; gap: 10px; padding: 14px 16px;
+      border-top: 1px solid var(--gb);
+      background: var(--g1);
+    }
+    #pl-input {
+      flex: 1; background: var(--g2); border: 1px solid var(--gb);
+      border-radius: var(--rs); padding: 10px 14px;
+      font-family: var(--fi); font-size: 13.5px; color: var(--text);
+      outline: none; transition: border-color .2s;
+    }
+    #pl-input:focus { border-color: var(--vio); }
+    #pl-input::placeholder { color: var(--textm); }
+    #pl-send {
+      width: 40px; height: 40px; border-radius: var(--rs);
+      background: linear-gradient(135deg, var(--vio), #a78bfa);
+      border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 16px; transition: all .2s; flex-shrink: 0;
+    }
+    #pl-send:hover { transform: scale(1.05); box-shadow: 0 4px 16px rgba(139,92,246,.4); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .tier-grid { grid-template-columns: 1fr 1fr; }
+      .tech-grid { grid-template-columns: 1fr 1fr; }
+      .ben-grid  { grid-template-columns: 1fr 1fr; }
+      .hero-split { grid-template-columns: 1fr; gap: 40px; }
+      .hero-visual { display: none; }
+    }
+    @media (max-width: 900px) {
+      .nl { display: none; } .lang-btn { display: none; } .hbg { display: flex; }
+      .form-split { grid-template-columns: 1fr; gap: 40px; }
+      .hiw-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hiw-grid::before { display: none; }
+    }
+    @media (max-width: 600px) {
+      .tier-grid { grid-template-columns: 1fr; }
+      .ben-grid  { grid-template-columns: 1fr; }
+      .tech-grid { grid-template-columns: 1fr 1fr; }
+      .form-row  { grid-template-columns: 1fr; }
+      .hero-acts { flex-direction: column; align-items: flex-start; }
+      #pl-panel  { width: calc(100vw - 40px); }
+      #pl-widget { bottom: 20px; right: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<div class="noise-overlay" aria-hidden="true"></div>
+<div class="orb o1" aria-hidden="true"></div>
+<div class="orb o2" aria-hidden="true"></div>
+<div class="orb o3" aria-hidden="true"></div>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <div class="ni">
+    <a href="/" class="nb" aria-label="BrainSAIT Home">
+      <div class="nlogo" aria-hidden="true">B</div>
+      <span class="nn">BRAIN<em>SAIT</em></span>
+    </a>
+    <div class="nl" role="menubar">
+      <a href="/#products"     role="menuitem">Platform</a>
+      <a href="/#solutions"    role="menuitem">Solutions</a>
+      <a href="/#how-it-works" role="menuitem">How It Works</a>
+      <a href="/#vision"       role="menuitem">Vision 2030</a>
+      <a href="/appstore"      role="menuitem" style="color:#d4a574;font-weight:600;">Store</a>
+      <a href="/partners"      role="menuitem" class="active" style="color:#a78bfa;font-weight:600;">Partners</a>
+      <a href="/staff"         role="menuitem">Team</a>
+    </div>
+    <div class="na">
+      <button class="lang-btn" id="langToggle" aria-label="Switch language / تبديل اللغة">العربية</button>
+      <a href="#apply" class="btn btn-vio btn-sm">Join Now</a>
+      <button class="hbg" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mob-menu" id="mobMenu" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="/#products">Platform</a>
+  <a href="/#solutions">Solutions</a>
+  <a href="/appstore">App Store</a>
+  <a href="/partners" style="color:#a78bfa;">Partners</a>
+  <a href="/staff">Team</a>
+  <div class="mob-sep"></div>
+  <a href="#apply" class="btn btn-vio">Apply as Partner →</a>
+</div>
+
+<!-- ═══ MAIN ═══ -->
+<main id="main" class="page">
+
+  <!-- ── HERO ── -->
+  <section class="hero" aria-label="Partner Program Hero">
+    <div class="c">
+      <div class="hero-split">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <div class="pulse" aria-hidden="true"></div>
+            <span class="en">PartnerLinc Agent · Always On</span>
+            <span class="ar">وكيل PartnerLinc · متاح دائمًا</span>
+          </div>
+          <h1 class="rev">
+            <span class="en">Build the Future<br>of Healthcare <span class="tg">Together.</span></span>
+            <span class="ar">نبني مستقبل الرعاية الصحية<br><span class="tg">معًا.</span></span>
+          </h1>
+          <p class="rev d1" style="max-width:560px; font-size:17px; margin-top:16px;">
+            <span class="en">The BrainSAIT Partner Program connects technology innovators, healthcare providers, and solution builders to an AI-native ecosystem — guided every step by <strong>PartnerLinc</strong>, your intelligent partnership advisor.</span>
+            <span class="ar">برنامج الشراكة في برينسايت يربط مبتكري التكنولوجيا ومزودي الرعاية الصحية وبناة الحلول بنظام بيئي مدعوم بالذكاء الاصطناعي — يرشدك في كل خطوة <strong>PartnerLinc</strong>، مستشار الشراكة الذكي.</span>
+          </p>
+          <div class="hero-acts rev d2">
+            <a href="#apply"       class="btn btn-vio btn-lg">
+              <span class="en">Apply as Partner →</span>
+              <span class="ar">تقدم كشريك ←</span>
+            </a>
+            <button onclick="openPartnerLinc()" class="btn btn-g btn-lg">
+              <span class="en">💬 Chat with PartnerLinc</span>
+              <span class="ar">💬 تحدث مع PartnerLinc</span>
+            </button>
+            <a href="#how-it-works" class="btn btn-g btn-lg">
+              <span class="en">Learn More ↓</span>
+              <span class="ar">اعرف أكثر ↓</span>
+            </a>
+          </div>
+          <div class="hero-meta rev d3">
+            <div class="hero-stat">
+              <span class="hs-val">40+</span>
+              <span class="hs-lbl">Active Partners</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hs-val">6</span>
+              <span class="hs-lbl">AI Agents</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hs-val">100%</span>
+              <span class="hs-lbl">Automated Onboard</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hs-val">24/7</span>
+              <span class="hs-lbl">PartnerLinc Support</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual rev d2">
+          <div class="hero-card">
+            <div class="pl-avatar">PL</div>
+            <div class="pl-name">PartnerLinc</div>
+            <div class="pl-role">AI Partnership Advisor · BrainSAIT</div>
+            <div class="pl-msg" id="hero-msg">
+              "Welcome! I'm your dedicated AI partnership advisor. I'll guide you through every step — from partnership type selection to legal agreements, technical integration, and project merging. Ready to explore?"
+            </div>
+            <div class="pl-status">
+              <div class="pl-dot"></div>
+              <span>Powered by Cloudflare AI · Workers · DO</span>
+            </div>
+            <div style="margin-top:18px; display:flex; gap:10px;">
+              <button onclick="openPartnerLinc()" class="btn btn-vio btn-sm" style="flex:1; justify-content:center;">Start Chat</button>
+              <a href="#apply" class="btn btn-g btn-sm" style="flex:1; justify-content:center;">Apply</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS STRIP ── -->
+  <div class="stats-strip" aria-label="Partnership metrics">
+    <div class="c">
+      <div class="stats-inner">
+        <div class="stat-item rev">
+          <div class="stat-val">99.9%</div>
+          <div class="stat-lbl">Uptime SLA</div>
+        </div>
+        <div class="stat-item rev d1">
+          <div class="stat-val">&lt;48h</div>
+          <div class="stat-lbl">Avg. Onboard Time</div>
+        </div>
+        <div class="stat-item rev d2">
+          <div class="stat-val">FHIR R4</div>
+          <div class="stat-lbl">Interoperable</div>
+        </div>
+        <div class="stat-item rev d3">
+          <div class="stat-val">SA+UAE</div>
+          <div class="stat-lbl">Regulatory Compliant</div>
+        </div>
+        <div class="stat-item rev d4">
+          <div class="stat-val">AI-First</div>
+          <div class="stat-lbl">Integration Layer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PARTNER TIERS ── -->
+  <section id="tiers" aria-labelledby="tiers-h">
+    <div class="c">
+      <div class="sec-head rev">
+        <span class="stag">Partnership Types</span>
+        <h2 id="tiers-h">
+          <span class="en">Find Your <span class="tg">Partnership Lane</span></span>
+          <span class="ar">اختر <span class="tg">نوع شراكتك</span></span>
+        </h2>
+        <p class="ssub en">Four distinct partnership tracks, each with tailored resources, API access levels, revenue models, and dedicated PartnerLinc onboarding paths.</p>
+        <p class="ssub ar">أربعة مسارات شراكة مميزة، كل منها مع موارد مخصصة، ومستويات وصول API، ونماذج إيرادات، ومسارات إعداد PartnerLinc المخصصة.</p>
+      </div>
+      <div class="tier-grid">
+        <div class="tier-card tech rev">
+          <div class="tier-icon" aria-hidden="true">⚙️</div>
+          <div class="tier-title">
+            <span class="en">Technology Partner</span>
+            <span class="ar">شريك تقني</span>
+          </div>
+          <div class="tier-desc en">Integrate your software stack with BrainSAIT APIs. Build FHIR-native connectors, NPHIES adapters, or AI model integrations.</div>
+          <div class="tier-desc ar">ادمج مجموعة برامجك مع واجهات برمجة BrainSAIT. قم ببناء موصلات FHIR الأصلية، ومحولات NPHIES، أو تكاملات نموذج الذكاء الاصطناعي.</div>
+          <span class="tier-badge">API Access</span>
+        </div>
+        <div class="tier-card health rev d1">
+          <div class="tier-icon" aria-hidden="true">🏥</div>
+          <div class="tier-title">
+            <span class="en">Healthcare Provider</span>
+            <span class="ar">مزود رعاية صحية</span>
+          </div>
+          <div class="tier-desc en">Hospitals, clinics, and diagnostic centers joining the network. Get NPHIES-compliant claims automation and AI clinical decision support.</div>
+          <div class="tier-desc ar">مستشفيات وعيادات ومراكز تشخيصية تنضم إلى الشبكة. احصل على أتمتة المطالبات المتوافقة مع NPHIES ودعم القرار السريري بالذكاء الاصطناعي.</div>
+          <span class="tier-badge">Clinical AI</span>
+        </div>
+        <div class="tier-card dist rev d2">
+          <div class="tier-icon" aria-hidden="true">🌐</div>
+          <div class="tier-title">
+            <span class="en">Distribution Partner</span>
+            <span class="ar">شريك توزيع</span>
+          </div>
+          <div class="tier-desc en">Resell and distribute BrainSAIT solutions in your market. Revenue sharing, co-marketing support, and white-labeling options.</div>
+          <div class="tier-desc ar">أعد بيع وتوزيع حلول BrainSAIT في سوقك. مشاركة الإيرادات ودعم التسويق المشترك وخيارات العلامة البيضاء.</div>
+          <span class="tier-badge">Revenue Share</span>
+        </div>
+        <div class="tier-card integ rev d3">
+          <div class="tier-icon" aria-hidden="true">🔗</div>
+          <div class="tier-title">
+            <span class="en">Integration Partner</span>
+            <span class="ar">شريك تكامل</span>
+          </div>
+          <div class="tier-desc en">Build certified integrations between your platform and BrainSAIT's agent ecosystem. Published on the BrainSAIT App Store.</div>
+          <div class="tier-desc ar">قم ببناء تكاملات معتمدة بين منصتك ونظام وكيل BrainSAIT. منشور على متجر تطبيقات BrainSAIT.</div>
+          <span class="tier-badge">Marketplace</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section id="how-it-works" class="benefits-bg" aria-labelledby="hiw-h">
+    <div class="c">
+      <div class="sec-head rev">
+        <span class="stag">Process</span>
+        <h2 id="hiw-h">
+          <span class="en">AI-Automated <span class="tg-teal">Onboarding</span></span>
+          <span class="ar">الإعداد <span class="tg-teal">الآلي بالذكاء الاصطناعي</span></span>
+        </h2>
+        <p class="ssub en">PartnerLinc guides you through a 3-step journey from interest to active partnership — fully automated with Cloudflare Workers and Durable Objects.</p>
+        <p class="ssub ar">يرشدك PartnerLinc عبر رحلة من 3 خطوات من الاهتمام إلى الشراكة الفعلية — بالكامل آليًا مع Cloudflare Workers وDurable Objects.</p>
+      </div>
+      <div class="hiw-grid">
+        <div class="hiw-step rev">
+          <div class="hiw-num">1</div>
+          <div class="hiw-title">
+            <span class="en">Chat &amp; Qualify</span>
+            <span class="ar">تحدث وتأهل</span>
+          </div>
+          <p class="hiw-desc en">Engage PartnerLinc — our AI agent asks smart qualifying questions, understands your business model, identifies the right partnership tier, and starts your application. All via natural conversation.</p>
+          <p class="hiw-desc ar">تفاعل مع PartnerLinc — يطرح وكيلنا الذكي أسئلة تأهيلية ذكية، ويفهم نموذج عملك، ويحدد مستوى الشراكة المناسب، ويبدأ طلبك. كل ذلك من خلال محادثة طبيعية.</p>
+        </div>
+        <div class="hiw-step rev d1">
+          <div class="hiw-num">2</div>
+          <div class="hiw-title">
+            <span class="en">AI Review &amp; Match</span>
+            <span class="ar">مراجعة ومطابقة AI</span>
+          </div>
+          <p class="hiw-desc en">Cloudflare Workers process your application in real time. AI evaluates technical fit, generates a custom integration roadmap, drafts partnership agreements, and routes legal queries to BrainSAIT's compliance framework.</p>
+          <p class="hiw-desc ar">تعالج Cloudflare Workers طلبك في الوقت الفعلي. يقيّم الذكاء الاصطناعي الملاءمة التقنية، ويولد خارطة طريق تكامل مخصصة، ويصيغ اتفاقيات الشراكة، ويوجه الاستفسارات القانونية إلى إطار الامتثال في BrainSAIT.</p>
+        </div>
+        <div class="hiw-step rev d2">
+          <div class="hiw-num">3</div>
+          <div class="hiw-title">
+            <span class="en">Merge &amp; Launch</span>
+            <span class="ar">الدمج والإطلاق</span>
+          </div>
+          <p class="hiw-desc en">Automated project merging via GitHub APIs and Cloudflare Durable Objects sync. Your integration goes live with full monitoring, shared AI gateway access, and a dedicated partner dashboard.</p>
+          <p class="hiw-desc ar">دمج المشاريع آليًا عبر واجهات برمجة GitHub ومزامنة Cloudflare Durable Objects. يصبح تكاملك مباشرًا مع مراقبة كاملة، والوصول المشترك إلى بوابة AI، ولوحة تحكم شريك مخصصة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BENEFITS ── -->
+  <section id="benefits" aria-labelledby="ben-h">
+    <div class="c">
+      <div class="sec-head rev">
+        <span class="stag">Partner Resources</span>
+        <h2 id="ben-h">
+          <span class="en">Everything You Need to <span class="tg">Build &amp; Grow</span></span>
+          <span class="ar">كل ما تحتاجه <span class="tg">للبناء والنمو</span></span>
+        </h2>
+        <p class="ssub en">Partners gain access to BrainSAIT's complete technical, legal, and commercial resources — managed through one intelligent interface.</p>
+        <p class="ssub ar">يحصل الشركاء على وصول كامل إلى الموارد التقنية والقانونية والتجارية لـ BrainSAIT — يُدار عبر واجهة ذكية واحدة.</p>
+      </div>
+      <div class="ben-grid">
+        <div class="ben-card rev">
+          <span class="ben-icon" aria-hidden="true">🤖</span>
+          <div class="ben-title">AI Gateway Access</div>
+          <p class="ben-desc">Direct access to Cloudflare AI Gateway with rate-limited API keys, model routing, and caching. Use BrainSAIT-tuned models for healthcare NLP, coding, and compliance checks.</p>
+          <div class="ben-tags">
+            <span class="tag">CF AI Gateway</span>
+            <span class="tag">LLM Routing</span>
+            <span class="tag">Healthcare Models</span>
+          </div>
+        </div>
+        <div class="ben-card rev d1">
+          <span class="ben-icon" aria-hidden="true">⚡</span>
+          <div class="ben-title">Cloudflare Workers Integration</div>
+          <p class="ben-desc">Serverless edge compute for real-time FHIR data processing, NPHIES claim validation, and event-driven automation. Zero cold starts, global PoPs, sub-10ms latency.</p>
+          <div class="ben-tags">
+            <span class="tag">Workers</span>
+            <span class="tag">Durable Objects</span>
+            <span class="tag">R2 Storage</span>
+          </div>
+        </div>
+        <div class="ben-card rev d2">
+          <span class="ben-icon" aria-hidden="true">🔐</span>
+          <div class="ben-title">Legal Framework &amp; NDA</div>
+          <p class="ben-desc">AI-generated, BrainSAIT-standard partnership agreements, NDAs, and data processing agreements pre-populated and ready for e-signature. PDPL and GDPR compliant.</p>
+          <div class="ben-tags">
+            <span class="tag">PDPL</span>
+            <span class="tag">GDPR</span>
+            <span class="tag">e-Signature</span>
+          </div>
+        </div>
+        <div class="ben-card rev d3">
+          <span class="ben-icon" aria-hidden="true">📊</span>
+          <div class="ben-title">Partner Dashboard</div>
+          <p class="ben-desc">Real-time analytics on API usage, revenue share, integration health, and PartnerLinc conversation logs. Single pane of glass for your entire BrainSAIT partnership.</p>
+          <div class="ben-tags">
+            <span class="tag">Analytics</span>
+            <span class="tag">Revenue Tracking</span>
+            <span class="tag">Health Monitoring</span>
+          </div>
+        </div>
+        <div class="ben-card rev d4">
+          <span class="ben-icon" aria-hidden="true">🧬</span>
+          <div class="ben-title">FHIR R4 &amp; NPHIES SDKs</div>
+          <p class="ben-desc">Battle-tested open-source SDKs for FHIR R4 resource handling, NPHIES claim submission, and BrainSAIT agent orchestration. Available in Python, JS, and Go.</p>
+          <div class="ben-tags">
+            <span class="tag">FHIR R4</span>
+            <span class="tag">NPHIES</span>
+            <span class="tag">Python · JS · Go</span>
+          </div>
+        </div>
+        <div class="ben-card rev d4">
+          <span class="ben-icon" aria-hidden="true">🎓</span>
+          <div class="ben-title">Training &amp; Certification</div>
+          <p class="ben-desc">Access to BrainSAIT Academy — structured learning paths, NPHIES certification course, AI agent development guides, and a community of 500+ healthcare tech practitioners.</p>
+          <div class="ben-tags">
+            <span class="tag">Academy</span>
+            <span class="tag">NPHIES Cert</span>
+            <span class="tag">Community</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TECH STACK ── -->
+  <section class="tech-bg" aria-labelledby="tech-h">
+    <div class="c">
+      <div class="sec-head rev">
+        <span class="stag">Infrastructure</span>
+        <h2 id="tech-h">
+          <span class="en">Powered by <span class="tg-teal">Best-in-Class</span> Infrastructure</span>
+          <span class="ar">مدعوم بـ <span class="tg-teal">بنية تحتية</span> متطورة</span>
+        </h2>
+        <p class="ssub en">PartnerLinc and the entire integration layer run on Cloudflare's global network — ensuring enterprise-grade reliability, security, and performance.</p>
+        <p class="ssub ar">يعمل PartnerLinc وطبقة التكامل بأكملها على شبكة Cloudflare العالمية — لضمان موثوقية وأمن وأداء على مستوى المؤسسة.</p>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-card rev">
+          <span class="tech-logo" aria-hidden="true">🔥</span>
+          <div class="tech-name">Cloudflare Workers</div>
+          <p class="tech-desc">Edge-first serverless compute for real-time partner application processing and API orchestration.</p>
+          <div class="tech-status">Active</div>
+        </div>
+        <div class="tech-card rev d1">
+          <span class="tech-logo" aria-hidden="true">💾</span>
+          <div class="tech-name">Durable Objects</div>
+          <p class="tech-desc">Stateful edge sessions for PartnerLinc conversations, long-running integrations, and partner state sync.</p>
+          <div class="tech-status">Active</div>
+        </div>
+        <div class="tech-card rev d2">
+          <span class="tech-logo" aria-hidden="true">🧠</span>
+          <div class="tech-name">AI Gateway</div>
+          <p class="tech-desc">Unified AI model access with caching, rate limiting, observability, and cost management across LLM providers.</p>
+          <div class="tech-status">Active</div>
+        </div>
+        <div class="tech-card rev d3">
+          <span class="tech-logo" aria-hidden="true">🌍</span>
+          <div class="tech-name">D1 + R2 Storage</div>
+          <p class="tech-desc">Edge-native SQL database and object storage for partner data, documents, and integration artifacts.</p>
+          <div class="tech-status">Active</div>
+        </div>
+      </div>
+      <!-- Architecture diagram -->
+      <div class="rev d2" style="margin-top:48px; background:var(--g1); border:1px solid var(--gb); border-radius:var(--r); padding:32px; font-family:var(--fm); font-size:13px; color:var(--textm); overflow-x:auto;">
+        <div style="color:var(--gold); margin-bottom:16px; font-family:var(--fd); font-weight:700; font-size:14px;">// PartnerLinc Architecture Flow</div>
+        <pre style="line-height:1.8; color:var(--textd);">Partner → [CF Pages /partners]
+    → PartnerLinc Chat (Durable Object session)
+        → CF AI Gateway → LLM (Llama 3 / Claude / GPT-4)
+            → PartnerLinc Knowledge Base (R2)
+            → BrainSAIT API (Workers)
+                → Partner DB (D1)
+                → GitHub API → Project Merge (auto PR)
+                → Legal Docs Generator (Workers KV)
+                → Dashboard (CF Analytics)</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PARTNER APPLICATION ── -->
+  <section id="apply" class="form-bg" aria-labelledby="apply-h">
+    <div class="c">
+      <div class="form-split">
+        <div class="form-info rev">
+          <span class="stag">Join the Network</span>
+          <h2 id="apply-h">
+            <span class="en">Start Your <span class="tg-vio">Partnership Journey</span></span>
+            <span class="ar">ابدأ <span class="tg-vio">رحلة شراكتك</span></span>
+          </h2>
+          <p class="en" style="margin-bottom:28px;">Fill out the form below or let PartnerLinc guide you through the application interactively. Our AI processes applications within 24–48 hours.</p>
+          <p class="ar" style="margin-bottom:28px;">املأ النموذج أدناه أو دع PartnerLinc يرشدك خلال التطبيق بشكل تفاعلي. يعالج ذكاؤنا الاصطناعي الطلبات في غضون 24-48 ساعة.</p>
+          <ul class="form-perks">
+            <li>
+              <div class="perk-icon">✅</div>
+              <div>
+                <strong>Instant AI screening</strong><br>
+                <span style="font-size:13px;color:var(--textm);">PartnerLinc pre-qualifies your application using BrainSAIT fit criteria and sends a match score within seconds.</span>
+              </div>
+            </li>
+            <li>
+              <div class="perk-icon">📝</div>
+              <div>
+                <strong>Auto-generated agreements</strong><br>
+                <span style="font-size:13px;color:var(--textm);">Partnership agreements, NDAs, and DPAs are drafted automatically based on your partnership type and jurisdiction.</span>
+              </div>
+            </li>
+            <li>
+              <div class="perk-icon">🔗</div>
+              <div>
+                <strong>Automated project merging</strong><br>
+                <span style="font-size:13px;color:var(--textm);">For technology partners, Cloudflare Workers automatically create GitHub integration PRs and set up CI/CD pipelines.</span>
+              </div>
+            </li>
+            <li>
+              <div class="perk-icon">🎯</div>
+              <div>
+                <strong>Dedicated integration engineer</strong><br>
+                <span style="font-size:13px;color:var(--textm);">Every partner gets access to a BrainSAIT integration engineer for the first 30 days of onboarding.</span>
+              </div>
+            </li>
+          </ul>
+          <div style="margin-top:32px;">
+            <button onclick="openPartnerLinc()" class="btn btn-vio btn-lg">
+              <span>💬 Apply via PartnerLinc Chat</span>
+            </button>
+          </div>
+        </div>
+        <div class="rev d1">
+          <div class="form-card">
+            <span class="stag" style="margin-bottom:20px;">Partner Application</span>
+            <form id="partnerForm" novalidate>
+              <div class="form-row">
+                <div class="field">
+                  <label for="f-name">First Name *</label>
+                  <input type="text" id="f-name" name="firstName" placeholder="Ahmed" required autocomplete="given-name">
+                </div>
+                <div class="field">
+                  <label for="f-lname">Last Name *</label>
+                  <input type="text" id="f-lname" name="lastName" placeholder="Al-Rashid" required autocomplete="family-name">
+                </div>
+              </div>
+              <div class="field">
+                <label for="f-email">Work Email *</label>
+                <input type="email" id="f-email" name="email" placeholder="ahmed@company.com" required autocomplete="email">
+              </div>
+              <div class="field">
+                <label for="f-org">Organization *</label>
+                <input type="text" id="f-org" name="organization" placeholder="Company / Hospital / Startup" required>
+              </div>
+              <div class="form-row">
+                <div class="field">
+                  <label for="f-country">Country *</label>
+                  <select id="f-country" name="country" required>
+                    <option value="">Select country</option>
+                    <option value="SA">Saudi Arabia 🇸🇦</option>
+                    <option value="AE">UAE 🇦🇪</option>
+                    <option value="QA">Qatar 🇶🇦</option>
+                    <option value="BH">Bahrain 🇧🇭</option>
+                    <option value="KW">Kuwait 🇰🇼</option>
+                    <option value="OM">Oman 🇴🇲</option>
+                    <option value="JO">Jordan 🇯🇴</option>
+                    <option value="EG">Egypt 🇪🇬</option>
+                    <option value="OTHER">Other</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="f-type">Partnership Type *</label>
+                  <select id="f-type" name="partnerType" required>
+                    <option value="">Select type</option>
+                    <option value="tech">Technology Partner</option>
+                    <option value="health">Healthcare Provider</option>
+                    <option value="dist">Distribution Partner</option>
+                    <option value="integ">Integration Partner</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field">
+                <label for="f-desc">Tell us about your partnership vision *</label>
+                <textarea id="f-desc" name="description" placeholder="Describe what you'd like to build or achieve through a BrainSAIT partnership..." required></textarea>
+              </div>
+              <button type="submit" class="submit-btn" id="submitBtn">
+                Submit Partnership Application →
+              </button>
+              <p style="font-size:12px; color:var(--textm); margin-top:14px; text-align:center;">
+                By submitting, you agree to our <a href="/privacy-policy.html" style="color:var(--gold);">Privacy Policy</a> and <a href="/terms-of-use.html" style="color:var(--gold);">Terms</a>. Application processed by PartnerLinc AI within 24–48h.
+              </p>
+            </form>
+            <div id="form-success" style="display:none; text-align:center; padding:32px 0;">
+              <div style="font-size:48px; margin-bottom:16px;">🎉</div>
+              <h3 style="margin-bottom:12px;">Application Received!</h3>
+              <p style="margin-bottom:20px; color:var(--textd);">PartnerLinc has processed your application. Check your email for next steps — typically within 24 hours.</p>
+              <button onclick="openPartnerLinc()" class="btn btn-vio">Chat with PartnerLinc →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-sec" aria-labelledby="cta-h">
+    <div class="c">
+      <div class="rev">
+        <span class="stag">Ready to Start?</span>
+        <h2 id="cta-h">
+          <span class="en">Your Partnership Starts with a <span class="tg">Conversation</span></span>
+          <span class="ar">شراكتك تبدأ بـ <span class="tg">محادثة</span></span>
+        </h2>
+        <p class="ssub en" style="margin: 0 auto 16px;">PartnerLinc is available 24/7 to answer questions, guide your application, handle legal queries, and connect you with the right BrainSAIT team member.</p>
+        <p class="ssub ar" style="margin: 0 auto 16px;">PartnerLinc متاح على مدار الساعة طوال أيام الأسبوع للإجابة على الأسئلة وتوجيه طلبك والتعامل مع الاستفسارات القانونية وربطك بعضو الفريق المناسب في BrainSAIT.</p>
+        <div class="cta-acts">
+          <button onclick="openPartnerLinc()" class="btn btn-vio btn-lg">💬 Open PartnerLinc</button>
+          <a href="#apply" class="btn btn-p btn-lg">Apply Now →</a>
+          <a href="mailto:partners@brainsait.org" class="btn btn-g btn-lg">Email Partners Team</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="c">
+    <div class="f-bottom">
+      <div class="f-copy">
+        <a href="/" style="text-decoration:none; color:var(--textm); font-weight:700;">BRAIN<span style="color:var(--gold);">SAIT</span></a>
+        &nbsp;·&nbsp; © 2024 BrainSAIT LTD. All rights reserved.
+      </div>
+      <div class="f-links">
+        <a href="/">Home</a>
+        <a href="/appstore">App Store</a>
+        <a href="/partners">Partners</a>
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms-of-use.html">Terms</a>
+        <a href="mailto:partners@brainsait.org">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ PARTNERLINC CHAT WIDGET ═══ -->
+<div id="pl-widget" role="complementary" aria-label="PartnerLinc AI Chat">
+  <div id="pl-panel" role="dialog" aria-modal="true" aria-label="PartnerLinc Chat">
+    <div class="pl-header">
+      <div class="pl-av" aria-hidden="true">PL</div>
+      <div class="pl-hinfo">
+        <div class="pl-hname">PartnerLinc</div>
+        <div class="pl-hstatus">AI Partnership Advisor · Online</div>
+      </div>
+      <button id="pl-close" aria-label="Close PartnerLinc chat">✕</button>
+    </div>
+    <div id="pl-msgs" aria-live="polite" aria-label="Chat messages">
+      <!-- Messages rendered by JS -->
+    </div>
+    <div class="pl-quick" id="pl-quick" aria-label="Quick replies">
+      <button class="pl-quick-btn" data-msg="What partnership types are available?">Partnership types?</button>
+      <button class="pl-quick-btn" data-msg="How do I apply?">How to apply?</button>
+      <button class="pl-quick-btn" data-msg="What are the legal requirements?">Legal requirements?</button>
+      <button class="pl-quick-btn" data-msg="Tell me about API access">API access?</button>
+    </div>
+    <div class="pl-input-row">
+      <input type="text" id="pl-input" placeholder="Ask PartnerLinc anything..." aria-label="Message input" maxlength="500" autocomplete="off">
+      <button id="pl-send" aria-label="Send message">➤</button>
+    </div>
+  </div>
+  <button id="pl-bubble" aria-label="Open PartnerLinc AI chat" aria-expanded="false">
+    🤝
+    <span class="pl-badge" aria-hidden="true">AI</span>
+  </button>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+//   BRAINSAIT PARTNERS — INTERACTIVE LOGIC
+//   PartnerLinc AI Agent · Cloudflare-Powered
+// ═══════════════════════════════════════════════════════
+
+// ─── Navbar Scroll ───
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+// ─── Scroll Reveal ───
+const revEls = document.querySelectorAll('.rev');
+const revObs = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); revObs.unobserve(e.target); } }),
+  { threshold: 0.08, rootMargin: '-20px 0px' }
+);
+revEls.forEach(el => revObs.observe(el));
+
+// ─── Mobile Menu ───
+const toggle = document.getElementById('menuToggle');
+const menu   = document.getElementById('mobMenu');
+function closeMenu() {
+  menu.classList.remove('open');
+  menu.setAttribute('aria-hidden', 'true');
+  toggle.classList.remove('open');
+  toggle.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+toggle.addEventListener('click', () => {
+  const open = menu.classList.toggle('open');
+  menu.setAttribute('aria-hidden', String(!open));
+  toggle.classList.toggle('open', open);
+  toggle.setAttribute('aria-expanded', String(open));
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && menu.classList.contains('open')) { closeMenu(); toggle.focus(); } });
+
+// ─── Language Toggle ───
+const langBtn = document.getElementById('langToggle');
+const htmlEl  = document.getElementById('html-root');
+let isArabic  = false;
+langBtn.addEventListener('click', () => {
+  isArabic = !isArabic;
+  htmlEl.setAttribute('lang', isArabic ? 'ar' : 'en');
+  htmlEl.setAttribute('dir',  isArabic ? 'rtl' : 'ltr');
+  langBtn.textContent = isArabic ? 'English' : 'العربية';
+});
+
+// ─── Partner Form ───
+const form        = document.getElementById('partnerForm');
+const formSuccess = document.getElementById('form-success');
+const submitBtn   = document.getElementById('submitBtn');
+
+function setFieldError(fieldName, message) {
+  const input = form.querySelector(`[name="${fieldName}"]`);
+  if (!input) return;
+  input.style.borderColor = '#f43f5e';
+  input.setAttribute('aria-invalid', 'true');
+  let errEl = input.parentElement.querySelector('.field-error');
+  if (!errEl) {
+    errEl = document.createElement('span');
+    errEl.className = 'field-error';
+    errEl.style.cssText = 'display:block;color:#f43f5e;font-size:12px;margin-top:6px;';
+    input.parentElement.appendChild(errEl);
+  }
+  errEl.textContent = message;
+}
+
+function clearFieldErrors() {
+  form.querySelectorAll('[aria-invalid]').forEach(el => {
+    el.style.borderColor = '';
+    el.removeAttribute('aria-invalid');
+  });
+  form.querySelectorAll('.field-error').forEach(el => el.remove());
+  const globalErr = form.querySelector('.form-error');
+  if (globalErr) globalErr.remove();
+}
+
+function showFormError(message) {
+  let errEl = form.querySelector('.form-error');
+  if (!errEl) {
+    errEl = document.createElement('p');
+    errEl.className = 'form-error';
+    errEl.setAttribute('role', 'alert');
+    errEl.setAttribute('aria-atomic', 'true');
+    errEl.style.cssText = 'color:#f43f5e;font-size:13px;margin-top:12px;text-align:center;padding:10px;background:rgba(244,63,94,0.08);border-radius:8px;border:1px solid rgba(244,63,94,0.2);';
+    form.appendChild(errEl);
+  }
+  errEl.textContent = message;
+}
+
+// Reset field highlight on user input/change
+function clearFieldErrorState(el) {
+  el.style.borderColor = '';
+  el.removeAttribute('aria-invalid');
+  const errEl = el.parentElement.querySelector('.field-error');
+  if (errEl) errEl.remove();
+}
+
+form.querySelectorAll('input, select, textarea').forEach(el => {
+  el.addEventListener('input', () => {
+    clearFieldErrorState(el);
+  });
+  el.addEventListener('change', () => {
+    clearFieldErrorState(el);
+  });
+});
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  clearFieldErrors();
+
+  const data = Object.fromEntries(new FormData(form));
+  const fieldLabels = {
+    firstName: 'First name', lastName: 'Last name', email: 'Work email',
+    organization: 'Organization', country: 'Country', partnerType: 'Partnership type',
+    description: 'Partnership vision'
+  };
+
+  // Per-field validation with descriptive messages
+  let firstInvalid = null;
+  for (const [key, label] of Object.entries(fieldLabels)) {
+    const val = typeof data[key] === 'string' ? data[key].trim() : '';
+    if (!val) {
+      setFieldError(key, `${label} is required`);
+      if (!firstInvalid) firstInvalid = form.querySelector(`[name="${key}"]`);
+    } else if (key === 'email' && !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/.test(val)) {
+      setFieldError(key, 'Please enter a valid email address');
+      if (!firstInvalid) firstInvalid = form.querySelector('[name="email"]');
+    }
+  }
+  if (firstInvalid) { firstInvalid.focus(); return; }
+
+  submitBtn.textContent = 'Processing with PartnerLinc...';
+  submitBtn.disabled = true;
+
+  try {
+    const res = await fetch('https://partners-api.brainsait.org/apply', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error || `Server error ${res.status}`);
+    }
+  } catch (err) {
+    submitBtn.textContent = 'Submit Partnership Application →';
+    submitBtn.disabled = false;
+    const isNetwork = err instanceof TypeError;
+    const msg = isNetwork
+      ? 'Unable to connect. Please check your internet connection and try again.'
+      : (err instanceof Error ? err.message : 'Submission failed. Please try again.');
+    showFormError(msg);
+    return;
+  }
+
+  form.style.display = 'none';
+  formSuccess.style.display = 'block';
+
+  // Trigger PartnerLinc with pre-populated context
+  setTimeout(() => {
+    plState.context = `Partner application submitted: ${data.firstName} ${data.lastName} from ${data.organization} (${data.partnerType} partner from ${data.country})`;
+    plState.partnerName = data.firstName;
+    openPartnerLinc();
+    addBotMsg(`Hi ${data.firstName}! 🎉 I've received your partnership application for **${data.organization}** as a **${data.partnerType}** partner. I'm processing it now. Here's what happens next:\n\n1. You'll receive a confirmation email within 15 minutes\n2. Our team will review your application (24–48h)\n3. I'll guide you through the technical integration steps\n\nIs there anything you'd like to know about the process while we wait?`);
+  }, 1500);
+});
+
+// ─── PartnerLinc Knowledge Base ───
+const PL_KB = {
+  greetings: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'مرحبا', 'أهلا', 'السلام'],
+  partnership_types: ['partnership type', 'partner type', 'types of partner', 'what kind', 'which tier', 'tier', 'category'],
+  apply: ['apply', 'application', 'how to join', 'sign up', 'register', 'onboard', 'get started', 'start'],
+  legal: ['legal', 'contract', 'agreement', 'nda', 'terms', 'compliance', 'gdpr', 'pdpl', 'privacy', 'data protection', 'مسائل قانونية', 'عقد', 'اتفاقية'],
+  api: ['api', 'api access', 'integration', 'technical', 'sdk', 'fhir', 'nphies', 'endpoint', 'webhook'],
+  benefits: ['benefit', 'what do i get', 'resources', 'offer', 'what\'s included', 'features'],
+  cloudflare: ['cloudflare', 'workers', 'durable objects', 'cf', 'infrastructure', 'edge'],
+  pricing: ['price', 'cost', 'pricing', 'fee', 'revenue share', 'commission', 'how much'],
+  timeline: ['timeline', 'how long', 'when', 'duration', 'time', 'process'],
+  healthcare: ['healthcare', 'hospital', 'clinic', 'clinical', 'medical', 'health provider', 'nphies'],
+  vision2030: ['vision 2030', 'saudi', 'ksa', 'mena', 'riyadh', 'vat'],
+  support: ['support', 'help', 'contact', 'engineer', 'technical help', 'question'],
+  brainsait: ['brainsait', 'brain sait', 'company', 'about', 'platform', 'product']
+};
+
+const PL_RESPONSES = {
+  greetings: (name) => `Hello${name ? ' ' + name : ''}! 👋 I'm **PartnerLinc**, BrainSAIT's intelligent partnership advisor — built on Cloudflare Workers + AI Gateway.\n\nI'm here to help you:\n• Explore the right partnership type for your business\n• Guide you through the application process\n• Answer legal and compliance questions\n• Set up technical integrations\n• Connect you with the BrainSAIT team\n\nWhat would you like to explore first?`,
+
+  partnership_types: () => `BrainSAIT offers **4 partnership tracks**:\n\n🔧 **Technology Partner** — Integrate your tech stack with BrainSAIT APIs, build FHIR connectors or NPHIES adapters\n\n🏥 **Healthcare Provider** — Hospitals, clinics & diagnostic centers using BrainSAIT for claims & clinical AI\n\n🌐 **Distribution Partner** — Resell BrainSAIT solutions in your market with revenue sharing + co-marketing\n\n🔗 **Integration Partner** — Build certified integrations published on the BrainSAIT App Store\n\nWhich sounds most relevant to you? I'll tailor the next steps accordingly.`,
+
+  apply: () => `The application process is fully automated and takes **under 48 hours**:\n\n**Step 1: Chat & Qualify** (You're doing it now! 🙌)\nI'll ask a few qualifying questions to understand your business and identify the best partnership tier.\n\n**Step 2: AI Review & Match**\nCloudflare Workers process your application. We evaluate technical fit, generate a custom integration roadmap, and draft agreements.\n\n**Step 3: Merge & Launch**\nFor tech partners, automated GitHub PRs and CI/CD setup. For all partners, full dashboard access and API keys.\n\nWant to start the formal application? I can pre-fill it for you based on our conversation, or you can use the form on this page.`,
+
+  legal: () => `Great question — legal clarity is essential for a strong partnership. Here's how BrainSAIT handles it:\n\n📄 **Partnership Agreement** — Standard mutual NDA + partnership terms, auto-generated based on your type and jurisdiction\n\n🛡️ **Data Processing Agreement (DPA)** — PDPL (Saudi Arabia) and GDPR compliant, covering all data flows through BrainSAIT systems\n\n⚖️ **IP & Code Ownership** — Clear delineation of intellectual property. Partner retains IP for their contributions; BrainSAIT platform IP remains with BrainSAIT\n\n🔏 **E-Signature Ready** — All documents are delivered digitally via DocuSign-compatible workflow\n\n**Saudi Arabia specifics:** We comply with SAMA cybersecurity framework, PDPL 2021, and MOH digital health regulations.\n\nDo you have a specific legal concern you'd like me to address?`,
+
+  api: () => `Here's what you get on the technical side:\n\n**🔑 API Access Tiers:**\n• Sandbox: Free, unlimited testing\n• Production: Rate-limited by partnership tier\n• Enterprise: Custom SLA, dedicated instances\n\n**📚 Available APIs:**\n• FHIR R4 Resource API\n• NPHIES Claim Submission & Adjudication\n• AI Agent Orchestration (MasterLINC)\n• Clinical Decision Support\n• Compliance & Audit Logs\n\n**🛠️ SDKs:** Python, JavaScript/TypeScript, Go\n\n**⚡ Cloudflare Integration:** Use CF Workers with your API keys for edge-side FHIR processing and real-time NPHIES validation\n\nWould you like sandbox credentials? I can start that process for you right now.`,
+
+  benefits: () => `As a BrainSAIT partner, you receive:\n\n✅ **AI Gateway access** — Cloudflare AI Gateway with healthcare-tuned models\n⚡ **Cloudflare Workers quota** — Edge compute for real-time processing\n📊 **Partner Dashboard** — Usage analytics, revenue tracking, health monitoring\n🧬 **FHIR R4 + NPHIES SDKs** — Battle-tested, open-source\n🎓 **BrainSAIT Academy** — Training, certification, community access\n📝 **Auto-generated legal docs** — NDA, DPA, partnership agreement\n🧑‍💻 **Dedicated integration engineer** — First 30 days of onboarding\n💰 **Revenue sharing** — For distribution partners (up to 30% margin)\n\nBenefits scale with your partnership tier. Want me to build a custom benefits breakdown for your specific use case?`,
+
+  cloudflare: () => `BrainSAIT's entire integration layer runs on **Cloudflare's global network**:\n\n🔥 **Workers** — Serverless edge compute for API orchestration, FHIR processing, real-time NPHIES validation\n\n💾 **Durable Objects** — Stateful sessions for PartnerLinc (like this conversation!), long-running integrations, partner state sync\n\n🧠 **AI Gateway** — Unified LLM access with caching, rate limiting, and observability. Routes to GPT-4, Claude, Llama 3, and BrainSAIT fine-tuned models\n\n🗄️ **D1 + R2** — Edge SQL database and object storage for partner data, docs, and integration artifacts\n\n📡 **200+ PoPs worldwide** — Including Middle East presence (Riyadh, Dubai, Bahrain)\n\nThis means **sub-10ms latency** for healthcare workflows within Saudi Arabia and the MENA region.`,
+
+  pricing: () => `BrainSAIT's partnership model is designed to be **zero upfront cost** with value-based alignment:\n\n💳 **Technology Partner:** Free to integrate. No licensing fees. Optional marketplace revenue share if you publish on BrainSAIT App Store\n\n🏥 **Healthcare Provider:** Per-claim or per-encounter SaaS pricing. Volume discounts for large networks\n\n🌐 **Distribution Partner:** 15–30% margin on net revenue generated. Co-marketing budget provided for qualifying partners\n\n🔗 **Integration Partner:** Free integration. Revenue share on App Store sales (70/30 partner/BrainSAIT split)\n\n📞 **Enterprise Custom Pricing:** Available for large health systems and national-scale deployments\n\nWould you like a specific pricing estimate based on your expected usage or patient volume?`,
+
+  timeline: () => `Here's the typical partnership journey timeline:\n\n**Day 1:** Application submitted → PartnerLinc AI screening (instant)\n**Day 1–2:** BrainSAIT team review + partnership tier confirmation\n**Day 2–3:** Agreements sent for e-signature (auto-generated)\n**Day 3–5:** API credentials provisioned, sandbox access granted\n**Week 1–2:** Technical integration with dedicated engineer support\n**Week 2–4:** Integration testing, compliance validation\n**Go-Live:** Production access, dashboard active, partner announcement\n\n**Fastest path:** Technology partners with standard API integrations can go live in as little as **72 hours**.\n\nNeed it faster? Tell me about your use case and I'll see what we can accelerate.`,
+
+  healthcare: () => `For **Healthcare Providers** joining BrainSAIT:\n\n🏥 **What you get:**\n• NPHIES-compliant automated claims submission\n• AI-powered clinical decision support (ClaimLINC + ClinicalLINC)\n• Real-time eligibility verification\n• Automated prior authorization\n• Revenue cycle analytics\n\n📋 **Requirements:**\n• Valid MOH / CCHI / HAAD facility license\n• NPHIES registration (we assist with this)\n• EMR system compatible with FHIR R4 (or we provide adapters)\n\n🔒 **Compliance:** Saudi PDPL, MOH digital health standards, SAMA cybersecurity framework, Vision 2030 health transformation alignment\n\n📈 **Outcomes:** Average 40% reduction in claim denials, 60% faster claims processing, 85%+ first-pass rate for NPHIES submissions.`,
+
+  vision2030: () => `BrainSAIT is deeply aligned with **Saudi Arabia's Vision 2030** health transformation agenda:\n\n🇸🇦 **National Transformation Program:** Fully NPHIES-compliant, supporting MOH's digital health roadmap\n\n🏗️ **Health Sector Transformation:** AI-native automation for the shift to value-based care\n\n📊 **Saudi Digital Government:** FHIR R4 interoperability ready for Saudi Health Digital Authority (SHDA) requirements\n\n🌍 **MENA Expansion:** Coverage of UAE (HAAD/DHA), Qatar, Bahrain, Kuwait regulations\n\n💡 **Innovation:** Aligned with NEOM healthcare ecosystem, King Salman Hospital digital transformation, and Saudi Aramco Health initiatives\n\nPartner with BrainSAIT means becoming part of the Vision 2030 healthcare transformation story.`,
+
+  support: () => `Need help? Here's how BrainSAIT supports partners:\n\n💬 **PartnerLinc (me!)** — 24/7 AI guidance, technical questions, legal queries, application support\n\n🧑‍💻 **Integration Engineer** — Dedicated for first 30 days of onboarding (all tiers)\n\n📚 **Documentation** — Full API docs, SDK guides, FHIR/NPHIES tutorials at docs.brainsait.org\n\n🎓 **BrainSAIT Academy** — Structured learning paths, certification courses\n\n📧 **Email:** partners@brainsait.org\n\n📞 **Priority Support:** Available for Enterprise and Distribution partners\n\n🌐 **Partner Community:** Slack workspace for BrainSAIT partners (invite after onboarding)\n\nWhat do you need help with right now?`,
+
+  brainsait: () => `**BrainSAIT** is an AI-native healthcare automation platform built for Saudi Arabia and the MENA region.\n\n🧠 **Core Platform:**\n• **ClaimLINC** — Automated NPHIES claims processing\n• **ClinicalLINC** — AI clinical decision support\n• **ComplianceLINC** — Regulatory compliance automation\n• **MasterLINC** — Agent orchestration layer\n\n🌍 **Coverage:** Saudi Arabia, UAE, Qatar, Bahrain, Kuwait\n\n📋 **Certifications:** NPHIES connected, FHIR R4 native, CCHI compliant\n\n🏗️ **Tech Stack:** Cloudflare Workers + DO + AI Gateway, Oracle Health adapters, FHIR R4 APIs\n\n👥 **Team:** Healthcare AI specialists, former MOH advisors, Saudi-based engineering team\n\nWant to know about a specific product or capability?`,
+
+  fallback: (query) => `I appreciate you asking about "${query}"! 🤔\n\nI'm PartnerLinc, specialized in BrainSAIT's partnership program. Let me connect you with the right resource:\n\n📧 For detailed queries: **partners@brainsait.org**\n📚 Technical docs: **docs.brainsait.org**\n📞 Schedule a call: Use the "Book Demo" button on brainsait.org\n\nOr I can help you with:\n• Partnership types & application process\n• Technical API & integration details\n• Legal requirements & compliance\n• Pricing & commercial terms\n• BrainSAIT platform capabilities\n\nWhat would you like to explore?`
+};
+
+// ─── PartnerLinc State & Engine ───
+const plState = {
+  open: false,
+  typing: false,
+  history: [],
+  context: '',
+  partnerName: '',
+  msgCount: 0
+};
+
+function matchIntent(msg) {
+  const m = msg.toLowerCase();
+  for (const [intent, keywords] of Object.entries(PL_KB)) {
+    if (keywords.some(kw => m.includes(kw))) return intent;
+  }
+  return null;
+}
+
+function getResponse(msg) {
+  const intent = matchIntent(msg);
+  if (!intent) return PL_RESPONSES.fallback(msg.slice(0, 40));
+  const fn = PL_RESPONSES[intent];
+  return fn ? fn(plState.partnerName) : PL_RESPONSES.fallback(msg.slice(0, 40));
+}
+
+function formatMsg(text) {
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\n/g, '<br>');
+}
+
+function getTime() {
+  return new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+}
+
+function addBotMsg(text, delay = 0) {
+  const msgs = document.getElementById('pl-msgs');
+  const typing = document.createElement('div');
+  typing.className = 'msg bot';
+  typing.innerHTML = `<div class="msg-bubble"><div class="typing-indicator"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div></div>`;
+  msgs.appendChild(typing);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  setTimeout(() => {
+    typing.remove();
+    const msg = document.createElement('div');
+    msg.className = 'msg bot';
+    msg.innerHTML = `<div class="msg-bubble">${formatMsg(text)}</div><div class="msg-meta">PartnerLinc · ${getTime()}</div>`;
+    msgs.appendChild(msg);
+    msgs.scrollTop = msgs.scrollHeight;
+    plState.msgCount++;
+    plState.typing = false;
+    updateQuickReplies();
+  }, Math.max(800, text.length * 8 + delay));
+}
+
+function addUserMsg(text) {
+  const msgs = document.getElementById('pl-msgs');
+  const msg = document.createElement('div');
+  msg.className = 'msg usr';
+  msg.innerHTML = `<div class="msg-bubble">${text.replace(/</g, '&lt;')}</div><div class="msg-meta">You · ${getTime()}</div>`;
+  msgs.appendChild(msg);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function updateQuickReplies() {
+  const quick = document.getElementById('pl-quick');
+  const suggestions = [
+    { label: 'Partnership types?', msg: 'What partnership types are available?' },
+    { label: 'How to apply?', msg: 'How do I apply?' },
+    { label: 'API access?', msg: 'Tell me about API access' },
+    { label: 'Legal requirements?', msg: 'What are the legal requirements?' },
+    { label: 'Pricing?', msg: 'What is the pricing?' },
+    { label: 'Timeline?', msg: 'What is the onboarding timeline?' },
+  ];
+  // Rotate suggestions to keep them fresh
+  const startIdx = plState.msgCount % suggestions.length;
+  const shown = [...suggestions.slice(startIdx, startIdx + 3), ...suggestions.slice(0, Math.max(0, 3 - (suggestions.length - startIdx)))];
+  quick.innerHTML = shown.map(s => `<button class="pl-quick-btn" data-msg="${s.msg}">${s.label}</button>`).join('');
+  quick.querySelectorAll('.pl-quick-btn').forEach(btn => {
+    btn.addEventListener('click', () => handleSend(btn.dataset.msg));
+  });
+}
+
+function handleSend(text) {
+  const t = (text || document.getElementById('pl-input').value).trim();
+  if (!t || plState.typing) return;
+  document.getElementById('pl-input').value = '';
+  addUserMsg(t);
+  plState.typing = true;
+  plState.history.push({ role: 'user', content: t });
+
+  const response = getResponse(t);
+  plState.history.push({ role: 'assistant', content: response });
+  addBotMsg(response);
+}
+
+function openPartnerLinc() {
+  const panel  = document.getElementById('pl-panel');
+  const bubble = document.getElementById('pl-bubble');
+  const msgs   = document.getElementById('pl-msgs');
+
+  if (!plState.open) {
+    panel.classList.add('open');
+    bubble.setAttribute('aria-expanded', 'true');
+    plState.open = true;
+
+    if (msgs.children.length === 0) {
+      // Welcome message
+      addBotMsg(PL_RESPONSES.greetings(plState.partnerName));
+    }
+    document.getElementById('pl-input').focus();
+  }
+}
+
+// ─── Widget Event Listeners ───
+document.getElementById('pl-bubble').addEventListener('click', () => {
+  const panel  = document.getElementById('pl-panel');
+  const bubble = document.getElementById('pl-bubble');
+  if (plState.open) {
+    panel.classList.remove('open');
+    bubble.setAttribute('aria-expanded', 'false');
+    plState.open = false;
+  } else {
+    openPartnerLinc();
+  }
+});
+
+document.getElementById('pl-close').addEventListener('click', () => {
+  document.getElementById('pl-panel').classList.remove('open');
+  document.getElementById('pl-bubble').setAttribute('aria-expanded', 'false');
+  plState.open = false;
+  document.getElementById('pl-bubble').focus();
+});
+
+document.getElementById('pl-send').addEventListener('click', () => handleSend());
+
+document.getElementById('pl-input').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); }
+});
+
+document.getElementById('pl-quick').querySelectorAll('.pl-quick-btn').forEach(btn => {
+  btn.addEventListener('click', () => handleSend(btn.dataset.msg));
+});
+
+// Trap focus inside chat panel
+document.getElementById('pl-panel').addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.getElementById('pl-close').click();
+  }
+});
+
+// ─── Hero Message Rotation ───
+const heroMsgs = [
+  '"Welcome! I\'m your dedicated AI partnership advisor. I\'ll guide you through every step — from partnership type selection to legal agreements, technical integration, and project merging. Ready to explore?"',
+  '"I can analyze your tech stack and automatically map the optimal BrainSAIT integration path. FHIR R4, NPHIES, or AI Gateway — I\'ve got you covered."',
+  '"Legal concerns? I\'m trained on PDPL, GDPR, Saudi healthcare regulations, and BrainSAIT\'s standard agreements. Ask me anything."',
+  '"Once approved, I coordinate automated project merging via Cloudflare Workers and GitHub APIs. Your integration can be live in under 72 hours."',
+];
+let heroIdx = 0;
+const heroInterval = setInterval(() => {
+  heroIdx = (heroIdx + 1) % heroMsgs.length;
+  const el = document.getElementById('hero-msg');
+  if (el) {
+    el.style.opacity = '0';
+    setTimeout(() => { el.textContent = heroMsgs[heroIdx]; el.style.opacity = '1'; }, 300);
+  } else {
+    clearInterval(heroInterval);
+  }
+}, 5000);
+document.getElementById('hero-msg').style.transition = 'opacity .3s ease';
+
+</script>
+</body>
+</html>

@@ -46,7 +46,6 @@ https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 /startup/* /incubator/startup/:splat 301
 /ai-dashboard /incubator/ai-dashboard 301
 /ai-dashboard/* /incubator/ai-dashboard/:splat 301
-/partner /partners.html 200
 /team-room /incubator/team-room 301
 /vibe-code /incubator/vibe-code 301
 /courses /incubator/courses 301
@@ -56,8 +55,8 @@ https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 /partners /partner 301
 /partners/ /partner 301
 
-# Staff directory
-/staff /staff.html 200
+# Staff directory - served natively by CF Pages from staff.html
+# /staff redirect not needed: CF Pages auto-routes staff.html → /staff
 
 # Careers page
 /careers /staff 302
