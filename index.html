@@ -570,6 +570,514 @@
     .clinic-title { margin-bottom: 8px; }
     .clinic-copy { color: var(--textd); font-size: 14px; margin-bottom: 20px; line-height: 1.6; }
 
+    /* ─── Route Hub ─── */
+    .route-panel {
+      background:
+        radial-gradient(circle at top right, rgba(14,165,233,.14), transparent 30%),
+        radial-gradient(circle at top left, rgba(212,165,116,.16), transparent 32%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border: 1px solid var(--gb);
+      border-radius: calc(var(--rx) + 8px);
+      padding: 36px;
+      box-shadow: var(--sh);
+      position: relative;
+      overflow: hidden;
+    }
+    .route-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, rgba(255,255,255,.05), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,.03), transparent 40%);
+      pointer-events: none;
+    }
+    .route-shell,
+    .route-panel > * { position: relative; z-index: 1; }
+    .route-shell {
+      display: grid;
+      gap: 28px;
+    }
+    .route-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .route-hero .sec-head {
+      margin-bottom: 0;
+      text-align: left;
+    }
+    [dir="rtl"] .route-hero .sec-head { text-align: right; }
+    .route-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .route-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: var(--rnd);
+      border: 1px solid var(--gb);
+      background: rgba(255,255,255,.04);
+      color: var(--textd);
+      font-size: 12px;
+      line-height: 1;
+    }
+    .route-pill strong {
+      font-size: 11px;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+    .route-summary {
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--gb);
+      border-radius: var(--r);
+      padding: 22px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .route-summary-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .route-summary-kicker::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 10px rgba(212,165,116,.45);
+    }
+    .route-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .route-summary-item {
+      padding: 16px 14px;
+      border-radius: var(--rs);
+      border: 1px solid var(--gb);
+      background: rgba(255,255,255,.03);
+    }
+    .route-summary-item strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 26px;
+      line-height: 1;
+      color: var(--text);
+      font-family: var(--fd);
+    }
+    .route-summary-item span {
+      display: block;
+      font-size: 11px;
+      line-height: 1.6;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--textm);
+    }
+    .route-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .route-groups {
+      display: grid;
+      gap: 28px;
+    }
+    .route-group {
+      display: grid;
+      gap: 16px;
+    }
+    .route-group-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 2px;
+    }
+    .route-group-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .route-group-label::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 10px rgba(212,165,116,.4);
+    }
+    .route-group-copy {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--textm);
+      max-width: 720px;
+    }
+    .route-group-count {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border-radius: var(--rnd);
+      border: 1px solid var(--gb);
+      color: var(--textd);
+      background: rgba(255,255,255,.04);
+      white-space: nowrap;
+    }
+    .route-grid-primary {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .route-grid-primary .route-card.featured {
+      grid-column: span 2;
+      min-height: 300px;
+    }
+    .route-card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-height: 154px;
+      padding: 18px;
+      border-radius: var(--r);
+      border: 1px solid var(--gb);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      text-decoration: none;
+      color: var(--text);
+      transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .route-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(255,255,255,.08), transparent 38%);
+      opacity: 0;
+      transition: opacity .25s ease;
+      pointer-events: none;
+    }
+    .route-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gbh);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      box-shadow: 0 14px 36px rgba(0,0,0,.35), 0 0 40px rgba(212,165,116,.06);
+    }
+    .route-card:hover::before { opacity: 1; }
+    .route-card.featured {
+      border-color: rgba(212,165,116,.36);
+      background:
+        radial-gradient(circle at top right, rgba(212,165,116,.18), transparent 32%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+    }
+    .route-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .route-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--gb);
+      flex-shrink: 0;
+    }
+    .route-card-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 5px 9px;
+      border-radius: var(--rnd);
+      border: 1px solid var(--gb);
+      color: var(--gold);
+      background: rgba(255,255,255,.04);
+      white-space: nowrap;
+    }
+    .route-card-kicker {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .route-card-title {
+      font-size: 19px;
+      line-height: 1.25;
+      color: var(--text);
+    }
+    .route-card-meta {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--textm);
+      margin-top: auto;
+    }
+    .route-card-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--textd);
+    }
+    .route-card:hover .route-card-arrow { color: var(--gold); }
+    .route-card-arrow span:last-child {
+      transition: transform .2s ease;
+    }
+    .route-card:hover .route-card-arrow span:last-child {
+      transform: translateX(4px);
+    }
+    .route-note {
+      margin-top: 4px;
+      padding: 16px 18px;
+      border-radius: var(--rs);
+      border: 1px solid var(--gb);
+      background: rgba(255,255,255,.035);
+      color: var(--textm);
+      font-size: 13px;
+      line-height: 1.7;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .route-note::before {
+      content: '↗';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(212,165,116,.12);
+      color: var(--gold);
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+
+    /* ─── AI WORKFLOWS + OPS SNAPSHOT ─── */
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .workflow-card,
+    .ops-panel {
+      background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
+      border: 1px solid var(--gb);
+      border-radius: var(--r);
+      position: relative;
+      overflow: hidden;
+      transition: all .35s cubic-bezier(.4,0,.2,1);
+    }
+    .workflow-card {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-height: 100%;
+    }
+    .workflow-card::before,
+    .ops-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212,165,116,.45), transparent);
+      opacity: .7;
+    }
+    .workflow-card:hover,
+    .ops-panel:hover {
+      border-color: var(--gbh);
+      background: var(--g2);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.4), 0 0 40px rgba(212,165,116,.06);
+    }
+    .workflow-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      background: var(--g2);
+      border: 1px solid var(--gb);
+    }
+    .workflow-title {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+    .workflow-copy {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--textd);
+      flex-grow: 1;
+    }
+    .workflow-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .workflow-foot {
+      padding-top: 14px;
+      border-top: 1px solid var(--gb);
+      font-size: 12px;
+      color: var(--textm);
+      line-height: 1.6;
+    }
+    .ops-board {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .ops-panel { padding: 28px; }
+    .ops-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .ops-kicker::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 10px rgba(212,165,116,.55);
+    }
+    .ops-copy {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--textd);
+      margin-bottom: 24px;
+    }
+    .ops-flow {
+      display: flex;
+      align-items: stretch;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .ops-node {
+      flex: 1 1 160px;
+      min-height: 108px;
+      padding: 18px 16px;
+      border-radius: var(--rs);
+      border: 1px solid var(--gb);
+      background: var(--g1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+    }
+    .ops-node strong {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.45;
+    }
+    .ops-node small {
+      font-size: 12px;
+      color: var(--textm);
+      line-height: 1.5;
+    }
+    .ops-arrow {
+      align-self: center;
+      font-size: 24px;
+      color: var(--gold);
+      opacity: .8;
+    }
+    .ops-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .ops-metric {
+      background: var(--g1);
+      border: 1px solid var(--gb);
+      border-radius: var(--rs);
+      padding: 18px 16px;
+    }
+    .ops-value {
+      font-size: clamp(26px, 3vw, 34px);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: 8px;
+      font-family: var(--fd);
+    }
+    .ops-label {
+      font-size: 11px;
+      color: var(--textm);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.25px;
+      line-height: 1.6;
+    }
+    .ops-stack {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .ops-stack-row {
+      display: grid;
+      grid-template-columns: 84px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 12px 14px;
+      border-radius: var(--rs);
+      border: 1px solid var(--gb);
+      background: var(--g1);
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--textd);
+    }
+    .ops-stack-row strong {
+      font-size: 11px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .ops-note {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--gb);
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--textm);
+    }
+
     /* ─── CTA ─── */
     .cta-sec { background: var(--deep); position: relative; overflow: hidden; }
     .cta-sec::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(212,165,116,.08), transparent 60%); }
@@ -599,6 +1107,10 @@
     /* ─── RESPONSIVE ─── */
     @media (max-width: 1024px) {
       .plat-grid   { grid-template-columns: 1fr 1fr; }
+      .route-hero { grid-template-columns: 1fr; }
+      .route-grid-primary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .workflow-grid { grid-template-columns: 1fr 1fr; }
+      .ops-board { grid-template-columns: 1fr; }
       .vision-grid { grid-template-columns: 1fr; gap: 40px; }
       .f-grid      { grid-template-columns: 1fr 1fr; }
     }
@@ -621,6 +1133,17 @@
       .hero-acts .btn { width: 100%; max-width: 300px; }
       .cta-acts  { flex-direction: column; align-items: center; }
       .cta-acts .btn { width: 100%; max-width: 300px; }
+      .route-panel { padding: 24px; }
+      .route-group-head { flex-direction: column; align-items: flex-start; }
+      .route-grid-primary { grid-template-columns: 1fr; }
+      .route-grid-primary .route-card.featured { grid-column: span 1; min-height: 241px; }
+      .route-summary-grid { grid-template-columns: 1fr; }
+      .route-note { flex-direction: column; }
+      .workflow-grid { grid-template-columns: 1fr; }
+      .ops-metrics { grid-template-columns: 1fr; }
+      .ops-flow { flex-direction: column; }
+      .ops-arrow { transform: rotate(90deg); }
+      .ops-stack-row { grid-template-columns: 1fr; gap: 6px; }
       .vs-grid   { grid-template-columns: 1fr 1fr; }
       h1         { letter-spacing: -1px; }
     }
@@ -650,17 +1173,18 @@
       <span class="nn">BRAIN<em>SAIT</em></span>
     </a>
     <div class="nl" role="menubar">
-      <a href="#products"     role="menuitem">Platform</a>
-      <a href="#solutions"    role="menuitem">Solutions</a>
-      <a href="#how-it-works" role="menuitem">How It Works</a>
-      <a href="#vision"       role="menuitem">Vision 2030</a>
+      <a href="/platform"      role="menuitem">Platform</a>
+      <a href="#solutions"     role="menuitem">Solutions</a>
+      <a href="#how-it-works"  role="menuitem">How It Works</a>
+      <a href="#vision"        role="menuitem">Vision 2030</a>
       <a href="/training/courses/" role="menuitem" style="color: #06b6d4; font-weight: 600;">Training</a>
-      <a href="/appstore"     role="menuitem" style="color: #d4a574; font-weight: 600;">Store</a>
-      <a href="/clinics" role="menuitem" style="color: #d4a574;">Clinics</a>
-      <a href="/partners"     role="menuitem" style="color: #a78bfa; font-weight: 600;">Partners</a>
+      <a href="/appstore"      role="menuitem" style="color: #d4a574; font-weight: 600;">App Store</a>
+      <a href="/clinics"       role="menuitem">Clinics</a>
+      <a href="/partner"       role="menuitem" style="color: #a78bfa; font-weight: 600;">Partners</a>
     </div>
     <div class="na">
       <button class="lang-btn" id="langToggle" aria-label="Switch language / تبديل اللغة">العربية</button>
+      <a href="/incubator" class="btn btn-g btn-sm" style="border-color: rgba(14,165,233,.35); color: #67e8f9;">Launch Incubator</a>
       <a href="/rcm" class="btn btn-p btn-sm">Launch RCM</a>
       <button class="hbg" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobMenu">
         <span></span><span></span><span></span>
@@ -671,13 +1195,15 @@
 
 <!-- Mobile Menu -->
 <div class="mob-menu" id="mobMenu" aria-label="Mobile navigation" aria-hidden="true">
-  <a href="#products">Platform</a>
+  <a href="/platform">Platform</a>
   <a href="#solutions">Solutions</a>
   <a href="#how-it-works">How It Works</a>
   <a href="#vision">Vision 2030</a>
-  <a href="/training/courses/" style="color: #06b6d4; font-weight: 600;">Training &amp; Courses 🎓</a>
+  <a href="/appstore" style="color: #d4a574; font-weight: 600;">App Store</a>
+  <a href="/clinics">Clinics</a>
+  <a href="/training/courses/" style="color: #06b6d4; font-weight: 600;">Training &amp; Courses</a>
   <a href="/docs">Documentation ↗</a>
-  <a href="/partners" style="color: #a78bfa; font-weight: 600;">Partners 🤝</a>
+  <a href="/partner" style="color: #a78bfa; font-weight: 600;">Partners</a>
   <div class="mob-sep"></div>
   <a href="/rcm" class="btn btn-p">Launch RCM →</a>
   <a href="https://calendar.app.google/V9KcXPcD1PeWDQHH8" target="_blank" rel="noopener noreferrer">Book Demo</a>
@@ -714,9 +1240,6 @@
         <a href="/docs" class="btn btn-g btn-lg">
           <span class="en">Documentation</span><span class="ar">الوثائق</span>
         </a>
-        <a href="https://calendar.app.google/V9KcXPcD1PeWDQHH8" target="_blank" rel="noopener noreferrer" class="btn btn-g btn-lg">
-          <span class="en">Schedule Call</span><span class="ar">جدول الاتصال</span>
-        </a>
       </div>
       <div class="hero-chips">
         <div class="chip"><div class="dot dg"></div> NPHIES v3.2</div>
@@ -746,6 +1269,179 @@
       <div class="ti"><span>🤖</span> AI-Powered Agents</div>
     </div>
   </div>
+
+  <section aria-labelledby="routes-h">
+    <div class="c">
+      <div class="route-panel rev">
+        <div class="route-shell">
+          <div class="route-hero">
+            <div class="sec-head">
+              <span class="stag"><span class="en">Quick Access</span><span class="ar">وصول سريع</span></span>
+              <h2 id="routes-h">
+                <span class="en">Launch every public BrainSAIT route</span>
+                <span class="ar">شغّل جميع مسارات برينسايت العامة</span>
+              </h2>
+              <p class="ssub en" style="margin: 0; max-width: 720px;">Direct buttons for every current public route across apps, tools, docs, and company pages.</p>
+              <p class="ssub ar" style="margin: 0; max-width: 720px;">أزرار مباشرة لجميع المسارات العامة الحالية عبر التطبيقات والأدوات والوثائق وصفحات الشركة.</p>
+              <div class="route-highlights">
+                <div class="route-pill"><strong>10</strong> <span class="en">public entry points</span><span class="ar">نقاط دخول عامة</span></div>
+                <div class="route-pill"><strong>focused</strong> <span class="en">products, tools, docs</span><span class="ar">منتجات وأدوات ووثائق</span></div>
+                <div class="route-pill"><strong>hub</strong> <span class="en">one branded launch surface</span><span class="ar">واجهة إطلاق موحدة</span></div>
+              </div>
+            </div>
+            <aside class="route-summary">
+              <div class="route-summary-kicker"><span class="en">Route Snapshot</span><span class="ar">ملخص المسارات</span></div>
+              <div class="route-summary-grid">
+                <div class="route-summary-item">
+                  <strong>10</strong>
+                  <span><span class="en">Public Routes</span><span class="ar">مساراً عاماً</span></span>
+                </div>
+                <div class="route-summary-item">
+                  <strong>3</strong>
+                  <span><span class="en">Core Clusters</span><span class="ar">مجموعات أساسية</span></span>
+                </div>
+                <div class="route-summary-item">
+                  <strong>24/7</strong>
+                  <span><span class="en">Always Reachable</span><span class="ar">متاحة دائماً</span></span>
+                </div>
+                <div class="route-summary-item">
+                  <strong>1</strong>
+                  <span><span class="en">Unified Brand Door</span><span class="ar">بوابة علامة موحدة</span></span>
+                </div>
+              </div>
+            </aside>
+          </div>
+          <div class="route-groups">
+            <div class="route-group">
+              <div class="route-group-head">
+                <div>
+                  <div class="route-group-label"><span class="en">Primary launches</span><span class="ar">المسارات الأساسية</span></div>
+                  <div class="route-group-copy">
+                    <span class="en">Start with the main public surfaces for products, operations, care access, and documentation.</span>
+                    <span class="ar">ابدأ من الواجهات العامة الرئيسية للمنتجات والعمليات والوصول إلى الرعاية والوثائق.</span>
+                  </div>
+                </div>
+                  <div class="route-group-count"><span class="en">5 core routes</span><span class="ar">5 مسارات أساسية</span></div>
+                </div>
+                <div class="route-grid route-grid-primary">
+                <a href="/appstore" class="route-card">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">🛍️</div><div class="route-card-badge">Products</div></div>
+                  <div class="route-card-kicker"><span class="en">App hub</span><span class="ar">مركز التطبيقات</span></div>
+                  <div class="route-card-title"><span class="en">App Store</span><span class="ar">متجر التطبيقات</span></div>
+                  <div class="route-card-meta"><span class="en">Explore BrainSAIT products, launches, and connected experiences.</span><span class="ar">استكشف منتجات BrainSAIT والإطلاقات والتجارب المتصلة.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">Open route</span><span class="ar">افتح المسار</span></span><span>→</span></div>
+                </a>
+                <a href="/rcm" class="route-card featured">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">⚡</div><div class="route-card-badge">Featured</div></div>
+                  <div class="route-card-kicker"><span class="en">Revenue cycle</span><span class="ar">دورة الإيرادات</span></div>
+                  <div class="route-card-title"><span class="en">RCM Suite</span><span class="ar">حزمة RCM</span></div>
+                  <div class="route-card-meta"><span class="en">Jump straight into the flagship BrainSAIT operations and claims workflow.</span><span class="ar">انتقل مباشرة إلى سير عمل المطالبات والعمليات الرئيسي في BrainSAIT.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">Launch now</span><span class="ar">شغّل الآن</span></span><span>→</span></div>
+                </a>
+                <a href="/incubator" class="route-card">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">🚀</div><div class="route-card-badge">Innovation</div></div>
+                  <div class="route-card-kicker"><span class="en">Builders</span><span class="ar">للبنّائين</span></div>
+                  <div class="route-card-title"><span class="en">Incubator</span><span class="ar">الحاضنة</span></div>
+                  <div class="route-card-meta"><span class="en">Access venture, startup, and experimental BrainSAIT initiatives.</span><span class="ar">ادخل إلى مبادرات BrainSAIT الريادية والتجريبية ومشاريع الشركات الناشئة.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">Explore</span><span class="ar">استكشف</span></span><span>→</span></div>
+                </a>
+                <a href="/clinics" class="route-card">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">🏥</div><div class="route-card-badge">Care</div></div>
+                  <div class="route-card-kicker"><span class="en">Patient-facing</span><span class="ar">موجه للمرضى</span></div>
+                  <div class="route-card-title"><span class="en">Clinics</span><span class="ar">العيادات</span></div>
+                  <div class="route-card-meta"><span class="en">Open specialty clinic services, booking, and medical access points.</span><span class="ar">افتح خدمات العيادات المتخصصة والحجز ونقاط الوصول الطبية.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">Enter</span><span class="ar">ادخل</span></span><span>→</span></div>
+                </a>
+                <a href="/docs" class="route-card">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">📚</div><div class="route-card-badge">Knowledge</div></div>
+                  <div class="route-card-kicker"><span class="en">Documentation</span><span class="ar">الوثائق</span></div>
+                  <div class="route-card-title"><span class="en">Docs</span><span class="ar">الوثائق</span></div>
+                  <div class="route-card-meta"><span class="en">Read implementation guides, technical references, and product materials.</span><span class="ar">اقرأ أدلة التنفيذ والمراجع التقنية ومواد المنتجات.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">Read</span><span class="ar">اقرأ</span></span><span>→</span></div>
+                </a>
+              </div>
+            </div>
+
+            <div class="route-group">
+              <div class="route-group-head">
+                <div>
+                  <div class="route-group-label"><span class="en">Tools & workspaces</span><span class="ar">الأدوات ومساحات العمل</span></div>
+                  <div class="route-group-copy">
+                    <span class="en">Move directly into specialist utilities, AI review surfaces, and learning environments.</span>
+                    <span class="ar">انتقل مباشرة إلى الأدوات المتخصصة وواجهات المراجعة الذكية وبيئات التعلم.</span>
+                  </div>
+                </div>
+                  <div class="route-group-count"><span class="en">3 operational routes</span><span class="ar">3 مسارات تشغيلية</span></div>
+                </div>
+                <div class="route-grid">
+                <a href="/pdf-to-excel" class="route-card">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">📄</div><div class="route-card-badge">Utility</div></div>
+                  <div class="route-card-kicker"><span class="en">Data ops</span><span class="ar">عمليات البيانات</span></div>
+                  <div class="route-card-title"><span class="en">PDF to Excel</span><span class="ar">تحويل PDF إلى Excel</span></div>
+                  <div class="route-card-meta"><span class="en">Use the browser workspace for structured extraction and export.</span><span class="ar">استخدم مساحة العمل داخل المتصفح للاستخراج المنظم والتصدير.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">Open tool</span><span class="ar">افتح الأداة</span></span><span>→</span></div>
+                </a>
+                <a href="/tawnia-reconciliation" class="route-card">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">🧾</div><div class="route-card-badge">AI Ops</div></div>
+                  <div class="route-card-kicker"><span class="en">Reconciliation</span><span class="ar">التسوية</span></div>
+                  <div class="route-card-title"><span class="en">Tawnia AI</span><span class="ar">تعاونية AI</span></div>
+                  <div class="route-card-meta"><span class="en">Review payer decisions, compare outcomes, and export reconciled results.</span><span class="ar">راجع قرارات الجهة الدافعة وقارن النتائج وصدّر المخرجات المسوّاة.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">Open workspace</span><span class="ar">افتح مساحة العمل</span></span><span>→</span></div>
+                </a>
+                <a href="/training/courses/" class="route-card">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">🎓</div><div class="route-card-badge">Learning</div></div>
+                  <div class="route-card-kicker"><span class="en">Education</span><span class="ar">التعليم</span></div>
+                  <div class="route-card-title"><span class="en">Training</span><span class="ar">التدريب</span></div>
+                  <div class="route-card-meta"><span class="en">Open courses, certifications, and NPHIES learning pathways.</span><span class="ar">افتح الدورات والشهادات ومسارات تعلم NPHIES.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">Start learning</span><span class="ar">ابدأ التعلم</span></span><span>→</span></div>
+                </a>
+              </div>
+            </div>
+
+            <div class="route-group">
+              <div class="route-group-head">
+                <div>
+                  <div class="route-group-label"><span class="en">Company & governance</span><span class="ar">الشركة والحوكمة</span></div>
+                  <div class="route-group-copy">
+                    <span class="en">Reach the collaboration, company, talent, and policy surfaces that support the public BrainSAIT ecosystem.</span>
+                    <span class="ar">الوصول إلى واجهات التعاون والشركة والمواهب والسياسات التي تدعم منظومة BrainSAIT العامة.</span>
+                  </div>
+                </div>
+                  <div class="route-group-count"><span class="en">2 support routes</span><span class="ar">2 مساران داعمان</span></div>
+                </div>
+                <div class="route-grid">
+                <a href="/partner" class="route-card">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">🤝</div><div class="route-card-badge">Network</div></div>
+                  <div class="route-card-kicker"><span class="en">Ecosystem</span><span class="ar">الشركاء</span></div>
+                  <div class="route-card-title"><span class="en">Partners</span><span class="ar">الشركاء</span></div>
+                  <div class="route-card-meta"><span class="en">Meet implementation, channel, and strategic collaboration pathways.</span><span class="ar">تعرّف على قنوات التنفيذ والتوزيع ومسارات التعاون الاستراتيجي.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">Connect</span><span class="ar">تواصل</span></span><span>→</span></div>
+                </a>
+                <a href="/staff" class="route-card">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">👥</div><div class="route-card-badge">Company</div></div>
+                  <div class="route-card-kicker"><span class="en">People</span><span class="ar">الفريق</span></div>
+                  <div class="route-card-title"><span class="en">Staff</span><span class="ar">الموظفون</span></div>
+                  <div class="route-card-meta"><span class="en">Browse the BrainSAIT team surface and company-facing directories.</span><span class="ar">تصفّح واجهة فريق BrainSAIT والأدلة المرتبطة بالشركة.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">View team</span><span class="ar">اعرض الفريق</span></span><span>→</span></div>
+                </a>
+                <a href="/contact" class="route-card">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">✉️</div><div class="route-card-badge">Contact</div></div>
+                  <div class="route-card-kicker"><span class="en">Next step</span><span class="ar">الخطوة التالية</span></div>
+                  <div class="route-card-title"><span class="en">Contact</span><span class="ar">التواصل</span></div>
+                  <div class="route-card-meta"><span class="en">Open the contact form for demos, partnerships, hiring, and implementation requests.</span><span class="ar">افتح نموذج التواصل لطلبات العروض والشراكات والتوظيف والتنفيذ.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">Open form</span><span class="ar">افتح النموذج</span></span><span>→</span></div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <p class="route-note">
+            <span class="en">Primary journeys stay above the fold. Legal, policy, and legacy access points remain available in the footer and canonical route structure.</span>
+            <span class="ar">تبقى المسارات الأساسية في الجزء العلوي. تظل المسارات القانونية والسياسات والمسارات القديمة متاحة في التذييل والبنية الأساسية للمسارات.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ── STATS ── -->
   <div class="stats-wrap rev" aria-label="Key metrics">
@@ -1065,6 +1761,194 @@
     </div>
   </section>
 
+  <section id="interactive-workflows" aria-labelledby="interactive-workflows-h">
+    <div class="c">
+      <div class="sec-head rev">
+        <span class="stag"><span class="en">Interactive Intelligence</span><span class="ar">الذكاء التفاعلي</span></span>
+        <h2 id="interactive-workflows-h">
+          <span class="en">Live workflow previews for claims, coding, and validation</span>
+          <span class="ar">معاينات حية لسير العمل في المطالبات والترميز والتحقق</span>
+        </h2>
+        <p class="ssub en">A homepage preview of BrainSAIT's deeper workflow ideas for claims review, FHIR validation, clinical safety, and coding.</p>
+        <p class="ssub ar">معاينة داخل الصفحة الرئيسية لأفكار سير العمل الأعمق في BrainSAIT لمراجعة المطالبات والتحقق من FHIR والسلامة السريرية والترميز.</p>
+      </div>
+      <div class="workflow-grid">
+        <article class="workflow-card rev d1">
+          <div class="workflow-icon" aria-hidden="true">🧠</div>
+          <div>
+            <h3 class="workflow-title"><span class="en">Claims AI Assistant</span><span class="ar">مساعد المطالبات الذكي</span></h3>
+          </div>
+          <p class="workflow-copy en">Pre-submission review that estimates approval probability, flags likely rejection codes, and recommends fixes before a claim reaches NPHIES.</p>
+          <p class="workflow-copy ar">مراجعة قبل الإرسال تقدّر احتمال الموافقة، وتكشف أكواد الرفض المتوقعة، وتقترح الإصلاحات قبل وصول المطالبة إلى نفيس.</p>
+          <div class="workflow-meta">
+            <span class="tag">NPHIES</span>
+            <span class="tag">AI Review</span>
+            <span class="tag">Risk Scoring</span>
+          </div>
+          <div class="workflow-foot">
+            <span class="en">Built for billing teams that want cleaner claims on first pass.</span>
+            <span class="ar">مصمم لفرق الفوترة التي تريد مطالبات أنظف من المحاولة الأولى.</span>
+          </div>
+        </article>
+        <article class="workflow-card rev d2">
+          <div class="workflow-icon" aria-hidden="true">🔗</div>
+          <div>
+            <h3 class="workflow-title"><span class="en">FHIR R4 Validator</span><span class="ar">مدقق FHIR R4</span></h3>
+          </div>
+          <p class="workflow-copy en">Checks resources against Saudi-aligned interoperability patterns, surfaces compliance gaps, and gives teams a clearer path to valid payloads.</p>
+          <p class="workflow-copy ar">يفحص الموارد مقابل أنماط التشغيل البيني المتوافقة مع السعودية، ويُظهر فجوات الامتثال، ويمنح الفرق مساراً أوضح نحو حمولة صحيحة.</p>
+          <div class="workflow-meta">
+            <span class="tag">FHIR R4</span>
+            <span class="tag">Saudi Core</span>
+            <span class="tag">Validation</span>
+          </div>
+          <div class="workflow-foot">
+            <span class="en">Useful for platform, integration, and compliance teams working on structured healthcare data.</span>
+            <span class="ar">مفيد لفرق المنصات والتكامل والامتثال التي تعمل على البيانات الصحية المنظمة.</span>
+          </div>
+        </article>
+        <article class="workflow-card rev d3">
+          <div class="workflow-icon" aria-hidden="true">💊</div>
+          <div>
+            <h3 class="workflow-title"><span class="en">Drug Interaction Checker</span><span class="ar">فاحص التداخلات الدوائية</span></h3>
+          </div>
+          <p class="workflow-copy en">Supports clinical safety workflows with rapid medication conflict review, severity awareness, and fast escalation points for care teams.</p>
+          <p class="workflow-copy ar">يدعم سير عمل السلامة السريرية من خلال مراجعة سريعة لتعارض الأدوية، وفهم شدة التداخل، ونقاط تصعيد سريعة لفرق الرعاية.</p>
+          <div class="workflow-meta">
+            <span class="tag">Clinical Safety</span>
+            <span class="tag">Medication</span>
+            <span class="tag">Triage</span>
+          </div>
+          <div class="workflow-foot">
+            <span class="en">Designed to help teams move from lookup to action without leaving the workflow.</span>
+            <span class="ar">مصمم لمساعدة الفرق على الانتقال من البحث إلى الإجراء دون مغادرة سير العمل.</span>
+          </div>
+        </article>
+        <article class="workflow-card rev d4">
+          <div class="workflow-icon" aria-hidden="true">🧾</div>
+          <div>
+            <h3 class="workflow-title"><span class="en">ICD-10 Code Finder</span><span class="ar">مستكشف أكواد ICD-10</span></h3>
+          </div>
+          <p class="workflow-copy en">Accelerates bilingual code discovery so coding teams can narrow diagnostic options quickly and support cleaner downstream documentation.</p>
+          <p class="workflow-copy ar">يسرّع اكتشاف الأكواد ثنائي اللغة حتى تتمكن فرق الترميز من تضييق الخيارات التشخيصية بسرعة ودعم توثيق أكثر دقة في المراحل اللاحقة.</p>
+          <div class="workflow-meta">
+            <span class="tag">ICD-10</span>
+            <span class="tag">Bilingual</span>
+            <span class="tag">Coding</span>
+          </div>
+          <div class="workflow-foot">
+            <span class="en">A strong fit for coding desks, utilization review, and documentation improvement.</span>
+            <span class="ar">مناسب بقوة لمكاتب الترميز ومراجعة الاستخدام وتحسين التوثيق.</span>
+          </div>
+        </article>
+      </div>
+      <div class="route-panel rev" style="margin-top:32px;">
+        <div class="sec-head" style="margin-bottom:24px;">
+          <span class="stag"><span class="en">Next Step</span><span class="ar">الخطوة التالية</span></span>
+          <p class="ssub en">Use the current BrainSAIT routes to explore production systems while these workflow concepts expand across the homepage.</p>
+          <p class="ssub ar">استخدم مسارات BrainSAIT الحالية لاستكشاف الأنظمة الإنتاجية بينما تتوسع مفاهيم سير العمل هذه داخل الصفحة الرئيسية.</p>
+        </div>
+        <div class="route-grid">
+          <a href="/rcm" class="btn btn-p"><span class="en">Launch RCM</span><span class="ar">تشغيل RCM</span></a>
+          <a href="/docs" class="btn btn-g"><span class="en">Read Documentation</span><span class="ar">قراءة الوثائق</span></a>
+          <a href="/appstore" class="btn btn-g"><span class="en">Open App Store</span><span class="ar">فتح متجر التطبيقات</span></a>
+          <a href="https://calendar.app.google/V9KcXPcD1PeWDQHH8" target="_blank" rel="noopener noreferrer" class="btn btn-g"><span class="en">Schedule a Demo</span><span class="ar">جدولة عرض توضيحي</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="solutions-bg" id="edge-operations" aria-labelledby="edge-operations-h">
+    <div class="c">
+      <div class="sec-head rev">
+        <span class="stag"><span class="en">Operations Snapshot</span><span class="ar">لقطة تشغيلية</span></span>
+        <h2 id="edge-operations-h">
+          <span class="en">The edge architecture behind BrainSAIT</span>
+          <span class="ar">البنية الطرفية التي تقف خلف BrainSAIT</span>
+        </h2>
+        <p class="ssub en">A homepage view of the infrastructure story: how provider systems, edge runtime, AI review, and NPHIES routing connect into payer outcomes.</p>
+        <p class="ssub ar">عرض داخل الصفحة الرئيسية لقصة البنية التحتية: كيف تتصل أنظمة المزود وبيئة الحافة والمراجعة الذكية وتوجيه نفيس للوصول إلى نتائج الجهة الدافعة.</p>
+      </div>
+      <div class="ops-board">
+        <article class="ops-panel rev d1">
+          <div class="ops-kicker"><span class="en">Architecture Flow</span><span class="ar">تدفق البنية</span></div>
+          <h3 class="workflow-title"><span class="en">From clinic systems to payer adjudication</span><span class="ar">من أنظمة العيادات إلى قرار الجهة الدافعة</span></h3>
+          <p class="ops-copy en">This snapshot shows the path claims and clinical payloads follow across the platform, from provider systems through edge processing and NPHIES routing to payer outcomes.</p>
+          <p class="ops-copy ar">تُظهر هذه اللقطة المسار الذي تتبعه المطالبات والحمولات السريرية عبر المنصة، من أنظمة المزود مروراً بالمعالجة الطرفية وتوجيه نفيس وصولاً إلى نتائج الجهة الدافعة.</p>
+          <div class="ops-flow" aria-label="Architecture flow">
+            <div class="ops-node">
+              <strong><span class="en">Provider Systems</span><span class="ar">أنظمة المزود</span></strong>
+              <small><span class="en">eCarePlus, APIs, ERP connectors</span><span class="ar">‏eCarePlus وواجهات API وموصلات ERP</span></small>
+            </div>
+            <div class="ops-arrow" aria-hidden="true">→</div>
+            <div class="ops-node">
+              <strong><span class="en">Edge Runtime</span><span class="ar">بيئة الحافة</span></strong>
+              <small><span class="en">BrainSAIT API and worker orchestration</span><span class="ar">واجهة BrainSAIT API وتنسيق العمال</span></small>
+            </div>
+            <div class="ops-arrow" aria-hidden="true">→</div>
+            <div class="ops-node">
+              <strong><span class="en">AI Review Layer</span><span class="ar">طبقة المراجعة الذكية</span></strong>
+              <small><span class="en">Claims, validation, compliance checks</span><span class="ar">فحوص المطالبات والتحقق والامتثال</span></small>
+            </div>
+            <div class="ops-arrow" aria-hidden="true">→</div>
+            <div class="ops-node">
+              <strong><span class="en">NPHIES Gateway</span><span class="ar">بوابة نفيس</span></strong>
+              <small><span class="en">Eligibility, prior auth, claims routing</span><span class="ar">الأهلية والتفويض المسبق وتوجيه المطالبات</span></small>
+            </div>
+            <div class="ops-arrow" aria-hidden="true">→</div>
+            <div class="ops-node">
+              <strong><span class="en">Payer Decision</span><span class="ar">قرار الجهة الدافعة</span></strong>
+              <small><span class="en">Adjudication, remittance, reconciliation</span><span class="ar">الفصل والتحويلات والتسوية</span></small>
+            </div>
+          </div>
+        </article>
+        <aside class="ops-panel rev d2">
+          <div class="ops-kicker"><span class="en">Live Estate</span><span class="ar">البيئة الحية</span></div>
+          <div class="ops-metrics" aria-label="Infrastructure metrics">
+            <div class="ops-metric">
+              <div class="ops-value">71</div>
+              <div class="ops-label"><span class="en">Cloudflare Workers</span><span class="ar">عامل Cloudflare</span></div>
+            </div>
+            <div class="ops-metric">
+              <div class="ops-value">20</div>
+              <div class="ops-label"><span class="en">R2 Storage Buckets</span><span class="ar">حاوية تخزين R2</span></div>
+            </div>
+            <div class="ops-metric">
+              <div class="ops-value">15</div>
+              <div class="ops-label"><span class="en">D1 Databases</span><span class="ar">قاعدة بيانات D1</span></div>
+            </div>
+            <div class="ops-metric">
+              <div class="ops-value">20</div>
+              <div class="ops-label"><span class="en">KV Namespaces</span><span class="ar">مساحة أسماء KV</span></div>
+            </div>
+          </div>
+          <div class="ops-stack">
+            <div class="ops-stack-row">
+              <strong>Compute</strong>
+              <span><span class="en">Cloudflare Workers, V8 isolates, and edge runtime.</span><span class="ar">عمال Cloudflare وعوازل V8 وبيئة التشغيل الطرفية.</span></span>
+            </div>
+            <div class="ops-stack-row">
+              <strong>AI / ML</strong>
+              <span><span class="en">Claude Sonnet 4, Vectorize, and Workers AI.</span><span class="ar">Claude Sonnet 4 وVectorize وWorkers AI.</span></span>
+            </div>
+            <div class="ops-stack-row">
+              <strong>Data</strong>
+              <span><span class="en">D1, R2, KV, Durable Objects, and Hyperdrive.</span><span class="ar">‏D1 وR2 وKV وDurable Objects وHyperdrive.</span></span>
+            </div>
+            <div class="ops-stack-row">
+              <strong>Standards</strong>
+              <span><span class="en">HL7 FHIR R4, NPHIES, and Saudi Core implementation guidance.</span><span class="ar">‏HL7 FHIR R4 وNPHIES وإرشادات التنفيذ الأساسية السعودية.</span></span>
+            </div>
+          </div>
+          <div class="ops-note">
+            <span class="en">The RCM core is organized around four specialized interfaces: BSMA, GIVC, SBS, and the NPHIES Hub.</span>
+            <span class="ar">يُنظَّم جوهر RCM حول أربع واجهات متخصصة: ‏BSMA وGIVC وSBS وNPHIES Hub.</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
   <!-- ══════════════════════════════════════════════════════════════════════════
        BRAINSAIT CLINIC BOOKING SERVICES
        Premium integration for clinic appointment scheduling
@@ -1170,11 +2054,8 @@
           <a href="/rcm" class="btn btn-p btn-lg">
             <span class="en">Launch RCM</span><span class="ar">تشغيل RCM</span> →
           </a>
-          <a href="https://calendar.app.google/V9KcXPcD1PeWDQHH8" target="_blank" rel="noopener noreferrer" class="btn btn-g btn-lg">
-            <span class="en">Schedule Call</span><span class="ar">جدول الاتصال</span>
-          </a>
-          <a href="mailto:info@brainsait.org" class="btn btn-g btn-lg">
-            <span class="en">Contact Us</span><span class="ar">تواصل معنا</span>
+          <a href="/contact" class="btn btn-g btn-lg">
+            <span class="en">Open Contact Form</span><span class="ar">افتح نموذج التواصل</span>
           </a>
         </div>
       </div>
@@ -1214,17 +2095,17 @@
           <ul class="f-links">
             <li><a href="/rcm">RCM Workspace</a></li>
             <li><a href="/docs">Documentation</a></li>
-            <li><a href="https://brainsait.org/api">API Reference</a></li>
+            <li><a href="/training/courses/"><span class="en">Training Catalog</span><span class="ar">كتالوج التدريب</span></a></li>
             <li><a href="#products">Platform Overview</a></li>
           </ul>
         </div>
         <div>
           <h4 class="f-title"><span class="en">Company</span><span class="ar">الشركة</span></h4>
           <ul class="f-links">
-            <li><a href="https://brainsait.org/about"><span class="en">About Us</span><span class="ar">من نحن</span></a></li>
+            <li><a href="/staff"><span class="en">About Us</span><span class="ar">من نحن</span></a></li>
             <li><a href="https://calendar.app.google/V9KcXPcD1PeWDQHH8" target="_blank" rel="noopener noreferrer"><span class="en">Schedule Call</span><span class="ar">جدول الاتصال</span></a></li>
-            <li><a href="mailto:info@brainsait.org"><span class="en">Contact</span><span class="ar">تواصل معنا</span></a></li>
-            <li><a href="https://brainsait.org/careers"><span class="en">Careers</span><span class="ar">وظائف</span></a></li>
+            <li><a href="/contact"><span class="en">Contact Form</span><span class="ar">نموذج التواصل</span></a></li>
+            <li><a href="/careers"><span class="en">Careers</span><span class="ar">وظائف</span></a></li>
           </ul>
         </div>
         <div>
@@ -1243,8 +2124,8 @@
           <span class="ar">&copy; 2026 برينسايت المحدودة. جميع الحقوق محفوظة.</span>
         </div>
         <div class="f-legal">
-          <a href="https://brainsait.org/privacy"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a>
-          <a href="https://brainsait.org/terms"><span class="en">Terms of Service</span><span class="ar">شروط الخدمة</span></a>
+          <a href="/privacy"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a>
+          <a href="/terms"><span class="en">Terms of Service</span><span class="ar">شروط الخدمة</span></a>
         </div>
       </div>
     </div>

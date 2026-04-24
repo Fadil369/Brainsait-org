@@ -1,0 +1,377 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content="Enroll in BrainSAIT healthcare training courses — NPHIES, AI, FHIR R4, and more. | سجّل في دورات برينسايت التدريبية"/><meta name="robots" content="noindex, nofollow"/><title>Enroll | تسجيل — BrainSAIT Training</title><link rel="icon" href="/favicon.ico"/><link rel="canonical" href="https://brainsait.org/training/enroll"/><link rel="stylesheet" href="/assets/css/design-system.css"/><link rel="stylesheet" href="/assets/css/training.css"/><style>
+:root{--bg:#050505;--card:#0d1320;--border:rgba(255,255,255,.08);--cyan:#67e8f9;--green:#2E7D32;--blue:#0ea5e9;--purple:#8b5cf6;--text:#fff;--text2:rgba(255,255,255,.72);--text3:rgba(255,255,255,.55);--glass:rgba(255,255,255,.06);}
+*{box-sizing:border-box;margin:0;padding:0;}body{font-family:"Inter","Roboto","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:#fff;min-height:100vh;}
+.container{max-width:960px;margin:0 auto;padding:0 24px;}
+.header{padding:48px 0 32px;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;top:-60px;left:-40px;width:200px;height:200px;border-radius:50%;background:rgba(14,165,233,.12);filter:blur(20px);}
+.breadcrumb{display:flex;gap:8px;align-items:center;font-size:.875rem;margin-bottom:24px;}
+.breadcrumb a{color:var(--text2);text-decoration:none;}.breadcrumb a:hover{text-decoration:underline;}
+.breadcrumb .sep{color:rgba(255,255,255,.3);}.breadcrumb .cur{color:#fff;}
+.title{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:800;line-height:1.1;margin:0 0 6px;}
+.title-ar{font-size:1.125rem;font-weight:600;color:var(--cyan);margin:0 0 8px;direction:rtl;}
+.subtitle{font-size:1rem;color:var(--text2);max-width:600px;line-height:1.6;}
+.layout{display:grid;grid-template-columns:1fr 360px;gap:32px;padding:32px 0 60px;align-items:start;}
+@media(max-width:800px){.layout{grid-template-columns:1fr;}}
+
+/* Form */
+.form-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;}
+.form-title{font-size:1.125rem;font-weight:700;margin:0 0 4px;}
+.form-title-ar{font-size:.875rem;color:var(--cyan);margin:0 0 24px;direction:rtl;}
+.field{margin-bottom:20px;}
+.label{display:block;font-size:.75rem;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.input,.select,.textarea{width:100%;padding:12px 16px;border-radius:10px;border:1px solid var(--border);background:var(--glass);color:#fff;font-size:.875rem;font-family:inherit;transition:border-color .2s;}
+.input:focus,.select:focus,.textarea:focus{outline:none;border-color:var(--cyan);}
+.input::placeholder,.textarea::placeholder{color:rgba(255,255,255,.3);}
+.select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='rgba(255,255,255,0.5)' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;}
+.select option{background:#0d1320;color:#fff;}
+.textarea{min-height:80px;resize:vertical;}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:500px){.row{grid-template-columns:1fr;}}
+.submit-btn{width:100%;padding:14px;border-radius:10px;border:none;background:var(--green);color:#fff;font-size:.9375rem;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.submit-btn:hover{background:#1B5E20;}
+.submit-btn:disabled{opacity:.5;cursor:not-allowed;}
+.submit-btn .spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;display:none;}
+.submit-btn.loading .spinner{display:block;}
+.submit-btn.loading .btn-text{display:none;}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Status messages */
+.msg{padding:14px 16px;border-radius:10px;font-size:.8125rem;margin-top:16px;display:none;}
+.msg.success{display:block;background:rgba(46,125,50,.15);border:1px solid rgba(46,125,50,.3);color:#b9f6ca;}
+.msg.error{display:block;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);color:#fca5a5;}
+.msg .msg-ar{color:var(--cyan);margin-top:6px;direction:rtl;display:block;}
+
+/* Sidebar */
+.sidebar{position:sticky;top:24px;}
+.side-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px;}
+.side-title{font-size:.875rem;font-weight:700;margin:0 0 16px;color:var(--cyan);}
+.course-info{list-style:none;padding:0;margin:0;}
+.course-info li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.8125rem;color:var(--text2);display:flex;justify-content:space-between;}
+.course-info li:last-child{border:none;}
+.course-info .val{color:#fff;font-weight:600;}
+.tier-cards{display:flex;flex-direction:column;gap:10px;}
+.tier-card{padding:14px;border-radius:10px;border:1px solid var(--border);background:var(--glass);cursor:pointer;transition:all .2s;}
+.tier-card:hover{border-color:rgba(255,255,255,.2);}
+.tier-card.selected{border-color:var(--blue);background:rgba(14,165,233,.08);}
+.tier-name{font-size:.8125rem;font-weight:700;margin:0;}
+.tier-name-ar{font-size:.6875rem;color:var(--cyan);margin:0;}
+.tier-price{font-size:.75rem;color:var(--text3);margin-top:2px;}
+.tier-check{float:right;color:var(--cyan);display:none;}
+.tier-card.selected .tier-check{display:inline;}
+.trust{display:flex;flex-direction:column;gap:10px;margin-top:16px;}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:.75rem;color:var(--text3);}
+.trust-icon{font-size:1rem;}
+
+/* Steps */
+.steps{display:flex;gap:8px;margin-bottom:32px;}
+.step{flex:1;height:4px;border-radius:2px;background:var(--glass);}
+.step.active{background:var(--cyan);}
+.step.done{background:var(--green);}
+</style></head><body>
+
+<div class="header"><div class="container">
+<nav class="breadcrumb">
+<a href="/">BrainSAIT</a><span class="sep">/</span>
+<a href="/training">Training</a><span class="sep">/</span>
+<a href="/training/courses">Courses</a><span class="sep">/</span>
+<span class="cur">Enroll · تسجيل</span>
+</nav>
+<h1 class="title">Enroll in a Course</h1>
+<p class="title-ar">سجّل في دورة</p>
+<p class="subtitle">Complete the form below to register. We'll contact you within 24 hours to confirm your enrollment and arrange payment.</p>
+</div></div>
+
+<div class="container"><div class="layout">
+
+<!-- ═══ FORM ═══ -->
+<div>
+<div class="steps"><div class="step active" id="step1"></div><div class="step" id="step2"></div><div class="step" id="step3"></div></div>
+
+<form class="form-card" id="enrollForm" novalidate>
+<h2 class="form-title">Your Information</h2>
+<p class="form-title-ar">معلوماتك</p>
+
+<div class="row">
+<div class="field">
+<label class="label">Full Name · الاسم الكامل *</label>
+<input class="input" type="text" name="name" placeholder="Dr. Sarah Al-Mutairi" required>
+</div>
+<div class="field">
+<label class="label">Email · البريد الإلكتروني *</label>
+<input class="input" type="email" name="email" placeholder="sarah@hospital.sa" required>
+</div>
+</div>
+
+<div class="row">
+<div class="field">
+<label class="label">Phone · الهاتف</label>
+<input class="input" type="tel" name="phone" placeholder="+966 5X XXX XXXX">
+</div>
+<div class="field">
+<label class="label">Organization · المؤسسة</label>
+<input class="input" type="text" name="organization" placeholder="Riyadh Medical Complex">
+</div>
+</div>
+
+<div class="field">
+<label class="label">Course · الدورة *</label>
+<select class="select" name="course" required>
+<option value="">Select a course · اختر دورة</option>
+<option value="collective-brainpower">Master the Intersection of Healthcare, Tech & AI</option>
+<option value="nphies-ai-mastery">NPHIES-AI Mastery: Health Insurance Automation</option>
+<option value="ai-fluency-healthcare">AI Fluency: Framework & Foundations (Coming Q3)</option>
+<option value="healthcare-ai-agents">Building Healthcare AI Agents (Coming Q3)</option>
+<option value="fhir-r4-saudi">FHIR R4 Implementation (Coming Q4)</option>
+<option value="rcm-automation">RCM Automation & Revenue Recovery (Coming Q4)</option>
+<option value="mcp-healthcare">MCP for Healthcare (Coming Q1 2027)</option>
+<option value="healthcare-compliance">Healthcare Compliance & Regulatory AI (Coming Q1 2027)</option>
+</select>
+</div>
+
+<div class="field">
+<label class="label">Training Tier · مستوى التدريب</label>
+<div class="tier-cards" id="tierSelector">
+<div class="tier-card selected" data-tier="professional" onclick="selectTier(this)">
+<p class="tier-name">Professional · المحترف <span class="tier-check">✓</span></p>
+<p class="tier-name-ar">الوصول الكامل للدورة — SAR 2,500</p>
+<p class="tier-price">Full course, certificate, instructor support</p>
+</div>
+<div class="tier-card" data-tier="enterprise" onclick="selectTier(this)">
+<p class="tier-name">Enterprise · المؤسسي <span class="tier-check">✓</span></p>
+<p class="tier-name-ar">تدريب مخصص للفريق — سعر مخصص</p>
+<p class="tier-price">Custom curriculum, on-site workshops, dedicated support</p>
+</div>
+<div class="tier-card" data-tier="explorer" onclick="selectTier(this)">
+<p class="tier-name">Explorer · المستكشف <span class="tier-check">✓</span></p>
+<p class="tier-name-ar">وصول مجاني — Free</p>
+<p class="tier-price">Course previews, community access, webinars</p>
+</div>
+</div>
+</div>
+
+<div class="field">
+<label class="label">Additional Notes · ملاحظات إضافية</label>
+<textarea class="textarea" name="message" placeholder="Tell us about your goals, team size, or any specific requirements..."></textarea>
+</div>
+
+<button type="submit" class="submit-btn" id="submitBtn">
+<span class="btn-text">Submit Enrollment · تقديم التسجيل</span>
+<span class="spinner"></span>
+</button>
+
+<!-- PayPal Payment Button -->
+<div id="paypalContainer" style="margin-top:16px;display:none;">
+<div style="text-align:center;margin-bottom:12px;font-size:.75rem;color:var(--text3);">— Or pay directly with PayPal —</div>
+<div id="paypal-button-container"></div>
+</div>
+
+<div class="msg" id="formMsg"></div>
+</form>
+</div>
+
+<!-- ═══ SIDEBAR ═══ -->
+<div class="sidebar">
+<div class="side-card">
+<h3 class="side-title">Selected Course · الدورة المحددة</h3>
+<ul class="course-info" id="courseInfo">
+<li><span>Course</span><span class="val" id="infoCourse">—</span></li>
+<li><span>Format</span><span class="val">Google Classroom + guided</span></li>
+<li><span>Language</span><span class="val">AR/EN Bilingual</span></li>
+<li><span>Tier</span><span class="val" id="infoTier">Professional</span></li>
+<li><span>Price</span><span class="val" id="infoPrice">SAR 2,500</span></li>
+</ul>
+</div>
+
+<div class="side-card">
+<h3 class="side-title">What Happens Next · ماذا يحدث بعد ذلك</h3>
+<ul class="course-info">
+<li><span>①</span><span class="val">Submit form · تقديم النموذج</span></li>
+<li><span>②</span><span class="val">We review within 24h · نراجع خلال 24 ساعة</span></li>
+<li><span>③</span><span class="val">Payment link sent · رابط الدفع يُرسل</span></li>
+<li><span>④</span><span class="val">Classroom access granted · الوصول للصف يُفعَّل</span></li>
+</ul>
+</div>
+
+<div class="trust">
+<div class="trust-item"><span class="trust-icon">🔒</span>Secure enrollment · تسجيل آمن</div>
+<div class="trust-item"><span class="trust-icon">💳</span>Stripe & PayPal accepted · الدفع عبر Stripe و PayPal</div>
+<div class="trust-item"><span class="trust-icon">📄</span>14-day refund policy · استرداد خلال 14 يوم</div>
+<div class="trust-item"><span class="trust-icon">🏆</span>NPHIES-aligned certificates · شهادات متوافقة مع NPHIES</div>
+</div>
+</div>
+
+</div></div>
+
+<script>
+// PayPal Integration
+var PAYPAL_CLIENT_ID='ARux8wrYw6CXD_A88cgV_aVYHjXG1fFNCnyXmIX2T6_BNKUTwr12lbisklroHjs67nNJLzHHpCcuRPzp';
+var API_BASE='https://api.brainsait.org/api/paypal';
+
+// Course pricing for PayPal
+var coursePricing={
+'collective-brainpower':{name:'Master Healthcare, Tech & AI',price:'0.00',tier:'free'},
+'nphies-ai-mastery':{name:'NPHIES-AI Mastery',price:'2500.00',tier:'professional'},
+'fhir-r4':{name:'FHIR R4 Implementation',price:'2500.00',tier:'professional'},
+'rcm-automation':{name:'RCM Automation & Revenue Recovery',price:'2500.00',tier:'professional'},
+'compliance':{name:'Healthcare Compliance & Regulatory AI',price:'1500.00',tier:'professional'},
+'vision2030':{name:'Vision 2030 Digital Health Strategy',price:'1500.00',tier:'professional'},
+'claude-101':{name:'Claude 101 for Healthcare',price:'0.00',tier:'free'},
+'ai-fluency':{name:'AI Fluency for Healthcare',price:'1500.00',tier:'professional'},
+'agents':{name:'Building Healthcare AI Agents',price:'2500.00',tier:'professional'},
+'claude-code':{name:'Claude Code 101 for Healthcare',price:'2500.00',tier:'professional'},
+'claude-api':{name:'Building Healthcare Apps with Claude API',price:'2500.00',tier:'professional'},
+'claude-code-action':{name:'Claude Code in Action',price:'2500.00',tier:'professional'},
+'mcp':{name:'Model Context Protocol for Healthcare',price:'2500.00',tier:'professional'},
+'bedrock':{name:'Claude with AWS Bedrock',price:'2500.00',tier:'professional'},
+'vertex':{name:'Claude with Google Vertex AI',price:'2500.00',tier:'professional'},
+'teaching-ai':{name:'Teaching AI Fluency',price:'1500.00',tier:'professional'},
+'ai-students':{name:'AI Fluency for Students',price:'0.00',tier:'free'},
+'ai-nonprofit':{name:'AI Fluency for Nonprofits',price:'0.00',tier:'free'},
+'cowork':{name:'Claude Cowork for Teams',price:'1500.00',tier:'professional'},
+'agent-skills':{name:'Healthcare Agent Skills',price:'2500.00',tier:'professional'}
+};
+
+// Load PayPal SDK dynamically
+function loadPayPalScript(){
+var s=document.createElement('script');
+s.src='https://www.paypal.com/sdk/js?client-id='+PAYPAL_CLIENT_ID+'&currency=SAR&intent=capture';
+s.onload=renderPayPalButton;
+document.head.appendChild(s);
+}
+
+// Render PayPal button
+function renderPayPalButton(){
+if(typeof paypal==='undefined')return;
+document.getElementById('paypal-button-container').innerHTML='';
+paypal.Buttons({
+style:{layout:'vertical',color:'blue',shape:'rect',label:'pay',height:45},
+createOrder:function(data,actions){
+var course=document.querySelector('select[name=course]').value;
+var pricing=coursePricing[course];
+if(!pricing||pricing.price==='0.00'){alert('This is a free course. Please use the enrollment form.');return;}
+return actions.order.create({
+purchase_units:[{description:'BrainSAIT: '+pricing.name,amount:{currency_code:'SAR',value:pricing.price}}]
+});
+},
+onApprove:function(data,actions){
+return actions.order.capture().then(function(details){
+var name=document.querySelector('input[name=name]').value||'Unknown';
+var email=document.querySelector('input[name=email]').value||'Unknown';
+var course=document.querySelector('select[name=course]').value;
+
+// Notify API
+fetch(API_BASE+'/capture-order',{
+method:'POST',
+headers:{'Content-Type':'application/json'},
+body:JSON.stringify({order_id:data.orderID,course_id:course,student_name:name,student_email:email})
+}).then(function(r){return r.json()}).then(function(res){
+var msg=document.getElementById('formMsg');
+msg.className='msg success';
+msg.innerHTML='✅ Payment successful! Enrollment ID: <strong>'+(res.enrollment?.id||data.orderID)+'</strong><br>Thank you, '+details.payer.name.given_name+'!<span class="msg-ar">تم الدفع بنجاح! شكراً لك.</span>';
+document.getElementById('step1').classList.add('done');
+document.getElementById('step2').classList.add('active');
+document.getElementById('step3').classList.add('active');
+}).catch(function(){
+var msg=document.getElementById('formMsg');
+msg.className='msg success';
+msg.innerHTML='✅ Payment captured! Order: <strong>'+data.orderID+'</strong><br>Thank you, '+details.payer.name.given_name+'!<span class="msg-ar">تم الدفع بنجاح!</span>';
+});
+});
+},
+onError:function(err){
+var msg=document.getElementById('formMsg');
+msg.className='msg error';
+msg.innerHTML='Payment error. Please try again or use the enrollment form.<span class="msg-ar">خطأ في الدفع. يرجى المحاولة مرة أخرى.</span>';
+}
+}).render('#paypal-button-container');
+}
+
+// Show/hide PayPal based on course selection
+function updatePayPalVisibility(){
+var course=document.querySelector('select[name=course]').value;
+var pricing=coursePricing[course];
+var container=document.getElementById('paypal-container')||document.getElementById('paypalContainer');
+if(pricing&&pricing.price!=='0.00'){
+container.style.display='block';
+}else{
+container.style.display='none';
+}
+// Update sidebar price
+var priceEl=document.getElementById('infoPrice');
+if(pricing){
+priceEl.textContent=pricing.price==='0.00'?'Free · مجاني':'SAR '+Number(pricing.price).toLocaleString();
+}
+}
+
+var selectedTier='professional';
+var prices={explorer:'Free · مجاني',professional:'SAR 2,500',enterprise:'Custom · مخصص'};
+var tiersAr={explorer:'المستكشف',professional:'المحترف',enterprise:'المؤسسي'};
+
+function selectTier(el){
+document.querySelectorAll('.tier-card').forEach(function(c){c.classList.remove('selected')});
+el.classList.add('selected');
+selectedTier=el.getAttribute('data-tier');
+document.getElementById('infoTier').textContent=selectedTier.charAt(0).toUpperCase()+selectedTier.slice(1)+' · '+tiersAr[selectedTier];
+document.getElementById('infoPrice').textContent=prices[selectedTier];
+}
+
+document.querySelector('select[name=course]').addEventListener('change',function(){
+var opt=this.options[this.selectedIndex];
+document.getElementById('infoCourse').textContent=opt.value?opt.text:'—';
+updatePayPalVisibility();
+});
+
+// Form submission (enrollment without payment)
+document.getElementById('enrollForm').addEventListener('submit',function(e){
+e.preventDefault();
+var btn=document.getElementById('submitBtn');
+var msg=document.getElementById('formMsg');
+var form=this;
+var name=form.name.value.trim();
+var email=form.email.value.trim();
+var course=form.course.value;
+
+if(!name||!email||!course){
+msg.className='msg error';
+msg.innerHTML='Please fill in all required fields.<span class="msg-ar">يرجى ملء جميع الحقول المطلوبة.</span>';
+return;
+}
+
+btn.classList.add('loading');
+btn.disabled=true;
+
+var data={name:name,email:email,phone:form.phone.value.trim(),organization:form.organization.value.trim(),course:course,tier:selectedTier,message:form.message.value.trim()};
+
+fetch('https://api.brainsait.org/api/enroll',{
+method:'POST',
+headers:{'Content-Type':'application/json'},
+body:JSON.stringify(data)
+}).then(function(r){return r.json()}).then(function(result){
+btn.classList.remove('loading');btn.disabled=false;
+if(result.success){
+msg.className='msg success';
+msg.innerHTML='Enrollment submitted! ID: <strong>'+result.enrollmentId+'</strong><span class="msg-ar">'+(result.messageAr||'تم تقديم التسجيل بنجاح.')+'</span>';
+form.reset();
+document.getElementById('step1').classList.add('done');
+document.getElementById('step2').classList.add('active');
+}else{
+msg.className='msg error';
+msg.innerHTML=result.error||'Something went wrong. Please try again.';
+}
+}).catch(function(){
+btn.classList.remove('loading');btn.disabled=false;
+var subject=encodeURIComponent('Enrollment: '+course+' — '+name);
+var body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nPhone: '+form.phone.value+'\nOrganization: '+form.organization.value+'\nCourse: '+course+'\nTier: '+selectedTier+'\nNotes: '+form.message.value);
+window.open('mailto:training@brainsait.org?subject='+subject+'&body='+body);
+msg.className='msg success';
+msg.innerHTML='Opening email client as fallback. Please send the pre-filled email.<span class="msg-ar">جاري فتح البريد الإلكتروني كبديل.</span>';
+});
+});
+
+// Initialize PayPal on page load
+window.addEventListener('DOMContentLoaded',function(){
+loadPayPalScript();
+updatePayPalVisibility();
+});
+</script>
+</body></html>

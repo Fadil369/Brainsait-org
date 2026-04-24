@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#d8e2ff",
+                    "on-tertiary": "#003824",
+                    "on-background": "#e0e3e8",
+                    "on-secondary-container": "#00686f",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "on-primary-fixed": "#001a41",
+                    "secondary-fixed": "#7df4ff",
+                    "error-container": "#93000a",
+                    "outline": "#8b90a0",
+                    "primary": "#adc7ff",
+                    "inverse-on-surface": "#2d3135",
+                    "on-tertiary-fixed": "#002113",
+                    "tertiary": "#4edea3",
+                    "surface-container": "#1c2024",
+                    "on-primary-fixed-variant": "#004493",
+                    "on-tertiary-container": "#00311f",
+                    "on-error": "#690005",
+                    "secondary-container": "#00eefc",
+                    "tertiary-container": "#00a572",
+                    "on-secondary": "#00363a",
+                    "surface-dim": "#101418",
+                    "surface-tint": "#adc7ff",
+                    "secondary-fixed-dim": "#00dbe9",
+                    "error": "#ffb4ab",
+                    "surface-container-highest": "#313539",
+                    "on-secondary-fixed": "#002022",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "surface-container-high": "#262a2e",
+                    "on-secondary-fixed-variant": "#004f54",
+                    "inverse-primary": "#005bc0",
+                    "surface-container-low": "#181c20",
+                    "background": "#101418",
+                    "primary-container": "#4a8eff",
+                    "on-primary-container": "#00285b",
+                    "surface-container-lowest": "#0b0f12",
+                    "surface-bright": "#363a3e",
+                    "on-error-container": "#ffdad6",
+                    "outline-variant": "#414754",
+                    "on-surface": "#e0e3e8",
+                    "on-primary": "#002e68",
+                    "primary-fixed-dim": "#adc7ff",
+                    "surface-variant": "#313539",
+                    "secondary": "#d3fbff",
+                    "surface": "#101418",
+                    "inverse-surface": "#e0e3e8",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-surface-variant": "#c1c6d7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "12px",
+                    "gutter": "24px",
+                    "md": "24px",
+                    "xs": "4px",
+                    "xl": "80px",
+                    "container-max": "1280px",
+                    "lg": "48px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "code": ["SFMono-Regular"],
+                    "h3": ["Space Grotesk"],
+                    "h2": ["Space Grotesk"],
+                    "body-lg": ["Inter"],
+                    "h1": ["Space Grotesk"],
+                    "label-caps": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "code": ["14px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                    "h3": ["32px", {"lineHeight": "1.3", "letterSpacing": "0", "fontWeight": "600"}],
+                    "h2": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "h1": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(11, 14, 18, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(173, 199, 255, 0.15);
+        }
+        .glow-border:hover {
+            border-color: #4a8eff;
+            box-shadow: 0 0 15px rgba(74, 142, 255, 0.3);
+        }
+        .circuit-line {
+            background: linear-gradient(90deg, transparent, #4a8eff, transparent);
+            height: 2px;
+            width: 100%;
+            position: relative;
+        }
+        .circuit-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #4a8eff;
+            border-radius: 50%;
+            top: -3px;
+            box-shadow: 0 0 10px #4a8eff;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation -->
+<nav class="sticky top-0 z-50 flex justify-between items-center px-8 h-20 w-full bg-slate-950/60 backdrop-blur-[30px] border-b border-slate-800/50 shadow-[0_0_20px_rgba(0,123,255,0.1)]">
+<div class="flex items-center gap-4">
+<span class="text-xl font-bold tracking-tighter text-slate-50 dark:text-white font-space-grotesk tracking-tight">Brainsait x Elfadil</span>
+</div>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="text-slate-400 hover:text-slate-100 transition-colors font-space-grotesk tracking-tight" href="#">Home</a>
+<a class="text-slate-400 hover:text-slate-100 transition-colors font-space-grotesk tracking-tight" href="#">Solutions</a>
+<a class="text-blue-500 border-b-2 border-blue-500 pb-1 font-space-grotesk tracking-tight" href="#">Ecosystem</a>
+<a class="text-slate-400 hover:text-slate-100 transition-colors font-space-grotesk tracking-tight" href="#">Vision</a>
+</div>
+<div class="flex items-center gap-sm">
+<div class="flex gap-xs">
+<button class="p-2 text-slate-400 hover:bg-blue-500/10 transition-all rounded-lg">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-blue-500/10 transition-all rounded-lg">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<button class="bg-primary-container text-on-primary-container px-gutter py-xs rounded-full font-label-caps transition-all duration-300 ease-out active:scale-95 hover:shadow-[0_0_15px_rgba(0,123,255,0.3)]">
+                Connect
+            </button>
+</div>
+</nav>
+<main class="max-w-[1280px] mx-auto px-8">
+<!-- Hero Section -->
+<section class="py-xl flex flex-col items-center text-center">
+<div class="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-tertiary/30 bg-tertiary/5 mb-gutter">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
+</span>
+<span class="text-tertiary font-label-caps text-xs">Ecosystem Synergy v2.0</span>
+</div>
+<h1 class="font-h1 text-h1 text-on-surface mb-gutter max-w-4xl">
+                The Confluence of <span class="text-primary">Clinical Wisdom</span> &amp; Digital Frameworks
+            </h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl">
+                Bridging the gap between specialized medical expertise and high-performance infrastructure like <a class="text-primary hover:underline transition-all" href="#nphies-service">NPHIES</a> and <a class="text-primary hover:underline transition-all" href="#givc-mesh">GIVC</a> to revolutionize patient outcomes.
+            </p>
+</section>
+<!-- The Vision Grid (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter py-lg" id="givc-mesh">
+<div class="md:col-span-8 glass-panel p-lg rounded-xl glow-border group">
+<div class="flex justify-between items-start mb-lg">
+<div>
+<span class="material-symbols-outlined text-primary text-4xl mb-sm block" data-icon="hub">hub</span>
+<h3 class="font-h3 text-h3 text-on-surface">Integrated GIVC Mesh</h3>
+</div>
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold font-label-caps">INFRASTRUCTURE</span>
+</div>
+<p class="text-on-surface-variant font-body-md mb-gutter">
+                    Our Global Infrastructure Vision Core (GIVC) provides the backbone for seamless data exchange. We leverage distributed cloud architecture to ensure that clinical insights are never more than a millisecond away from the point of care.
+                </p>
+<div class="h-48 relative rounded-lg overflow-hidden mt-base">
+<img alt="digital nexus" class="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700" data-alt="abstract visualization of global data network with glowing blue nodes and digital circuit connections on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCF--2u-Hq7_tuk4PF26L62QeM7wl9MoyqlaTeC9V7Th8ESD7TTcUErqp_dLxtDzdXwZNdavvrBHSRZ71f4EJYNpQbeLC2N5DmW8LlpcTpOQX-9Aks4u0H28glhj5QeOYhYdmJs7fXsIDvKN6fRjpgm3W075YNecTGrpJ2o4TzBWNoUdo8LTqjNJsToJ5dhX7kJZ5Qw9NeG6ZXbFF1BZsljg0cIK3t4NblkVFZIpYpuc6Uc5q9UyE30EW8E_dmZAaUx1oPA2TzDftw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+</div>
+</div>
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<div class="glass-panel p-gutter rounded-xl glow-border" id="nphies-service">
+<span class="material-symbols-outlined text-tertiary text-3xl mb-sm block" data-icon="verified_user">verified_user</span>
+<h4 class="font-h3 text-2xl text-on-surface mb-xs">NPHIES Certified</h4>
+<p class="text-on-surface-variant text-sm font-body-md">
+                        Full compliance with National Platform for Health and Insurance Exchange Services protocols for secure, standardized medical records.
+                    </p>
+</div>
+<div class="glass-panel p-gutter rounded-xl glow-border">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-3xl mb-sm block" data-icon="clinical_notes">clinical_notes</span>
+<h4 class="font-h3 text-2xl text-on-surface mb-xs">Clinical AI</h4>
+<p class="text-on-surface-variant text-sm font-body-md">
+                        Proprietary neural networks trained on verified clinical datasets to assist specialists in rapid diagnostics and care planning.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Ecosystem Flow Diagram -->
+<section class="py-xl">
+<div class="text-center mb-lg">
+<h2 class="font-h2 text-h2 text-on-surface">Ecosystem Workflow</h2>
+<p class="text-on-surface-variant">Tracing the journey from raw data to clinical decision.</p>
+</div>
+<div class="relative flex flex-col md:flex-row justify-between items-start gap-gutter px-gutter">
+<!-- Step 1 -->
+<div class="flex-1 flex flex-col items-center text-center relative z-10">
+<div class="w-16 h-16 rounded-full glass-panel flex items-center justify-center mb-sm border-2 border-primary/40">
+<span class="material-symbols-outlined text-primary" data-icon="patient_list">patient_list</span>
+</div>
+<span class="font-label-caps text-xs text-primary mb-xs">Stage 01</span>
+<h5 class="font-h3 text-xl mb-xs">Data Intake</h5>
+<p class="text-xs text-on-surface-variant px-4">Standardized clinical capture via <a class="hover:text-primary transition-colors" href="#nphies-service">NPHIES</a> interface.</p>
+</div>
+<!-- Connector -->
+<div class="hidden md:block flex-1 mt-8">
+<div class="circuit-line">
+<div class="circuit-dot left-0"></div>
+<div class="circuit-dot right-0"></div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex-1 flex flex-col items-center text-center relative z-10">
+<div class="w-16 h-16 rounded-full glass-panel flex items-center justify-center mb-sm border-2 border-tertiary/40">
+<span class="material-symbols-outlined text-tertiary" data-icon="memory">memory</span>
+</div>
+<span class="font-label-caps text-xs text-tertiary mb-xs">Stage 02</span>
+<h5 class="font-h3 text-xl mb-xs">GIVC Processing</h5>
+<p class="text-xs text-on-surface-variant px-4">Distributed computing layers analyze and tag patient data.</p>
+</div>
+<!-- Connector -->
+<div class="hidden md:block flex-1 mt-8">
+<div class="circuit-line">
+<div class="circuit-dot left-0"></div>
+<div class="circuit-dot right-0"></div>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex-1 flex flex-col items-center text-center relative z-10">
+<div class="w-16 h-16 rounded-full glass-panel flex items-center justify-center mb-sm border-2 border-secondary-container/40">
+<span class="material-symbols-outlined text-secondary-container" data-icon="psychology">psychology</span>
+</div>
+<span class="font-label-caps text-xs text-secondary-container mb-xs">Stage 03</span>
+<h5 class="font-h3 text-xl mb-xs">Expert Insight</h5>
+<p class="text-xs text-on-surface-variant px-4">Clinical specialists receive AI-augmented recommendations.</p>
+</div>
+</div>
+</section>
+<!-- Partnership Section -->
+<section class="py-xl glass-panel rounded-3xl p-lg my-xl border-primary/20">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg items-center">
+<div>
+<h2 class="font-h2 text-h2 text-on-surface mb-gutter">The Partnership</h2>
+<p class="text-body-lg font-body-md text-on-surface-variant mb-gutter">
+                        Brainsait brings the algorithmic horsepower and infrastructure vision, while Elfadil provides decades of frontline clinical mastery. Together, we are not just building software; we are engineering the future of Saudi Arabia's digital health landscape.
+                    </p>
+<ul class="space-y-4 mb-lg">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary" data-icon="check_circle">check_circle</span>
+<span class="font-body-md">Vision 2030 Healthcare Alignment</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary" data-icon="check_circle">check_circle</span>
+<span class="font-body-md">Local Data Residency &amp; Sovereignty</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary" data-icon="check_circle">check_circle</span>
+<span class="font-body-md">End-to-End Specialist Workflow Orchestration</span>
+</li>
+</ul>
+<div class="flex gap-gutter">
+<a class="bg-primary text-on-primary px-lg py-sm rounded-lg font-label-caps hover:shadow-lg hover:shadow-primary/20 transition-all inline-block text-center" href="javascript:void(0)" onclick="alert('Roadmap download initiated.')">Download Roadmap</a>
+<a class="border border-outline px-lg py-sm rounded-lg font-label-caps hover:bg-white/5 transition-all inline-block text-center" href="mailto:inquiry@brainsait-elfadil.sa">Inquiry Hub</a>
+</div>
+</div>
+<div class="relative">
+<div class="aspect-square rounded-2xl overflow-hidden glass-panel p-4 border-2 border-primary/30">
+<img alt="healthcare tech" class="w-full h-full object-cover rounded-xl" data-alt="modern clinical laboratory with advanced monitors displaying DNA helix and medical data in high-tech setting with cool blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMX4iO_D1TJtrsngjDKhE_vJ7zM7rkZUxhSnL3IuVWJgO4dG26dQHE7F0_naJGo36kYqtXPp_VOM0E121fZgn_B353aULBvikmnwrVEViP6gJ0M3hORX0jQVkQZZlaxXddD__Q7xZNP9rEvShoiESQKwsV7OkXbEAsxusXh6hyoF9qTJFtOwiC64KTJK8_c0sLafgKM07UfGKS-FWr20Wbx6LnCq_xA3fFiz1CnRNdaGUlYLt7xvfCnj_kWyqOtiQ65wliJUcvWXSk"/>
+</div>
+<div class="absolute -bottom-6 -left-6 glass-panel p-sm rounded-xl border border-tertiary/40">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" data-icon="group_work">group_work</span>
+</div>
+<div>
+<div class="text-lg font-bold text-on-surface">500+</div>
+<div class="text-[10px] font-label-caps text-on-surface-variant">SMEs Integrated</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-slate-950 border-t border-slate-900 py-12 px-8 flex flex-col md:flex-row justify-between items-center max-w-[1280px] mx-auto">
+<div class="flex flex-col gap-2 mb-gutter md:mb-0">
+<span class="text-lg font-bold text-slate-200 font-space-grotesk tracking-tight">Brainsait x Elfadil</span>
+<p class="text-slate-600 font-space-grotesk text-sm">© 2024 Brainsait &amp; Elfadil. Future Delivered Today.</p>
+</div>
+<div class="flex flex-wrap gap-lg justify-center md:justify-end">
+<a class="text-slate-600 hover:text-blue-400 transition-colors font-space-grotesk text-sm" href="#">Privacy Policy</a>
+<a class="text-slate-600 hover:text-blue-400 transition-colors font-space-grotesk text-sm" href="#">Terms of Service</a>
+<a class="text-slate-600 hover:text-blue-400 transition-colors font-space-grotesk text-sm" href="#">AI Ethics</a>
+<a class="text-blue-400 font-semibold font-space-grotesk text-sm" href="#givc-mesh">Global Cloud</a>
+</div>
+</footer>
+</body></html>

@@ -24,8 +24,37 @@ https://api.brainsait.org/* https://api.brainsait.org/:splat 200
 # Dashboard routing
 https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 
-# Partners page
-/partners /partners.html 200
+# Legacy incubator root paths -> canonical /incubator/* paths
+/apply /incubator/apply 301
+/app-store /incubator/app-store 301
+/app-store/* /incubator/app-store/:splat 301
+/resources /incubator/resources 301
+/resources/* /incubator/resources/:splat 301
+/mentorship /incubator/mentorship 301
+/mentorship/* /incubator/mentorship/:splat 301
+/projects /incubator/projects 301
+/projects/* /incubator/projects/:splat 301
+/portal /incubator/portal 301
+/portal/* /incubator/portal/:splat 301
+/showcase /incubator/showcase 301
+/showcase/* /incubator/showcase/:splat 301
+/training /training/courses/ 301
+/training/ /training/courses/ 301
+/templates /incubator/templates 301
+/templates/* /incubator/templates/:splat 301
+/startup /incubator/startup 301
+/startup/* /incubator/startup/:splat 301
+/ai-dashboard /incubator/ai-dashboard 301
+/ai-dashboard/* /incubator/ai-dashboard/:splat 301
+/partner /partners.html 200
+/team-room /incubator/team-room 301
+/vibe-code /incubator/vibe-code 301
+/courses /incubator/courses 301
+/1to1 /incubator/1to1 301
+
+# Partners route
+/partners /partner 301
+/partners/ /partner 301
 
 # Staff directory
 /staff /staff.html 200
@@ -36,13 +65,14 @@ https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 # Privacy and Terms
 /privacy /privacy-policy.html 200
 /terms /terms-of-use.html 200
-/training/courses /training/index.html 200
-/training/courses/ /training/index.html 200
+/contact https://forms.gle/La5qPLKYyV6M9VXP8 302
+/contact-form https://forms.gle/La5qPLKYyV6M9VXP8 302
 /docs https://fadil369.github.io/brainsait-docs/ 302
 /docs/* https://fadil369.github.io/brainsait-docs/:splat 302
 /clinics /external/clinics-pages/index.html 200
 /store /appstore 302
 /rcm https://portal.elfadil.com/ 302
+/incubator /appstore 302
 /open-webui /appstore 302
 
 # 404 handling

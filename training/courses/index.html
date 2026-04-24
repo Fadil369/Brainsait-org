@@ -1,0 +1,702 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content="BrainSAIT Unified Training Hub — all healthcare AI courses in one place. NPHIES, FHIR R4, Claude AI, MCP, RCM, and more. | مركز برينسايت الموحد للتدريب"/><meta name="keywords" content="NPHIES training, healthcare AI courses, FHIR R4, Claude AI healthcare, MCP protocol, RCM automation, Saudi healthcare training, BrainSAIT courses, Vision 2030 healthcare"/><meta name="robots" content="index, follow"/><meta name="theme-color" content="#2E7D32"/><meta property="og:site_name" content="BrainSAIT"/><meta property="og:type" content="website"/><meta property="og:title" content="BrainSAIT Unified Training Hub | All Courses"/><meta property="og:description" content="All healthcare AI training courses in one hub — NPHIES, FHIR, Claude AI, MCP, RCM, and more."/><meta property="og:locale" content="en_US"/><title>BrainSAIT Training Hub | All Courses · جميع الدورات</title><link rel="icon" href="/favicon.ico"/><link rel="canonical" href="https://brainsait.org/training/courses"/><link rel="stylesheet" href="/assets/css/design-system.css"/><link rel="stylesheet" href="/assets/css/training.css"/><script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"BrainSAIT Healthcare AI Training Courses","description":"Unified healthcare AI training catalog for Saudi Arabia","url":"https://brainsait.org/training/courses","numberOfItems":20,"itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Course","name":"Master the Intersection of Healthcare, Tech & AI","url":"https://brainsait.org/training/courses/collective-brainpower","provider":{"@type":"Organization","name":"BrainSAIT"}}},{"@type":"ListItem","position":2,"item":{"@type":"Course","name":"NPHIES-AI Mastery: Health Insurance Automation","url":"https://brainsait.org/training/courses/nphies-ai-mastery","provider":{"@type":"Organization","name":"BrainSAIT"}}}]}</script><style>
+:root{--bg:#050505;--card:#0d1320;--border:rgba(255,255,255,.08);--cyan:#67e8f9;--green:#2E7D32;--green-l:#b9f6ca;--blue:#0ea5e9;--purple:#8b5cf6;--orange:#f59e0b;--pink:#ec4899;--red:#ef4444;--text:#fff;--text2:rgba(255,255,255,.72);--text3:rgba(255,255,255,.55);--glass:rgba(255,255,255,.06);}
+*{box-sizing:border-box;margin:0;padding:0;}body{font-family:"Inter","Roboto","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:#fff;min-height:100vh;}
+.container{max-width:1320px;margin:0 auto;padding:0 24px;}
+.header{padding:64px 0 40px;position:relative;overflow:hidden;background:linear-gradient(135deg,#050505 0%,#0b1220 55%,#16112b 100%);}
+.header::before{content:'';position:absolute;top:-80px;left:-60px;width:280px;height:280px;border-radius:50%;background:rgba(6,182,212,.14);filter:blur(24px);}
+.header::after{content:'';position:absolute;bottom:-100px;right:-40px;width:340px;height:340px;border-radius:50%;background:rgba(139,92,246,.12);filter:blur(28px);}
+.breadcrumb{display:flex;gap:8px;align-items:center;font-size:.875rem;margin-bottom:24px;}
+.breadcrumb a{color:var(--text2);text-decoration:none;}.breadcrumb a:hover{text-decoration:underline;}
+.breadcrumb .sep{color:rgba(255,255,255,.3);}.breadcrumb .cur{color:#fff;}
+.title{font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;line-height:1.1;margin:0 0 6px;}
+.title-ar{font-size:clamp(1rem,2.5vw,1.5rem);font-weight:600;color:var(--cyan);margin:0 0 12px;direction:rtl;}
+.subtitle{font-size:1rem;color:var(--text2);max-width:720px;line-height:1.6;margin:0 0 32px;}
+.stats{display:flex;gap:24px;flex-wrap:wrap;}
+.stat{text-align:center;padding:12px 20px;border-radius:12px;background:var(--glass);border:1px solid var(--border);}
+.stat-val{font-size:1.25rem;font-weight:800;color:var(--cyan);}.stat-lbl{font-size:.625rem;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
+.quick-btns{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap;}
+.qbtn{display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:8px;font-size:.8125rem;font-weight:600;text-decoration:none;transition:all .2s;border:none;cursor:pointer;font-family:inherit;}
+.qbtn-white{background:#fff;color:#050505;}.qbtn-white:hover{background:#e0e0e0;}
+.qbtn-green{background:var(--green);color:#fff;}.qbtn-green:hover{background:#1B5E20;}
+.qbtn-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.24);}.qbtn-outline:hover{border-color:rgba(255,255,255,.4);}
+.filter-bar{display:flex;gap:6px;padding:20px 0;flex-wrap:wrap;position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--border);padding-bottom:16px;overflow-x:auto;}
+.fbtn{padding:7px 16px;border-radius:18px;border:1px solid var(--border);background:transparent;color:var(--text3);font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit;white-space:nowrap;}
+.fbtn:hover{border-color:rgba(255,255,255,.2);color:#fff;}
+.fbtn.active{background:#fff;color:#050505;border-color:#fff;}
+.fbtn .cnt{font-size:.625rem;opacity:.6;margin-left:4px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;padding:24px 0 60px;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.4);}
+.card-stripe{height:4px;}
+.s-green{background:linear-gradient(90deg,#2E7D32,#43A047);}
+.s-blue{background:linear-gradient(90deg,#0ea5e9,#6366f1);}
+.s-purple{background:linear-gradient(90deg,#8b5cf6,#a855f7);}
+.s-orange{background:linear-gradient(90deg,#f59e0b,#ef4444);}
+.s-cyan{background:linear-gradient(90deg,#06b6d4,#0ea5e9);}
+.s-pink{background:linear-gradient(90deg,#ec4899,#f43f5e);}
+.s-red{background:linear-gradient(90deg,#ef4444,#f97316);}
+.s-teal{background:linear-gradient(90deg,#14b8a6,#06b6d4);}
+.s-gold{background:linear-gradient(90deg,#d4a574,#f59e0b);}
+.card-body{padding:20px;flex:1;display:flex;flex-direction:column;}
+.chips{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px;}
+.chip{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:11px;font-size:.625rem;font-weight:600;letter-spacing:.2px;}
+.c-green{background:rgba(46,125,50,.18);color:var(--green-l);}
+.c-blue{background:rgba(14,165,233,.18);color:var(--cyan);}
+.c-purple{background:rgba(139,92,246,.18);color:#c4b5fd;}
+.c-orange{background:rgba(245,158,11,.18);color:#fcd34d);}
+.c-cyan{background:rgba(6,182,212,.18);color:var(--cyan);}
+.c-pink{background:rgba(236,72,153,.18);color:#f9a8d4);}
+.c-red{background:rgba(239,68,68,.18);color:#fca5a5);}
+.c-teal{background:rgba(20,184,166,.18);color:#5eead4);}
+.c-open{background:rgba(255,255,255,.08);color:#fff;}
+.c-claude{background:rgba(204,120,50,.18);color:#f5c28a);}
+.c-gold{background:rgba(212,165,116,.18);color:#f5c28a);}
+.card-title{font-size:1.05rem;font-weight:800;margin:0 0 4px;line-height:1.25;}
+.card-title-ar{font-size:.78rem;font-weight:600;color:var(--cyan);margin:0 0 8px;direction:rtl;}
+.card-desc{font-size:.75rem;color:var(--text2);line-height:1.55;margin:0 0 14px;flex:1;}
+.card-meta{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:16px;}
+.meta{padding:7px 9px;border-radius:7px;background:var(--glass);border:1px solid rgba(255,255,255,.04);}
+.meta-l{font-size:.5625rem;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;}
+.meta-v{font-size:.6875rem;font-weight:700;color:#fff;margin-top:1px;}
+.card-actions{display:flex;gap:8px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:8px 16px;border-radius:7px;font-size:.75rem;font-weight:600;text-decoration:none;transition:all .2s;border:none;cursor:pointer;font-family:inherit;}
+.btn-w{background:#fff;color:#050505;}.btn-w:hover{background:#e0e0e0;}
+.btn-o{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.24);}.btn-o:hover{border-color:rgba(255,255,255,.4);}
+.btn-g{background:var(--green);color:#fff;}.btn-g:hover{background:#1B5E20;}
+.src{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:6px;font-size:.5625rem;font-weight:700;margin-bottom:8px;}
+.src-brainsait{background:rgba(46,125,50,.15);color:var(--green-l);}
+.src-claude{background:rgba(204,120,50,.12);color:#f5c28a;}
+.section-break{padding:40px 0 20px;border-top:1px solid var(--border);margin-top:20px;}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+.section-icon{font-size:1.5rem;}
+.section-title{font-size:1.25rem;font-weight:800;margin:0;}
+.section-title-ar{font-size:.875rem;color:var(--cyan);direction:rtl;}
+.section-desc{font-size:.8125rem;color:var(--text2);margin:0 0 20px;max-width:600px;}
+.featured-banner{background:linear-gradient(135deg,rgba(46,125,50,.12),rgba(14,165,233,.12));border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.featured-banner .icon{font-size:2.5rem;}
+.featured-banner .info{flex:1;min-width:240px;}
+.featured-banner h3{font-size:1.125rem;font-weight:800;margin:0 0 4px;}
+.featured-banner .ar{font-size:.875rem;color:var(--cyan);direction:rtl;margin:0 0 6px;}
+.featured-banner p{font-size:.8125rem;color:var(--text2);margin:0;}
+.featured-banner .actions{display:flex;gap:8px;flex-wrap:wrap;}
+.paths{padding:40px 0;border-top:1px solid var(--border);}
+.paths-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
+.path{padding:24px;border-radius:14px;background:var(--card);border:1px solid var(--border);transition:transform .2s;}
+.path:hover{transform:translateY(-2px);}
+.path-icon{font-size:1.75rem;margin-bottom:12px;}
+.path-name{font-size:.9rem;font-weight:700;margin:0 0 2px;}
+.path-name-ar{font-size:.72rem;color:var(--cyan);margin:0 0 8px;direction:rtl;}
+.path-desc{font-size:.72rem;color:var(--text2);margin:0 0 12px;line-height:1.5;}
+.path-courses{font-size:.6875rem;color:var(--text3);}
+.path-courses strong{color:#fff;}
+.cta{padding:48px 0;text-align:center;border-top:1px solid var(--border);}
+.cta-card{background:linear-gradient(135deg,rgba(46,125,50,.16),rgba(14,165,233,.16));border:1px solid var(--border);border-radius:16px;padding:40px 28px;max-width:680px;margin:0 auto;}
+.cta-card h2{font-size:1.5rem;font-weight:800;margin:0 0 6px;}
+.cta-card .ar{color:var(--cyan);direction:rtl;margin:0 0 10px;font-size:1rem;}
+.cta-card p{color:var(--text2);margin:0 0 20px;}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.footer{border-top:1px solid var(--border);padding:24px 0;}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-brand{font-size:.75rem;color:var(--text3);}
+.footer-links{display:flex;gap:14px;}
+.footer-links a{font-size:.6875rem;color:var(--text3);text-decoration:none;}.footer-links a:hover{color:#fff;}
+@media(max-width:600px){.grid{grid-template-columns:1fr;}.stats{gap:12px;}.card-meta{grid-template-columns:1fr;}.card-actions{flex-direction:column;}.filter-bar{justify-content:center;}.paths-grid{grid-template-columns:1fr;}.featured-banner{flex-direction:column;text-align:center;}}
+</style></head><body>
+
+<header class="header"><div class="container">
+<nav class="breadcrumb"><a href="/">BrainSAIT</a><span class="sep">/</span><a href="/training">Training</a><span class="sep">/</span><span class="cur">All Courses · جميع الدورات</span></nav>
+<h1 class="title">Unified Training Hub</h1>
+<p class="title-ar">مركز التدريب الموحد</p>
+<p class="subtitle">All healthcare AI courses in one place. From NPHIES compliance to Claude AI agents — built for Saudi healthcare, in Arabic and English.</p>
+<div class="stats">
+<div class="stat"><div class="stat-val">20</div><div class="stat-lbl">Courses</div></div>
+<div class="stat"><div class="stat-val">AR/EN</div><div class="stat-lbl">Bilingual</div></div>
+<div class="stat"><div class="stat-val">6</div><div class="stat-lbl">Learning Paths</div></div>
+<div class="stat"><div class="stat-val">2</div><div class="stat-lbl">Live Cohorts</div></div>
+<div class="stat"><div class="stat-val">Vision 2030</div><div class="stat-lbl">Aligned</div></div>
+</div>
+<div class="quick-btns">
+<a href="#featured" class="qbtn qbtn-white">🎓 Live Courses</a>
+<a href="#paths" class="qbtn qbtn-green">🗺️ Learning Paths</a>
+<a href="/training/enroll" class="qbtn qbtn-outline">📝 Enroll Now</a>
+<a href="/training/dashboard" class="qbtn qbtn-outline">📊 Dashboard</a>
+</div>
+</div></header>
+
+<!-- ═══════════════ FEATURED LIVE COURSES ═══════════════ -->
+<section id="featured" style="padding:32px 0 0"><div class="container">
+
+<div class="featured-banner">
+<div class="icon">🏥</div>
+<div class="info">
+<h3>Master the Intersection of Healthcare, Tech & AI</h3>
+<p class="ar">إتقان تقاطع الرعاية الصحية والتكنولوجيا والذكاء الاصطناعي</p>
+<p>Live cohort now running — 4 modules covering collective brainpower, automation, digital health systems, and AI strategy. Instructor-led via Google Classroom.</p>
+</div>
+<div class="actions">
+<a href="/training/courses/collective-brainpower" class="btn btn-w">View Course</a>
+<a href="https://classroom.google.com/c/ODYwNTAyNzAzMTky?cjc=4oc22gvm" target="_blank" rel="noopener" class="btn btn-g">Join Classroom ↗</a>
+</div>
+</div>
+
+<div class="featured-banner" style="border-color:rgba(14,165,233,.2)">
+<div class="icon">⚡</div>
+<div class="info">
+<h3>NPHIES-AI Mastery: Health Insurance Automation</h3>
+<p class="ar">إتقان NPHIES بالذكاء الاصطناعي: أتمتة التأمين الصحي</p>
+<p>Deep dive into Saudi health-insurance AI pipelines — claims automation, NPHIES compliance, FHIR R4 integration, and Oracle bridge for RCM teams.</p>
+</div>
+<div class="actions">
+<a href="/training/courses/nphies-ai-mastery" class="btn btn-w">View Course</a>
+<a href="https://classroom.google.com/c/ODYwNTQ0NDEyNjMw?cjc=pohzx7a6" target="_blank" rel="noopener" class="btn btn-g">Join Classroom ↗</a>
+</div>
+</div>
+
+</div></section>
+
+<!-- ═══════════════ FILTER ═══════════════ -->
+<div class="container">
+<div class="filter-bar" id="filterBar">
+<button class="fbtn active" data-filter="all">All<span class="cnt">20</span></button>
+<button class="fbtn" data-filter="active">🟢 Active</button>
+<button class="fbtn" data-filter="brainsait">BrainSAIT</button>
+<button class="fbtn" data-filter="claude">Claude AI</button>
+<button class="fbtn" data-filter="nphies">NPHIES</button>
+<button class="fbtn" data-filter="fhir">FHIR</button>
+<button class="fbtn" data-filter="rcm">RCM</button>
+<button class="fbtn" data-filter="ai">AI/ML</button>
+<button class="fbtn" data-filter="dev">Developer</button>
+<button class="fbtn" data-filter="pro">Professional</button>
+<button class="fbtn" data-filter="edu">Education</button>
+<button class="fbtn" data-filter="saudi">🇸🇦 Saudi</button>
+</div>
+</div>
+
+<!-- ═══════════════ BRAINSAIT ORIGINAL COURSES ═══════════════ -->
+<div class="container">
+<div class="section-break">
+<div class="section-head">
+<span class="section-icon">🏥</span>
+<div>
+<div class="section-title">BrainSAIT Healthcare Courses</div>
+<div class="section-title-ar">دورات برينسايت الصحية</div>
+</div>
+</div>
+<p class="section-desc">Original courses built for Saudi healthcare — NPHIES compliance, FHIR implementation, RCM automation, and AI strategy aligned with Vision 2030.</p>
+</div>
+
+<div class="grid" id="gridBrainsait">
+
+<!-- 1. Collective Brainpower -->
+<div class="card" data-tags="active brainsait pro saudi"><div class="card-stripe s-green"></div><div class="card-body">
+<div class="src src-brainsait">BrainSAIT Original</div>
+<div class="chips"><span class="chip c-green">Active</span><span class="chip c-open">Cohort</span></div>
+<div class="card-title">Master the Intersection of Healthcare, Tech & AI</div>
+<div class="card-title-ar">إتقان تقاطع الرعاية الصحية والتكنولوجيا والذكاء الاصطناعي</div>
+<div class="card-desc">4-module cohort covering collective brainpower, automation, digital health systems, and AI strategy. Instructor-led by Dr. Mohamed El Fadil.</div>
+<div class="card-meta">
+<div class="meta"><div class="meta-l">Format</div><div class="meta-v">Google Classroom</div></div>
+<div class="meta"><div class="meta-l">Code</div><div class="meta-v">4oc22gvm</div></div>
+<div class="meta"><div class="meta-l">Level</div><div class="meta-v">Founders & Teams</div></div>
+<div class="meta"><div class="meta-l">Modules</div><div class="meta-v">4 modules</div></div>
+</div>
+<div class="card-actions">
+<a href="/training/courses/collective-brainpower" class="btn btn-w">View Course</a>
+<a href="https://classroom.google.com/c/ODYwNTAyNzAzMTky?cjc=4oc22gvm" target="_blank" rel="noopener" class="btn btn-o">Join ↗</a>
+</div>
+</div></div>
+
+<!-- 2. NPHIES-AI Mastery -->
+<div class="card" data-tags="active brainsait nphies fhir rcm saudi ai"><div class="card-stripe s-blue"></div><div class="card-body">
+<div class="src src-brainsait">BrainSAIT Original</div>
+<div class="chips"><span class="chip c-green">Active</span><span class="chip c-blue">NPHIES</span><span class="chip c-purple">AI</span></div>
+<div class="card-title">NPHIES-AI Mastery: Health Insurance Automation</div>
+<div class="card-title-ar">إتقان NPHIES بالذكاء الاصطناعي: أتمتة التأمين الصحي</div>
+<div class="card-desc">Claims automation, NPHIES compliance, FHIR R4 integration, and Oracle bridge connectivity for RCM teams. Live sessions + hands-on labs.</div>
+<div class="card-meta">
+<div class="meta"><div class="meta-l">Format</div><div class="meta-v">Google Classroom</div></div>
+<div class="meta"><div class="meta-l">Code</div><div class="meta-v">pohzx7a6</div></div>
+<div class="meta"><div class="meta-l">Level</div><div class="meta-v">RCM & Coders</div></div>
+<div class="meta"><div class="meta-l">Modules</div><div class="meta-v">4 modules</div></div>
+</div>
+<div class="card-actions">
+<a href="/training/courses/nphies-ai-mastery" class="btn btn-w">View Course</a>
+<a href="https://classroom.google.com/c/ODYwNTQ0NDEyNjMw?cjc=pohzx7a6" target="_blank" rel="noopener" class="btn btn-o">Join ↗</a>
+</div>
+</div></div>
+
+<!-- 3. FHIR R4 Implementation -->
+<div class="card" data-tags="brainsait fhir dev saudi"><div class="card-stripe s-cyan"></div><div class="card-body">
+<div class="src src-brainsait">BrainSAIT Original</div>
+<div class="chips"><span class="chip c-cyan">FHIR</span><span class="chip c-blue">Developer</span></div>
+<div class="card-title">FHIR R4 Implementation for Saudi Healthcare</div>
+<div class="card-title-ar">تطبيق FHIR R4 للرعاية الصحية في المملكة</div>
+<div class="card-desc">Build FHIR R4 resources, profiles, and extensions for Saudi NPHIES. REST API development, resource mapping, and interoperability testing.</div>
+<div class="card-meta">
+<div class="meta"><div class="meta-l">Format</div><div class="meta-v">Self-paced + Labs</div></div>
+<div class="meta"><div class="meta-l">Level</div><div class="meta-v">Developers</div></div>
+<div class="meta"><div class="meta-l">Duration</div><div class="meta-v">6 weeks</div></div>
+<div class="meta"><div class="meta-l">Modules</div><div class="meta-v">6 modules</div></div>
+</div>
+<div class="card-actions">
+<a href="/training/enroll?course=fhir-r4" class="btn btn-w">Enroll</a>
+</div>
+</div></div>
+
+<!-- 4. RCM Automation -->
+<div class="card" data-tags="brainsait rcm nphies saudi ai"><div class="card-stripe s-orange"></div><div class="card-body">
+<div class="src src-brainsait">BrainSAIT Original</div>
+<div class="chips"><span class="chip c-orange">RCM</span><span class="chip c-purple">AI</span></div>
+<div class="card-title">RCM Automation & Revenue Recovery</div>
+<div class="card-title-ar">أتمتة إدارة دورة الإيرادات واسترداد الإيرادات</div>
+<div class="card-desc">Automate claims processing, denial management, and revenue recovery using AI. Covers NPHIES integration, Oracle Health bridge, and real-time analytics.</div>
+<div class="card-meta">
+<div class="meta"><div class="meta-l">Format</div><div class="meta-v">Self-paced + Labs</div></div>
+<div class="meta"><div class="meta-l">Level</div><div class="meta-v">RCM Teams</div></div>
+<div class="meta"><div class="meta-l">Duration</div><div class="meta-v">5 weeks</div></div>
+<div class="meta"><div class="meta-l">Modules</div><div class="meta-v">5 modules</div></div>
+</div>
+<div class="card-actions">
+<a href="/training/enroll?course=rcm-automation" class="btn btn-w">Enroll</a>
+</div>
+</div></div>
+
+<!-- 5. Healthcare Compliance -->
+<div class="card" data-tags="brainsait pro saudi"><div class="card-stripe s-red"></div><div class="card-body">
+<div class="src src-brainsait">BrainSAIT Original</div>
+<div class="chips"><span class="chip c-red">Compliance</span><span class="chip c-open">Saudi</span></div>
+<div class="card-title">Healthcare Compliance & Regulatory AI</div>
+<div class="card-title-ar">الامتثال الصحي والتنظيم بالذكاء الاصطناعي</div>
+<div class="card-desc">NPHIES regulatory compliance, HIPAA, MOH requirements, and AI-powered audit systems. Built for Saudi healthcare compliance officers and legal teams.</div>
+<div class="card-meta">
+<div class="meta"><div class="meta-l">Format</div><div class="meta-v">Self-paced</div></div>
+<div class="meta"><div class="meta-l">Level</div><div class="meta-v">Compliance</div></div>
+<div class="meta"><div class="meta-l">Duration</div><div class="meta-v">4 weeks</div></div>
+<div class="meta"><div class="meta-l">Modules</div><div class="meta-v">4 modules</div></div>
+</div>
+<div class="card-actions">
+<a href="/training/enroll?course=compliance" class="btn btn-w">Enroll</a>
+</div>
+</div></div>
+
+<!-- 6. Vision 2030 Digital Health -->
+<div class="card" data-tags="brainsait pro saudi ai"><div class="card-stripe s-gold"></div><div class="card-body">
+<div class="src src-brainsait">BrainSAIT Original</div>
+<div class="chips"><span class="chip c-gold">🇸🇦 Saudi</span><span class="chip c-purple">Strategy</span></div>
+<div class="card-title">Vision 2030 Digital Health Strategy</div>
+<div class="card-title-ar">استراتيجية الصحة الرقمية لرؤية 2030</div>
+<div class="card-desc">Align healthcare AI initiatives with Saudi Vision 2030. Covers NPHIES roadmap, Seha virtual hospital, MOH digital transformation, and PPP frameworks.</div>
+<div class="card-meta">
+<div class="meta"><div class="meta-l">Format</div><div class="meta-v">Self-paced</div></div>
+<div class="meta"><div class="meta-l">Level</div><div class="meta-v">Leaders</div></div>
+<div class="meta"><div class="meta-l">Duration</div><div class="meta-v">3 weeks</div></div>
+<div class="meta"><div class="meta-l">Modules</div><div class="meta-v">3 modules</div></div>
+</div>
+<div class="card-actions">
+<a href="/training/enroll?course=vision2030" class="btn btn-w">Enroll</a>
+</div>
+</div></div>
+
+</div></div>
+
+<!-- ═══════════════ CLAUDE AI FOR HEALTHCARE ═══════════════ -->
+<div class="container">
+<div class="section-break">
+<div class="section-head">
+<span class="section-icon">🤖</span>
+<div>
+<div class="section-title">Claude AI for Healthcare</div>
+<div class="section-title-ar">كلاود للذكاء الاصطناعي في الرعاية الصحية</div>
+</div>
+</div>
+<p class="section-desc">Adapted from Anthropic's course catalog — specialized for Saudi healthcare workflows, NPHIES integration, and clinical AI applications.</p>
+</div>
+
+<div class="grid" id="gridClaude">
+
+<!-- 7. Claude 101 Healthcare -->
+<div class="card" data-tags="claude pro"><div class="card-stripe s-gold"></div><div class="card-body">
+<div class="src src-claude">Adapted from Claude 101</div>
+<div class="chips"><span class="chip c-claude">Claude</span><span class="chip c-open">Beginner</span></div>
+<div class="card-title">Claude 101 for Healthcare Professionals</div>
+<div class="card-title-ar">كلاود 101 لمهنيي الرعاية الصحية</div>
+<div class="card-desc">Introduction to Claude AI for healthcare — clinical documentation, patient communication, research summarization, and administrative tasks. No coding required.</div>
+<div class="card-meta">
+<div class="meta"><div class="meta-l">Format</div><div class="meta-v">Self-paced</div></div>
+<div class="meta"><div class="meta-l">Level</div><div class="meta-v">All Staff</div></div>
+<div class="meta"><div class="meta-l">Duration</div><div class="meta-v">2 weeks</div></div>
+<div class="meta"><div class="meta-l">Modules</div><div class="meta-v">4 modules</div></div>
+</div>
+<div class="card-actions">
+<a href="/training/enroll?course=claude-101" class="btn btn-w">Enroll</a>
+</div>
+</div></div>
+
+<!-- 8. AI Fluency Healthcare -->
+<div class="card" data-tags="claude pro saudi"><div class="card-stripe s-purple"></div><div class="card-body">
+<div class="src src-claude">Adapted from AI Fluency</div>
+<div class="chips"><span class="chip c-claude">Claude</span><span class="chip c-purple">Professional</span></div>
+<div class="card-title">AI Fluency for Healthcare Professionals</div>
+<div class="card-title-ar">الإتقان الرقمي للذكاء الاصطناعي لمهنيي الرعاية الصحية</div>
+<div class="card-desc">Framework for effective AI collaboration in clinical settings. Covers prompt engineering, evaluation, and responsible AI use in Saudi healthcare.</div>
+<div class="card-meta">
+<div class="meta"><div class="meta-l">Format</div><div class="meta-v">Self-paced</div></div>
+<div class="meta"><div class="meta-l">Level</div><div class="meta-v">Professionals</div></div>
+<div class="meta"><div class="meta-l">Duration</div><div class="meta-v">3 weeks</div></div>
+<div class="meta"><div class="meta-l">Modules</div><div class="meta-v">5 modules</div></div>
+</div>
+<div class="card-actions">
+<a href="/training/enroll?course=ai-fluency" class="btn btn-w">Enroll</a>
+</div>
+</div></div>
+
+<!-- 9. Building Healthcare AI Agents -->
+<div class="card" data-tags="claude dev ai"><div class="card-stripe s-blue"></div><div class="card-body">
+<div class="src src-claude">Adapted from Subagents Course</div>
+<div class="chips"><span class="chip c-claude">Claude</span><span class="chip c-blue">Developer</span></div>
+<div class="card-title">Building Healthcare AI Agents & Subagents</div>
+<div class="card-title-ar">بناء وكلاء الذكاء الاصطناعي للرعاية الصحية</div>
+<div class="card-desc">Design multi-agent clinical workflows — triage agents, claims processors, compliance checkers, and patient communication bots using Claude's subagent architecture.</div>
+<div class="card-meta">
+<div class="meta"><div class="meta-l">Format</div><div class="meta-v">Self-paced + Labs</div></div>
+<div class="meta"><div class="meta-l">Level</div><div class="meta-v">Developers</div></div>
+<div class="meta"><div class="meta-l">Duration</div><div class="meta-v">4 weeks</div></div>
+<div class="meta"><div class="meta-l">Modules</div><div class="meta-v">6 modules</div></div>
+</div>
+<div class="card-actions">
+<a href="/training/enroll?course=agents" class="btn btn-w">Enroll</a>
+</div>
+</div></div>
+
+<!-- 10. Claude Code 101 Healthcare -->
+<div class="card" data-tags="claude dev"><div class="card-stripe s-teal"></div><div class="card-body">
+<div class="src src-claude">Adapted from Claude Code 101</div>
+<div class="chips"><span class="chip c-claude">Claude</span><span class="chip c-teal">Developer</span></div>
+<div class="card-title">Claude Code 101 for Healthcare</div>
+<div class="card-title-ar">كلاود كود 101 للرعاية الصحية</div>
+<div class="card-desc">Terminal-based AI coding for healthcare — build FHIR parsers, NPHIES integrations, clinical data pipelines, and healthcare dashboards with Claude Code.</div>
+<div class="card-meta">
+<div class="meta"><div class="meta-l">Format</div><div class="meta-v">Self-paced + Labs</div></div>
+<div class="meta"><div class="meta-l">Level</div><div class="meta-v">Developers</div></div>
+<div class="meta"><div class="meta-l">Duration</div><div class="meta-v">3 weeks</div></div>
+<div class="meta"><div class="meta-l">Modules</div><div class="meta-v">5 modules</div></div>
+</div>
+<div class="card-actions">
+<a href="/training/enroll?course=claude-code" class="btn btn-w">Enroll</a>
+</div>
+</div></div>
+
+<!-- 11. Claude API Healthcare -->
+<div class="card" data-tags="claude dev ai"><div class="card-stripe s-purple"></div><div class="card-body">
+<div class="src src-claude">Adapted from Claude API Course</div>
+<div class="chips"><span class="chip c-claude">Claude</span><span class="chip c-purple">API</span></div>
+<div class="card-title">Building Healthcare Apps with the Claude API</div>
+<div class="card-title-ar">بناء تطبيقات الرعاية الصحية باستخدام واجهة برمجة كلاود</div>
+<div class="card-desc">Build production healthcare apps with Claude API — clinical decision support, automated coding, patient portals, and NPHIES-connected services.</div>
+<div class="card-meta">
+<div class="meta"><div class="meta-l">Format</div><div class="meta-v">Self-paced + Labs</div></div>
+<div class="meta"><div class="meta-l">Level</div><div class="meta-v">Developers</div></div>
+<div class="meta"><div class="meta-l">Duration</div><div class="meta-v">4 weeks</div></div>
+<div class="meta"><div class="meta-l">Modules</div><div class="meta-v">6 modules</div></div>
+</div>
+<div class="card-actions">
+<a href="/training/enroll?course=claude-api" class="btn btn-w">Enroll</a>
+</div>
+</div></div>
+
+<!-- 12. Claude Code in Action -->
+<div class="card" data-tags="claude dev"><div class="card-stripe s-teal"></div><div class="card-body">
+<div class="src src-claude">Adapted from Claude Code in Action</div>
+<div class="chips"><span class="chip c-claude">Claude</span><span class="chip c-teal">Advanced</span></div>
+<div class="card-title">Claude Code in Action: Healthcare Automation</div>
+<div class="card-title-ar">كلاود كود عملياً: أتمتة الرعاية الصحية</div>
+<div class="card-desc">Advanced Claude Code workflows — automate clinical documentation, generate FHIR resources, build NPHIES test harnesses, and create healthcare CI/CD pipelines.</div>
+<div class="card-meta">
+<div class="meta"><div class="meta-l">Format</div><div class="meta-v">Self-paced</div></div>
+<div class="meta"><div class="meta-l">Level</div><div class="meta-v">Advanced Dev</div></div>
+<div class="meta"><div class="meta-l">Duration</div><div class="meta-v">3 weeks</div></div>
+<div class="meta"><div class="meta-l">Modules</div><div class="meta-v">5 modules</div></div>
+</div>
+<div class="card-actions">
+<a href="/training/enroll?course=claude-code-action" class="btn btn-w">Enroll</a>
+</div>
+</div></div>
+
+<!-- 13. MCP Healthcare -->
+<div class="card" data-tags="claude dev"><div class="card-stripe s-cyan"></div><div class="card-body">
+<div class="src src-claude">Adapted from MCP Courses</div>
+<div class="chips"><span class="chip c-claude">Claude</span><span class="chip c-cyan">MCP</span></div>
+<div class="card-title">Model Context Protocol for Healthcare</div>
+<div class="card-title-ar">بروتوكول سياق النموذج للمراقبة الصحية</div>
+<div class="card-desc">Build MCP servers connecting Claude to EHR systems, NPHIES, lab systems, and pharmacy databases. Fundamentals + advanced clinical decision pipelines.</div>
+<div class="card-meta">
+<div class="meta"><div class="meta-l">Format</div><div class="meta-v">Self-paced + Labs</div></div>
+<div class="meta"><div class="meta-l">Level</div><div class="meta-v">Developers</div></div>
+<div class="meta"><div class="meta-l">Duration</div><div class="meta-v">5 weeks</div></div>
+<div class="meta"><div class="meta-l">Modules</div><div class="meta-v">8 modules</div></div>
+</div>
+<div class="card-actions">
+<a href="/training/enroll?course=mcp" class="btn btn-w">Enroll</a>
+</div>
+</div></div>
+
+<!-- 14. Claude on Bedrock Healthcare -->
+<div class="card" data-tags="claude dev pro"><div class="card-stripe s-orange"></div><div class="card-body">
+<div class="src src-claude">Adapted from Bedrock Course</div>
+<div class="chips"><span class="chip c-claude">Claude</span><span class="chip c-orange">Cloud</span></div>
+<div class="card-title">Claude with AWS Bedrock for Healthcare</div>
+<div class="card-title-ar">كلاود مع AWS بيدروك للرعاية الصحية</div>
+<div class="card-desc">Deploy Claude on AWS Bedrock for Saudi healthcare — HIPAA-compliant infrastructure, data residency, and enterprise-grade clinical AI services.</div>
+<div class="card-meta">
+<div class="meta"><div class="meta-l">Format</div><div class="meta-v">Self-paced</div></div>
+<div class="meta"><div class="meta-l">Level</div><div class="meta-v">Cloud Eng</div></div>
+<div class="meta"><div class="meta-l">Duration</div><div class="meta-v">3 weeks</div></div>
+<div class="meta"><div class="meta-l">Modules</div><div class="meta-v">5 modules</div></div>
+</div>
+<div class="card-actions">
+<a href="/training/enroll?course=bedrock" class="btn btn-w">Enroll</a>
+</div>
+</div></div>
+
+<!-- 15. Claude on Vertex Healthcare -->
+<div class="card" data-tags="claude dev pro"><div class="card-stripe s-green"></div><div class="card-body">
+<div class="src src-claude">Adapted from Vertex AI Course</div>
+<div class="chips"><span class="chip c-claude">Claude</span><span class="chip c-green">Cloud</span></div>
+<div class="card-title">Claude with Google Vertex AI for Healthcare</div>
+<div class="card-title-ar">كلاود مع جوجل فيرتكس للرعاية الصحية</div>
+<div class="card-desc">Deploy Claude on Google Cloud's Vertex AI for healthcare — clinical NLP, medical imaging analysis, and interoperability with Google Health tools.</div>
+<div class="card-meta">
+<div class="meta"><div class="meta-l">Format</div><div class="meta-v">Self-paced</div></div>
+<div class="meta"><div class="meta-l">Level</div><div class="meta-v">Cloud Eng</div></div>
+<div class="meta"><div class="meta-l">Duration</div><div class="meta-v">3 weeks</div></div>
+<div class="meta"><div class="meta-l">Modules</div><div class="meta-v">5 modules</div></div>
+</div>
+<div class="card-actions">
+<a href="/training/enroll?course=vertex" class="btn btn-w">Enroll</a>
+</div>
+</div></div>
+
+</div></div>
+
+<!-- ═══════════════ EDUCATION & NONPROFIT ═══════════════ -->
+<div class="container">
+<div class="section-break">
+<div class="section-head">
+<span class="section-icon">🎓</span>
+<div>
+<div class="section-title">Education & Nonprofit</div>
+<div class="section-title-ar">التعليم والمنظمات غير الربحية</div>
+</div>
+</div>
+<p class="section-desc">Adapted from Anthropic's education and nonprofit courses — for healthcare educators, students, and health-focused nonprofits in Saudi Arabia.</p>
+</div>
+
+<div class="grid" id="gridEdu">
+
+<!-- 16. Teaching AI Fluency Healthcare -->
+<div class="card" data-tags="claude edu pro"><div class="card-stripe s-pink"></div><div class="card-body">
+<div class="src src-claude">Adapted from Teaching AI Fluency</div>
+<div class="chips"><span class="chip c-pink">Education</span><span class="chip c-claude">Claude</span></div>
+<div class="card-title">Teaching AI Fluency in Healthcare Education</div>
+<div class="card-title-ar">تعليم الإتقان الرقمي للذكاء الاصطناعي في التعليم الصحي</div>
+<div class="card-desc">Train healthcare educators to teach AI literacy. Curriculum design, hands-on exercises, and assessment frameworks for medical schools and nursing programs.</div>
+<div class="card-meta">
+<div class="meta"><div class="meta-l">Format</div><div class="meta-v">Self-paced</div></div>
+<div class="meta"><div class="meta-l">Level</div><div class="meta-v">Educators</div></div>
+<div class="meta"><div class="meta-l">Duration</div><div class="meta-v">3 weeks</div></div>
+<div class="meta"><div class="meta-l">Modules</div><div class="meta-v">4 modules</div></div>
+</div>
+<div class="card-actions">
+<a href="/training/enroll?course=teaching-ai" class="btn btn-w">Enroll</a>
+</div>
+</div></div>
+
+<!-- 17. AI Fluency Healthcare Students -->
+<div class="card" data-tags="claude edu"><div class="card-stripe s-pink"></div><div class="card-body">
+<div class="src src-claude">Adapted from AI Fluency for Students</div>
+<div class="chips"><span class="chip c-pink">Education</span><span class="chip c-claude">Claude</span></div>
+<div class="card-title">AI Fluency for Healthcare Students</div>
+<div class="card-title-ar">الإتقان الرقمي للذكاء الاصطناعي لطلاب الرعاية الصحية</div>
+<div class="card-desc">Introduction to AI for medical, nursing, and health informatics students. Covers clinical AI tools, research with AI, and ethical considerations in Saudi healthcare.</div>
+<div class="card-meta">
+<div class="meta"><div class="meta-l">Format</div><div class="meta-v">Self-paced</div></div>
+<div class="meta"><div class="meta-l">Level</div><div class="meta-v">Students</div></div>
+<div class="meta"><div class="meta-l">Duration</div><div class="meta-v">2 weeks</div></div>
+<div class="meta"><div class="meta-l">Modules</div><div class="meta-v">4 modules</div></div>
+</div>
+<div class="card-actions">
+<a href="/training/enroll?course=ai-students" class="btn btn-w">Enroll</a>
+</div>
+</div></div>
+
+<!-- 18. AI Fluency Healthcare Nonprofits -->
+<div class="card" data-tags="claude pro saudi"><div class="card-stripe s-teal"></div><div class="card-body">
+<div class="src src-claude">Adapted from Nonprofits Course</div>
+<div class="chips"><span class="chip c-claude">Claude</span><span class="chip c-teal">Nonprofit</span></div>
+<div class="card-title">AI Fluency for Healthcare Nonprofits</div>
+<div class="card-title-ar">الإتقان الرقمي للذكاء الاصطناعي للمنظمات الصحية غير الربحية</div>
+<div class="card-desc">Practical AI adoption for Saudi healthcare nonprofits — donor management, program reporting, patient outreach, and operational efficiency with Claude.</div>
+<div class="card-meta">
+<div class="meta"><div class="meta-l">Format</div><div class="meta-v">Self-paced</div></div>
+<div class="meta"><div class="meta-l">Level</div><div class="meta-v">Nonprofit</div></div>
+<div class="meta"><div class="meta-l">Duration</div><div class="meta-v">2 weeks</div></div>
+<div class="meta"><div class="meta-l">Modules</div><div class="meta-v">3 modules</div></div>
+</div>
+<div class="card-actions">
+<a href="/training/enroll?course=ai-nonprofit" class="btn btn-w">Enroll</a>
+</div>
+</div></div>
+
+<!-- 19. Claude Cowork Healthcare -->
+<div class="card" data-tags="claude pro"><div class="card-stripe s-gold"></div><div class="card-body">
+<div class="src src-claude">Adapted from Claude Cowork</div>
+<div class="chips"><span class="chip c-claude">Claude</span><span class="chip c-gold">Professional</span></div>
+<div class="card-title">Claude Cowork for Healthcare Teams</div>
+<div class="card-title-ar">كلاود كورك لفرق الرعاية الصحية</div>
+<div class="card-desc">Team-based AI collaboration — clinical meetings, handoffs, multidisciplinary reviews, and administrative workflows using Claude as a healthcare coworker.</div>
+<div class="card-meta">
+<div class="meta"><div class="meta-l">Format</div><div class="meta-v">Self-paced</div></div>
+<div class="meta"><div class="meta-l">Level</div><div class="meta-v">Teams</div></div>
+<div class="meta"><div class="meta-l">Duration</div><div class="meta-v">2 weeks</div></div>
+<div class="meta"><div class="meta-l">Modules</div><div class="meta-v">4 modules</div></div>
+</div>
+<div class="card-actions">
+<a href="/training/enroll?course=cowork" class="btn btn-w">Enroll</a>
+</div>
+</div></div>
+
+<!-- 20. Agent Skills Healthcare -->
+<div class="card" data-tags="claude dev ai"><div class="card-stripe s-blue"></div><div class="card-body">
+<div class="src src-claude">Adapted from Agent Skills Course</div>
+<div class="chips"><span class="chip c-claude">Claude</span><span class="chip c-blue">Advanced</span></div>
+<div class="card-title">Healthcare Agent Skills & Tool Building</div>
+<div class="card-title-ar">مهارات الوكيل الصحي وبناء الأدوات</div>
+<div class="card-desc">Build custom agent skills for healthcare — NPHIES claim validators, FHIR resource generators, clinical note summarizers, and patient triage assistants.</div>
+<div class="card-meta">
+<div class="meta"><div class="meta-l">Format</div><div class="meta-v">Self-paced + Labs</div></div>
+<div class="meta"><div class="meta-l">Level</div><div class="meta-v">Advanced Dev</div></div>
+<div class="meta"><div class="meta-l">Duration</div><div class="meta-v">4 weeks</div></div>
+<div class="meta"><div class="meta-l">Modules</div><div class="meta-v">6 modules</div></div>
+</div>
+<div class="card-actions">
+<a href="/training/enroll?course=agent-skills" class="btn btn-w">Enroll</a>
+</div>
+</div></div>
+
+</div></div>
+
+<!-- ═══════════════ LEARNING PATHS ═══════════════ -->
+<section id="paths" class="paths"><div class="container">
+<div class="section-head">
+<span class="section-icon">🗺️</span>
+<div>
+<div class="section-title">Learning Paths</div>
+<div class="section-title-ar">المسارات التعليمية</div>
+</div>
+</div>
+<p class="section-desc">Structured paths designed for specific roles in Saudi healthcare. Each path builds from foundation to specialization.</p>
+
+<div class="paths-grid">
+
+<div class="path">
+<div class="path-icon">🏥</div>
+<div class="path-name">Healthcare Founder</div>
+<div class="path-name-ar">مؤسس الرعاية الصحية</div>
+<div class="path-desc">Strategy → AI → RCM → Compliance → Vision 2030</div>
+<div class="path-courses"><strong>5 courses</strong> · 15 weeks</div>
+</div>
+
+<div class="path">
+<div class="path-icon">⚙️</div>
+<div class="path-name">Health Tech Engineer</div>
+<div class="path-name-ar">مهندس التقنية الصحية</div>
+<div class="path-desc">FHIR → Agents → MCP → Claude Code → NPHIES</div>
+<div class="path-courses"><strong>6 courses</strong> · 20 weeks</div>
+</div>
+
+<div class="path">
+<div class="path-icon">📊</div>
+<div class="path-name">RCM Specialist</div>
+<div class="path-name-ar">أخصائي إدارة الإيرادات</div>
+<div class="path-desc">NPHIES → RCM → Compliance → AI Automation</div>
+<div class="path-courses"><strong>4 courses</strong> · 14 weeks</div>
+</div>
+
+<div class="path">
+<div class="path-icon">🧠</div>
+<div class="path-name">AI Transformation Leader</div>
+<div class="path-name-ar">قائد التحول بالذكاء الاصطناعي</div>
+<div class="path-desc">AI Fluency → Strategy → Vision 2030 → Compliance</div>
+<div class="path-courses"><strong>4 courses</strong> · 12 weeks</div>
+</div>
+
+<div class="path">
+<div class="path-icon">👩‍⚕️</div>
+<div class="path-name">Clinical AI Specialist</div>
+<div class="path-name-ar">أخصائي الذكاء الاصطناعي السريري</div>
+<div class="path-desc">Claude 101 → Cowork → Agents → MCP</div>
+<div class="path-courses"><strong>4 courses</strong> · 13 weeks</div>
+</div>
+
+<div class="path">
+<div class="path-icon">🎓</div>
+<div class="path-name">Healthcare AI Educator</div>
+<div class="path-name-ar">معلم الذكاء الاصطناعي الصحي</div>
+<div class="path-desc">AI Fluency → Teaching → Students → Nonprofits</div>
+<div class="path-courses"><strong>4 courses</strong> · 10 weeks</div>
+</div>
+
+</div>
+</div></section>
+
+<!-- ═══════════════ CTA ═══════════════ -->
+<section class="cta"><div class="container">
+<div class="cta-card">
+<h2>Start Your Healthcare AI Journey</h2>
+<p class="ar">ابدأ رحلتك في الذكاء الاصطناعي الصحي</p>
+<p>20 courses, 6 learning paths, bilingual AR/EN — all in one unified hub.</p>
+<div class="cta-btns">
+<a href="/training/enroll" class="btn btn-w">📝 Enroll Now</a>
+<a href="/training/dashboard" class="btn btn-g">📊 Dashboard</a>
+<a href="/partners" class="btn btn-o">🤝 Partner With Us</a>
+</div>
+</div>
+</div></section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="footer"><div class="container">
+<div class="footer-inner">
+<div class="footer-brand">© 2026 BrainSAIT LTD · Riyadh, Saudi Arabia</div>
+<div class="footer-links">
+<a href="/training">Training Hub</a>
+<a href="/training/enroll">Enroll</a>
+<a href="/training/dashboard">Dashboard</a>
+<a href="/partners">Partners</a>
+<a href="/">Home</a>
+</div>
+</div>
+</div></footer>
+
+<!-- ═══════════════ FILTER JS ═══════════════ -->
+<script>
+(function(){
+const btns=document.querySelectorAll('.fbtn');
+const cards=document.querySelectorAll('.card');
+btns.forEach(b=>{b.addEventListener('click',()=>{
+btns.forEach(x=>x.classList.remove('active'));
+b.classList.add('active');
+const f=b.dataset.filter;
+cards.forEach(c=>{
+if(f==='all'){c.style.display='';return;}
+const tags=c.dataset.tags||'';
+c.style.display=tags.includes(f)?'':'none';
+});
+});});
+// Scroll reveal
+const observer=new IntersectionObserver((entries)=>{
+entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});
+},{threshold:0.1});
+cards.forEach(c=>{c.style.opacity='0';c.style.transform='translateY(20px)';c.style.transition='opacity .4s,transform .4s';observer.observe(c);});
+})();
+</script>
+</body></html>

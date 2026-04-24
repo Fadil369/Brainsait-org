@@ -1,0 +1,18 @@
+name = "brainsait-enrollment-api"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+NOTIFICATION_EMAIL = ""
+
+# Uncomment and configure KV namespace after creating it:
+# [[kv_namespaces]]
+# binding = "ENROLLMENTS_KV"
+# id = "<your-kv-namespace-id>"
+
+# Routes — uncomment after DNS setup:
+# routes = [
+#   { pattern = "api.brainsait.org/api/enroll*", zone_name = "brainsait.org" },
+#   { pattern = "api.brainsait.org/api/enrollment*", zone_name = "brainsait.org" },
+#   { pattern = "api.brainsait.org/api/courses*", zone_name = "brainsait.org" },
+# ]
