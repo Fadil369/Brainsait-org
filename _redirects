@@ -38,8 +38,8 @@ https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 /portal/* /incubator/portal/:splat 301
 /showcase /incubator/showcase 301
 /showcase/* /incubator/showcase/:splat 301
-/training /training/courses/ 301
-/training/ /training/courses/ 301
+/training /training/index.html 200
+/training/* /training/index.html 200
 /templates /incubator/templates 301
 /templates/* /incubator/templates/:splat 301
 /startup /incubator/startup 301
