@@ -72,9 +72,9 @@ https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 /store /appstore 302
 /rcm https://portal.elfadil.com/ 302
 /incubator /appstore 302
-# /incubator/apply has no static page in the Next.js export; redirect to the trailing-slash
-# version so CF Pages Workers Route serves the incubator's own catch-all
-/incubator/apply /incubator/apply/ 301
+# /incubator/apply has no static page in the Next.js export.
+# Workers Route does not intercept it; redirect to incubator root so users stay in context.
+/incubator/apply /incubator 302
 /open-webui /appstore 302
 
 # 404 handling
