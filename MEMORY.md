@@ -24,6 +24,12 @@
 - Revenue targets: SAR 4-9M (Y1), 11-27M (Y2), 30-60M+ (Y3+)
 - Philosophy: "LEARN → DO → TEACH → SELL"
 
+## Credentials
+
+- Cloudflare Account ID: `d7b99530559ab4f2545e9bdc72a7ab9b` (elfadil.com zone / BrainSAIT Workers)
+- CF API Token: stored in `.secrets` (workspace) — Edit Workers scope, rolled 2026-04-24
+- Do NOT put credentials in MEMORY.md — always reference `.secrets`
+
 ## Key Lessons / Notes
 
 - Dr. Fadil communicates in Arabic and English — match his language
