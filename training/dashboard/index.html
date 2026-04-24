@@ -1,0 +1,311 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content="BrainSAIT student dashboard — track your course progress, access materials, and view certificates. | لوحة تحكم الطالب في برينسايت"/><meta name="robots" content="noindex, nofollow"/><title>Dashboard · لوحة التحكم — BrainSAIT Training</title><link rel="icon" href="/favicon.ico"/><link rel="canonical" href="https://brainsait.org/training/dashboard"/><link rel="stylesheet" href="/assets/css/design-system.css"/><link rel="stylesheet" href="/assets/css/training.css"/><style>
+:root{--bg:#050505;--card:#0d1320;--border:rgba(255,255,255,.08);--cyan:#67e8f9;--green:#2E7D32;--blue:#0ea5e9;--purple:#8b5cf6;--orange:#f59e0b;--text:#fff;--text2:rgba(255,255,255,.72);--text3:rgba(255,255,255,.55);--glass:rgba(255,255,255,.06);}
+*{box-sizing:border-box;margin:0;padding:0;}body{font-family:"Inter","Roboto","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:#fff;min-height:100vh;}
+.container{max-width:1100px;margin:0 auto;padding:0 24px;}
+.header{padding:48px 0 32px;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;top:-60px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(139,92,246,.12);filter:blur(20px);}
+.breadcrumb{display:flex;gap:8px;align-items:center;font-size:.875rem;margin-bottom:24px;}
+.breadcrumb a{color:var(--text2);text-decoration:none;}.breadcrumb a:hover{text-decoration:underline;}
+.breadcrumb .sep{color:rgba(255,255,255,.3);}.breadcrumb .cur{color:#fff;}
+.welcome{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;}
+.welcome-text h1{font-size:1.5rem;font-weight:800;margin:0;}
+.welcome-text .ar{font-size:.875rem;color:var(--cyan);direction:rtl;}
+.welcome-text p{font-size:.875rem;color:var(--text2);margin-top:4px;}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:32px 0;}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr);}}
+.stat-card{padding:20px;border-radius:12px;background:var(--card);border:1px solid var(--border);text-align:center;}
+.stat-val{font-size:1.5rem;font-weight:800;color:var(--cyan);}
+.stat-lbl{font-size:.6875rem;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+
+/* Enrolled Courses */
+.section-title{font-size:1.125rem;font-weight:700;margin:32px 0 16px;display:flex;align-items:center;gap:8px;}
+.section-title-ar{font-size:.875rem;color:var(--cyan);font-weight:400;}
+.course-list{display:flex;flex-direction:column;gap:16px;margin-bottom:40px;}
+.course-row{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;padding:24px;border-radius:14px;background:var(--card);border:1px solid var(--border);transition:border-color .2s;}
+.course-row:hover{border-color:rgba(255,255,255,.15);}
+.course-name{font-size:1rem;font-weight:700;margin:0 0 4px;}
+.course-name-ar{font-size:.8rem;color:var(--cyan);margin:0 0 8px;direction:rtl;}
+.course-meta{display:flex;gap:16px;flex-wrap:wrap;font-size:.75rem;color:var(--text3);}
+.course-meta span{display:flex;align-items:center;gap:4px;}
+
+/* Progress bar */
+.progress-wrap{margin-top:12px;}
+.progress-label{display:flex;justify-content:space-between;font-size:.6875rem;color:var(--text3);margin-bottom:4px;}
+.progress-bar{height:6px;border-radius:3px;background:var(--glass);overflow:hidden;}
+.progress-fill{height:100%;border-radius:3px;transition:width .5s;}
+.fill-green{background:linear-gradient(90deg,var(--green),#43A047);}
+.fill-blue{background:linear-gradient(90deg,var(--blue),#6366f1);}
+.fill-purple{background:linear-gradient(90deg,var(--purple),#a855f7);}
+.fill-orange{background:linear-gradient(90deg,var(--orange),#ef4444);}
+
+/* Actions */
+.actions{display:flex;gap:8px;flex-direction:column;}
+.btn{padding:10px 20px;border-radius:8px;font-size:.8125rem;font-weight:600;text-decoration:none;text-align:center;transition:all .2s;border:none;cursor:pointer;font-family:inherit;}
+.btn-primary{background:var(--blue);color:#fff;}.btn-primary:hover{background:#0284c7;}
+.btn-outline{background:transparent;color:#fff;border:1px solid var(--border);}.btn-outline:hover{border-color:rgba(255,255,255,.3);}
+.btn-green{background:var(--green);color:#fff;}.btn-green:hover{background:#1B5E20;}
+
+/* Certificates */
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:40px;}
+.cert-card{padding:24px;border-radius:14px;background:linear-gradient(135deg,rgba(46,125,50,.08),rgba(14,165,233,.08));border:1px solid rgba(46,125,50,.2);text-align:center;}
+.cert-icon{font-size:2.5rem;margin-bottom:12px;}
+.cert-name{font-size:.9rem;font-weight:700;margin:0 0 4px;}
+.cert-date{font-size:.75rem;color:var(--text3);margin:0 0 16px;}
+.cert-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;background:var(--green);color:#fff;font-size:.75rem;font-weight:600;text-decoration:none;transition:background .2s;}
+.cert-btn:hover{background:#1B5E20;}
+
+/* Empty state */
+.empty{text-align:center;padding:60px 20px;border:2px dashed rgba(255,255,255,.1);border-radius:16px;margin:32px 0;}
+.empty-icon{font-size:3rem;margin-bottom:16px;}
+.empty h3{font-size:1.125rem;font-weight:700;margin:0 0 8px;color:var(--text2);}
+.empty p{font-size:.875rem;color:var(--text3);margin:0 0 20px;}
+.empty .ar{color:var(--cyan);direction:rtl;display:block;margin-top:8px;}
+
+/* Login prompt */
+.login-prompt{text-align:center;padding:80px 20px;}
+.login-prompt h2{font-size:1.5rem;font-weight:800;margin:0 0 8px;}
+.login-prompt .ar{color:var(--cyan);margin:0 0 20px;}
+.login-prompt p{color:var(--text2);margin:0 0 24px;max-width:480px;margin-left:auto;margin-right:auto;}
+.login-form{max-width:360px;margin:0 auto;display:flex;flex-direction:column;gap:12px;}
+.input{padding:12px 16px;border-radius:10px;border:1px solid var(--border);background:var(--glass);color:#fff;font-size:.875rem;font-family:inherit;}
+.input:focus{outline:none;border-color:var(--cyan);}
+
+/* Footer */
+.footer{border-top:1px solid var(--border);padding:24px 0;margin-top:20px;text-align:center;font-size:.75rem;color:var(--text3);}
+.footer a{color:var(--text2);text-decoration:none;}
+</style></head><body>
+
+<div class="header"><div class="container">
+<nav class="breadcrumb">
+<a href="/">BrainSAIT</a><span class="sep">/</span>
+<a href="/training">Training</a><span class="sep">/</span>
+<span class="cur">Dashboard · لوحة التحكم</span>
+</nav>
+<div class="welcome">
+<div class="avatar" id="userAvatar">?</div>
+<div class="welcome-text">
+<h1 id="userName">Student Dashboard</h1>
+<p class="ar">لوحة تحكم الطالب</p>
+<p id="userEmail">Track your progress, access courses, and download certificates.</p>
+</div>
+</div>
+</div></div>
+
+<div class="container" id="dashboardContent">
+<!-- Populated by JS -->
+</div>
+
+<footer class="footer"><div class="container">
+<a href="/training">Training Hub</a> · <a href="/training/courses">All Courses</a> · <a href="https://calendly.com/fadil369" target="_blank" rel="noopener">Book Consultation</a>
+<p style="margin-top:8px">© 2026 BrainSAIT LTD · Riyadh, Saudi Arabia</p>
+</div></footer>
+
+<script>
+// ═══════════════════════════════════════════════
+// BrainSAIT Student Dashboard — localStorage-based
+// ═══════════════════════════════════════════════
+
+var COURSES = {
+  'collective-brainpower': { name: 'Master the Intersection of Healthcare, Tech & AI', nameAr: 'إتقان تقاطع الرعاية الصحية والتكنولوجيا والذكاء الاصطناعي', modules: ['Collective Brainpower Foundations','Automation in Healthcare Operations','Integrated Digital Health Systems','AI Strategy for Health-Tech Growth'], color: 'green', classroom: 'https://classroom.google.com/c/ODYwNTAyNzAzMTky?cjc=4oc22gvm' },
+  'nphies-ai-mastery': { name: 'NPHIES-AI Mastery: Health Insurance Automation', nameAr: 'إتقان NPHIES بالذكاء الاصطناعي: أتمتة التأمين الصحي', modules: ['NPHIES Architecture & Compliance','AI Claim Processing Pipelines','Denial Management & Resubmission','Oracle Bridge & Data Integration'], color: 'blue', classroom: 'https://classroom.google.com/c/ODYwNTQ0NDEyNjMw?cjc=pohzx7a6' },
+  'ai-fluency-healthcare': { name: 'AI Fluency: Framework & Foundations', nameAr: 'الإتقان الرقمي للذكاء الاصطناعي', modules: ['AI Fundamentals for Healthcare','Evaluating AI Tools','AI Governance & Ethics','Hands-on AI Workflows','AI Strategy Implementation'], color: 'purple', classroom: '#' },
+  'healthcare-ai-agents': { name: 'Building Healthcare AI Agents', nameAr: 'بناء وكلاء الذكاء الاصطناعي للرعاية الصحية', modules: ['Agent Architecture','LINC Ecosystem','Clinical Decision Agents','Claims Automation Agents','Compliance Monitoring','Deployment & Scaling'], color: 'cyan', classroom: '#' },
+  'fhir-r4-saudi': { name: 'FHIR R4 Implementation for Saudi Healthcare', nameAr: 'تطبيق FHIR R4 للرعاية الصحية', modules: ['FHIR R4 Fundamentals','Resource Modeling','RESTful APIs','Terminology Services','NPHIES Extensions','Testing & Validation','Saudi Profiles'], color: 'green', classroom: '#' },
+  'rcm-automation': { name: 'RCM Automation & Revenue Recovery', nameAr: 'أتمتة إدارة دورة الإيرادات', modules: ['RCM Fundamentals','Pre-Authorization Automation','Claim Submission Workflows','Denial Analysis','Revenue Recovery','Audit-Ready Reporting'], color: 'orange', classroom: '#' },
+  'mcp-healthcare': { name: 'Model Context Protocol for Healthcare', nameAr: 'بروتوكول سياق النموذج للرعاية الصحية', modules: ['MCP Fundamentals','FHIR-Aware Context','Clinical Decision Pipelines','Bilingual NLP','Capstone Project'], color: 'purple', classroom: '#' },
+  'healthcare-compliance': { name: 'Healthcare Compliance & Regulatory AI', nameAr: 'الامتثال الصحي والتنظيم بالذكاء الاصطناعي', modules: ['Saudi Healthcare Regulations','NPHIES Standards','HIPAA Alignment','Automated Auditing','Compliance Reporting'], color: 'purple', classroom: '#' }
+};
+
+function getUser() {
+  try { return JSON.parse(localStorage.getItem('brainsait_user') || 'null'); } catch(e) { return null; }
+}
+function getProgress() {
+  try { return JSON.parse(localStorage.getItem('brainsait_progress') || '{}'); } catch(e) { return {}; }
+}
+function getCertificates() {
+  try { return JSON.parse(localStorage.getItem('brainsait_certs') || '[]'); } catch(e) { return []; }
+}
+
+function saveUser(u) { localStorage.setItem('brainsait_user', JSON.stringify(u)); }
+function saveProgress(p) { localStorage.setItem('brainsait_progress', JSON.stringify(p)); }
+function saveCerts(c) { localStorage.setItem('brainsait_certs', JSON.stringify(c)); }
+
+function login(email, name) {
+  var user = { email: email, name: name || email.split('@')[0], enrolledAt: new Date().toISOString() };
+  saveUser(user);
+  // Demo: auto-enroll in 2 courses
+  var p = getProgress();
+  if (!p['collective-brainpower']) {
+    p['collective-brainpower'] = { enrolled: true, enrolledAt: new Date().toISOString(), modules: { 0: { done: true, date: '2026-03-15' }, 1: { done: true, date: '2026-03-22' }, 2: { done: false } }, currentModule: 2 };
+    p['nphies-ai-mastery'] = { enrolled: true, enrolledAt: new Date().toISOString(), modules: { 0: { done: true, date: '2026-04-01' } }, currentModule: 1 };
+    saveProgress(p);
+    saveCerts([]);
+  }
+  render();
+}
+
+function logout() {
+  localStorage.removeItem('brainsait_user');
+  render();
+}
+
+function toggleModule(courseId, moduleIdx) {
+  var p = getProgress();
+  if (!p[courseId]) return;
+  var mod = p[courseId].modules[moduleIdx] || {};
+  mod.done = !mod.done;
+  mod.date = mod.done ? new Date().toISOString().split('T')[0] : undefined;
+  p[courseId].modules[moduleIdx] = mod;
+  // Update current module
+  var course = COURSES[courseId];
+  var next = 0;
+  for (var i = 0; i < course.modules.length; i++) {
+    if (!(p[courseId].modules[i] && p[courseId].modules[i].done)) { next = i; break; }
+    if (i === course.modules.length - 1) next = i;
+  }
+  p[courseId].currentModule = next;
+  // Check if course complete
+  var allDone = true;
+  for (var j = 0; j < course.modules.length; j++) {
+    if (!(p[courseId].modules[j] && p[courseId].modules[j].done)) { allDone = false; break; }
+  }
+  if (allDone && !p[courseId].completedAt) {
+    p[courseId].completedAt = new Date().toISOString();
+    var certs = getCertificates();
+    certs.push({ courseId: courseId, name: course.name, nameAr: course.nameAr, date: new Date().toISOString().split('T')[0] });
+    saveCerts(certs);
+  }
+  saveProgress(p);
+  render();
+}
+
+function enrollCourse(courseId) {
+  var p = getProgress();
+  if (!p[courseId]) {
+    p[courseId] = { enrolled: true, enrolledAt: new Date().toISOString(), modules: {}, currentModule: 0 };
+    saveProgress(p);
+  }
+  render();
+}
+
+function render() {
+  var user = getUser();
+  var el = document.getElementById('dashboardContent');
+
+  if (!user) {
+    el.innerHTML = '<div class="login-prompt"><h2>Welcome to BrainSAIT</h2><p class="ar">مرحباً بك في برينسايت</p><p>Enter your email to access your student dashboard. If you\'re new, we\'ll create your account automatically.</p><div class="login-form"><input class="input" type="text" id="loginName" placeholder="Your name · اسمك"><input class="input" type="email" id="loginEmail" placeholder="Email · البريد الإلكتروني"><button class="btn btn-primary" style="width:100%;padding:14px;font-size:.9375rem" onclick="var n=document.getElementById(\"loginName\").value;var e=document.getElementById(\"loginEmail\").value;if(e)login(e,n);">Access Dashboard · الوصول للوحة التحكم</button></div></div>';
+    return;
+  }
+
+  document.getElementById('userName').textContent = user.name + '\'s Dashboard';
+  document.getElementById('userEmail').textContent = user.email;
+  document.getElementById('userAvatar').textContent = user.name.charAt(0).toUpperCase();
+
+  var progress = getProgress();
+  var certs = getCertificates();
+  var enrolled = [];
+  var totalModules = 0, completedModules = 0;
+
+  Object.keys(progress).forEach(function(id) {
+    if (progress[id].enrolled && COURSES[id]) {
+      var c = COURSES[id];
+      var p = progress[id];
+      var done = 0;
+      c.modules.forEach(function(_, i) { if (p.modules[i] && p.modules[i].done) done++; });
+      totalModules += c.modules.length;
+      completedModules += done;
+      enrolled.push({ id: id, course: c, progress: p, done: done, total: c.modules.length, pct: Math.round(done / c.modules.length * 100) });
+    }
+  });
+
+  var html = '';
+
+  // Stats
+  html += '<div class="stats">';
+  html += '<div class="stat-card"><div class="stat-val">' + enrolled.length + '</div><div class="stat-lbl">Enrolled · المسجلين</div></div>';
+  html += '<div class="stat-card"><div class="stat-val">' + completedModules + '/' + totalModules + '</div><div class="stat-lbl">Modules · الوحدات</div></div>';
+  html += '<div class="stat-card"><div class="stat-val">' + certs.length + '</div><div class="stat-lbl">Certificates · الشهادات</div></div>';
+  html += '<div class="stat-card"><div class="stat-val">' + (enrolled.length > 0 ? Math.round(completedModules / totalModules * 100) + '%' : '—') + '</div><div class="stat-lbl">Overall · الإجمالي</div></div>';
+  html += '</div>';
+
+  // Enrolled courses
+  html += '<div class="section-title">My Courses · دوراتي <span class="section-title-ar">الدورات المسجلة</span></div>';
+
+  if (enrolled.length === 0) {
+    html += '<div class="empty"><div class="empty-icon">📚</div><h3>No courses yet</h3><p>You haven\'t enrolled in any courses.</p><span class="ar">لم تسجل في أي دورة بعد.</span><br><br><a class="btn btn-green" href="/training/courses">Browse Courses · استكشف الدورات</a></div>';
+  } else {
+    html += '<div class="course-list">';
+    enrolled.forEach(function(e) {
+      var fillClass = 'fill-' + e.course.color;
+      html += '<div class="course-row"><div>';
+      html += '<h3 class="course-name">' + e.course.name + '</h3>';
+      html += '<p class="course-name-ar">' + e.course.nameAr + '</p>';
+      html += '<div class="course-meta"><span>📚 ' + e.done + '/' + e.total + ' modules</span><span>📅 Enrolled ' + (e.progress.enrolledAt ? new Date(e.progress.enrolledAt).toLocaleDateString() : '—') + '</span>';
+      if (e.progress.completedAt) html += '<span style="color:#b9f6ca">✅ Completed</span>';
+      html += '</div>';
+      html += '<div class="progress-wrap"><div class="progress-label"><span>Progress</span><span>' + e.pct + '%</span></div><div class="progress-bar"><div class="progress-fill ' + fillClass + '" style="width:' + e.pct + '%"></div></div></div>';
+
+      // Module checklist
+      html += '<div style="margin-top:12px;display:flex;flex-direction:column;gap:6px;">';
+      e.course.modules.forEach(function(modName, idx) {
+        var modDone = e.progress.modules[idx] && e.progress.modules[idx].done;
+        html += '<label style="display:flex;align-items:center;gap:8px;font-size:.75rem;color:' + (modDone ? '#b9f6ca' : 'rgba(255,255,255,.55)') + ';cursor:pointer;user-select:none">';
+        html += '<input type="checkbox" ' + (modDone ? 'checked' : '') + ' onchange="toggleModule(\'' + e.id + '\',' + idx + ')" style="accent-color:var(--green)">';
+        html += '<span style="text-decoration:' + (modDone ? 'line-through' : 'none') + '">' + modName + '</span>';
+        if (modDone && e.progress.modules[idx].date) html += '<span style="color:var(--text3);margin-left:auto;font-size:.625rem">' + e.progress.modules[idx].date + '</span>';
+        html += '</label>';
+      });
+      html += '</div></div>';
+
+      html += '<div class="actions">';
+      if (e.course.classroom !== '#') html += '<a class="btn btn-primary" href="' + e.course.classroom + '" target="_blank" rel="noopener">Open Classroom ↗</a>';
+      html += '<a class="btn btn-outline" href="/training/courses/' + e.id + '">Course Details</a>';
+      if (e.pct >= 100) html += '<span class="btn btn-green" style="pointer-events:none">🏆 Complete!</span>';
+      html += '</div>';
+      html += '</div>';
+    });
+    html += '</div>';
+  }
+
+  // Available courses (not enrolled)
+  var notEnrolled = [];
+  Object.keys(COURSES).forEach(function(id) {
+    if (!progress[id] || !progress[id].enrolled) notEnrolled.push(id);
+  });
+  if (notEnrolled.length > 0) {
+    html += '<div class="section-title">Available Courses · دورات متاحة <span class="section-title-ar">دورات يمكنك التسجيل فيها</span></div>';
+    html += '<div class="course-list">';
+    notEnrolled.forEach(function(id) {
+      var c = COURSES[id];
+      html += '<div class="course-row" style="grid-template-columns:1fr auto"><div>';
+      html += '<h3 class="course-name">' + c.name + '</h3>';
+      html += '<p class="course-name-ar">' + c.nameAr + '</p>';
+      html += '<div class="course-meta"><span>📚 ' + c.modules.length + ' modules</span></div>';
+      html += '</div><div class="actions"><a class="btn btn-green" href="/training/enroll?course=' + id + '">Enroll · سجّل</a></div></div>';
+    });
+    html += '</div>';
+  }
+
+  // Certificates
+  if (certs.length > 0) {
+    html += '<div class="section-title">Certificates · الشهادات <span class="section-title-ar">الشهادات المحققة</span></div>';
+    html += '<div class="cert-grid">';
+    certs.forEach(function(cert) {
+      html += '<div class="cert-card"><div class="cert-icon">🏆</div><h3 class="cert-name">' + cert.name + '</h3><p class="cert-name" style="color:var(--cyan);font-size:.8rem;direction:rtl">' + cert.nameAr + '</p><p class="cert-date">Completed · ' + cert.date + '</p><a class="cert-btn" href="#">Download Certificate · تحميل الشهادة</a></div>';
+    });
+    html += '</div>';
+  }
+
+  // Logout
+  html += '<div style="text-align:center;padding:24px 0"><button class="btn btn-outline" onclick="logout()" style="font-size:.75rem;color:var(--text3)">Sign Out · خروج</button></div>';
+
+  el.innerHTML = html;
+}
+
+// Auto-login if user exists, otherwise show login
+render();
+</script>
+</body></html>

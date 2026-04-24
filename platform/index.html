@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Platform — BrainSAIT Solutions Portfolio</title>
+  <meta name="description" content="Explore BrainSAIT's AI-native healthcare platform screens: Solutions Catalog, Ecosystem Hub, Solution Detail, and Ecosystem Vision.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a365d'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='%23d4a574' font-size='20' font-weight='bold' font-family='system-ui'%3EB%3C/text%3E%3C/svg%3E">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --void:   #02040a;
+      --void2:  #060b14;
+      --g1:     rgba(255,255,255,.03);
+      --g2:     rgba(255,255,255,.01);
+      --gb:     rgba(255,255,255,.07);
+      --gold:   #d4a574;
+      --goldd:  #c8956a;
+      --teal:   #0ea5e9;
+      --vio:    #8b5cf6;
+      --text:   #e2e8f0;
+      --textd:  #94a3b8;
+      --textdd: #64748b;
+      --rx:     14px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--void);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Noise overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: .4;
+    }
+
+    /* Orbs */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .o1 { width: 460px; height: 460px; background: rgba(212,165,116,.07); top: -100px; right: -80px; }
+    .o2 { width: 380px; height: 380px; background: rgba(14,165,233,.06); bottom: 10%; left: -60px; }
+
+    /* Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(2,4,10,.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--gb);
+      padding: 0 clamp(16px, 4vw, 48px);
+    }
+    .ni {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .nb {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: .04em;
+    }
+    .nb em { color: var(--gold); font-style: normal; }
+    .nlogo {
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg, #1a365d, #0f2340);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 16px;
+    }
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--textd);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: color .2s;
+      padding: 6px 12px;
+      border: 1px solid var(--gb);
+      border-radius: 8px;
+    }
+    .nav-back:hover { color: var(--gold); border-color: rgba(212,165,116,.3); }
+
+    /* Page */
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(40px, 8vw, 96px) clamp(16px, 4vw, 48px);
+    }
+
+    /* Hero */
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212,165,116,.08);
+      border: 1px solid rgba(212,165,116,.2);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero-badge .dot {
+      width: 7px; height: 7px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .4; }
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin-bottom: 20px;
+    }
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--gold), #f0c99a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 17px;
+      color: var(--textd);
+      line-height: 1.7;
+      max-width: 620px;
+      margin-bottom: 48px;
+    }
+
+    /* Section label */
+    .stag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--textdd);
+      margin-bottom: 16px;
+    }
+
+    /* Grid */
+    .screen-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+
+    /* Screen card */
+    .screen-card {
+      background: var(--g1);
+      border: 1px solid var(--gb);
+      border-radius: var(--rx);
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+      display: flex;
+      flex-direction: column;
+    }
+    .screen-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(212,165,116,.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(212,165,116,.1);
+    }
+    .screen-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      background: var(--void2);
+      border-bottom: 1px solid var(--gb);
+    }
+    .screen-body {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .screen-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      color: var(--textdd);
+      text-transform: uppercase;
+    }
+    .screen-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    .screen-desc {
+      font-size: 13px;
+      color: var(--textd);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .screen-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 16px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: .04em;
+    }
+
+    /* Accent card variant */
+    .screen-card.featured {
+      border-color: rgba(212,165,116,.25);
+      background: linear-gradient(135deg, rgba(212,165,116,.05) 0%, var(--g2) 100%);
+    }
+
+    /* CTA bar */
+    .cta-bar {
+      background: var(--g1);
+      border: 1px solid var(--gb);
+      border-radius: var(--rx);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .cta-bar h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .cta-bar p {
+      font-size: 14px;
+      color: var(--textd);
+      max-width: 480px;
+    }
+    .cta-acts {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .2s;
+      cursor: pointer;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+    .btn-p {
+      background: linear-gradient(135deg, #1e3a5f, #1a2f50);
+      border-color: rgba(212,165,116,.3);
+      color: var(--gold);
+    }
+    .btn-p:hover {
+      background: linear-gradient(135deg, #254870, #1e3a5f);
+      border-color: rgba(212,165,116,.6);
+      box-shadow: 0 0 20px rgba(212,165,116,.1);
+    }
+    .btn-g {
+      background: var(--g1);
+      border-color: var(--gb);
+      color: var(--textd);
+    }
+    .btn-g:hover {
+      border-color: rgba(255,255,255,.15);
+      color: var(--text);
+    }
+
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--gb);
+      padding: 28px clamp(16px, 4vw, 48px);
+    }
+    .f-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .f-inner a { color: var(--textd); text-decoration: none; font-size: 13px; transition: color .2s; }
+    .f-inner a:hover { color: var(--gold); }
+    .f-copy { font-size: 13px; color: var(--textdd); }
+
+    @media (max-width: 640px) {
+      .screen-grid { grid-template-columns: 1fr; }
+      .cta-bar { padding: 28px 24px; }
+      .cta-acts { width: 100%; }
+      .cta-acts .btn { flex: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="orb o1" aria-hidden="true"></div>
+<div class="orb o2" aria-hidden="true"></div>
+
+<!-- Nav -->
+<nav>
+  <div class="ni">
+    <a href="/" class="nb" aria-label="BrainSAIT Home">
+      <div class="nlogo" aria-hidden="true">B</div>
+      <span>BRAIN<em>SAIT</em></span>
+    </a>
+    <a href="/" class="nav-back" aria-label="Back to homepage">← Back to Home</a>
+  </div>
+</nav>
+
+<main class="page">
+
+  <!-- Hero -->
+  <div style="margin-bottom: 64px;">
+    <div class="hero-badge"><div class="dot"></div> Solutions Portfolio</div>
+    <h1>The BrainSAIT <em>Platform</em><br>Design System</h1>
+    <p class="hero-sub">Four interactive screen views from the BrainSAIT Solutions Portfolio — built with Stitch. Explore the catalog, ecosystem hub, solution detail, and the ecosystem vision.</p>
+  </div>
+
+  <!-- Screen grid -->
+  <div style="margin-bottom: 16px;">
+    <span class="stag">Stitch Screens — 4 Views</span>
+  </div>
+
+  <div class="screen-grid">
+
+    <a href="home-ecosystem-hub.html" class="screen-card featured">
+      <img
+        src="home-ecosystem-hub.png"
+        alt="Home & Ecosystem Hub screen"
+        class="screen-thumb"
+        loading="lazy"
+        onerror="this.style.display='none'"
+      >
+      <div class="screen-body">
+        <span class="screen-num">Screen 01</span>
+        <div class="screen-title">Home &amp; Ecosystem Hub</div>
+        <p class="screen-desc">The central launch surface for the BrainSAIT ecosystem. Navigate all products, agents, and connected services from one place.</p>
+        <div class="screen-arrow">
+          <span>Open screen</span>
+          <span>→</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="solutions-catalog.html" class="screen-card">
+      <img
+        src="solutions-catalog.png"
+        alt="Solutions Catalog screen"
+        class="screen-thumb"
+        loading="lazy"
+        onerror="this.style.display='none'"
+      >
+      <div class="screen-body">
+        <span class="screen-num">Screen 02</span>
+        <div class="screen-title">Solutions Catalog</div>
+        <p class="screen-desc">Browse the full portfolio of BrainSAIT AI-native healthcare solutions, tools, and integrations available to providers across MENA.</p>
+        <div class="screen-arrow">
+          <span>Open screen</span>
+          <span>→</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="detailed-solution-view.html" class="screen-card">
+      <img
+        src="detailed-solution-view.png"
+        alt="Detailed Solution View screen"
+        class="screen-thumb"
+        loading="lazy"
+        onerror="this.style.display='none'"
+      >
+      <div class="screen-body">
+        <span class="screen-num">Screen 03</span>
+        <div class="screen-title">Detailed Solution View</div>
+        <p class="screen-desc">Deep-dive into any individual solution — features, integration points, compliance specs, and implementation pathways.</p>
+        <div class="screen-arrow">
+          <span>Open screen</span>
+          <span>→</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="ecosystem-vision.html" class="screen-card">
+      <img
+        src="ecosystem-vision.png"
+        alt="Ecosystem Vision screen"
+        class="screen-thumb"
+        loading="lazy"
+        onerror="this.style.display='none'"
+      >
+      <div class="screen-body">
+        <span class="screen-num">Screen 04</span>
+        <div class="screen-title">Ecosystem Vision</div>
+        <p class="screen-desc">The strategic roadmap and long-term ecosystem architecture — showing how BrainSAIT connects providers, payers, and government health systems.</p>
+        <div class="screen-arrow">
+          <span>Open screen</span>
+          <span>→</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- CTA bar -->
+  <div class="cta-bar">
+    <div>
+      <h2>Ready to see it in production?</h2>
+      <p>The RCM Suite is live. Launch ClaimLinc to experience real-time NPHIES claims processing, or browse the full App Store for all BrainSAIT products.</p>
+    </div>
+    <div class="cta-acts">
+      <a href="/rcm" class="btn btn-p">Launch RCM →</a>
+      <a href="/appstore" class="btn btn-g">App Store</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="f-inner">
+    <span class="f-copy">&copy; 2026 BrainSAIT LTD. All rights reserved.</span>
+    <div style="display:flex; gap:24px;">
+      <a href="/">Home</a>
+      <a href="/docs">Docs</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

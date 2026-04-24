@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Brainsait x Elfadil - Solutions Catalog</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#d8e2ff",
+                        "on-tertiary": "#003824",
+                        "on-background": "#e0e3e8",
+                        "on-secondary-container": "#00686f",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-primary-fixed": "#001a41",
+                        "secondary-fixed": "#7df4ff",
+                        "error-container": "#93000a",
+                        "outline": "#8b90a0",
+                        "primary": "#adc7ff",
+                        "inverse-on-surface": "#2d3135",
+                        "on-tertiary-fixed": "#002113",
+                        "tertiary": "#4edea3",
+                        "surface-container": "#1c2024",
+                        "on-primary-fixed-variant": "#004493",
+                        "on-tertiary-container": "#00311f",
+                        "on-error": "#690005",
+                        "secondary-container": "#00eefc",
+                        "tertiary-container": "#00a572",
+                        "on-secondary": "#00363a",
+                        "surface-dim": "#101418",
+                        "surface-tint": "#adc7ff",
+                        "secondary-fixed-dim": "#00dbe9",
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#313539",
+                        "on-secondary-fixed": "#002022",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "surface-container-high": "#262a2e",
+                        "on-secondary-fixed-variant": "#004f54",
+                        "inverse-primary": "#005bc0",
+                        "surface-container-low": "#181c20",
+                        "background": "#101418",
+                        "primary-container": "#4a8eff",
+                        "on-primary-container": "#00285b",
+                        "surface-container-lowest": "#0b0f12",
+                        "surface-bright": "#363a3e",
+                        "on-error-container": "#ffdad6",
+                        "outline-variant": "#414754",
+                        "on-surface": "#e0e3e8",
+                        "on-primary": "#002e68",
+                        "primary-fixed-dim": "#adc7ff",
+                        "surface-variant": "#313539",
+                        "secondary": "#d3fbff",
+                        "surface": "#101418",
+                        "inverse-surface": "#e0e3e8",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-surface-variant": "#c1c6d7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "xs": "4px",
+                        "xl": "80px",
+                        "container-max": "1280px",
+                        "lg": "48px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "code": ["SFMono-Regular"],
+                        "h3": ["Space Grotesk"],
+                        "h2": ["Space Grotesk"],
+                        "body-lg": ["Inter"],
+                        "h1": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                        "code": ["14px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                        "h3": ["32px", {"lineHeight": "1.3", "letterSpacing": "0", "fontWeight": "600"}],
+                        "h2": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                        "h1": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-caps": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-surface {
+            background: rgba(33, 37, 41, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(173, 199, 255, 0.3);
+        }
+        .glass-hover:hover {
+            border-color: #4a8eff;
+            box-shadow: 0 0 20px rgba(0, 123, 255, 0.2);
+        }
+        .text-glow {
+            text-shadow: 0 0 10px rgba(173, 199, 255, 0.5);
+        }
+        .inner-glow-btn {
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-8 h-20 w-full max-w-[1280px] mx-auto bg-slate-950/60 backdrop-blur-[30px] border-b border-slate-800/50 shadow-[0_0_20px_rgba(0,123,255,0.1)] font-space-grotesk tracking-tight">
+<div class="text-xl font-bold tracking-tighter text-slate-50 dark:text-white">
+        Brainsait x Elfadil
+    </div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-slate-400 hover:text-slate-100 transition-colors" href="#">Home</a>
+<a class="text-blue-500 border-b-2 border-blue-500 pb-1" href="#">Solutions</a>
+<a class="text-slate-400 hover:text-slate-100 transition-colors" href="#">Ecosystem</a>
+<a class="text-slate-400 hover:text-slate-100 transition-colors" href="#">Vision</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="material-symbols-outlined text-slate-400 p-2 hover:bg-blue-500/10 transition-all rounded-lg" data-icon="grid_view">grid_view</button>
+<button class="material-symbols-outlined text-slate-400 p-2 hover:bg-blue-500/10 transition-all rounded-lg" data-icon="settings">settings</button>
+<button class="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold transition-all duration-300 ease-out active:scale-95 hover:shadow-[0_0_15px_rgba(0,123,255,0.3)]">
+            Connect
+        </button>
+</div>
+</header>
+<div class="flex min-h-screen max-w-[1280px] mx-auto">
+<!-- SideNavBar / Filter Shell -->
+<aside class="hidden lg:flex flex-col py-6 w-64 h-[calc(100vh-80px)] sticky top-20 border-r border-slate-800 bg-slate-950/80 backdrop-blur-xl shrink-0">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-1">
+<span class="text-blue-400 font-black font-space-grotesk uppercase text-xs">Command AI</span>
+</div>
+<div class="text-slate-500 text-[10px] uppercase tracking-widest font-bold font-space-grotesk">Filter Ecosystem</div>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<div class="bg-blue-500/20 text-blue-400 border-r-4 border-blue-500 px-4 py-3 rounded-l-md flex items-center gap-3 group cursor-pointer">
+<span class="material-symbols-outlined text-lg" data-icon="dashboard">dashboard</span>
+<span class="font-space-grotesk uppercase text-xs font-bold transition-transform group-hover:translate-x-1">Dashboard</span>
+</div>
+<div class="text-slate-500 hover:text-slate-200 px-4 py-3 flex items-center gap-3 group cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="category">category</span>
+<span class="font-space-grotesk uppercase text-xs font-bold transition-transform group-hover:translate-x-1">Catalog</span>
+</div>
+<div class="text-slate-500 hover:text-slate-200 px-4 py-3 flex items-center gap-3 group cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="cloud_done">cloud_done</span>
+<span class="font-space-grotesk uppercase text-xs font-bold transition-transform group-hover:translate-x-1">Infrastructure</span>
+</div>
+<div class="text-slate-500 hover:text-slate-200 px-4 py-3 flex items-center gap-3 group cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="monitor_heart">monitor_heart</span>
+<span class="font-space-grotesk uppercase text-xs font-bold transition-transform group-hover:translate-x-1">Health Systems</span>
+</div>
+</nav>
+<div class="mt-auto px-4 py-6 border-t border-slate-800 space-y-2">
+<div class="text-slate-600 hover:text-slate-200 px-4 py-2 flex items-center gap-3 text-xs font-bold uppercase cursor-pointer">
+<span class="material-symbols-outlined text-sm" data-icon="help">help</span>
+<span>Support</span>
+</div>
+<div class="text-slate-600 hover:text-slate-200 px-4 py-2 flex items-center gap-3 text-xs font-bold uppercase cursor-pointer">
+<span class="material-symbols-outlined text-sm" data-icon="description">description</span>
+<span>Documentation</span>
+</div>
+<button class="w-full mt-4 bg-primary text-on-primary py-3 rounded-lg font-label-caps text-xs inner-glow-btn hover:opacity-90 transition-opacity">
+                Launch Engine
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 p-gutter lg:p-xl overflow-y-auto">
+<!-- Hero Header -->
+<section class="mb-lg">
+<span class="text-tertiary font-label-caps text-xs mb-sm block tracking-[0.2em] uppercase">Hyper-Innovation Suite</span>
+<h1 class="font-h1 text-h1 text-on-surface mb-gutter leading-none max-w-2xl">
+                Command the <span class="text-primary-container text-glow">Future</span> of Industry.
+            </h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-xl">
+                Discover our interconnected ecosystem of AI-driven healthcare, sovereign cloud infrastructure, and neural-processing units designed for global scale.
+            </p>
+</section>
+<!-- Grid-Based Solutions Catalog -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-gutter">
+<!-- Card 1: Brainsait Core AI -->
+<div class="glass-surface glass-hover p-lg rounded-xl transition-all duration-300 relative group overflow-hidden flex flex-col h-full">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/10 rounded-full blur-[80px] group-hover:bg-primary/20 transition-colors"></div>
+<div class="flex justify-between items-start mb-lg relative z-10">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest border border-outline-variant flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="neurology">neurology</span>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-tertiary-container/20 text-tertiary border border-tertiary/30 rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span> Active
+                        </span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant border border-outline-variant rounded-full text-[10px] font-bold uppercase tracking-wider">Brainsait</span>
+</div>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-sm relative z-10">Neural Catalyst v4</h3>
+<p class="text-on-surface-variant text-body-md mb-lg relative z-10 flex-grow">
+                    Autonomous enterprise intelligence that synthesizes cross-departmental data into actionable executive strategy in milliseconds.
+                </p>
+<div class="flex items-center justify-between relative z-10 mt-auto">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-slate-800 flex items-center justify-center text-[10px] font-bold">AI</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-slate-700 flex items-center justify-center text-[10px] font-bold">UX</div>
+</div>
+<a class="text-primary font-label-caps text-xs flex items-center gap-2 group-hover:gap-3 transition-all hover:underline" href="https://25a2e5c2.brainsait-v4.pages.dev/" target="_blank">
+                        View Platform <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 2: Elfadil Health Systems -->
+<div class="glass-surface glass-hover p-lg rounded-xl transition-all duration-300 relative group overflow-hidden flex flex-col h-full">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-tertiary/10 rounded-full blur-[80px] group-hover:bg-tertiary/20 transition-colors"></div>
+<div class="flex justify-between items-start mb-lg relative z-10">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest border border-outline-variant flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-tertiary text-2xl" data-icon="monitor_heart">monitor_heart</span>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-secondary-container/20 text-secondary-fixed-dim border border-secondary-fixed-dim/30 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                            Beta 2.0
+                        </span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant border border-outline-variant rounded-full text-[10px] font-bold uppercase tracking-wider">Elfadil</span>
+</div>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-sm relative z-10">Sovereign Pulse</h3>
+<p class="text-on-surface-variant text-body-md mb-lg relative z-10 flex-grow">
+                    Distributed healthcare operating system that encrypts patient biometrics across a secure, global medical mesh.
+                </p>
+<div class="flex items-center justify-between relative z-10 mt-auto">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-slate-800 flex items-center justify-center text-[10px] font-bold">MED</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-slate-700 flex items-center justify-center text-[10px] font-bold">SEC</div>
+</div>
+<a class="text-tertiary font-label-caps text-xs flex items-center gap-2 group-hover:gap-3 transition-all hover:underline" href="https://9539ae93.givc-his-ui.pages.dev/" target="_blank">
+                        Deploy Infrastructure <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 3: Global Cloud Mesh -->
+<div class="glass-surface glass-hover p-lg rounded-xl transition-all duration-300 relative group overflow-hidden flex flex-col h-full">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-secondary-container/10 rounded-full blur-[80px] group-hover:bg-secondary-container/20 transition-colors"></div>
+<div class="flex justify-between items-start mb-lg relative z-10">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest border border-outline-variant flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-secondary-container text-2xl" data-icon="cloud_done">cloud_done</span>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-tertiary-container/20 text-tertiary border border-tertiary/30 rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Active
+                        </span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant border border-outline-variant rounded-full text-[10px] font-bold uppercase tracking-wider">Brainsait</span>
+</div>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-sm relative z-10">Aether Cloud</h3>
+<p class="text-on-surface-variant text-body-md mb-lg relative z-10 flex-grow">
+                    The world's first carbon-negative cloud compute fabric, optimized for high-density AI model training and deployment.
+                </p>
+<div class="flex items-center justify-between relative z-10 mt-auto">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-slate-800 flex items-center justify-center text-[10px] font-bold">NET</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-slate-700 flex items-center justify-center text-[10px] font-bold">ENV</div>
+</div>
+<a class="text-secondary-container font-label-caps text-xs flex items-center gap-2 group-hover:gap-3 transition-all hover:underline" href="https://297a2f28.cloud-elfadil.pages.dev/" target="_blank">
+                        Explore Mesh <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 4: Precision Logistics -->
+<div class="glass-surface glass-hover p-lg rounded-xl transition-all duration-300 relative group overflow-hidden flex flex-col h-full">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-on-secondary-container/10 rounded-full blur-[80px] group-hover:bg-on-secondary-container/20 transition-colors"></div>
+<div class="flex justify-between items-start mb-lg relative z-10">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest border border-outline-variant flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="precision_manufacturing">precision_manufacturing</span>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-primary-container/20 text-primary-fixed border border-primary-container/30 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                            Alpha
+                        </span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant border border-outline-variant rounded-full text-[10px] font-bold uppercase tracking-wider">Elfadil</span>
+</div>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-sm relative z-10">Vector Flow</h3>
+<p class="text-on-surface-variant text-body-md mb-lg relative z-10 flex-grow">
+                    Supply chain predictive modeling that eliminates bottlenecks before they occur using quantum-resistant ledger tracking.
+                </p>
+<div class="flex items-center justify-between relative z-10 mt-auto">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-slate-800 flex items-center justify-center text-[10px] font-bold">LOG</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-slate-700 flex items-center justify-center text-[10px] font-bold">QTY</div>
+</div>
+<a class="text-primary font-label-caps text-xs flex items-center gap-2 group-hover:gap-3 transition-all hover:underline" href="https://0e94981f.scm-elfadil.pages.dev/" target="_blank">
+                        Initialize Sync <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Promotion / Bento Highlight -->
+<section class="mt-xl">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="md:col-span-2 glass-surface p-lg rounded-xl bg-gradient-to-br from-primary-container/20 to-transparent flex items-center justify-between border-primary/20">
+<div class="max-w-md">
+<h2 class="font-h3 text-h3 text-on-surface mb-sm">Connect your Command AI</h2>
+<p class="text-on-surface-variant text-body-md mb-md">Integrate all solutions into a single pane of glass for total operational awareness.</p>
+<button class="bg-primary text-on-primary px-gutter py-3 rounded-lg font-label-caps text-xs shadow-lg shadow-primary/20 hover:scale-105 transition-transform">Get Started Now</button>
+</div>
+<div class="hidden lg:block w-48 h-48 opacity-40">
+<img alt="System Core" class="w-full h-full object-contain" data-alt="Futuristic holographic representation of a central AI core glowing with primary blue energy and intricate circuit patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG-vfhqjJwjSXeCyoXL-I4tH9HA1r_RlklBvS1mgVXU3BcWtO6M_B3f_wEJ9lHHXYfqWEvldv0gxNuK03BHXDFfbrJgAXsh_wjqDMuxK8G_mJqF7k0e3belae_vrhPR7OgRlyba7y9Wy57U6IXqBwr6Qv-J4m_vWM3Lkgr91QNwF8FAXsOGi7b-AJx81QcF0Lz7v964QvWjM0RLOSRzbJSyRgsuxR8HrvHMWCo8uP_ZTmixMwEQxeN6dRXpjqpxtdyOURMY3Or4MU_"/>
+</div>
+</div>
+<div class="glass-surface p-lg rounded-xl border-tertiary/20 flex flex-col justify-center">
+<div class="text-tertiary text-4xl font-bold mb-xs">99.99%</div>
+<div class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-gutter">Uptime Guaranteed</div>
+<div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[99.99%]"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center max-w-[1280px] mx-auto bg-slate-950 border-t border-slate-900 font-space-grotesk text-sm">
+<div class="mb-6 md:mb-0">
+<div class="text-lg font-bold text-slate-200 mb-1">Brainsait &amp; Elfadil</div>
+<div class="text-slate-600">© 2024 Brainsait &amp; Elfadil. Future Delivered Today.</div>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-slate-600 hover:text-blue-400 transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="text-slate-600 hover:text-blue-400 transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="text-slate-600 hover:text-blue-400 transition-colors opacity-80 hover:opacity-100" href="#">AI Ethics</a>
+<a class="text-slate-600 hover:text-blue-400 transition-colors opacity-80 hover:opacity-100" href="#">Global Cloud</a>
+</div>
+</footer>
+</body></html>
