@@ -25,7 +25,7 @@ https://api.brainsait.org/* https://api.brainsait.org/:splat 200
 https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 
 # Legacy incubator root paths -> canonical /incubator/* paths
-/apply /incubator/apply 301
+/apply /incubator/apply/ 301
 /app-store /incubator/app-store 301
 /app-store/* /incubator/app-store/:splat 301
 /resources /incubator/resources 301
@@ -76,12 +76,16 @@ https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 
 # 404 handling
 # App path mappings (consolidated external repos)
+# Root paths (without splat) must be listed explicitly - CF Pages /* only matches with a segment
+/givc /appstore 302
 /givc/* /external/givc/:splat 200
+/doctor /external/doctor/index.html 200
 /doctor/* /external/doctor/:splat 200
 /store/* /appstore 302
 /sbs/* /external/sbs/:splat 200
 /masterlinc/* /external/masterlinc/:splat 200
 /open-webui/* /appstore 302
+/solutions /external/solutions/docs/index.html 200
 /solutions/* /external/solutions/:splat 200
 /clinics/* /external/clinics-pages/:splat 200
 
