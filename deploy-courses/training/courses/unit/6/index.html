@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الوحدة 6: أدوات الشراكات - BrainSAIT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap');
+        body { font-family: 'Noto Kufi Arabic', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #0c4a6e 0%, #1e3a5f 50%, #0f172a 100%); }
+        .lesson-card { border-right: 4px solid; transition: all 0.2s ease; }
+        .lesson-card:hover { transform: translateX(-4px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .step-number { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: white; flex-shrink: 0; }
+        .quiz-option { transition: all 0.15s ease; }
+        .quiz-option:hover { background: #eff6ff; }
+        .quiz-option.selected { background: #dbeafe; border-color: #3b82f6; }
+        .quiz-option.correct { background: #dcfce7; border-color: #22c55e; }
+        .quiz-option.wrong { background: #fee2e2; border-color: #ef4444; }
+        .tool-section { border-top: 5px solid #10b981; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<header class="gradient-bg text-white py-6 px-6 sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
+        <div>
+            <a href="../../index.html" class="text-blue-300 hover:text-white text-sm">← الرئيسية</a>
+            <h1 class="text-xl font-extrabold mt-1">الوحدة 6: أدوات الشراكات</h1>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="bg-blue-500/30 text-blue-200 px-3 py-1 rounded-full text-xs">60 دقيقة</span>
+            <span class="text-blue-300 text-sm">6/10</span>
+        </div>
+    </div>
+</header>
+
+<div class="bg-white shadow-sm">
+    <div class="max-w-4xl mx-auto px-6 py-2">
+        <div class="w-full bg-gray-200 rounded-full h-1.5">
+            <div class="bg-blue-600 h-1.5 rounded-full" style="width: 60%"></div>
+        </div>
+    </div>
+</div>
+
+<div class="max-w-4xl mx-auto px-6 py-8">
+
+    <nav class="bg-white rounded-2xl shadow-sm p-4 mb-8 flex gap-2 overflow-x-auto">
+        <a href="../1/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 1</a>
+        <a href="../2/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 2</a>
+        <a href="../3/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 3</a>
+        <a href="../4/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 4</a>
+        <a href="../5/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 5</a>
+        <span class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-blue-600 text-white font-bold">الوحدة 6</span>
+        <a href="../7/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 7</a>
+        <a href="../8/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 8</a>
+        <a href="../9/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 9</a>
+        <a href="../10/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 10</a>
+    </nav>
+
+    <article class="bg-white rounded-2xl shadow-sm p-8 md:p-12 mb-8">
+
+        <!-- Introduction -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-extrabold text-gray-900 mb-6">أدوات الشراكات الأربعة</h2>
+            <p class="text-gray-600 leading-relaxed mb-6">
+                الشركاء يمكنهم <strong>سد فجوات الموارد</strong> وتوليد حلول مبتكرة وتعزيز النجاح الإجمالي. تساعدك هذه الأدوات على بناء وإدارة شراكات ابتكارية فعالة.
+            </p>
+
+            <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5 mb-8">
+                <h4 class="font-bold text-emerald-800 mb-3">🤝 أنواع الشركاء المحتملين</h4>
+                <div class="grid grid-cols-2 gap-3 text-sm">
+                    <div class="bg-white rounded-lg p-3">🏢 <strong>القطاع الخاص:</strong> الشركات الناشئة والكبيرة</div>
+                    <div class="bg-white rounded-lg p-3">🎓 <strong>الأكاديمية:</strong> الجامعات ومراكز البحث</div>
+                    <div class="bg-white rounded-lg p-3">🏛️ <strong>الحكومة:</strong> الوزارات والهيئات</div>
+                    <div class="bg-white rounded-lg p-3">👥 <strong>المجتمع المدني:</strong> المنظمات المحلية</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tool 1: Define Value Proposition -->
+        <section class="mb-16">
+            <div class="tool-section bg-white rounded-2xl p-6 md:p-8 shadow-sm mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-emerald-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">1</div>
+                    <h3 class="text-2xl font-extrabold text-gray-900">تحديد قيمة العرض (Define a Value Proposition)</h3>
+                </div>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    تساعدك هذه الأداة على تطوير عرض قيمة مقنع يوضح كيف يمكنك مساعدة شريكك المحتمل وما الذي تقدمه مقابل ذلك.
+                </p>
+
+                <h4 class="font-bold text-gray-800 mb-4">الخطوات:</h4>
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-emerald-600">1</div>
+                        <div><div class="font-bold text-gray-800">حدد احتياجات الشريك</div><p class="text-sm text-gray-600">فهم التحديات والأهداف التي يسعى الشريك لتحقيقها</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-emerald-600">2</div>
+                        <div><div class="font-bold text-gray-800">حدد ما تقدمه أنت</div><p class="text-sm text-gray-600">المهارات والموارد والخبرات التي يمكنك المساهمة بها</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-emerald-600">3</div>
+                        <div><div class="font-bold text-gray-800">صِغ عرض القيمة</div><p class="text-sm text-gray-600">صِغ رسالة واضحة ومختصرة توضح الفوائد المتبادلة</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-emerald-600">4</div>
+                        <div><div class="font-bold text-gray-800">اختبر العرض</div><p class="text-sm text-gray-600">شارك العرض مع م trusted أطراف للحصول على ملاحظات</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-emerald-50 rounded-xl p-5">
+                    <h4 class="font-bold text-emerald-800 mb-3">📄 قالب عرض القيمة</h4>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead><tr class="bg-emerald-100"><th class="text-right p-3 font-bold">العنصر</th><th class="text-right p-3 font-bold">التفاصيل</th></tr></thead>
+                            <tbody>
+                                <tr class="border-t"><td class="p-3 font-bold">الشريك المستهدف</td><td class="p-3 text-gray-500">اسم الجهة</td></tr>
+                                <tr class="border-t bg-gray-50"><td class="p-3 font-bold">تحدياتهم</td><td class="p-3 text-gray-500">1. 2. 3.</td></tr>
+                                <tr class="border-t"><td class="p-3 font-bold">ما نقدمه</td><td class="p-3 text-gray-500">المهارات والموارد</td></tr>
+                                <tr class="border-t bg-gray-50"><td class="p-3 font-bold">الفوائد المتبادلة</td><td class="p-3 text-gray-500">لنا: / لهم:</td></tr>
+                                <tr class="border-t"><td class="p-3 font-bold">عرض القيمة</td><td class="p-3 text-gray-500">رسالة مختصرة ومقنعة</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tool 2: Find Different Partners -->
+        <section class="mb-16">
+            <div class="tool-section bg-white rounded-2xl p-6 md:p-8 shadow-sm mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-emerald-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">2</div>
+                    <h3 class="text-2xl font-extrabold text-gray-900">العثور على شركاء مختلفين (Find Different Partners)</h3>
+                </div>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    تساعدك هذه الأداة على البحث عن شركاء غير تقليديين يمكنهم إضافة قيمة فريدة لمشاريعك الابتكارية.
+                </p>
+
+                <h4 class="font-bold text-gray-800 mb-4">الخطوات:</h4>
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-emerald-600">1</div>
+                        <div><div class="font-bold text-gray-800">حدد فجواتك</div><p class="text-sm text-gray-600">حدد المهارات والموارد التي تفتقدها</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-emerald-600">2</div>
+                        <div><div class="font-bold text-gray-800">ابحث خارج الصندوق</div><p class="text-sm text-gray-600">ابحث في قطاعات وأماكن غير تقليدية</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-emerald-600">3</div>
+                        <div><div class="font-bold text-gray-800">قيّم التوافق</div><p class="text-sm text-gray-600">قيّم مدى توافق الثقافة والأهداف</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-emerald-600">4</div>
+                        <div><div class="font-bold text-gray-800">ابدأ الحوار</div><p class="text-sm text-gray-600">تواصل مع الشركاء المحتملين وابدأ حواراً</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-emerald-50 rounded-xl p-5">
+                    <h4 class="font-bold text-emerald-800 mb-3">🔍 أماكن البحث عن شركاء مختلفين</h4>
+                    <div class="grid grid-cols-2 gap-3 text-sm">
+                        <div class="bg-white rounded-lg p-3">🏭 شركات ناشئة في مجالات مختلفة</div>
+                        <div class="bg-white rounded-lg p-3">🌍 منظمات دولية أخرى</div>
+                        <div class="bg-white rounded-lg p-3">🏫 جامعات ومراكز بحث</div>
+                        <div class="bg-white rounded-lg p-3">🏢 شركات القطاع الخاص</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tool 3: Prepare to Partner -->
+        <section class="mb-16">
+            <div class="tool-section bg-white rounded-2xl p-6 md:p-8 shadow-sm mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-emerald-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">3</div>
+                    <h3 class="text-2xl font-extrabold text-gray-900">التحضير للشراكة (Prepare to Partner)</h3>
+                </div>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    تساعدك هذه الأداة على تصميم أهداف الشراكة والأدوار والمسؤوليات وآليات التنسيق قبل بدء العمل المشترك.
+                </p>
+
+                <h4 class="font-bold text-gray-800 mb-4">الخطوات:</h4>
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-emerald-600">1</div>
+                        <div><div class="font-bold text-gray-800">حدد أهداف الشراكة</div><p class="text-sm text-gray-600">أهداف واضحة ومشتركة متفق عليها</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-emerald-600">2</div>
+                        <div><div class="font-bold text-gray-800">حدد الأدوار</div><p class="text-sm text-gray-600">من المسؤول عن ماذا؟ حدود واضحة</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-emerald-600">3</div>
+                        <div><div class="font-bold text-gray-800">صمم آليات التنسيق</div><p class="text-sm text-gray-600">اجتماعات، تقارير، قنوات تواصل</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-emerald-600">4</div>
+                        <div><div class="font-bold text-gray-800">ضع اتفاقية الشراكة</div><p class="text-sm text-gray-600">وثيقة توضح الشروط والمسؤوليات</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-emerald-50 rounded-xl p-5">
+                    <h4 class="font-bold text-emerald-800 mb-3">📄 عناصر اتفاقية الشراكة</h4>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li>• أهداف الشراكة واضحة</li>
+                        <li>• أدوار ومسؤوليات كل طرف</li>
+                        <li>• الموارد الم contributedة من كل طرف</li>
+                        <li>• آلية اتخاذ القرارات</li>
+                        <li>• الجدول الزمني والمراحل</li>
+                        <li>• آلية حل النزاعات</li>
+                        <li>• شروط إنهاء الشراكة</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tool 4: Prioritize and Select -->
+        <section class="mb-16">
+            <div class="tool-section bg-white rounded-2xl p-6 md:p-8 shadow-sm mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-emerald-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">4</div>
+                    <h3 class="text-2xl font-extrabold text-gray-900">تحديد أولويات واختيار الشركاء (Prioritize and Select)</h3>
+                </div>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    تساعدك هذه الأداة على تقييم الشركاء المحتملين واختيار الأنسب لتحقيق أهدافك الابتكارية.
+                </p>
+
+                <h4 class="font-bold text-gray-800 mb-4">الخطوات:</h4>
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-emerald-600">1</div>
+                        <div><div class="font-bold text-gray-800">حدد معايير التقييم</div><p class="text-sm text-gray-600">معايير واضحة (التوافق، الموارد، الخبرة، الثقافة)</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-emerald-600">2</div>
+                        <div><div class="font-bold text-gray-800">قيّم كل شريك</div><p class="text-sm text-gray-600">قيّم كل شريك محتمل حسب المعايير</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-emerald-600">3</div>
+                        <div><div class="font-bold text-gray-800">قارن واختر</div><p class="text-sm text-gray-600">قارن النتائج واختر الشركاء الأنسب</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-emerald-600">4</div>
+                        <div><div class="font-bold text-gray-800">ابدأ التفاوض</div><p class="text-sm text-gray-600">تواصل مع الشركاء المختارين وابدأ التفاوض</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-emerald-50 rounded-xl p-5">
+                    <h4 class="font-bold text-emerald-800 mb-3">📊 مصفوفة تقييم الشركاء</h4>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead><tr class="bg-emerald-100"><th class="text-right p-3 font-bold">المعيار</th><th class="text-right p-3 font-bold">الشريك 1</th><th class="text-right p-3 font-bold">الشريك 2</th><th class="text-right p-3 font-bold">الشريك 3</th></tr></thead>
+                            <tbody>
+                                <tr class="border-t"><td class="p-3 font-bold">التوافق الاستراتيجي</td><td class="p-3 text-gray-500">/5</td><td class="p-3 text-gray-500">/5</td><td class="p-3 text-gray-500">/5</td></tr>
+                                <tr class="border-t bg-gray-50"><td class="p-3 font-bold">الموارد المتاحة</td><td class="p-3 text-gray-500">/5</td><td class="p-3 text-gray-500">/5</td><td class="p-3 text-gray-500">/5</td></tr>
+                                <tr class="border-t"><td class="p-3 font-bold">الخبرة والكفاءة</td><td class="p-3 text-gray-500">/5</td><td class="p-3 text-gray-500">/5</td><td class="p-3 text-gray-500">/5</td></tr>
+                                <tr class="border-t bg-gray-50"><td class="p-3 font-bold">التوافق الثقافي</td><td class="p-3 text-gray-500">/5</td><td class="p-3 text-gray-500">/5</td><td class="p-3 text-gray-500">/5</td></tr>
+                                <tr class="border-t"><td class="p-3 font-bold">المجموع</td><td class="p-3 font-bold">/20</td><td class="p-3 font-bold">/20</td><td class="p-3 font-bold">/20</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </article>
+
+    <!-- Quiz -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-12 mb-8">
+        <h2 class="text-2xl font-extrabold mb-2">اختبار الوحدة 6</h2>
+        <p class="text-gray-500 mb-8">اختبر فهمك لأدوات الشراكات</p>
+        <div id="quiz" class="space-y-8"></div>
+        <div id="quizResult" class="hidden mt-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 text-center">
+            <div class="text-5xl mb-3" id="quizEmoji"></div>
+            <h3 class="text-2xl font-bold mb-2">نتيجتك: <span id="quizScore"></span></h3>
+            <p class="text-gray-500" id="quizMsg"></p>
+        </div>
+        <div class="text-center mt-8">
+            <button onclick="checkQuiz()" id="submitQuiz" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-xl text-lg font-bold transition-all">تحقق من الإجابات</button>
+        </div>
+    </div>
+
+    <div class="flex justify-between items-center">
+        <a href="../5/index.html" class="text-gray-500 hover:text-gray-700 px-6 py-3 rounded-xl font-bold">→ الوحدة السابقة</a>
+        <a href="../7/index.html" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-bold transition-all">الوحدة 7: أدوات البنية التحتية ←</a>
+    </div>
+</div>
+
+<script>
+const quizData = [
+    { q: 'كم عدد أدوات الشراكات؟', opts: ['3 أدوات','4 أدوات','5 أدوات','6 أدوات'], correct: 1 },
+    { q: 'ما الهدف الرئيسي لأداة "تحديد قيمة العرض"؟', opts: ['تحليل المخاطر','تطوير عرض قيمة مقنع','بناء فرق العمل','قياس الأثر'], correct: 1 },
+    { q: 'أي أداة تساعد على البحث عن شركاء غير تقليديين؟', opts: ['تحديد قيمة العرض','العثور على شركاء مختلفين','التحضير للشراكة','تحديد أولويات الشركاء'], correct: 1 },
+    { q: 'ما العنصر الذي يجب أن تتضمنه اتفاقية الشراكة؟', opts: ['أهداف واضحة فقط','أدوار فقط','جميع العناصر: أهداف، أدوار، موارد، آليات','لا شيء مما ذكر'], correct: 2 },
+    { q: 'كم عدد معايير تقييم الشركاء في المصفوفة؟', opts: ['3 معايير','4 معايير','5 معايير','6 معايير'], correct: 1 },
+    { q: 'ما الخطوة الأولى في أداة "العثور على شركاء مختلفين"؟', opts: ['ابدأ الحوار','حدد فجواتك','ابحث خارج الصندوق','قيّم التوافق'], correct: 1 }
+];
+let selected = new Array(quizData.length).fill(-1);
+function renderQuiz() {
+    const c = document.getElementById('quiz'); c.innerHTML = '';
+    quizData.forEach((q, i) => {
+        const div = document.createElement('div'); div.className = 'border-b border-gray-100 pb-6';
+        div.innerHTML = `<h4 class="font-bold text-gray-800 mb-4">السؤال ${i+1}: ${q.q}</h4><div class="space-y-2" id="qopts-${i}"></div><div id="qfb-${i}" class="hidden mt-2 text-sm font-bold"></div>`;
+        c.appendChild(div);
+        const oc = div.querySelector(`#qopts-${i}`);
+        q.opts.forEach((opt, j) => {
+            const btn = document.createElement('button');
+            btn.className = 'quiz-option w-full text-right p-3 rounded-xl border-2 border-gray-200 text-sm';
+            btn.textContent = opt; btn.onclick = () => { selected[i] = j; renderQuiz(); };
+            if (selected[i] === j) btn.classList.add('selected');
+            oc.appendChild(btn);
+        });
+    });
+}
+function checkQuiz() {
+    let correct = 0;
+    quizData.forEach((q, i) => {
+        const opts = document.querySelectorAll(`#qopts-${i} button`); const fb = document.getElementById(`qfb-${i}`); fb.classList.remove('hidden');
+        opts.forEach((btn, j) => { btn.onclick = null; if (j === q.correct) btn.classList.add('correct'); else if (j === selected[i]) btn.classList.add('wrong'); });
+        if (selected[i] === q.correct) { correct++; fb.textContent = '✓ صحيح'; fb.className = 'mt-2 text-sm font-bold text-green-600'; }
+        else { fb.textContent = '✗ الصحيح: ' + q.opts[q.correct]; fb.className = 'mt-2 text-sm font-bold text-red-600'; }
+    });
+    const pct = Math.round((correct/quizData.length)*100);
+    document.getElementById('quizResult').classList.remove('hidden');
+    document.getElementById('quizScore').textContent = `${correct}/${quizData.length} (${pct}%)`;
+    document.getElementById('quizEmoji').textContent = pct >= 80 ? '🏆' : pct >= 60 ? '👍' : '📚';
+    document.getElementById('quizMsg').textContent = pct >= 80 ? 'ممتاز!' : pct >= 60 ? 'جيد! راجع النقاط الخاطئة' : 'راجع المحتوى';
+    document.getElementById('submitQuiz').disabled = true;
+    document.getElementById('submitQuiz').className = 'bg-gray-400 text-white px-10 py-4 rounded-xl text-lg font-bold cursor-not-allowed';
+}
+renderQuiz();
+</script>
+</body>
+</html>

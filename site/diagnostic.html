@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التشخيص الابتكاري - BrainSAIT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap');
+        body { font-family: 'Noto Kufi Arabic', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #0c4a6e 0%, #1e3a5f 50%, #0f172a 100%); }
+        .progress-bar { transition: width 0.5s ease; }
+        .option-btn { transition: all 0.2s ease; }
+        .option-btn:hover { transform: scale(1.02); }
+        .option-btn.selected { background: #3b82f6; color: white; border-color: #3b82f6; }
+        .fade-in { animation: fadeIn 0.3s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .result-card { animation: slideUp 0.5s ease-out; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<!-- Header -->
+<header class="gradient-bg text-white py-8 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+        <a href="index.html" class="text-blue-300 hover:text-white text-sm mb-4 inline-block">← العودة للرئيسية</a>
+        <h1 class="text-3xl font-extrabold mb-2">التشخيص الابتكاري</h1>
+        <p class="text-blue-200">27 سؤالاً لاكتشاف نقاط قوتك ومجالات نموك</p>
+    </div>
+</header>
+
+<!-- Progress -->
+<div class="bg-white shadow-sm sticky top-0 z-10">
+    <div class="max-w-3xl mx-auto px-6 py-3">
+        <div class="flex items-center justify-between mb-2">
+            <span class="text-sm text-gray-500">السؤال <span id="currentQ">1</span> من 27</span>
+            <span class="text-sm font-bold text-blue-600" id="progressPercent">4%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2">
+            <div id="progressBar" class="bg-blue-600 h-2 rounded-full progress-bar" style="width: 4%"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<main class="max-w-3xl mx-auto px-6 py-10">
+
+    <!-- Start Screen -->
+    <div id="startScreen" class="text-center fade-in">
+        <div class="bg-white rounded-2xl shadow-lg p-10">
+            <div class="text-6xl mb-6">🎯</div>
+            <h2 class="text-2xl font-extrabold mb-4">مرحباً بك في التشخيص الابتكاري</h2>
+            <p class="text-gray-500 mb-6 max-w-lg mx-auto">
+                هذا التشخيص يتكون من 27 سؤالاً مقسمة على 5 وحدات أساسية. اختر الإجابة التي تعكس وضعك الحالي.
+                يستغرق حوالي 10 دقائق.
+            </p>
+            <div class="grid grid-cols-5 gap-4 mb-8 max-w-md mx-auto">
+                <div class="bg-blue-50 rounded-xl p-3 text-center">
+                    <div class="text-2xl mb-1">🎯</div>
+                    <div class="text-xs font-bold text-blue-700">الاستراتيجية</div>
+                    <div class="text-xs text-gray-400">5 أسئلة</div>
+                </div>
+                <div class="bg-emerald-50 rounded-xl p-3 text-center">
+                    <div class="text-2xl mb-1">🤝</div>
+                    <div class="text-xs font-bold text-emerald-700">الشراكات</div>
+                    <div class="text-xs text-gray-400">4 أسئلة</div>
+                </div>
+                <div class="bg-purple-50 rounded-xl p-3 text-center">
+                    <div class="text-2xl mb-1">🏗️</div>
+                    <div class="text-xs font-bold text-purple-700">البنية</div>
+                    <div class="text-xs text-gray-400">4 أسئلة</div>
+                </div>
+                <div class="bg-orange-50 rounded-xl p-3 text-center">
+                    <div class="text-2xl mb-1">🌟</div>
+                    <div class="text-xs font-bold text-orange-700">الثقافة</div>
+                    <div class="text-xs text-gray-400">4 أسئلة</div>
+                </div>
+                <div class="bg-red-50 rounded-xl p-3 text-center">
+                    <div class="text-2xl mb-1">📊</div>
+                    <div class="text-xs font-bold text-red-700">التقييم</div>
+                    <div class="text-xs text-gray-400">4 أسئلة</div>
+                </div>
+            </div>
+            <button onclick="startDiagnostic()" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-xl text-lg font-bold transition-all">
+                ابدأ التشخيص الآن
+            </button>
+        </div>
+    </div>
+
+    <!-- Question Screen -->
+    <div id="questionScreen" class="hidden fade-in">
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+            <div id="moduleBadge" class="inline-block px-3 py-1 rounded-full text-xs font-bold mb-4"></div>
+            <h3 id="questionText" class="text-xl font-bold mb-8 leading-relaxed"></h3>
+            <div id="optionsContainer" class="space-y-3"></div>
+            <div class="flex justify-between mt-8">
+                <button onclick="prevQuestion()" id="prevBtn" class="text-gray-400 hover:text-gray-600 px-6 py-3 rounded-xl transition-all">
+                    → السؤال السابق
+                </button>
+                <button onclick="nextQuestion()" id="nextBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-bold transition-all">
+                    السؤال التالي ←
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="resultsScreen" class="hidden">
+        <div class="result-card">
+            <!-- Profile Card -->
+            <div class="bg-white rounded-2xl shadow-lg p-10 text-center mb-8">
+                <div id="profileEmoji" class="text-7xl mb-4"></div>
+                <h2 class="text-3xl font-extrabold mb-2">أنت: <span id="profileName"></span></h2>
+                <p id="profileDesc" class="text-gray-500 max-w-lg mx-auto"></p>
+            </div>
+
+            <!-- Scores -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+                <h3 class="text-xl font-bold mb-6 text-center">درجاتك في وحدات S.P.A.C.E.</h3>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-24 text-sm font-bold text-blue-700">الاستراتيجية</div>
+                        <div class="flex-1 bg-gray-100 rounded-full h-6 overflow-hidden">
+                            <div id="scoreStrategy" class="bg-blue-500 h-6 rounded-full flex items-center justify-end px-3 text-white text-xs font-bold" style="width:0%"></div>
+                        </div>
+                        <div class="w-12 text-sm font-bold text-gray-600" id="scoreStrategyText">0%</div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-24 text-sm font-bold text-emerald-700">الشراكات</div>
+                        <div class="flex-1 bg-gray-100 rounded-full h-6 overflow-hidden">
+                            <div id="scorePartnerships" class="bg-emerald-500 h-6 rounded-full flex items-center justify-end px-3 text-white text-xs font-bold" style="width:0%"></div>
+                        </div>
+                        <div class="w-12 text-sm font-bold text-gray-600" id="scorePartnershipsText">0%</div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-24 text-sm font-bold text-purple-700">البنية التحتية</div>
+                        <div class="flex-1 bg-gray-100 rounded-full h-6 overflow-hidden">
+                            <div id="scoreArchitecture" class="bg-purple-500 h-6 rounded-full flex items-center justify-end px-3 text-white text-xs font-bold" style="width:0%"></div>
+                        </div>
+                        <div class="w-12 text-sm font-bold text-gray-600" id="scoreArchitectureText">0%</div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-24 text-sm font-bold text-orange-700">الثقافة</div>
+                        <div class="flex-1 bg-gray-100 rounded-full h-6 overflow-hidden">
+                            <div id="scoreCulture" class="bg-orange-500 h-6 rounded-full flex items-center justify-end px-3 text-white text-xs font-bold" style="width:0%"></div>
+                        </div>
+                        <div class="w-12 text-sm font-bold text-gray-600" id="scoreCultureText">0%</div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-24 text-sm font-bold text-red-700">التقييم</div>
+                        <div class="flex-1 bg-gray-100 rounded-full h-6 overflow-hidden">
+                            <div id="scoreEvaluation" class="bg-red-500 h-6 rounded-full flex items-center justify-end px-3 text-white text-xs font-bold" style="width:0%"></div>
+                        </div>
+                        <div class="w-12 text-sm font-bold text-gray-600" id="scoreEvaluationText">0%</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommended Tools -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+                <h3 class="text-xl font-bold mb-6 text-center">الأدوات الموصى بها لك</h3>
+                <div id="recommendedTools" class="grid md:grid-cols-2 gap-4"></div>
+            </div>
+
+            <!-- Actions -->
+            <div class="text-center space-x-4 space-x-reverse">
+                <button onclick="resetDiagnostic()" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-bold transition-all">
+                    إعادة التشخيص
+                </button>
+                <a href="index.html" class="inline-block border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-xl font-bold transition-all">
+                    العودة للرئيسية
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+// 27 Diagnostic Questions (5 modules)
+const questions = [
+    // Strategy (5)
+    { module: 'الاستراتيجية', moduleEn: 'strategy', color: 'blue', q: 'منظمتي/فريق لديها مجموعة واضحة من أهداف الابتكار لتوجيه جهود الابتكار.' },
+    { module: 'الاستراتيجية', moduleEn: 'strategy', color: 'blue', q: 'منظمتي/فريق يفهم ما هو مطلوب من الموارد والقدرات لتنفيذ أنشطة الابتكار وتحقيق الأهداف.' },
+    { module: 'الاستراتيجية', moduleEn: 'strategy', color: 'blue', q: 'منظمتي/فريق تعامل جهود الابتكار كمحفظة استثمارات توازن بين المخاطر والمكافآت.' },
+    { module: 'الاستراتيجية', moduleEn: 'strategy', color: 'blue', q: 'منظمتي/فريق تقيّم الاتجاهات والتقنيات الناشئة عند رسم مسار جهود الابتكار.' },
+    { module: 'الاستراتيجية', moduleEn: 'strategy', color: 'blue', q: 'منظمتي/فريق تعتبر النظام البيئي الأوسع عند اختيار تكتيكات واستراتيجيات الابتكار.' },
+    // Partnerships (4)
+    { module: 'الشراكات', moduleEn: 'partnerships', color: 'emerald', q: 'منظمتي/فريق تفهم كيفية التواصل القيمة لجذب الشركاء المحتملين.' },
+    { module: 'الشراكات', moduleEn: 'partnerships', color: 'emerald', q: 'منظمتي/فريق تحدد أولويات الشراكات المحتملة لتعزيز القيمة المشتركة.' },
+    { module: 'الشراكات', moduleEn: 'partnerships', color: 'emerald', q: 'منظمتي/فريق تجد شركاء جدد يوفرون قيمة فريدة وتتفاعل معهم بفعالية.' },
+    { module: 'الشراكات', moduleEn: 'partnerships', color: 'emerald', q: 'منظمتي/فريق تدير وتخفّف المخاطر المرتبطة بالشراكات بشكل استباقي.' },
+    // Architecture (4)
+    { module: 'البنية التحتية', moduleEn: 'architecture', color: 'purple', q: 'منظمتي/فريق تحصل على أفكار جديدة بشكل فعال من مجموعة واسعة من أصحاب المصلحة.' },
+    { module: 'البنية التحتية', moduleEn: 'architecture', color: 'purple', q: 'منظمتي/فريق تطبق تقنيات التصميم المرتكز على المستخدم لضمان أن الحلول تعكس احتياجات المستخدمين النهائيين.' },
+    { module: 'البنية التحتية', moduleEn: 'architecture', color: 'purple', q: 'منظمتي/فريق تخطط للتوسع عبر عمليات تطوير الحلول والاختبار.' },
+    { module: 'البنية التحتية', moduleEn: 'architecture', color: 'purple', q: 'منظمتي/فريق تتنظم لتنفيذ الابتكار بفعالية.' },
+    // Culture (4)
+    { module: 'الثقافة', moduleEn: 'culture', color: 'orange', q: 'منظمتي/فريق أقامت ثقافة التعلم بناءً على نجاحات وإخفاقات الابتكار.' },
+    { module: 'الثقافة', moduleEn: 'culture', color: 'orange', q: 'منظمتي/فريق تقدم إرشادات حول تحديد ما يشكل حدود المخاطر "المقبولة".' },
+    { module: 'الثقافة', moduleEn: 'culture', color: 'orange', q: 'منظمتي/فريق تخلق حوافز لتحمل المخاطر الاستراتيجية من خلال الابتكار.' },
+    { module: 'الثقافة', moduleEn: 'culture', color: 'orange', q: 'منظمتي/فريق تفهم كيفية إشراك الهيئات الحاكمة بفعالية حول الابتكار.' },
+    // Evaluation (4 - but we need 5+4+4+4+4=21, need 27 total, so let's add more)
+    { module: 'التقييم', moduleEn: 'evaluation', color: 'red', q: 'منظمتي/فريق تقيّم بيئتها التمكينية للابتكار (الثقافة، البنية التحتية، الشراكات).' },
+    { module: 'التقييم', moduleEn: 'evaluation', color: 'red', q: 'منظمتي/فريق تفهم أي من مشاريع الابتكار تحقق التأثير المطلوب.' },
+    { module: 'التقييم', moduleEn: 'evaluation', color: 'red', q: 'منظمتي/فريق تحلل صحة خط إنتاج المشاريع عبر دورة حياة الابتكار.' },
+    { module: 'التقييم', moduleEn: 'evaluation', color: 'red', q: 'منظمتي/فريق تتواصل بفعالية مع أصحاب المصلحة حول نتائج الابتكار.' },
+    // Additional questions to reach 27
+    { module: 'الاستراتيجية', moduleEn: 'strategy', color: 'blue', q: 'منظمتي/فريق لديها خارطة طريق واضحة لمشاريع الابتكار المستقبلية.' },
+    { module: 'الاستراتيجية', moduleEn: 'strategy', color: 'blue', q: 'منظمتي/فريق تراجع وتُحدّث استراتيجيتها الابتكارية بانتظام.' },
+    { module: 'الشراكات', moduleEn: 'partnerships', color: 'emerald', q: 'منظمتي/فريق تبني علاقات طويلة المدى مع الشركاء الاستراتيجيين.' },
+    { module: 'البنية التحتية', moduleEn: 'architecture', color: 'purple', q: 'منظمتي/فريق لديها أنظمة رقمية فعالة لإدارة أفكار ومشاريع الابتكار.' },
+    { module: 'الثقافة', moduleEn: 'culture', color: 'orange', q: 'الموظفون في منظمتي/فريق يشعرون بالحرية في تجربة أفكار جديدة حتى لو كانت مخاطرة.' },
+    { module: 'التقييم', moduleEn: 'evaluation', color: 'red', q: 'منظمتي/فريق تستخدم بيانات التقييم لتحسين عمليات الابتكار المستمرة.' },
+    { module: 'الثقافة', moduleEn: 'culture', color: 'orange', q: 'منظمتي/فريق تحتفي بالنجاحات الابتكارية وتعترف بمساهمات المبتكرين.' }
+];
+
+const options = [
+    { text: 'لا أوافق بشدة', value: 1 },
+    { text: 'لا أوافق', value: 2 },
+    { text: 'محايد', value: 3 },
+    { text: 'أوافق', value: 4 },
+    { text: 'أوافق بشدة', value: 5 }
+];
+
+const profiles = {
+    motivator: { emoji: '🔥', name: 'المحفِّز', desc: 'أنت الأقوى في تطوير ثقافة الابتكار وتحفيز الآخرين. تتميز بقدرتك على خلق بيئة تشجع على الابتكار والتجريب.' },
+    strategist: { emoji: '🎯', name: 'الاستراتيجي', desc: 'أنت الأقوى في وضع استراتيجية واضحة للابتكار. تتميز بقدرتك على رسم المسار المستقبلي وتحديد الأهداف.' },
+    collaborator: { emoji: '🤝', name: 'المتعاون', desc: 'أنت الأقوى في بناء الشراكات وتحقيق التعاون. تتميز بقدرتك على العثور على الشركاء المناسبين وإدارة العلاقات.' },
+    implementor: { emoji: '⚡', name: 'المنفِّذ', desc: 'أنت الأقوى في تنفيذ المشاريع وتحقيق النتائج. تتميز بقدرتك على تحويل الأفكار إلى حلول عملية.' },
+    earlyStage: { emoji: '🌱', name: 'المبتكر المبكر', desc: 'لديك مشاريع ابتكارية لكن تحتاج لاستراتيجية أوضح وبنية تحتية أقوى لتحقيق أقصى تأثير.' },
+    trailblazer: { emoji: '🚀', name: 'الرائد', desc: 'أنت تقود الابتكار بفعالية مع فهم قوي للنظام البيئي. تتميز بقدرتك على تحقيق نتائج ملموسة وتحفيز الآخرين.' }
+};
+
+const toolsByModule = {
+    strategy: [
+        { name: 'عناوين المستقبل', desc: 'تحديد أهداف الابتكار والرؤيا المستقبلية' },
+        { name: 'مخطط السيناريو', desc: 'تحليل السيناريوهات المستقبلية المحتملة' },
+        { name: 'تحليل النظام البيئي', desc: 'فهم اللاعبين والعلاقات في نظامك البيئي' },
+        { name: 'استراتيجية المحفظة', desc: 'تحليل وتحسين محفظة مشاريعك' },
+        { name: 'مخطط الابتكار', desc: 'التخطيط التفصيلي لمشروع ابتكار محدد' }
+    ],
+    partnerships: [
+        { name: 'تحديد قيمة العرض', desc: 'تطوير عرض قيمة مقنع للشركاء' },
+        { name: 'العثور على شركاء مختلفين', desc: 'البحث عن شركاء جدد غير تقليديين' },
+        { name: 'التحضير للشراكة', desc: 'تصميم وإدارة الشراكات بفعالية' },
+        { name: 'تحديد أولويات الشركاء', desc: 'اختيار الشركاء الأفضل موقعاً' }
+    ],
+    architecture: [
+        { name: 'مسح الأفق', desc: 'الحصول على أفكار جديدة لتحديات محددة' },
+        { name: 'التصميم المرتكز على المستخدم', desc: 'ضمان تطابق الحلول مع احتياجات المستخدمين' },
+        { name: 'من الاختبار إلى التوسع', desc: 'تصميم اختبارات تجريبية للتوسع الناجح' },
+        { name: 'نموذج التشغيل', desc: 'دمج الابتكار في العمليات اليومية' }
+    ],
+    culture: [
+        { name: 'احتضان الفشل', desc: 'خلق ثقافة تتعلم من الإخفاقات' },
+        { name: 'خلق حوافز وفرص', desc: 'تحفيز السلوكيات الابتكارية' },
+        { name: 'تحديد المخاطر الاستراتيجية', desc: 'فهم وتوسيع نطاق تحمل المخاطر' },
+        { name: 'إشراك الهيئات الحاكمة', desc: 'الحصول على الدعم من صناع القرار' }
+    ],
+    evaluation: [
+        { name: 'سرد قصص الابتكار', desc: 'التواصل الفعال عن نتائج الابتكار' },
+        { name: 'تقييم بوابة-المرحلة', desc: 'تقييم وإدارة مشاريع الابتكار' },
+        { name: 'تحليل دورة الحياة', desc: 'تحديد الاختناقات وتحسين العمليات' },
+        { name: 'مسح البيئة التمكينية', desc: 'تقييم بيئة الابتكار الحالية' }
+    ]
+};
+
+let currentQuestion = 0;
+let answers = new Array(27).fill(null);
+
+function startDiagnostic() {
+    document.getElementById('startScreen').classList.add('hidden');
+    document.getElementById('questionScreen').classList.remove('hidden');
+    showQuestion();
+}
+
+function showQuestion() {
+    const q = questions[currentQuestion];
+    document.getElementById('currentQ').textContent = currentQuestion + 1;
+    document.getElementById('progressPercent').textContent = Math.round(((currentQuestion + 1) / 27) * 100) + '%';
+    document.getElementById('progressBar').style.width = ((currentQuestion + 1) / 27 * 100) + '%';
+
+    const badge = document.getElementById('moduleBadge');
+    badge.textContent = q.module;
+    badge.className = `inline-block px-3 py-1 rounded-full text-xs font-bold mb-4 bg-${q.color}-100 text-${q.color}-700`;
+
+    document.getElementById('questionText').textContent = q.q;
+
+    const container = document.getElementById('optionsContainer');
+    container.innerHTML = '';
+    options.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.className = `option-btn w-full text-right p-4 rounded-xl border-2 transition-all ${answers[currentQuestion] === opt.value ? 'selected' : 'border-gray-200 hover:border-blue-300'}`;
+        btn.textContent = opt.text;
+        btn.onclick = () => selectOption(opt.value);
+        container.appendChild(btn);
+    });
+
+    document.getElementById('prevBtn').style.visibility = currentQuestion === 0 ? 'hidden' : 'visible';
+    document.getElementById('nextBtn').textContent = currentQuestion === 26 ? 'عرض النتائج ←' : 'السؤال التالي ←';
+}
+
+function selectOption(value) {
+    answers[currentQuestion] = value;
+    showQuestion();
+}
+
+function nextQuestion() {
+    if (answers[currentQuestion] === null) {
+        alert('الرجاء اختيار إجابة');
+        return;
+    }
+    if (currentQuestion === 26) {
+        showResults();
+        return;
+    }
+    currentQuestion++;
+    showQuestion();
+}
+
+function prevQuestion() {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        showQuestion();
+    }
+}
+
+function calculateScores() {
+    const modules = { strategy: [], partnerships: [], architecture: [], culture: [], evaluation: [] };
+    questions.forEach((q, i) => {
+        if (answers[i] !== null) {
+            modules[q.moduleEn].push(answers[i]);
+        }
+    });
+    const scores = {};
+    for (const [key, vals] of Object.entries(modules)) {
+        scores[key] = vals.length > 0 ? Math.round((vals.reduce((a, b) => a + b, 0) / (vals.length * 5)) * 100) : 0;
+    }
+    return scores;
+}
+
+function determineProfile(scores) {
+    const entries = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+    const top = entries[0][0];
+    const lowest = entries[entries.length - 1][0];
+
+    if (top === 'culture' && scores.culture >= 60) return 'motivator';
+    if (top === 'strategy' && scores.strategy >= 60) return 'strategist';
+    if (top === 'partnerships' && scores.partnerships >= 60) return 'collaborator';
+    if (top === 'architecture' && scores.architecture >= 60) return 'implementor';
+
+    const avg = Object.values(scores).reduce((a, b) => a + b, 0) / 5;
+    if (avg < 40) return 'earlyStage';
+    if (avg >= 70) return 'trailblazer';
+
+    // Fallback based on highest
+    const map = { culture: 'motivator', strategy: 'strategist', partnerships: 'collaborator', architecture: 'implementor', evaluation: 'trailblazer' };
+    return map[top] || 'earlyStage';
+}
+
+function showResults() {
+    document.getElementById('questionScreen').classList.add('hidden');
+    document.getElementById('resultsScreen').classList.remove('hidden');
+
+    const scores = calculateScores();
+    const profileKey = determineProfile(scores);
+    const profile = profiles[profileKey];
+
+    // Profile
+    document.getElementById('profileEmoji').textContent = profile.emoji;
+    document.getElementById('profileName').textContent = profile.name;
+    document.getElementById('profileDesc').textContent = profile.desc;
+
+    // Scores animation
+    setTimeout(() => {
+        const modules = [
+            ['Strategy', 'strategy', 'blue'],
+            ['Partnerships', 'partnerships', 'emerald'],
+            ['Architecture', 'architecture', 'purple'],
+            ['Culture', 'culture', 'orange'],
+            ['Evaluation', 'evaluation', 'red']
+        ];
+        modules.forEach(([_, key, __]) => {
+            document.getElementById('score' + _.charAt(0).toUpperCase() + _.slice(1)).style.width = scores[key] + '%';
+            document.getElementById('score' + _.charAt(0).toUpperCase() + _.slice(1)).textContent = scores[key] + '%';
+            document.getElementById('score' + _.charAt(0).toUpperCase() + _.slice(1) + 'Text').textContent = scores[key] + '%';
+        });
+    }, 300);
+
+    // Recommended tools (lowest 2 modules)
+    const sorted = Object.entries(scores).sort((a, b) => a[1] - b[1]).slice(0, 2);
+    const toolsContainer = document.getElementById('recommendedTools');
+    toolsContainer.innerHTML = '';
+    sorted.forEach(([module, score]) => {
+        const tools = toolsByModule[module];
+        tools.forEach(tool => {
+            const div = document.createElement('div');
+            div.className = 'bg-gray-50 rounded-xl p-4 border border-gray-200';
+            div.innerHTML = `<div class="font-bold text-sm mb-1">${tool.name}</div><div class="text-gray-500 text-xs">${tool.desc}</div>`;
+            toolsContainer.appendChild(div);
+        });
+    });
+}
+
+function resetDiagnostic() {
+    currentQuestion = 0;
+    answers = new Array(27).fill(null);
+    document.getElementById('resultsScreen').classList.add('hidden');
+    document.getElementById('startScreen').classList.remove('hidden');
+}
+</script>
+
+</body>
+</html>

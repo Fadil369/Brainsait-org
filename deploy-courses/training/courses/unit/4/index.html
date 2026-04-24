@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الوحدة 4: الملفات الشخصية للابتكار - BrainSAIT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap');
+        body { font-family: 'Noto Kufi Arabic', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #0c4a6e 0%, #1e3a5f 50%, #0f172a 100%); }
+        .lesson-card { border-right: 4px solid; transition: all 0.2s ease; }
+        .lesson-card:hover { transform: translateX(-4px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .quiz-option { transition: all 0.15s ease; }
+        .quiz-option:hover { background: #eff6ff; }
+        .quiz-option.selected { background: #dbeafe; border-color: #3b82f6; }
+        .quiz-option.correct { background: #dcfce7; border-color: #22c55e; }
+        .quiz-option.wrong { background: #fee2e2; border-color: #ef4444; }
+        .profile-detail { border-top: 5px solid; transition: all 0.3s ease; }
+        .profile-detail:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<header class="gradient-bg text-white py-6 px-6 sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
+        <div>
+            <a href="../../index.html" class="text-blue-300 hover:text-white text-sm">← الرئيسية</a>
+            <h1 class="text-xl font-extrabold mt-1">الوحدة 4: الملفات الشخصية للابتكار</h1>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="bg-blue-500/30 text-blue-200 px-3 py-1 rounded-full text-xs">45 دقيقة</span>
+            <span class="text-blue-300 text-sm">4/10</span>
+        </div>
+    </div>
+</header>
+
+<div class="bg-white shadow-sm">
+    <div class="max-w-4xl mx-auto px-6 py-2">
+        <div class="w-full bg-gray-200 rounded-full h-1.5">
+            <div class="bg-blue-600 h-1.5 rounded-full" style="width: 40%"></div>
+        </div>
+    </div>
+</div>
+
+<div class="max-w-4xl mx-auto px-6 py-8">
+
+    <nav class="bg-white rounded-2xl shadow-sm p-4 mb-8 flex gap-2 overflow-x-auto">
+        <a href="../1/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 1</a>
+        <a href="../2/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 2</a>
+        <a href="../3/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 3</a>
+        <span class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-blue-600 text-white font-bold">الوحدة 4</span>
+        <a href="../5/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 5</a>
+        <a href="../6/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 6</a>
+        <a href="../7/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 7</a>
+        <a href="../8/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 8</a>
+        <a href="../9/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 9</a>
+        <a href="../10/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 10</a>
+    </nav>
+
+    <article class="bg-white rounded-2xl shadow-sm p-8 md:p-12 mb-8">
+
+        <!-- Introduction -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="bg-blue-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">4.1</div>
+                <h2 class="text-2xl font-extrabold text-gray-900">فهم ملفات الابتكار الشخصية</h2>
+            </div>
+
+            <p class="text-gray-600 leading-relaxed mb-6">
+                بناءً على نتائج التشخيص الابتكاري (الوحدة 3)، سيتم تصنيفك في أحد <strong>ستة ملفات شخصية</strong>. كل ملف يعكس نمطاً فريداً من نقاط القوة والضعف، ويوجهك نحو الأدوات الأنسب لحالتك.
+            </p>
+
+            <div class="bg-blue-50 border border-blue-200 rounded-xl p-5 mb-8">
+                <div class="font-bold text-blue-800 mb-2">🎯 كيف يتم تحديد ملفك؟</div>
+                <p class="text-sm text-gray-600">يتم تحديد ملفك بناءً على متوسط درجاتك في كل وحدة من وحدات S.P.A.C.E. والأنماط السلوكيّة التي تظهر في إجاباتك.</p>
+            </div>
+        </section>
+
+        <!-- Profile 1: Motivator -->
+        <section class="mb-16">
+            <div class="profile-detail bg-white border-blue-500 rounded-2xl p-6 md:p-8 shadow-sm">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="text-5xl">🔥</div>
+                    <div>
+                        <h3 class="text-2xl font-extrabold text-blue-800">المحفّز (Motivator)</h3>
+                        <p class="text-sm text-gray-500">محرك الحماس والدافع في الفريق</p>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    المحفّز هو الشخص الذي يضخ الطاقة في الفريق ويحفزهم على الابتكار. يتميز بقدرته الفطرية على إلهام الآخرين ودفعهم نحو تحقيق أهدافهم.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-green-50 rounded-xl p-5">
+                        <h4 class="font-bold text-green-800 mb-3">✅ نقاط القوة</h4>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li>• التواصل الفعال والإلهام</li>
+                            <li>• بناء الحماس والدافع لدى الفريق</li>
+                            <li>• القدرة على رؤية الإمكانات في الآخرين</li>
+                            <li>• التشجيع المستمر والدعم المعنوي</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50 rounded-xl p-5">
+                        <h4 class="font-bold text-red-800 mb-3">⚠️ نقاط الضعف</h4>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li>• قد يفتقر للتخطيط الاستراتيجي</li>
+                            <li>• قد يهمل التفاصيل العملية</li>
+                            <li>• صعوبة في تقييم المخاطر بدقة</li>
+                            <li>• قد يبالغ في التفاؤل</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 rounded-xl p-5">
+                    <h4 class="font-bold text-blue-800 mb-3">🛠️ الأدوات الموصى بها</h4>
+                    <div class="grid grid-cols-2 gap-3 text-sm">
+                        <div class="bg-white rounded-lg p-3">عناوين المستقبل</div>
+                        <div class="bg-white rounded-lg p-3">سرد قصص الابتكار</div>
+                        <div class="bg-white rounded-lg p-3">خلق حوافز وفرص</div>
+                        <div class="bg-white rounded-lg p-3">إطلاق الفشل</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile 2: Strategist -->
+        <section class="mb-16">
+            <div class="profile-detail bg-white border-emerald-500 rounded-2xl p-6 md:p-8 shadow-sm">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="text-5xl">🧭</div>
+                    <div>
+                        <h3 class="text-2xl font-extrabold text-emerald-800">الاستراتيجي (Strategist)</h3>
+                        <p class="text-sm text-gray-500">رسّام الرؤيا ومخطط المستقبل</p>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    الاستراتيجي هو العقل المدبر الذي يضع الرؤيا ويصمم الخطط طويلة المدى. يتميز بالتحليل العميق والتفكير المنهجي.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-green-50 rounded-xl p-5">
+                        <h4 class="font-bold text-green-800 mb-3">✅ نقاط القوة</h4>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li>• التفكير الاستراتيجي طويل المدى</li>
+                            <li>• تحليل البيانات والمعلومات</li>
+                            <li>• وضع خطط تفصيلية وواقعية</li>
+                            <li>• ربط الابتكار بالأهداف العامة</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50 rounded-xl p-5">
+                        <h4 class="font-bold text-red-800 mb-3">⚠️ نقاط الضعف</h4>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li>• قد يبطئ في اتخاذ القرارات</li>
+                            <li>• قد يقاوم الأفكار غير المخططة</li>
+                            <li>• صعوبة في التكيف مع التغيرات المفاجئة</li>
+                            <li>• قد يهمل الجانب الإنساني</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-emerald-50 rounded-xl p-5">
+                    <h4 class="font-bold text-emerald-800 mb-3">🛠️ الأدوات الموصى بها</h4>
+                    <div class="grid grid-cols-2 gap-3 text-sm">
+                        <div class="bg-white rounded-lg p-3">مخطط السيناريو</div>
+                        <div class="bg-white rounded-lg p-3">استراتيجية المحفظة</div>
+                        <div class="bg-white rounded-lg p-3">تحليل النظام البيئي</div>
+                        <div class="bg-white rounded-lg p-3">مخطط الابتكار</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile 3: Collaborator -->
+        <section class="mb-16">
+            <div class="profile-detail bg-white border-purple-500 rounded-2xl p-6 md:p-8 shadow-sm">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="text-5xl">🤝</div>
+                    <div>
+                        <h3 class="text-2xl font-extrabold text-purple-800">المتعاون (Collaborator)</h3>
+                        <p class="text-sm text-gray-500">باني الجسور ومدير العلاقات</p>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    المتعاون هو الشخص الذي يجمع الناس معاً ويخلق شبكات قوية من العلاقات. يتميز بقدرته على فهم وجهات النظر المختلفة وإيجاد أرضية مشتركة.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-green-50 rounded-xl p-5">
+                        <h4 class="font-bold text-green-800 mb-3">✅ نقاط القوة</h4>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li>• بناء وإدارة العلاقات</li>
+                            <li>• التواصل بين الأطراف المختلفة</li>
+                            <li>• إنشاء شراكات فعالة</li>
+                            <li>• العمل الجماعي والتعاون</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50 rounded-xl p-5">
+                        <h4 class="font-bold text-red-800 mb-3">⚠️ نقاط الضعف</h4>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li>• قد يتردد في اتخاذ قرارات صعبة</li>
+                            <li>• قد يحاول إرضاء الجميع</li>
+                            <li>• صعوبة في تحديد الأولويات</li>
+                            <li>• قد يهمل التنفيذ العملي</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-purple-50 rounded-xl p-5">
+                    <h4 class="font-bold text-purple-800 mb-3">🛠️ الأدوات الموصى بها</h4>
+                    <div class="grid grid-cols-2 gap-3 text-sm">
+                        <div class="bg-white rounded-lg p-3">تحديد قيمة العرض</div>
+                        <div class="bg-white rounded-lg p-3">العثور على شركاء مختلفين</div>
+                        <div class="bg-white rounded-lg p-3">التحضير للشراكة</div>
+                        <div class="bg-white rounded-lg p-3">تحديد أولويات الشركاء</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile 4: Implementor -->
+        <section class="mb-16">
+            <div class="profile-detail bg-white border-orange-500 rounded-2xl p-6 md:p-8 shadow-sm">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="text-5xl">⚙️</div>
+                    <div>
+                        <h3 class="text-2xl font-extrabold text-orange-800">المنفّذ (Implementor)</h3>
+                        <p class="text-sm text-gray-500">محوّل الأفكار إلى واقع</p>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    المنفّذ هو الشخص الذي يحول الأفكار إلى نتائج ملموسة. يتميز بالقدرة على إدارة المشاريع والتنفيذ العملي الدقيق.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-green-50 rounded-xl p-5">
+                        <h4 class="font-bold text-green-800 mb-3">✅ نقاط القوة</h4>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li>• التنفيذ العملي الدقيق</li>
+                            <li>• إدارة المشاريع والموارد</li>
+                            <li>• المثابرة وإكمال المهام</li>
+                            <li>• التنظيم وضبط المواعيد</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50 rounded-xl p-5">
+                        <h4 class="font-bold text-red-800 mb-3">⚠️ نقاط الضعف</h4>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li>• قد يقاوم الأفكار الجديدة غير المألوفة</li>
+                            <li>• قد يركز على التفاصيل ويغفل الرؤيا</li>
+                            <li>• صعوبة في التفكير خارج الصندوق</li>
+                            <li>• قد يتجنب المخاطر المحسوبة</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-orange-50 rounded-xl p-5">
+                    <h4 class="font-bold text-orange-800 mb-3">🛠️ الأدوات الموصى بها</h4>
+                    <div class="grid grid-cols-2 gap-3 text-sm">
+                        <div class="bg-white rounded-lg p-3">من الاختبار إلى التوسع</div>
+                        <div class="bg-white rounded-lg p-3">نموذج التشغيل</div>
+                        <div class="bg-white rounded-lg p-3">تقييم بوابة-المرحلة</div>
+                        <div class="bg-white rounded-lg p-3">مخطط الابتكار</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile 5: Early-Stage Innovator -->
+        <section class="mb-16">
+            <div class="profile-detail bg-white border-yellow-500 rounded-2xl p-6 md:p-8 shadow-sm">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="text-5xl">🌱</div>
+                    <div>
+                        <h3 class="text-2xl font-extrabold text-yellow-800">المبتكر المبتدئ (Early-Stage Innovator)</h3>
+                        <p class="text-sm text-gray-500">في بداية رحلته الابتكارية</p>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    المبتكر المبتدئ هو شخص في بداية رحلته الابتكارية. يمتلك الحماس والفضول ويحتاج لتطوير المهارات والأدوات اللازمة.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-green-50 rounded-xl p-5">
+                        <h4 class="font-bold text-green-800 mb-3">✅ نقاط القوة</h4>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li>• الحماس والفضول</li>
+                            <li>• التعلم السريع والاستعداد</li>
+                            <li>• النظر الطازج للتحديات</li>
+                            <li>• عدم التمسك بالطرق القديمة</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50 rounded-xl p-5">
+                        <h4 class="font-bold text-red-800 mb-3">⚠️ نقاط الضعف</h4>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li>• نقص الخبرة العملية</li>
+                            <li>• صعوبة في تحديد الأولويات</li>
+                            <li>• قد يتردد في اتخاذ القرارات</li>
+                            <li>• يحتاج لإرشاد和支持</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-50 rounded-xl p-5">
+                    <h4 class="font-bold text-yellow-800 mb-3">🛠️ الأدوات الموصى بها</h4>
+                    <div class="grid grid-cols-2 gap-3 text-sm">
+                        <div class="bg-white rounded-lg p-3">مسح الأفق</div>
+                        <div class="bg-white rounded-lg p-3">التصميم المرتكز على المستخدم</div>
+                        <div class="bg-white rounded-lg p-3">عناوين المستقبل</div>
+                        <div class="bg-white rounded-lg p-3">سرد قصص الابتكار</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile 6: Trailblazer -->
+        <section class="mb-16">
+            <div class="profile-detail bg-white border-red-500 rounded-2xl p-6 md:p-8 shadow-sm">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="text-5xl">🚀</div>
+                    <div>
+                        <h3 class="text-2xl font-extrabold text-red-800">رائد الابتكار (Trailblazer)</h3>
+                        <p class="text-sm text-gray-500">قائد التغيير ومستكشف المستقبل</p>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    رائد الابتكار هو الشخص الذي يقود التغيير ويستكشف آفاقاً جديدة. يتميز بالشجاعة والرؤية المستقبلية والقدرة على المخاطرة المحسوبة.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-green-50 rounded-xl p-5">
+                        <h4 class="font-bold text-green-800 mb-3">✅ نقاط القوة</h4>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li>• القيادة والتوجيه</li>
+                            <li>• المخاطرة المحسوبة</li>
+                            <li>• الرؤيا المستقبلية</li>
+                            <li>• الشجاعة في اتخاذ القرارات</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50 rounded-xl p-5">
+                        <h4 class="font-bold text-red-800 mb-3">⚠️ نقاط الضعف</h4>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li>• قد يكون متسرعاً في القرارات</li>
+                            <li>• قد يهمل آراء الآخرين</li>
+                            <li>• صعوبة في التنازل أو التراجع</li>
+                            <li>• قد يفرض إيقاعاً سريعاً على الفريق</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-red-50 rounded-xl p-5">
+                    <h4 class="font-bold text-red-800 mb-3">🛠️ الأدوات الموصى بها</h4>
+                    <div class="grid grid-cols-2 gap-3 text-sm">
+                        <div class="bg-white rounded-lg p-3">مخطط السيناريو</div>
+                        <div class="bg-white rounded-lg p-3">مسح البيئة التمكينية</div>
+                        <div class="bg-white rounded-lg p-3">إطلاق المخاطر الاستراتيجية</div>
+                        <div class="bg-white rounded-lg p-3">إطلاق الهيئات الحاكمة</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary Table -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-extrabold text-gray-900 mb-6">ملخص الملفات الشخصية</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="text-right p-3 font-bold text-gray-700">الملف</th>
+                            <th class="text-right p-3 font-bold text-gray-700">الرمز</th>
+                            <th class="text-right p-3 font-bold text-gray-700">الدور الرئيسي</th>
+                            <th class="text-right p-3 font-bold text-gray-700">التركيز</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-t"><td class="p-3 font-bold text-blue-700">المحفّز</td><td class="p-3 text-2xl">🔥</td><td class="p-3 text-gray-600">إلهام وتحفيز الفريق</td><td class="p-3 text-gray-600">الثقافة والتواصل</td></tr>
+                        <tr class="border-t bg-gray-50"><td class="p-3 font-bold text-emerald-700">الاستراتيجي</td><td class="p-3 text-2xl">🧭</td><td class="p-3 text-gray-600">وضع الرؤيا والتخطيط</td><td class="p-3 text-gray-600">الاستراتيجية</td></tr>
+                        <tr class="border-t"><td class="p-3 font-bold text-purple-700">المتعاون</td><td class="p-3 text-2xl">🤝</td><td class="p-3 text-gray-600">بناء وإدارة العلاقات</td><td class="p-3 text-gray-600">الشراكات</td></tr>
+                        <tr class="border-t bg-gray-50"><td class="p-3 font-bold text-orange-700">المنفّذ</td><td class="p-3 text-2xl">⚙️</td><td class="p-3 text-gray-600">تحويل الأفكار إلى واقع</td><td class="p-3 text-gray-600">البنية التحتية</td></tr>
+                        <tr class="border-t"><td class="p-3 font-bold text-yellow-700">المبتكر المبتدئ</td><td class="p-3 text-2xl">🌱</td><td class="p-3 text-gray-600">التعلم والنمو</td><td class="p-3 text-gray-600">جميع المجالات</td></tr>
+                        <tr class="border-t bg-gray-50"><td class="p-3 font-bold text-red-700">رائد الابتكار</td><td class="p-3 text-2xl">🚀</td><td class="p-3 text-gray-600">قيادة التغيير</td><td class="p-3 text-gray-600">الاستراتيجية والتقييم</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </article>
+
+    <!-- Quiz -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-12 mb-8">
+        <h2 class="text-2xl font-extrabold mb-2">اختبار الوحدة 4</h2>
+        <p class="text-gray-500 mb-8">اختبر فهمك لملفات الابتكار الشخصية</p>
+        <div id="quiz" class="space-y-8"></div>
+        <div id="quizResult" class="hidden mt-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 text-center">
+            <div class="text-5xl mb-3" id="quizEmoji"></div>
+            <h3 class="text-2xl font-bold mb-2">نتيجتك: <span id="quizScore"></span></h3>
+            <p class="text-gray-500" id="quizMsg"></p>
+        </div>
+        <div class="text-center mt-8">
+            <button onclick="checkQuiz()" id="submitQuiz" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-xl text-lg font-bold transition-all">تحقق من الإجابات</button>
+        </div>
+    </div>
+
+    <div class="flex justify-between items-center">
+        <a href="../3/index.html" class="text-gray-500 hover:text-gray-700 px-6 py-3 rounded-xl font-bold">→ الوحدة السابقة</a>
+        <a href="../5/index.html" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-bold transition-all">الوحدة 5: أدوات الاستراتيجية ←</a>
+    </div>
+</div>
+
+<script>
+const quizData = [
+    { q: 'كم عدد ملفات الابتكار الشخصية؟', opts: ['4 ملفات','5 ملفات','6 ملفات','8 ملفات'], correct: 2 },
+    { q: 'أي ملف يتميز بـ"بناء الجسور وإدارة العلاقات"؟', opts: ['المحفّز','الاستراتيجي','المتعاون','المنفّذ'], correct: 2 },
+    { q: 'ما هي أبرز نقاط ضعف المحفّز؟', opts: ['التنفيذ العملي','التخطيط الاستراتيجي','بناء العلاقات','التواصل الفعال'], correct: 1 },
+    { q: 'أي ملف شخصي يناسب شخصاً في بداية رحلته الابتكارية؟', opts: ['رائد الابتكار','المنفّذ','المبتكر المبتدئ','المحفّز'], correct: 2 },
+    { q: 'ما هو التركيز الرئيسي لرائد الابتكار؟', opts: ['الثقافة فقط','الاستراتيجية والتقييم','الشراكات فقط','البنية التحتية فقط'], correct: 1 },
+    { q: 'أي أداة يُوصى بها للمنفّذ؟', opts: ['عناوين المستقبل','من الاختبار إلى التوسع','إطلاق الفشل','مسح الأفق'], correct: 1 }
+];
+let selected = new Array(quizData.length).fill(-1);
+function renderQuiz() {
+    const c = document.getElementById('quiz'); c.innerHTML = '';
+    quizData.forEach((q, i) => {
+        const div = document.createElement('div'); div.className = 'border-b border-gray-100 pb-6';
+        div.innerHTML = `<h4 class="font-bold text-gray-800 mb-4">السؤال ${i+1}: ${q.q}</h4><div class="space-y-2" id="qopts-${i}"></div><div id="qfb-${i}" class="hidden mt-2 text-sm font-bold"></div>`;
+        c.appendChild(div);
+        const oc = div.querySelector(`#qopts-${i}`);
+        q.opts.forEach((opt, j) => {
+            const btn = document.createElement('button');
+            btn.className = 'quiz-option w-full text-right p-3 rounded-xl border-2 border-gray-200 text-sm';
+            btn.textContent = opt; btn.onclick = () => { selected[i] = j; renderQuiz(); };
+            if (selected[i] === j) btn.classList.add('selected');
+            oc.appendChild(btn);
+        });
+    });
+}
+function checkQuiz() {
+    let correct = 0;
+    quizData.forEach((q, i) => {
+        const opts = document.querySelectorAll(`#qopts-${i} button`); const fb = document.getElementById(`qfb-${i}`); fb.classList.remove('hidden');
+        opts.forEach((btn, j) => { btn.onclick = null; if (j === q.correct) btn.classList.add('correct'); else if (j === selected[i]) btn.classList.add('wrong'); });
+        if (selected[i] === q.correct) { correct++; fb.textContent = '✓ صحيح'; fb.className = 'mt-2 text-sm font-bold text-green-600'; }
+        else { fb.textContent = '✗ الصحيح: ' + q.opts[q.correct]; fb.className = 'mt-2 text-sm font-bold text-red-600'; }
+    });
+    const pct = Math.round((correct/quizData.length)*100);
+    document.getElementById('quizResult').classList.remove('hidden');
+    document.getElementById('quizScore').textContent = `${correct}/${quizData.length} (${pct}%)`;
+    document.getElementById('quizEmoji').textContent = pct >= 80 ? '🏆' : pct >= 60 ? '👍' : '📚';
+    document.getElementById('quizMsg').textContent = pct >= 80 ? 'ممتاز!' : pct >= 60 ? 'جيد! راجع النقاط الخاطئة' : 'راجع المحتوى';
+    document.getElementById('submitQuiz').disabled = true;
+    document.getElementById('submitQuiz').className = 'bg-gray-400 text-white px-10 py-4 rounded-xl text-lg font-bold cursor-not-allowed';
+}
+renderQuiz();
+</script>
+</body>
+</html>

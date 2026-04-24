@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الوحدة 9: أدوات التقييم - BrainSAIT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap');
+        body { font-family: 'Noto Kufi Arabic', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #0c4a6e 0%, #1e3a5f 50%, #0f172a 100%); }
+        .lesson-card { border-right: 4px solid; transition: all 0.2s ease; }
+        .lesson-card:hover { transform: translateX(-4px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .step-number { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: white; flex-shrink: 0; }
+        .quiz-option { transition: all 0.15s ease; }
+        .quiz-option:hover { background: #eff6ff; }
+        .quiz-option.selected { background: #dbeafe; border-color: #3b82f6; }
+        .quiz-option.correct { background: #dcfce7; border-color: #22c55e; }
+        .quiz-option.wrong { background: #fee2e2; border-color: #ef4444; }
+        .tool-section { border-top: 5px solid #ef4444; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<header class="gradient-bg text-white py-6 px-6 sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
+        <div>
+            <a href="../../index.html" class="text-blue-300 hover:text-white text-sm">← الرئيسية</a>
+            <h1 class="text-xl font-extrabold mt-1">الوحدة 9: أدوات التقييم</h1>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="bg-blue-500/30 text-blue-200 px-3 py-1 rounded-full text-xs">60 دقيقة</span>
+            <span class="text-blue-300 text-sm">9/10</span>
+        </div>
+    </div>
+</header>
+
+<div class="bg-white shadow-sm">
+    <div class="max-w-4xl mx-auto px-6 py-2">
+        <div class="w-full bg-gray-200 rounded-full h-1.5">
+            <div class="bg-blue-600 h-1.5 rounded-full" style="width: 90%"></div>
+        </div>
+    </div>
+</div>
+
+<div class="max-w-4xl mx-auto px-6 py-8">
+
+    <nav class="bg-white rounded-2xl shadow-sm p-4 mb-8 flex gap-2 overflow-x-auto">
+        <a href="../1/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 1</a>
+        <a href="../2/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 2</a>
+        <a href="../3/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 3</a>
+        <a href="../4/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 4</a>
+        <a href="../5/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 5</a>
+        <a href="../6/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 6</a>
+        <a href="../7/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 7</a>
+        <a href="../8/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 8</a>
+        <span class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-blue-600 text-white font-bold">الوحدة 9</span>
+        <a href="../10/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 10</a>
+    </nav>
+
+    <article class="bg-white rounded-2xl shadow-sm p-8 md:p-12 mb-8">
+
+        <!-- Introduction -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-extrabold text-gray-900 mb-6">أدوات التقييم الأربعة</h2>
+            <p class="text-gray-600 leading-relaxed mb-6">
+                المنظمات التي لا تقييم فعالية الابتكار <strong>تواجه صعوبة في تبرير استثماراتها</strong> والتواصل عن نجاحاتها مع أصحاب المصلحة. تساعدك هذه الأدوات على قياس الأثر والتواصل بفعالية.
+            </p>
+
+            <div class="bg-red-50 border border-red-200 rounded-xl p-5 mb-8">
+                <h4 class="font-bold text-red-800 mb-3">📊 لماذا التقييم مهم؟</h4>
+                <ul class="text-sm text-gray-600 space-y-2">
+                    <li>• تبرير الاستثمارات في الابتكار</li>
+                    <li>• التواصل عن النجاحات وأصحاب المصلحة</li>
+                    <li>• تحسين الممارسات بناءً على البيانات</li>
+                    <li>• بناء المصداقية والثقة</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Tool 1: Innovation Storytelling -->
+        <section class="mb-16">
+            <div class="tool-section bg-white rounded-2xl p-6 md:p-8 shadow-sm mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-red-500 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">1</div>
+                    <h3 class="text-2xl font-extrabold text-gray-900">سرد قصص الابتكار (Innovation Storytelling)</h3>
+                </div>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    تساعدك هذه الأداة على اختيار منهجية التواصل المناسبة لكل أصحاب المصلحة لبناء المصداقية والدعم.
+                </p>
+
+                <h4 class="font-bold text-gray-800 mb-4">الخطوات:</h4>
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-red-500">1</div>
+                        <div><div class="font-bold text-gray-800">حدد الجمهور</div><p class="text-sm text-gray-600">من هم أصحاب المصلحة الذين تريد التواصل معهم؟</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-red-500">2</div>
+                        <div><div class="font-bold text-gray-800">اختر المنهجية</div><p class="text-sm text-gray-600">أرقام، قصص، عروض مرئية، تقارير</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-red-500">3</div>
+                        <div><div class="font-bold text-gray-800">اصنع القصة</div><p class="text-sm text-gray-600">قصة مقنعة تجمع بين البيانات والمشاعر</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-red-500">4</div>
+                        <div><div class="font-bold text-gray-800">شارك وعدّل</div><p class="text-sm text-gray-600">شارك القصة وعدّلها بناءً على ردود الفعل</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-red-50 rounded-xl p-5">
+                    <h4 class="font-bold text-red-800 mb-3">🎭 منهجيات التواصل</h4>
+                    <div class="grid grid-cols-2 gap-3 text-sm">
+                        <div class="bg-white rounded-lg p-3">📊 <strong>للقيادات:</strong> أرقام ومؤشرات</div>
+                        <div class="bg-white rounded-lg p-3">👥 <strong>للموظفين:</strong> قصص ملهمة</div>
+                        <div class="bg-white rounded-lg p-3">🌍 <strong>للعامة:</strong> عروض مرئية</div>
+                        <div class="bg-white rounded-lg p-3">📄 <strong>للمانحين:</strong> تقارير مفصلة</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tool 2: Stage-Gate Assessment -->
+        <section class="mb-16">
+            <div class="tool-section bg-white rounded-2xl p-6 md:p-8 shadow-sm mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-red-500 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">2</div>
+                    <h3 class="text-2xl font-extrabold text-gray-900">تقييم بوابة-المرحلة (Stage-Gate Assessment)</h3>
+                </div>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    تساعدك هذه الأداة على تحديد مؤشرات الأداء لكل مرحلة واتخاذ قرارات المتابعة أو التوقف.
+                </p>
+
+                <h4 class="font-bold text-gray-800 mb-4">الخطوات:</h4>
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-red-500">1</div>
+                        <div><div class="font-bold text-gray-800">حدد المراحل</div><p class="text-sm text-gray-600">قسم المشروع إلى مراحل واضحة</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-red-500">2</div>
+                        <div><div class="font-bold text-gray-800">حدد المعايير</div><p class="text-sm text-gray-600">معايير واضحة لكل بوابة</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-red-500">3</div>
+                        <div><div class="font-bold text-gray-800">قيّم عند كل بوابة</div><p class="text-sm text-gray-600">قيّم التقدم واتخذ قرار المتابعة</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-red-500">4</div>
+                        <div><div class="font-bold text-gray-800">وثّق القرارات</div><p class="text-sm text-gray-600">سجّل القرارات والأسباب</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-red-50 rounded-xl p-5">
+                    <h4 class="font-bold text-red-800 mb-3">🚪 مراحل البوابة النموذجية</h4>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead><tr class="bg-red-100"><th class="text-right p-3 font-bold">المرحلة</th><th class="text-right p-3 font-bold">المعيار</th><th class="text-right p-3 font-bold">القرار</th></tr></thead>
+                            <tbody>
+                                <tr class="border-t"><td class="p-3 font-bold">1. الاكتشاف</td><td class="p-3 text-gray-500">وضوح المشكلة</td><td class="p-3 text-gray-500">متابعة / إيقاف</td></tr>
+                                <tr class="border-t bg-gray-50"><td class="p-3 font-bold">2. التصميم</td><td class="p-3 text-gray-500">جدوى الحل</td><td class="p-3 text-gray-500">متابعة / إيقاف</td></tr>
+                                <tr class="border-t"><td class="p-3 font-bold">3. الاختبار</td><td class="p-3 text-gray-500">نتائج التجربة</td><td class="p-3 text-gray-500">متابعة / إيقاف</td></tr>
+                                <tr class="border-t bg-gray-50"><td class="p-3 font-bold">4. التوسع</td><td class="p-3 text-gray-500">قابلية التوسع</td><td class="p-3 text-gray-500">متابعة / إيقاف</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tool 3: Life Cycle Analysis -->
+        <section class="mb-16">
+            <div class="tool-section bg-white rounded-2xl p-6 md:p-8 shadow-sm mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-red-500 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">3</div>
+                    <h3 class="text-2xl font-extrabold text-gray-900">تحليل دورة الحياة (Life Cycle Analysis)</h3>
+                </div>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    تساعدك هذه الأداة على تحديد الاختناقات في عملياتك عبر دورة حياة الابتكار وتحسينها.
+                </p>
+
+                <h4 class="font-bold text-gray-800 mb-4">الخطوات:</h4>
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-red-500">1</div>
+                        <div><div class="font-bold text-gray-800">ارسم الدورة</div><p class="text-sm text-gray-600">ارسم مراحل دورة حياة الابتكار</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-red-500">2</div>
+                        <div><div class="font-bold text-gray-800">حلل كل مرحلة</div><p class="text-sm text-gray-600">قيّم الأداء والكفاءة في كل مرحلة</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-red-500">3</div>
+                        <div><div class="font-bold text-gray-800">حدد الاختناقات</div><p class="text-sm text-gray-600">حدد المراحل التي تسبب تأخراً</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-red-500">4</div>
+                        <div><div class="font-bold text-gray-800">حسّن العملية</div><p class="text-sm text-gray-600">صمم حلول لتحسين الاختناقات</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-red-50 rounded-xl p-5">
+                    <h4 class="font-bold text-red-800 mb-3">🔄 مراحل دورة حياة الابتكار</h4>
+                    <div class="grid grid-cols-2 gap-3 text-sm">
+                        <div class="bg-white rounded-lg p-3">💡 التوليد</div>
+                        <div class="bg-white rounded-lg p-3">🔍 التقييم</div>
+                        <div class="bg-white rounded-lg p-3">🧪 الاختبار</div>
+                        <div class="bg-white rounded-lg p-3">📈 التوسع</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tool 4: Enabling Environment Scan -->
+        <section class="mb-16">
+            <div class="tool-section bg-white rounded-2xl p-6 md:p-8 shadow-sm mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-red-500 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">4</div>
+                    <h3 class="text-2xl font-extrabold text-gray-900">مسح البيئة التمكينية (Enabling Environment Scan)</h3>
+                </div>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    استبيان لقياس تصورات الموظفين حول الثقافة والبنية التحتية والشراكات والتقييم في منظمتك.
+                </p>
+
+                <h4 class="font-bold text-gray-800 mb-4">الخطوات:</h4>
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-red-500">1</div>
+                        <div><div class="font-bold text-gray-800">وزّع الاستبيان</div><p class="text-sm text-gray-600">وزّع الاستبيان على عينة ممثلة من الموظفين</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-red-500">2</div>
+                        <div><div class="font-bold text-gray-800">اجمع البيانات</div><p class="text-sm text-gray-600">اجمع الإجابات وحللها إحصائياً</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-red-500">3</div>
+                        <div><div class="font-bold text-gray-800">حلل النتائج</div><p class="text-sm text-gray-600">حدد نقاط القوة والضعف في كل مجال</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-red-500">4</div>
+                        <div><div class="font-bold text-gray-800">ضع خطة التحسين</div><p class="text-sm text-gray-600">صمم إجراءات لتحسين البيئة التمكينية</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-red-50 rounded-xl p-5">
+                    <h4 class="font-bold text-red-800 mb-3">📋 مجالات الاستبيان</h4>
+                    <div class="grid grid-cols-2 gap-3 text-sm">
+                        <div class="bg-white rounded-lg p-3">🌟 الثقافة والقيادة</div>
+                        <div class="bg-white rounded-lg p-3">🏗️ البنية التحتية</div>
+                        <div class="bg-white rounded-lg p-3">🤝 الشراكات</div>
+                        <div class="bg-white rounded-lg p-3">📊 التقييم والمتابعة</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </article>
+
+    <!-- Quiz -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-12 mb-8">
+        <h2 class="text-2xl font-extrabold mb-2">اختبار الوحدة 9</h2>
+        <p class="text-gray-500 mb-8">اختبر فهمك لأدوات التقييم</p>
+        <div id="quiz" class="space-y-8"></div>
+        <div id="quizResult" class="hidden mt-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 text-center">
+            <div class="text-5xl mb-3" id="quizEmoji"></div>
+            <h3 class="text-2xl font-bold mb-2">نتيجتك: <span id="quizScore"></span></h3>
+            <p class="text-gray-500" id="quizMsg"></p>
+        </div>
+        <div class="text-center mt-8">
+            <button onclick="checkQuiz()" id="submitQuiz" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-xl text-lg font-bold transition-all">تحقق من الإجابات</button>
+        </div>
+    </div>
+
+    <div class="flex justify-between items-center">
+        <a href="../8/index.html" class="text-gray-500 hover:text-gray-700 px-6 py-3 rounded-xl font-bold">→ الوحدة السابقة</a>
+        <a href="../10/index.html" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-bold transition-all">الوحدة 10: المشروع النهائي ←</a>
+    </div>
+</div>
+
+<script>
+const quizData = [
+    { q: 'كم عدد أدوات التقييم؟', opts: ['3 أدوات','4 أدوات','5 أدوات','6 أدوات'], correct: 1 },
+    { q: 'ما الهدف الرئيسي لأداة "سرد قصص الابتكار"؟', opts: ['تحليل البيانات','التواصل الفعال مع أصحاب المصلحة','بناء فرق العمل','إدارة المشاريع'], correct: 1 },
+    { q: 'ما الذي يقيسه "تقييم بوابة-المرحلة"؟', opts: ['الرضا الوظيفي','مؤشرات الأداء لكل مرحلة','التكاليف فقط','المخاطر فقط'], correct: 1 },
+    { q: 'أي أداة تساعد على تحديد الاختناقات في العمليات؟', opts: ['سرد قصص الابتكار','تقييم بوابة-المرحلة','تحليل دورة الحياة','مسح البيئة التمكينية'], correct: 2 },
+    { q: 'ما الهدف الرئيسي لـ"مسح البيئة التمكينية"؟', opts: ['جمع الأفكار','قياس تصورات الموظفين','بناء شراكات','إدارة المشاريع'], correct: 1 },
+    { q: 'لماذا التقييم مهم للابتكار؟', opts: ['لتبرير الاستثمارات فقط','للتواصل عن النجاحات فقط','لتبرير الاستثمارات والتواصل والتحسين','ليس مهماً'], correct: 2 }
+];
+let selected = new Array(quizData.length).fill(-1);
+function renderQuiz() {
+    const c = document.getElementById('quiz'); c.innerHTML = '';
+    quizData.forEach((q, i) => {
+        const div = document.createElement('div'); div.className = 'border-b border-gray-100 pb-6';
+        div.innerHTML = `<h4 class="font-bold text-gray-800 mb-4">السؤال ${i+1}: ${q.q}</h4><div class="space-y-2" id="qopts-${i}"></div><div id="qfb-${i}" class="hidden mt-2 text-sm font-bold"></div>`;
+        c.appendChild(div);
+        const oc = div.querySelector(`#qopts-${i}`);
+        q.opts.forEach((opt, j) => {
+            const btn = document.createElement('button');
+            btn.className = 'quiz-option w-full text-right p-3 rounded-xl border-2 border-gray-200 text-sm';
+            btn.textContent = opt; btn.onclick = () => { selected[i] = j; renderQuiz(); };
+            if (selected[i] === j) btn.classList.add('selected');
+            oc.appendChild(btn);
+        });
+    });
+}
+function checkQuiz() {
+    let correct = 0;
+    quizData.forEach((q, i) => {
+        const opts = document.querySelectorAll(`#qopts-${i} button`); const fb = document.getElementById(`qfb-${i}`); fb.classList.remove('hidden');
+        opts.forEach((btn, j) => { btn.onclick = null; if (j === q.correct) btn.classList.add('correct'); else if (j === selected[i]) btn.classList.add('wrong'); });
+        if (selected[i] === q.correct) { correct++; fb.textContent = '✓ صحيح'; fb.className = 'mt-2 text-sm font-bold text-green-600'; }
+        else { fb.textContent = '✗ الصحيح: ' + q.opts[q.correct]; fb.className = 'mt-2 text-sm font-bold text-red-600'; }
+    });
+    const pct = Math.round((correct/quizData.length)*100);
+    document.getElementById('quizResult').classList.remove('hidden');
+    document.getElementById('quizScore').textContent = `${correct}/${quizData.length} (${pct}%)`;
+    document.getElementById('quizEmoji').textContent = pct >= 80 ? '🏆' : pct >= 60 ? '👍' : '📚';
+    document.getElementById('quizMsg').textContent = pct >= 80 ? 'ممتاز!' : pct >= 60 ? 'جيد! راجع النقاط الخاطئة' : 'راجع المحتوى';
+    document.getElementById('submitQuiz').disabled = true;
+    document.getElementById('submitQuiz').className = 'bg-gray-400 text-white px-10 py-4 rounded-xl text-lg font-bold cursor-not-allowed';
+}
+renderQuiz();
+</script>
+</body>
+</html>
