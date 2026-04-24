@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الوحدة 8: أدوات الثقافة - BrainSAIT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap');
+        body { font-family: 'Noto Kufi Arabic', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #0c4a6e 0%, #1e3a5f 50%, #0f172a 100%); }
+        .lesson-card { border-right: 4px solid; transition: all 0.2s ease; }
+        .lesson-card:hover { transform: translateX(-4px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .step-number { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: white; flex-shrink: 0; }
+        .quiz-option { transition: all 0.15s ease; }
+        .quiz-option:hover { background: #eff6ff; }
+        .quiz-option.selected { background: #dbeafe; border-color: #3b82f6; }
+        .quiz-option.correct { background: #dcfce7; border-color: #22c55e; }
+        .quiz-option.wrong { background: #fee2e2; border-color: #ef4444; }
+        .tool-section { border-top: 5px solid #f59e0b; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<header class="gradient-bg text-white py-6 px-6 sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
+        <div>
+            <a href="../../index.html" class="text-blue-300 hover:text-white text-sm">← الرئيسية</a>
+            <h1 class="text-xl font-extrabold mt-1">الوحدة 8: أدوات الثقافة</h1>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="bg-blue-500/30 text-blue-200 px-3 py-1 rounded-full text-xs">60 دقيقة</span>
+            <span class="text-blue-300 text-sm">8/10</span>
+        </div>
+    </div>
+</header>
+
+<div class="bg-white shadow-sm">
+    <div class="max-w-4xl mx-auto px-6 py-2">
+        <div class="w-full bg-gray-200 rounded-full h-1.5">
+            <div class="bg-blue-600 h-1.5 rounded-full" style="width: 80%"></div>
+        </div>
+    </div>
+</div>
+
+<div class="max-w-4xl mx-auto px-6 py-8">
+
+    <nav class="bg-white rounded-2xl shadow-sm p-4 mb-8 flex gap-2 overflow-x-auto">
+        <a href="../1/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 1</a>
+        <a href="../2/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 2</a>
+        <a href="../3/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 3</a>
+        <a href="../4/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 4</a>
+        <a href="../5/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 5</a>
+        <a href="../6/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 6</a>
+        <a href="../7/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 7</a>
+        <span class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-blue-600 text-white font-bold">الوحدة 8</span>
+        <a href="../9/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 9</a>
+        <a href="../10/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 10</a>
+    </nav>
+
+    <article class="bg-white rounded-2xl shadow-sm p-8 md:p-12 mb-8">
+
+        <!-- Introduction -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-extrabold text-gray-900 mb-6">أدوات الثقافة الأربعة</h2>
+            <p class="text-gray-600 leading-relaxed mb-6">
+                الثقافة تُعتبر باستمرار <strong>أحد العوائق الرئيسية</strong> للابتكار. الموظفون يحتاجون للدعم والحوافز والفرص للابتكار. تساعدك هذه الأدوات على بناء ثقافة تنظيمية داعمة.
+            </p>
+
+            <div class="bg-orange-50 border border-orange-200 rounded-xl p-5 mb-8">
+                <h4 class="font-bold text-orange-800 mb-3">🌟 لماذا الثقافة مهمة؟</h4>
+                <ul class="text-sm text-gray-600 space-y-2">
+                    <li>• الثقافة تحدد كيف يفكر ويتصرف الموظفون</li>
+                    <li>• بيئة داعمة تشجع على المخاطرة المحسوبة</li>
+                    <li>• الحوافز المناسبة تحول الابتكار من استثناء إلى عادة</li>
+                    <li>• دعم القيادة العليا يرسل رسالة واضحة</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Tool 1: Embrace Failures -->
+        <section class="mb-16">
+            <div class="tool-section bg-white rounded-2xl p-6 md:p-8 shadow-sm mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-orange-500 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">1</div>
+                    <h3 class="text-2xl font-extrabold text-gray-900">احتضان الفشل (Embrace Failures)</h3>
+                </div>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    تساعدك هذه الأداة على تحويل الإخفاقات إلى فرص تعلم، وتنظيم جلسات FailFaire لمناقشة الدروس المستفادة بشكل مفتوح.
+                </p>
+
+                <h4 class="font-bold text-gray-800 mb-4">الخطوات:</h4>
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-orange-500">1</div>
+                        <div><div class="font-bold text-gray-800">أنشئ بيئة آمنة</div><p class="text-sm text-gray-600">تأكد أن الموظفين يشعرون بالأمان لمناقشة إخفاقاتهم</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-orange-500">2</div>
+                        <div><div class="font-bold text-gray-800">نظّم جلسة FailFaire</div><p class="text-sm text-gray-600">حدث يحتفي بالإخفاقات ويستخرج الدروس منها</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-orange-500">3</div>
+                        <div><div class="font-bold text-gray-800">وثّق الدروس</div><p class="text-sm text-gray-600">سجّل الدروس المستفادة وشاركها مع الجميع</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-orange-500">4</div>
+                        <div><div class="font-bold text-gray-800">طبّق التعلم</div><p class="text-sm text-gray-600">استخدم الدروس في تحسين المشاريع القادمة</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-orange-50 rounded-xl p-5">
+                    <h4 class="font-bold text-orange-800 mb-3">🎪 كيف تنظم جلسة FailFaire</h4>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li>• ادعُ مجموعة متنوعة من الموظفين</li>
+                        <li>• ابدأ بقصة فشل من القيادة العليا</li>
+                        <li>• شجع على المشاركة بدون لوم</li>
+                        <li>• ركّز على الدروس المستفادة</li>
+                        <li>• وثّق النتائج وشاركها</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tool 2: Create Incentives -->
+        <section class="mb-16">
+            <div class="tool-section bg-white rounded-2xl p-6 md:p-8 shadow-sm mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-orange-500 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">2</div>
+                    <h3 class="text-2xl font-extrabold text-gray-900">خلق حوافز وفرص (Create Incentives)</h3>
+                </div>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    تساعدك هذه الأداة على تحويل السلوكيات الابتكارية من استثناء إلى ثقافة من خلال تصميم حوافز وفرص مناسبة.
+                </p>
+
+                <h4 class="font-bold text-gray-800 mb-4">الخطوات:</h4>
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-orange-500">1</div>
+                        <div><div class="font-bold text-gray-800">حدد السلوكيات المرغوبة</div><p class="text-sm text-gray-600">ما السلوكيات الابتكارية التي تريد تشجيعها؟</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-orange-500">2</div>
+                        <div><div class="font-bold text-gray-800">صمم الحوافز</div><p class="text-sm text-gray-600">حوافز مادية ومعنوية متنوعة</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-orange-500">3</div>
+                        <div><div class="font-bold text-gray-800">فرص التطوير</div><p class="text-sm text-gray-600">ورش عمل، دورات، تجارب جديدة</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-orange-500">4</div>
+                        <div><div class="font-bold text-gray-800">قيّم وعدّل</div><p class="text-sm text-gray-600">قيّم فعالية الحوافز وعدّلها حسب الحاجة</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-orange-50 rounded-xl p-5">
+                    <h4 class="font-bold text-orange-800 mb-3">🎁 أنواع الحوافز</h4>
+                    <div class="grid grid-cols-2 gap-3 text-sm">
+                        <div class="bg-white rounded-lg p-3">💰 <strong>مادية:</strong> مكافآت، ترقيات</div>
+                        <div class="bg-white rounded-lg p-3">🏆 <strong>معنوية:</strong> تقدير، اعتراف</div>
+                        <div class="bg-white rounded-lg p-3">📚 <strong>تطويرية:</strong> دورات، مؤتمرات</div>
+                        <div class="bg-white rounded-lg p-3">⏰ <strong>زمنية:</strong> وقت حر للمشاريع</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tool 3: Define Strategic Risks -->
+        <section class="mb-16">
+            <div class="tool-section bg-white rounded-2xl p-6 md:p-8 shadow-sm mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-orange-500 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">3</div>
+                    <h3 class="text-2xl font-extrabold text-gray-900">تحديد المخاطر الاستراتيجية (Define Strategic Risks)</h3>
+                </div>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    تساعدك هذه الأداة على تحديد حدود المخاطر المقبولة وتوسيع نطاق تحمل المخاطر تدريجياً لتشجيع الابتكار.
+                </p>
+
+                <h4 class="font-bold text-gray-800 mb-4">الخطوات:</h4>
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-orange-500">1</div>
+                        <div><div class="font-bold text-gray-800">حدد أنواع المخاطر</div><p class="text-sm text-gray-600">مالية، تشغيلية، سمعة، استراتيجية</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-orange-500">2</div>
+                        <div><div class="font-bold text-gray-800">حدد الحدود</div><p class="text-sm text-gray-600">ما مستوى المخاطرة المقبول حالياً؟</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-orange-500">3</div>
+                        <div><div class="font-bold text-gray-800">وسّع النطاق</div><p class="text-sm text-gray-600">خطط لتوسيع نطاق تحمل المخاطر تدريجياً</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-orange-500">4</div>
+                        <div><div class="font-bold text-gray-800">تواصل بوضوح</div><p class="text-sm text-gray-600">اشرح الحدود للموظفين بوضوح</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-orange-50 rounded-xl p-5">
+                    <h4 class="font-bold text-orange-800 mb-3">⚖️ مصفوفة تحمل المخاطر</h4>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead><tr class="bg-orange-100"><th class="text-right p-3 font-bold">نوع المخاطر</th><th class="text-right p-3 font-bold">الحد الحالي</th><th class="text-right p-3 font-bold">الهدف</th></tr></thead>
+                            <tbody>
+                                <tr class="border-t"><td class="p-3 font-bold">مالية</td><td class="p-3 text-gray-500">منخفضة</td><td class="p-3 text-gray-500">متوسطة</td></tr>
+                                <tr class="border-t bg-gray-50"><td class="p-3 font-bold">تشغيلية</td><td class="p-3 text-gray-500">متوسطة</td><td class="p-3 text-gray-500">مرتفعة</td></tr>
+                                <tr class="border-t"><td class="p-3 font-bold">سمعة</td><td class="p-3 text-gray-500">منخفضة</td><td class="p-3 text-gray-500">منخفضة-متوسطة</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tool 4: Engage Governing Bodies -->
+        <section class="mb-16">
+            <div class="tool-section bg-white rounded-2xl p-6 md:p-8 shadow-sm mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-orange-500 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">4</div>
+                    <h3 class="text-2xl font-extrabold text-gray-900">إشراك الهيئات الحاكمة (Engage Governing Bodies)</h3>
+                </div>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    تساعدك هذه الأداة على تطوير خطاب مقنع للهيئات الحاكمة والحصول على دعمهم للابتكار.
+                </p>
+
+                <h4 class="font-bold text-gray-800 mb-4">الخطوات:</h4>
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-orange-500">1</div>
+                        <div><div class="font-bold text-gray-800">افهم اهتماماتهم</div><p class="text-sm text-gray-600">ما الذي يهم الهيئة الحاكمة؟ الأثر، التكلفة، المخاطر؟</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-orange-500">2</div>
+                        <div><div class="font-bold text-gray-800">جهّز الحجج</div><p class="text-sm text-gray-600">أرقام، قصص نجاح، تحليل مخاطر</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-orange-500">3</div>
+                        <div><div class="font-bold text-gray-800">قدّم الخطاب</div><p class="text-sm text-gray-600">عرض واضح وموجز مع توصيات محددة</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="step-number bg-orange-500">4</div>
+                        <div><div class="font-bold text-gray-800">تابع بانتظام</div><p class="text-sm text-gray-600">أبلغ عن التقدم والنتائج بانتظام</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-orange-50 rounded-xl p-5">
+                    <h4 class="font-bold text-orange-800 mb-3">📝 عناصر الخطاب المقنع</h4>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li>• مشكلة واضحة ومحددة</li>
+                        <li>• الحل المقترح وكيف يعمل</li>
+                        <li>• الأثر المتوقع (مع أرقام)</li>
+                        <li>• الموارد المطلوبة</li>
+                        <li>• المخاطر وكيفية إدارتها</li>
+                        <li>• الجدول الزمني</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </article>
+
+    <!-- Quiz -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-12 mb-8">
+        <h2 class="text-2xl font-extrabold mb-2">اختبار الوحدة 8</h2>
+        <p class="text-gray-500 mb-8">اختبر فهمك لأدوات الثقافة</p>
+        <div id="quiz" class="space-y-8"></div>
+        <div id="quizResult" class="hidden mt-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 text-center">
+            <div class="text-5xl mb-3" id="quizEmoji"></div>
+            <h3 class="text-2xl font-bold mb-2">نتيجتك: <span id="quizScore"></span></h3>
+            <p class="text-gray-500" id="quizMsg"></p>
+        </div>
+        <div class="text-center mt-8">
+            <button onclick="checkQuiz()" id="submitQuiz" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-xl text-lg font-bold transition-all">تحقق من الإجابات</button>
+        </div>
+    </div>
+
+    <div class="flex justify-between items-center">
+        <a href="../7/index.html" class="text-gray-500 hover:text-gray-700 px-6 py-3 rounded-xl font-bold">→ الوحدة السابقة</a>
+        <a href="../9/index.html" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-bold transition-all">الوحدة 9: أدوات التقييم ←</a>
+    </div>
+</div>
+
+<script>
+const quizData = [
+    { q: 'كم عدد أدوات الثقافة؟', opts: ['3 أدوات','4 أدوات','5 أدوات','6 أدوات'], correct: 1 },
+    { q: 'ما هي تقنية "FailFaire"؟', opts: ['تقنية تحليل المخاطر','جلسة مناقشة الإخفاقات','تقنية تقييم المشاريع','تقنية بناء الشراكات'], correct: 1 },
+    { q: 'ما الهدف الرئيسي لأداة "خلق حوافز وفرص"؟', opts: ['تحليل المخاطر','تحويل الابتكار إلى ثقافة','بناء شراكات','قياس الأثر'], correct: 1 },
+    { q: 'أي أداة تساعد على تحديد حدود المخاطر المقبولة؟', opts: ['احتضان الفشل','خلق حوافز وفرص','تحديد المخاطر الاستراتيجية','إشراك الهيئات الحاكمة'], correct: 2 },
+    { q: 'ما العنصر الذي يجب أن يتضمنه الخطاب المقنع للهيئات الحاكمة؟', opts: ['مشكلة واضحة فقط','الحل فقط','جميع العناصر: مشكلة، حل، أثر، موارد، مخاطر','لا شيء مما ذكر'], correct: 2 },
+    { q: 'ما السبب الرئيسي لاعتبار الثقافة عائقاً للابتكار؟', opts: ['نقص التمويل','عدم وجود تكنولوجيا','الموظفون يحتاجون للدعم والحوافز','كثيرة التنظيمات'], correct: 2 }
+];
+let selected = new Array(quizData.length).fill(-1);
+function renderQuiz() {
+    const c = document.getElementById('quiz'); c.innerHTML = '';
+    quizData.forEach((q, i) => {
+        const div = document.createElement('div'); div.className = 'border-b border-gray-100 pb-6';
+        div.innerHTML = `<h4 class="font-bold text-gray-800 mb-4">السؤال ${i+1}: ${q.q}</h4><div class="space-y-2" id="qopts-${i}"></div><div id="qfb-${i}" class="hidden mt-2 text-sm font-bold"></div>`;
+        c.appendChild(div);
+        const oc = div.querySelector(`#qopts-${i}`);
+        q.opts.forEach((opt, j) => {
+            const btn = document.createElement('button');
+            btn.className = 'quiz-option w-full text-right p-3 rounded-xl border-2 border-gray-200 text-sm';
+            btn.textContent = opt; btn.onclick = () => { selected[i] = j; renderQuiz(); };
+            if (selected[i] === j) btn.classList.add('selected');
+            oc.appendChild(btn);
+        });
+    });
+}
+function checkQuiz() {
+    let correct = 0;
+    quizData.forEach((q, i) => {
+        const opts = document.querySelectorAll(`#qopts-${i} button`); const fb = document.getElementById(`qfb-${i}`); fb.classList.remove('hidden');
+        opts.forEach((btn, j) => { btn.onclick = null; if (j === q.correct) btn.classList.add('correct'); else if (j === selected[i]) btn.classList.add('wrong'); });
+        if (selected[i] === q.correct) { correct++; fb.textContent = '✓ صحيح'; fb.className = 'mt-2 text-sm font-bold text-green-600'; }
+        else { fb.textContent = '✗ الصحيح: ' + q.opts[q.correct]; fb.className = 'mt-2 text-sm font-bold text-red-600'; }
+    });
+    const pct = Math.round((correct/quizData.length)*100);
+    document.getElementById('quizResult').classList.remove('hidden');
+    document.getElementById('quizScore').textContent = `${correct}/${quizData.length} (${pct}%)`;
+    document.getElementById('quizEmoji').textContent = pct >= 80 ? '🏆' : pct >= 60 ? '👍' : '📚';
+    document.getElementById('quizMsg').textContent = pct >= 80 ? 'ممتاز!' : pct >= 60 ? 'جيد! راجع النقاط الخاطئة' : 'راجع المحتوى';
+    document.getElementById('submitQuiz').disabled = true;
+    document.getElementById('submitQuiz').className = 'bg-gray-400 text-white px-10 py-4 rounded-xl text-lg font-bold cursor-not-allowed';
+}
+renderQuiz();
+</script>
+</body>
+</html>

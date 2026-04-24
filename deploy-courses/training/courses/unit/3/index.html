@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الوحدة 3: التشخيص الابتكاري - BrainSAIT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap');
+        body { font-family: 'Noto Kufi Arabic', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #0c4a6e 0%, #1e3a5f 50%, #0f172a 100%); }
+        .lesson-card { border-right: 4px solid; transition: all 0.2s ease; }
+        .lesson-card:hover { transform: translateX(-4px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .step-number { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: white; flex-shrink: 0; }
+        .quiz-option { transition: all 0.15s ease; }
+        .quiz-option:hover { background: #eff6ff; }
+        .quiz-option.selected { background: #dbeafe; border-color: #3b82f6; }
+        .quiz-option.correct { background: #dcfce7; border-color: #22c55e; }
+        .quiz-option.wrong { background: #fee2e2; border-color: #ef4444; }
+        .profile-card { border-top: 5px solid; transition: all 0.3s ease; }
+        .profile-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<header class="gradient-bg text-white py-6 px-6 sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
+        <div>
+            <a href="../../index.html" class="text-blue-300 hover:text-white text-sm">← الرئيسية</a>
+            <h1 class="text-xl font-extrabold mt-1">الوحدة 3: التشخيص الابتكاري</h1>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="bg-blue-500/30 text-blue-200 px-3 py-1 rounded-full text-xs">90 دقيقة</span>
+            <span class="text-blue-300 text-sm">3/10</span>
+        </div>
+    </div>
+</header>
+
+<div class="bg-white shadow-sm">
+    <div class="max-w-4xl mx-auto px-6 py-2">
+        <div class="w-full bg-gray-200 rounded-full h-1.5">
+            <div class="bg-blue-600 h-1.5 rounded-full" style="width: 30%"></div>
+        </div>
+    </div>
+</div>
+
+<div class="max-w-4xl mx-auto px-6 py-8">
+
+    <nav class="bg-white rounded-2xl shadow-sm p-4 mb-8 flex gap-2 overflow-x-auto">
+        <a href="../1/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 1</a>
+        <a href="../2/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 2</a>
+        <span class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-blue-600 text-white font-bold">الوحدة 3</span>
+        <a href="../4/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 4</a>
+        <a href="../5/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 5</a>
+        <a href="../6/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 6</a>
+        <a href="../7/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 7</a>
+        <a href="../8/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 8</a>
+        <a href="../9/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 9</a>
+        <a href="../10/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 10</a>
+    </nav>
+
+    <article class="bg-white rounded-2xl shadow-sm p-8 md:p-12 mb-8">
+
+        <!-- Section 3.1 -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="bg-blue-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">3.1</div>
+                <h2 class="text-2xl font-extrabold text-gray-900">ما هو التشخيص الابتكاري؟</h2>
+            </div>
+
+            <p class="text-gray-600 leading-relaxed mb-6">
+                التشخيص الابتكاري هو أداة تقييم ذاتي مكونة من <strong>27 سؤالاً</strong> موزعة على خمسة وحدات رئيسية تتوافق مع إطار S.P.A.C.E. يهدف إلى تقييم قدرات الابتكار الحالية في منظمتك وتحديد مجالات التحسين.
+            </p>
+
+            <div class="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-8">
+                <h4 class="font-bold text-blue-800 mb-3">🎯 لماذا التشخيص؟</h4>
+                <ul class="space-y-2 text-sm text-gray-600">
+                    <li class="flex items-start gap-2"><span class="text-blue-500 mt-1">✓</span> تحديد نقاط القوة والضعف في قدراتك الابتكارية</li>
+                    <li class="flex items-start gap-2"><span class="text-blue-500 mt-1">✓</span> الحصول على ملف شخصي ابتكاري يعكس أسلوبك</li>
+                    <li class="flex items-start gap-2"><span class="text-blue-500 mt-1">✓</span> توصيات مخصصة بالأدوات الأنسب لحالتك</li>
+                    <li class="flex items-start gap-2"><span class="text-blue-500 mt-1">✓</span> أساس لوضع خطة تحسين مبنية على بيانات</li>
+                </ul>
+            </div>
+
+            <h3 class="text-xl font-bold mb-4 text-gray-800">هيكل التشخيص</h3>
+            <div class="overflow-x-auto mb-8">
+                <table class="w-full text-sm">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="text-right p-3 font-bold text-gray-700">الوحدة</th>
+                            <th class="text-right p-3 font-bold text-gray-700">عدد الأسئلة</th>
+                            <th class="text-right p-3 font-bold text-gray-700">التركيز</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-t"><td class="p-3 font-bold text-blue-700">🎯 الاستراتيجية (S)</td><td class="p-3">6 أسئلة</td><td class="p-3 text-gray-600">توجيه جهود الابتكار</td></tr>
+                        <tr class="border-t bg-gray-50"><td class="p-3 font-bold text-emerald-700">🤝 الشراكات (P)</td><td class="p-3">5 أسئلة</td><td class="p-3 text-gray-600">بناء وإدارة الشراكات</td></tr>
+                        <tr class="border-t"><td class="p-3 font-bold text-purple-700">🏗️ البنية التحتية (A)</td><td class="p-3">6 أسئلة</td><td class="p-3 text-gray-600">تحويل الأفكار إلى حلول</td></tr>
+                        <tr class="border-t bg-gray-50"><td class="p-3 font-bold text-orange-700">🌟 الثقافة (C)</td><td class="p-3">5 أسئلة</td><td class="p-3 text-gray-600">تعزيز بيئة الابتكار</td></tr>
+                        <tr class="border-t"><td class="p-3 font-bold text-red-700">📊 التقييم (E)</td><td class="p-3">5 أسئلة</td><td class="p-3 text-gray-600">قياس الأثر</td></tr>
+                        <tr class="border-t bg-blue-50"><td class="p-3 font-bold text-gray-800">المجموع</td><td class="p-3 font-bold">27 سؤالاً</td><td class="p-3">—</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section 3.2 - Strategy Questions -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="bg-blue-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">3.2</div>
+                <h2 class="text-2xl font-extrabold text-gray-900">أسئلة الاستراتيجية (6 أسئلة)</h2>
+            </div>
+
+            <p class="text-gray-600 leading-relaxed mb-6">
+                تقيّم هذه الأسئلة مدى وجود استراتيجية واضحة للابتكار في منظمتك، ومدى ربطها بالأهداف العامة.
+            </p>
+
+            <div class="space-y-3 mb-8">
+                <div class="lesson-card bg-blue-50 border-blue-500 rounded-xl p-4">
+                    <div class="font-bold text-blue-800 text-sm">S1. هل لدى منظمتك استراتيجية ابتكار واضحة ومكتوبة؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من عدم وجود استراتيجية → استراتيجية متكاملة ومحدثة</p>
+                </div>
+                <div class="lesson-card bg-blue-50 border-blue-500 rounded-xl p-4">
+                    <div class="font-bold text-blue-800 text-sm">S2. هل استراتيجية الابتكار مرتبطة بالخطة الاستراتيجية العامة للمنظمة؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من غير مرتبطة → مرتبطة بشكل كامل ومتكامل</p>
+                </div>
+                <div class="lesson-card bg-blue-50 border-blue-500 rounded-xl p-4">
+                    <div class="font-bold text-blue-800 text-sm">S3. هل يتم تخصيص موارد مالية وبشرية محددة للابتكار؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا توجد موارد → موارد مخصصة ومستدامة</p>
+                </div>
+                <div class="lesson-card bg-blue-50 border-blue-500 rounded-xl p-4">
+                    <div class="font-bold text-blue-800 text-sm">S4. هل تقوم بمسح البيئة الخارجية بحثاً عن فرص وتهديدات ابتكارية؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا يتم → يتم بانتظام ومنهجية</p>
+                </div>
+                <div class="lesson-card bg-blue-50 border-blue-500 rounded-xl p-4">
+                    <div class="font-bold text-blue-800 text-sm">S5. هل لديك محفظة مشاريع ابتكارية متوازنة المخاطر؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا توجد محفظة → محفظة متوازنة ومُدارة</p>
+                </div>
+                <div class="lesson-card bg-blue-50 border-blue-500 rounded-xl p-4">
+                    <div class="font-bold text-blue-800 text-sm">S6. هل تقوم بمراجعة دورية لاستراتيجية الابتكار وت updatingها؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا توجد مراجعة → مراجعة سنوية منتظمة</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3.3 - Partnerships Questions -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="bg-emerald-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">3.3</div>
+                <h2 class="text-2xl font-extrabold text-gray-900">أسئلة الشراكات (5 أسئلة)</h2>
+            </div>
+
+            <p class="text-gray-600 leading-relaxed mb-6">
+                تقيّم هذه الأسئلة مدى قدرة منظمتك على بناء وإدارة شراكات ابتكارية فعالة.
+            </p>
+
+            <div class="space-y-3 mb-8">
+                <div class="lesson-card bg-emerald-50 border-emerald-500 rounded-xl p-4">
+                    <div class="font-bold text-emerald-800 text-sm">P1. هل لدى منظمتك شراكات ابتكارية نشطة مع جهات خارجية؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا توجد شراكات → شبكة شراكات متنوعة ونشطة</p>
+                </div>
+                <div class="lesson-card bg-emerald-50 border-emerald-500 rounded-xl p-4">
+                    <div class="font-bold text-emerald-800 text-sm">P2. هل لديك عملية منهجية لتحديد واختيار الشركاء؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من اختيار عشوائي → عملية منهجية متكاملة</p>
+                </div>
+                <div class="lesson-card bg-emerald-50 border-emerald-500 rounded-xl p-4">
+                    <div class="font-bold text-emerald-800 text-sm">P3. هل تشارك في شبكات أو منصات ابتكار مشتركة؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا مشاركة → مشاركة فعالة في عدة شبكات</p>
+                </div>
+                <div class="lesson-card bg-emerald-50 border-emerald-500 rounded-xl p-4">
+                    <div class="font-bold text-emerald-800 text-sm">P4. هل لديك آلية واضحة لتقاسم المخاطر والمكافآت مع الشركاء؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا توجد آلية → آلية واضحة ومتفق عليها</p>
+                </div>
+                <div class="lesson-card bg-emerald-50 border-emerald-500 rounded-xl p-4">
+                    <div class="font-bold text-emerald-800 text-sm">P5. هل تقوم بتقييم أداء شراكاتك الابتكارية بانتظام؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا تقييم → تقييم دوري مع تحسين مستمر</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3.4 - Architecture Questions -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="bg-purple-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">3.4</div>
+                <h2 class="text-2xl font-extrabold text-gray-900">أسئلة البنية التحتية (6 أسئلة)</h2>
+            </div>
+
+            <p class="text-gray-600 leading-relaxed mb-6">
+                تقيّم هذه الأسئلة مدى وجود أنظمة وعمليات داعمة لتحويل الأفكار إلى حلول عملية.
+            </p>
+
+            <div class="space-y-3 mb-8">
+                <div class="lesson-card bg-purple-50 border-purple-500 rounded-xl p-4">
+                    <div class="font-bold text-purple-800 text-sm">A1. هل لديك عملية واضحة لجمع وتقييم الأفكار الابتكارية؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا توجد عملية → عملية رقمية متكاملة</p>
+                </div>
+                <div class="lesson-card bg-purple-50 border-purple-500 rounded-xl p-4">
+                    <div class="font-bold text-purple-800 text-sm">A2. هل تقوم بإجراء اختبارات تجريبية ( pilots) قبل التوسع؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا اختبار → اختبارات منهجية مع معايير نجاح واضحة</p>
+                </div>
+                <div class="lesson-card bg-purple-50 border-purple-500 rounded-xl p-4">
+                    <div class="font-bold text-purple-800 text-sm">A3. هل لديك فريق أو وحدة مخصصة للابتكار؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا يوجد → وحدة متخصصة بموارد كافية</p>
+                </div>
+                <div class="lesson-card bg-purple-50 border-purple-500 rounded-xl p-4">
+                    <div class="font-bold text-purple-800 text-sm">A4. هل تستخدم أدوات وتقنيات حديثة لدعم الابتكار؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا تستخدم → تستخدم أدوات متقدمة ومتنوعة</p>
+                </div>
+                <div class="lesson-card bg-purple-50 border-purple-500 rounded-xl p-4">
+                    <div class="font-bold text-purple-800 text-sm">A5. هل لديك نظام لإدارة المعرفة ومشاركة الدروس المستفادة؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا يوجد → نظام رقمي متكامل وفعّال</p>
+                </div>
+                <div class="lesson-card bg-purple-50 border-purple-500 rounded-xl p-4">
+                    <div class="font-bold text-purple-800 text-sm">A6. هل يمكنك تحويل الابتكارات الناجحة إلى عمليات تشغيلية روتينية؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من صعوبة في التحويل → عملية تحويل سلسة ومنهجية</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3.5 - Culture Questions -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="bg-orange-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">3.5</div>
+                <h2 class="text-2xl font-extrabold text-gray-900">أسئلة الثقافة (5 أسئلة)</h2>
+            </div>
+
+            <p class="text-gray-600 leading-relaxed mb-6">
+                تقيّم هذه الأسئلة مدى وجود ثقافة تنظيمية داعمة للابتكار وتحمل المخاطر.
+            </p>
+
+            <div class="space-y-3 mb-8">
+                <div class="lesson-card bg-orange-50 border-orange-500 rounded-xl p-4">
+                    <div class="font-bold text-orange-800 text-sm">C1. هل تشجع منظمتك الموظفين على تجربة أفكار جديدة حتى لو فشلت؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا تشجع → تشجع بقوة وتدعم المبادررين</p>
+                </div>
+                <div class="lesson-card bg-orange-50 border-orange-500 rounded-xl p-4">
+                    <div class="font-bold text-orange-800 text-sm">C2. هل يوجد نظام حوافز يكافئ السلوكيات الابتكارية؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا يوجد → نظام حوافز متكامل وفعّال</p>
+                </div>
+                <div class="lesson-card bg-orange-50 border-orange-500 rounded-xl p-4">
+                    <div class="font-bold text-orange-800 text-sm">C3. هل القيادة العليا تدعم الابتكار بشكل علني وفعال؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا دعم → دعم قوي ومتسق من أعلى المستويات</p>
+                </div>
+                <div class="lesson-card bg-orange-50 border-orange-500 rounded-xl p-4">
+                    <div class="font-bold text-orange-800 text-sm">C4. هل يمكن للموظفين تخصيص وقت لاستكشاف أفكار ابتكارية؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا وقت → وقت مخصص ومحمي</p>
+                </div>
+                <div class="lesson-card bg-orange-50 border-orange-500 rounded-xl p-4">
+                    <div class="font-bold text-orange-800 text-sm">C5. هل يتم الاحتفال بالنجاحات الابتكارية ومشاركة القصص؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا احتفال → احتفالات منتظمة وتواصل فعال</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3.6 - Evaluation Questions -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="bg-red-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">3.6</div>
+                <h2 class="text-2xl font-extrabold text-gray-900">أسئلة التقييم (5 أسئلة)</h2>
+            </div>
+
+            <p class="text-gray-600 leading-relaxed mb-6">
+                تقيّم هذه الأسئلة مدى قدرة منظمتك على قياس أثر الابتكار والتواصل عن نتائجه.
+            </p>
+
+            <div class="space-y-3 mb-8">
+                <div class="lesson-card bg-red-50 border-red-500 rounded-xl p-4">
+                    <div class="font-bold text-red-800 text-sm">E1. هل لديك مؤشرات أداء واضحة لقياس نجاح الابتكار؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا مؤشرات → مؤشرات شاملة ومحدثة</p>
+                </div>
+                <div class="lesson-card bg-red-50 border-red-500 rounded-xl p-4">
+                    <div class="font-bold text-red-800 text-sm">E2. هل تقوم بقياس الأثر الاجتماعي والاقتصادي لابتكاراتك؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا قياس → قياس شامل ومنتظم</p>
+                </div>
+                <div class="lesson-card bg-red-50 border-red-500 rounded-xl p-4">
+                    <div class="font-bold text-red-800 text-sm">E3. هل لديك نظام لتتبع مشاريع الابتكار عبر مراحلها؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا تتبع → نظام بوابات متعدد المراحل</p>
+                </div>
+                <div class="lesson-card bg-red-50 border-red-500 rounded-xl p-4">
+                    <div class="font-bold text-red-800 text-sm">E4. هل تستخدم بيانات التقييم لتحسين ممارساتك الابتكارية؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا تستخدم → تحسين مستمر مبني على البيانات</p>
+                </div>
+                <div class="lesson-card bg-red-50 border-red-500 rounded-xl p-4">
+                    <div class="font-bold text-red-800 text-sm">E5. هل تتواصل بانتظام مع أصحاب المصلحة عن نتائج الابتكار؟</div>
+                    <p class="text-xs text-gray-500 mt-1">المقياس: من لا تواصل → تواصل منتظم ومقنع</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3.7 - Innovation Profiles -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="bg-blue-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">3.7</div>
+                <h2 class="text-2xl font-extrabold text-gray-900">الملفات الشخصية للابتكار الستة</h2>
+            </div>
+
+            <p class="text-gray-600 leading-relaxed mb-6">
+                بناءً على إجاباتك في التشخيص، سيتم تصنيفك في أحد <strong>ستة ملفات شخصية</strong> للابتكار. كل ملف يعكس نمطاً فريداً من سلوكيات وقدرات الابتكار.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <div class="profile-card bg-white border-blue-500 rounded-2xl p-6 shadow-sm">
+                    <div class="text-3xl mb-3">🔥</div>
+                    <h4 class="font-bold text-blue-800 text-lg mb-2">المحفّز (Motivator)</h4>
+                    <p class="text-sm text-gray-600 mb-3">يقود الحماس والدافع لدى الفريق. يتميز بقدرته على إلهاء الآخرين وتحفيزهم على الابتكار.</p>
+                    <div class="text-xs text-blue-600 font-bold">نقاط القوة: التواصل، القيادة، الحماس</div>
+                </div>
+                <div class="profile-card bg-white border-emerald-500 rounded-2xl p-6 shadow-sm">
+                    <div class="text-3xl mb-3">🧭</div>
+                    <h4 class="font-bold text-emerald-800 text-lg mb-2">الاستراتيجي (Strategist)</h4>
+                    <p class="text-sm text-gray-600 mb-3">يرسم الرؤيا ويضع الخطط طويلة المدى. يتميز بالتفكير الاستراتيجي والتخطيط المحكم.</p>
+                    <div class="text-xs text-emerald-600 font-bold">نقاط القوة: التخطيط، التحليل، الرؤيا</div>
+                </div>
+                <div class="profile-card bg-white border-purple-500 rounded-2xl p-6 shadow-sm">
+                    <div class="text-3xl mb-3">🤝</div>
+                    <h4 class="font-bold text-purple-800 text-lg mb-2">المتعاون (Collaborator)</h4>
+                    <p class="text-sm text-gray-600 mb-3">يبني الجسور ويجمع الناس معاً. يتميز بقدرته على إنشاء وإدارة الشراكات الفعالة.</p>
+                    <div class="text-xs text-purple-600 font-bold">نقاط القوة: التواصل، بناء العلاقات، العمل الجماعي</div>
+                </div>
+                <div class="profile-card bg-white border-orange-500 rounded-2xl p-6 shadow-sm">
+                    <div class="text-3xl mb-3">⚙️</div>
+                    <h4 class="font-bold text-orange-800 text-lg mb-2">المنفّذ (Implementor)</h4>
+                    <p class="text-sm text-gray-600 mb-3">يحول الأفكار إلى واقع. يتميز بالقدرة على التنفيذ العملي وإدارة المشاريع.</p>
+                    <div class="text-xs text-orange-600 font-bold">نقاط القوة: التنفيذ، التنظيم، المثابرة</div>
+                </div>
+                <div class="profile-card bg-white border-yellow-500 rounded-2xl p-6 shadow-sm">
+                    <div class="text-3xl mb-3">🌱</div>
+                    <h4 class="font-bold text-yellow-800 text-lg mb-2">المبتكر المبتدئ (Early-Stage Innovator)</h4>
+                    <p class="text-sm text-gray-600 mb-3">في بداية رحلته الابتكارية. يمتلك الحماس ويحتاج لتطوير المهارات والأدوات.</p>
+                    <div class="text-xs text-yellow-600 font-bold">نقاط القوة: الحماس، الفضوح، التعلم السريع</div>
+                </div>
+                <div class="profile-card bg-white border-red-500 rounded-2xl p-6 shadow-sm">
+                    <div class="text-3xl mb-3">🚀</div>
+                    <h4 class="font-bold text-red-800 text-lg mb-2">رائد الابتكار (Trailblazer)</h4>
+                    <p class="text-sm text-gray-600 mb-3">يقود التغيير ويستكشف آفاقاً جديدة. يتميز بالشجاعة والرؤية المستقبلية.</p>
+                    <div class="text-xs text-red-600 font-bold">نقاط القوة: الابتكار، المخاطرة المحسوبة، القيادة</div>
+                </div>
+            </div>
+
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-5">
+                <div class="font-bold text-amber-800 mb-2">💡 كيف تستخدم ملفك الشخصي؟</div>
+                <p class="text-sm text-gray-600">ملفك الشخصي يساعدك على فهم أسلوبك الابتكاري ويوجهك نحو الأدوات الأنسب لحالتك. راجع الوحدة 4 لمعرفة التفاصيل الكاملة عن كل ملف.</p>
+            </div>
+        </section>
+
+    </article>
+
+    <!-- Quiz -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-12 mb-8">
+        <h2 class="text-2xl font-extrabold mb-2">اختبار الوحدة 3</h2>
+        <p class="text-gray-500 mb-8">اختبر فهمك للتشخيص الابتكاري</p>
+        <div id="quiz" class="space-y-8"></div>
+        <div id="quizResult" class="hidden mt-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 text-center">
+            <div class="text-5xl mb-3" id="quizEmoji"></div>
+            <h3 class="text-2xl font-bold mb-2">نتيجتك: <span id="quizScore"></span></h3>
+            <p class="text-gray-500" id="quizMsg"></p>
+        </div>
+        <div class="text-center mt-8">
+            <button onclick="checkQuiz()" id="submitQuiz" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-xl text-lg font-bold transition-all">تحقق من الإجابات</button>
+        </div>
+    </div>
+
+    <div class="flex justify-between items-center">
+        <a href="../2/index.html" class="text-gray-500 hover:text-gray-700 px-6 py-3 rounded-xl font-bold">→ الوحدة السابقة</a>
+        <a href="../4/index.html" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-bold transition-all">الوحدة 4: الملفات الشخصية ←</a>
+    </div>
+</div>
+
+<script>
+const quizData = [
+    { q: 'كم عدد أسئلة التشخيص الابتكاري؟', opts: ['20 سؤالاً','25 سؤالاً','27 سؤالاً','30 سؤالاً'], correct: 2 },
+    { q: 'كم عدد أسئلة الاستراتيجية في التشخيص؟', opts: ['4 أسئلة','5 أسئلة','6 أسئلة','7 أسئلة'], correct: 2 },
+    { q: 'كم عدد الملفات الشخصية للابتكار؟', opts: ['4 ملفات','5 ملفات','6 ملفات','8 ملفات'], correct: 2 },
+    { q: 'أي ملف شخصي يتميز بـ"بناء الجسور وإدارة الشراكات"؟', opts: ['المحفّز','الاستراتيجي','المتعاون','المنفّذ'], correct: 2 },
+    { q: 'ما الهدف الرئيسي من التشخيص الابتكاري؟', opts: ['تسريح الموظفين','تقييم قدرات الابتكار','زيادة الرواتب','تغيير المنظمة'], correct: 1 },
+    { q: 'كم عدد أسئلة الثقافة في التشخيص؟', opts: ['3 أسئلة','4 أسئلة','5 أسئلة','6 أسئلة'], correct: 2 }
+];
+let selected = new Array(quizData.length).fill(-1);
+function renderQuiz() {
+    const c = document.getElementById('quiz'); c.innerHTML = '';
+    quizData.forEach((q, i) => {
+        const div = document.createElement('div'); div.className = 'border-b border-gray-100 pb-6';
+        div.innerHTML = `<h4 class="font-bold text-gray-800 mb-4">السؤال ${i+1}: ${q.q}</h4><div class="space-y-2" id="qopts-${i}"></div><div id="qfb-${i}" class="hidden mt-2 text-sm font-bold"></div>`;
+        c.appendChild(div);
+        const oc = div.querySelector(`#qopts-${i}`);
+        q.opts.forEach((opt, j) => {
+            const btn = document.createElement('button');
+            btn.className = 'quiz-option w-full text-right p-3 rounded-xl border-2 border-gray-200 text-sm';
+            btn.textContent = opt; btn.onclick = () => { selected[i] = j; renderQuiz(); };
+            if (selected[i] === j) btn.classList.add('selected');
+            oc.appendChild(btn);
+        });
+    });
+}
+function checkQuiz() {
+    let correct = 0;
+    quizData.forEach((q, i) => {
+        const opts = document.querySelectorAll(`#qopts-${i} button`); const fb = document.getElementById(`qfb-${i}`); fb.classList.remove('hidden');
+        opts.forEach((btn, j) => { btn.onclick = null; if (j === q.correct) btn.classList.add('correct'); else if (j === selected[i]) btn.classList.add('wrong'); });
+        if (selected[i] === q.correct) { correct++; fb.textContent = '✓ صحيح'; fb.className = 'mt-2 text-sm font-bold text-green-600'; }
+        else { fb.textContent = '✗ الصحيح: ' + q.opts[q.correct]; fb.className = 'mt-2 text-sm font-bold text-red-600'; }
+    });
+    const pct = Math.round((correct/quizData.length)*100);
+    document.getElementById('quizResult').classList.remove('hidden');
+    document.getElementById('quizScore').textContent = `${correct}/${quizData.length} (${pct}%)`;
+    document.getElementById('quizEmoji').textContent = pct >= 80 ? '🏆' : pct >= 60 ? '👍' : '📚';
+    document.getElementById('quizMsg').textContent = pct >= 80 ? 'ممتاز!' : pct >= 60 ? 'جيد! راجع النقاط الخاطئة' : 'راجع المحتوى';
+    document.getElementById('submitQuiz').disabled = true;
+    document.getElementById('submitQuiz').className = 'bg-gray-400 text-white px-10 py-4 rounded-xl text-lg font-bold cursor-not-allowed';
+}
+renderQuiz();
+</script>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الوحدة 1: مقدمة في الابتكار - BrainSAIT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../assets/css/courses.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap');
+        body { font-family: 'Noto Kufi Arabic', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #0c4a6e 0%, #1e3a5f 50%, #0f172a 100%); }
+        .lesson-card { border-right: 4px solid; transition: all 0.2s ease; }
+        .lesson-card:hover { transform: translateX(-4px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .quote-block { border-right: 4px solid #3b82f6; background: #eff6ff; }
+        .step-number { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: white; flex-shrink: 0; }
+        .checklist li::before { content: '☐'; margin-left: 8px; color: #3b82f6; }
+        .checklist li.checked::before { content: '☑'; }
+        .tab-btn.active { border-bottom: 3px solid #3b82f6; color: #1e40af; font-weight: 700; }
+        .quiz-option { transition: all 0.15s ease; }
+        .quiz-option:hover { background: #eff6ff; }
+        .quiz-option.selected { background: #dbeafe; border-color: #3b82f6; }
+        .quiz-option.correct { background: #dcfce7; border-color: #22c55e; }
+        .quiz-option.wrong { background: #fee2e2; border-color: #ef4444; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<!-- Header -->
+<header class="gradient-bg text-white py-6 px-6 sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
+        <div>
+            <a href="../../index.html" class="text-blue-300 hover:text-white text-sm">← الرئيسية</a>
+            <h1 class="text-xl font-extrabold mt-1">الوحدة 1: مقدمة في الابتكار</h1>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="bg-blue-500/30 text-blue-200 px-3 py-1 rounded-full text-xs">45 دقيقة</span>
+            <span class="text-blue-300 text-sm">1/10</span>
+        </div>
+    </div>
+</header>
+
+<!-- Progress Bar -->
+<div class="bg-white shadow-sm">
+    <div class="max-w-4xl mx-auto px-6 py-2">
+        <div class="w-full bg-gray-200 rounded-full h-1.5">
+            <div class="bg-blue-600 h-1.5 rounded-full" style="width: 10%"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Sidebar + Content -->
+<div class="max-w-4xl mx-auto px-6 py-8">
+
+    <!-- Lesson Navigation -->
+    <nav class="bg-white rounded-2xl shadow-sm p-4 mb-8 flex gap-2 overflow-x-auto">
+        <a href="../index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الرئيسية</a>
+        <span class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-blue-600 text-white font-bold">الوحدة 1</span>
+        <a href="../2/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 2</a>
+        <a href="../3/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 3</a>
+        <a href="../4/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 4</a>
+        <a href="../5/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 5</a>
+        <a href="../6/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 6</a>
+        <a href="../7/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 7</a>
+        <a href="../8/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 8</a>
+        <a href="../9/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 9</a>
+        <a href="../10/index.html" class="px-4 py-2 rounded-xl text-sm whitespace-nowrap bg-gray-100 text-gray-600 hover:bg-gray-200">الوحدة 10</a>
+    </nav>
+
+    <!-- Lesson Content -->
+    <article class="bg-white rounded-2xl shadow-sm p-8 md:p-12 mb-8">
+
+        <!-- Lesson 1.1 -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="bg-blue-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">1.1</div>
+                <h2 class="text-2xl font-extrabold text-gray-900">الترحيب ومقدمة الدورة</h2>
+            </div>
+
+            <div class="quote-block rounded-xl p-6 mb-8">
+                <p class="text-lg text-gray-700 italic leading-relaxed">
+                    "يمكننا القيام بأشياء مختلفة، ويمكننا القيام بأشياء مختلفة... الابتكار ليس فقط أحدث التقنيات، أحياناً يكون أبسط الأشياء. كونوا جريئين، كونوا ثوريين... وأحدثوا ثورة... لأنه بدون ابتكار، لن يكون هناك طريقة لنتمكن من التحديات التي تواجهنا في عصرنا."
+                </p>
+                <p class="text-sm text-blue-600 mt-3 font-bold">— الأمين العام للأمم المتحدة أنطونيو غوتيريش</p>
+            </div>
+
+            <h3 class="text-xl font-bold mb-4 text-gray-800">لماذا هذه الدورة؟</h3>
+            <p class="text-gray-600 leading-relaxed mb-6">
+                الابتكار لم يعد رفاهية، بل أصبح ضرورة في عالم سريع التغير. هذه الدورة مبنية على <strong>مجموعة أدوات الأمم المتحدة للابتكار</strong>، التي تم تطويرها واختبارها من قبل أكثر من 120 موظفاً من 36 كياناً تابعاً للأمم المتحدة.
+            </p>
+
+            <h3 class="text-xl font-bold mb-4 text-gray-800">ماذا ستتعلم في هذه الدورة؟</h3>
+            <div class="grid md:grid-cols-2 gap-4 mb-8">
+                <div class="lesson-card bg-blue-50 border-blue-500 rounded-xl p-5">
+                    <div class="font-bold text-blue-800 mb-1">1. فهم إطار S.P.A.C.E.</div>
+                    <p class="text-sm text-gray-600">الخمس ركائز الأساسية للابتكار الناجح في المنظمات</p>
+                </div>
+                <div class="lesson-card bg-emerald-50 border-emerald-500 rounded-xl p-5">
+                    <div class="font-bold text-emerald-800 mb-1">2. استخدام 21 أداة ابتكار</div>
+                    <p class="text-sm text-gray-600">أدوات عملية قابلة للتطبيق الفوري في عملك</p>
+                </div>
+                <div class="lesson-card bg-purple-50 border-purple-500 rounded-xl p-5">
+                    <div class="font-bold text-purple-800 mb-1">3. تقييم قدراتك الابتكارية</div>
+                    <p class="text-sm text-gray-600">من خلال التشخيص الابتكاري المكون من 27 سؤالاً</p>
+                </div>
+                <div class="lesson-card bg-orange-50 border-orange-500 rounded-xl p-5">
+                    <div class="font-bold text-orange-800 mb-1">4. تطوير خطة عمل</div>
+                    <p class="text-sm text-gray-600">خطة ابتكارية متكاملة لمنظمتك أو فريقك</p>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold mb-4 text-gray-800">من يجب أن يأخذ هذه الدورة؟</h3>
+            <ul class="space-y-2 text-gray-600 mb-6">
+                <li class="flex items-start gap-2"><span class="text-blue-500 mt-1">✓</span> القيادات التنظيمية الذين يسعون لتعزيز ثقافة الابتكار</li>
+                <li class="flex items-start gap-2"><span class="text-blue-500 mt-1">✓</span> مديري المشاريع والفرق الذين يبحثون عن أدوات عملية</li>
+                <li class="flex items-start gap-2"><span class="text-blue-500 mt-1">✓</span> رواد الأعمال والمبتكرين في مختلف القطاعات</li>
+                <li class="flex items-start gap-2"><span class="text-blue-500 mt-1">✓</span> أي شخص يسعى لتطوير مهاراته الابتكارية</li>
+            </ul>
+
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-5">
+                <div class="font-bold text-amber-800 mb-2">💡 نشاط تمهيدي</div>
+                <p class="text-sm text-gray-600">فكر في أكبر تحدٍ ابتكاري تواجهه في عملك. اكتبه واحتفظ به — سنعود إليه في نهاية الدورة.</p>
+            </div>
+        </section>
+
+        <!-- Lesson 1.2 -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="bg-blue-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">1.2</div>
+                <h2 class="text-2xl font-extrabold text-gray-900">ما هي مجموعة الأدوات؟</h2>
+            </div>
+
+            <p class="text-gray-600 leading-relaxed mb-6">
+                مجموعة أدوات الأمم المتحدة للابتكار هي <strong>منصة رقمية</strong> يمكنك الوصول إليها في أي مكان، في أي وقت. تتضمن <strong>21 أداة</strong> مبنية على البحث العلمي ومُكيَّفة لواقع التشغيل المتنوع لمنظمات الأمم المتحدة.
+            </p>
+
+            <h3 class="text-xl font-bold mb-4 text-gray-800">مكونات مجموعة الأدوات</h3>
+
+            <div class="overflow-x-auto mb-8">
+                <table class="w-full text-sm">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="text-right p-3 font-bold text-gray-700">الوحدة</th>
+                            <th class="text-right p-3 font-bold text-gray-700">عدد الأدوات</th>
+                            <th class="text-right p-3 font-bold text-gray-700">التركيز</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-t"><td class="p-3 font-bold text-blue-700">🎯 الاستراتيجية</td><td class="p-3">5 أدوات</td><td class="p-3 text-gray-600">توجيه جهود الابتكار ورسم المسار</td></tr>
+                        <tr class="border-t bg-gray-50"><td class="p-3 font-bold text-emerald-700">🤝 الشراكات</td><td class="p-3">4 أدوات</td><td class="p-3 text-gray-600">بناء وإدارة شراكات الابتكار</td></tr>
+                        <tr class="border-t"><td class="p-3 font-bold text-purple-700">🏗️ البنية التحتية</td><td class="p-3">4 أدوات</td><td class="p-3 text-gray-600">تحويل الأفكار إلى حلول عملية</td></tr>
+                        <tr class="border-t bg-gray-50"><td class="p-3 font-bold text-orange-700">🌟 الثقافة</td><td class="p-3">4 أدوات</td><td class="p-3 text-gray-600">تعزيز بيئة الابتكار和支持</td></tr>
+                        <tr class="border-t"><td class="p-3 font-bold text-red-700">📊 التقييم</td><td class="p-3">4 أدوات</td><td class="p-3 text-gray-600">قياس الأثر وتحسين الأداء</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="text-xl font-bold mb-4 text-gray-800">كيف تم تطوير المجموعة؟</h3>
+            <div class="space-y-4 mb-8">
+                <div class="flex items-start gap-4">
+                    <div class="step-number bg-blue-600">1</div>
+                    <div>
+                        <div class="font-bold text-gray-800">البحث العلمي</div>
+                        <p class="text-sm text-gray-600">مراجعة شاملة للأدبيات والممارسات الرائدة في الابتكار</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="step-number bg-blue-600">2</div>
+                    <div>
+                        <div class="font-bold text-gray-800">الاستشارة</div>
+                        <p class="text-sm text-gray-600">استشارة خبراء وممارسين من مختلف القطاعات</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="step-number bg-blue-600">3</div>
+                    <div>
+                        <div class="font-bold text-gray-800">الاختبار</div>
+                        <p class="text-sm text-gray-600">اختبار مع أكثر من 120 موظفاً من 36 كياناً تابعاً للأمم المتحدة</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="step-number bg-blue-600">4</div>
+                    <div>
+                        <div class="font-bold text-gray-800">الموافقة</div>
+                        <p class="text-sm text-gray-600">تمت الموافقة من الأمين العام وأعضاء مجلس المديرين التنفيذيين</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="step-number bg-blue-600">5</div>
+                    <div>
+                        <div class="font-bold text-gray-800">التحسين المستمر</div>
+                        <p class="text-sm text-gray-600">تحديثات مستمرة بناءً على ملاحظات المستخدمين</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lesson 1.3 -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="bg-blue-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">1.3</div>
+                <h2 class="text-2xl font-extrabold text-gray-900">الابتكار في سياق الأمم المتحدة</h2>
+            </div>
+
+            <p class="text-gray-600 leading-relaxed mb-6">
+                يعرّف الأمين العام الابتكار في الأمم المتحدة بأنه <strong>"القيام بأشياء مختلفة والقيام بأشياء مختلفة"</strong>. الابتكار ليس فقط حول البلوكتشين والذكاء الاصطناعي أو الروبوتات، بل حول تقديم أفكار جديدة لحل التحديات.
+            </p>
+
+            <h3 class="text-xl font-bold mb-4 text-gray-800">أشكال الابتكار</h3>
+            <div class="grid md:grid-cols-2 gap-4 mb-8">
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-5 border border-blue-200">
+                    <div class="font-bold text-blue-800 mb-2">الابتكار البرمجي</h4>
+                    <p class="text-sm text-gray-600">يتعلق بتنفيذ البرامج والمشاريع لتحقيق الأهداف التنموية</p>
+                    <div class="text-xs text-blue-500 mt-2">مثال: برامج جديدة، منهجيات جديدة</div>
+                </div>
+                <div class="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl p-5 border border-emerald-200">
+                    <div class="font-bold text-emerald-800 mb-2">الابتكار التشغيلي</h4>
+                    <p class="text-sm text-gray-600">يتعلق بالعمليات الداخلية لتحسين الكفاءة والفعالية</p>
+                    <div class="text-xs text-emerald-500 mt-2">مثال: أتمتة العمليات، أنظمة جديدة</div>
+                </div>
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-5 border border-purple-200">
+                    <div class="font-bold text-purple-800 mb-2">الابتكار التدريجي</h4>
+                    <p class="text-sm text-gray-600">تحسينات طفيفة على الحلول الحالية بمخاطر منخفضة</p>
+                    <div class="text-xs text-purple-500 mt-2">مثال: تحسين عملية موجودة</div>
+                </div>
+                <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-xl p-5 border border-red-200">
+                    <div class="font-bold text-red-800 mb-2">الابتكار المزعزع</h4>
+                    <p class="text-sm text-gray-600">حل جديد تماماً يغير القواعد بمخاطر عالية</p>
+                    <div class="text-xs text-red-500 mt-2">مثال: تقنية جديدة، نموذج عمل جديد</div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-xl p-6 mb-6">
+                <h4 class="font-bold text-gray-800 mb-3">تحديات الأمين العام:</h4>
+                <div class="grid md:grid-cols-2 gap-3">
+                    <div class="flex items-center gap-2 text-sm text-gray-600"><span>💡</span> التفكير الإبداعي — التفكير خارج الصندوق</div>
+                    <div class="flex items-center gap-2 text-sm text-gray-600"><span>🤝</span> العمل التعاوني — التعاون عبر الحدود</div>
+                    <div class="flex items-center gap-2 text-sm text-gray-600"><span>⚖️</span> المخاطر الذكية — حساب المخاطر والمكافآت</div>
+                    <div class="flex items-center gap-2 text-sm text-gray-600"><span>📐</span> الابتكار المُصمَّم — بدلاً من العرضي</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lesson 1.4 -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="bg-blue-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold">1.4</div>
+                <h2 class="text-2xl font-extrabold text-gray-900">التنقل في مجموعة الأدوات</h2>
+            </div>
+
+            <h3 class="text-xl font-bold mb-4 text-gray-800">نصائح للاستخدام الفعال</h3>
+            <div class="space-y-3 mb-8">
+                <div class="flex items-start gap-3 bg-blue-50 rounded-xl p-4">
+                    <div class="step-number bg-blue-600 text-sm">1</div>
+                    <div><div class="font-bold text-sm">ابدأ بالتشخيص</div><p class="text-xs text-gray-500">احصل على تقييم شامل لوضعك الحالي</p></div>
+                </div>
+                <div class="flex items-start gap-3 bg-blue-50 rounded-xl p-4">
+                    <div class="step-number bg-blue-600 text-sm">2</div>
+                    <div><div class="font-bold text-sm">راجع توصياتك</div><p class="text-xs text-gray-500">استخدم الأدوات الموصى بها أولاً</p></div>
+                </div>
+                <div class="flex items-start gap-3 bg-blue-50 rounded-xl p-4">
+                    <div class="step-number bg-blue-600 text-sm">3</div>
+                    <div><div class="font-bold text-sm">اتبع الخطوات</div><p class="text-xs text-gray-500">كل أداة تتضمن خطوات واضحة</p></div>
+                </div>
+                <div class="flex items-start gap-3 bg-blue-50 rounded-xl p-4">
+                    <div class="step-number bg-blue-600 text-sm">4</div>
+                    <div><div class="font-bold text-sm">استخدم القوالب</div><p class="text-xs text-gray-500">استخدم القوالب الجاهزة لتوفير الوقت</p></div>
+                </div>
+                <div class="flex items-start gap-3 bg-blue-50 rounded-xl p-4">
+                    <div class="step-number bg-blue-600 text-sm">5</div>
+                    <div><div class="font-bold text-sm">تتبع تقدمك</div><p class="text-xs text-gray-500">راجع تقدمك بانتظام</p></div>
+                </div>
+                <div class="flex items-start gap-3 bg-blue-50 rounded-xl p-4">
+                    <div class="step-number bg-blue-600 text-sm">6</div>
+                    <div><div class="font-bold text-sm">شارك نتائجك</div><p class="text-xs text-gray-500">شارك مع زملائك للحصول على رؤى جديدة</p></div>
+                </div>
+            </div>
+        </section>
+
+    </article>
+
+    <!-- Quiz Section -->
+    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-12 mb-8">
+        <h2 class="text-2xl font-extrabold mb-2">اختبار الوحدة 1</h2>
+        <p class="text-gray-500 mb-8">اختبر فهمك لمحتوى هذه الوحدة</p>
+
+        <div id="quiz" class="space-y-8"></div>
+
+        <div id="quizResult" class="hidden mt-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 text-center">
+            <div class="text-5xl mb-3" id="quizEmoji"></div>
+            <h3 class="text-2xl font-bold mb-2">نتيجتك: <span id="quizScore"></span></h3>
+            <p class="text-gray-500" id="quizMsg"></p>
+        </div>
+
+        <div class="text-center mt-8">
+            <button onclick="checkQuiz()" id="submitQuiz" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-xl text-lg font-bold transition-all">
+                تحقق من الإجابات
+            </button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="flex justify-between items-center">
+        <div></div>
+        <a href="../2/index.html" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-bold transition-all flex items-center gap-2">
+            الوحدة التالية: إطار S.P.A.C.E. ←
+        </a>
+    </div>
+
+</div>
+
+<script>
+const quizData = [
+    { q: 'كم عدد الأدوات في مجموعة أدوات الأمم المتحدة للابتكار؟', opts: ['15 أداة','21 أداة','27 أداة','30 أداة'], correct: 1 },
+    { q: 'كم عدد الأسئلة في التشخيص الابتكاري؟', opts: ['10 أسئلة','15 سؤالاً','20 سؤالاً','27 سؤالاً'], correct: 3 },
+    { q: 'ما هو الابتكار في سياق الأمم المتحدة؟', opts: ['فقط التقنيات المتقدمة','حل مشكلة قديمة بطريقة جديدة','فقط البلوكتشين','فقط تغيير العمليات'], correct: 1 },
+    { q: 'كم عدد ملفات الابتكار الشخصية؟', opts: ['4 ملفات','5 ملفات','6 ملفات','8 ملفات'], correct: 2 },
+    { q: 'كم عدد وحدات S.P.A.C.E.؟', opts: ['3 وحدات','4 وحدات','5 وحدات','6 وحدات'], correct: 2 }
+];
+
+let selected = new Array(quizData.length).fill(-1);
+
+function renderQuiz() {
+    const c = document.getElementById('quiz');
+    c.innerHTML = '';
+    quizData.forEach((q, i) => {
+        const div = document.createElement('div');
+        div.className = 'border-b border-gray-100 pb-6';
+        div.innerHTML = `<h4 class="font-bold text-gray-800 mb-4">السؤال ${i+1}: ${q.q}</h4><div class="space-y-2" id="qopts-${i}"></div><div id="qfb-${i}" class="hidden mt-2 text-sm font-bold"></div>`;
+        c.appendChild(div);
+        const oc = div.querySelector(`#qopts-${i}`);
+        q.opts.forEach((opt, j) => {
+            const btn = document.createElement('button');
+            btn.className = 'quiz-option w-full text-right p-3 rounded-xl border-2 border-gray-200 text-sm';
+            btn.textContent = opt;
+            btn.onclick = () => { selected[i] = j; renderQuiz(); };
+            if (selected[i] === j) btn.classList.add('selected');
+            oc.appendChild(btn);
+        });
+    });
+}
+
+function checkQuiz() {
+    let correct = 0;
+    quizData.forEach((q, i) => {
+        const opts = document.querySelectorAll(`#qopts-${i} button`);
+        const fb = document.getElementById(`qfb-${i}`);
+        fb.classList.remove('hidden');
+        opts.forEach((btn, j) => {
+            btn.onclick = null;
+            if (j === q.correct) { btn.classList.add('correct'); }
+            else if (j === selected[i]) { btn.classList.add('wrong'); }
+        });
+        if (selected[i] === q.correct) { correct++; fb.textContent = '✓ صحيح'; fb.className = 'mt-2 text-sm font-bold text-green-600'; }
+        else { fb.textContent = '✗ الإجابة الصحيحة: ' + q.opts[q.correct]; fb.className = 'mt-2 text-sm font-bold text-red-600'; }
+    });
+    const pct = Math.round((correct/quizData.length)*100);
+    document.getElementById('quizResult').classList.remove('hidden');
+    document.getElementById('quizScore').textContent = `${correct}/${quizData.length} (${pct}%)`;
+    document.getElementById('quizEmoji').textContent = pct >= 80 ? '🏆' : pct >= 60 ? '👍' : '📚';
+    document.getElementById('quizMsg').textContent = pct >= 80 ? 'ممتاز! فهمك قوي' : pct >= 60 ? 'جيد! راجع النقاط التي أخطأت فيها' : 'راجع المحتوى وأعد المحاولة';
+    document.getElementById('submitQuiz').disabled = true;
+    document.getElementById('submitQuiz').className = 'bg-gray-400 text-white px-10 py-4 rounded-xl text-lg font-bold cursor-not-allowed';
+}
+
+renderQuiz();
+</script>
+
+</body>
+</html>
