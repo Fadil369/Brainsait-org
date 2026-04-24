@@ -227,6 +227,7 @@
       --rx:   6px;
       --rnd: 100px;
       --sp:  clamp(60px, 10vw, 120px);
+      --sh:  0 4px 24px rgba(0,0,0,0.45), 0 1px 4px rgba(0,0,0,0.25);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -241,36 +242,11 @@
       letter-spacing: -0.3px;
     }
     
-    h1, h2, h3, h4, h5, h6 {
-      font-family: var(--fd);
-      letter-spacing: -1.5px;
-      font-weight: 700;
-      line-height: 1.2;
-    }
     em { 
       font-style: normal;
       font-weight: 700;
       color: var(--gold);
       letter-spacing: -0.5px;
-    }
-
-    
-    h1 { 
-      font-size: clamp(32px, 6vw, 72px);
-      letter-spacing: -2px;
-      font-weight: 800;
-    }
-    
-    h2 { 
-      font-size: clamp(28px, 5vw, 56px);
-      letter-spacing: -1.5px;
-      font-weight: 700;
-    }
-    
-    h3 { 
-      font-size: clamp(20px, 3.5vw, 32px);
-      letter-spacing: -1px;
-      font-weight: 700;
     }
     
     p { 
@@ -281,18 +257,8 @@
       color: var(--textd);
     }
     
-    .stag {
-      font-family: var(--fd);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-    
     strong, b {
       font-weight: 600;
-      color: var(--gold-l);
     }
 
 
@@ -336,9 +302,10 @@
     .c    { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
     /* ─── Typography ─── */
-    h1, h2, h3, h4 { font-family: var(--fd); font-weight: 700; }
-    h1 { font-size: clamp(38px, 6vw, 76px); line-height: 1.05; letter-spacing: -2px; margin-bottom: 24px; }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--fd); font-weight: 700; line-height: 1.2; letter-spacing: -1.5px; }
+    h1 { font-size: clamp(38px, 6vw, 76px); line-height: 1.05; letter-spacing: -2px; margin-bottom: 24px; font-weight: 800; }
     h2 { font-size: clamp(28px, 4vw, 48px); line-height: 1.15; letter-spacing: -1px; margin-bottom: 20px; }
+    h3 { font-size: clamp(20px, 3.5vw, 32px); letter-spacing: -0.8px; }
     .tg      { background: linear-gradient(135deg, var(--gold), var(--gold-b));   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .tg-teal { background: linear-gradient(135deg, var(--teal), var(--teal-l));   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
@@ -408,6 +375,11 @@
     .mob-menu a:hover { color: var(--text); background: var(--g2); }
     .mob-sep { height: 1px; background: var(--gb); margin: 8px 0; }
     .mob-menu .btn { justify-content: center; margin-top: 4px; }
+    /* ─── Highlighted nav variants ─── */
+    .nl-teal  { color: #06b6d4 !important; font-weight: 600; }
+    .nl-gold  { color: var(--gold) !important; font-weight: 600; }
+    .nl-vio   { color: #a78bfa !important; font-weight: 600; }
+    .btn-incubator { border-color: rgba(14,165,233,.35) !important; color: #67e8f9 !important; }
 
     /* ─── HERO ─── */
     .hero { padding: 160px 0 100px; text-align: center; position: relative; overflow: hidden; }
@@ -416,7 +388,7 @@
     .pulse::before { content: ''; position: absolute; inset: -4px; border-radius: 50%; background: var(--eme); opacity: 0; animation: pingRing 2.2s ease-out infinite; }
     @keyframes pingRing { 0% { transform: scale(0.6); opacity: 0.7; } 100% { transform: scale(2.8); opacity: 0; } }
     @keyframes fadeUp  { from { opacity:0; transform: translateY(24px); } to { opacity:1; transform: translateY(0); } }
-    h1 { animation: fadeUp .7s ease-out .1s both; }
+    .hero h1 { animation: fadeUp .7s ease-out .1s both; }
     .tw-cursor { display: inline-block; width: 3px; height: .88em; background: var(--gold); margin-left: 2px; animation: blink 1s step-start infinite; vertical-align: text-bottom; border-radius: 2px; }
     @keyframes blink { 0%,49% { opacity:1; } 50%,100% { opacity:0; } }
 
@@ -1177,14 +1149,14 @@
       <a href="#solutions"     role="menuitem">Solutions</a>
       <a href="#how-it-works"  role="menuitem">How It Works</a>
       <a href="#vision"        role="menuitem">Vision 2030</a>
-      <a href="/training/courses/" role="menuitem" style="color: #06b6d4; font-weight: 600;">Training</a>
-      <a href="/appstore"      role="menuitem" style="color: #d4a574; font-weight: 600;">App Store</a>
+      <a href="/training/courses/" role="menuitem" class="nl-teal">Training</a>
+      <a href="/appstore"      role="menuitem" class="nl-gold">App Store</a>
       <a href="/clinics"       role="menuitem">Clinics</a>
-      <a href="/partner"       role="menuitem" style="color: #a78bfa; font-weight: 600;">Partners</a>
+      <a href="/partner"       role="menuitem" class="nl-vio">Partners</a>
     </div>
     <div class="na">
       <button class="lang-btn" id="langToggle" aria-label="Switch language / تبديل اللغة">العربية</button>
-      <a href="/incubator" class="btn btn-g btn-sm" style="border-color: rgba(14,165,233,.35); color: #67e8f9;">Launch Incubator</a>
+      <a href="/incubator" class="btn btn-g btn-sm btn-incubator">Launch Incubator</a>
       <a href="/rcm" class="btn btn-p btn-sm">Launch RCM</a>
       <button class="hbg" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobMenu">
         <span></span><span></span><span></span>
@@ -1199,11 +1171,11 @@
   <a href="#solutions">Solutions</a>
   <a href="#how-it-works">How It Works</a>
   <a href="#vision">Vision 2030</a>
-  <a href="/appstore" style="color: #d4a574; font-weight: 600;">App Store</a>
+  <a href="/appstore" class="nl-gold">App Store</a>
   <a href="/clinics">Clinics</a>
-  <a href="/training/courses/" style="color: #06b6d4; font-weight: 600;">Training &amp; Courses</a>
+  <a href="/training/courses/" class="nl-teal">Training &amp; Courses</a>
   <a href="/docs">Documentation ↗</a>
-  <a href="/partner" style="color: #a78bfa; font-weight: 600;">Partners</a>
+  <a href="/partner" class="nl-vio">Partners</a>
   <div class="mob-sep"></div>
   <a href="/rcm" class="btn btn-p">Launch RCM →</a>
   <a href="https://calendar.app.google/V9KcXPcD1PeWDQHH8" target="_blank" rel="noopener noreferrer">Book Demo</a>
@@ -2062,6 +2034,8 @@
     </div>
   </section>
 
+</main>
+
   <!-- ── FOOTER ── -->
   <footer role="contentinfo">
     <div class="c">
@@ -2131,8 +2105,6 @@
     </div>
   </footer>
 
-</main>
-
 <script>
 /* ═══════════════════════════════════════════════
    BRAINSAIT — Interactive Enhancements
@@ -2144,11 +2116,14 @@
 (function () {
   const cvs = document.getElementById('cvs');
   if (!cvs || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // Skip on low-end devices (high DPR + low CPU count is a proxy for constrained hardware)
+  const isLowEnd = navigator.hardwareConcurrency != null && navigator.hardwareConcurrency < 4;
+  if (isLowEnd) return;
   const ctx = cvs.getContext('2d');
   let W, H;
   let particleAnimationId = null;
   const COLS = ['212,165,116', '14,165,233', '37,99,235', '139,92,246'];
-  const pts = Array.from({ length: 75 }, () => ({
+  const pts = Array.from({ length: 50 }, () => ({
     x: Math.random() * window.innerWidth,
     y: Math.random() * window.innerHeight,
     r: Math.random() * 1.4 + 0.3,
@@ -2308,13 +2283,19 @@ document.addEventListener('keydown', e => {
 // ─── Language Toggle ───
 const langBtn = document.getElementById('langToggle');
 const htmlEl  = document.getElementById('html-root');
-let isArabic  = false;
+let isArabic  = localStorage.getItem('lang') === 'ar';
+
+function applyLang(arabic) {
+  htmlEl.setAttribute('lang', arabic ? 'ar' : 'en');
+  htmlEl.setAttribute('dir',  arabic ? 'rtl' : 'ltr');
+  langBtn.textContent = arabic ? 'English' : 'العربية';
+}
+applyLang(isArabic);
 
 langBtn.addEventListener('click', () => {
   isArabic = !isArabic;
-  htmlEl.setAttribute('lang', isArabic ? 'ar' : 'en');
-  htmlEl.setAttribute('dir',  isArabic ? 'rtl' : 'ltr');
-  langBtn.textContent = isArabic ? 'English' : 'العربية';
+  localStorage.setItem('lang', isArabic ? 'ar' : 'en');
+  applyLang(isArabic);
 });
 
 // ─── Active Nav Link ───
