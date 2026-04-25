@@ -10,12 +10,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="/assets/index-CuBeA8K_.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/rolldown-runtime-jpDsebLB.js">
-    <link rel="modulepreload" crossorigin href="/assets/vendor-B5y4w9Ck.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-Do_fF_DW.css">
+<script type="module" crossorigin src="/training/courses/assets/index-CuBeA8K_.js"></script>
+    <link rel="modulepreload" crossorigin href="/training/courses/assets/rolldown-runtime-jpDsebLB.js">
+    <link rel="modulepreload" crossorigin href="/training/courses/assets/vendor-B5y4w9Ck.js">
+    <link rel="stylesheet" crossorigin href="/training/courses/assets/index-Do_fF_DW.css">
   </head>
   <body>
+    <script>
+      // Temporary fix for hash routing legacy URLs
+      if (window.location.hash === '#/' || window.location.hash === '#' || window.location.href.includes('/training/#/')) {
+        window.location.replace('/training/courses/');
+      }
+    </script>
     <div id="root"></div>
   </body>
 </html>
