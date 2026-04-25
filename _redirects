@@ -42,7 +42,7 @@ https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 /ai-dashboard/* /incubator/ai-dashboard/:splat 301
 /team-room /incubator/team-room 301
 /vibe-code /incubator/vibe-code 301
-/courses https://brainsait.org/training/#/ 301
+/courses https://brainsait.org/training/courses/ 301
 /1to1 /incubator/1to1 301
 
 # Store & partners — canonical incubator paths
@@ -61,8 +61,9 @@ https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 /givc/* /incubator/app-store 301
 
 # ─── Training ────────────────────────────────────────────────────────────────
-# Training home
-/training /training/index.html 200
+# Training home → courses listing (canonical entry point)
+/training /training/courses/ 301
+/training/ /training/courses/ 301
 
 # Course routing (let Next.js/React handle the routes instead of forcing hash-redirects)
 /training/courses /training/courses/index.html 200
