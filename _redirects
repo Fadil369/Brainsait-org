@@ -61,26 +61,17 @@ https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 /givc/* /incubator/app-store 301
 
 # ─── Training ────────────────────────────────────────────────────────────────
-# All training routes redirect to the hash-based Vue/React SPA router at https://brainsait.org/training/#/
-/training https://brainsait.org/training/#/ 301
-/training/courses https://brainsait.org/training/#/ 301
-/training/courses/ https://brainsait.org/training/#/ 301
-/training/courses/collective-brainpower https://brainsait.org/training/#/courses/collective-brainpower 301
-/training/courses/nphies-ai-mastery https://brainsait.org/training/#/courses/nphies-ai-mastery 301
-/training/courses/healthcare-ai-launchpad https://brainsait.org/training/#/courses/healthcare-ai-launchpad 301
-/training/courses/collective-brainpower/* https://brainsait.org/training/#/courses/collective-brainpower/:splat 301
-/training/courses/nphies-ai-mastery/* https://brainsait.org/training/#/courses/nphies-ai-mastery/:splat 301
-/training/courses/healthcare-ai-launchpad/* https://brainsait.org/training/#/courses/healthcare-ai-launchpad/:splat 301
+# Training home
+/training /training/index.html 200
 
-# /incubator/training paths also redirect to the new structure
-/incubator/training https://brainsait.org/training/#/ 301
-/incubator/training/courses https://brainsait.org/training/#/ 301
-/incubator/training/courses/ https://brainsait.org/training/#/ 301
-/incubator/training/courses/collective-brainpower https://brainsait.org/training/#/courses/collective-brainpower 301
-/incubator/training/courses/nphies-ai-mastery https://brainsait.org/training/#/courses/nphies-ai-mastery 301
-/incubator/training/courses/healthcare-ai-launchpad https://brainsait.org/training/#/courses/healthcare-ai-launchpad 301
-/incubator/training/* https://brainsait.org/training/#/:splat 301
-/training/* https://brainsait.org/training/#/:splat 301
+# Course routing (let Next.js/React handle the routes instead of forcing hash-redirects)
+/training/courses /training/courses/index.html 200
+/training/courses/collective-brainpower /training/courses/collective-brainpower/index.html 200
+/training/courses/nphies-ai-mastery /training/courses/nphies-ai-mastery/index.html 200
+/training/courses/healthcare-ai-launchpad /training/courses/healthcare-ai-launchpad/index.html 200
+
+# /incubator/training paths fallback to base /training
+/incubator/training/* /training/:splat 301
 
 # ─── Portal — handled by portal-gateway-v5 Worker ────────────────────────────
 # Worker takes priority; these are legacy fallbacks only
