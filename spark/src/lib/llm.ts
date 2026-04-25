@@ -10,6 +10,7 @@ interface LLMOptions {
   system?: string
   temperature?: number
   maxTokens?: number
+  timeoutMs?: number
 }
 
 const API_KEY = import.meta.env.VITE_AI_API_KEY as string | undefined
@@ -23,47 +24,55 @@ export async function llm(messages: LLMMessage[], options: LLMOptions = {}): Pro
 
   try {
     const isAnthropic = API_BASE.includes('anthropic.com')
-    
-    if (isAnthropic) {
-      const body = {
-        model: 'claude-3-5-haiku-20241022',
-        max_tokens: options.maxTokens || 1024,
-        system: options.system || 'You are an expert healthcare startup advisor for the MENA region, specializing in Saudi Arabia. Be concise and actionable.',
-        messages: messages.filter(m => m.role !== 'system'),
+    const controller = new AbortController()
+    const timeout = window.setTimeout(() => controller.abort(), options.timeoutMs || 25000)
+
+    try {
+      if (isAnthropic) {
+        const body = {
+          model: 'claude-3-5-haiku-20241022',
+          max_tokens: options.maxTokens || 1024,
+          system: options.system || 'You are an expert healthcare startup advisor for the MENA region, specializing in Saudi Arabia. Be concise and actionable.',
+          messages: messages.filter(m => m.role !== 'system'),
+        }
+        const res = await fetch(`${API_BASE}/messages`, {
+          method: 'POST',
+          signal: controller.signal,
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': API_KEY,
+            'anthropic-version': '2023-06-01',
+            'anthropic-dangerous-direct-browser-access': 'true',
+          },
+          body: JSON.stringify(body),
+        })
+        if (!res.ok) throw new Error(`API error: ${res.status}`)
+        const data = await res.json() as { content: Array<{ type: string; text: string }> }
+        return data.content[0]?.text || ''
+      } else {
+        // OpenAI-compatible
+        const body = {
+          model: 'gpt-4o-mini',
+          max_tokens: options.maxTokens || 1024,
+          messages: options.system
+            ? [{ role: 'system', content: options.system }, ...messages]
+            : messages,
+        }
+        const res = await fetch(`${API_BASE}/chat/completions`, {
+          method: 'POST',
+          signal: controller.signal,
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${API_KEY}`,
+          },
+          body: JSON.stringify(body),
+        })
+        if (!res.ok) throw new Error(`API error: ${res.status}`)
+        const data = await res.json() as { choices: Array<{ message: { content: string } }> }
+        return data.choices[0]?.message?.content || ''
       }
-      const res = await fetch(`${API_BASE}/messages`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': API_KEY,
-          'anthropic-version': '2023-06-01',
-          'anthropic-dangerous-direct-browser-access': 'true',
-        },
-        body: JSON.stringify(body),
-      })
-      if (!res.ok) throw new Error(`API error: ${res.status}`)
-      const data = await res.json() as { content: Array<{ type: string; text: string }> }
-      return data.content[0]?.text || ''
-    } else {
-      // OpenAI-compatible
-      const body = {
-        model: 'gpt-4o-mini',
-        max_tokens: options.maxTokens || 1024,
-        messages: options.system 
-          ? [{ role: 'system', content: options.system }, ...messages] 
-          : messages,
-      }
-      const res = await fetch(`${API_BASE}/chat/completions`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${API_KEY}`,
-        },
-        body: JSON.stringify(body),
-      })
-      if (!res.ok) throw new Error(`API error: ${res.status}`)
-      const data = await res.json() as { choices: Array<{ message: { content: string } }> }
-      return data.choices[0]?.message?.content || ''
+    } finally {
+      window.clearTimeout(timeout)
     }
   } catch (error) {
     console.warn('LLM API call failed, using mock:', error)

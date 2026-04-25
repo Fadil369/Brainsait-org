@@ -39,13 +39,48 @@ export function StoryPhase({ initial, concept, onComplete, onBack }: Props) {
   const [marketAnalysis, setMarketAnalysis] = useState<string[]>(initial?.marketAnalysis || [])
   const [risks, setRisks] = useState<string[]>(initial?.risks || [])
   const [userStories, setUserStories] = useState<UserStory[]>(initial?.userStories || [])
+  const [aiNotice, setAiNotice] = useState('')
   const [generated, setGenerated] = useState(!!initial?.narrative)
 
   const templates = language === 'ar' ? TEMPLATES.ar : TEMPLATES.en
 
+  function fallbackStory() {
+    return {
+      narrative: language === 'ar'
+        ? `تبدأ المشكلة عندما يحتاج المستخدم إلى رعاية صحية واضحة وسريعة، لكنه يواجه خطوات متفرقة ومعلومات غير مكتملة. هذا الاحتكاك يستهلك وقت المرضى وفرق العمل ويجعل التجربة أقل ثقة.\n\nالحل المقترح هو منصة صحية ذكية تساعد ${concept?.targetUsers || 'المستخدمين الصحيين'} على إكمال الخطوات الأساسية بوضوح، من فهم المشكلة إلى الوصول للخدمة المناسبة.\n\nبما يتوافق مع رؤية السعودية 2030، يمكن لهذا المشروع أن يرفع جودة الوصول للرعاية ويقلل العبء التشغيلي ويبني تجربة رقمية أكثر إنسانية.`
+        : `The problem begins when someone needs a clear healthcare action, but the path is fragmented, slow, or hard to understand. Patients lose time, teams repeat manual work, and trust suffers.\n\nThis startup turns that friction into a guided digital experience for ${concept?.targetUsers || 'healthcare users'}, helping them understand what to do next and complete the workflow with confidence.\n\nAligned with Saudi Vision 2030, the product can improve access, reduce operational burden, and create a more patient-centered digital health journey.`,
+      clarityScore: 82,
+      emotionScore: 74,
+      pitchSummary: concept?.solution || 'A guided digital health platform that reduces friction in healthcare workflows.',
+      marketAnalysis: [
+        language === 'ar' ? 'يتوافق مع التحول الصحي ورؤية 2030' : 'Aligned with healthcare transformation and Vision 2030',
+        language === 'ar' ? 'تجربة ثنائية اللغة مهمة للتبني في السعودية' : 'Bilingual experience is important for Saudi adoption',
+        language === 'ar' ? 'القيمة تظهر عند تقليل الوقت والعمل اليدوي' : 'Value is strongest when it reduces time and manual work',
+      ],
+      risks: [
+        language === 'ar' ? 'تبني فرق العمل' : 'Workflow adoption by care teams',
+        language === 'ar' ? 'تكامل الأنظمة الصحية' : 'Healthcare system integration',
+        language === 'ar' ? 'متطلبات الخصوصية والامتثال' : 'Privacy and compliance requirements',
+      ],
+      userStories: [
+        {
+          role: language === 'ar' ? 'مريض' : 'patient',
+          need: language === 'ar' ? 'إكمال الخطوة الصحية الأساسية من الجوال' : 'complete the core healthcare task from mobile',
+          benefit: language === 'ar' ? 'أستطيع إنهاء المهمة بدون ارتباك' : 'I can finish without confusion',
+          acceptanceCriteria: [
+            language === 'ar' ? 'يدعم العربية والإنجليزية' : 'Supports Arabic and English',
+            language === 'ar' ? 'يعرض الخطوة التالية بوضوح' : 'Shows the next step clearly',
+            language === 'ar' ? 'يعرض حالة نجاح واضحة' : 'Shows a clear success state',
+          ],
+        },
+      ],
+    }
+  }
+
   async function handleGenerate() {
     if (!template) return
     setLoading(true)
+    setAiNotice('')
     try {
       const toneLabel = tone < 33 ? 'formal and professional' : tone < 66 ? 'balanced and approachable' : 'casual and conversational'
       const prompt = `You are a healthcare startup strategist and product discovery lead for Saudi Arabia / MENA.
@@ -103,7 +138,7 @@ User stories must be practical enough to feed PRD creation.`
         ],
       }
 
-      const parsed = extractJSON<typeof fallback>(await llmPrompt(prompt, { maxTokens: 2500 }), fallback)
+      const parsed = extractJSON<typeof fallback>(await llmPrompt(prompt, { maxTokens: 2500, timeoutMs: 12000 }), fallback)
 
       setStory(parsed.narrative)
       setScores({ clarity: parsed.clarityScore, emotion: parsed.emotionScore })
@@ -112,6 +147,20 @@ User stories must be practical enough to feed PRD creation.`
       setRisks(parsed.risks || [])
       setUserStories(parsed.userStories || [])
       setGenerated(true)
+    } catch (error) {
+      const fallback = fallbackStory()
+      setStory(fallback.narrative)
+      setScores({ clarity: fallback.clarityScore, emotion: fallback.emotionScore })
+      setPitchSummary(fallback.pitchSummary)
+      setMarketAnalysis(fallback.marketAnalysis)
+      setRisks(fallback.risks)
+      setUserStories(fallback.userStories)
+      setGenerated(true)
+      setAiNotice(language === 'ar'
+        ? 'استغرق الذكاء الاصطناعي وقتاً طويلاً، لذلك أنشأنا مسودة آمنة يمكنك تعديلها.'
+        : 'AI took too long, so Spark created a safe editable draft instead.'
+      )
+      console.warn('Story generation fallback used:', error)
     } finally {
       setLoading(false)
     }
@@ -192,6 +241,11 @@ User stories must be practical enough to feed PRD creation.`
                   animate={{ opacity: 1, y: 0 }}
                   className="glass-card rounded-2xl p-5 border border-spark-500/20"
                 >
+                  {aiNotice && (
+                    <div className="mb-4 rounded-xl border border-amber-400/20 bg-amber-400/10 px-3 py-2 text-xs text-amber-100">
+                      {aiNotice}
+                    </div>
+                  )}
                   <div className={`flex items-center justify-between mb-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
                     <h3 className="font-display font-semibold text-white flex items-center gap-2">
                       <BookOpen size={18} className="text-spark-400" />
