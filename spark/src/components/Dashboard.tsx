@@ -1,6 +1,6 @@
 // Main Dashboard
 import { motion } from 'framer-motion'
-import { Globe, Moon, Sun, Lightning, ArrowCounterClockwise, Download } from '@phosphor-icons/react'
+import { Globe, Moon, Sun, Lightning, ArrowCounterClockwise, Download, House } from '@phosphor-icons/react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { PhaseNavigation } from '@/components/PhaseNavigation'
 import { GameStats } from '@/components/GameStats'
@@ -95,6 +95,17 @@ return (
             >
               {journey.theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
             </button>
+
+            {/* Home link */}
+            <a
+              href="https://brainsait.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              title={language === 'ar' ? 'الرئيسية' : 'BrainSAIT Home'}
+              className="glass-card glass-card-hover rounded-lg p-2 text-slate-400 hover:text-white transition-colors"
+            >
+              <House size={16} />
+            </a>
 
             {/* Reset journey (only shown if journey has started) */}
             {completedCount > 0 && (
