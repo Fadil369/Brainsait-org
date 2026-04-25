@@ -93,4 +93,9 @@ https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 /clinics/* /external/clinics-pages/:splat 200
 
 /rcm/* https://portal.elfadil.com/:splat 302
+
+# Platform subpage (moved from /)
+/platform /platform/index.html 200
+/platform/* /platform/:splat 200
+
 /* /index.html 200

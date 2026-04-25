@@ -1,495 +1,2363 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" id="html-root">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Platform — BrainSAIT Solutions Portfolio</title>
-  <meta name="description" content="Explore BrainSAIT's AI-native healthcare platform screens: Solutions Catalog, Ecosystem Hub, Solution Detail, and Ecosystem Vision.">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Primary Meta -->
+  <title>BrainSAIT Platform — AI-Native Healthcare | برينسايت</title>
+  <meta name="title" content="BrainSAIT — AI-Native Healthcare Platform | برينسايت">
+  <meta name="description" content="BrainSAIT delivers AI-native claims, clinical, and compliance automation for Saudi Arabia & MENA. NPHIES-compliant, FHIR R4 interoperable, built for Vision 2030.">
+  <meta name="keywords" content="BrainSAIT, NPHIES, FHIR R4, healthcare AI, Saudi Arabia, ClaimLinc, LINC agents, Vision 2030, RCM, revenue cycle management, healthcare automation, AI healthcare, digital health, healthcare automation Saudi Arabia, برينسايت, الذكاء الاصطناعي الصحي">
+  <meta name="geo.country" content="SA">
+  <meta name="geo.region" content="SA">
+  <meta name="geo.placename" content="Saudi Arabia">
+  <meta name="language" content="English, Arabic">
+  <meta name="target-audience" content="Healthcare Providers, Hospital Administrators, RCM Teams, Compliance Officers, Healthcare IT">
+  <meta property="article:published_time" content="2023-01-01T00:00:00Z">
+  <meta property="article:author" content="BrainSAIT">
+  <meta name="google-site-verification" content="">
+  <meta name="msvalidate.01" content="">
+  <meta name="theme-color" content="#02040a">
+  <meta name="color-scheme" content="dark">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="BrainSAIT">
+  <meta name="author" content="BrainSAIT LTD">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://brainsait.org/platform">
+  <!-- Multilingual & Multi-domain SEO -->
+  <link rel="alternate" hreflang="en" href="https://brainsait.org">
+  <link rel="alternate" hreflang="en-SA" href="https://brainsait.org">
+  <link rel="alternate" hreflang="ar" href="https://brainsait.org">
+  <link rel="alternate" hreflang="ar-SA" href="https://brainsait.org">
+  <link rel="alternate" hreflang="x-default" href="https://brainsait.org">
+  <!-- WWW variant handling -->
+  <link rel="alternate" href="https://www.brainsait.org" hreflang="en">
+  <link rel="alternate" href="https://www.brainsait.org" hreflang="ar">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://brainsait.org/platform">
+  <link rel="dns-prefetch" href="https://www.brainsait.org">
+  <meta property="og:title" content="BrainSAIT — AI-Native Healthcare Platform">
+  <meta property="og:description" content="Automated. Integrated. Technology-driven healthcare for Saudi Arabia and MENA. NPHIES-compliant, FHIR R4 native.">
+  <meta property="og:image" content="https://brainsait.org/og-image.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ar_SA">
+  <meta property="og:site_name" content="BrainSAIT">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@brainsait369">
+  <meta name="twitter:url" content="https://brainsait.org/platform">
+  <meta name="twitter:title" content="BrainSAIT — AI-Native Healthcare Platform">
+  <meta name="twitter:description" content="Automated. Integrated. Technology-driven healthcare for Saudi Arabia and MENA.">
+  <meta name="twitter:image" content="https://brainsait.org/og-image.png">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a365d'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='%23d4a574' font-size='20' font-weight='bold' font-family='system-ui'%3EB%3C/text%3E%3C/svg%3E">
+
+  <!-- JSON-LD Structured Data -->
+  <!-- Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://brainsait.org",
+    "name": "BrainSAIT",
+    "alternateName": "برينسايت",
+    "description": "AI-native healthcare automation platform for Saudi Arabia and MENA region. NPHIES-compliant, FHIR R4 interoperable healthcare solution.",
+    "url": "https://brainsait.org",
+    "logo": "https://brainsait.org/logo.png",
+    "image": "https://brainsait.org/og-image.png",
+    "foundingDate": "2023",
+    "foundingLocation": {
+      "@type": "Place",
+      "name": "Saudi Arabia"
+    },
+    "areaServed": [
+      {
+        "@type": "Country",
+        "name": "Saudi Arabia"
+      },
+      {
+        "@type": "Country",
+        "name": "United Arab Emirates"
+      },
+      {
+        "@type": "Country",
+        "name": "Qatar"
+      },
+      {
+        "@type": "Country",
+        "name": "Bahrain"
+      },
+      {
+        "@type": "Country",
+        "name": "Kuwait"
+      },
+      {
+        "@type": "Country",
+        "name": "Oman"
+      }
+    ],
+    "sameAs": [
+      "https://github.com/Fadil369",
+      "https://twitter.com/brainsait369",
+      "https://www.linkedin.com/in/fadil369",
+      "https://www.linkedin.com/company/brainsait"
+    ],
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "email": "info@brainsait.org",
+        "contactType": "customer support",
+        "availableLanguage": ["en", "ar"]
+      }
+    ],
+    "knowsAbout": ["Healthcare Automation", "NPHIES", "FHIR R4", "AI Healthcare", "Revenue Cycle Management"],
+    "slogan": "Automated. Integrated. Technology-driven healthcare for Saudi Arabia and MENA."
+  }
+  </script>
+  
+  <!-- SoftwareApplication Schema for Portal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "SoftwareApplication",
+    "name": "BrainSAIT Portal",
+    "description": "Enterprise AI-native healthcare automation platform with NPHIES compliance and FHIR R4 interoperability",
+    "url": "https://brainsait.org/rcm",
+    "operatingSystem": "Web",
+    "applicationCategory": "BusinessApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "Contact for pricing",
+      "priceCurrency": "SAR"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "150"
+    }
+  }
+  </script>
+  
+  <!-- LocalBusiness Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "BrainSAIT - Healthcare AI Solutions",
+    "image": "https://brainsait.org/og-image.png",
+    "url": "https://brainsait.org",
+    "telephone": "+966",
+    "email": "info@brainsait.org",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "SA",
+      "addressRegion": "Riyadh",
+      "streetAddress": ""
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "24.7136",
+      "longitude": "46.6753"
+    }
+  }
+  </script>
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ═══════════════════════════════════════════════════════
+       BRAINSAIT — ENTERPRISE DESIGN SYSTEM
+       Premium Healthcare AI · Mobile-First · Bilingual
+    ═══════════════════════════════════════════════════════ */
 
+    /* ─── Design Tokens ─── */
     :root {
-      --void:   #02040a;
-      --void2:  #060b14;
-      --g1:     rgba(255,255,255,.03);
-      --g2:     rgba(255,255,255,.01);
-      --gb:     rgba(255,255,255,.07);
-      --gold:   #d4a574;
-      --goldd:  #c8956a;
-      --teal:   #0ea5e9;
-      --vio:    #8b5cf6;
-      --text:   #e2e8f0;
-      --textd:  #94a3b8;
-      --textdd: #64748b;
-      --rx:     14px;
+      --void:    #02040a;
+      --deep:    #060913;
+      --navy:    #0a0f1d;
+      --surface: #0f1524;
+      --surf2:   #141929;
+
+      --g1: rgba(255,255,255,0.02);
+      --g2: rgba(255,255,255,0.04);
+      --g3: rgba(255,255,255,0.06);
+      --gb: rgba(255,255,255,0.08);
+      --gbh: rgba(255,255,255,0.16);
+
+      --gold:     #d4a574;
+      --gold-l:   #e8c49a;
+      --gold-b:   #f0d5b5;
+      --gold-dim: rgba(212,165,116,0.10);
+      --gold-glow:rgba(212,165,116,0.15);
+
+      --teal:     #0ea5e9;
+      --teal-l:   #38bdf8;
+      --teal-dim: rgba(14,165,233,0.10);
+
+      --med:      #2563eb;
+      --eme:      #10b981;
+      --eme-dim:  rgba(16,185,129,0.10);
+      --vio:      #8b5cf6;
+      --vio-dim:  rgba(139,92,246,0.10);
+      --rose:     #f43f5e;
+      --amb:      #f59e0b;
+
+      --text:  #f8fafc;
+      --textd: #cbd5e1;
+      --textm: #64748b;
+      --texts: #334155;
+
+      --fd: 'Syne', sans-serif;
+      --fa: 'IBM Plex Sans Arabic', sans-serif;
+      --fi: 'Inter', sans-serif;
+      --fm: 'JetBrains Mono', monospace;
+
+      --r:   16px;
+      --rs:   8px;
+      --rx:   6px;
+      --rnd: 100px;
+      --sp:  clamp(60px, 10vw, 120px);
+      --sh:  0 4px 24px rgba(0,0,0,0.45), 0 1px 4px rgba(0,0,0,0.25);
     }
 
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--void);
-      color: var(--text);
-      min-height: 100vh;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { 
+      background: var(--void); 
+      color: var(--text); 
+      font-family: var(--fi); 
+      font-size: 15px; 
+      line-height: 1.6; 
       overflow-x: hidden;
+      letter-spacing: -0.3px;
     }
-
-    /* Noise overlay */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-      opacity: .4;
-    }
-
-    /* Orbs */
-    .orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(80px);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .o1 { width: 460px; height: 460px; background: rgba(212,165,116,.07); top: -100px; right: -80px; }
-    .o2 { width: 380px; height: 380px; background: rgba(14,165,233,.06); bottom: 10%; left: -60px; }
-
-    /* Nav */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(2,4,10,.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--gb);
-      padding: 0 clamp(16px, 4vw, 48px);
-    }
-    .ni {
-      max-width: 1200px;
-      margin: 0 auto;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .nb {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: var(--text);
-      font-family: 'Syne', sans-serif;
+    
+    em { 
+      font-style: normal;
       font-weight: 700;
-      font-size: 18px;
-      letter-spacing: .04em;
-    }
-    .nb em { color: var(--gold); font-style: normal; }
-    .nlogo {
-      width: 32px; height: 32px;
-      background: linear-gradient(135deg, #1a365d, #0f2340);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
       color: var(--gold);
-      font-weight: 800;
-      font-size: 16px;
+      letter-spacing: -0.5px;
     }
-    .nav-back {
-      display: flex;
-      align-items: center;
-      gap: 6px;
+    
+    p { 
+      font-family: var(--fi);
+      font-size: 15px;
+      line-height: 1.7;
+      letter-spacing: -0.3px;
       color: var(--textd);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 500;
-      transition: color .2s;
-      padding: 6px 12px;
+    }
+    
+    strong, b {
+      font-weight: 600;
+    }
+
+
+    /* ─── RTL Support ─── */
+    [dir="rtl"] body           { font-family: var(--fa); }
+    [dir="rtl"] .nb            { flex-direction: row-reverse; }
+    [dir="rtl"] .f-grid        { direction: rtl; }
+    [dir="rtl"] .p-features li { flex-direction: row-reverse; }
+    [dir="ltr"] .ar            { display: none !important; }
+    [dir="rtl"] .en            { display: none !important; }
+    [dir="rtl"] h2             { font-family: var(--fa); }
+    [dir="rtl"] .sec-head h2   { text-align: center; }
+    [dir="rtl"] .vision-grid h2{ text-align: right; }
+
+    /* ─── Accessibility ─── */
+    .skip-link { position: absolute; top: -100px; left: 16px; background: var(--gold); color: var(--void); padding: 8px 16px; border-radius: var(--rx); text-decoration: none; font-weight: 600; z-index: 10000; transition: top .2s; }
+    .skip-link:focus { top: 16px; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: var(--rx); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    /* ─── Reduced Motion ─── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      html { scroll-behavior: auto; }
+      .rev, .stage-lights, .clinic-card, .clinic-card::before { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* ─── Canvas / Atmosphere ─── */
+    #cvs { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .4; }
+    .orb  { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; }
+    .o1   { width: 700px; height: 700px; background: radial-gradient(circle, var(--gold) 0%, transparent 70%); opacity: .04; top: -15%; right: -10%; animation: drift 55s ease-in-out infinite; }
+    .o2   { width: 600px; height: 600px; background: radial-gradient(circle, var(--med) 0%, transparent 70%);  opacity: .04; bottom: -15%; left: -10%;  animation: drift 48s ease-in-out infinite reverse; }
+    .o3   { width: 400px; height: 400px; background: radial-gradient(circle, var(--teal) 0%, transparent 70%); opacity: .03; top: 40%; left: 30%;       animation: drift 65s ease-in-out infinite 20s; }
+    @keyframes drift { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(20px,-30px) scale(1.03); } 66% { transform: translate(-15px,20px) scale(.98); } }
+
+    /* ─── Noise Overlay ─── */
+    .noise-overlay { position: fixed; inset: 0; pointer-events: none; z-index: 2; opacity: .025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+
+    /* ─── Layout ─── */
+    .page { position: relative; z-index: 1; }
+    .c    { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ─── Typography ─── */
+    h1, h2, h3, h4, h5, h6 { font-family: var(--fd); font-weight: 700; line-height: 1.2; letter-spacing: -1.5px; }
+    h1 { font-size: clamp(38px, 6vw, 76px); line-height: 1.05; letter-spacing: -2px; margin-bottom: 24px; font-weight: 800; }
+    h2 { font-size: clamp(28px, 4vw, 48px); line-height: 1.15; letter-spacing: -1px; margin-bottom: 20px; }
+    h3 { font-size: clamp(20px, 3.5vw, 32px); letter-spacing: -0.8px; }
+    .tg      { background: linear-gradient(135deg, var(--gold), var(--gold-b));   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .tg-teal { background: linear-gradient(135deg, var(--teal), var(--teal-l));   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    /* ─── Buttons ─── */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--fi); font-weight: 600; font-size: 14px; padding: 10px 22px; border-radius: var(--rx); border: none; cursor: pointer; text-decoration: none; transition: all .2s ease; white-space: nowrap; }
+    .btn-p  { background: linear-gradient(135deg, var(--gold), var(--gold-l)); color: var(--void); }
+    .btn-p:hover  { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,165,116,.3); filter: brightness(1.06); }
+    .btn-g  { background: transparent; color: var(--text); border: 1px solid var(--gb); }
+    .btn-g:hover  { background: var(--g2); border-color: var(--gbh); }
+    .btn-lg { padding: 14px 32px; font-size: 15px; }
+    .btn-sm { padding: 6px 14px; font-size: 13px; }
+
+    /* ─── Section Label ─── */
+    .stag { display: block; font-size: 11px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 16px; }
+    .sec-head { text-align: center; margin-bottom: 72px; }
+    .ssub { font-size: 16px; color: var(--textd); max-width: 580px; margin: 0 auto; line-height: 1.7; }
+
+    /* ─── Section Spacing ─── */
+    section { padding: var(--sp) 0; }
+
+    /* ─── Scroll Reveal ─── */
+    .rev {
+      opacity: 0;
+      transform: translate3d(0, 24px, 0) scale(.985);
+      transition: opacity .68s cubic-bezier(.22,.61,.36,1), transform .82s cubic-bezier(.22,.61,.36,1);
+    }
+    .rev.vis { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+    .d1 { transition-delay: .10s; }
+    .d2 { transition-delay: .20s; }
+    .d3 { transition-delay: .30s; }
+    .d4 { transition-delay: .40s; }
+
+    /* ─── NAVBAR ─── */
+    #nav {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      backdrop-filter: blur(20px) saturate(1.8);
+      -webkit-backdrop-filter: blur(20px) saturate(1.8);
+      background: rgba(2,4,10,.80);
+      border-bottom: 1px solid var(--gb);
+      transition: background .3s, box-shadow .3s;
+    }
+    #nav.scrolled { background: rgba(2,4,10,.96); box-shadow: 0 4px 32px rgba(0,0,0,.5); }
+    .ni  { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; padding: 0 24px; gap: 24px; }
+    .nb  { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); flex-shrink: 0; }
+    .nlogo { width: 36px; height: 36px; background: linear-gradient(135deg, var(--gold), var(--teal)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: var(--fd); font-weight: 800; font-size: 18px; color: var(--void); position: relative; overflow: hidden; }
+    .nn   { font-family: var(--fd); font-weight: 800; font-size: 18px; letter-spacing: .5px; }
+    .nn em { color: var(--gold); font-style: normal; }
+    .nl  { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; }
+    .nl a { color: var(--textd); text-decoration: none; font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: var(--rx); transition: all .2s; white-space: nowrap; }
+    .nl a:hover, .nl a.active { color: var(--text); background: var(--g2); }
+    .nl a.active { color: var(--gold); }
+    .na  { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .lang-btn { background: var(--g1); border: 1px solid var(--gb); color: var(--textd); font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: var(--rx); cursor: pointer; transition: all .2s; font-family: var(--fi); }
+    .lang-btn:hover { background: var(--g2); color: var(--text); border-color: var(--gbh); }
+    .hbg { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 7px; border-radius: var(--rx); background: transparent; border: none; transition: background .2s; }
+    .hbg:hover { background: var(--g2); }
+    .hbg span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all .3s; }
+    .hbg.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hbg.open span:nth-child(2) { opacity: 0; }
+    .hbg.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ─── Mobile Menu ─── */
+    .mob-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 999; background: rgba(6,9,19,.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--gb); padding: 16px 24px 24px; flex-direction: column; gap: 4px; }
+    .mob-menu.open { display: flex; animation: slideDown .22s ease-out; }
+    @keyframes slideDown { from { opacity:0; transform: translateY(-8px); } to { opacity:1; transform: translateY(0); } }
+    .mob-menu a { color: var(--textd); text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 16px; border-radius: var(--rx); transition: all .2s; }
+    .mob-menu a:hover { color: var(--text); background: var(--g2); }
+    .mob-sep { height: 1px; background: var(--gb); margin: 8px 0; }
+    .mob-menu .btn { justify-content: center; margin-top: 4px; }
+    /* ─── Highlighted nav variants ─── */
+    .nl-teal  { color: #06b6d4 !important; font-weight: 600; }
+    .nl-gold  { color: var(--gold) !important; font-weight: 600; }
+    .nl-vio   { color: #a78bfa !important; font-weight: 600; }
+    .btn-incubator { border-color: rgba(14,165,233,.35) !important; color: #67e8f9 !important; }
+
+    /* ─── HERO ─── */
+    .hero { padding: 160px 0 100px; text-align: center; position: relative; overflow: hidden; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: var(--g1); border: 1px solid var(--gb); border-radius: var(--rnd); font-size: 12px; font-weight: 600; color: var(--textd); margin-bottom: 32px; animation: fadeUp .7s ease-out both; }
+    .pulse { width: 8px; height: 8px; background: var(--eme); border-radius: 50%; box-shadow: 0 0 12px var(--eme); flex-shrink: 0; position: relative; }
+    .pulse::before { content: ''; position: absolute; inset: -4px; border-radius: 50%; background: var(--eme); opacity: 0; animation: pingRing 2.2s ease-out infinite; }
+    @keyframes pingRing { 0% { transform: scale(0.6); opacity: 0.7; } 100% { transform: scale(2.8); opacity: 0; } }
+    @keyframes fadeUp  { from { opacity:0; transform: translateY(24px); } to { opacity:1; transform: translateY(0); } }
+    .hero h1 { animation: fadeUp .7s ease-out .1s both; }
+    .tw-cursor { display: inline-block; width: 3px; height: .88em; background: var(--gold); margin-left: 2px; animation: blink 1s step-start infinite; vertical-align: text-bottom; border-radius: 2px; }
+    @keyframes blink { 0%,49% { opacity:1; } 50%,100% { opacity:0; } }
+
+    /* ─── Stage Lights ─── */
+    .stage-lights { position: absolute; top: 0; left: 0; right: 0; height: 100%; pointer-events: none; overflow: hidden; z-index: 0; will-change: transform; }
+    .sl { position: absolute; top: 0; transform-origin: top center; }
+    .sl::before { content: ''; position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.6); box-shadow: 0 0 18px 6px rgba(255,255,255,0.25); }
+    .sl1 { left: 8%;  width: 260px; height: 75%; clip-path: polygon(46% 0%, 54% 0%, 92% 100%, 8% 100%);  background: linear-gradient(to bottom, rgba(212,165,116,.18) 0%, transparent 70%); animation: swayL 14s ease-in-out infinite; }
+    .sl2 { left: 42%; width: 300px; height: 80%; clip-path: polygon(46% 0%, 54% 0%, 88% 100%, 12% 100%); background: linear-gradient(to bottom, rgba(14,165,233,.14)  0%, transparent 65%); animation: swayL 18s ease-in-out infinite 3s reverse; }
+    .sl3 { right: 8%; width: 240px; height: 70%; clip-path: polygon(46% 0%, 54% 0%, 94% 100%, 6% 100%);  background: linear-gradient(to bottom, rgba(139,92,246,.13)  0%, transparent 60%); animation: swayL 11s ease-in-out infinite 6s; }
+    @keyframes swayL { 0%, 100% { transform: rotate(-6deg); opacity: .85; } 50% { transform: rotate(6deg); opacity: 1; } }
+    .hero .c { position: relative; z-index: 1; }
+    .hero-sub { font-size: clamp(15px, 2vw, 18px); color: var(--textd); max-width: 680px; margin: 0 auto 48px; line-height: 1.75; animation: fadeUp .7s ease-out .2s both; }
+    .hero-acts { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; animation: fadeUp .7s ease-out .3s both; }
+    .hero-chips { margin-top: 64px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; animation: fadeUp .7s ease-out .5s both; }
+    .chip { display: inline-flex; align-items: center; gap: 7px; padding: 7px 14px; background: var(--g1); border: 1px solid var(--gb); border-radius: var(--rnd); font-size: 12px; font-weight: 600; color: var(--textd); }
+    .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .dg  { background: var(--gold);  box-shadow: 0 0 7px var(--gold); }
+    .dt  { background: var(--teal);  box-shadow: 0 0 7px var(--teal); }
+    .de  { background: var(--eme);   box-shadow: 0 0 7px var(--eme); }
+    .dv  { background: var(--vio);   box-shadow: 0 0 7px var(--vio); }
+
+    /* ─── TRUST BAR ─── */
+    .trust-bar { border-top: 1px solid var(--gb); border-bottom: 1px solid var(--gb); background: var(--g1); padding: 20px 0; overflow: hidden; }
+    .trust-inner { display: flex; align-items: center; gap: 32px; justify-content: center; flex-wrap: wrap; padding: 0 24px; }
+    .ti { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: var(--textm); text-transform: uppercase; letter-spacing: .9px; white-space: nowrap; }
+    .ti-sep { width: 1px; height: 20px; background: var(--gb); }
+
+    /* ─── STATS ─── */
+    .stats-wrap { padding: 80px 0; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); border: 1px solid var(--gb); border-radius: var(--r); overflow: hidden; }
+    .stat-item { background: var(--deep); padding: 40px 24px; text-align: center; position: relative; overflow: hidden; transition: background .3s; border-right: 1px solid var(--gb); }
+    .stat-item:last-child { border-right: none; }
+    .stat-item::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0; transition: opacity .3s; }
+    .stat-item:hover { background: var(--surface); }
+    .stat-item:hover::before { opacity: 1; }
+    .stat-val   { font-size: clamp(26px, 3.5vw, 40px); font-weight: 800; font-family: var(--fd); color: var(--text); margin-bottom: 8px; line-height: 1; }
+    .stat-label { font-size: 11px; color: var(--textm); font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; }
+    .stat-sub   { font-size: 11px; color: var(--texts); margin-top: 5px; }
+
+    /* ─── PLATFORM CARDS ─── */
+    .plat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .plat-card { background: var(--g1); border: 1px solid var(--gb); border-radius: var(--r); padding: 40px 32px; transition: all .35s; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+    .plat-card::after { content: ''; position: absolute; inset: 0; border-radius: var(--r); background: radial-gradient(circle at 50% 0%, rgba(212,165,116,.06), transparent 60%); opacity: 0; transition: opacity .4s; }
+    .plat-card:hover { border-color: rgba(212,165,116,.28); transform: translateY(-5px); box-shadow: 0 12px 40px rgba(0,0,0,.4); }
+    .plat-card:hover::after { opacity: 1; }
+    .p-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 28px; }
+    .p-icon.gold { background: var(--gold-dim); border: 1px solid rgba(212,165,116,.2); }
+    .p-icon.teal { background: var(--teal-dim);  border: 1px solid rgba(14,165,233,.2); }
+    .p-icon.vio  { background: var(--vio-dim);   border: 1px solid rgba(139,92,246,.2); }
+    .plat-title  { font-size: 21px; margin-bottom: 12px; }
+    .plat-desc   { font-size: 14px; color: var(--textd); line-height: 1.7; margin-bottom: 24px; flex-grow: 1; }
+    .plat-feats  { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 28px; }
+    .plat-feats li { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--textd); }
+    .plat-feats li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+    .p-link { font-size: 14px; color: var(--gold); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; transition: gap .2s, color .2s; }
+    .p-link:hover { color: var(--gold-b); gap: 10px; }
+
+    /* ─── SOLUTION CARDS ─── */
+    .solutions-bg { background: linear-gradient(180deg, var(--void) 0%, var(--deep) 50%, var(--void) 100%); }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .card { background: var(--g1); border: 1px solid var(--gb); border-radius: var(--r); padding: 32px; transition: all .35s cubic-bezier(.4,0,.2,1); position: relative; overflow: hidden; display: flex; flex-direction: column; }
+    .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold-dim), transparent); transition: opacity .3s; }
+    .card:hover { border-color: var(--gbh); background: var(--g2); transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,.4), 0 0 40px rgba(212,165,116,.06); }
+    .card:hover::before { background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .c-icon  { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 24px; background: var(--g2); border: 1px solid var(--gb); }
+    .c-title { font-size: 18px; color: var(--text); margin-bottom: 10px; }
+    .c-desc  { font-size: 14px; color: var(--textd); line-height: 1.65; margin-bottom: 20px; flex-grow: 1; }
+    .c-tags  { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .tag     { font-size: 10px; font-weight: 600; padding: 3px 10px; background: var(--g1); border: 1px solid var(--gb); border-radius: var(--rnd); color: var(--textm); font-family: var(--fm); text-transform: uppercase; letter-spacing: .5px; }
+    .c-link  { font-size: 13px; color: var(--gold); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; transition: gap .2s, color .2s; }
+    .c-link:hover { color: var(--gold-b); gap: 9px; }
+
+    /* ─── HOW IT WORKS ─── */
+    .hiw-bg { background: var(--deep); }
+    .hiw-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 40px; position: relative; }
+    .hiw-connector { position: absolute; top: 31px; left: 16.66%; right: 16.66%; height: 1px; background: linear-gradient(90deg, var(--gb), var(--gold-dim), var(--gb)); }
+    .hiw-item { text-align: center; }
+    .hiw-num  { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-dim), var(--g2)); border: 1px solid rgba(212,165,116,.3); display: flex; align-items: center; justify-content: center; font-family: var(--fd); font-weight: 800; font-size: 22px; color: var(--gold); margin: 0 auto 24px; position: relative; z-index: 1; }
+    .hiw-title { font-size: 18px; margin-bottom: 12px; }
+    .hiw-desc  { font-size: 14px; color: var(--textd); line-height: 1.65; }
+
+    /* ─── VISION 2030 ─── */
+    .vision-sec { position: relative; overflow: hidden; }
+    .vision-sec::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(37,99,235,.07), transparent 65%), radial-gradient(ellipse at 30% 50%, rgba(212,165,116,.05), transparent 65%); }
+    .vision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .vs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
+    .vs-item { background: var(--g1); border: 1px solid var(--gb); border-radius: var(--rs); padding: 20px 24px; }
+    .vs-val   { font-size: 28px; font-weight: 800; font-family: var(--fd); color: var(--gold); margin-bottom: 4px; }
+    .vs-label { font-size: 12px; color: var(--textm); font-weight: 500; }
+    .v-cards  { display: flex; flex-direction: column; gap: 16px; }
+    .v-card   { background: var(--g1); border: 1px solid var(--gb); border-radius: var(--r); padding: 24px; display: flex; align-items: flex-start; gap: 16px; transition: border-color .3s, background .3s; }
+    .v-card:hover { border-color: var(--gbh); background: var(--g2); }
+    .v-ci     { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .v-ci.blue  { background: rgba(37,99,235,.15); }
+    .v-ci.gold  { background: var(--gold-dim); }
+    .v-ci.green { background: var(--eme-dim); }
+    .v-ct { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .v-cd { font-size: 13px; color: var(--textd); line-height: 1.55; }
+
+    /* ─── TECH GRID ─── */
+    .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 14px; }
+    .tech-item { background: var(--g1); border: 1px solid var(--gb); border-radius: var(--rs); padding: 20px 16px; text-align: center; transition: all .3s; }
+    .tech-item:hover { background: var(--g2); border-color: var(--gbh); transform: translateY(-3px); }
+    .tech-icon { font-size: 28px; margin-bottom: 10px; }
+    .tech-name { font-size: 12px; font-weight: 600; color: var(--textd); text-transform: uppercase; letter-spacing: 1px; }
+    .tech-det  { font-size: 11px; color: var(--textm); margin-top: 4px; }
+
+    /* ─── CLINIC BOOKING ─── */
+    .clinic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-bottom: 48px; }
+    .clinic-card {
+      --clinic-accent: var(--gold);
+      --clinic-border-hover: rgba(212,165,116,.58);
+      --clinic-ring: rgba(212,165,116,.22);
+      --clinic-glow: rgba(212,165,116,.16);
+      --clinic-dur: .35s;
+      --clinic-fast: .28s;
+      --clinic-ease: cubic-bezier(.22,.61,.36,1);
+      background: var(--g2);
       border: 1px solid var(--gb);
-      border-radius: 8px;
-    }
-    .nav-back:hover { color: var(--gold); border-color: rgba(212,165,116,.3); }
-
-    /* Page */
-    .page {
+      border-radius: var(--rx);
+      padding: 32px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: transform var(--clinic-dur) var(--clinic-ease), border-color var(--clinic-fast) ease, background var(--clinic-fast) ease, box-shadow var(--clinic-dur) var(--clinic-ease);
+      box-shadow: 0 10px 28px rgba(0,0,0,.18);
+      cursor: pointer;
       position: relative;
-      z-index: 1;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: clamp(40px, 8vw, 96px) clamp(16px, 4vw, 48px);
+      overflow: hidden;
     }
+    .clinic-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% -20%, var(--clinic-glow), transparent 55%);
+      opacity: 0;
+      transition: opacity .3s ease;
+      pointer-events: none;
+    }
+    .clinic-card:hover {
+      border-color: var(--clinic-border-hover);
+      background: rgba(255,255,255,0.06);
+      transform: translate3d(0, -6px, 0);
+      box-shadow: 0 18px 38px rgba(0,0,0,.28), 0 0 0 1px var(--clinic-ring);
+    }
+    .clinic-card:hover::before { opacity: 1; }
+    .clinic-card.dental { --clinic-accent: #00c4b4; --clinic-border-hover: rgba(0,196,180,.58); --clinic-ring: rgba(0,196,180,.22); --clinic-glow: rgba(0,196,180,.16); }
+    .clinic-card.dermatology { --clinic-accent: #f43f5e; --clinic-border-hover: rgba(244,63,94,.58); --clinic-ring: rgba(244,63,94,.22); --clinic-glow: rgba(244,63,94,.16); }
+    .clinic-card.polyclinic { --clinic-accent: #f59e0b; --clinic-border-hover: rgba(245,158,11,.58); --clinic-ring: rgba(245,158,11,.22); --clinic-glow: rgba(245,158,11,.16); }
+    .clinic-icon { font-size: 48px; margin-bottom: 16px; }
+    .clinic-title { margin-bottom: 8px; }
+    .clinic-copy { color: var(--textd); font-size: 14px; margin-bottom: 20px; line-height: 1.6; }
 
-    /* Hero */
-    .hero-badge {
+    /* ─── Route Hub ─── */
+    .route-panel {
+      background:
+        radial-gradient(circle at top right, rgba(14,165,233,.14), transparent 30%),
+        radial-gradient(circle at top left, rgba(212,165,116,.16), transparent 32%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border: 1px solid var(--gb);
+      border-radius: calc(var(--rx) + 8px);
+      padding: 36px;
+      box-shadow: var(--sh);
+      position: relative;
+      overflow: hidden;
+    }
+    .route-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, rgba(255,255,255,.05), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,.03), transparent 40%);
+      pointer-events: none;
+    }
+    .route-shell,
+    .route-panel > * { position: relative; z-index: 1; }
+    .route-shell {
+      display: grid;
+      gap: 28px;
+    }
+    .route-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .route-hero .sec-head {
+      margin-bottom: 0;
+      text-align: left;
+    }
+    [dir="rtl"] .route-hero .sec-head { text-align: right; }
+    .route-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .route-pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(212,165,116,.08);
-      border: 1px solid rgba(212,165,116,.2);
-      border-radius: 100px;
-      padding: 6px 14px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--gold);
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-    .hero-badge .dot {
-      width: 7px; height: 7px;
-      background: var(--gold);
-      border-radius: 50%;
-      animation: pulse-dot 2s infinite;
-    }
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; }
-      50% { opacity: .4; }
-    }
-
-    h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(32px, 5vw, 56px);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -.02em;
-      margin-bottom: 20px;
-    }
-    h1 em {
-      font-style: normal;
-      background: linear-gradient(90deg, var(--gold), #f0c99a);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero-sub {
-      font-size: 17px;
+      padding: 8px 12px;
+      border-radius: var(--rnd);
+      border: 1px solid var(--gb);
+      background: rgba(255,255,255,.04);
       color: var(--textd);
-      line-height: 1.7;
-      max-width: 620px;
-      margin-bottom: 48px;
+      font-size: 12px;
+      line-height: 1;
     }
-
-    /* Section label */
-    .stag {
-      display: inline-block;
+    .route-pill strong {
+      font-size: 11px;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+    .route-summary {
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--gb);
+      border-radius: var(--r);
+      padding: 22px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .route-summary-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: .12em;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: var(--textdd);
-      margin-bottom: 16px;
+      color: var(--gold);
     }
-
-    /* Grid */
-    .screen-grid {
+    .route-summary-kicker::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 10px rgba(212,165,116,.45);
+    }
+    .route-summary-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 24px;
-      margin-bottom: 64px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
     }
-
-    /* Screen card */
-    .screen-card {
-      background: var(--g1);
+    .route-summary-item {
+      padding: 16px 14px;
+      border-radius: var(--rs);
       border: 1px solid var(--gb);
-      border-radius: var(--rx);
-      overflow: hidden;
+      background: rgba(255,255,255,.03);
+    }
+    .route-summary-item strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 26px;
+      line-height: 1;
+      color: var(--text);
+      font-family: var(--fd);
+    }
+    .route-summary-item span {
+      display: block;
+      font-size: 11px;
+      line-height: 1.6;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--textm);
+    }
+    .route-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .route-groups {
+      display: grid;
+      gap: 28px;
+    }
+    .route-group {
+      display: grid;
+      gap: 16px;
+    }
+    .route-group-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 2px;
+    }
+    .route-group-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .route-group-label::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 10px rgba(212,165,116,.4);
+    }
+    .route-group-copy {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--textm);
+      max-width: 720px;
+    }
+    .route-group-count {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border-radius: var(--rnd);
+      border: 1px solid var(--gb);
+      color: var(--textd);
+      background: rgba(255,255,255,.04);
+      white-space: nowrap;
+    }
+    .route-grid-primary {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .route-grid-primary .route-card.featured {
+      grid-column: span 2;
+      min-height: 300px;
+    }
+    .route-card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-height: 154px;
+      padding: 18px;
+      border-radius: var(--r);
+      border: 1px solid var(--gb);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
       text-decoration: none;
       color: var(--text);
-      transition: transform .25s, border-color .25s, box-shadow .25s;
-      display: flex;
-      flex-direction: column;
+      transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease;
+      position: relative;
+      overflow: hidden;
     }
-    .screen-card:hover {
+    .route-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(255,255,255,.08), transparent 38%);
+      opacity: 0;
+      transition: opacity .25s ease;
+      pointer-events: none;
+    }
+    .route-card:hover {
       transform: translateY(-6px);
-      border-color: rgba(212,165,116,.3);
-      box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(212,165,116,.1);
+      border-color: var(--gbh);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      box-shadow: 0 14px 36px rgba(0,0,0,.35), 0 0 40px rgba(212,165,116,.06);
     }
-    .screen-thumb {
-      width: 100%;
-      aspect-ratio: 16/9;
-      object-fit: cover;
-      display: block;
-      background: var(--void2);
-      border-bottom: 1px solid var(--gb);
+    .route-card:hover::before { opacity: 1; }
+    .route-card.featured {
+      border-color: rgba(212,165,116,.36);
+      background:
+        radial-gradient(circle at top right, rgba(212,165,116,.18), transparent 32%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
     }
-    .screen-body {
-      padding: 20px;
-      flex: 1;
+    .route-card-top {
       display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .screen-num {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .1em;
-      color: var(--textdd);
-      text-transform: uppercase;
-    }
-    .screen-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 17px;
-      font-weight: 700;
-      line-height: 1.3;
-    }
-    .screen-desc {
-      font-size: 13px;
-      color: var(--textd);
-      line-height: 1.6;
-      flex: 1;
-    }
-    .screen-arrow {
-      display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
-      margin-top: 16px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--gold);
-      letter-spacing: .04em;
-    }
-
-    /* Accent card variant */
-    .screen-card.featured {
-      border-color: rgba(212,165,116,.25);
-      background: linear-gradient(135deg, rgba(212,165,116,.05) 0%, var(--g2) 100%);
-    }
-
-    /* CTA bar */
-    .cta-bar {
-      background: var(--g1);
-      border: 1px solid var(--gb);
-      border-radius: var(--rx);
-      padding: 40px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-      flex-wrap: wrap;
-    }
-    .cta-bar h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-    .cta-bar p {
-      font-size: 14px;
-      color: var(--textd);
-      max-width: 480px;
-    }
-    .cta-acts {
-      display: flex;
       gap: 12px;
-      flex-wrap: wrap;
-      flex-shrink: 0;
     }
-
-    /* Buttons */
-    .btn {
+    .route-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 10px 22px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all .2s;
-      cursor: pointer;
-      border: 1px solid transparent;
+      font-size: 20px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--gb);
+      flex-shrink: 0;
+    }
+    .route-card-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 5px 9px;
+      border-radius: var(--rnd);
+      border: 1px solid var(--gb);
+      color: var(--gold);
+      background: rgba(255,255,255,.04);
       white-space: nowrap;
     }
-    .btn-p {
-      background: linear-gradient(135deg, #1e3a5f, #1a2f50);
-      border-color: rgba(212,165,116,.3);
+    .route-card-kicker {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       color: var(--gold);
     }
-    .btn-p:hover {
-      background: linear-gradient(135deg, #254870, #1e3a5f);
-      border-color: rgba(212,165,116,.6);
-      box-shadow: 0 0 20px rgba(212,165,116,.1);
-    }
-    .btn-g {
-      background: var(--g1);
-      border-color: var(--gb);
-      color: var(--textd);
-    }
-    .btn-g:hover {
-      border-color: rgba(255,255,255,.15);
+    .route-card-title {
+      font-size: 19px;
+      line-height: 1.25;
       color: var(--text);
     }
-
-    /* Footer */
-    footer {
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid var(--gb);
-      padding: 28px clamp(16px, 4vw, 48px);
+    .route-card-meta {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--textm);
+      margin-top: auto;
     }
-    .f-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
+    .route-card-arrow {
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--textd);
+    }
+    .route-card:hover .route-card-arrow { color: var(--gold); }
+    .route-card-arrow span:last-child {
+      transition: transform .2s ease;
+    }
+    .route-card:hover .route-card-arrow span:last-child {
+      transform: translateX(4px);
+    }
+    .route-note {
+      margin-top: 4px;
+      padding: 16px 18px;
+      border-radius: var(--rs);
+      border: 1px solid var(--gb);
+      background: rgba(255,255,255,.035);
+      color: var(--textm);
+      font-size: 13px;
+      line-height: 1.7;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .route-note::before {
+      content: '↗';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(212,165,116,.12);
+      color: var(--gold);
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+
+    /* ─── AI WORKFLOWS + OPS SNAPSHOT ─── */
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .workflow-card,
+    .ops-panel {
+      background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
+      border: 1px solid var(--gb);
+      border-radius: var(--r);
+      position: relative;
+      overflow: hidden;
+      transition: all .35s cubic-bezier(.4,0,.2,1);
+    }
+    .workflow-card {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
       gap: 16px;
+      min-height: 100%;
+    }
+    .workflow-card::before,
+    .ops-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212,165,116,.45), transparent);
+      opacity: .7;
+    }
+    .workflow-card:hover,
+    .ops-panel:hover {
+      border-color: var(--gbh);
+      background: var(--g2);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.4), 0 0 40px rgba(212,165,116,.06);
+    }
+    .workflow-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      background: var(--g2);
+      border: 1px solid var(--gb);
+    }
+    .workflow-title {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+    .workflow-copy {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--textd);
+      flex-grow: 1;
+    }
+    .workflow-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .workflow-foot {
+      padding-top: 14px;
+      border-top: 1px solid var(--gb);
+      font-size: 12px;
+      color: var(--textm);
+      line-height: 1.6;
+    }
+    .ops-board {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .ops-panel { padding: 28px; }
+    .ops-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .ops-kicker::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 10px rgba(212,165,116,.55);
+    }
+    .ops-copy {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--textd);
+      margin-bottom: 24px;
+    }
+    .ops-flow {
+      display: flex;
+      align-items: stretch;
+      gap: 14px;
       flex-wrap: wrap;
     }
-    .f-inner a { color: var(--textd); text-decoration: none; font-size: 13px; transition: color .2s; }
-    .f-inner a:hover { color: var(--gold); }
-    .f-copy { font-size: 13px; color: var(--textdd); }
+    .ops-node {
+      flex: 1 1 160px;
+      min-height: 108px;
+      padding: 18px 16px;
+      border-radius: var(--rs);
+      border: 1px solid var(--gb);
+      background: var(--g1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+    }
+    .ops-node strong {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.45;
+    }
+    .ops-node small {
+      font-size: 12px;
+      color: var(--textm);
+      line-height: 1.5;
+    }
+    .ops-arrow {
+      align-self: center;
+      font-size: 24px;
+      color: var(--gold);
+      opacity: .8;
+    }
+    .ops-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .ops-metric {
+      background: var(--g1);
+      border: 1px solid var(--gb);
+      border-radius: var(--rs);
+      padding: 18px 16px;
+    }
+    .ops-value {
+      font-size: clamp(26px, 3vw, 34px);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: 8px;
+      font-family: var(--fd);
+    }
+    .ops-label {
+      font-size: 11px;
+      color: var(--textm);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.25px;
+      line-height: 1.6;
+    }
+    .ops-stack {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .ops-stack-row {
+      display: grid;
+      grid-template-columns: 84px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 12px 14px;
+      border-radius: var(--rs);
+      border: 1px solid var(--gb);
+      background: var(--g1);
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--textd);
+    }
+    .ops-stack-row strong {
+      font-size: 11px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .ops-note {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--gb);
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--textm);
+    }
 
-    @media (max-width: 640px) {
-      .screen-grid { grid-template-columns: 1fr; }
-      .cta-bar { padding: 28px 24px; }
-      .cta-acts { width: 100%; }
-      .cta-acts .btn { flex: 1; }
+    /* ─── CTA ─── */
+    .cta-sec { background: var(--deep); position: relative; overflow: hidden; }
+    .cta-sec::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(212,165,116,.08), transparent 60%); }
+    .cta-inner { text-align: center; position: relative; max-width: 720px; margin: 0 auto; }
+    .cta-inner h2 { font-size: clamp(26px, 4vw, 44px); margin-bottom: 20px; }
+    .cta-inner p  { font-size: 16px; color: var(--textd); margin-bottom: 40px; line-height: 1.7; }
+    .cta-acts { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── FOOTER ─── */
+    footer { border-top: 1px solid var(--gb); padding: 80px 0 40px; background: var(--deep); }
+    .f-grid  { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 64px; }
+    .f-brand { display: flex; flex-direction: column; gap: 16px; }
+    .f-desc  { color: var(--textm); font-size: 14px; max-width: 300px; line-height: 1.65; }
+    .f-social { display: flex; gap: 10px; }
+    .f-social a { width: 36px; height: 36px; border-radius: var(--rx); background: var(--g1); border: 1px solid var(--gb); display: flex; align-items: center; justify-content: center; color: var(--textd); text-decoration: none; font-size: 13px; font-weight: 700; transition: all .2s; }
+    .f-social a:hover { background: var(--g2); border-color: var(--gbh); color: var(--gold); }
+    .f-title { font-size: 11px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; font-family: var(--fd); }
+    .f-links { display: flex; flex-direction: column; gap: 10px; list-style: none; }
+    .f-links a { color: var(--textm); text-decoration: none; font-size: 14px; transition: color .2s; }
+    .f-links a:hover { color: var(--gold); }
+    .f-badge { font-size: 11px; color: var(--texts); font-family: var(--fm); background: var(--g1); border: 1px solid var(--gb); border-radius: var(--rx); padding: 4px 10px; display: inline-block; margin-top: 8px; }
+    .f-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; border-top: 1px solid var(--gb); color: var(--textm); font-size: 12px; }
+    .f-legal  { display: flex; gap: 16px; }
+    .f-legal a { color: var(--textm); text-decoration: none; transition: color .2s; }
+    .f-legal a:hover { color: var(--textd); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .plat-grid   { grid-template-columns: 1fr 1fr; }
+      .route-hero { grid-template-columns: 1fr; }
+      .route-grid-primary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .workflow-grid { grid-template-columns: 1fr 1fr; }
+      .ops-board { grid-template-columns: 1fr; }
+      .vision-grid { grid-template-columns: 1fr; gap: 40px; }
+      .f-grid      { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 900px) {
+      .nl       { display: none; }
+      .lang-btn { display: none; }
+      .hbg      { display: flex; }
+      .stats-grid     { grid-template-columns: 1fr 1fr; }
+      .stat-item      { border-right: none; border-bottom: 1px solid var(--gb); }
+      .stat-item:last-child { border-bottom: none; }
+      .plat-grid      { grid-template-columns: 1fr; }
+      .hiw-grid       { grid-template-columns: 1fr; }
+      .hiw-connector  { display: none; }
+    }
+    @media (max-width: 600px) {
+      .f-grid    { grid-template-columns: 1fr; }
+      .f-bottom  { flex-direction: column; gap: 14px; text-align: center; }
+      .hero      { padding: 120px 0 60px; }
+      .hero-acts { flex-direction: column; align-items: center; }
+      .hero-acts .btn { width: 100%; max-width: 300px; }
+      .cta-acts  { flex-direction: column; align-items: center; }
+      .cta-acts .btn { width: 100%; max-width: 300px; }
+      .route-panel { padding: 24px; }
+      .route-group-head { flex-direction: column; align-items: flex-start; }
+      .route-grid-primary { grid-template-columns: 1fr; }
+      .route-grid-primary .route-card.featured { grid-column: span 1; min-height: 241px; }
+      .route-summary-grid { grid-template-columns: 1fr; }
+      .route-note { flex-direction: column; }
+      .workflow-grid { grid-template-columns: 1fr; }
+      .ops-metrics { grid-template-columns: 1fr; }
+      .ops-flow { flex-direction: column; }
+      .ops-arrow { transform: rotate(90deg); }
+      .ops-stack-row { grid-template-columns: 1fr; gap: 6px; }
+      .vs-grid   { grid-template-columns: 1fr 1fr; }
+      h1         { letter-spacing: -1px; }
+    }
+    @media (max-width: 400px) {
+      .stats-grid { grid-template-columns: 1fr; }
+    }
+    @media print {
+      #nav, .orb, #cvs, .hbg, .stage-lights { display: none !important; }
+      body { background: white; color: black; }
     }
   </style>
 </head>
 <body>
 
+<a href="#main" class="skip-link">Skip to content</a>
+<div class="noise-overlay" aria-hidden="true"></div>
+<canvas id="cvs" aria-hidden="true"></canvas>
 <div class="orb o1" aria-hidden="true"></div>
 <div class="orb o2" aria-hidden="true"></div>
+<div class="orb o3" aria-hidden="true"></div>
 
-<!-- Nav -->
-<nav>
+<!-- ═══ NAVBAR ═══ -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
   <div class="ni">
     <a href="/" class="nb" aria-label="BrainSAIT Home">
       <div class="nlogo" aria-hidden="true">B</div>
-      <span>BRAIN<em>SAIT</em></span>
+      <span class="nn">BRAIN<em>SAIT</em></span>
     </a>
-    <a href="/" class="nav-back" aria-label="Back to homepage">← Back to Home</a>
+    <div class="nl" role="menubar">
+      <a href="/platform"      role="menuitem">Platform</a>
+      <a href="#solutions"     role="menuitem">Solutions</a>
+      <a href="#how-it-works"  role="menuitem">How It Works</a>
+      <a href="#vision"        role="menuitem">Vision 2030</a>
+      <a href="/training/courses/" role="menuitem" class="nl-teal">Training</a>
+      <a href="/appstore"      role="menuitem" class="nl-gold">App Store</a>
+      <a href="/clinics"       role="menuitem">Clinics</a>
+      <a href="/partner"       role="menuitem" class="nl-vio">Partners</a>
+    </div>
+    <div class="na">
+      <button class="lang-btn" id="langToggle" aria-label="Switch language / تبديل اللغة">العربية</button>
+      <a href="/incubator" class="btn btn-g btn-sm btn-incubator">Launch Incubator</a>
+      <a href="/rcm" class="btn btn-p btn-sm">Launch RCM</a>
+      <button class="hbg" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
 
-<main class="page">
+<!-- Mobile Menu -->
+<div class="mob-menu" id="mobMenu" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="/platform">Platform</a>
+  <a href="#solutions">Solutions</a>
+  <a href="#how-it-works">How It Works</a>
+  <a href="#vision">Vision 2030</a>
+  <a href="/appstore" class="nl-gold">App Store</a>
+  <a href="/clinics">Clinics</a>
+  <a href="/training/courses/" class="nl-teal">Training &amp; Courses</a>
+  <a href="/docs">Documentation ↗</a>
+  <a href="/partner" class="nl-vio">Partners</a>
+  <div class="mob-sep"></div>
+  <a href="/rcm" class="btn btn-p">Launch RCM →</a>
+  <a href="https://calendar.app.google/V9KcXPcD1PeWDQHH8" target="_blank" rel="noopener noreferrer">Book Demo</a>
+</div>
 
-  <!-- Hero -->
-  <div style="margin-bottom: 64px;">
-    <div class="hero-badge"><div class="dot"></div> Solutions Portfolio</div>
-    <h1>The BrainSAIT <em>Platform</em><br>Design System</h1>
-    <p class="hero-sub">Four interactive screen views from the BrainSAIT Solutions Portfolio — built with Stitch. Explore the catalog, ecosystem hub, solution detail, and the ecosystem vision.</p>
-  </div>
+<!-- ═══ MAIN ═══ -->
+<main id="main" class="page">
 
-  <!-- Screen grid -->
-  <div style="margin-bottom: 16px;">
-    <span class="stag">Stitch Screens — 4 Views</span>
-  </div>
-
-  <div class="screen-grid">
-
-    <a href="home-ecosystem-hub.html" class="screen-card featured">
-      <img
-        src="home-ecosystem-hub.png"
-        alt="Home & Ecosystem Hub screen"
-        class="screen-thumb"
-        loading="lazy"
-        onerror="this.style.display='none'"
-      >
-      <div class="screen-body">
-        <span class="screen-num">Screen 01</span>
-        <div class="screen-title">Home &amp; Ecosystem Hub</div>
-        <p class="screen-desc">The central launch surface for the BrainSAIT ecosystem. Navigate all products, agents, and connected services from one place.</p>
-        <div class="screen-arrow">
-          <span>Open screen</span>
-          <span>→</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="solutions-catalog.html" class="screen-card">
-      <img
-        src="solutions-catalog.png"
-        alt="Solutions Catalog screen"
-        class="screen-thumb"
-        loading="lazy"
-        onerror="this.style.display='none'"
-      >
-      <div class="screen-body">
-        <span class="screen-num">Screen 02</span>
-        <div class="screen-title">Solutions Catalog</div>
-        <p class="screen-desc">Browse the full portfolio of BrainSAIT AI-native healthcare solutions, tools, and integrations available to providers across MENA.</p>
-        <div class="screen-arrow">
-          <span>Open screen</span>
-          <span>→</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="detailed-solution-view.html" class="screen-card">
-      <img
-        src="detailed-solution-view.png"
-        alt="Detailed Solution View screen"
-        class="screen-thumb"
-        loading="lazy"
-        onerror="this.style.display='none'"
-      >
-      <div class="screen-body">
-        <span class="screen-num">Screen 03</span>
-        <div class="screen-title">Detailed Solution View</div>
-        <p class="screen-desc">Deep-dive into any individual solution — features, integration points, compliance specs, and implementation pathways.</p>
-        <div class="screen-arrow">
-          <span>Open screen</span>
-          <span>→</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="ecosystem-vision.html" class="screen-card">
-      <img
-        src="ecosystem-vision.png"
-        alt="Ecosystem Vision screen"
-        class="screen-thumb"
-        loading="lazy"
-        onerror="this.style.display='none'"
-      >
-      <div class="screen-body">
-        <span class="screen-num">Screen 04</span>
-        <div class="screen-title">Ecosystem Vision</div>
-        <p class="screen-desc">The strategic roadmap and long-term ecosystem architecture — showing how BrainSAIT connects providers, payers, and government health systems.</p>
-        <div class="screen-arrow">
-          <span>Open screen</span>
-          <span>→</span>
-        </div>
-      </div>
-    </a>
-
-  </div>
-
-  <!-- CTA bar -->
-  <div class="cta-bar">
-    <div>
-      <h2>Ready to see it in production?</h2>
-      <p>The RCM Suite is live. Launch ClaimLinc to experience real-time NPHIES claims processing, or browse the full App Store for all BrainSAIT products.</p>
+  <!-- ── HERO ── -->
+  <section class="hero" aria-label="Hero">
+    <div class="stage-lights" aria-hidden="true">
+      <div class="sl sl1"></div>
+      <div class="sl sl2"></div>
+      <div class="sl sl3"></div>
     </div>
-    <div class="cta-acts">
-      <a href="/rcm" class="btn btn-p">Launch RCM →</a>
-      <a href="/appstore" class="btn btn-g">App Store</a>
+    <div class="c">
+      <div class="hero-badge">
+        <div class="pulse" aria-hidden="true"></div>
+        <span class="en">NPHIES Connected · Live</span>
+        <span class="ar">متصل بـ NPHIES · مباشر</span>
+      </div>
+      <h1>
+        <span class="en">AI-Native Healthcare.<br><span class="tg" id="tw-target">Automated &amp; Compliant.</span><span class="tw-cursor" aria-hidden="true"></span></span>
+        <span class="ar">رعاية صحية بالذكاء الاصطناعي.<br><span class="tg">مؤتمتة ومتوافقة.</span></span>
+      </h1>
+      <p class="hero-sub">
+        <span class="en">BrainSAIT delivers AI-native claims, clinical, and compliance automation for Saudi Arabia &amp; MENA. Built on FHIR R4, fully bilingual, and designed for scale.</span>
+        <span class="ar">برينسايت تُقدّم أتمتة المطالبات والسريريات والامتثال بالذكاء الاصطناعي للمملكة العربية السعودية ومنطقة الشرق الأوسط وشمال أفريقيا. مبنية على معيار FHIR R4 وثنائية اللغة.</span>
+      </p>
+      <div class="hero-acts">
+        <a href="#solutions" class="btn btn-p btn-lg">
+          <span class="en">Explore Solutions</span><span class="ar">استكشف الحلول</span> →
+        </a>
+        <a href="/docs" class="btn btn-g btn-lg">
+          <span class="en">Documentation</span><span class="ar">الوثائق</span>
+        </a>
+      </div>
+      <div class="hero-chips">
+        <div class="chip"><div class="dot dg"></div> NPHIES v3.2</div>
+        <div class="chip"><div class="dot dt"></div> FHIR R4 Native</div>
+        <div class="chip"><div class="dot de"></div> HL7 Compliant</div>
+        <div class="chip"><div class="dot dv"></div> Vision 2030 Aligned</div>
+        <div class="chip"><div class="dot dg"></div> MCP Extension Ready</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TRUST BAR ── -->
+  <div class="trust-bar" aria-label="Certifications and compliance">
+    <div class="trust-inner">
+      <div class="ti"><span>🏥</span> NPHIES v3.2 Certified</div>
+      <div class="ti-sep" aria-hidden="true"></div>
+      <div class="ti"><span>🔗</span> FHIR R4 Native</div>
+      <div class="ti-sep" aria-hidden="true"></div>
+      <div class="ti"><span>⚕️</span> HL7 Standards</div>
+      <div class="ti-sep" aria-hidden="true"></div>
+      <div class="ti"><span>☁️</span> Cloudflare Secured</div>
+      <div class="ti-sep" aria-hidden="true"></div>
+      <div class="ti"><span>🇸🇦</span> Vision 2030</div>
+      <div class="ti-sep" aria-hidden="true"></div>
+      <div class="ti"><span>🔒</span> HIPAA Compliant</div>
+      <div class="ti-sep" aria-hidden="true"></div>
+      <div class="ti"><span>🤖</span> AI-Powered Agents</div>
     </div>
   </div>
+
+  <section aria-labelledby="routes-h">
+    <div class="c">
+      <div class="route-panel rev">
+        <div class="route-shell">
+          <div class="route-hero">
+            <div class="sec-head">
+              <span class="stag"><span class="en">Quick Access</span><span class="ar">وصول سريع</span></span>
+              <h2 id="routes-h">
+                <span class="en">Launch every public BrainSAIT route</span>
+                <span class="ar">شغّل جميع مسارات برينسايت العامة</span>
+              </h2>
+              <p class="ssub en" style="margin: 0; max-width: 720px;">Direct buttons for every current public route across apps, tools, docs, and company pages.</p>
+              <p class="ssub ar" style="margin: 0; max-width: 720px;">أزرار مباشرة لجميع المسارات العامة الحالية عبر التطبيقات والأدوات والوثائق وصفحات الشركة.</p>
+              <div class="route-highlights">
+                <div class="route-pill"><strong>10</strong> <span class="en">public entry points</span><span class="ar">نقاط دخول عامة</span></div>
+                <div class="route-pill"><strong>focused</strong> <span class="en">products, tools, docs</span><span class="ar">منتجات وأدوات ووثائق</span></div>
+                <div class="route-pill"><strong>hub</strong> <span class="en">one branded launch surface</span><span class="ar">واجهة إطلاق موحدة</span></div>
+              </div>
+            </div>
+            <aside class="route-summary">
+              <div class="route-summary-kicker"><span class="en">Route Snapshot</span><span class="ar">ملخص المسارات</span></div>
+              <div class="route-summary-grid">
+                <div class="route-summary-item">
+                  <strong>10</strong>
+                  <span><span class="en">Public Routes</span><span class="ar">مساراً عاماً</span></span>
+                </div>
+                <div class="route-summary-item">
+                  <strong>3</strong>
+                  <span><span class="en">Core Clusters</span><span class="ar">مجموعات أساسية</span></span>
+                </div>
+                <div class="route-summary-item">
+                  <strong>24/7</strong>
+                  <span><span class="en">Always Reachable</span><span class="ar">متاحة دائماً</span></span>
+                </div>
+                <div class="route-summary-item">
+                  <strong>1</strong>
+                  <span><span class="en">Unified Brand Door</span><span class="ar">بوابة علامة موحدة</span></span>
+                </div>
+              </div>
+            </aside>
+          </div>
+          <div class="route-groups">
+            <div class="route-group">
+              <div class="route-group-head">
+                <div>
+                  <div class="route-group-label"><span class="en">Primary launches</span><span class="ar">المسارات الأساسية</span></div>
+                  <div class="route-group-copy">
+                    <span class="en">Start with the main public surfaces for products, operations, care access, and documentation.</span>
+                    <span class="ar">ابدأ من الواجهات العامة الرئيسية للمنتجات والعمليات والوصول إلى الرعاية والوثائق.</span>
+                  </div>
+                </div>
+                  <div class="route-group-count"><span class="en">5 core routes</span><span class="ar">5 مسارات أساسية</span></div>
+                </div>
+                <div class="route-grid route-grid-primary">
+                <a href="/appstore" class="route-card">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">🛍️</div><div class="route-card-badge">Products</div></div>
+                  <div class="route-card-kicker"><span class="en">App hub</span><span class="ar">مركز التطبيقات</span></div>
+                  <div class="route-card-title"><span class="en">App Store</span><span class="ar">متجر التطبيقات</span></div>
+                  <div class="route-card-meta"><span class="en">Explore BrainSAIT products, launches, and connected experiences.</span><span class="ar">استكشف منتجات BrainSAIT والإطلاقات والتجارب المتصلة.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">Open route</span><span class="ar">افتح المسار</span></span><span>→</span></div>
+                </a>
+                <a href="/rcm" class="route-card featured">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">⚡</div><div class="route-card-badge">Featured</div></div>
+                  <div class="route-card-kicker"><span class="en">Revenue cycle</span><span class="ar">دورة الإيرادات</span></div>
+                  <div class="route-card-title"><span class="en">RCM Suite</span><span class="ar">حزمة RCM</span></div>
+                  <div class="route-card-meta"><span class="en">Jump straight into the flagship BrainSAIT operations and claims workflow.</span><span class="ar">انتقل مباشرة إلى سير عمل المطالبات والعمليات الرئيسي في BrainSAIT.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">Launch now</span><span class="ar">شغّل الآن</span></span><span>→</span></div>
+                </a>
+                <a href="/incubator" class="route-card">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">🚀</div><div class="route-card-badge">Innovation</div></div>
+                  <div class="route-card-kicker"><span class="en">Builders</span><span class="ar">للبنّائين</span></div>
+                  <div class="route-card-title"><span class="en">Incubator</span><span class="ar">الحاضنة</span></div>
+                  <div class="route-card-meta"><span class="en">Access venture, startup, and experimental BrainSAIT initiatives.</span><span class="ar">ادخل إلى مبادرات BrainSAIT الريادية والتجريبية ومشاريع الشركات الناشئة.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">Explore</span><span class="ar">استكشف</span></span><span>→</span></div>
+                </a>
+                <a href="/clinics" class="route-card">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">🏥</div><div class="route-card-badge">Care</div></div>
+                  <div class="route-card-kicker"><span class="en">Patient-facing</span><span class="ar">موجه للمرضى</span></div>
+                  <div class="route-card-title"><span class="en">Clinics</span><span class="ar">العيادات</span></div>
+                  <div class="route-card-meta"><span class="en">Open specialty clinic services, booking, and medical access points.</span><span class="ar">افتح خدمات العيادات المتخصصة والحجز ونقاط الوصول الطبية.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">Enter</span><span class="ar">ادخل</span></span><span>→</span></div>
+                </a>
+                <a href="/docs" class="route-card">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">📚</div><div class="route-card-badge">Knowledge</div></div>
+                  <div class="route-card-kicker"><span class="en">Documentation</span><span class="ar">الوثائق</span></div>
+                  <div class="route-card-title"><span class="en">Docs</span><span class="ar">الوثائق</span></div>
+                  <div class="route-card-meta"><span class="en">Read implementation guides, technical references, and product materials.</span><span class="ar">اقرأ أدلة التنفيذ والمراجع التقنية ومواد المنتجات.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">Read</span><span class="ar">اقرأ</span></span><span>→</span></div>
+                </a>
+              </div>
+            </div>
+
+            <div class="route-group">
+              <div class="route-group-head">
+                <div>
+                  <div class="route-group-label"><span class="en">Tools & workspaces</span><span class="ar">الأدوات ومساحات العمل</span></div>
+                  <div class="route-group-copy">
+                    <span class="en">Move directly into specialist utilities, AI review surfaces, and learning environments.</span>
+                    <span class="ar">انتقل مباشرة إلى الأدوات المتخصصة وواجهات المراجعة الذكية وبيئات التعلم.</span>
+                  </div>
+                </div>
+                  <div class="route-group-count"><span class="en">3 operational routes</span><span class="ar">3 مسارات تشغيلية</span></div>
+                </div>
+                <div class="route-grid">
+                <a href="/pdf-to-excel" class="route-card">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">📄</div><div class="route-card-badge">Utility</div></div>
+                  <div class="route-card-kicker"><span class="en">Data ops</span><span class="ar">عمليات البيانات</span></div>
+                  <div class="route-card-title"><span class="en">PDF to Excel</span><span class="ar">تحويل PDF إلى Excel</span></div>
+                  <div class="route-card-meta"><span class="en">Use the browser workspace for structured extraction and export.</span><span class="ar">استخدم مساحة العمل داخل المتصفح للاستخراج المنظم والتصدير.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">Open tool</span><span class="ar">افتح الأداة</span></span><span>→</span></div>
+                </a>
+                <a href="/tawnia-reconciliation" class="route-card">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">🧾</div><div class="route-card-badge">AI Ops</div></div>
+                  <div class="route-card-kicker"><span class="en">Reconciliation</span><span class="ar">التسوية</span></div>
+                  <div class="route-card-title"><span class="en">Tawnia AI</span><span class="ar">تعاونية AI</span></div>
+                  <div class="route-card-meta"><span class="en">Review payer decisions, compare outcomes, and export reconciled results.</span><span class="ar">راجع قرارات الجهة الدافعة وقارن النتائج وصدّر المخرجات المسوّاة.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">Open workspace</span><span class="ar">افتح مساحة العمل</span></span><span>→</span></div>
+                </a>
+                <a href="/training/courses/" class="route-card">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">🎓</div><div class="route-card-badge">Learning</div></div>
+                  <div class="route-card-kicker"><span class="en">Education</span><span class="ar">التعليم</span></div>
+                  <div class="route-card-title"><span class="en">Training</span><span class="ar">التدريب</span></div>
+                  <div class="route-card-meta"><span class="en">Open courses, certifications, and NPHIES learning pathways.</span><span class="ar">افتح الدورات والشهادات ومسارات تعلم NPHIES.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">Start learning</span><span class="ar">ابدأ التعلم</span></span><span>→</span></div>
+                </a>
+              </div>
+            </div>
+
+            <div class="route-group">
+              <div class="route-group-head">
+                <div>
+                  <div class="route-group-label"><span class="en">Company & governance</span><span class="ar">الشركة والحوكمة</span></div>
+                  <div class="route-group-copy">
+                    <span class="en">Reach the collaboration, company, talent, and policy surfaces that support the public BrainSAIT ecosystem.</span>
+                    <span class="ar">الوصول إلى واجهات التعاون والشركة والمواهب والسياسات التي تدعم منظومة BrainSAIT العامة.</span>
+                  </div>
+                </div>
+                  <div class="route-group-count"><span class="en">2 support routes</span><span class="ar">2 مساران داعمان</span></div>
+                </div>
+                <div class="route-grid">
+                <a href="/partner" class="route-card">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">🤝</div><div class="route-card-badge">Network</div></div>
+                  <div class="route-card-kicker"><span class="en">Ecosystem</span><span class="ar">الشركاء</span></div>
+                  <div class="route-card-title"><span class="en">Partners</span><span class="ar">الشركاء</span></div>
+                  <div class="route-card-meta"><span class="en">Meet implementation, channel, and strategic collaboration pathways.</span><span class="ar">تعرّف على قنوات التنفيذ والتوزيع ومسارات التعاون الاستراتيجي.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">Connect</span><span class="ar">تواصل</span></span><span>→</span></div>
+                </a>
+                <a href="/staff" class="route-card">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">👥</div><div class="route-card-badge">Company</div></div>
+                  <div class="route-card-kicker"><span class="en">People</span><span class="ar">الفريق</span></div>
+                  <div class="route-card-title"><span class="en">Staff</span><span class="ar">الموظفون</span></div>
+                  <div class="route-card-meta"><span class="en">Browse the BrainSAIT team surface and company-facing directories.</span><span class="ar">تصفّح واجهة فريق BrainSAIT والأدلة المرتبطة بالشركة.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">View team</span><span class="ar">اعرض الفريق</span></span><span>→</span></div>
+                </a>
+                <a href="/contact" class="route-card">
+                  <div class="route-card-top"><div class="route-card-icon" aria-hidden="true">✉️</div><div class="route-card-badge">Contact</div></div>
+                  <div class="route-card-kicker"><span class="en">Next step</span><span class="ar">الخطوة التالية</span></div>
+                  <div class="route-card-title"><span class="en">Contact</span><span class="ar">التواصل</span></div>
+                  <div class="route-card-meta"><span class="en">Open the contact form for demos, partnerships, hiring, and implementation requests.</span><span class="ar">افتح نموذج التواصل لطلبات العروض والشراكات والتوظيف والتنفيذ.</span></div>
+                  <div class="route-card-arrow"><span><span class="en">Open form</span><span class="ar">افتح النموذج</span></span><span>→</span></div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <p class="route-note">
+            <span class="en">Primary journeys stay above the fold. Legal, policy, and legacy access points remain available in the footer and canonical route structure.</span>
+            <span class="ar">تبقى المسارات الأساسية في الجزء العلوي. تظل المسارات القانونية والسياسات والمسارات القديمة متاحة في التذييل والبنية الأساسية للمسارات.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS ── -->
+  <div class="stats-wrap rev" aria-label="Key metrics">
+    <div class="c">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-val">
+            <span class="tg cnt" data-to="98.4" data-dec="1" data-sfx="%" aria-hidden="true">98.4%</span>
+            <span class="sr-only">98.4%</span>
+          </div>
+          <div class="stat-label"><span class="en">Claim Approval Rate</span><span class="ar">معدل الموافقة على المطالبات</span></div>
+          <div class="stat-sub"><span class="en">Industry avg: 82%</span><span class="ar">متوسط الصناعة: 82٪</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">
+            <span class="tg-teal cnt" data-to="1.2" data-dec="1" data-sfx="s" aria-hidden="true">1.2s</span>
+            <span class="sr-only">1.2s</span>
+          </div>
+          <div class="stat-label"><span class="en">Avg Processing Latency</span><span class="ar">متوسط وقت المعالجة</span></div>
+          <div class="stat-sub"><span class="en">Real-time automation</span><span class="ar">أتمتة فورية</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val"><span class="tg">FHIR R4</span></div>
+          <div class="stat-label"><span class="en">Native Standard</span><span class="ar">المعيار الأصلي</span></div>
+          <div class="stat-sub"><span class="en">Full spec compliance</span><span class="ar">امتثال كامل للمواصفات</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">
+            <span class="tg cnt" data-to="6" data-dec="0" data-sfx="" aria-hidden="true">6</span>
+            <span class="sr-only">6</span>
+          </div>
+          <div class="stat-label"><span class="en">Active LINC Agents</span><span class="ar">عوامل LINC النشطة</span></div>
+          <div class="stat-sub"><span class="en">Autonomous workflows</span><span class="ar">سير عمل مستقل</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PLATFORM / PRODUCTS ── -->
+  <section id="products" aria-labelledby="products-h">
+    <div class="c">
+      <div class="sec-head rev">
+        <span class="stag"><span class="en">Platform</span><span class="ar">المنصة</span></span>
+        <h2 id="products-h">
+          <span class="en">The Complete Healthcare AI Platform</span>
+          <span class="ar">منصة الذكاء الاصطناعي الصحية الشاملة</span>
+        </h2>
+        <p class="ssub en">Three core pillars powering next-generation healthcare operations across Saudi Arabia and MENA.</p>
+        <p class="ssub ar">ثلاث ركائز أساسية تُشغّل عمليات الرعاية الصحية من الجيل التالي عبر المملكة العربية السعودية ومنطقة الشرق الأوسط.</p>
+      </div>
+      <div class="plat-grid">
+        <div class="plat-card rev d1">
+          <div class="p-icon gold" aria-hidden="true">💡</div>
+          <h3 class="plat-title"><span class="en">ClaimLinc — RCM Engine</span><span class="ar">ClaimLinc — محرك RCM</span></h3>
+          <p class="plat-desc en">AI-powered Revenue Cycle Management with end-to-end NPHIES integration. From pre-auth to claim reconciliation, fully automated.</p>
+          <p class="plat-desc ar">إدارة دورة الإيرادات المدعومة بالذكاء الاصطناعي مع تكامل كامل مع NPHIES. من التفويض المسبق إلى تسوية المطالبات، بشكل مؤتمت بالكامل.</p>
+          <ul class="plat-feats">
+            <li><span class="en">Automated pre-authorization</span><span class="ar">تفويض مسبق مؤتمت</span></li>
+            <li><span class="en">Real-time claim submission</span><span class="ar">تقديم مطالبات فوري</span></li>
+            <li><span class="en">AI fraud detection</span><span class="ar">كشف الاحتيال بالذكاء الاصطناعي</span></li>
+            <li><span class="en">Predictive analytics dashboard</span><span class="ar">لوحة تحليلات تنبؤية</span></li>
+          </ul>
+          <a href="/rcm" class="p-link">
+            <span class="en">Explore ClaimLinc</span><span class="ar">استكشف ClaimLinc</span> →
+          </a>
+        </div>
+        <div class="plat-card rev d2">
+          <div class="p-icon teal" aria-hidden="true">🤖</div>
+          <h3 class="plat-title"><span class="en">LINC Agent Ecosystem</span><span class="ar">نظام LINC البيئي للعوامل</span></h3>
+          <p class="plat-desc en">Six autonomous AI agents orchestrated by MasterLINC, each specialized for claims, clinical decisions, compliance, coding, communication, and coordination.</p>
+          <p class="plat-desc ar">ستة عوامل ذكاء اصطناعي مستقلة ينسّقها MasterLINC، كلٌّ متخصص في المطالبات، والقرارات السريرية، والامتثال، والترميز، والتواصل، والتنسيق.</p>
+          <ul class="plat-feats">
+            <li><span class="en">MasterLINC orchestration layer</span><span class="ar">طبقة تنسيق MasterLINC</span></li>
+            <li><span class="en">ClaimLINC — claims automation</span><span class="ar">ClaimLINC — أتمتة المطالبات</span></li>
+            <li><span class="en">ClinicalLINC — medical decisions</span><span class="ar">ClinicalLINC — القرارات الطبية</span></li>
+            <li><span class="en">ComplianceLINC — regulatory</span><span class="ar">ComplianceLINC — الامتثال التنظيمي</span></li>
+          </ul>
+          <a href="https://github.com/Fadil369/masterlinc" target="_blank" rel="noopener noreferrer" class="p-link">
+            <span class="en">Explore Agents</span><span class="ar">استكشف العوامل</span> →
+          </a>
+        </div>
+        <div class="plat-card rev d3">
+          <div class="p-icon vio" aria-hidden="true">🔗</div>
+          <h3 class="plat-title"><span class="en">Unified Health Hub</span><span class="ar">محور الصحة الموحّد</span></h3>
+          <p class="plat-desc en">Centralized interoperability layer connecting EHR, ERP, payer, and government systems through a secure FHIR R4 pipeline with Cloudflare edge infrastructure.</p>
+          <p class="plat-desc ar">طبقة تشغيل بيني مركزية تربط أنظمة السجلات الصحية والـ ERP والجهات الدافعة والحكومية من خلال قناة FHIR R4 آمنة مع بنية Cloudflare التحتية.</p>
+          <ul class="plat-feats">
+            <li><span class="en">Oracle ERP integration bridge</span><span class="ar">جسر تكامل Oracle ERP</span></li>
+            <li><span class="en">FHIR R4 data pipeline</span><span class="ar">خط بيانات FHIR R4</span></li>
+            <li><span class="en">Cloudflare tunnel security</span><span class="ar">أمان نفق Cloudflare</span></li>
+            <li><span class="en">Real-time data synchronization</span><span class="ar">مزامنة البيانات الفورية</span></li>
+          </ul>
+          <a href="https://github.com/Fadil369/Unified-Health-Hub-1" target="_blank" rel="noopener noreferrer" class="p-link">
+            <span class="en">Explore Hub</span><span class="ar">استكشف المحور</span> →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SOLUTIONS SHOWCASE ── -->
+  <section class="solutions-bg" id="solutions" aria-labelledby="solutions-h">
+    <div class="c">
+      <div class="sec-head rev">
+        <span class="stag"><span class="en">Open Innovation</span><span class="ar">الابتكار المفتوح</span></span>
+        <h2 id="solutions-h">
+          <span class="en">Proven Solutions &amp; Integrations</span>
+          <span class="ar">حلول وتكاملات مُثبتة</span>
+        </h2>
+        <p class="ssub en">Discover our repositories, tools, and platforms engineered for next-generation healthcare operations.</p>
+        <p class="ssub ar">اكتشف مستودعاتنا وأدواتنا ومنصاتنا المُهندَسة لعمليات الرعاية الصحية من الجيل التالي.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card rev d1">
+          <div class="c-icon" aria-hidden="true">💻</div>
+          <h3 class="c-title">Brainsait RCM</h3>
+          <p class="c-desc en">AI-powered Revenue Cycle Management with complete NPHIES integration, FHIR R4 compliance, fraud detection, and predictive analytics for Saudi healthcare providers.</p>
+          <p class="c-desc ar">إدارة دورة الإيرادات المدعومة بالذكاء الاصطناعي مع التكامل الكامل مع NPHIES وامتثال FHIR R4 وكشف الاحتيال والتحليلات التنبؤية.</p>
+          <div class="c-tags"><span class="tag">TypeScript</span><span class="tag">NPHIES</span><span class="tag">AI/ML</span><span class="tag">FHIR R4</span></div>
+          <a href="/rcm" class="c-link">
+            <span class="en">Open Product</span><span class="ar">افتح المنتج</span> →
+          </a>
+        </article>
+        <article class="card rev d2">
+          <div class="c-icon" aria-hidden="true">🔧</div>
+          <h3 class="c-title">Oracle NPHIES Bridge</h3>
+          <p class="c-desc en">Enterprise bridge connecting Oracle ERP to NPHIES. Automated FHIR pipeline, claim scanning, and secure Cloudflare tunnel infrastructure.</p>
+          <p class="c-desc ar">جسر المؤسسة الذي يربط Oracle ERP بـ NPHIES. خط FHIR مؤتمت، وفحص المطالبات، وبنية نفق Cloudflare الآمنة.</p>
+          <div class="c-tags"><span class="tag">JavaScript</span><span class="tag">Oracle ERP</span><span class="tag">Cloudflare</span><span class="tag">Infra</span></div>
+          <a href="https://github.com/Fadil369/oracle-setup" target="_blank" rel="noopener noreferrer" class="c-link">
+            <span class="en">View Repository</span><span class="ar">عرض المستودع</span> →
+          </a>
+        </article>
+        <article class="card rev d3">
+          <div class="c-icon" aria-hidden="true">🤖</div>
+          <h3 class="c-title">BrainSAIT MCP Extension</h3>
+          <p class="c-desc en">HIPAA/NPHIES compliant Model Context Protocol extension. FHIR support, clinical decision workflows, and bilingual Arabic/English NLP.</p>
+          <p class="c-desc ar">امتداد بروتوكول سياق النموذج المتوافق مع HIPAA/NPHIES. دعم FHIR وسير عمل القرارات السريرية ومعالجة اللغة الطبيعية ثنائية اللغة.</p>
+          <div class="c-tags"><span class="tag">JavaScript</span><span class="tag">MCP</span><span class="tag">Healthcare AI</span><span class="tag">NLP</span></div>
+          <a href="https://github.com/Fadil369/brainsait-mcp-dxt" target="_blank" rel="noopener noreferrer" class="c-link">
+            <span class="en">View Repository</span><span class="ar">عرض المستودع</span> →
+          </a>
+        </article>
+        <article class="card rev d1">
+          <div class="c-icon" aria-hidden="true">📚</div>
+          <h3 class="c-title">NPHIES Training Platform</h3>
+          <p class="c-desc en">Bilingual LMS tailored for Saudi healthcare providers. Integrated payments, comprehensive NPHIES insurance modules, and professional certifications.</p>
+          <p class="c-desc ar">نظام إدارة التعلم ثنائي اللغة المصمم لمقدمي الرعاية الصحية السعوديين. مدفوعات متكاملة ووحدات تأمين NPHIES شاملة وشهادات مهنية.</p>
+          <div class="c-tags"><span class="tag">PHP</span><span class="tag">Education</span><span class="tag">FinTech</span><span class="tag">Bilingual</span></div>
+          <a href="https://github.com/Fadil369/nphies-course-platform" target="_blank" rel="noopener noreferrer" class="c-link">
+            <span class="en">View Repository</span><span class="ar">عرض المستودع</span> →
+          </a>
+        </article>
+        <article class="card rev d2">
+          <div class="c-icon" aria-hidden="true">⚙️</div>
+          <h3 class="c-title">MasterLINC Engine</h3>
+          <p class="c-desc en">Core orchestration layer for BrainSAIT's agent ecosystem. Routes and manages complex clinical, operational, and administrative multi-agent workflows.</p>
+          <p class="c-desc ar">طبقة التنسيق الأساسية لنظام BrainSAIT البيئي للعوامل. يوجّه ويدير سير العمل المعقدة متعددة العوامل السريرية والتشغيلية والإدارية.</p>
+          <div class="c-tags"><span class="tag">TypeScript</span><span class="tag">Agents</span><span class="tag">Orchestration</span><span class="tag">Core</span></div>
+          <a href="https://github.com/Fadil369/masterlinc" target="_blank" rel="noopener noreferrer" class="c-link">
+            <span class="en">View Repository</span><span class="ar">عرض المستودع</span> →
+          </a>
+        </article>
+        <article class="card rev d3">
+          <div class="c-icon" aria-hidden="true">🏥</div>
+          <h3 class="c-title">Unified Health Hub</h3>
+          <p class="c-desc en">Centralized healthcare interoperability interface — the focal point for patient data, provider workflows, and real-time health system connectivity.</p>
+          <p class="c-desc ar">واجهة التشغيل البيني المركزية للرعاية الصحية — نقطة الارتكاز لبيانات المرضى وسير عمل مقدمي الخدمات والاتصال الفوري بالنظام الصحي.</p>
+          <div class="c-tags"><span class="tag">TypeScript</span><span class="tag">Platform</span><span class="tag">Interoperability</span><span class="tag">FHIR</span></div>
+          <a href="https://github.com/Fadil369/Unified-Health-Hub-1" target="_blank" rel="noopener noreferrer" class="c-link">
+            <span class="en">View Repository</span><span class="ar">عرض المستودع</span> →
+          </a>
+        </article>
+        <article class="card rev d1">
+          <div class="c-icon" aria-hidden="true">📄</div>
+          <h3 class="c-title">PDF to Excel Extractor</h3>
+          <p class="c-desc en">Browser-based extraction workspace for structured contracts, claim reports, and tabular PDFs. Upload a file, review detected records, and export clean Excel output instantly.</p>
+          <p class="c-desc ar">مساحة استخراج تعمل داخل المتصفح للعقود المنظمة وتقارير المطالبات وملفات PDF الجدولية. ارفع الملف وراجع السجلات المكتشفة وصدّر مخرجات Excel فوراً.</p>
+          <div class="c-tags"><span class="tag">PDF.js</span><span class="tag">XLSX</span><span class="tag">Browser</span><span class="tag">Ops</span></div>
+          <a href="/pdf-to-excel" class="c-link">
+            <span class="en">Launch Tool</span><span class="ar">تشغيل الأداة</span> →
+          </a>
+        </article>
+        <article class="card rev d2">
+          <div class="c-icon" aria-hidden="true">🧾</div>
+          <h3 class="c-title">Tawnia Reconciliation AI</h3>
+          <p class="c-desc en">Interactive Saudi RCM review console for Tawnia claim decisions. Load Google Sheets or Excel data, apply AGREE or DISAGREE logic, and export reconciled outcomes.</p>
+          <p class="c-desc ar">وحدة مراجعة تفاعلية لإدارة دورة الإيرادات السعودية لقرارات مطالبات التعاونية. حمّل بيانات Google Sheets أو Excel وطبّق منطق AGREE أو DISAGREE وصدّر النتائج.</p>
+          <div class="c-tags"><span class="tag">Saudi RCM</span><span class="tag">Excel</span><span class="tag">Sheets</span><span class="tag">AI Review</span></div>
+          <a href="/tawnia-reconciliation" class="c-link">
+            <span class="en">Open Workspace</span><span class="ar">افتح مساحة العمل</span> →
+          </a>
+        </article>
+      </div>
+      <div style="text-align:center; margin-top:56px;" class="rev">
+        <a href="https://github.com/stars/Fadil369/lists/solutions" target="_blank" rel="noopener noreferrer" class="btn btn-g">
+          <span class="en">All Solutions on GitHub</span><span class="ar">جميع الحلول على GitHub</span> →
+        </a>
+        <a href="/docs" class="btn btn-g" style="margin-left:12px;">
+          <span class="en">Read the Docs</span><span class="ar">اقرأ الوثائق</span> →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section class="hiw-bg" id="how-it-works" aria-labelledby="hiw-h">
+    <div class="c">
+      <div class="sec-head rev">
+        <span class="stag"><span class="en">Process</span><span class="ar">العملية</span></span>
+        <h2 id="hiw-h">
+          <span class="en">How BrainSAIT Works</span>
+          <span class="ar">كيف يعمل برينسايت</span>
+        </h2>
+        <p class="ssub en">From clinical encounter to payment — fully automated, compliant, and intelligent.</p>
+        <p class="ssub ar">من لقاء المريض حتى الدفع — مؤتمت بالكامل، ومتوافق، وذكي.</p>
+      </div>
+      <div class="hiw-grid">
+        <div class="hiw-connector" aria-hidden="true"></div>
+        <div class="hiw-item rev d1">
+          <div class="hiw-num" aria-label="Step 1">01</div>
+          <h3 class="hiw-title"><span class="en">Ingest &amp; Validate</span><span class="ar">الاستيعاب والتحقق</span></h3>
+          <p class="hiw-desc en">Clinical data enters via FHIR R4 APIs or Oracle ERP connectors. AI agents validate against NPHIES schemas in real-time, flagging issues before submission.</p>
+          <p class="hiw-desc ar">تدخل البيانات السريرية عبر واجهات FHIR R4 أو موصلات Oracle ERP. تتحقق العوامل الذكية من مطابقة مخططات NPHIES في الوقت الفعلي.</p>
+        </div>
+        <div class="hiw-item rev d2">
+          <div class="hiw-num" aria-label="Step 2">02</div>
+          <h3 class="hiw-title"><span class="en">Process &amp; Route</span><span class="ar">المعالجة والتوجيه</span></h3>
+          <p class="hiw-desc en">MasterLINC orchestrates specialized agents — ClaimLINC handles submissions, ClinicalLINC reviews medical necessity, ComplianceLINC ensures regulatory alignment.</p>
+          <p class="hiw-desc ar">يُنسّق MasterLINC العوامل المتخصصة — ClaimLINC للتقديمات، وClinicalLINC للضرورة الطبية، وComplianceLINC للامتثال التنظيمي.</p>
+        </div>
+        <div class="hiw-item rev d3">
+          <div class="hiw-num" aria-label="Step 3">03</div>
+          <h3 class="hiw-title"><span class="en">Submit &amp; Reconcile</span><span class="ar">التقديم والتسوية</span></h3>
+          <p class="hiw-desc en">Claims are submitted with 98.4% first-pass approval. Automated reconciliation handles remittances, denials, and appeals — maximizing revenue recovery.</p>
+          <p class="hiw-desc ar">تُقدَّم المطالبات بنسبة موافقة 98.4٪. تتعامل التسوية الآلية مع الحوالات والرفض والطعون لتحقيق أقصى استرداد للإيرادات.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VISION 2030 ── -->
+  <section class="vision-sec" id="vision" aria-labelledby="vision-h">
+    <div class="c">
+      <div class="vision-grid">
+        <div class="rev">
+          <span class="stag"><span class="en">Vision 2030</span><span class="ar">رؤية 2030</span></span>
+          <h2 id="vision-h" style="text-align:left;">
+            <span class="en">Powering Saudi Arabia's Digital Health Future</span>
+            <span class="ar">تشغيل مستقبل الصحة الرقمية في المملكة العربية السعودية</span>
+          </h2>
+          <p style="font-size:15px;color:var(--textd);line-height:1.75;margin-bottom:20px;" class="en">
+            BrainSAIT is purpose-built to accelerate Saudi Arabia's healthcare digital transformation. Aligned with the National Transformation Program, our platform supports the Ministry of Health's ambition to modernize health information systems, improve clinical outcomes, and optimize healthcare spending.
+          </p>
+          <p style="font-size:15px;color:var(--textd);line-height:1.75;margin-bottom:20px;" class="ar">
+            صُمّم برينسايت خصيصاً لتسريع التحول الرقمي للرعاية الصحية في المملكة العربية السعودية. بما يتوافق مع برنامج التحول الوطني، تدعم منصتنا طموح وزارة الصحة في تحديث أنظمة المعلومات الصحية وتحسين النتائج السريرية.
+          </p>
+          <div class="vs-grid">
+            <div class="vs-item"><div class="vs-val">2030</div><div class="vs-label"><span class="en">Vision Aligned</span><span class="ar">رؤية متوافقة</span></div></div>
+            <div class="vs-item"><div class="vs-val">100%</div><div class="vs-label"><span class="en">NPHIES Compliant</span><span class="ar">متوافق مع NPHIES</span></div></div>
+            <div class="vs-item"><div class="vs-val">AR/EN</div><div class="vs-label"><span class="en">Fully Bilingual</span><span class="ar">ثنائي اللغة</span></div></div>
+            <div class="vs-item"><div class="vs-val">KSA</div><div class="vs-label"><span class="en">Locally Anchored</span><span class="ar">متجذّر محلياً</span></div></div>
+          </div>
+        </div>
+        <div class="v-cards rev d2">
+          <div class="v-card">
+            <div class="v-ci blue" aria-hidden="true">🏛️</div>
+            <div>
+              <div class="v-ct"><span class="en">Ministry of Health Integration</span><span class="ar">التكامل مع وزارة الصحة</span></div>
+              <div class="v-cd en">Direct NPHIES connectivity with full compliance to MOH regulations and standards for electronic health claims.</div>
+              <div class="v-cd ar">اتصال مباشر بـ NPHIES مع الامتثال الكامل للوائح ومعايير وزارة الصحة للمطالبات الصحية الإلكترونية.</div>
+            </div>
+          </div>
+          <div class="v-card">
+            <div class="v-ci gold" aria-hidden="true">🤖</div>
+            <div>
+              <div class="v-ct"><span class="en">AI-Driven Efficiency</span><span class="ar">الكفاءة المدفوعة بالذكاء الاصطناعي</span></div>
+              <div class="v-cd en">Reduce administrative burden by up to 70% through intelligent automation of claims, coding, and compliance workflows.</div>
+              <div class="v-cd ar">تقليل العبء الإداري بنسبة تصل إلى 70٪ من خلال الأتمتة الذكية للمطالبات والترميز وسير عمل الامتثال.</div>
+            </div>
+          </div>
+          <div class="v-card">
+            <div class="v-ci green" aria-hidden="true">📊</div>
+            <div>
+              <div class="v-ct"><span class="en">Data-Driven Healthcare</span><span class="ar">رعاية صحية مبنية على البيانات</span></div>
+              <div class="v-cd en">Real-time analytics and predictive insights enabling proactive care management and optimized revenue cycles.</div>
+              <div class="v-cd ar">تحليلات فورية ورؤى تنبؤية تتيح إدارة استباقية للرعاية ودورات إيرادات محسّنة.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TECHNOLOGY ── -->
+  <section aria-labelledby="tech-h">
+    <div class="c">
+      <div class="sec-head rev">
+        <span class="stag"><span class="en">Technology</span><span class="ar">التقنية</span></span>
+        <h2 id="tech-h">
+          <span class="en">Enterprise-Grade Infrastructure</span>
+          <span class="ar">بنية تحتية على مستوى المؤسسات</span>
+        </h2>
+        <p class="ssub en">Every component selected for reliability, security, and healthcare-grade performance.</p>
+        <p class="ssub ar">كل مكون محدد للموثوقية والأمان والأداء على مستوى الرعاية الصحية.</p>
+      </div>
+      <div class="tech-grid rev">
+        <div class="tech-item"><div class="tech-icon">🔗</div><div class="tech-name">FHIR R4</div><div class="tech-det">Interoperability</div></div>
+        <div class="tech-item"><div class="tech-icon">☁️</div><div class="tech-name">Cloudflare</div><div class="tech-det">Edge &amp; Security</div></div>
+        <div class="tech-item"><div class="tech-icon">🤖</div><div class="tech-name">AI / ML</div><div class="tech-det">Predictive Engine</div></div>
+        <div class="tech-item"><div class="tech-icon">🔒</div><div class="tech-name">Zero Trust</div><div class="tech-det">Security Model</div></div>
+        <div class="tech-item"><div class="tech-icon">📦</div><div class="tech-name">TypeScript</div><div class="tech-det">Type-Safe APIs</div></div>
+        <div class="tech-item"><div class="tech-icon">🏗️</div><div class="tech-name">Oracle ERP</div><div class="tech-det">ERP Integration</div></div>
+        <div class="tech-item"><div class="tech-icon">🧠</div><div class="tech-name">MCP Protocol</div><div class="tech-det">AI Context</div></div>
+        <div class="tech-item"><div class="tech-icon">⚡</div><div class="tech-name">Real-time</div><div class="tech-det">1.2s Latency</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="interactive-workflows" aria-labelledby="interactive-workflows-h">
+    <div class="c">
+      <div class="sec-head rev">
+        <span class="stag"><span class="en">Interactive Intelligence</span><span class="ar">الذكاء التفاعلي</span></span>
+        <h2 id="interactive-workflows-h">
+          <span class="en">Live workflow previews for claims, coding, and validation</span>
+          <span class="ar">معاينات حية لسير العمل في المطالبات والترميز والتحقق</span>
+        </h2>
+        <p class="ssub en">A homepage preview of BrainSAIT's deeper workflow ideas for claims review, FHIR validation, clinical safety, and coding.</p>
+        <p class="ssub ar">معاينة داخل الصفحة الرئيسية لأفكار سير العمل الأعمق في BrainSAIT لمراجعة المطالبات والتحقق من FHIR والسلامة السريرية والترميز.</p>
+      </div>
+      <div class="workflow-grid">
+        <article class="workflow-card rev d1">
+          <div class="workflow-icon" aria-hidden="true">🧠</div>
+          <div>
+            <h3 class="workflow-title"><span class="en">Claims AI Assistant</span><span class="ar">مساعد المطالبات الذكي</span></h3>
+          </div>
+          <p class="workflow-copy en">Pre-submission review that estimates approval probability, flags likely rejection codes, and recommends fixes before a claim reaches NPHIES.</p>
+          <p class="workflow-copy ar">مراجعة قبل الإرسال تقدّر احتمال الموافقة، وتكشف أكواد الرفض المتوقعة، وتقترح الإصلاحات قبل وصول المطالبة إلى نفيس.</p>
+          <div class="workflow-meta">
+            <span class="tag">NPHIES</span>
+            <span class="tag">AI Review</span>
+            <span class="tag">Risk Scoring</span>
+          </div>
+          <div class="workflow-foot">
+            <span class="en">Built for billing teams that want cleaner claims on first pass.</span>
+            <span class="ar">مصمم لفرق الفوترة التي تريد مطالبات أنظف من المحاولة الأولى.</span>
+          </div>
+        </article>
+        <article class="workflow-card rev d2">
+          <div class="workflow-icon" aria-hidden="true">🔗</div>
+          <div>
+            <h3 class="workflow-title"><span class="en">FHIR R4 Validator</span><span class="ar">مدقق FHIR R4</span></h3>
+          </div>
+          <p class="workflow-copy en">Checks resources against Saudi-aligned interoperability patterns, surfaces compliance gaps, and gives teams a clearer path to valid payloads.</p>
+          <p class="workflow-copy ar">يفحص الموارد مقابل أنماط التشغيل البيني المتوافقة مع السعودية، ويُظهر فجوات الامتثال، ويمنح الفرق مساراً أوضح نحو حمولة صحيحة.</p>
+          <div class="workflow-meta">
+            <span class="tag">FHIR R4</span>
+            <span class="tag">Saudi Core</span>
+            <span class="tag">Validation</span>
+          </div>
+          <div class="workflow-foot">
+            <span class="en">Useful for platform, integration, and compliance teams working on structured healthcare data.</span>
+            <span class="ar">مفيد لفرق المنصات والتكامل والامتثال التي تعمل على البيانات الصحية المنظمة.</span>
+          </div>
+        </article>
+        <article class="workflow-card rev d3">
+          <div class="workflow-icon" aria-hidden="true">💊</div>
+          <div>
+            <h3 class="workflow-title"><span class="en">Drug Interaction Checker</span><span class="ar">فاحص التداخلات الدوائية</span></h3>
+          </div>
+          <p class="workflow-copy en">Supports clinical safety workflows with rapid medication conflict review, severity awareness, and fast escalation points for care teams.</p>
+          <p class="workflow-copy ar">يدعم سير عمل السلامة السريرية من خلال مراجعة سريعة لتعارض الأدوية، وفهم شدة التداخل، ونقاط تصعيد سريعة لفرق الرعاية.</p>
+          <div class="workflow-meta">
+            <span class="tag">Clinical Safety</span>
+            <span class="tag">Medication</span>
+            <span class="tag">Triage</span>
+          </div>
+          <div class="workflow-foot">
+            <span class="en">Designed to help teams move from lookup to action without leaving the workflow.</span>
+            <span class="ar">مصمم لمساعدة الفرق على الانتقال من البحث إلى الإجراء دون مغادرة سير العمل.</span>
+          </div>
+        </article>
+        <article class="workflow-card rev d4">
+          <div class="workflow-icon" aria-hidden="true">🧾</div>
+          <div>
+            <h3 class="workflow-title"><span class="en">ICD-10 Code Finder</span><span class="ar">مستكشف أكواد ICD-10</span></h3>
+          </div>
+          <p class="workflow-copy en">Accelerates bilingual code discovery so coding teams can narrow diagnostic options quickly and support cleaner downstream documentation.</p>
+          <p class="workflow-copy ar">يسرّع اكتشاف الأكواد ثنائي اللغة حتى تتمكن فرق الترميز من تضييق الخيارات التشخيصية بسرعة ودعم توثيق أكثر دقة في المراحل اللاحقة.</p>
+          <div class="workflow-meta">
+            <span class="tag">ICD-10</span>
+            <span class="tag">Bilingual</span>
+            <span class="tag">Coding</span>
+          </div>
+          <div class="workflow-foot">
+            <span class="en">A strong fit for coding desks, utilization review, and documentation improvement.</span>
+            <span class="ar">مناسب بقوة لمكاتب الترميز ومراجعة الاستخدام وتحسين التوثيق.</span>
+          </div>
+        </article>
+      </div>
+      <div class="route-panel rev" style="margin-top:32px;">
+        <div class="sec-head" style="margin-bottom:24px;">
+          <span class="stag"><span class="en">Next Step</span><span class="ar">الخطوة التالية</span></span>
+          <p class="ssub en">Use the current BrainSAIT routes to explore production systems while these workflow concepts expand across the homepage.</p>
+          <p class="ssub ar">استخدم مسارات BrainSAIT الحالية لاستكشاف الأنظمة الإنتاجية بينما تتوسع مفاهيم سير العمل هذه داخل الصفحة الرئيسية.</p>
+        </div>
+        <div class="route-grid">
+          <a href="/rcm" class="btn btn-p"><span class="en">Launch RCM</span><span class="ar">تشغيل RCM</span></a>
+          <a href="/docs" class="btn btn-g"><span class="en">Read Documentation</span><span class="ar">قراءة الوثائق</span></a>
+          <a href="/appstore" class="btn btn-g"><span class="en">Open App Store</span><span class="ar">فتح متجر التطبيقات</span></a>
+          <a href="https://calendar.app.google/V9KcXPcD1PeWDQHH8" target="_blank" rel="noopener noreferrer" class="btn btn-g"><span class="en">Schedule a Demo</span><span class="ar">جدولة عرض توضيحي</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="solutions-bg" id="edge-operations" aria-labelledby="edge-operations-h">
+    <div class="c">
+      <div class="sec-head rev">
+        <span class="stag"><span class="en">Operations Snapshot</span><span class="ar">لقطة تشغيلية</span></span>
+        <h2 id="edge-operations-h">
+          <span class="en">The edge architecture behind BrainSAIT</span>
+          <span class="ar">البنية الطرفية التي تقف خلف BrainSAIT</span>
+        </h2>
+        <p class="ssub en">A homepage view of the infrastructure story: how provider systems, edge runtime, AI review, and NPHIES routing connect into payer outcomes.</p>
+        <p class="ssub ar">عرض داخل الصفحة الرئيسية لقصة البنية التحتية: كيف تتصل أنظمة المزود وبيئة الحافة والمراجعة الذكية وتوجيه نفيس للوصول إلى نتائج الجهة الدافعة.</p>
+      </div>
+      <div class="ops-board">
+        <article class="ops-panel rev d1">
+          <div class="ops-kicker"><span class="en">Architecture Flow</span><span class="ar">تدفق البنية</span></div>
+          <h3 class="workflow-title"><span class="en">From clinic systems to payer adjudication</span><span class="ar">من أنظمة العيادات إلى قرار الجهة الدافعة</span></h3>
+          <p class="ops-copy en">This snapshot shows the path claims and clinical payloads follow across the platform, from provider systems through edge processing and NPHIES routing to payer outcomes.</p>
+          <p class="ops-copy ar">تُظهر هذه اللقطة المسار الذي تتبعه المطالبات والحمولات السريرية عبر المنصة، من أنظمة المزود مروراً بالمعالجة الطرفية وتوجيه نفيس وصولاً إلى نتائج الجهة الدافعة.</p>
+          <div class="ops-flow" aria-label="Architecture flow">
+            <div class="ops-node">
+              <strong><span class="en">Provider Systems</span><span class="ar">أنظمة المزود</span></strong>
+              <small><span class="en">eCarePlus, APIs, ERP connectors</span><span class="ar">‏eCarePlus وواجهات API وموصلات ERP</span></small>
+            </div>
+            <div class="ops-arrow" aria-hidden="true">→</div>
+            <div class="ops-node">
+              <strong><span class="en">Edge Runtime</span><span class="ar">بيئة الحافة</span></strong>
+              <small><span class="en">BrainSAIT API and worker orchestration</span><span class="ar">واجهة BrainSAIT API وتنسيق العمال</span></small>
+            </div>
+            <div class="ops-arrow" aria-hidden="true">→</div>
+            <div class="ops-node">
+              <strong><span class="en">AI Review Layer</span><span class="ar">طبقة المراجعة الذكية</span></strong>
+              <small><span class="en">Claims, validation, compliance checks</span><span class="ar">فحوص المطالبات والتحقق والامتثال</span></small>
+            </div>
+            <div class="ops-arrow" aria-hidden="true">→</div>
+            <div class="ops-node">
+              <strong><span class="en">NPHIES Gateway</span><span class="ar">بوابة نفيس</span></strong>
+              <small><span class="en">Eligibility, prior auth, claims routing</span><span class="ar">الأهلية والتفويض المسبق وتوجيه المطالبات</span></small>
+            </div>
+            <div class="ops-arrow" aria-hidden="true">→</div>
+            <div class="ops-node">
+              <strong><span class="en">Payer Decision</span><span class="ar">قرار الجهة الدافعة</span></strong>
+              <small><span class="en">Adjudication, remittance, reconciliation</span><span class="ar">الفصل والتحويلات والتسوية</span></small>
+            </div>
+          </div>
+        </article>
+        <aside class="ops-panel rev d2">
+          <div class="ops-kicker"><span class="en">Live Estate</span><span class="ar">البيئة الحية</span></div>
+          <div class="ops-metrics" aria-label="Infrastructure metrics">
+            <div class="ops-metric">
+              <div class="ops-value">71</div>
+              <div class="ops-label"><span class="en">Cloudflare Workers</span><span class="ar">عامل Cloudflare</span></div>
+            </div>
+            <div class="ops-metric">
+              <div class="ops-value">20</div>
+              <div class="ops-label"><span class="en">R2 Storage Buckets</span><span class="ar">حاوية تخزين R2</span></div>
+            </div>
+            <div class="ops-metric">
+              <div class="ops-value">15</div>
+              <div class="ops-label"><span class="en">D1 Databases</span><span class="ar">قاعدة بيانات D1</span></div>
+            </div>
+            <div class="ops-metric">
+              <div class="ops-value">20</div>
+              <div class="ops-label"><span class="en">KV Namespaces</span><span class="ar">مساحة أسماء KV</span></div>
+            </div>
+          </div>
+          <div class="ops-stack">
+            <div class="ops-stack-row">
+              <strong>Compute</strong>
+              <span><span class="en">Cloudflare Workers, V8 isolates, and edge runtime.</span><span class="ar">عمال Cloudflare وعوازل V8 وبيئة التشغيل الطرفية.</span></span>
+            </div>
+            <div class="ops-stack-row">
+              <strong>AI / ML</strong>
+              <span><span class="en">Claude Sonnet 4, Vectorize, and Workers AI.</span><span class="ar">Claude Sonnet 4 وVectorize وWorkers AI.</span></span>
+            </div>
+            <div class="ops-stack-row">
+              <strong>Data</strong>
+              <span><span class="en">D1, R2, KV, Durable Objects, and Hyperdrive.</span><span class="ar">‏D1 وR2 وKV وDurable Objects وHyperdrive.</span></span>
+            </div>
+            <div class="ops-stack-row">
+              <strong>Standards</strong>
+              <span><span class="en">HL7 FHIR R4, NPHIES, and Saudi Core implementation guidance.</span><span class="ar">‏HL7 FHIR R4 وNPHIES وإرشادات التنفيذ الأساسية السعودية.</span></span>
+            </div>
+          </div>
+          <div class="ops-note">
+            <span class="en">The RCM core is organized around four specialized interfaces: BSMA, GIVC, SBS, and the NPHIES Hub.</span>
+            <span class="ar">يُنظَّم جوهر RCM حول أربع واجهات متخصصة: ‏BSMA وGIVC وSBS وNPHIES Hub.</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════════
+       BRAINSAIT CLINIC BOOKING SERVICES
+       Premium integration for clinic appointment scheduling
+       ══════════════════════════════════════════════════════════════════════════ -->
+  <section id="clinic-booking" style="padding: var(--sp) 0; border-top: 1px solid var(--gb); margin-top: var(--sp);">
+    <div class="c">
+      <!-- Section Header -->
+      <div class="sec-head">
+        <span class="stag ar">خدمات عيادات متخصصة</span>
+        <span class="stag en">CLINIC BOOKING SERVICES</span>
+        <h2 class="ar">احجز موعدك مع عياداتنا المتخصصة</h2>
+        <h2 class="en">Book Your Appointment with Our Specialty Clinics</h2>
+        <p class="ssub ar">نوفر خدمات طبية متخصصة في طب الأسنان والأمراض الجلدية والعيادات الشاملة. احجز موعدك الآن مع أفضل المتخصصين في الرياض.</p>
+        <p class="ssub en">We offer specialized medical services in dental, dermatology, and polyclinic. Book your appointment now with the best specialists in Riyadh.</p>
+      </div>
+
+      <!-- Clinic Segments Grid -->
+      <div class="clinic-grid">
+        
+        <!-- Dental Segment Card -->
+        <div class="rev d1 clinic-card dental">
+          <div class="clinic-icon">🦷</div>
+          <h3 class="ar clinic-title" style="color: #00c4b4;">عيادات الأسنان</h3>
+          <h3 class="en clinic-title" style="color: #00c4b4;">Dental Clinics</h3>
+          <p class="clinic-copy">
+            <span class="ar">تنظيف وتبييض وتقويم وحشو الأسنان مع أحدث التقنيات. 5 عيادات متخصصة في الرياض.</span>
+            <span class="en">Cleaning, whitening, orthodontics, and fillings with latest technology. 5 specialized clinics in Riyadh.</span>
+          </p>
+          <button class="btn btn-p" style="width: 100%;" onclick="openClinicCategory('dental')">
+            <span class="ar">اختر عيادة أسنان</span>
+            <span class="en">Select Dental Clinic</span>
+          </button>
+        </div>
+
+        <!-- Dermatology Segment Card -->
+        <div class="rev d2 clinic-card dermatology">
+          <div class="clinic-icon">💆</div>
+          <h3 class="ar clinic-title" style="color: #f43f5e;">عيادات الجلدية</h3>
+          <h3 class="en clinic-title" style="color: #f43f5e;">Dermatology Clinics</h3>
+          <p class="clinic-copy">
+            <span class="ar">علاج حب الشباب والتقشير والليزر والعناية الشاملة بالبشرة. 5 عيادات متخصصة.</span>
+            <span class="en">Acne treatment, peels, laser therapy, and comprehensive skin care. 5 specialized clinics.</span>
+          </p>
+          <button class="btn btn-p" style="width: 100%;" onclick="openClinicCategory('dermatology')">
+            <span class="ar">اختر عيادة جلدية</span>
+            <span class="en">Select Dermatology Clinic</span>
+          </button>
+        </div>
+
+        <!-- Polyclinic Segment Card -->
+        <div class="rev d3 clinic-card polyclinic">
+          <div class="clinic-icon">🏥</div>
+          <h3 class="ar clinic-title" style="color: #f59e0b;">العيادات الشاملة</h3>
+          <h3 class="en clinic-title" style="color: #f59e0b;">Polyclinics</h3>
+          <p class="clinic-copy">
+            <span class="ar">الطب العام وطب الأطفال والتحاليل والصيدلية. 4 عيادات شاملة بخدمات متعددة.</span>
+            <span class="en">General medicine, pediatrics, lab tests, and pharmacy. 4 comprehensive clinics.</span>
+          </p>
+          <button class="btn btn-p" style="width: 100%;" onclick="openClinicCategory('polyclinic')">
+            <span class="ar">اختر عيادة شاملة</span>
+            <span class="en">Select Polyclinic</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Google Calendar Booking Section -->
+      <div class="rev" style="background: linear-gradient(135deg, var(--g1) 0%, var(--g2) 100%); border: 1px solid var(--gb); border-radius: var(--rx); padding: 48px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); text-align: center;">
+        <div style="margin-bottom: 32px;">
+          <div class="stag" style="text-align: center;">📅 DIRECT BOOKING</div>
+          <h3 class="ar" style="margin-bottom: 12px;">احجز موعدك مباشرة</h3>
+          <h3 class="en" style="margin-bottom: 12px;">Schedule Directly</h3>
+          <p style="color: var(--textd); max-width: 600px; margin: 0 auto;">
+            <span class="ar">استخدم تقويمنا المباشر لحجز موعد في الوقت المناسب لك</span>
+            <span class="en">Use our direct calendar to book at your convenient time</span>
+          </p>
+        </div>
+        <button class="btn btn-p btn-lg" onclick="openDirectBooking()" style="margin: 0 auto; display: inline-flex;">
+          <span style="font-size: 18px; margin-right: 8px;">📅</span>
+          <span class="ar">افتح تقويم الحجز</span>
+          <span class="en">Open Booking Calendar</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ── CTA ── -->
+  <section class="cta-sec" aria-labelledby="cta-h">
+    <div class="c">
+      <div class="cta-inner rev">
+        <span class="stag"><span class="en">Get Started</span><span class="ar">ابدأ الآن</span></span>
+        <h2 id="cta-h">
+          <span class="en">Ready to transform your healthcare operations?</span>
+          <span class="ar">هل أنت مستعد لتحويل عمليات الرعاية الصحية الخاصة بك؟</span>
+        </h2>
+        <p>
+          <span class="en">Join healthcare providers across Saudi Arabia and MENA using BrainSAIT to automate, comply, and grow.</span>
+          <span class="ar">انضم إلى مزودي الرعاية الصحية في المملكة العربية السعودية ومنطقة الشرق الأوسط الذين يستخدمون برينسايت للأتمتة والامتثال والنمو.</span>
+        </p>
+        <div class="cta-acts">
+          <a href="/rcm" class="btn btn-p btn-lg">
+            <span class="en">Launch RCM</span><span class="ar">تشغيل RCM</span> →
+          </a>
+          <a href="/contact" class="btn btn-g btn-lg">
+            <span class="en">Open Contact Form</span><span class="ar">افتح نموذج التواصل</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </main>
 
-<footer>
-  <div class="f-inner">
-    <span class="f-copy">&copy; 2026 BrainSAIT LTD. All rights reserved.</span>
-    <div style="display:flex; gap:24px;">
-      <a href="/">Home</a>
-      <a href="/docs">Docs</a>
-      <a href="/privacy">Privacy</a>
-      <a href="/contact">Contact</a>
+  <!-- ── FOOTER ── -->
+  <footer role="contentinfo">
+    <div class="c">
+      <div class="f-grid">
+        <div class="f-brand">
+          <a href="/" class="nb" aria-label="BrainSAIT Home">
+            <div class="nlogo" aria-hidden="true">B</div>
+            <span class="nn">BRAIN<em>SAIT</em></span>
+          </a>
+          <p class="f-desc en">AI-native healthcare automation platform for Saudi Arabia &amp; MENA. Built for scale, security, and seamless interoperability.</p>
+          <p class="f-desc ar">منصة أتمتة الرعاية الصحية بالذكاء الاصطناعي للمملكة العربية السعودية ومنطقة الشرق الأوسط. مبنية للتوسع والأمان والتشغيل البيني السلس.</p>
+          <div class="f-social">
+            <a href="https://github.com/Fadil369" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GH</a>
+            <a href="https://twitter.com/brainsait369" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">𝕏</a>
+            <a href="https://www.linkedin.com/in/fadil369" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+          </div>
+          <span class="f-badge">Vision 2030 Aligned 🇸🇦</span>
+        </div>
+        <div>
+          <h4 class="f-title"><span class="en">Solutions</span><span class="ar">الحلول</span></h4>
+          <ul class="f-links">
+            <li><a href="#solutions">BrainSAIT RCM</a></li>
+            <li><a href="#solutions">Oracle Bridge</a></li>
+            <li><a href="#solutions">MasterLINC</a></li>
+            <li><a href="#solutions">NPHIES Education</a></li>
+            <li><a href="#solutions">Unified Health Hub</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="f-title"><span class="en">Platform</span><span class="ar">المنصة</span></h4>
+          <ul class="f-links">
+            <li><a href="/rcm">RCM Workspace</a></li>
+            <li><a href="/docs">Documentation</a></li>
+            <li><a href="/training/courses/"><span class="en">Training Catalog</span><span class="ar">كتالوج التدريب</span></a></li>
+            <li><a href="#products">Platform Overview</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="f-title"><span class="en">Company</span><span class="ar">الشركة</span></h4>
+          <ul class="f-links">
+            <li><a href="/staff"><span class="en">About Us</span><span class="ar">من نحن</span></a></li>
+            <li><a href="https://calendar.app.google/V9KcXPcD1PeWDQHH8" target="_blank" rel="noopener noreferrer"><span class="en">Schedule Call</span><span class="ar">جدول الاتصال</span></a></li>
+            <li><a href="/contact"><span class="en">Contact Form</span><span class="ar">نموذج التواصل</span></a></li>
+            <li><a href="/careers"><span class="en">Careers</span><span class="ar">وظائف</span></a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="f-title"><span class="en">Training</span><span class="ar">التدريب</span></h4>
+          <ul class="f-links">
+            <li><a href="/training/courses/"><span class="en">All Courses</span><span class="ar">جميع الدورات</span></a></li>
+            <li><a href="/training/courses/collective-brainpower/"><span class="en">Collective Brainpower</span><span class="ar">القوة الجماعية</span></a></li>
+            <li><a href="/training/courses/nphies-ai-mastery/"><span class="en">NPHIES-AI Mastery</span><span class="ar">إتقان NPHIES-AI</span></a></li>
+            <li><a href="https://classroom.google.com/c/ODYwNTAyNzAzMTky?cjc=4oc22gvm" target="_blank" rel="noopener noreferrer"><span class="en">Google Classroom</span><span class="ar">Google Classroom</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="f-bottom">
+        <div>
+          <span class="en">&copy; 2026 BrainSAIT LTD. All rights reserved.</span>
+          <span class="ar">&copy; 2026 برينسايت المحدودة. جميع الحقوق محفوظة.</span>
+        </div>
+        <div class="f-legal">
+          <a href="/privacy"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a>
+          <a href="/terms"><span class="en">Terms of Service</span><span class="ar">شروط الخدمة</span></a>
+        </div>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
+<script>
+/* ═══════════════════════════════════════════════
+   BRAINSAIT — Interactive Enhancements
+   Particle Canvas · Counters · Mobile Menu ·
+   Language Toggle · Active Nav · Typewriter
+═══════════════════════════════════════════════ */
+
+// ─── Particle Canvas ───
+(function () {
+  const cvs = document.getElementById('cvs');
+  if (!cvs || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // Skip on low-end devices (high DPR + low CPU count is a proxy for constrained hardware)
+  const isLowEnd = navigator.hardwareConcurrency != null && navigator.hardwareConcurrency < 4;
+  if (isLowEnd) return;
+  const ctx = cvs.getContext('2d');
+  let W, H;
+  let particleAnimationId = null;
+  const COLS = ['212,165,116', '14,165,233', '37,99,235', '139,92,246'];
+  const pts = Array.from({ length: 50 }, () => ({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    r: Math.random() * 1.4 + 0.3,
+    dx: (Math.random() - 0.5) * 0.22,
+    dy: (Math.random() - 0.5) * 0.22,
+    a: Math.random() * 0.45 + 0.08,
+    col: COLS[Math.floor(Math.random() * COLS.length)]
+  }));
+
+  function resize() { W = cvs.width = window.innerWidth; H = cvs.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    for (let i = 0; i < pts.length; i++) {
+      for (let j = i + 1; j < pts.length; j++) {
+        const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < 110) {
+          ctx.beginPath();
+          ctx.moveTo(pts[i].x, pts[i].y);
+          ctx.lineTo(pts[j].x, pts[j].y);
+          ctx.strokeStyle = `rgba(212,165,116,${0.04 * (1 - d / 110)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    pts.forEach(p => {
+      p.x += p.dx; p.y += p.dy;
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${p.col},${p.a})`;
+      ctx.fill();
+    });
+    particleAnimationId = requestAnimationFrame(draw);
+  }
+  draw();
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && particleAnimationId !== null) {
+      cancelAnimationFrame(particleAnimationId);
+      particleAnimationId = null;
+    } else if (!document.hidden && particleAnimationId === null && cvs.isConnected && ctx) draw();
+  });
+})();
+
+// ─── Scroll Reveal ───
+const revObs = new IntersectionObserver(
+  (es, obs) => es.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('vis');
+      obs.unobserve(e.target);
+    }
+  }),
+  { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+);
+document.querySelectorAll('.rev').forEach(el => revObs.observe(el));
+
+// ─── Animated Counters ───
+function animateCounter(el) {
+  const to = parseFloat(el.dataset.to);
+  const dec = parseInt(el.dataset.dec, 10);
+  const sfx = el.dataset.sfx || '';
+  const dur = 1800;
+  const t0 = performance.now();
+  (function tick(now) {
+    const p = Math.min((now - t0) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = (to * ease).toFixed(dec) + sfx;
+    if (p < 1) requestAnimationFrame(tick);
+  })(t0);
+}
+const cntObs = new IntersectionObserver(
+  (es, obs) => es.forEach(e => {
+    if (e.isIntersecting && !e.target.dataset.done) {
+      e.target.dataset.done = '1';
+      animateCounter(e.target);
+      obs.unobserve(e.target);
+    }
+  }),
+  { threshold: 0.5 }
+);
+document.querySelectorAll('.cnt').forEach(el => cntObs.observe(el));
+
+// ─── Navbar Scroll State ───
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+
+// ─── Hero Parallax ───
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const heroEl = document.querySelector('.hero');
+  if (!heroEl) return;
+  const lightsEl = heroEl.querySelector('.stage-lights');
+  if (!lightsEl) return;
+  // Maximum pixel offset once hero scroll progress reaches 1 (hero top fully travels its own height).
+  const PARALLAX_INTENSITY = 36; // pixels
+  let isParallaxUpdateQueued = false;
+  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+
+  function updateHeroParallax() {
+    const rect = heroEl.getBoundingClientRect();
+    const progress = clamp(-rect.top / Math.max(rect.height, 1), 0, 1);
+    lightsEl.style.transform = `translate3d(0, ${progress * PARALLAX_INTENSITY}px, 0)`;
+    isParallaxUpdateQueued = false;
+  }
+
+  function requestParallaxUpdate() {
+    if (isParallaxUpdateQueued) return;
+    isParallaxUpdateQueued = true;
+    requestAnimationFrame(updateHeroParallax);
+  }
+
+  updateHeroParallax();
+  window.addEventListener('scroll', requestParallaxUpdate, { passive: true });
+  window.addEventListener('resize', requestParallaxUpdate, { passive: true });
+})();
+
+// ─── Mobile Menu ───
+const toggle = document.getElementById('menuToggle');
+const menu   = document.getElementById('mobMenu');
+
+function closeMenu() {
+  menu.classList.remove('open');
+  toggle.classList.remove('open');
+  toggle.setAttribute('aria-expanded', 'false');
+  menu.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+toggle.addEventListener('click', () => {
+  const open = !menu.classList.contains('open');
+  if (open) {
+    menu.classList.add('open');
+    toggle.classList.add('open');
+    toggle.setAttribute('aria-expanded', 'true');
+    menu.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  } else {
+    closeMenu();
+  }
+});
+
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+document.addEventListener('click', e => {
+  if (menu.classList.contains('open') && !menu.contains(e.target) && !toggle.contains(e.target)) closeMenu();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && menu.classList.contains('open')) { closeMenu(); toggle.focus(); }
+});
+
+// ─── Language Toggle ───
+const langBtn = document.getElementById('langToggle');
+const htmlEl  = document.getElementById('html-root');
+let isArabic  = localStorage.getItem('lang') === 'ar';
+
+function applyLang(arabic) {
+  htmlEl.setAttribute('lang', arabic ? 'ar' : 'en');
+  htmlEl.setAttribute('dir',  arabic ? 'rtl' : 'ltr');
+  langBtn.textContent = arabic ? 'English' : 'العربية';
+}
+applyLang(isArabic);
+
+langBtn.addEventListener('click', () => {
+  isArabic = !isArabic;
+  localStorage.setItem('lang', isArabic ? 'ar' : 'en');
+  applyLang(isArabic);
+});
+
+// ─── Active Nav Link ───
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nl a[href^="#"]');
+const activeObs = new IntersectionObserver(
+  es => es.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const a = document.querySelector(`.nl a[href="#${e.target.id}"]`);
+      if (a) a.classList.add('active');
+    }
+  }),
+  { threshold: 0.4, rootMargin: '-72px 0px 0px 0px' }
+);
+sections.forEach(s => activeObs.observe(s));
+
+// ─── Typewriter ───
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const el = document.getElementById('tw-target');
+  if (!el) return;
+  const phrases = ['Automated & Compliant.', 'FHIR R4 Native.', 'Vision 2030 Ready.', 'Scalable & Secure.', 'Bilingual & Accessible.'];
+  let pi = 0, ci = 0, del = false;
+  el.textContent = '';
+
+  function tick() {
+    const phrase = phrases[pi];
+    if (!del) {
+      el.textContent = phrase.slice(0, ci + 1);
+      if (ci < phrase.length - 1) { ci++; setTimeout(tick, 62); }
+      else { del = true; setTimeout(tick, 2600); }
+    } else {
+      el.textContent = phrase.slice(0, ci);
+      if (ci > 0) { ci--; setTimeout(tick, 38); }
+      else { del = false; pi = (pi + 1) % phrases.length; setTimeout(tick, 450); }
+    }
+  }
+  setTimeout(tick, 800);
+})();
+
+// ─── Clinic Booking Functions ───
+function openClinicCategory(category) {
+  const clinicPageBaseURL = 'https://clinics-pages.pages.dev/clinic-embed-wrapper.html';
+  window.open(`${clinicPageBaseURL}?segment=${category}`, '_blank', 'width=1200,height=800');
+  
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'brainsait_clinic_category_click', {
+      'clinic_category': category
+    });
+  }
+}
+
+function openDirectBooking() {
+  const calendarURL = 'https://calendar.app.google/V9KcXPcD1PeWDQHH8';
+  window.open(calendarURL, 'calendar', 'width=800,height=600');
+  
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'brainsait_direct_booking_click');
+  }
+}
+
+</script>
 </body>
 </html>
