@@ -38,9 +38,13 @@ const PRIMARY_NAV = [
 const MORE_NAV = [
   { label: 'Training Hub', href: '/training' },
   { label: 'Resources', href: '/resources' },
+  { label: 'App Store', href: '/app-store' },
+  { label: 'Clinics Hub', href: '/clinics' },
+  { label: 'AI Dashboard', href: '/ai-dashboard' },
+  { label: 'Vibe Code', href: '/vibe-code' },
+  { label: '1-to-1 Sessions', href: '/1to1' },
   { label: 'Showcase', href: '/showcase' },
   { label: 'Projects', href: '/projects' },
-  { label: 'App Store', href: '/app-store' },
 ];
 
 /** All links flattened — used in the mobile drawer */

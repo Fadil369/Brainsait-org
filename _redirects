@@ -70,8 +70,8 @@ https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 /portal/* /incubator/portal/:splat 301
 
 # ─── RCM ─────────────────────────────────────────────────────────────────────
-/rcm /platform 301
-/rcm/* /platform 301
+/rcm https://portal.elfadil.com 302
+/rcm/* https://portal.elfadil.com/:splat 302
 
 # ─── Staff & Careers ─────────────────────────────────────────────────────────
 # CF Pages auto-routes staff.html → /staff

@@ -3,6 +3,17 @@ export default {
   async fetch(request) {
     const url = new URL(request.url);
     const path = url.pathname;
+
+    // ── Enhanced RCM routing → portal.elfadil.com ─────────────────────────
+    // Preserves any sub-path and all query parameters.
+    if (path === '/rcm' || path.startsWith('/rcm/')) {
+      const subPath = path.slice(4) || '/'; // strip '/rcm', keep remainder
+      const dest = new URL('https://portal.elfadil.com');
+      dest.pathname = subPath;
+      dest.search = url.search; // preserve query string
+      return Response.redirect(dest.toString(), 302);
+    }
+
     const routes = [
       {
         prefix: '/incubator',

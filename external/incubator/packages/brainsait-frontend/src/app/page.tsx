@@ -22,6 +22,14 @@ import {
   Rocket,
   CheckCircle,
   ArrowForward,
+  LocalHospital,
+  Dashboard,
+  Code,
+  VideoCall,
+  Store,
+  EmojiObjects,
+  AccountTree,
+  Brush,
 } from '@mui/icons-material';
 
 export const metadata: Metadata = {
@@ -126,6 +134,21 @@ const pillars = [
 ];
 
 const compliance = ['NPHIES', 'FHIR R4', 'PDPL', 'Saudi MOH', 'CCHI', 'Vision 2030'];
+
+const quickLinks = [
+  { icon: <Rocket />,         label: 'Apply Now',       labelAr: 'التقديم',           href: '/apply',        color: '#1B5E20', desc: '2026 cohort open' },
+  { icon: <Store />,          label: 'App Store',       labelAr: 'متجر التطبيقات',    href: '/app-store',    color: '#0D47A1', desc: '6 healthcare apps' },
+  { icon: <LocalHospital />,  label: 'Clinics Hub',     labelAr: 'مركز العيادات',     href: '/clinics',      color: '#C62828', desc: 'NPHIES-ready clinics' },
+  { icon: <People />,         label: 'Mentorship',      labelAr: 'الإرشاد',           href: '/mentorship',   color: '#4A148C', desc: 'Expert 1-to-1 sessions' },
+  { icon: <VideoCall />,      label: '1-to-1 Sessions', labelAr: 'جلسات فردية',       href: '/1to1',         color: '#006064', desc: 'Book a live session' },
+  { icon: <Dashboard />,      label: 'AI Dashboard',    labelAr: 'لوحة الذكاء',       href: '/ai-dashboard', color: '#E65100', desc: 'Real-time KPI insights' },
+  { icon: <EmojiObjects />,   label: 'Resources',       labelAr: 'الموارد',           href: '/resources',    color: '#1565C0', desc: 'Toolkits & guides' },
+  { icon: <Code />,           label: 'Vibe Code',       labelAr: 'Vibe Code',         href: '/vibe-code',    color: '#37474F', desc: 'AI-assisted coding' },
+  { icon: <School />,         label: 'Training Hub',    labelAr: 'التدريب',           href: '/training',     color: '#2E7D32', desc: 'NPHIES & FHIR courses' },
+  { icon: <Brush />,          label: 'Showcase',        labelAr: 'معرض الأعمال',      href: '/showcase',     color: '#880E4F', desc: 'Startup demos' },
+  { icon: <AccountTree />,    label: 'Partners',        labelAr: 'الشركاء',           href: '/partners',     color: '#1A237E', desc: 'Integration network' },
+  { icon: <GitHub />,         label: 'Projects',        labelAr: 'المشاريع',          href: '/projects',     color: '#212121', desc: 'Open source & tools' },
+];
 
 export default function HomePage() {
   return (
@@ -381,6 +404,73 @@ export default function HomePage() {
               />
             ))}
           </Stack>
+        </Container>
+      </Box>
+
+      {/* ── Quick Access Grid ─────────────────────────────────────────────── */}
+      <Box sx={{ py: { xs: 8, md: 12 }, bgcolor: 'background.paper' }}>
+        <Container maxWidth="lg">
+          <Box sx={{ textAlign: 'center', mb: 6 }}>
+            <Typography variant="overline" color="primary" sx={{ fontWeight: 700, letterSpacing: 3 }}>
+              Everything in One Place
+            </Typography>
+            <Typography variant="h3" sx={{ fontWeight: 800, mt: 1, mb: 1 }}>
+              Explore the Incubator
+            </Typography>
+            <Typography variant="h6" color="text.secondary" sx={{ direction: 'rtl' }}>
+              استكشف بيئة الحضانة
+            </Typography>
+          </Box>
+          <Grid container spacing={2}>
+            {quickLinks.map((item) => (
+              <Grid item xs={6} sm={4} md={3} key={item.href}>
+                <Card
+                  component="a"
+                  href={item.href}
+                  elevation={0}
+                  sx={{
+                    display: 'block',
+                    textDecoration: 'none',
+                    height: '100%',
+                    border: '1px solid',
+                    borderColor: 'divider',
+                    borderTop: `3px solid ${item.color}`,
+                    borderRadius: 2,
+                    transition: 'transform 0.18s, box-shadow 0.18s',
+                    '&:hover': { transform: 'translateY(-4px)', boxShadow: 4 },
+                  }}
+                >
+                  <CardContent sx={{ p: 2.5 }}>
+                    <Box
+                      sx={{
+                        width: 40,
+                        height: 40,
+                        bgcolor: item.color,
+                        borderRadius: 1.5,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: 'white',
+                        mb: 1.5,
+                        '& svg': { fontSize: 20 },
+                      }}
+                    >
+                      {item.icon}
+                    </Box>
+                    <Typography variant="subtitle2" sx={{ fontWeight: 700, color: 'text.primary', lineHeight: 1.2 }}>
+                      {item.label}
+                    </Typography>
+                    <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', direction: 'rtl', mb: 0.5 }}>
+                      {item.labelAr}
+                    </Typography>
+                    <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+                      {item.desc}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
         </Container>
       </Box>
 
