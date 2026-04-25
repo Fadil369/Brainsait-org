@@ -56,17 +56,17 @@ export function Dashboard({ journey, onPhaseSelect, onToggleTheme, onResetJourne
 
 return (
     <div className="min-h-screen" style={{ background: '#050810' }}>
-      <header className="sticky top-0 z-40 border-b border-white/5 backdrop-blur-xl bg-black/30">
-        <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl glass-card flex items-center justify-center border border-spark-500/30">
-              <Lightning size={20} className="text-spark-400" weight="fill" />
+      <header className="sticky top-0 z-40 border-b border-white/5 backdrop-blur-xl bg-black/60">
+        <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl glass-card flex items-center justify-center border border-spark-500/30 glow-cyan floating">
+              <Lightning size={28} className="text-spark-400" weight="fill" />
             </div>
             <div>
-              <h1 className={`font-display font-bold text-sm text-white ${isRTL ? 'text-right' : ''}`}>
+              <h1 className={`font-display font-bold text-lg text-white ${isRTL ? 'text-right' : ''}`}>
                 {t.appName}
               </h1>
-              <p className="text-xs text-slate-500">{t.appTagline}</p>
+              <p className="text-sm text-slate-500">{t.appTagline}</p>
             </div>
           </div>
 
@@ -143,28 +143,28 @@ return (
             <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl" />
           </div>
 
-          <div className={`relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
+          <div className={`relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
             <div>
-              <h2 className="font-display font-bold text-2xl sm:text-3xl text-white mb-1">
+              <h2 className="font-display font-bold text-3xl sm:text-4xl text-white mb-2 hero-title">
                 {completedCount === 0 ? t.startJourney : t.continueJourney}
               </h2>
-              <p className="text-slate-400 text-sm">
-                {completedCount}/{6} phases complete
+              <p className="text-slate-400 text-base">
+                {completedCount}/{6} phases complete • {journey.gameState.xp} XP • Level {journey.gameState.level}
               </p>
             </div>
 
             <button
               onClick={() => currentPhase && onPhaseSelect(currentPhase.id)}
-              className="spark-btn px-6 py-3 rounded-2xl font-semibold text-white flex-shrink-0 flex items-center gap-2"
+              className="spark-btn px-8 py-4 rounded-2xl font-bold text-lg flex-shrink-0 flex items-center gap-3 glow-cyan"
             >
-              <span>{completedCount === 0 ? '🚀' : '⚡'}</span>
+              <span className="text-2xl">{completedCount === 0 ? '🚀' : '⚡'}</span>
               {completedCount === 0 ? t.startJourney : t.continueJourney}
             </button>
           </div>
 
           {/* Progress bar */}
-          <div className="relative mt-6">
-            <div className="h-2 rounded-full bg-slate-800 overflow-hidden">
+          <div className="relative mt-8">
+            <div className="h-4 rounded-full bg-slate-800 overflow-hidden">
               <motion.div
                 className="h-full rounded-full"
                 style={{ background: 'linear-gradient(90deg, #0c9eeb, #10b981)' }}
@@ -173,9 +173,9 @@ return (
                 transition={{ duration: 1.2, ease: 'easeOut' }}
               />
             </div>
-            <div className={`flex justify-between mt-1 ${isRTL ? 'flex-row-reverse' : ''}`}>
-              <span className="text-xs text-slate-500">{t.brainstorm}</span>
-              <span className="text-xs text-slate-500">{t.github}</span>
+            <div className={`flex justify-between mt-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+              <span className="text-sm text-slate-400 font-medium">{t.brainstorm}</span>
+              <span className="text-sm text-slate-400 font-medium">{t.github}</span>
             </div>
           </div>
         </motion.section>
