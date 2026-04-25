@@ -1,6 +1,6 @@
 // Main Dashboard
 import { motion } from 'framer-motion'
-import { Globe, Moon, Sun, Lightning, ArrowCounterClockwise } from '@phosphor-icons/react'
+import { Globe, Moon, Sun, Lightning, ArrowCounterClockwise, Download, ShareNetwork } from '@phosphor-icons/react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { PhaseNavigation } from '@/components/PhaseNavigation'
 import { GameStats } from '@/components/GameStats'
@@ -39,6 +39,21 @@ export function Dashboard({ journey, onPhaseSelect, onToggleTheme, onResetJourne
     }
   }
 
+  function handleExport() {
+    const data = {
+      journey,
+      exportedAt: new Date().toISOString(),
+      version: '1.0',
+    }
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `spark-journey-${journey.id.slice(0, 8)}.json`
+    a.click()
+    URL.revokeObjectURL(url)
+  }
+
   return (
     <div className="min-h-screen" style={{ background: '#050810' }}>
       {/* Header */}
@@ -75,6 +90,15 @@ export function Dashboard({ journey, onPhaseSelect, onToggleTheme, onResetJourne
             </button>
 
             {/* Reset journey (only shown if journey has started) */}
+            {completedCount > 0 && (
+              <button
+                onClick={handleExport}
+                title={language === 'ar' ? 'تصدير الرحلة' : 'Export Journey'}
+                className="glass-card glass-card-hover rounded-lg p-2 text-slate-500 hover:text-white transition-colors"
+              >
+                <Download size={16} />
+              </button>
+            )}
             {completedCount > 0 && (
               <button
                 onClick={handleReset}

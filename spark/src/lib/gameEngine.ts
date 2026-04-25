@@ -82,6 +82,26 @@ export const BADGES: Badge[] = [
     xp: 75,
     earned: false,
   },
+  {
+    id: 'halfway-hero',
+    name: 'Halfway Hero',
+    nameAr: 'بطل المنتصف',
+    description: 'Completed 3 phases',
+    descriptionAr: 'أتممت 3 مراحل',
+    icon: '🏅',
+    xp: 200,
+    earned: false,
+  },
+  {
+    id: 'visionary',
+    name: 'Visionary',
+    nameAr: 'صاحب رؤية',
+    description: 'Completed all 6 phases',
+    descriptionAr: 'أتممت كل المراحل الست',
+    icon: '👑',
+    xp: 1000,
+    earned: false,
+  },
 ]
 
 export function createInitialGameState(): GameState {

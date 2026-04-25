@@ -82,6 +82,7 @@ function AppInner() {
     // Capture derived celebration data OUTSIDE setJourney to avoid StrictMode double-fire
     let mainCelebration: CelebrationState = { open: false }
     let firstSparkBadge: Badge | null = null
+    let milestoneBadge: Badge | null = null
 
     setJourney(prev => {
       const phase = prev.phases.find(p => p.id === phaseId)
@@ -116,6 +117,14 @@ function AppInner() {
         gs = afterStreak
       }
 
+      // Milestone: halfway hero (3 phases)
+      const completedNow = prev.phases.filter(p => p.id === phaseId || p.completed).length + 1
+      if (completedNow === 3) {
+        const { newState: afterMilestone } = earnBadge(gs, 'halfway-hero')
+        gs = afterMilestone
+        milestoneBadge = gs.badges.find(b => b.id === 'halfway-hero' && b.earned) || null
+      }
+
       gs = { ...gs, totalPhases: gs.totalPhases + 1 }
 
       // Unlock next phase
@@ -137,6 +146,10 @@ function AppInner() {
     if (firstSparkBadge) {
       const badge = firstSparkBadge
       setTimeout(() => setCelebration({ open: true, badge, phaseId }), 3500)
+    }
+    if (milestoneBadge) {
+      const badge = milestoneBadge
+      setTimeout(() => setCelebration({ open: true, badge, phaseId }), 5500)
     }
     setTimeout(() => setCurrentView('dashboard'), 200)
   }, [setJourney])
