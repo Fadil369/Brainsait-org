@@ -18,13 +18,11 @@ https://portal.brainsait.org/* https://portal.elfadil.com/:splat 301
 # Docs routing
 https://docs.brainsait.org/* https://fadil369.github.io/brainsait-docs/:splat 301
 
-# API future routing
-https://api.brainsait.org/* https://api.brainsait.org/:splat 200
-
 # Dashboard routing
 https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 
-# Legacy incubator root paths -> canonical /incubator/* paths
+# ─── Incubator — all routed via brainsait-app-router Worker ──────────────────
+# Worker intercepts /incubator* before _redirects. These are fallback redirects.
 /apply /incubator/apply/ 301
 /app-store /incubator/app-store 301
 /app-store/* /incubator/app-store/:splat 301
@@ -34,12 +32,8 @@ https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 /mentorship/* /incubator/mentorship/:splat 301
 /projects /incubator/projects 301
 /projects/* /incubator/projects/:splat 301
-/portal /incubator/portal 301
-/portal/* /incubator/portal/:splat 301
 /showcase /incubator/showcase 301
 /showcase/* /incubator/showcase/:splat 301
-/training /training/index.html 200
-/training/* /training/index.html 200
 /templates /incubator/templates 301
 /templates/* /incubator/templates/:splat 301
 /startup /incubator/startup 301
@@ -51,51 +45,58 @@ https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 /courses /incubator/courses 301
 /1to1 /incubator/1to1 301
 
-# Partners route
-/partners /partner 301
-/partners/ /partner 301
+# Store & partners — canonical incubator paths
+/store /incubator/app-store 301
+/store/* /incubator/app-store 301
+/appstore /incubator/app-store 301
+/appstore/* /incubator/app-store 301
+/partners /incubator/partners 301
+/partners/ /incubator/partners 301
+/partner /incubator/partners 301
+/clinics-hub /incubator/clinics 301
 
-# Staff directory - served natively by CF Pages from staff.html
-# /staff redirect not needed: CF Pages auto-routes staff.html → /staff
+# App shortcuts → incubator store
+/open-webui /incubator/app-store 301
+/givc /incubator/app-store 301
+/givc/* /incubator/app-store 301
 
-# Careers page
+# ─── Training ────────────────────────────────────────────────────────────────
+/training /training/index.html 200
+/training/* /training/index.html 200
+
+# ─── Portal — handled by portal-gateway-v5 Worker ────────────────────────────
+# Worker takes priority; these are legacy fallbacks only
+/portal /incubator/portal 301
+/portal/* /incubator/portal/:splat 301
+
+# ─── RCM ─────────────────────────────────────────────────────────────────────
+/rcm /platform 301
+/rcm/* /platform 301
+
+# ─── Staff & Careers ─────────────────────────────────────────────────────────
+# CF Pages auto-routes staff.html → /staff
 /careers /staff 302
 
-# Privacy and Terms
+# ─── Legal & Contact ─────────────────────────────────────────────────────────
 /privacy /privacy-policy.html 200
 /terms /terms-of-use.html 200
 /contact https://forms.gle/La5qPLKYyV6M9VXP8 302
 /contact-form https://forms.gle/La5qPLKYyV6M9VXP8 302
 /docs https://fadil369.github.io/brainsait-docs/ 302
 /docs/* https://fadil369.github.io/brainsait-docs/:splat 302
-/clinics /external/clinics-pages/index.html 200
-/store /appstore 302
-/rcm https://portal.elfadil.com/ 302
-/incubator /appstore 302
-# NOTE: /incubator/apply returns main site homepage because the incubator CF Pages
-# Workers Route intercepts BEFORE _redirects runs. Fix requires creating the apply
-# page in brainsait-frontend Next.js app (external/incubator/packages/brainsait-frontend).
-/open-webui /appstore 302
 
-# 404 handling
-# App path mappings (consolidated external repos)
-# Root paths (without splat) must be listed explicitly - CF Pages /* only matches with a segment
-/givc /appstore 302
-/givc/* /external/givc/:splat 200
+# ─── External apps ───────────────────────────────────────────────────────────
 /doctor /external/doctor/index.html 200
 /doctor/* /external/doctor/:splat 200
-/store/* /appstore 302
 /sbs/* /external/sbs/:splat 200
 /masterlinc/* /external/masterlinc/:splat 200
-/open-webui/* /appstore 302
 /solutions /external/solutions/docs/index.html 200
 /solutions/* /external/solutions/:splat 200
 /clinics/* /external/clinics-pages/:splat 200
 
-/rcm/* https://portal.elfadil.com/:splat 302
-
-# Platform subpage (moved from /)
+# ─── Platform subpage ────────────────────────────────────────────────────────
 /platform /platform/index.html 200
 /platform/* /platform/:splat 200
 
+# ─── Catch-all ───────────────────────────────────────────────────────────────
 /* /index.html 200

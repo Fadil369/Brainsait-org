@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجموعة أدوات الابتكار - BrainSAIT للرعاية الصحية السعودية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a365d;      /* Midnight Blue */
+            --secondary: #2b6cb8;    /* Medical Blue */
+            --accent: #0ea5e9;       /* Signal Teal */
+            --danger: #ea580c;       /* Deep Orange */
+            --gray: #64748b;         /* Professional Gray */
+        }
+        
+        * { 
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1a365d 50%, #0c4a6e 100%);
+            min-height: 100vh;
+            color: #1e293b;
+        }
+        
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+        }
+        
+        .gradient-header {
+            background: linear-gradient(135deg, #1a365d 0%, #2b6cb8 50%, #0ea5e9 100%);
+            color: white;
+        }
+        
+        .mesh-gradient {
+            background: radial-gradient(at 20% 50%, rgba(43, 108, 184, 0.2) 0px, transparent 50%),
+                        radial-gradient(at 80% 80%, rgba(14, 165, 233, 0.2) 0px, transparent 50%),
+                        radial-gradient(at 40% 40%, rgba(15, 23, 42, 0.1) 0px, transparent 50%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            border-color: rgba(43, 108, 184, 0.5);
+        }
+        
+        .space-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 28px;
+            color: white;
+            margin-bottom: 16px;
+        }
+        
+        .tab-active {
+            border-bottom: 3px solid #2b6cb8;
+            color: #2b6cb8;
+        }
+        
+        .tab-inactive {
+            border-bottom: 2px solid #e2e8f0;
+            color: #64748b;
+        }
+        
+        h1 { font-size: 3rem; font-weight: 700; line-height: 1.2; }
+        h2 { font-size: 2rem; font-weight: 700; margin-top: 40px; margin-bottom: 20px; }
+        h3 { font-size: 1.5rem; font-weight: 700; margin-top: 30px; margin-bottom: 15px; }
+        
+        .section {
+            scroll-margin-top: 100px;
+        }
+        
+        .code-block {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        
+        .table-responsive {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: right;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #1a365d 0%, #2b6cb8 100%);
+            color: white;
+            font-weight: 700;
+        }
+        
+        tr:hover {
+            background: #f1f5f9;
+        }
+        
+        .toc {
+            columns: 2;
+            column-gap: 40px;
+        }
+        
+        .toc li {
+            margin-bottom: 10px;
+        }
+        
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .toc { columns: 1; }
+        }
+        
+        .breadcrumb {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+        
+        .breadcrumb a {
+            color: #2b6cb8;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body class="mesh-gradient">
+
+<!-- Header -->
+<header class="gradient-header sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-6 py-8">
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <div class="flex items-center gap-3">
+                    <div class="bg-white/20 backdrop-blur px-4 py-2 rounded-xl">
+                        <span class="text-xl font-bold">🏥</span>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold">BrainSAIT</h1>
+                        <p class="text-blue-100 text-sm">أدوات الابتكار في الرعاية الصحية</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <button onclick="toggleLanguage()" class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-xl text-sm font-bold transition-all">
+                    EN / عربي
+                </button>
+            </div>
+        </div>
+        <div class="text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">مجموعة أدوات الابتكار</h1>
+            <p class="text-xl text-blue-100 mb-2">UN Innovation Toolkit × Healthcare Sector</p>
+            <p class="text-blue-200">إطار عملي شامل لقيادة الابتكار في المؤسسات الصحية السعودية</p>
+        </div>
+    </div>
+</header>
+
+<!-- Navigation -->
+<nav class="sticky top-24 z-40 bg-white/80 backdrop-blur border-b border-white/20 shadow">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex gap-6 overflow-x-auto">
+            <a href="#overview" class="px-4 py-4 tab-active font-bold text-sm">📊 نظرة عامة</a>
+            <a href="#space" class="px-4 py-4 tab-inactive font-bold text-sm">🏗️ S.P.A.C.E.</a>
+            <a href="#profiles" class="px-4 py-4 tab-inactive font-bold text-sm">👥 الملفات</a>
+            <a href="#tools" class="px-4 py-4 tab-inactive font-bold text-sm">🛠️ الأدوات</a>
+            <a href="#usecases" class="px-4 py-4 tab-inactive font-bold text-sm">💡 التطبيقات</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="max-w-7xl mx-auto px-6 py-16">
+
+    <!-- Overview Section -->
+    <section id="overview" class="section mb-24">
+        <h2 class="text-4xl font-extrabold mb-8">📊 نظرة عامة</h2>
+        
+        <div class="grid md:grid-cols-4 gap-6 mb-12">
+            <div class="glassmorphism card-hover p-6 text-center">
+                <div class="text-4xl font-extrabold text-blue-600 mb-2">21</div>
+                <div class="text-gray-600 font-bold">أداة ابتكار</div>
+                <div class="text-xs text-gray-500 mt-2">أدوات عملية مثبتة</div>
+            </div>
+            <div class="glassmorphism card-hover p-6 text-center">
+                <div class="text-4xl font-extrabold text-emerald-600 mb-2">10</div>
+                <div class="text-gray-600 font-bold">وحدات تعليمية</div>
+                <div class="text-xs text-gray-500 mt-2">محتوى تدريبي شامل</div>
+            </div>
+            <div class="glassmorphism card-hover p-6 text-center">
+                <div class="text-4xl font-extrabold text-purple-600 mb-2">27</div>
+                <div class="text-gray-600 font-bold">سؤال تشخيصي</div>
+                <div class="text-xs text-gray-500 mt-2">تقييم شامل</div>
+            </div>
+            <div class="glassmorphism card-hover p-6 text-center">
+                <div class="text-4xl font-extrabold text-orange-600 mb-2">6</div>
+                <div class="text-gray-600 font-bold">ملفات شخصية</div>
+                <div class="text-xs text-gray-500 mt-2">أنماط المبتكرين</div>
+            </div>
+        </div>
+        
+        <div class="glassmorphism p-8 mb-8">
+            <blockquote class="border-r-4 border-blue-600 pr-6 italic text-lg text-gray-700">
+                "يمكننا القيام بأشياء مختلفة... الابتكار ليس فقط أحدث التقنيات، أحياناً يكون أبسط الأشياء. كن جريئاً، كن ثورياً... وقوّض الأساس... لأنه بدون الابتكار، لا توجد طريقة للتغلب على تحديات عصرنا."
+                <div class="text-sm text-gray-500 mt-4">— الأمين العام أنطونيو غوتيريش</div>
+            </blockquote>
+        </div>
+        
+        <h3>لماذا الابتكار في القطاع الصحي السعودي؟</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="glassmorphism p-6 card-hover">
+                <div class="flex gap-4">
+                    <span class="text-3xl">📈</span>
+                    <div>
+                        <h4 class="font-bold mb-2">الطلب المتزايد</h4>
+                        <p class="text-sm text-gray-600">نمو السكان والاحتياجات الصحية المتزايدة تتطلب حلولاً مبتكرة</p>
+                    </div>
+                </div>
+            </div>
+            <div class="glassmorphism p-6 card-hover">
+                <div class="flex gap-4">
+                    <span class="text-3xl">💰</span>
+                    <div>
+                        <h4 class="font-bold mb-2">التحديات المالية</h4>
+                        <p class="text-sm text-gray-600">الحاجة لتحسين كفاءة الإنفاق الصحي وتقليل التكاليف</p>
+                    </div>
+                </div>
+            </div>
+            <div class="glassmorphism p-6 card-hover">
+                <div class="flex gap-4">
+                    <span class="text-3xl">🎯</span>
+                    <div>
+                        <h4 class="font-bold mb-2">رؤية 2030</h4>
+                        <p class="text-sm text-gray-600">التزام استراتيجي بالتحول الرقمي والابتكار</p>
+                    </div>
+                </div>
+            </div>
+            <div class="glassmorphism p-6 card-hover">
+                <div class="flex gap-4">
+                    <span class="text-3xl">🌍</span>
+                    <div>
+                        <h4 class="font-bold mb-2">معايير عالمية</h4>
+                        <p class="text-sm text-gray-600">NPHIES وFHIR R4 والامتثال للمعايير الدولية</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S.P.A.C.E. Section -->
+    <section id="space" class="section mb-24">
+        <h2 class="text-4xl font-extrabold mb-8">🏗️ إطار S.P.A.C.E.</h2>
+        <p class="text-lg text-gray-600 mb-12">خمس ركائز أساسية للابتكار الناجح في المؤسسات الصحية</p>
+        
+        <div class="grid md:grid-cols-5 gap-4 mb-12">
+            <div class="glassmorphism card-hover p-6 text-center border-t-4 border-blue-600">
+                <div class="space-badge bg-blue-600 mx-auto">S</div>
+                <h3 class="font-bold text-lg mb-2">الاستراتيجية</h3>
+                <p class="text-sm text-gray-600">تحديد اتجاه الابتكار المستقبلي</p>
+                <div class="text-xs text-gray-500 mt-3">5 أدوات</div>
+            </div>
+            <div class="glassmorphism card-hover p-6 text-center border-t-4 border-emerald-600">
+                <div class="space-badge bg-emerald-600 mx-auto">P</div>
+                <h3 class="font-bold text-lg mb-2">الشراكات</h3>
+                <p class="text-sm text-gray-600">بناء علاقات تعاونية قوية</p>
+                <div class="text-xs text-gray-500 mt-3">4 أدوات</div>
+            </div>
+            <div class="glassmorphism card-hover p-6 text-center border-t-4 border-purple-600">
+                <div class="space-badge bg-purple-600 mx-auto">A</div>
+                <h3 class="font-bold text-lg mb-2">البنية التحتية</h3>
+                <p class="text-sm text-gray-600">بناء الأنظمة والعمليات</p>
+                <div class="text-xs text-gray-500 mt-3">4 أدوات</div>
+            </div>
+            <div class="glassmorphism card-hover p-6 text-center border-t-4 border-orange-600">
+                <div class="space-badge bg-orange-600 mx-auto">C</div>
+                <h3 class="font-bold text-lg mb-2">الثقافة</h3>
+                <p class="text-sm text-gray-600">خلق ثقافة داعمة للابتكار</p>
+                <div class="text-xs text-gray-500 mt-3">4 أدوات</div>
+            </div>
+            <div class="glassmorphism card-hover p-6 text-center border-t-4 border-red-600">
+                <div class="space-badge bg-red-600 mx-auto">E</div>
+                <h3 class="font-bold text-lg mb-2">التقييم</h3>
+                <p class="text-sm text-gray-600">قياس تأثير الابتكار</p>
+                <div class="text-xs text-gray-500 mt-3">4 أدوات</div>
+            </div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="glassmorphism p-8 card-hover">
+                <h3 class="flex gap-3 items-center font-bold text-xl mb-4">
+                    <span class="text-3xl">🎯</span> الاستراتيجية
+                </h3>
+                <p class="text-gray-700 mb-4">تحديد اتجاه الابتكار المستقبلي وتوافقه مع أهداف المؤسسة الصحية</p>
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <div class="text-sm font-bold text-blue-900 mb-2">🎯 السؤال:</div>
+                    <p class="text-sm text-blue-800">أين نريد أن نذهب؟</p>
+                </div>
+            </div>
+            <div class="glassmorphism p-8 card-hover">
+                <h3 class="flex gap-3 items-center font-bold text-xl mb-4">
+                    <span class="text-3xl">🤝</span> الشراكات
+                </h3>
+                <p class="text-gray-700 mb-4">بناء علاقات تعاونية مع المنظمات والجهات الأخرى</p>
+                <div class="bg-emerald-50 p-4 rounded-lg">
+                    <div class="text-sm font-bold text-emerald-900 mb-2">🎯 السؤال:</div>
+                    <p class="text-sm text-emerald-800">من نحتاج للعمل معهم؟</p>
+                </div>
+            </div>
+            <div class="glassmorphism p-8 card-hover">
+                <h3 class="flex gap-3 items-center font-bold text-xl mb-4">
+                    <span class="text-3xl">🏗️</span> البنية التحتية
+                </h3>
+                <p class="text-gray-700 mb-4">بناء الأنظمة والعمليات والموارد التي تدعم الابتكار</p>
+                <div class="bg-purple-50 p-4 rounded-lg">
+                    <div class="text-sm font-bold text-purple-900 mb-2">🎯 السؤال:</div>
+                    <p class="text-sm text-purple-800">كيف سننفذ هذا؟</p>
+                </div>
+            </div>
+            <div class="glassmorphism p-8 card-hover">
+                <h3 class="flex gap-3 items-center font-bold text-xl mb-4">
+                    <span class="text-3xl">🌟</span> الثقافة
+                </h3>
+                <p class="text-gray-700 mb-4">بناء ثقافة تدعم الابتكار والتجريب والتعلم من الأخطاء</p>
+                <div class="bg-orange-50 p-4 rounded-lg">
+                    <div class="text-sm font-bold text-orange-900 mb-2">🎯 السؤال:</div>
+                    <p class="text-sm text-orange-800">ما الذي نؤمن به؟</p>
+                </div>
+            </div>
+            <div class="glassmorphism p-8 card-hover">
+                <h3 class="flex gap-3 items-center font-bold text-xl mb-4">
+                    <span class="text-3xl">📊</span> التقييم
+                </h3>
+                <p class="text-gray-700 mb-4">قياس تأثير الابتكار وتحديد ما ينجح وما لا ينجح</p>
+                <div class="bg-red-50 p-4 rounded-lg">
+                    <div class="text-sm font-bold text-red-900 mb-2">🎯 السؤال:</div>
+                    <p class="text-sm text-red-800">هل حققنا الهدف؟</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profiles Section -->
+    <section id="profiles" class="section mb-24">
+        <h2 class="text-4xl font-extrabold mb-8">👥 الملفات الشخصية للمبتكرين</h2>
+        <p class="text-lg text-gray-600 mb-12">6 ملفات شخصية - تعرف على أنماط المبتكرين والقيادة في المؤسسات الصحية</p>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="glassmorphism card-hover p-8 border-l-4 border-red-500">
+                <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">🔥 المحفِّز</h3>
+                <p class="text-gray-600 text-sm mb-4">(Catalyst)</p>
+                <ul class="space-y-2 text-sm text-gray-700 mb-4">
+                    <li>✓ يرى الفرص والإمكانيات الجديدة</li>
+                    <li>✓ يحفز الآخرين على التفكير بشكل مختلف</li>
+                    <li>✓ متحمس وملهم طبيعياً</li>
+                    <li>✓ يقود من خلال الرؤية والشغف</li>
+                </ul>
+                <div class="bg-red-50 p-3 rounded-lg">
+                    <div class="font-bold text-sm text-red-900">النقاط القوية:</div>
+                    <p class="text-xs text-red-800">الحماس، الإلهام، رؤية المستقبل</p>
+                </div>
+            </div>
+            
+            <div class="glassmorphism card-hover p-8 border-l-4 border-blue-500">
+                <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">🎯 الاستراتيجي</h3>
+                <p class="text-gray-600 text-sm mb-4">(Strategist)</p>
+                <ul class="space-y-2 text-sm text-gray-700 mb-4">
+                    <li>✓ يفكر طويل الأجل ويرى الصورة الكاملة</li>
+                    <li>✓ يخطط بعناية ويحدد الأولويات</li>
+                    <li>✓ يوازن بين الرؤية والواقع</li>
+                    <li>✓ يبني نماذج تنظيمية فعالة</li>
+                </ul>
+                <div class="bg-blue-50 p-3 rounded-lg">
+                    <div class="font-bold text-sm text-blue-900">النقاط القوية:</div>
+                    <p class="text-xs text-blue-800">التخطيط، الرؤية، التنظيم</p>
+                </div>
+            </div>
+            
+            <div class="glassmorphism card-hover p-8 border-l-4 border-purple-500">
+                <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">👥 المتعاون</h3>
+                <p class="text-gray-600 text-sm mb-4">(Collaborator)</p>
+                <ul class="space-y-2 text-sm text-gray-700 mb-4">
+                    <li>✓ يستمع بفعالية ويفهم وجهات النظر</li>
+                    <li>✓ يبني علاقات قوية والشراكات</li>
+                    <li>✓ يسعى للتوافق والعمل الجماعي</li>
+                    <li>✓ ينشر الملكية والمسؤولية</li>
+                </ul>
+                <div class="bg-purple-50 p-3 rounded-lg">
+                    <div class="font-bold text-sm text-purple-900">النقاط القوية:</div>
+                    <p class="text-xs text-purple-800">الاستماع، التعاون، البناء</p>
+                </div>
+            </div>
+            
+            <div class="glassmorphism card-hover p-8 border-l-4 border-emerald-500">
+                <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">⚙️ المنفِّذ</h3>
+                <p class="text-gray-600 text-sm mb-4">(Executor)</p>
+                <ul class="space-y-2 text-sm text-gray-700 mb-4">
+                    <li>✓ يركز على الإنجاز والنتائج</li>
+                    <li>✓ ينظم العمليات بكفاءة</li>
+                    <li>✓ موثوق وملتزم بالمواعيد</li>
+                    <li>✓ يحول الخطط إلى واقع</li>
+                </ul>
+                <div class="bg-emerald-50 p-3 rounded-lg">
+                    <div class="font-bold text-sm text-emerald-900">النقاط القوية:</div>
+                    <p class="text-xs text-emerald-800">التركيز، الإنجاز، الموثوقية</p>
+                </div>
+            </div>
+            
+            <div class="glassmorphism card-hover p-8 border-l-4 border-orange-500">
+                <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">🚀 المبتكر المبكر</h3>
+                <p class="text-gray-600 text-sm mb-4">(Early Innovator)</p>
+                <ul class="space-y-2 text-sm text-gray-700 mb-4">
+                    <li>✓ يتبنى التقنيات الجديدة بسرعة</li>
+                    <li>✓ يحب التجريب والاختبار</li>
+                    <li>✓ قدرة على التعلم السريع</li>
+                    <li>✓ يرى الإمكانيات غير المستغلة</li>
+                </ul>
+                <div class="bg-orange-50 p-3 rounded-lg">
+                    <div class="font-bold text-sm text-orange-900">النقاط القوية:</div>
+                    <p class="text-xs text-orange-800">الإبداع، المرونة، التعلم</p>
+                </div>
+            </div>
+            
+            <div class="glassmorphism card-hover p-8 border-l-4 border-yellow-500">
+                <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">👑 الرائد</h3>
+                <p class="text-gray-600 text-sm mb-4">(Pioneer)</p>
+                <ul class="space-y-2 text-sm text-gray-700 mb-4">
+                    <li>✓ يحب التحديات غير المحلولة</li>
+                    <li>✓ يتقبل المخاطرة والفشل</li>
+                    <li>✓ يفتح طرقاً جديدة تماماً</li>
+                    <li>✓ قيادي طبيعي وملهم</li>
+                </ul>
+                <div class="bg-yellow-50 p-3 rounded-lg">
+                    <div class="font-bold text-sm text-yellow-900">النقاط القوية:</div>
+                    <p class="text-xs text-yellow-800">الجرأة، الإبداع، القيادة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools" class="section mb-24">
+        <h2 class="text-4xl font-extrabold mb-8">🛠️ الأدوات الـ 21</h2>
+        <p class="text-lg text-gray-600 mb-12">أدوات عملية مثبتة لتسريع الابتكار في كل مرحلة</p>
+        
+        <!-- Strategy Tools -->
+        <div class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 flex items-center gap-2">📋 أدوات الاستراتيجية (5 أدوات)</h3>
+            <div class="grid md:grid-cols-5 gap-4">
+                <div class="glassmorphism card-hover p-6 border-t-4 border-blue-600">
+                    <div class="text-2xl mb-3">📰</div>
+                    <h4 class="font-bold text-sm mb-2">عناوين المستقبل</h4>
+                    <p class="text-xs text-gray-600">تخيل المستقبل الناجح وصياغة رسالة قوية</p>
+                </div>
+                <div class="glassmorphism card-hover p-6 border-t-4 border-blue-600">
+                    <div class="text-2xl mb-3">🎬</div>
+                    <h4 class="font-bold text-sm mb-2">مخطط السيناريو</h4>
+                    <p class="text-xs text-gray-600">استكشاف سيناريوهات مستقبلية مختلفة</p>
+                </div>
+                <div class="glassmorphism card-hover p-6 border-t-4 border-blue-600">
+                    <div class="text-2xl mb-3">🌐</div>
+                    <h4 class="font-bold text-sm mb-2">تحليل النظام</h4>
+                    <p class="text-xs text-gray-600">فهم المنظمات والقوى المؤثرة</p>
+                </div>
+                <div class="glassmorphism card-hover p-6 border-t-4 border-blue-600">
+                    <div class="text-2xl mb-3">💼</div>
+                    <h4 class="font-bold text-sm mb-2">استراتيجية المحفظة</h4>
+                    <p class="text-xs text-gray-600">الموازنة بين الابتكار القصير والطويل</p>
+                </div>
+                <div class="glassmorphism card-hover p-6 border-t-4 border-blue-600">
+                    <div class="text-2xl mb-3">🎨</div>
+                    <h4 class="font-bold text-sm mb-2">مخطط الابتكار</h4>
+                    <p class="text-xs text-gray-600">توثيق فكرة بطريقة منظمة وشاملة</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Partnership Tools -->
+        <div class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 flex items-center gap-2">🤝 أدوات الشراكات (4 أدوات)</h3>
+            <div class="grid md:grid-cols-4 gap-4">
+                <div class="glassmorphism card-hover p-6 border-t-4 border-emerald-600">
+                    <div class="text-2xl mb-3">💎</div>
+                    <h4 class="font-bold text-sm mb-2">تحديد القيمة</h4>
+                    <p class="text-xs text-gray-600">صياغة عرض واضح ومقنع</p>
+                </div>
+                <div class="glassmorphism card-hover p-6 border-t-4 border-emerald-600">
+                    <div class="text-2xl mb-3">🔍</div>
+                    <h4 class="font-bold text-sm mb-2">خريطة الشركاء</h4>
+                    <p class="text-xs text-gray-600">تحديد الشركاء المناسبين</p>
+                </div>
+                <div class="glassmorphism card-hover p-6 border-t-4 border-emerald-600">
+                    <div class="text-2xl mb-3">📝</div>
+                    <h4 class="font-bold text-sm mb-2">الإعداد</h4>
+                    <p class="text-xs text-gray-600">التحضير قبل التواصل</p>
+                </div>
+                <div class="glassmorphism card-hover p-6 border-t-4 border-emerald-600">
+                    <div class="text-2xl mb-3">⭐</div>
+                    <h4 class="font-bold text-sm mb-2">تحديد الأولويات</h4>
+                    <p class="text-xs text-gray-600">اختيار الشركاء ذوي الأثر</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Infrastructure Tools -->
+        <div class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 flex items-center gap-2">🏗️ أدوات البنية التحتية (4 أدوات)</h3>
+            <div class="grid md:grid-cols-4 gap-4">
+                <div class="glassmorphism card-hover p-6 border-t-4 border-purple-600">
+                    <div class="text-2xl mb-3">🔭</div>
+                    <h4 class="font-bold text-sm mb-2">مسح الأفق</h4>
+                    <p class="text-xs text-gray-600">البحث عن الاتجاهات الناشئة</p>
+                </div>
+                <div class="glassmorphism card-hover p-6 border-t-4 border-purple-600">
+                    <div class="text-2xl mb-3">👨‍💻</div>
+                    <h4 class="font-bold text-sm mb-2">التصميم المرتكز</h4>
+                    <p class="text-xs text-gray-600">تصميم بناءً على احتياجات المستخدمين</p>
+                </div>
+                <div class="glassmorphism card-hover p-6 border-t-4 border-purple-600">
+                    <div class="text-2xl mb-3">📈</div>
+                    <h4 class="font-bold text-sm mb-2">الاختبار للتوسع</h4>
+                    <p class="text-xs text-gray-600">بناء ثقة قبل التوسع الكامل</p>
+                </div>
+                <div class="glassmorphism card-hover p-6 border-t-4 border-purple-600">
+                    <div class="text-2xl mb-3">⚙️</div>
+                    <h4 class="font-bold text-sm mb-2">نموذج التشغيل</h4>
+                    <p class="text-xs text-gray-600">تحديد كيفية التشغيل طويل الأجل</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Culture Tools -->
+        <div class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 flex items-center gap-2">🌟 أدوات الثقافة (4 أدوات)</h3>
+            <div class="grid md:grid-cols-4 gap-4">
+                <div class="glassmorphism card-hover p-6 border-t-4 border-orange-600">
+                    <div class="text-2xl mb-3">🎭</div>
+                    <h4 class="font-bold text-sm mb-2">احتضان الفشل</h4>
+                    <p class="text-xs text-gray-600">FailFaire - تقبل الفشل والتعلم</p>
+                </div>
+                <div class="glassmorphism card-hover p-6 border-t-4 border-orange-600">
+                    <div class="text-2xl mb-3">🎁</div>
+                    <h4 class="font-bold text-sm mb-2">خلق الحوافز</h4>
+                    <p class="text-xs text-gray-600">تحفيز الموظفين على المشاركة</p>
+                </div>
+                <div class="glassmorphism card-hover p-6 border-t-4 border-orange-600">
+                    <div class="text-2xl mb-3">⚠️</div>
+                    <h4 class="font-bold text-sm mb-2">إدارة المخاطر</h4>
+                    <p class="text-xs text-gray-600">تحديد وتقليل المخاطر</p>
+                </div>
+                <div class="glassmorphism card-hover p-6 border-t-4 border-orange-600">
+                    <div class="text-2xl mb-3">🏛️</div>
+                    <h4 class="font-bold text-sm mb-2">الحوكمة</h4>
+                    <p class="text-xs text-gray-600">ضمان القرارات الصحيحة</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Evaluation Tools -->
+        <div>
+            <h3 class="text-2xl font-bold mb-6 flex items-center gap-2">📊 أدوات التقييم (4 أدوات)</h3>
+            <div class="grid md:grid-cols-4 gap-4">
+                <div class="glassmorphism card-hover p-6 border-t-4 border-red-600">
+                    <div class="text-2xl mb-3">📖</div>
+                    <h4 class="font-bold text-sm mb-2">سرد القصص</h4>
+                    <p class="text-xs text-gray-600">مشاركة النجاحات والدروس</p>
+                </div>
+                <div class="glassmorphism card-hover p-6 border-t-4 border-red-600">
+                    <div class="text-2xl mb-3">🚪</div>
+                    <h4 class="font-bold text-sm mb-2">بوابة المرحلة</h4>
+                    <p class="text-xs text-gray-600">تقييم المشاريع في مراحل مختلفة</p>
+                </div>
+                <div class="glassmorphism card-hover p-6 border-t-4 border-red-600">
+                    <div class="text-2xl mb-3">💹</div>
+                    <h4 class="font-bold text-sm mb-2">دورة الحياة</h4>
+                    <p class="text-xs text-gray-600">فهم التكلفة والقيمة</p>
+                </div>
+                <div class="glassmorphism card-hover p-6 border-t-4 border-red-600">
+                    <div class="text-2xl mb-3">🌍</div>
+                    <h4 class="font-bold text-sm mb-2">البيئة التمكينية</h4>
+                    <p class="text-xs text-gray-600">قياس العوامل الداعمة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section id="usecases" class="section mb-24">
+        <h2 class="text-4xl font-extrabold mb-8">💡 حالات الاستخدام السعودية</h2>
+        <p class="text-lg text-gray-600 mb-12">تطبيقات عملية للابتكار في القطاع الصحي السعودي</p>
+        
+        <div class="space-y-8">
+            <!-- Use Case 1 -->
+            <div class="glassmorphism card-hover p-8 border-l-8 border-blue-600">
+                <h3 class="text-2xl font-bold mb-4">🏥 تحسين كفاءة المستشفيات</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div>
+                        <h4 class="font-bold text-red-600 mb-2">المشكلة</h4>
+                        <ul class="text-sm space-y-1 text-gray-700">
+                            <li>• قوائم انتظار طويلة</li>
+                            <li>• موارد غير مستغلة</li>
+                            <li>• تأخير في الخدمات</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-blue-600 mb-2">الحل</h4>
+                        <ul class="text-sm space-y-1 text-gray-700">
+                            <li>• نظام إدارة أسرة ذكي</li>
+                            <li>• توقع ذكي للمدة</li>
+                            <li>• توزيع محسّن</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-emerald-600 mb-2">النتائج</h4>
+                        <ul class="text-sm space-y-1 text-gray-700">
+                            <li>• ↓ 40% في الانتظار</li>
+                            <li>• ↑ 25% استخدام أسرة</li>
+                            <li>• 💰 100M توفير</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Use Case 2 -->
+            <div class="glassmorphism card-hover p-8 border-l-8 border-emerald-600">
+                <h3 class="text-2xl font-bold mb-4">🩺 تطوير الرعاية الأولية</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div>
+                        <h4 class="font-bold text-red-600 mb-2">المشكلة</h4>
+                        <ul class="text-sm space-y-1 text-gray-700">
+                            <li>• تركيز على المستشفيات</li>
+                            <li>• ضعف الرعاية الأولية</li>
+                            <li>• صعوبة الوصول</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-blue-600 mb-2">الحل</h4>
+                        <ul class="text-sm space-y-1 text-gray-700">
+                            <li>• منصة طب عن بُعد</li>
+                            <li>• استشارات فيديو</li>
+                            <li>• تشخيص ذكي</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-emerald-600 mb-2">النتائج</h4>
+                        <ul class="text-sm space-y-1 text-gray-700">
+                            <li>• ↓ 30% زيارات</li>
+                            <li>• وصول للمناطق النائية</li>
+                            <li>• 💰 50M توفير</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Use Case 3 -->
+            <div class="glassmorphism card-hover p-8 border-l-8 border-purple-600">
+                <h3 class="text-2xl font-bold mb-4">📋 تحسين جودة الرعاية</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div>
+                        <h4 class="font-bold text-red-600 mb-2">المشكلة</h4>
+                        <ul class="text-sm space-y-1 text-gray-700">
+                            <li>• تفاوت في الجودة</li>
+                            <li>• أخطاء طبية</li>
+                            <li>• معايير مختلفة</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-blue-600 mb-2">الحل</h4>
+                        <ul class="text-sm space-y-1 text-gray-700">
+                            <li>• معايير موحدة</li>
+                            <li>• قياس فوري KPIs</li>
+                            <li>• تنبيهات ذكية</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-emerald-600 mb-2">النتائج</h4>
+                        <ul class="text-sm space-y-1 text-gray-700">
+                            <li>• ↑ 50% جودة</li>
+                            <li>• ↓ 60% أخطاء</li>
+                            <li>• رضا أعلى</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Use Case 4 -->
+            <div class="glassmorphism card-hover p-8 border-l-8 border-orange-600">
+                <h3 class="text-2xl font-bold mb-4">💰 تحسين الكفاءة المالية (ClaimLinc)</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div>
+                        <h4 class="font-bold text-red-600 mb-2">المشكلة</h4>
+                        <ul class="text-sm space-y-1 text-gray-700">
+                            <li>• معالجة بطيئة (30 يوم)</li>
+                            <li>• رفض عالي</li>
+                            <li>• عدم التوافق NPHIES</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-blue-600 mb-2">الحل</h4>
+                        <ul class="text-sm space-y-1 text-gray-700">
+                            <li>• معالجة آلية NPHIES</li>
+                            <li>• فحص الامتثال</li>
+                            <li>• قياس ذكي AI</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-emerald-600 mb-2">النتائج</h4>
+                        <ul class="text-sm space-y-1 text-gray-700">
+                            <li>• 5-10 أيام معالجة</li>
+                            <li>• ↓ 40% رفض</li>
+                            <li>• 💰 300M سنوياً</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="mb-24 glassmorphism p-12 card-hover">
+        <h2 class="text-3xl font-bold mb-6">✅ الخلاصة</h2>
+        <p class="text-lg text-gray-700 mb-6">
+            مجموعة أدوات الابتكار من الأمم المتحدة توفر إطاراً شاملاً لقيادة الابتكار في المؤسسات الصحية السعودية. 
+            من خلال فهم إطار S.P.A.C.E. الخمس والأدوات الـ21 وتحديد ملفك الشخصي كمبتكر، يمكنك:
+        </p>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="flex gap-4">
+                <span class="text-3xl">✓</span>
+                <div>
+                    <h4 class="font-bold">بناء استراتيجية ابتكار واضحة</h4>
+                    <p class="text-sm text-gray-600">محاذاة الابتكار مع أهداف المؤسسة والرؤية الوطنية</p>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <span class="text-3xl">✓</span>
+                <div>
+                    <h4 class="font-bold">تطوير الشراكات المهمة</h4>
+                    <p class="text-sm text-gray-600">بناء علاقات قوية مع المنظمات والجهات الأخرى</p>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <span class="text-3xl">✓</span>
+                <div>
+                    <h4 class="font-bold">بناء البنية التحتية المطلوبة</h4>
+                    <p class="text-sm text-gray-600">أنظمة وعمليات وموارد تدعم الابتكار المستمر</p>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <span class="text-3xl">✓</span>
+                <div>
+                    <h4 class="font-bold">خلق ثقافة داعمة للابتكار</h4>
+                    <p class="text-sm text-gray-600">تقبل التجريب والتعلم من الأخطاء والتحسين المستمر</p>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <span class="text-3xl">✓</span>
+                <div>
+                    <h4 class="font-bold">قياس تأثير الابتكار بفعالية</h4>
+                    <p class="text-sm text-gray-600">فهم النتائج وقياس العائد على الاستثمار</p>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <span class="text-3xl">✓</span>
+                <div>
+                    <h4 class="font-bold">دعم رؤية 2030</h4>
+                    <p class="text-sm text-gray-600">تسريع التحول الرقمي في القطاع الصحي السعودي</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-400 py-12 px-6">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 mb-8">
+        <div>
+            <h4 class="text-white font-bold mb-3">عن BrainSAIT</h4>
+            <p class="text-sm">منصة ابتكار في الرعاية الصحية تدعم التحول الرقمي في السعودية والمنطقة</p>
+        </div>
+        <div>
+            <h4 class="text-white font-bold mb-3">الموارد</h4>
+            <ul class="text-sm space-y-1">
+                <li><a href="https://un-innovation.tools/" class="text-blue-400 hover:text-blue-300">UN Innovation Toolkit</a></li>
+                <li><a href="https://brainsait.org" class="text-blue-400 hover:text-blue-300">BrainSAIT.org</a></li>
+                <li><a href="#" class="text-blue-400 hover:text-blue-300">التشخيص الابتكاري</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="text-white font-bold mb-3">الامتثال</h4>
+            <ul class="text-sm space-y-1">
+                <li>✓ HIPAA</li>
+                <li>✓ NPHIES</li>
+                <li>✓ FHIR R4</li>
+            </ul>
+        </div>
+    </div>
+    <div class="border-t border-gray-800 pt-8 text-center">
+        <p class="text-sm mb-2">© 2026 BrainSAIT LTD — جميع الحقوق محفوظة</p>
+        <p class="text-xs">مبنية على مجموعة أدوات الأمم المتحدة للابتكار | مخصصة للقطاع الصحي السعودي</p>
+    </div>
+</footer>
+
+<script>
+function toggleLanguage() {
+    const html = document.documentElement;
+    const currentLang = html.getAttribute('lang');
+    const newLang = currentLang === 'ar' ? 'en' : 'ar';
+    const newDir = currentLang === 'ar' ? 'ltr' : 'rtl';
+    
+    html.setAttribute('lang', newLang);
+    html.setAttribute('dir', newDir);
+    
+    // Reload to show English version or apply translations
+    // In production, you would load the English version of the document
+    alert('تم التبديل إلى ' + (newLang === 'ar' ? 'العربية' : 'English'));
+}
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Update active nav tab on scroll
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('.section');
+    let current = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
+    
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.classList.remove('tab-active');
+        link.classList.add('tab-inactive');
+        if (link.getAttribute('href').slice(1) === current) {
+            link.classList.remove('tab-inactive');
+            link.classList.add('tab-active');
+        }
+    });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+import type { LearningPath } from '@/types'
+
+export const LEARNING_PATHS: LearningPath[] = [
+  {
+    icon: '🏥',
+    nameEn: 'Healthcare Founder',
+    nameAr: 'مؤسس الرعاية الصحية',
+    desc: 'Strategy → AI → RCM → Compliance → Vision 2030',
+    courses: 5,
+    weeks: 15,
+    courseIds: ['collective-brainpower', 'ai-fluency', 'rcm-automation', 'compliance', 'vision2030'],
+  },
+  {
+    icon: '⚙️',
+    nameEn: 'Health Tech Engineer',
+    nameAr: 'مهندس التقنية الصحية',
+    desc: 'FHIR → Agents → MCP → Claude Code → NPHIES',
+    courses: 6,
+    weeks: 20,
+    courseIds: ['fhir-r4', 'agents', 'mcp', 'claude-code', 'nphies-ai-mastery', 'claude-code-action'],
+  },
+  {
+    icon: '📊',
+    nameEn: 'RCM Specialist',
+    nameAr: 'أخصائي إدارة الإيرادات',
+    desc: 'NPHIES → RCM → Compliance → AI Automation',
+    courses: 4,
+    weeks: 14,
+    courseIds: ['nphies-ai-mastery', 'rcm-automation', 'compliance', 'agents'],
+  },
+  {
+    icon: '🧠',
+    nameEn: 'AI Transformation Leader',
+    nameAr: 'قائد التحول بالذكاء الاصطناعي',
+    desc: 'AI Fluency → Strategy → Vision 2030 → Compliance',
+    courses: 4,
+    weeks: 12,
+    courseIds: ['ai-fluency', 'collective-brainpower', 'vision2030', 'compliance'],
+  },
+  {
+    icon: '👩‍⚕️',
+    nameEn: 'Clinical AI Specialist',
+    nameAr: 'أخصائي الذكاء الاصطناعي السريري',
+    desc: 'Claude 101 → Cowork → Agents → MCP',
+    courses: 4,
+    weeks: 13,
+    courseIds: ['claude-101', 'cowork', 'agents', 'mcp'],
+  },
+  {
+    icon: '🎓',
+    nameEn: 'Healthcare AI Educator',
+    nameAr: 'معلم الذكاء الاصطناعي الصحي',
+    desc: 'AI Fluency → Teaching → Students → Nonprofits',
+    courses: 4,
+    weeks: 10,
+    courseIds: ['ai-fluency', 'teaching-ai', 'ai-students', 'ai-nonprofit'],
+  },
+]
