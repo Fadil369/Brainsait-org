@@ -1,8 +1,9 @@
 // Phase 6: GitHub Integration
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft, GithubLogo, Check, ArrowSquareOut, Rocket } from '@phosphor-icons/react'
+import { GithubLogo, Check, ArrowSquareOut, Rocket } from '@phosphor-icons/react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { PhaseShell } from '@/components/PhaseShell'
 import type { GitHubRepo, GeneratedCode, Brand, Journey } from '@/types'
 
 interface Props {
@@ -82,20 +83,7 @@ export function GitHubPhase({ initial, code, brand, journey, onComplete, onBack 
   const completedPhases = journey.phases.filter(p => p.completed).length
 
   return (
-    <div className="min-h-screen" style={{ background: '#050810' }}>
-      <div className="max-w-3xl mx-auto px-4 py-8">
-        <div className={`flex items-center gap-3 mb-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <button onClick={onBack} className="glass-card glass-card-hover p-2 rounded-xl text-slate-400 hover:text-white transition-colors">
-            <ArrowLeft size={20} className={isRTL ? 'rotate-180' : ''} />
-          </button>
-          <div>
-            <h1 className="font-display font-bold text-2xl text-white flex items-center gap-2">
-              <span>🚀</span> {t.githubTitle}
-            </h1>
-            <p className="text-slate-400 text-sm mt-0.5">{t.githubSubtitle}</p>
-          </div>
-        </div>
-
+    <PhaseShell phaseId="github" subtitle={t.githubSubtitle} onBack={onBack}>
         <AnimatePresence mode="wait">
           {step === 'config' && (
             <motion.div key="config" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-5">
@@ -297,7 +285,6 @@ export function GitHubPhase({ initial, code, brand, journey, onComplete, onBack 
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
-    </div>
+    </PhaseShell>
   )
 }

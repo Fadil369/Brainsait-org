@@ -1,8 +1,9 @@
 // Phase 3: Brand Studio
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft, Palette, Sparkle, Check } from '@phosphor-icons/react'
+import { Palette, Sparkle, Check } from '@phosphor-icons/react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { PhaseShell } from '@/components/PhaseShell'
 import { AILoadingScreen } from '@/components/AILoadingScreen'
 import { llmPrompt } from '@/lib/llm'
 import type { Brand, BrandPersonality, PersonalityProfile, ConceptCard } from '@/types'
@@ -137,20 +138,7 @@ Respond with JSON only.`
   }
 
   return (
-    <div className="min-h-screen" style={{ background: '#050810' }}>
-      <div className="max-w-3xl mx-auto px-4 py-8">
-        <div className={`flex items-center gap-3 mb-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <button onClick={onBack} className="glass-card glass-card-hover p-2 rounded-xl text-slate-400 hover:text-white transition-colors">
-            <ArrowLeft size={20} className={isRTL ? 'rotate-180' : ''} />
-          </button>
-          <div>
-            <h1 className="font-display font-bold text-2xl text-white flex items-center gap-2">
-              <span>🎨</span> {t.brandTitle}
-            </h1>
-            <p className="text-slate-400 text-sm mt-0.5">{t.brandSubtitle}</p>
-          </div>
-        </div>
-
+    <PhaseShell phaseId="brand" subtitle={t.brandSubtitle} onBack={onBack}>
         <AnimatePresence mode="wait">
           {loading ? (
             <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
@@ -316,7 +304,6 @@ Respond with JSON only.`
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
-    </div>
+    </PhaseShell>
   )
 }

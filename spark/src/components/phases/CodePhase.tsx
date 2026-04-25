@@ -1,8 +1,9 @@
 // Phase 5: Code Generator
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft, Code, Sparkle, Check, CopySimple, DownloadSimple } from '@phosphor-icons/react'
+import { Code, Sparkle, Check, CopySimple, DownloadSimple } from '@phosphor-icons/react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { PhaseShell } from '@/components/PhaseShell'
 import { AILoadingScreen } from '@/components/AILoadingScreen'
 import { llmPrompt } from '@/lib/llm'
 import type { GeneratedCode, CodeFile, TemplateType, Brand, PRD } from '@/types'
@@ -177,20 +178,7 @@ export default function App() {
   const activeFileContent = files.find(f => f.name === activeFile)?.content || ''
 
   return (
-    <div className="min-h-screen" style={{ background: '#050810' }}>
-      <div className="max-w-5xl mx-auto px-4 py-8">
-        <div className={`flex items-center gap-3 mb-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <button onClick={onBack} className="glass-card glass-card-hover p-2 rounded-xl text-slate-400 hover:text-white transition-colors">
-            <ArrowLeft size={20} className={isRTL ? 'rotate-180' : ''} />
-          </button>
-          <div>
-            <h1 className="font-display font-bold text-2xl text-white flex items-center gap-2">
-              <span>⚡</span> {t.codeTitle}
-            </h1>
-            <p className="text-slate-400 text-sm mt-0.5">{t.codeSubtitle}</p>
-          </div>
-        </div>
-
+    <PhaseShell phaseId="code" subtitle={t.codeSubtitle} onBack={onBack} maxWidth="xl">
         <AnimatePresence mode="wait">
           {loading ? (
             <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
@@ -324,7 +312,6 @@ export default function App() {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
-    </div>
+    </PhaseShell>
   )
 }

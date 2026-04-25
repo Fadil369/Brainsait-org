@@ -1,8 +1,9 @@
 // Phase 4: PRD Workshop
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft, FileText, Sparkle, Check, DownloadSimple } from '@phosphor-icons/react'
+import { FileText, Sparkle, Check, DownloadSimple } from '@phosphor-icons/react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { PhaseShell } from '@/components/PhaseShell'
 import { AILoadingScreen } from '@/components/AILoadingScreen'
 import { llmPrompt } from '@/lib/llm'
 import type { PRD, PRDSection, Brand, ConceptCard } from '@/types'
@@ -162,21 +163,9 @@ Write only the section content, no headers needed.`
   }
 
   return (
-    <div className="min-h-screen" style={{ background: '#050810' }}>
-      <div className="max-w-5xl mx-auto px-4 py-8">
-        <div className={`flex items-center justify-between mb-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <div className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
-            <button onClick={onBack} className="glass-card glass-card-hover p-2 rounded-xl text-slate-400 hover:text-white transition-colors">
-              <ArrowLeft size={20} className={isRTL ? 'rotate-180' : ''} />
-            </button>
-            <div>
-              <h1 className="font-display font-bold text-2xl text-white flex items-center gap-2">
-                <span>📋</span> {t.prdTitle}
-              </h1>
-              <p className="text-slate-400 text-sm mt-0.5">{t.prdSubtitle}</p>
-            </div>
-          </div>
-          {/* Completeness badge */}
+    <PhaseShell phaseId="prd" subtitle={t.prdSubtitle} onBack={onBack} maxWidth="xl">
+        {/* Completeness indicator */}
+        <div className="flex justify-end mb-5">
           <div className="glass-card rounded-2xl px-4 py-2 text-center">
             <div className={`text-2xl font-display font-bold ${completeness >= 80 ? 'text-emerald-400' : 'text-spark-400'}`}>
               {completeness}%
@@ -291,7 +280,6 @@ Write only the section content, no headers needed.`
             </div>
           </div>
         </div>
-      </div>
-    </div>
+    </PhaseShell>
   )
 }

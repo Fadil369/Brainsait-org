@@ -1,8 +1,9 @@
 // Phase 1: Brainstorm Canvas
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft, Lightbulb, Sparkle, Check } from '@phosphor-icons/react'
+import { Lightbulb, Sparkle, Check } from '@phosphor-icons/react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { PhaseShell } from '@/components/PhaseShell'
 import { AILoadingScreen } from '@/components/AILoadingScreen'
 import { llmPrompt } from '@/lib/llm'
 import type { ConceptCard } from '@/types'
@@ -97,150 +98,135 @@ Respond with valid JSON only.`
   }
 
   return (
-    <div className="min-h-screen" style={{ background: '#050810' }}>
-      <div className="max-w-3xl mx-auto px-4 py-8">
-        {/* Header */}
-        <div className={`flex items-center gap-3 mb-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
-          <button onClick={onBack} className="glass-card glass-card-hover p-2 rounded-xl text-slate-400 hover:text-white transition-colors">
-            <ArrowLeft size={20} className={isRTL ? 'rotate-180' : ''} />
-          </button>
-          <div>
-            <h1 className="font-display font-bold text-2xl text-white flex items-center gap-2">
-              <span>💡</span> {t.brainstormTitle}
-            </h1>
-            <p className="text-slate-400 text-sm mt-0.5">{t.brainstormSubtitle}</p>
-          </div>
-        </div>
+    <PhaseShell phaseId="brainstorm" subtitle={t.brainstormSubtitle} onBack={onBack}>
+      <AnimatePresence mode="wait">
+        {loading ? (
+          <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <AILoadingScreen message={t.generatingConcepts} />
+          </motion.div>
+        ) : step === 'input' ? (
+          <motion.div key="input" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
+            <div className="glass-card rounded-2xl p-6 mb-4">
+              <label className="block text-sm font-medium text-slate-300 mb-3">
+                {t.enterHealthcareIdea}
+              </label>
+              <textarea
+                value={input}
+                onChange={e => setInput(e.target.value)}
+                placeholder={t.ideaPlaceholder}
+                rows={4}
+                dir={isRTL ? 'rtl' : 'ltr'}
+                className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-600 resize-none focus:outline-none focus:border-spark-500/50 transition-colors"
+              />
+            </div>
 
-        <AnimatePresence mode="wait">
-          {loading ? (
-            <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <AILoadingScreen message={t.generatingConcepts} />
-            </motion.div>
-          ) : step === 'input' ? (
-            <motion.div key="input" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
-              <div className="glass-card rounded-2xl p-6 mb-4">
-                <label className="block text-sm font-medium text-slate-300 mb-3">
-                  {t.enterHealthcareIdea}
-                </label>
-                <textarea
-                  value={input}
-                  onChange={e => setInput(e.target.value)}
-                  placeholder={t.ideaPlaceholder}
-                  rows={4}
-                  dir={isRTL ? 'rtl' : 'ltr'}
-                  className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-600 resize-none focus:outline-none focus:border-spark-500/50 transition-colors"
-                />
+            {/* Example ideas */}
+            <div className="mb-6">
+              <p className="text-xs text-slate-500 uppercase tracking-wide mb-3">
+                {language === 'ar' ? 'أمثلة للإلهام' : 'Examples for inspiration'}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {examples.map(ex => (
+                  <button
+                    key={ex}
+                    onClick={() => setInput(ex)}
+                    className="text-xs glass-card glass-card-hover px-3 py-1.5 rounded-full text-slate-400 hover:text-white transition-colors"
+                    dir={isRTL ? 'rtl' : 'ltr'}
+                  >
+                    {ex.slice(0, 40)}...
+                  </button>
+                ))}
               </div>
+            </div>
 
-              {/* Example ideas */}
-              <div className="mb-6">
-                <p className="text-xs text-slate-500 uppercase tracking-wide mb-3">
-                  {language === 'ar' ? 'أمثلة للإلهام' : 'Examples for inspiration'}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {examples.map(ex => (
-                    <button
-                      key={ex}
-                      onClick={() => setInput(ex)}
-                      className="text-xs glass-card glass-card-hover px-3 py-1.5 rounded-full text-slate-400 hover:text-white transition-colors"
-                      dir={isRTL ? 'rtl' : 'ltr'}
-                    >
-                      {ex.slice(0, 40)}...
-                    </button>
-                  ))}
+            <button
+              onClick={handleGenerate}
+              disabled={!input.trim()}
+              className="spark-btn w-full py-3 rounded-2xl font-semibold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <Sparkle size={18} />
+              {t.generate}
+            </button>
+          </motion.div>
+        ) : step === 'concepts' ? (
+          <motion.div key="concepts" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="space-y-6">
+            <div className="glass-card rounded-2xl p-6">
+              <h3 className="font-display font-semibold text-white mb-4 flex items-center gap-2">
+                <Lightbulb size={20} className="text-spark-400" />
+                {t.relatedConcepts}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {concepts.map(c => (
+                  <motion.button
+                    key={c}
+                    onClick={() => toggleConcept(c)}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                      selectedConcepts.includes(c)
+                        ? 'bg-spark-500 text-white border border-spark-400'
+                        : 'glass-card glass-card-hover text-slate-300 hover:text-white'
+                    }`}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {selectedConcepts.includes(c) && <span className="mr-1">✓</span>}
+                    {c}
+                  </motion.button>
+                ))}
+              </div>
+            </div>
+
+            {/* Draft concept card */}
+            <div className="glass-card rounded-2xl p-6 border border-spark-500/20 space-y-4">
+              <h3 className="font-display font-semibold text-white">{t.conceptCard}</h3>
+              {(['problem', 'targetUsers', 'solution'] as const).map(field => (
+                <div key={field}>
+                  <label className="block text-xs text-slate-400 uppercase tracking-wide mb-1">
+                    {t[field]}
+                  </label>
+                  <textarea
+                    value={card[field] || ''}
+                    onChange={e => setCard(prev => ({ ...prev, [field]: e.target.value }))}
+                    rows={2}
+                    dir={isRTL ? 'rtl' : 'ltr'}
+                    className="w-full bg-black/30 border border-white/10 rounded-xl px-3 py-2 text-sm text-white placeholder-slate-600 resize-none focus:outline-none focus:border-spark-500/50 transition-colors"
+                  />
                 </div>
-              </div>
+              ))}
+            </div>
 
+            <div className="flex gap-3">
+              <button onClick={() => setStep('input')} className="glass-card glass-card-hover px-4 py-3 rounded-xl text-slate-300 flex-1">
+                {t.back}
+              </button>
               <button
-                onClick={handleGenerate}
-                disabled={!input.trim()}
-                className="spark-btn w-full py-3 rounded-2xl font-semibold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                onClick={handleSave}
+                className="spark-btn flex-[2] py-3 rounded-xl font-semibold flex items-center justify-center gap-2"
               >
-                <Sparkle size={18} />
-                {t.generate}
+                <Check size={18} />
+                {t.saveConcept}
               </button>
-            </motion.div>
-          ) : step === 'concepts' ? (
-            <motion.div key="concepts" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="space-y-6">
-              <div className="glass-card rounded-2xl p-6">
-                <h3 className="font-display font-semibold text-white mb-4 flex items-center gap-2">
-                  <Lightbulb size={20} className="text-spark-400" />
-                  {t.relatedConcepts}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {concepts.map(c => (
-                    <motion.button
-                      key={c}
-                      onClick={() => toggleConcept(c)}
-                      className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                        selectedConcepts.includes(c)
-                          ? 'bg-spark-500 text-white border border-spark-400'
-                          : 'glass-card glass-card-hover text-slate-300 hover:text-white'
-                      }`}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      {selectedConcepts.includes(c) && <span className="mr-1">✓</span>}
-                      {c}
-                    </motion.button>
-                  ))}
+            </div>
+          </motion.div>
+        ) : (
+          // Recap view when already completed
+          <motion.div key="card" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
+            <div className="glass-card rounded-2xl p-6 border border-emerald-500/20 space-y-4">
+              <div className="flex items-center gap-2 text-emerald-400">
+                <Check size={20} weight="bold" />
+                <span className="font-semibold">{t.completed}</span>
+              </div>
+              {(['problem', 'targetUsers', 'solution'] as const).map(field => (
+                <div key={field}>
+                  <label className="block text-xs text-slate-400 uppercase tracking-wide mb-1">{t[field]}</label>
+                  <p className="text-sm text-slate-200" dir={isRTL ? 'rtl' : 'ltr'}>{initial?.[field]}</p>
                 </div>
-              </div>
-
-              {/* Draft concept card */}
-              <div className="glass-card rounded-2xl p-6 border border-spark-500/20 space-y-4">
-                <h3 className="font-display font-semibold text-white">{t.conceptCard}</h3>
-                {(['problem', 'targetUsers', 'solution'] as const).map(field => (
-                  <div key={field}>
-                    <label className="block text-xs text-slate-400 uppercase tracking-wide mb-1">
-                      {t[field]}
-                    </label>
-                    <textarea
-                      value={card[field] || ''}
-                      onChange={e => setCard(prev => ({ ...prev, [field]: e.target.value }))}
-                      rows={2}
-                      dir={isRTL ? 'rtl' : 'ltr'}
-                      className="w-full bg-black/30 border border-white/10 rounded-xl px-3 py-2 text-sm text-white placeholder-slate-600 resize-none focus:outline-none focus:border-spark-500/50 transition-colors"
-                    />
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex gap-3">
-                <button onClick={() => setStep('input')} className="glass-card glass-card-hover px-4 py-3 rounded-xl text-slate-300 flex-1">
-                  {t.back}
-                </button>
-                <button
-                  onClick={handleSave}
-                  className="spark-btn flex-[2] py-3 rounded-xl font-semibold flex items-center justify-center gap-2"
-                >
-                  <Check size={18} />
-                  {t.saveConcept}
-                </button>
-              </div>
-            </motion.div>
-          ) : (
-            // Recap view when already completed
-            <motion.div key="card" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
-              <div className="glass-card rounded-2xl p-6 border border-emerald-500/20 space-y-4">
-                <div className="flex items-center gap-2 text-emerald-400">
-                  <Check size={20} weight="bold" />
-                  <span className="font-semibold">{t.completed}</span>
-                </div>
-                {(['problem', 'targetUsers', 'solution'] as const).map(field => (
-                  <div key={field}>
-                    <label className="block text-xs text-slate-400 uppercase tracking-wide mb-1">{t[field]}</label>
-                    <p className="text-sm text-slate-200" dir={isRTL ? 'rtl' : 'ltr'}>{initial?.[field]}</p>
-                  </div>
-                ))}
-              </div>
-              <button onClick={handleSave} className="spark-btn w-full py-3 rounded-2xl font-semibold">
-                {t.continue}
-              </button>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </div>
+              ))}
+            </div>
+            <button onClick={handleSave} className="spark-btn w-full py-3 rounded-2xl font-semibold">
+              {t.continue}
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </PhaseShell>
   )
 }
