@@ -10,7 +10,7 @@ export default {
       'incubator.brainsait.org': 'https://brainsait-frontend-3kv.pages.dev',
       'app.brainsait.org': 'https://brainsait-frontend-3kv.pages.dev',
       'platform.brainsait.org': 'https://brainsait.org/platform',
-      'training.brainsait.org': 'https://brainsait.org/training',
+      'training.brainsait.org': 'https://brainsait.org/training/courses/',
       'spark.brainsait.org': 'https://brainsait-spark.pages.dev',
       'api.brainsait.org': 'https://api.brainsait.org',
       'notifications.brainsait.org': 'https://notifications.brainsait.org',

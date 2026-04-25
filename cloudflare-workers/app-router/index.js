@@ -14,6 +14,11 @@ export default {
       return Response.redirect(dest.toString(), 302);
     }
 
+    if (path === '/training' && (url.hash === '#/' || url.hash === '#' || request.url.includes('#/'))) {
+      const dest = new URL('https://brainsait.org/training/courses/');
+      return Response.redirect(dest.toString(), 301);
+    }
+
 // Redirect /incubator/courses* → /incubator/training/courses
     // Canonical training URL is /incubator/training/courses.
     if (path === '/incubator/courses' || path.startsWith('/incubator/courses/')) {

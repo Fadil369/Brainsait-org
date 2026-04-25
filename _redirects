@@ -62,6 +62,8 @@ https://dashboard.brainsait.org/* https://portal.elfadil.com/:splat 301
 
 # ─── Training ────────────────────────────────────────────────────────────────
 # Training home → courses listing (canonical entry point)
+/training/#/ /training/courses/ 301
+/training/# /training/courses/ 301
 /training /training/courses/ 301
 /training/ /training/courses/ 301
 
