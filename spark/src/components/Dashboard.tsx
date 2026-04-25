@@ -1,6 +1,6 @@
 // Main Dashboard
 import { motion } from 'framer-motion'
-import { Globe, Moon, Sun, Lightning, ArrowCounterClockwise, Download, ShareNetwork } from '@phosphor-icons/react'
+import { Globe, Moon, Sun, Lightning, ArrowCounterClockwise, Download } from '@phosphor-icons/react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { PhaseNavigation } from '@/components/PhaseNavigation'
 import { GameStats } from '@/components/GameStats'
@@ -54,9 +54,8 @@ export function Dashboard({ journey, onPhaseSelect, onToggleTheme, onResetJourne
     URL.revokeObjectURL(url)
   }
 
-  return (
+return (
     <div className="min-h-screen" style={{ background: '#050810' }}>
-      {/* Header */}
       <header className="sticky top-0 z-40 border-b border-white/5 backdrop-blur-xl bg-black/30">
         <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -79,6 +78,14 @@ export function Dashboard({ journey, onPhaseSelect, onToggleTheme, onResetJourne
             >
               <Globe size={16} />
               <span className="font-medium">{language === 'en' ? 'عربي' : 'EN'}</span>
+            </button>
+
+            {/* Theme toggle */}
+            <button
+              onClick={onToggleTheme}
+              className="glass-card glass-card-hover rounded-lg p-2 text-slate-400 hover:text-white transition-colors"
+            >
+              {journey.theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
             </button>
 
             {/* Theme toggle */}
