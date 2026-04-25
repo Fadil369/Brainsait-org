@@ -5,8 +5,8 @@ import { FileText, Sparkle, Check, DownloadSimple } from '@phosphor-icons/react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { PhaseShell } from '@/components/PhaseShell'
 import { AILoadingScreen } from '@/components/AILoadingScreen'
-import { llmPrompt } from '@/lib/llm'
-import type { PRD, PRDSection, Brand, ConceptCard } from '@/types'
+import { extractJSON, llmPrompt } from '@/lib/llm'
+import type { PRD, PRDAnalysis, PRDSection, Brand, ConceptCard } from '@/types'
 
 interface Props {
   initial?: PRD
@@ -46,6 +46,7 @@ export function PRDPhase({ initial, brand, concept, onComplete, onBack }: Props)
     initial?.sections || SECTIONS.map(s => ({ ...s, content: '', completed: false }))
   )
   const [regulatory, setRegulatory] = useState<Record<string, boolean>>(initial?.regulatoryChecklist || {})
+  const [analysis, setAnalysis] = useState<PRDAnalysis | undefined>(initial?.analysis)
 
   const completedCount = sections.filter(s => s.completed && s.content).length
   const completeness = Math.round((completedCount / SECTIONS.length) * 100)
@@ -56,7 +57,7 @@ export function PRDPhase({ initial, brand, concept, onComplete, onBack }: Props)
     if (!sectionDef) return
     setLoadingSection(sectionId)
     try {
-      const prompt = `You are writing a PRD section for a healthcare startup targeting Saudi Arabia / MENA.
+      const prompt = `You are a senior product manager writing a PRD section for a healthcare startup targeting Saudi Arabia / MENA.
 
 Startup context:
 - Problem: ${concept?.problem || 'Healthcare access challenges'}
@@ -68,11 +69,12 @@ Write the "${sectionDef.title}" section with:
 ${sectionDef.prompt}
 
 Requirements:
-- 250-400 words
+- 180-300 words
 - Reference Vision 2030 where appropriate
 - Be specific to the Saudi/MENA healthcare context
 - Use a ${brand?.personality?.primary || 'professional'} tone matching the brand personality
-- Include specific metrics, percentages, or market data where relevant
+- Include concrete product decisions, measurable outcomes, and assumptions where relevant
+- Include user impact, operational impact, or compliance impact where relevant
 
 Write only the section content, no headers needed.`
 
@@ -146,11 +148,73 @@ Write only the section content, no headers needed.`
   }
 
   async function handleGenerateAll() {
-    for (const section of SECTIONS) {
-      const current = sections.find(s => s.id === section.id)
-      if (!current?.completed) {
-        await handleGenerateSection(section.id)
+    setLoadingSection('all')
+    try {
+      const prompt = `You are a senior healthcare product strategist. Generate a complete investor-ready PRD package as JSON for a Saudi/MENA healthcare startup.
+
+Startup context:
+- Problem: ${concept?.problem || 'Healthcare access challenges'}
+- Target users: ${concept?.targetUsers || 'Healthcare stakeholders in Saudi Arabia'}
+- Solution: ${concept?.solution || 'Digital health platform'}
+- Brand: ${brand?.name || 'Healthcare Startup'} — ${brand?.tagline || ''}
+- Brand personality: ${brand?.personality?.primary || 'professional'}
+
+Return only valid JSON with this exact shape:
+{
+  "sections": [{ "id": "executive-summary", "content": "..." }],
+  "analysis": {
+    "userStories": [{ "role": "...", "need": "...", "benefit": "...", "acceptanceCriteria": ["..."] }],
+    "assumptions": ["..."],
+    "risks": ["..."],
+    "successMetrics": ["..."],
+    "mvpScope": ["..."],
+    "technicalNotes": ["..."]
+  },
+  "regulatoryChecklist": { "nphies": true, "pdpl": true, "fhir": true, "moh": false, "hipaa": true, "iso27001": true }
+}
+
+Section ids must include: ${SECTIONS.map(s => s.id).join(', ')}.
+Each section content should be 120-220 words, practical, and specific.
+Analysis should be actionable enough for engineering and GTM planning.`
+
+      const fallback = {
+        sections: SECTIONS.map(section => ({
+          id: section.id,
+          content: `${section.title} for ${brand?.name || 'the healthcare startup'} should focus on ${section.prompt}. The MVP must solve ${concept?.problem || 'a healthcare workflow pain'} for ${concept?.targetUsers || 'target users'} through ${concept?.solution || 'a digital health solution'}. This section should be validated with pilot users and measured through adoption, completion rate, time saved, and compliance readiness.`,
+        })),
+        analysis: {
+          userStories: [
+            {
+              role: 'patient',
+              need: 'complete the main healthcare workflow from mobile',
+              benefit: 'I can finish without calling support',
+              acceptanceCriteria: ['Mobile-first flow works', 'Arabic and English are supported', 'Completion state is clear'],
+            },
+            {
+              role: 'clinic administrator',
+              need: 'track workflow completion and exceptions',
+              benefit: 'I can reduce manual follow-up',
+              acceptanceCriteria: ['Dashboard shows status', 'Exceptions are highlighted', 'Reports can be exported'],
+            },
+          ],
+          assumptions: ['Pilot users are Saudi healthcare providers', 'Bilingual UX is required', 'Sensitive data handling follows PDPL principles'],
+          risks: ['Integration complexity', 'Clinical workflow adoption', 'Regulatory approval timelines'],
+          successMetrics: ['30% reduction in task completion time', '80% pilot completion rate', 'Weekly active admin usage'],
+          mvpScope: ['Bilingual onboarding', 'Core workflow dashboard', 'Task status tracking', 'Admin report export'],
+          technicalNotes: ['React + TypeScript frontend', 'FHIR-ready data boundaries', 'Audit logging for sensitive events'],
+        },
+        regulatoryChecklist: { nphies: true, pdpl: true, fhir: true, moh: false, hipaa: true, iso27001: true },
       }
+
+      const parsed = extractJSON<typeof fallback>(await llmPrompt(prompt, { maxTokens: 5500 }), fallback)
+      setSections(prev => prev.map(section => {
+        const generated = parsed.sections.find(s => s.id === section.id)
+        return generated ? { ...section, content: generated.content, completed: true } : section
+      }))
+      setAnalysis(parsed.analysis)
+      setRegulatory(prev => ({ ...prev, ...parsed.regulatoryChecklist }))
+    } finally {
+      setLoadingSection(null)
     }
   }
 
@@ -159,6 +223,7 @@ Write only the section content, no headers needed.`
       sections,
       completenessScore: completeness,
       regulatoryChecklist: regulatory,
+      analysis,
     })
   }
 
@@ -204,7 +269,11 @@ Write only the section content, no headers needed.`
           {/* Section editor */}
           <div className="flex-1">
             <AnimatePresence mode="wait">
-              {loadingSection === activeSection ? (
+              {loadingSection === 'all' ? (
+                <motion.div key="loading-all" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                  <AILoadingScreen message={language === 'ar' ? 'جاري إنشاء وثيقة المنتج الكاملة...' : 'Generating the complete PRD package...'} />
+                </motion.div>
+              ) : loadingSection === activeSection ? (
                 <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                   <AILoadingScreen message={language === 'ar' ? 'جاري كتابة القسم...' : 'Writing this section...'} />
                 </motion.div>
@@ -235,6 +304,48 @@ Write only the section content, no headers needed.`
                 </motion.div>
               ) : null}
             </AnimatePresence>
+
+            {analysis && (
+              <div className="glass-card rounded-2xl p-5 mt-4 space-y-4">
+                <h3 className="font-semibold text-sm text-slate-400 uppercase tracking-wide">
+                  {language === 'ar' ? 'تحليل المنتج' : 'Product Analysis'}
+                </h3>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {[
+                    { title: language === 'ar' ? 'نطاق MVP' : 'MVP Scope', items: analysis.mvpScope },
+                    { title: language === 'ar' ? 'المقاييس' : 'Success Metrics', items: analysis.successMetrics },
+                    { title: language === 'ar' ? 'الافتراضات' : 'Assumptions', items: analysis.assumptions },
+                    { title: language === 'ar' ? 'المخاطر' : 'Risks', items: analysis.risks },
+                    { title: language === 'ar' ? 'ملاحظات تقنية' : 'Technical Notes', items: analysis.technicalNotes },
+                  ].map(group => (
+                    <div key={group.title} className="rounded-xl border border-white/10 bg-white/[.03] p-3">
+                      <p className="text-xs font-semibold text-spark-300 mb-2">{group.title}</p>
+                      <ul className="space-y-1 text-sm text-slate-300">
+                        {group.items.map(item => <li key={item}>• {item}</li>)}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+
+                {analysis.userStories.length > 0 && (
+                  <div className="rounded-xl border border-white/10 bg-white/[.03] p-3">
+                    <p className="text-xs font-semibold text-spark-300 mb-2">
+                      {language === 'ar' ? 'قصص المستخدم ومعايير القبول' : 'User Stories & Acceptance Criteria'}
+                    </p>
+                    <div className="grid gap-2">
+                      {analysis.userStories.map((story, idx) => (
+                        <div key={`${story.role}-${idx}`} className="rounded-lg bg-black/20 p-3 text-sm text-slate-300">
+                          <p className="font-semibold text-white">As a {story.role}, I need {story.need}, so that {story.benefit}.</p>
+                          <ul className="mt-2 space-y-1 text-xs text-slate-400">
+                            {story.acceptanceCriteria.map(criteria => <li key={criteria}>✓ {criteria}</li>)}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Regulatory checklist */}
             <div className="glass-card rounded-2xl p-5 mt-4">

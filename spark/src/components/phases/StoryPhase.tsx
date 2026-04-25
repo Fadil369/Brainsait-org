@@ -5,8 +5,8 @@ import { BookOpen, Sparkle, Check } from '@phosphor-icons/react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { PhaseShell } from '@/components/PhaseShell'
 import { AILoadingScreen } from '@/components/AILoadingScreen'
-import { llmPrompt } from '@/lib/llm'
-import type { Story, ConceptCard } from '@/types'
+import { extractJSON, llmPrompt } from '@/lib/llm'
+import type { Story, ConceptCard, UserStory } from '@/types'
 
 interface Props {
   initial?: Story
@@ -35,6 +35,10 @@ export function StoryPhase({ initial, concept, onComplete, onBack }: Props) {
   const [loading, setLoading] = useState(false)
   const [story, setStory] = useState(initial?.narrative || '')
   const [scores, setScores] = useState({ clarity: initial?.clarityScore ?? 0, emotion: initial?.emotionScore ?? 0 })
+  const [pitchSummary, setPitchSummary] = useState(initial?.pitchSummary || '')
+  const [marketAnalysis, setMarketAnalysis] = useState<string[]>(initial?.marketAnalysis || [])
+  const [risks, setRisks] = useState<string[]>(initial?.risks || [])
+  const [userStories, setUserStories] = useState<UserStory[]>(initial?.userStories || [])
   const [generated, setGenerated] = useState(!!initial?.narrative)
 
   const templates = language === 'ar' ? TEMPLATES.ar : TEMPLATES.en
@@ -44,7 +48,7 @@ export function StoryPhase({ initial, concept, onComplete, onBack }: Props) {
     setLoading(true)
     try {
       const toneLabel = tone < 33 ? 'formal and professional' : tone < 66 ? 'balanced and approachable' : 'casual and conversational'
-      const prompt = `You are a startup storytelling expert for the healthcare sector in Saudi Arabia / MENA region.
+      const prompt = `You are a healthcare startup strategist and product discovery lead for Saudi Arabia / MENA.
 
 Concept:
 - Problem: ${concept?.problem || 'Healthcare access challenges'}
@@ -54,38 +58,59 @@ Concept:
 Template: ${template}
 Tone: ${toneLabel}
 
-Write a compelling founder story (3-4 paragraphs) that:
+Create a structured JSON response for founder storytelling and product discovery.
+
+Return only valid JSON with this exact shape:
+{
+  "narrative": "3-4 paragraph founder story",
+  "clarityScore": 0-100,
+  "emotionScore": 0-100,
+  "pitchSummary": "one sentence pitch",
+  "marketAnalysis": ["3-5 concrete Saudi/MENA market insights"],
+  "risks": ["3-5 execution, regulatory, adoption, or data risks"],
+  "userStories": [
+    {
+      "role": "patient/provider/admin/payer/etc",
+      "need": "what they need to do",
+      "benefit": "why it matters",
+      "acceptanceCriteria": ["3-5 testable criteria"]
+    }
+  ]
+}
+
+The narrative must:
 1. Opens with a relatable moment or statistic
 2. Shows deep understanding of the problem
 3. Introduces the solution naturally
 4. Ends with a vision aligned with Saudi Vision 2030
 
-Then provide:
-Clarity Score (0-100): [score]
-Emotion Score (0-100): [score]
+User stories must be practical enough to feed PRD creation.`
 
-Format:
-[Story text here]
+      const fallback = {
+        narrative: `${concept?.problem || 'Healthcare access challenges'} create daily friction for patients and care teams. The opportunity is to turn that friction into a guided digital experience that makes the next step clear.\n\nOur solution helps ${concept?.targetUsers || 'healthcare stakeholders'} complete important healthcare tasks with less delay, better visibility, and stronger trust.\n\nAligned with Vision 2030, this startup can support a more accessible and efficient health ecosystem across Saudi Arabia and MENA.`,
+        clarityScore: 82,
+        emotionScore: 74,
+        pitchSummary: concept?.solution || 'A digital health platform that reduces healthcare workflow friction.',
+        marketAnalysis: ['Vision 2030 supports digital health transformation', 'Bilingual experiences are important for Saudi adoption', 'Healthcare workflows need trust, compliance, and clarity'],
+        risks: ['Clinical workflow adoption', 'Healthcare integration complexity', 'Regulatory review timing'],
+        userStories: [
+          {
+            role: 'patient',
+            need: 'complete the core healthcare task from mobile',
+            benefit: 'I can finish without confusion or repeated calls',
+            acceptanceCriteria: ['Supports Arabic and English', 'Shows clear next step', 'Confirms successful completion'],
+          },
+        ],
+      }
 
-Clarity Score: [number]
-Emotion Score: [number]`
+      const parsed = extractJSON<typeof fallback>(await llmPrompt(prompt, { maxTokens: 2500 }), fallback)
 
-      const res = await llmPrompt(prompt)
-      
-      // Parse scores
-      const clarityMatch = res.match(/Clarity Score[:\s]+(\d+)/i)
-      const emotionMatch = res.match(/Emotion Score[:\s]+(\d+)/i)
-      const clarity = parseInt(clarityMatch?.[1] || '72')
-      const emotion = parseInt(emotionMatch?.[1] || '68')
-      
-      // Extract story (remove score lines)
-      const storyText = res
-        .replace(/Clarity Score[:\s]+\d+/gi, '')
-        .replace(/Emotion Score[:\s]+\d+/gi, '')
-        .trim()
-      
-      setStory(storyText)
-      setScores({ clarity, emotion })
+      setStory(parsed.narrative)
+      setScores({ clarity: parsed.clarityScore, emotion: parsed.emotionScore })
+      setPitchSummary(parsed.pitchSummary)
+      setMarketAnalysis(parsed.marketAnalysis || [])
+      setRisks(parsed.risks || [])
+      setUserStories(parsed.userStories || [])
       setGenerated(true)
     } finally {
       setLoading(false)
@@ -99,6 +124,10 @@ Emotion Score: [number]`
       narrative: story,
       clarityScore: scores.clarity,
       emotionScore: scores.emotion,
+      pitchSummary,
+      marketAnalysis,
+      risks,
+      userStories,
     })
   }
 
@@ -184,6 +213,60 @@ Emotion Score: [number]`
                     dir={isRTL ? 'rtl' : 'ltr'}
                     className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-slate-200 resize-none focus:outline-none focus:border-spark-500/50 transition-colors leading-relaxed"
                   />
+
+                  {(pitchSummary || marketAnalysis.length || userStories.length || risks.length) && (
+                    <div className="mt-4 grid gap-3">
+                      {pitchSummary && (
+                        <div className="rounded-xl border border-white/10 bg-white/[.03] p-3">
+                          <p className="text-xs font-semibold uppercase tracking-wide text-spark-300 mb-1">
+                            {language === 'ar' ? 'ملخص العرض' : 'Pitch Summary'}
+                          </p>
+                          <p className="text-sm text-slate-300">{pitchSummary}</p>
+                        </div>
+                      )}
+
+                      <div className="grid gap-3 sm:grid-cols-2">
+                        {marketAnalysis.length > 0 && (
+                          <div className="rounded-xl border border-white/10 bg-white/[.03] p-3">
+                            <p className="text-xs font-semibold uppercase tracking-wide text-spark-300 mb-2">
+                              {language === 'ar' ? 'تحليل السوق' : 'Market Analysis'}
+                            </p>
+                            <ul className="space-y-1 text-sm text-slate-300">
+                              {marketAnalysis.map(item => <li key={item}>• {item}</li>)}
+                            </ul>
+                          </div>
+                        )}
+                        {risks.length > 0 && (
+                          <div className="rounded-xl border border-white/10 bg-white/[.03] p-3">
+                            <p className="text-xs font-semibold uppercase tracking-wide text-amber-300 mb-2">
+                              {language === 'ar' ? 'المخاطر' : 'Risks'}
+                            </p>
+                            <ul className="space-y-1 text-sm text-slate-300">
+                              {risks.map(item => <li key={item}>• {item}</li>)}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+
+                      {userStories.length > 0 && (
+                        <div className="rounded-xl border border-white/10 bg-white/[.03] p-3">
+                          <p className="text-xs font-semibold uppercase tracking-wide text-spark-300 mb-2">
+                            {language === 'ar' ? 'قصص المستخدم' : 'User Stories'}
+                          </p>
+                          <div className="grid gap-2">
+                            {userStories.map((item, idx) => (
+                              <div key={`${item.role}-${idx}`} className="rounded-lg bg-black/20 p-3 text-sm text-slate-300">
+                                <p className="font-semibold text-white">As a {item.role}, I need {item.need}, so that {item.benefit}.</p>
+                                <ul className="mt-2 space-y-1 text-xs text-slate-400">
+                                  {item.acceptanceCriteria.map(criteria => <li key={criteria}>✓ {criteria}</li>)}
+                                </ul>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </motion.div>
               )}
 

@@ -44,6 +44,17 @@ export interface Story {
   narrative: string
   clarityScore: number
   emotionScore: number
+  userStories?: UserStory[]
+  marketAnalysis?: string[]
+  risks?: string[]
+  pitchSummary?: string
+}
+
+export interface UserStory {
+  role: string
+  need: string
+  benefit: string
+  acceptanceCriteria: string[]
 }
 
 export type BrandPersonality = 'innovative' | 'trustworthy' | 'compassionate' | 'bold' | 'elegant' | 'friendly'
@@ -80,7 +91,17 @@ export interface PRD {
   sections: PRDSection[]
   completenessScore: number
   regulatoryChecklist: Record<string, boolean>
+  analysis?: PRDAnalysis
   exportedAt?: string
+}
+
+export interface PRDAnalysis {
+  userStories: UserStory[]
+  assumptions: string[]
+  risks: string[]
+  successMetrics: string[]
+  mvpScope: string[]
+  technicalNotes: string[]
 }
 
 export type TemplateType = 'landing' | 'webapp' | 'dashboard'
@@ -96,6 +117,8 @@ export interface GeneratedCode {
   files: CodeFile[]
   features: string[]
   architecture: string
+  commitMessage?: string
+  repoPlan?: string[]
   generatedAt: string
 }
 
@@ -109,6 +132,10 @@ export interface GitHubRepo {
   name: string
   visibility: 'public' | 'private'
   url?: string
+  branch?: string
+  commitSha?: string
+  commitMessage?: string
+  status?: 'simulated' | 'created' | 'failed'
   deploymentConfig: DeploymentConfig
   createdAt?: string
 }

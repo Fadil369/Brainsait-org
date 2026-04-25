@@ -49,6 +49,8 @@ export function CodePhase({ initial, brand, prd, onComplete, onBack }: Props) {
   const [activeFile, setActiveFile] = useState<string>('')
   const [generated, setGenerated] = useState(!!initial?.files?.length)
   const [copied, setCopied] = useState(false)
+  const [commitMessage, setCommitMessage] = useState(initial?.commitMessage || '')
+  const [repoPlan, setRepoPlan] = useState<string[]>(initial?.repoPlan || [])
 
   function toggleFeature(id: string) {
     setSelectedFeatures(prev => prev.includes(id) ? prev.filter(f => f !== id) : [...prev, id])
@@ -63,6 +65,9 @@ export function CodePhase({ initial, brand, prd, onComplete, onBack }: Props) {
 
       const featureList = selectedFeatures.join(', ')
       const prdSummary = prd?.sections.filter(s => s.content).slice(0, 3).map(s => `${s.title}: ${s.content.slice(0, 200)}`).join('\n') || ''
+      const prdAnalysis = prd?.analysis
+        ? `MVP Scope: ${prd.analysis.mvpScope.join(', ')}\nSuccess Metrics: ${prd.analysis.successMetrics.join(', ')}\nRisks: ${prd.analysis.risks.join(', ')}`
+        : ''
 
       const prompt = `You are an expert React/TypeScript developer creating a production-ready ${templateType} for a healthcare startup.
 
@@ -77,16 +82,42 @@ Features to include: ${featureList}
 PRD Summary:
 ${prdSummary}
 
-Generate 3 files for a ${templateType}:
+PRD Analysis:
+${prdAnalysis}
+
+Generate a repo-ready Vite React project for a ${templateType}.
 
 FILE: src/App.tsx
 [Complete React/TypeScript component using Tailwind CSS, with the brand colors integrated, healthcare-focused UI, bilingual support if RTL feature selected]
 
+FILE: src/main.tsx
+[React entrypoint]
+
 FILE: src/index.css
 [Tailwind directives and custom CSS with brand colors as CSS variables]
 
+FILE: package.json
+[Valid package file with scripts: dev, build, preview]
+
+FILE: index.html
+[Vite HTML shell]
+
+FILE: tsconfig.json
+[TypeScript config]
+
 FILE: README.md
-[Setup instructions, tech stack, deployment guide for Vercel/Netlify]
+[Setup instructions, tech stack, deployment guide, commit and push instructions]
+
+FILE: .gitignore
+[Node/Vite gitignore]
+
+At the end include:
+COMMIT_MESSAGE: feat: launch ${brandName} ${templateType}
+REPO_PLAN:
+- Initialize git repository
+- Commit generated files
+- Create GitHub repository
+- Push main branch
 
 Format each file as:
 FILE: [filename]
@@ -113,6 +144,14 @@ Make the code production-ready with:
         parsedFiles.push({ name, content, language: langMap[ext] || 'text' })
       }
 
+      const messageMatch = res.match(/COMMIT_MESSAGE:\s*(.+)/i)
+      const planMatch = res.match(/REPO_PLAN:\s*([\s\S]*)/i)
+      const plan = planMatch?.[1]
+        ?.split('\n')
+        .map(line => line.replace(/^[-*]\s*/, '').trim())
+        .filter(Boolean)
+        .filter(line => !line.startsWith('FILE:')) || []
+
       if (parsedFiles.length === 0) {
         // Fallback: create basic files
         parsedFiles.push({
@@ -135,11 +174,19 @@ export default function App() {
   );
 }`
         })
-        parsedFiles.push({ name: 'README.md', language: 'markdown', content: `# ${brandName}\n\n${brand?.tagline || ''}\n\n## Setup\n\`\`\`bash\nnpm install\nnpm run dev\n\`\`\`` })
+        parsedFiles.push({ name: 'src/main.tsx', language: 'tsx', content: `import React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport App from './App';\nimport './index.css';\n\nReactDOM.createRoot(document.getElementById('root')!).render(<App />);` })
+        parsedFiles.push({ name: 'src/index.css', language: 'css', content: `@import "tailwindcss";\n\n:root { --brand-primary: ${primaryColor}; --brand-secondary: ${secondaryColor}; }\nbody { margin: 0; font-family: Inter, system-ui, sans-serif; }` })
+        parsedFiles.push({ name: 'package.json', language: 'json', content: JSON.stringify({ scripts: { dev: 'vite', build: 'tsc && vite build', preview: 'vite preview' }, dependencies: { '@vitejs/plugin-react': 'latest', vite: 'latest', typescript: 'latest', react: 'latest', 'react-dom': 'latest', tailwindcss: 'latest' }, devDependencies: {} }, null, 2) })
+        parsedFiles.push({ name: 'index.html', language: 'html', content: `<div id="root"></div><script type="module" src="/src/main.tsx"></script>` })
+        parsedFiles.push({ name: 'tsconfig.json', language: 'json', content: JSON.stringify({ compilerOptions: { target: 'ES2020', jsx: 'react-jsx', strict: true, module: 'ESNext', moduleResolution: 'Bundler' }, include: ['src'] }, null, 2) })
+        parsedFiles.push({ name: '.gitignore', language: 'text', content: `node_modules\ndist\n.env\n.DS_Store\n` })
+        parsedFiles.push({ name: 'README.md', language: 'markdown', content: `# ${brandName}\n\n${brand?.tagline || ''}\n\n## Setup\n\`\`\`bash\nnpm install\nnpm run dev\n\`\`\`\n\n## GitHub\n\`\`\`bash\ngit init\ngit add .\ngit commit -m "feat: launch ${brandName}"\ngit branch -M main\ngit remote add origin <repo-url>\ngit push -u origin main\n\`\`\`` })
       }
 
       setFiles(parsedFiles)
       setActiveFile(parsedFiles[0]?.name || '')
+      setCommitMessage(messageMatch?.[1]?.trim() || `feat: launch ${brandName} ${templateType}`)
+      setRepoPlan(plan.length ? plan : ['Initialize git repository', 'Commit generated files', 'Create GitHub repository', 'Push main branch'])
       setGenerated(true)
     } finally {
       setLoading(false)
@@ -171,6 +218,8 @@ export default function App() {
       files,
       features: selectedFeatures,
       architecture: `React + TypeScript + Tailwind CSS (${templateType})`,
+      commitMessage,
+      repoPlan,
       generatedAt: new Date().toISOString(),
     })
   }
@@ -294,6 +343,25 @@ export default function App() {
                   ))}
                 </div>
               </div>
+
+              {(commitMessage || repoPlan.length > 0) && (
+                <div className="glass-card rounded-2xl p-4">
+                  <h3 className="font-semibold text-xs text-slate-500 uppercase tracking-wide mb-3">
+                    {language === 'ar' ? 'خطة المستودع' : 'Repository Plan'}
+                  </h3>
+                  {commitMessage && (
+                    <div className="mb-3 rounded-xl border border-white/10 bg-black/20 p-3">
+                      <p className="text-xs text-slate-500 mb-1">Commit message</p>
+                      <code className="text-sm text-spark-300">{commitMessage}</code>
+                    </div>
+                  )}
+                  {repoPlan.length > 0 && (
+                    <ol className="space-y-1 text-sm text-slate-300 list-decimal list-inside">
+                      {repoPlan.map(item => <li key={item}>{item}</li>)}
+                    </ol>
+                  )}
+                </div>
+              )}
 
               <div className="flex gap-3">
                 <button onClick={handleGenerate} className="glass-card glass-card-hover px-4 py-3 rounded-xl text-slate-300 flex items-center gap-2">
