@@ -1,0 +1,43 @@
+name       = "brainsait-realtime-agent"
+main       = "src/index.js"
+account_id = "d7b99530559ab4f2545e9bdc72a7ab9b"
+
+compatibility_date  = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Workers AI binding — free tier, no extra provisioning needed
+[ai]
+binding = "AI"
+
+# Durable Object binding
+[durable_objects]
+bindings = [
+  { name = "LINC_AGENT", class_name = "LincAgent" }
+]
+
+# SQLite-backed Durable Object (required by RealtimeAgent base class)
+[[migrations]]
+tag              = "v1"
+new_sqlite_classes = ["LincAgent"]
+
+# ─── Secrets required ─────────────────────────────────────────────────────────
+# Set via: wrangler secret put <NAME> --env production
+#
+#   DEEPGRAM_API_KEY     – https://console.deepgram.com
+#   ELEVENLABS_API_KEY   – https://elevenlabs.io/app/settings/api-keys
+#   REALTIME_API_TOKEN   – CF API token with "Admin: Realtime" scope
+#                          (different from the general Workers token)
+#
+# REALTIME_ACCOUNT_ID is NOT a secret — it's baked in as an env var below.
+
+# ─── Staging ──────────────────────────────────────────────────────────────────
+[vars]
+REALTIME_ACCOUNT_ID = "d7b99530559ab4f2545e9bdc72a7ab9b"
+
+# ─── Production ───────────────────────────────────────────────────────────────
+[env.production]
+name   = "brainsait-realtime-agent-prod"
+routes = [{ pattern = "agent.brainsait.org", custom_domain = true, zone_name = "brainsait.org" }]
+
+[env.production.vars]
+REALTIME_ACCOUNT_ID = "d7b99530559ab4f2545e9bdc72a7ab9b"

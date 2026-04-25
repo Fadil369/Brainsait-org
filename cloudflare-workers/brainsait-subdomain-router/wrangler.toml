@@ -13,7 +13,7 @@ routes = [
   { pattern = "app.brainsait.org", custom_domain = true },
   { pattern = "platform.brainsait.org", custom_domain = true },
   { pattern = "training.brainsait.org", custom_domain = true },
-  { pattern = "spark.brainsait.org", custom_domain = true },
+  # spark.brainsait.org is a CF Pages custom domain — managed directly, not via this worker
   { pattern = "api.brainsait.org", custom_domain = true },
   { pattern = "notifications.brainsait.org", custom_domain = true },
   { pattern = "tg-bot.brainsait.org", custom_domain = true },

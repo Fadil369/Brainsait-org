@@ -1,0 +1,14 @@
+name = "brainsait-paypal"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+workers_dev = false
+
+routes = [
+  { pattern = "api.brainsait.org/api/paypal*", zone_name = "brainsait.org" },
+]
+
+[vars]
+PAYPAL_CLIENT_ID = ""
+
+# Set securely with:
+#   wrangler secret put PAYPAL_SECRET

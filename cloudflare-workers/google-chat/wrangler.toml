@@ -1,0 +1,26 @@
+name = "brainsait-google-chat"
+main = "worker.js"
+compatibility_date = "2024-12-01"
+account_id = "d7b99530559ab4f2545e9bdc72a7ab9b"
+
+[env.production]
+name = "brainsait-google-chat-prod"
+routes = [{ pattern = "gchat.brainsait.org", custom_domain = true, zone_name = "brainsait.org" }]
+
+[[env.production.kv_namespaces]]
+binding = "GCHAT_KV"
+id = "9070241a28f94e5597fa12a31314e310"
+
+[env.production.vars]
+NOTIFICATION_ROUTER_URL = "https://notifications.brainsait.org"
+
+# Secrets — set via: wrangler secret put GOOGLE_CHAT_WEBHOOK_URL --env production
+# Required secrets:
+#   GOOGLE_CHAT_WEBHOOK_URL
+
+[[kv_namespaces]]
+binding = "GCHAT_KV"
+id = "9070241a28f94e5597fa12a31314e310"
+
+[vars]
+NOTIFICATION_ROUTER_URL = "https://notifications.brainsait.org"
