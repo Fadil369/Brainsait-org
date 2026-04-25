@@ -32,11 +32,11 @@ const PRIMARY_NAV = [
   { label: 'Mentorship', href: '/mentorship' },
   { label: 'Portal', href: '/portal' },
   { label: 'Partners', href: '/partners' },
+  { label: 'Training Hub', href: '/training/courses' },
 ];
 
 /** Secondary links — grouped under "More" dropdown */
 const MORE_NAV = [
-  { label: 'Training Hub', href: '/training' },
   { label: 'Resources', href: '/resources' },
   { label: 'App Store', href: '/app-store' },
   { label: 'Clinics Hub', href: '/clinics' },
@@ -289,7 +289,7 @@ export default function SiteChrome({ children }: SiteChromeProps) {
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} alignItems={{ xs: 'flex-start', sm: 'center' }}>
               <Button color="inherit" component={NextLink} href="/resources" size="small">Resources</Button>
               <Button color="inherit" component={NextLink} href="/app-store" size="small">App Store</Button>
-              <Button color="inherit" component={NextLink} href="/training" size="small">Training Hub</Button>
+              <Button color="inherit" component={NextLink} href="/training/courses" size="small">Training Hub</Button>
               <Button color="inherit" component={NextLink} href="/showcase" size="small">Showcase</Button>
               <Button color="inherit" href="https://calendly.com/fadil369" target="_blank" rel="noopener noreferrer" size="small">
                 Book Consultation
