@@ -1,0 +1,25 @@
+# Cloudflare Training Hub Redirects
+# Routes all training paths to the hash-based SPA at /training/#/
+
+# Training home
+/training /training/#/ 301
+
+# Course redirects
+/training/courses /training/#/courses 301
+/training/courses/ /training/#/courses 301
+/training/courses/collective-brainpower /training/#/courses/collective-brainpower 301
+/training/courses/nphies-ai-mastery /training/#/courses/nphies-ai-mastery 301
+/training/courses/healthcare-ai-launchpad /training/#/courses/healthcare-ai-launchpad 301
+/training/courses/rcm-fundamentals /training/#/courses/rcm-fundamentals 301
+/training/courses/collective-brainpower/* /training/#/courses/collective-brainpower/:splat 301
+/training/courses/nphies-ai-mastery/* /training/#/courses/nphies-ai-mastery/:splat 301
+/training/courses/healthcare-ai-launchpad/* /training/#/courses/healthcare-ai-launchpad/:splat 301
+/training/courses/rcm-fundamentals/* /training/#/courses/rcm-fundamentals/:splat 301
+
+# Dashboard & enrollment
+/training/dashboard /training/#/dashboard 301
+/training/enroll /training/#/enroll 301
+/training/diagnostic /training/diagnostic.html 200
+
+# E-courses fallback
+/e-courses/* /training/e-courses/:splat 200

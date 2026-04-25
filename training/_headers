@@ -1,0 +1,23 @@
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  
+  # Performance
+  Cache-Control: public, max-age=3600, stale-while-revalidate=604800
+  Vary: Accept-Encoding, Accept-Language
+  
+  # CSP for SPA
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com; worker-src 'self' blob:
+
+/training/courses/*.js
+  Cache-Control: public, max-age=604800
+  Content-Type: application/javascript
+
+/training/courses/*.css
+  Cache-Control: public, max-age=604800
+  Content-Type: text/css
+
+/favicon.ico
+  Cache-Control: public, max-age=86400

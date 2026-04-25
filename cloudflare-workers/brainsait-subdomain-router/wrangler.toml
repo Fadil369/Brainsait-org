@@ -8,5 +8,16 @@ routes = [
   { pattern = "docs.brainsait.org", custom_domain = true },
   { pattern = "portal.brainsait.org", custom_domain = true },
   { pattern = "dashboard.brainsait.org", custom_domain = true },
-  { pattern = "careers.brainsait.org", custom_domain = true }
+  { pattern = "careers.brainsait.org", custom_domain = true },
+  { pattern = "incubator.brainsait.org", custom_domain = true },
+  { pattern = "app.brainsait.org", custom_domain = true },
+  { pattern = "platform.brainsait.org", custom_domain = true },
+  { pattern = "training.brainsait.org", custom_domain = true },
+  { pattern = "spark.brainsait.org", custom_domain = true },
+  { pattern = "api.brainsait.org", custom_domain = true },
+  { pattern = "notifications.brainsait.org", custom_domain = true },
+  { pattern = "tg-bot.brainsait.org", custom_domain = true },
+  { pattern = "gchat.brainsait.org", custom_domain = true },
+  { pattern = "calls.brainsait.org", custom_domain = true },
+  { pattern = "agent.brainsait.org", custom_domain = true }
 ]
