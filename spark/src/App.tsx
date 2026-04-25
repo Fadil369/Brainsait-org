@@ -1,4 +1,3 @@
-// App.tsx - Main orchestrating component for Spark الشرارة
 import { useState, useCallback } from 'react'
 import { Toaster } from 'sonner'
 import { useKV } from '@/lib/useKV'
@@ -46,63 +45,35 @@ function AppInner() {
   const [currentView, setCurrentView] = useState<'dashboard' | PhaseId>('dashboard')
   const [celebration, setCelebration] = useState<CelebrationState>({ open: false })
 
-  // Keep journey language in sync with context language
   const effectiveJourney: Journey = { ...journey, language: language as 'en' | 'ar' }
 
-  // Toggle theme
-  const handleToggleTheme = useCallback(() => {
-    setJourney(prev => ({
-      ...prev,
-      theme: prev.theme === 'dark' ? 'light' : 'dark',
-      updatedAt: new Date().toISOString(),
-    }))
-  }, [setJourney])
-
-  // Navigate to a phase
   const handlePhaseSelect = useCallback((id: PhaseId) => {
     const phase = journey.phases.find(p => p.id === id)
     if (!phase?.unlocked) return
     setCurrentView(id)
   }, [journey.phases])
 
-  // Back to dashboard
-  const handleBack = useCallback(() => {
-    setCurrentView('dashboard')
-  }, [])
+  const handleBack = useCallback(() => setCurrentView('dashboard'), [])
 
-  // Reset journey to start fresh
   const handleResetJourney = useCallback(() => {
     setJourney(createInitialJourney())
     setCurrentView('dashboard')
     setCelebration({ open: false })
   }, [setJourney])
 
-  // Award XP + badges when a phase completes, then return to dashboard
   const awardPhaseCompletion = useCallback((phaseId: PhaseId) => {
-    // Capture derived celebration data OUTSIDE setJourney to avoid StrictMode double-fire
     let mainCelebration: CelebrationState = { open: false }
-    let firstSparkBadge: Badge | null = null
-    let milestoneBadge: Badge | null = null
 
     setJourney(prev => {
       const phase = prev.phases.find(p => p.id === phaseId)
-      if (phase?.completed) return prev // Already completed, no duplicate awards
+      if (phase?.completed) return prev
 
       let gs = updateStreak(prev.gameState)
 
-      // First phase ever: award 'first-spark' badge (shown after main celebration)
-      if (prev.phases.every(p => !p.completed)) {
-        const { newState, badge } = earnBadge(gs, 'first-spark')
-        gs = newState
-        firstSparkBadge = badge
-      }
-
-      // Phase XP
       const xpAmount = PHASE_XP[phaseId] || 100
       const { newState: afterXP, leveledUp } = addXP(gs, xpAmount)
       gs = afterXP
 
-      // Phase badge
       const badgeId = PHASE_BADGES[phaseId]
       let earnedBadge: Badge | null = null
       if (badgeId) {
@@ -111,23 +82,19 @@ function AppInner() {
         earnedBadge = badge
       }
 
-      // Streak badge
       if (gs.streak >= 3) {
         const { newState: afterStreak } = earnBadge(gs, 'streak-3')
         gs = afterStreak
       }
 
-      // Milestone: halfway hero (3 phases)
       const completedNow = prev.phases.filter(p => p.id === phaseId || p.completed).length + 1
       if (completedNow === 3) {
         const { newState: afterMilestone } = earnBadge(gs, 'halfway-hero')
         gs = afterMilestone
-        milestoneBadge = gs.badges.find(b => b.id === 'halfway-hero' && b.earned) || null
       }
 
       gs = { ...gs, totalPhases: gs.totalPhases + 1 }
 
-      // Unlock next phase
       const currentIdx = PHASE_ORDER.indexOf(phaseId)
       const nextPhaseId = PHASE_ORDER[currentIdx + 1]
       const newPhases = prev.phases.map(p => {
@@ -141,20 +108,10 @@ function AppInner() {
       return { ...prev, phases: newPhases, gameState: gs, updatedAt: new Date().toISOString() }
     })
 
-    // Fire side effects ONCE outside the state updater (safe from StrictMode double-invoke)
     setCelebration(mainCelebration)
-    if (firstSparkBadge) {
-      const badge = firstSparkBadge
-      setTimeout(() => setCelebration({ open: true, badge, phaseId }), 3500)
-    }
-    if (milestoneBadge) {
-      const badge = milestoneBadge
-      setTimeout(() => setCelebration({ open: true, badge, phaseId }), 5500)
-    }
     setTimeout(() => setCurrentView('dashboard'), 200)
   }, [setJourney])
 
-  // ── Phase completion handlers ─────────────────────────────────────────────
   const handleBrainstormComplete = useCallback((concept: ConceptCard) => {
     setJourney(prev => ({ ...prev, concept, updatedAt: new Date().toISOString() }))
     awardPhaseCompletion('brainstorm')
@@ -187,72 +144,25 @@ function AppInner() {
 
   const handleCelebrationClose = useCallback(() => setCelebration({ open: false }), [])
 
-  // ── Render ─────────────────────────────────────────────────────────────────
   const renderView = () => {
     switch (currentView) {
       case 'brainstorm':
-        return (
-          <BrainstormPhase
-            initial={effectiveJourney.concept}
-            onComplete={handleBrainstormComplete}
-            onBack={handleBack}
-          />
-        )
+        return <BrainstormPhase initial={effectiveJourney.concept} onComplete={handleBrainstormComplete} onBack={handleBack} />
       case 'story':
-        return (
-          <StoryPhase
-            initial={effectiveJourney.story}
-            concept={effectiveJourney.concept}
-            onComplete={handleStoryComplete}
-            onBack={handleBack}
-          />
-        )
+        return <StoryPhase initial={effectiveJourney.story} concept={effectiveJourney.concept} onComplete={handleStoryComplete} onBack={handleBack} />
       case 'brand':
-        return (
-          <BrandPhase
-            initial={effectiveJourney.brand}
-            concept={effectiveJourney.concept}
-            onComplete={handleBrandComplete}
-            onBack={handleBack}
-          />
-        )
+        return <BrandPhase initial={effectiveJourney.brand} concept={effectiveJourney.concept} onComplete={handleBrandComplete} onBack={handleBack} />
       case 'prd':
-        return (
-          <PRDPhase
-            initial={effectiveJourney.prd}
-            brand={effectiveJourney.brand}
-            concept={effectiveJourney.concept}
-            onComplete={handlePRDComplete}
-            onBack={handleBack}
-          />
-        )
+        return <PRDPhase initial={effectiveJourney.prd} brand={effectiveJourney.brand} concept={effectiveJourney.concept} onComplete={handlePRDComplete} onBack={handleBack} />
       case 'code':
-        return (
-          <CodePhase
-            initial={effectiveJourney.code}
-            brand={effectiveJourney.brand}
-            prd={effectiveJourney.prd}
-            onComplete={handleCodeComplete}
-            onBack={handleBack}
-          />
-        )
+        return <CodePhase initial={effectiveJourney.code} brand={effectiveJourney.brand} prd={effectiveJourney.prd} onComplete={handleCodeComplete} onBack={handleBack} />
       case 'github':
-        return (
-          <GitHubPhase
-            initial={effectiveJourney.githubRepo}
-            code={effectiveJourney.code}
-            brand={effectiveJourney.brand}
-            journey={effectiveJourney}
-            onComplete={handleGitHubComplete}
-            onBack={handleBack}
-          />
-        )
+        return <GitHubPhase initial={effectiveJourney.githubRepo} code={effectiveJourney.code} brand={effectiveJourney.brand} journey={effectiveJourney} onComplete={handleGitHubComplete} onBack={handleBack} />
       default:
         return (
           <Dashboard
             journey={effectiveJourney}
             onPhaseSelect={handlePhaseSelect}
-            onToggleTheme={handleToggleTheme}
             onResetJourney={handleResetJourney}
           />
         )
@@ -260,29 +170,10 @@ function AppInner() {
   }
 
   return (
-    <div className={effectiveJourney.theme === 'light' ? 'light-theme' : ''}>
+    <div>
       {renderView()}
-
-      <CelebrationDialog
-        open={celebration.open}
-        onClose={handleCelebrationClose}
-        badge={celebration.badge}
-        leveledUp={celebration.leveledUp}
-        newLevel={celebration.newLevel}
-        phaseId={celebration.phaseId}
-      />
-
-      <Toaster
-        position="bottom-right"
-        toastOptions={{
-          style: {
-            background: 'rgba(15, 23, 42, 0.95)',
-            border: '1px solid rgba(255,255,255,0.1)',
-            color: '#fff',
-            backdropFilter: 'blur(12px)',
-          },
-        }}
-      />
+      <CelebrationDialog open={celebration.open} onClose={handleCelebrationClose} badge={celebration.badge} leveledUp={celebration.leveledUp} newLevel={celebration.newLevel} phaseId={celebration.phaseId} />
+      <Toaster position="bottom-right" toastOptions={{ style: { background: 'rgba(15, 23, 42, 0.95)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff' } }} />
     </div>
   )
 }

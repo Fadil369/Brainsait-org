@@ -1,6 +1,6 @@
 // Main Dashboard
 import { motion } from 'framer-motion'
-import { Globe, Moon, Sun, Lightning, ArrowCounterClockwise, Download, House } from '@phosphor-icons/react'
+import { Lightning, House } from '@phosphor-icons/react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { PhaseNavigation } from '@/components/PhaseNavigation'
 import { GameStats } from '@/components/GameStats'
@@ -10,7 +10,6 @@ import type { Journey, PhaseId } from '@/types'
 interface Props {
   journey: Journey
   onPhaseSelect: (id: PhaseId) => void
-  onToggleTheme: () => void
   onResetJourney?: () => void
 }
 
@@ -23,7 +22,7 @@ const PHASE_DESCS: Record<PhaseId, { en: string; ar: string; icon: string }> = {
   github: { en: 'Push to GitHub and deploy', ar: 'ادفع إلى GitHub وانشر', icon: '🚀' },
 }
 
-export function Dashboard({ journey, onPhaseSelect, onToggleTheme, onResetJourney }: Props) {
+export function Dashboard({ journey, onPhaseSelect, onResetJourney }: Props) {
   const { t, language, setLanguage, isRTL } = useLanguage()
 
   const completedCount = journey.phases.filter(p => p.completed).length
@@ -55,129 +54,84 @@ export function Dashboard({ journey, onPhaseSelect, onToggleTheme, onResetJourne
   }
 
 return (
-    <div className="min-h-screen" style={{ background: '#050810' }}>
-      <header className="sticky top-0 z-40 border-b border-white/5 backdrop-blur-xl bg-black/60">
-        <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl glass-card flex items-center justify-center border border-spark-500/30 glow-cyan floating">
-              <Lightning size={28} className="text-spark-400" weight="fill" />
+    <div className="min-h-screen" style={{ background: '#020408' }}>
+      <header className="sticky top-0 z-40 border-b border-white/5 backdrop-blur-md bg-black/40">
+        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-emerald-500 flex items-center justify-center">
+              <Lightning size={22} className="text-white" weight="duotone" />
             </div>
-            <div>
-              <h1 className={`font-display font-bold text-lg text-white ${isRTL ? 'text-right' : ''}`}>
+            <div className="hidden sm:block">
+              <h1 className="font-display font-semibold text-white">
                 {t.appName}
               </h1>
-              <p className="text-sm text-slate-500">{t.appTagline}</p>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
-            {/* Language toggle */}
             <button
               onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
-              className="glass-card glass-card-hover rounded-lg px-3 py-1.5 flex items-center gap-1.5 text-sm text-slate-300 hover:text-white transition-colors"
+              className="px-3 py-1.5 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
             >
-              <Globe size={16} />
-              <span className="font-medium">{language === 'en' ? 'عربي' : 'EN'}</span>
+              {language === 'en' ? 'عربي' : 'EN'}
             </button>
-
-            {/* Theme toggle */}
-            <button
-              onClick={onToggleTheme}
-              className="glass-card glass-card-hover rounded-lg p-2 text-slate-400 hover:text-white transition-colors"
-            >
-              {journey.theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-            </button>
-
-            {/* Theme toggle */}
-            <button
-              onClick={onToggleTheme}
-              className="glass-card glass-card-hover rounded-lg p-2 text-slate-400 hover:text-white transition-colors"
-            >
-              {journey.theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-            </button>
-
-            {/* Home link */}
             <a
               href="https://brainsait.org"
               target="_blank"
               rel="noopener noreferrer"
-              title={language === 'ar' ? 'الرئيسية' : 'BrainSAIT Home'}
-              className="glass-card glass-card-hover rounded-lg p-2 text-slate-400 hover:text-white transition-colors"
+              className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
             >
-              <House size={16} />
+              <House size={18} />
             </a>
-
-            {/* Reset journey (only shown if journey has started) */}
-            {completedCount > 0 && (
-              <button
-                onClick={handleExport}
-                title={language === 'ar' ? 'تصدير الرحلة' : 'Export Journey'}
-                className="glass-card glass-card-hover rounded-lg p-2 text-slate-500 hover:text-white transition-colors"
-              >
-                <Download size={16} />
-              </button>
-            )}
-            {completedCount > 0 && (
-              <button
-                onClick={handleReset}
-                title={language === 'ar' ? 'بدء رحلة جديدة' : 'Start new journey'}
-                className="glass-card glass-card-hover rounded-lg p-2 text-slate-500 hover:text-rose-400 transition-colors"
-              >
-                <ArrowCounterClockwise size={16} />
-              </button>
-            )}
           </div>
         </div>
       </header>
 
-      <main className="max-w-5xl mx-auto px-4 py-6 space-y-6">
-        {/* Hero section */}
+      <main className="max-w-4xl mx-auto px-6 py-10 space-y-8">
+        {/* Simple hero */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="relative glass-card rounded-3xl p-6 sm:p-8 overflow-hidden"
+          className="text-center py-8"
         >
-          {/* Background glow */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
-            <div className="absolute -top-16 -left-16 w-64 h-64 bg-spark-500/10 rounded-full blur-3xl" />
-            <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl" />
-          </div>
+          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4 leading-tight">
+            {completedCount === 0 ? t.startJourney : t.continueJourney}
+          </h2>
+          <p className="text-slate-400 text-lg mb-6">
+            {completedCount} of 6 phases • {journey.gameState.xp} XP • Level {journey.gameState.level}
+          </p>
+          <button
+            onClick={() => currentPhase && onPhaseSelect(currentPhase.id)}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-emerald-500 text-white font-semibold rounded-xl hover:opacity-90 transition-opacity"
+          >
+            <span>{completedCount === 0 ? 'Start' : 'Continue'}</span>
+            <span>→</span>
+          </button>
+        </motion.section>
 
-          <div className={`relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
-            <div>
-              <h2 className="font-display font-bold text-3xl sm:text-4xl text-white mb-2 hero-title">
-                {completedCount === 0 ? t.startJourney : t.continueJourney}
-              </h2>
-              <p className="text-slate-400 text-base">
-                {completedCount}/{6} phases complete • {journey.gameState.xp} XP • Level {journey.gameState.level}
-              </p>
-            </div>
-
-            <button
-              onClick={() => currentPhase && onPhaseSelect(currentPhase.id)}
-              className="spark-btn px-8 py-4 rounded-2xl font-bold text-lg flex-shrink-0 flex items-center gap-3 glow-cyan"
-            >
-              <span className="text-2xl">{completedCount === 0 ? '🚀' : '⚡'}</span>
-              {completedCount === 0 ? t.startJourney : t.continueJourney}
-            </button>
+        {/* Progress bar */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
+          <div className="h-2 rounded-full bg-slate-800 overflow-hidden">
+            <motion.div
+              className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-emerald-500"
+              initial={{ width: 0 }}
+              animate={{ width: `${progressPercent}%` }}
+              transition={{ duration: 1 }}
+            />
           </div>
+        </motion.section>
 
-          {/* Progress bar */}
-          <div className="relative mt-8">
-            <div className="h-4 rounded-full bg-slate-800 overflow-hidden">
-              <motion.div
-                className="h-full rounded-full"
-                style={{ background: 'linear-gradient(90deg, #0c9eeb, #10b981)' }}
-                initial={{ width: 0 }}
-                animate={{ width: `${progressPercent}%` }}
-                transition={{ duration: 1.2, ease: 'easeOut' }}
-              />
-            </div>
-            <div className={`flex justify-between mt-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
-              <span className="text-sm text-slate-400 font-medium">{t.brainstorm}</span>
-              <span className="text-sm text-slate-400 font-medium">{t.github}</span>
-            </div>
-          </div>
+        {/* Game stats */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+        >
+          <GameStats gameState={journey.gameState} />
         </motion.section>
 
         {/* Game stats */}

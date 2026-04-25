@@ -18,13 +18,15 @@
 }
 
 :root {
-  --background: #050810;
-  --foreground: #f1f5f9;
-  --card: rgba(255, 255, 255, 0.04);
-  --card-border: rgba(255, 255, 255, 0.08);
-  --muted: rgba(255, 255, 255, 0.5);
-  --primary: #0c9eeb;
-  --primary-hover: #36bbfa;
+  --background: #020408;
+  --foreground: #e2e8f0;
+  --card: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.06);
+  --muted: rgba(255, 255, 255, 0.4);
+  --primary: #06b6d4;
+  --primary-hover: #22d3ee;
+  --spacing-section: 3rem;
+  --spacing-card: 1.5rem;
 }
 
 * {
@@ -33,27 +35,18 @@
   padding: 0;
 }
 
+html {
+  font-size: 16px;
+}
+
 body {
   font-family: var(--font-sans);
   background-color: var(--background);
   color: var(--foreground);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(56, 189, 248, 0.25) transparent;
-}
-
-body::-webkit-scrollbar {
-  width: 6px;
-}
-
-body::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-body::-webkit-scrollbar-thumb {
-  background: rgba(56, 189, 248, 0.25);
-  border-radius: 3px;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
 }
 
 /* Glass card */
