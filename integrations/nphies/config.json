@@ -1,0 +1,95 @@
+{
+  "name": "NPHIES Integration",
+  "version": "1.0.0",
+  "description": "Full NPHIES portal integration for AlInma Medical Services / Hayat Hospitals",
+  "auth": {
+    "keycloak_url": "https://sso.nphies.sa/auth",
+    "realm": "sehaticoreprod",
+    "client_id": "community",
+    "grant_type": "password",
+    "token_endpoint": "https://sso.nphies.sa/auth/realms/sehaticoreprod/protocol/openid-connect/token"
+  },
+  "apis": {
+    "community_portal": "https://sgw.nphies.sa/sehaticoreprod-assistaPortal/api/",
+    "transaction_viewer": "https://sgw.nphies.sa/viewerapi/",
+    "viewer_portal": "https://viewer.nphies.sa",
+    "community_portal_ui": "https://portal.nphies.sa"
+  },
+  "organization": {
+    "id": 624,
+    "name": "AlInma Medical Services Company",
+    "description": "Hayat National Hospital Group",
+    "type": "Provider"
+  },
+  "facilities": [
+    {
+      "name": "Al-Hayat National Hospital, Riyadh",
+      "license": "10000000000988",
+      "type": "Provider",
+      "registry_id": "1048",
+      "branch": "riyadh"
+    },
+    {
+      "name": "Aldar National Hospital (Hayat National Hospital – Madinah Branch 5)",
+      "license": "10000300220660",
+      "type": "Provider",
+      "registry_id": "1122",
+      "branch": "madinah"
+    },
+    {
+      "name": "Al-Hayat National Hospital - Unaizah - Al-Qassim",
+      "license": "10000000030262",
+      "type": "Provider",
+      "registry_id": "1075",
+      "branch": "unaizah"
+    },
+    {
+      "name": "Al-Hayat National Hospital - Khamis Mushait",
+      "license": "10000000030643",
+      "type": "Provider",
+      "registry_id": "1085",
+      "branch": "khamis"
+    },
+    {
+      "name": "The National Life Hospital, Jazan",
+      "license": "10000000037034",
+      "type": "Provider",
+      "registry_id": "1172",
+      "branch": "jizan"
+    },
+    {
+      "name": "HNHN ABHA",
+      "license": "10000300330931",
+      "type": "Provider",
+      "registry_id": "1460",
+      "branch": "abha"
+    }
+  ],
+  "endpoints": {
+    "facilities_user": "facilities/user",
+    "coc_list": "coc",
+    "coc_detail": "COC/{id}",
+    "coc_claims": "COC/claims",
+    "coc_categories": "COC/categories",
+    "gss_list": "gss",
+    "gss_exports": "GSS/exports",
+    "claim_list": "claim",
+    "claim_by_id": "claim/GetById",
+    "claim_gss": "claim/gss-claim-details",
+    "claim_exports": "claim/exports",
+    "claim_check_status": "status-check?check_type=claim",
+    "claim_cancel": "cancel-request?cancel_type=claim",
+    "payment_reconciliation": "payment-reconciliation/GetClaimPayments",
+    "exports_limits": "exports/limits-info",
+    "process_message": "process-message",
+    "poll_actions": "poll-actions",
+    "errored_transactions": "errored-transactions"
+  },
+  "confirmed_working": ["coc", "gss", "exports/limits-info", "facilities/user", "status-check", "cancel-request"],
+  "notes": {
+    "claim_endpoint": "Responds but slow - may need date range filters to reduce payload",
+    "eligibility": "Routes to 404 - check alternative path or different token scope",
+    "process_message": "Returns 403 ForrbidenAccess - view-only account",
+    "auth_note": "password grant works without OTP for programmatic access"
+  }
+}

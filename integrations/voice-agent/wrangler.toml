@@ -1,0 +1,21 @@
+name = "voice-agent"
+main = "src/index.ts"
+compatibility_date = "2026-04-28"
+compatibility_flags = ["nodejs_compat"]
+
+routes = [
+  { pattern = "voice.elfadil.com/*", zone_name = "elfadil.com" }
+]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "bsma-d1"
+database_id = "f79d9487-fd6e-45e0-aaf1-ea9f2a69493d"
+
+[ai]
+binding = "AI"
+
+[vars]
+GIVC_URL = "https://givc.elfadil.com"
+SBS_URL = "https://sbs.elfadil.com"
+CLAIMLINC_URL = "https://claimlinc-api.brainsait-fadil.workers.dev"

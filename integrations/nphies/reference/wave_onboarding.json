@@ -1,0 +1,7035 @@
+{
+  "total_facilities": 999,
+  "hayat_hospitals": [
+    {
+      "cchi": "1048",
+      "nphies_id": "10000000000988",
+      "name": "Al-Hayat National Hospital, branch of Al-Inma Medical Services Company",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1172",
+      "nphies_id": "10000000037034",
+      "name": "The National Life Hospital in Jazan has a capacity of 120 beds",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1085",
+      "nphies_id": "10000000030643",
+      "name": "Al-Hayat National Hospital-Khamis Mushait",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1075",
+      "nphies_id": "10000000030262",
+      "name": "Al-Hayat National Hospital - Unaizah - Al-Qassim",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1122",
+      "nphies_id": "10000300220660",
+      "name": "Aldar National Hospital (Hayat National Hospital \u2013 Madinah (Branch 5))",
+      "status": "Onboarded",
+      "wave": "W2"
+    }
+  ],
+  "all": [
+    {
+      "cchi": "1040",
+      "nphies_id": "10000000003170",
+      "name": "Abha Private Hospital Company",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "17418",
+      "nphies_id": "10000000100329",
+      "name": "Al-Abeer General Medical Clinics in Al-Azizia",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "17637",
+      "nphies_id": "10000000100311",
+      "name": "Al-Abeer International Medical Co. Lt. Branch Clinics - Madinah",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1146",
+      "nphies_id": "10000000094431",
+      "name": "Saudi National Hospital",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "17565",
+      "nphies_id": "10000000102663",
+      "name": "Al-Abeer International Medical Company Clinics Complex Riyadh Al-Ghouta District / Al-Batha Street",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "18426",
+      "nphies_id": "10000000068054",
+      "name": "Zahrat Al-Abeer Medical Complex - Dammam / Khaled Bin Al-Numan Street",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "17031",
+      "nphies_id": "10000000034510",
+      "name": "Al-Abeer Clinics Complex - Industrial City 2 / Fourth Stage / Saleh Al-Hanaya Building",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "17564",
+      "nphies_id": "10000000134062",
+      "name": "Al-Abeer International Medical Company Clinics Complex 2 / Riyadh",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "25640",
+      "nphies_id": "10000300053277",
+      "name": "Al-Abeer International Group C eyeglasses - Jeddah",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "17118",
+      "nphies_id": "10000000085025",
+      "name": "Al-Abeer Medical Complex, Azizia / Jeddah",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "17032",
+      "nphies_id": "10000000116515",
+      "name": "Clinics of Al Abeer Medical Company - Sharafiya district",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "26151",
+      "nphies_id": "10000300190368",
+      "name": "Al-Abeer Optics Class C",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "26381",
+      "nphies_id": "10000000073807",
+      "name": "Al-Abeer Medical Optical Center",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "26476",
+      "nphies_id": "10000000102135",
+      "name": "Center Al-Abeer Medical Optical Company Shmeisi",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "17521",
+      "nphies_id": "10000000115541",
+      "name": "Al-Abeer International Medical Complex - Al-Bawadi District / 60 Street",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "17891",
+      "nphies_id": "10000300061726",
+      "name": "Abeer Al Tamayuz Medical Center 2 - King Faisal District / Riyadh",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "14000",
+      "nphies_id": "10000300160999",
+      "name": "Al Borg Medical Laboratory",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "14016",
+      "nphies_id": "10000300202247",
+      "name": "Al Borg Medical Laboratory",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "14015",
+      "nphies_id": "10000300117148",
+      "name": "Al Borg Laboratories",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1332",
+      "nphies_id": "10000000029301",
+      "name": "Al Hammadi Hospital - Al Nuzha",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1185",
+      "nphies_id": "10000000055424",
+      "name": "Al Hammadi Hospital, Al Suwaidi Branch",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1048",
+      "nphies_id": "10000000000988",
+      "name": "Al-Hayat National Hospital, branch of Al-Inma Medical Services Company",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1172",
+      "nphies_id": "10000000037034",
+      "name": "The National Life Hospital in Jazan has a capacity of 120 beds",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1085",
+      "nphies_id": "10000000030643",
+      "name": "Al-Hayat National Hospital-Khamis Mushait",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1075",
+      "nphies_id": "10000000030262",
+      "name": "Al-Hayat National Hospital - Unaizah - Al-Qassim",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "8788",
+      "nphies_id": "10000000047793",
+      "name": "Al Nahdi Pharmacy 97",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "8215",
+      "nphies_id": "10000000098069",
+      "name": "Al-Nahdi Pharmacy No. 107 works 24 hours- Ahmed Shalaby Street in Prince Abdul Majeed neighborhood - Jeddah",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "8563",
+      "nphies_id": "10000000053627",
+      "name": "Al Nahdi Pharmacy No. 45 pharmacy",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "123",
+      "nphies_id": "7001593321",
+      "name": "Al-Rajhi Company for Cooperative Insurance",
+      "status": "Onboarded",
+      "wave": "HIC"
+    },
+    {
+      "cchi": "10491",
+      "nphies_id": "10000000142297",
+      "name": "Al-Dawaa Pharmacy 63-Dammam",
+      "status": "Closed",
+      "wave": "BAU/Pharmacy"
+    },
+    {
+      "cchi": "8693",
+      "nphies_id": "10000000095479",
+      "name": "Drugstore 104 in Dammam",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "8222",
+      "nphies_id": "10000000059624",
+      "name": "Al-Dawaa Pharmacy, News No. 1",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "8227",
+      "nphies_id": "10000000146421",
+      "name": "Al Dawaa Pharmacy (80) in Dammam",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "9283",
+      "nphies_id": "10000000030989",
+      "name": "Drugstore 124 in Al-Khobar",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "9837",
+      "nphies_id": "10000000127207",
+      "name": "The second drug pharmacy in Al-Khobar",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "8224",
+      "nphies_id": "10000000069953",
+      "name": "Al-Dawa Pharmacy (134) in Al-Khobar",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "8226",
+      "nphies_id": "10000000132884",
+      "name": "Al-Dawaa Pharmacy 47 - Al-Jafr Main Street",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1019",
+      "nphies_id": "10000000042257",
+      "name": "Al-Manea General Hospital, Al-Khobar",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1020",
+      "nphies_id": "10000000040376",
+      "name": "Al Mana General Hospital, Dammam",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1022",
+      "nphies_id": "10000000117935",
+      "name": "Al-Manea General Hospital, Jubail",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1021",
+      "nphies_id": "10000000152981",
+      "name": "Al-Maneh General Hospital in Al-Ahsa",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "18331",
+      "nphies_id": "10000000153377",
+      "name": "Al-Mana Medical Complex in the second industrial zone. In Dammam",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "18702",
+      "nphies_id": "10000000135747",
+      "name": "Al Mana Clinics Complex - Al Khobar",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "17635",
+      "nphies_id": "10000000002055",
+      "name": "Al Mana Medical Complex",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1141",
+      "nphies_id": "10000000134484",
+      "name": "Al-Mousa Specialized Hospital in Al-Ahsa",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1051",
+      "nphies_id": "10000000046019",
+      "name": "Andalusia Hospital District University",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1139",
+      "nphies_id": "10000000102614",
+      "name": "Aster Sanad Hospital for Medical Care",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "113",
+      "nphies_id": "7001607683",
+      "name": "Gulf Insurance Group \u2013 GIG",
+      "status": "Onboarded",
+      "wave": "HIC"
+    },
+    {
+      "cchi": "1013",
+      "nphies_id": "10000000097830",
+      "name": "Bagedo and Dr. Irfan General Hospital - Jeddah",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "102",
+      "nphies_id": "7001571327",
+      "name": "Bupa Arabia for Cooperative Insurance",
+      "status": "Onboarded",
+      "wave": "HIC"
+    },
+    {
+      "cchi": "1000",
+      "nphies_id": "10000000032324",
+      "name": "Dallah Hospital Riyadh",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1340",
+      "nphies_id": "10000000055390",
+      "name": "Dallah Hospital Namar",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1002",
+      "nphies_id": "10000000029452",
+      "name": "Dr. Hospital Abdul Rahman Bakhsh 139 beds",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1067",
+      "nphies_id": "10000000131597",
+      "name": "Dr. Ghassan Najeeb Pharaoh General Hospital (50 beds)",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1076",
+      "nphies_id": "10000300189204",
+      "name": "TADAWI MEDICAL HOSPITAL",
+      "status": "Onboarded",
+      "wave": "W3 P3.3"
+    },
+    {
+      "cchi": "18339",
+      "nphies_id": "10000000135226",
+      "name": "Dr. Ghassan Najeeb Pharaoh Dental Clinics Complex",
+      "status": "Closed",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1010",
+      "nphies_id": "10000000050680",
+      "name": "Dr. Soliman Fakih Hospital (355) beds",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "18940",
+      "nphies_id": "10000000106474",
+      "name": "Branch of Dr. Sulaiman Abdul Qadir Faqih Hospital Company, Al-Basatin neighborhood",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "18883",
+      "nphies_id": "10000000166080",
+      "name": "Dr. Sulaiman Abdul Qadir Fakih Family Medicine Centers",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "18580",
+      "nphies_id": "10000000101822",
+      "name": "Dr. Sulaiman Fakih Medical Complex - Bathool / Jeddah",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1007",
+      "nphies_id": "10000000030508",
+      "name": "Gamma Medical Hospital in Dammam",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "202",
+      "nphies_id": "7001463160",
+      "name": "GlobeMed Saudi",
+      "status": "Onboarded",
+      "wave": "HIC"
+    },
+    {
+      "cchi": "105",
+      "nphies_id": "7001532279",
+      "name": "Gulf Union Cooperative Insurance Company",
+      "status": "Onboarded",
+      "wave": "HIC"
+    },
+    {
+      "cchi": "1156",
+      "nphies_id": "10000000001081",
+      "name": "Dr. Sulaiman Al Habib Hospital 1",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1167",
+      "nphies_id": "10000000069631",
+      "name": "Dr. Sulaiman Al Habib Hospital 2",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "18431",
+      "nphies_id": "10000300061197",
+      "name": "Dr. Sulaiman Al Habib Hospital 3 (Sehat Al Olaya)",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1270",
+      "nphies_id": "10000000067098",
+      "name": "Al Suwaidi Health Medical Company Hospital",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1147",
+      "nphies_id": "10000000004102",
+      "name": "Dr. Sulaiman Al Habib Hospital 4",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1365",
+      "nphies_id": "10000300071592",
+      "name": "Sehat Al Sharq Medical Limited Co. (Sehat Al Sharq)",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1080",
+      "nphies_id": "10000000001443",
+      "name": "International Medical Center Hospital (IMC)",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1119",
+      "nphies_id": "10000000001257",
+      "name": "Jeddah National Hospital (1119)",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1113",
+      "nphies_id": "10000000067635",
+      "name": "Kingdom Hospital",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1166",
+      "nphies_id": "10000000132827",
+      "name": "Magrabi Company Hospital, a branch of Magrabi Hospitals and Centers, in Riyadh",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "18027",
+      "nphies_id": "10000300196993",
+      "name": "The Magrabi Center for One Day Surgery - Mishrifa Branch / Jeddah",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "2007",
+      "nphies_id": "10000300053798",
+      "name": "Magrabi Center / as one of the departments of Mouwasat Hospital in Dammam",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "17056",
+      "nphies_id": "10000000050664",
+      "name": "Magrabi clinic complex in Khobar",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1016",
+      "nphies_id": "10000000128742",
+      "name": "Mouwasat Long Term Care",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "17002",
+      "nphies_id": "10000000088425",
+      "name": "Magrabi eye clinic complex, Aziziyah",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "18885",
+      "nphies_id": "10000000051886",
+      "name": "Magrabi Specialized Medical Complex - Rayyan - Eastern Ring Road",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "17209",
+      "nphies_id": "10000300106331",
+      "name": "A specialized complex company Magrabi hospitals and centers",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "17003",
+      "nphies_id": "10000300082805",
+      "name": "Magrabi Dental Center",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "18842",
+      "nphies_id": "10000000084754",
+      "name": "Magrabi Specialized Medical Center Complex",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "17612",
+      "nphies_id": "10000000119261",
+      "name": "Magrabi Dental Center Company",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "18994",
+      "nphies_id": "10000300115308",
+      "name": "The complex of Magrabi Hospitals and Specialized Medical Centers Company",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "19341",
+      "nphies_id": "10000300031927",
+      "name": "Magrabi Center / as one of the departments ofAl-Hayat National Hospital in jazan",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "25292",
+      "nphies_id": "10000000098457",
+      "name": "Magrabi Optical Center Class A-7 Jerusalem",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "25043",
+      "nphies_id": "10000300032602",
+      "name": "Maghrabi Optical Company, Ltd. Category (A) Madinah Branch - Jeddah",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "25517",
+      "nphies_id": "10000300129077",
+      "name": "Magrabi Optical Class A",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "25035",
+      "nphies_id": "10000300175039",
+      "name": "Magrabi Optical Center, Sari Branch",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "25546",
+      "nphies_id": "10000000094530",
+      "name": "A branch of Magrabi Hospitals and Centers Company - Jeddah",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "25680",
+      "nphies_id": "10000000164556",
+      "name": "Magrabi Opticals, Class A, Red Sea Mall Center",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "25031",
+      "nphies_id": "10000000065142",
+      "name": "Maghrabi Opticals Category A-5-i-King Abdullah",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "25033",
+      "nphies_id": "10000000068047",
+      "name": "Branch of Magrabi Optical Company Ltd. 9 in Jubail",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "25029",
+      "nphies_id": "10000000065654",
+      "name": "Magrabi Optical Center Class A-8 at Badi'ah / Riyadh",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "25306",
+      "nphies_id": "10000000105963",
+      "name": "Al-Maghrabi Optical Center Class A-4 Al-Rawda",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "122",
+      "nphies_id": "7001519912",
+      "name": "Malath Cooperative Insurance and Reinsurance Company",
+      "status": "Onboarded",
+      "wave": "HIC"
+    },
+    {
+      "cchi": "104",
+      "nphies_id": "7001548317",
+      "name": "The Mediterranean and Gulf Cooperative Insurance and Reinsurance Company (MedGulf)",
+      "status": "Onboarded",
+      "wave": "HIC"
+    },
+    {
+      "cchi": "204",
+      "nphies_id": "7001604342",
+      "name": "Mednet",
+      "status": "Closed",
+      "wave": "HIC"
+    },
+    {
+      "cchi": "1036",
+      "nphies_id": "10000000091791",
+      "name": "Mohammed Al-Dossary Hospital, Al-Khobar",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1004",
+      "nphies_id": "10000000047264",
+      "name": "Mouwasat Hospital, Dammam",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1009",
+      "nphies_id": "10000000124964",
+      "name": "Mouwasat Hospital - Jubail",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1181",
+      "nphies_id": "10000000111318",
+      "name": "Mouwasat Hospital in Riyadh (Branch of Mouwasat Medical Services Company)",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1350",
+      "nphies_id": "10000000100543",
+      "name": "Mouwasat Hospital in Khobar",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1064",
+      "nphies_id": "10000000063337",
+      "name": "Mouwasat Hospital in Qatif",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "2004",
+      "nphies_id": "10000300161054",
+      "name": "Maghrabi Center (Almuwasah Hospital in Medina)",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "18621",
+      "nphies_id": "10000000087377",
+      "name": "My Clinic International Medical Complex",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1001",
+      "nphies_id": "10000000001824",
+      "name": "Riyadh Care Hospital",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1028",
+      "nphies_id": "10000000002138",
+      "name": "Care National Hospital",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "201",
+      "nphies_id": "7001580856",
+      "name": "Nextcare",
+      "status": "Onboarded",
+      "wave": "HIC"
+    },
+    {
+      "cchi": "1088",
+      "nphies_id": "10000000108587",
+      "name": "Obaid Specialist Hospital, United Medical Projects Company Branch",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1144",
+      "nphies_id": "10000000002382",
+      "name": "Obaid Specialist Hospital United Medical Projects Company Branch - Al-Ahsa",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "18443",
+      "nphies_id": "10000000029460",
+      "name": "Al Aziziyah General Medical Complex",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "17065",
+      "nphies_id": "10000300199229",
+      "name": "khalid advanced medical center for general medicine",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "1039",
+      "nphies_id": "10000000044741",
+      "name": "Prince Fahd bin Sultan Hospital Company / Tabuk",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "103",
+      "nphies_id": "7001539720",
+      "name": "Saudi Arabian Cooperative Insurance Company (SAICO) *",
+      "status": "Onboarded",
+      "wave": "HIC"
+    },
+    {
+      "cchi": "1014",
+      "nphies_id": "10000000064871",
+      "name": "The Saudi-German Hospital",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1003",
+      "nphies_id": "10000000071512",
+      "name": "The Saudi-German Hospital",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1005",
+      "nphies_id": "10000000103885",
+      "name": "The Saudi-German Hospital",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1065",
+      "nphies_id": "10000000046944",
+      "name": "The Saudi-German Hospital",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "18857",
+      "nphies_id": "10000000082402",
+      "name": "Branch of the Middle East Healthcare Company (Beverly Clinics)",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1023",
+      "nphies_id": "10000000078780",
+      "name": "Specialist Medical Center Hospital (SMC)",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1025",
+      "nphies_id": "10000000134260",
+      "name": "Tadawi Hospital for Medical Services in Dammam",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "101",
+      "nphies_id": "7000911508",
+      "name": "The Cooperative Company for Cooperative Insurance",
+      "status": "Onboarded",
+      "wave": "HIC"
+    },
+    {
+      "cchi": "203",
+      "nphies_id": "7001599658",
+      "name": "Totalcare",
+      "status": "Onboarded",
+      "wave": "HIC"
+    },
+    {
+      "cchi": "1037",
+      "nphies_id": "10000000107530",
+      "name": "United Doctors Hospital",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1138",
+      "nphies_id": "10000300110408",
+      "name": "Abdullatif Jameel Hospital for Medical Rehabilitation",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1121",
+      "nphies_id": "10000300144936",
+      "name": "Dr. Hassan Ghazzawi Hospital-(30) Beds",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "18275",
+      "nphies_id": "10000300135363",
+      "name": "Adwaa Al Alamy Medical Complex",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1157",
+      "nphies_id": "10000300049598",
+      "name": "Al Ahli Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "18907",
+      "nphies_id": "10000300185681",
+      "name": "Al Amal Medical Complex",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "18213",
+      "nphies_id": "10000300168521",
+      "name": "Al Amal Medical Complex",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1063",
+      "nphies_id": "10000300105242",
+      "name": "Al Ameen National Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1027",
+      "nphies_id": "10000300091434",
+      "name": "Al Ansari Specialist Hospital is owned, Mahmoud Abdullah Ansari Almenzlawi / Yanbu. Of the Royal Commission",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1142",
+      "nphies_id": "10000300104344",
+      "name": "Al Edwani National Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1178",
+      "nphies_id": "10000300185418",
+      "name": "Al Emies Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1072",
+      "nphies_id": "10000300103940",
+      "name": "Al Falah Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1122",
+      "nphies_id": "10000300220660",
+      "name": "Aldar National Hospital (Hayat National Hospital \u2013 Madinah (Branch 5))",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1069",
+      "nphies_id": "10000300073333",
+      "name": "Al Jadani Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1070",
+      "nphies_id": "10000300120696",
+      "name": "Al Jadani New Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "19691",
+      "nphies_id": "10000300202627",
+      "name": "Al Jazirah Clinic",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1154",
+      "nphies_id": "10000300043351",
+      "name": "Al Jazirah Hospita/Riyadh",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "18304",
+      "nphies_id": "10000300123385",
+      "name": "Al Lulu Medical Complex",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "18001",
+      "nphies_id": "10000300182803",
+      "name": "Al Maghlouth Medical Complex",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1183",
+      "nphies_id": "10000300050414",
+      "name": "Al Nakhba Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1143",
+      "nphies_id": "10000300200035",
+      "name": "Al Qassim National Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1056",
+      "nphies_id": "10000300131362",
+      "name": "Al Sadiq Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "18582",
+      "nphies_id": "10000300030242",
+      "name": "Al Saedy General General Complex",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1419",
+      "nphies_id": "10000300198163",
+      "name": "Al Salam Health Medical Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1073",
+      "nphies_id": "10000300203260",
+      "name": "Al Salama Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "18121",
+      "nphies_id": "10000300162086",
+      "name": "Al Taawun Al Ahli Complex",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "18002",
+      "nphies_id": "10000300151642",
+      "name": "Al Wattan Medical",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1031",
+      "nphies_id": "10000300189774",
+      "name": "Al Yousif Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1050",
+      "nphies_id": "10000300107636",
+      "name": "Al Zafer Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1134",
+      "nphies_id": "10000300066667",
+      "name": "Al Zahra General Hospital  in Kateef",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1029",
+      "nphies_id": "10000300209945",
+      "name": "Al Zahra Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1083",
+      "nphies_id": "10000300149380",
+      "name": "Al Zahra Private Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1135",
+      "nphies_id": "10000300096813",
+      "name": "Dallah Hospital Al Ahsa",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "2082",
+      "nphies_id": "10000300202536",
+      "name": "Alwrood Medical Polyclinics",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1158",
+      "nphies_id": "10000300068440",
+      "name": "Arrawdha General Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "18295",
+      "nphies_id": "10000300089917",
+      "name": "Arrawdha Medical complex",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1068",
+      "nphies_id": "10000300099205",
+      "name": "Bugshan Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "2016",
+      "nphies_id": "10000300057716",
+      "name": "Center of Ophthalmology Consultants",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "17213",
+      "nphies_id": "10000300075064",
+      "name": "Danat Al Sahraa Medical Complex`",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "17632",
+      "nphies_id": "10000300160536",
+      "name": "Dar Al Sihha Medical Center",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1066",
+      "nphies_id": "10000300202916",
+      "name": "Dar Al-Shifa National Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1074",
+      "nphies_id": "10000300073341",
+      "name": "Dr. Abdulrahman Almashari Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1082",
+      "nphies_id": "10000300099296",
+      "name": "Dr. Hamid Suliman Al-Ahmadi Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1321",
+      "nphies_id": "10000300201504",
+      "name": "Dr. Sameer Abbas Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1278",
+      "nphies_id": "10000300201918",
+      "name": "Family Care Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "17633",
+      "nphies_id": "10000300102165",
+      "name": "Clinics Ram Complex of Medicine and Orthodontics 2 in Dammam",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "16077",
+      "nphies_id": "10000300125877",
+      "name": "Future Care",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1089",
+      "nphies_id": "10000300056957",
+      "name": "Green Crescent Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1126",
+      "nphies_id": "10000300133897",
+      "name": "Halla Isa Bin Laden Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1163",
+      "nphies_id": "10000300202619",
+      "name": "Hussein Ali Mohammed Ali Company Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1174",
+      "nphies_id": "10000300170360",
+      "name": "International Extended Care Center",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1018",
+      "nphies_id": "10000300097654",
+      "name": "New Jeddah Clinic Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "18575",
+      "nphies_id": "10000300036710",
+      "name": "Hagar Poly Clinic",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "1150",
+      "nphies_id": "10000300204201",
+      "name": "AL-ANWAR MEDICAL HOSPITAL",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25758",
+      "nphies_id": "10000300170907",
+      "name": "ALMAHAOPICAL GHARNATA TWO",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18458",
+      "nphies_id": "10000300199021",
+      "name": "abdulkarim hakami polyclinic complex",
+      "status": "Onboarded",
+      "wave": "W3 P3.1"
+    },
+    {
+      "cchi": "17543",
+      "nphies_id": "10000300060330",
+      "name": "Deryaq Medical Complex",
+      "status": "Onboarded",
+      "wave": "W3 P3.1"
+    },
+    {
+      "cchi": "17090",
+      "nphies_id": "10000300181953",
+      "name": "Cosma Dental Polyclinics co.",
+      "status": "Onboarded",
+      "wave": "W3 P3.1"
+    },
+    {
+      "cchi": "17008",
+      "nphies_id": "10000300169644",
+      "name": "Consulting Clinics",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1011",
+      "nphies_id": "10000300212196",
+      "name": "Madina National Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1041",
+      "nphies_id": "10000300196647",
+      "name": "Mecca Medical Center Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "18173",
+      "nphies_id": "10000300121926",
+      "name": "Mohammed Suleiman Alkhnena Medical Complex",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1047",
+      "nphies_id": "10000300149422",
+      "name": "Muhammad Saleh Basharahil Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1124",
+      "nphies_id": "10000300135181",
+      "name": "Nahdha National Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1114",
+      "nphies_id": "10000300170444",
+      "name": "Al Hamra Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "17988",
+      "nphies_id": "10000300127642",
+      "name": "Olaya Medical Complex",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1132",
+      "nphies_id": "10000300034921",
+      "name": "Araya Altakhasusiya Hospital in Al Khubar",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1130",
+      "nphies_id": "10000300199013",
+      "name": "Rabia Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "17076",
+      "nphies_id": "10000300150537",
+      "name": "Safa Makka Polyclinic",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "18291",
+      "nphies_id": "10000300100268",
+      "name": "Salamat Medical Complex",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "1182",
+      "nphies_id": "10000300046305",
+      "name": "Salamat Hospital",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "17155",
+      "nphies_id": "10000300173687",
+      "name": "Deryaq Medical Center",
+      "status": "Onboarded",
+      "wave": "W3 P3.1"
+    },
+    {
+      "cchi": "19583",
+      "nphies_id": "10000300253570",
+      "name": "Joele Special Medical",
+      "status": "Onboarded",
+      "wave": "W3 P3.1"
+    },
+    {
+      "cchi": "1026",
+      "nphies_id": "10000300202023",
+      "name": "Yanbu National Hospital for medical services",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "25529",
+      "nphies_id": "10000300250816",
+      "name": "Al Bashawri Optics Branch slamah class-A",
+      "status": "Onboarded",
+      "wave": "W3 P3.1"
+    },
+    {
+      "cchi": "26754",
+      "nphies_id": "10000300248869",
+      "name": "AL BASHAWRI OPTICAL",
+      "status": "Onboarded",
+      "wave": "W3 P3.1"
+    },
+    {
+      "cchi": "2020",
+      "nphies_id": "10000300123625",
+      "name": "Raya Company For Medical Services/Riyadh",
+      "status": "Onboarded",
+      "wave": "W3 P2"
+    },
+    {
+      "cchi": "17946",
+      "nphies_id": "10000300148721",
+      "name": "ALWATAN CLINICS",
+      "status": "Onboarded",
+      "wave": "W3 P2"
+    },
+    {
+      "cchi": "17259",
+      "nphies_id": "10000300227988",
+      "name": "Samaria Polyclinic",
+      "status": "Onboarded",
+      "wave": "W3 P2"
+    },
+    {
+      "cchi": "18174",
+      "nphies_id": "10000300073416",
+      "name": "Shamikh Medical Center-Airport Dist/Al-Baha",
+      "status": "Onboarded",
+      "wave": "W3 P2"
+    },
+    {
+      "cchi": "18642",
+      "nphies_id": "10000300195151",
+      "name": "BADR ALKHALEEJ POLYCLINIC",
+      "status": "Onboarded",
+      "wave": "W3 P2"
+    },
+    {
+      "cchi": "18396",
+      "nphies_id": "10000300183918",
+      "name": "AL SALAM HEALTH MEDICAL SPECIALZED CLINIC",
+      "status": "Onboarded",
+      "wave": "W3 P2"
+    },
+    {
+      "cchi": "10402",
+      "nphies_id": "10000300194691",
+      "name": "Al-Dawaa Pharmacy 727",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "26946",
+      "nphies_id": "10000300127139",
+      "name": "farza potical",
+      "status": "Onboarded",
+      "wave": "W3 P3.3"
+    },
+    {
+      "cchi": "26948",
+      "nphies_id": "10000300241567",
+      "name": "farza optical",
+      "status": "Onboarded",
+      "wave": "W3 P3.3"
+    },
+    {
+      "cchi": "26949",
+      "nphies_id": "10000300237607",
+      "name": "farza optical",
+      "status": "Onboarded",
+      "wave": "W3 P3.3"
+    },
+    {
+      "cchi": "26947",
+      "nphies_id": "10000300252093",
+      "name": "farza optical",
+      "status": "Onboarded",
+      "wave": "W3 P3.3"
+    },
+    {
+      "cchi": "18390",
+      "nphies_id": "10000300199120",
+      "name": "SAIHAT MEDICAL CLINICS COMPLEX",
+      "status": "Onboarded",
+      "wave": "W3 P3.3"
+    },
+    {
+      "cchi": "8952",
+      "nphies_id": "10000300076203",
+      "name": "\u0635\u064a\u062f\u0644\u064a\u0629 \u0628\u064a\u062a \u0627\u0644\u0635\u062d\u0629 \u0627\u0644\u062b\u0627\u0644\u062b\u0629 \u0639\u0634\u0631",
+      "status": "Onboarded",
+      "wave": "Phar.2"
+    },
+    {
+      "cchi": "11128",
+      "nphies_id": "10000300038799",
+      "name": "\u0635\u064a\u062f\u0644\u064a\u0629 \u0628\u064a\u062a \u0627\u0644\u0635\u062d\u0629 \u0627\u0644\u0633\u0627\u062f\u0633\u0629 \u0648\u0627\u0644\u0633\u0628\u0639\u0648\u0646",
+      "status": "Onboarded",
+      "wave": "Phar.2"
+    },
+    {
+      "cchi": "9507",
+      "nphies_id": "10000300092028",
+      "name": "\u0635\u064a\u062f\u0644\u064a\u0629 \u0628\u064a\u062a \u0627\u0644\u0635\u062d\u0629 \u0627\u0644\u0633\u0627\u0628\u0639\u0629 \u0648\u0627\u0644\u0639\u0634\u0631\u0648\u0646",
+      "status": "Onboarded",
+      "wave": "Phar.2"
+    },
+    {
+      "cchi": "1371",
+      "nphies_id": "10000300202098",
+      "name": "The Saudi-German Hospital - Dammam",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1303",
+      "nphies_id": "10000300102215",
+      "name": "Saudi German Hospital Hail",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "1372",
+      "nphies_id": "10000300154596",
+      "name": "Specialist Medical Center Hospital (SMC)",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "11133",
+      "nphies_id": "10000300136809",
+      "name": "\u0635\u064a\u062f\u0644\u064a\u0629 \u0628\u064a\u062a \u0627\u0644\u0635\u062d\u0629 \u0627\u0644\u062e\u0627\u0645\u0633\u0629 \u0648\u0627\u0644\u0639\u0634\u0631\u0648\u0646",
+      "status": "Onboarded",
+      "wave": "Phar.2"
+    },
+    {
+      "cchi": "8114",
+      "nphies_id": "10000300155692",
+      "name": "\u0635\u064a\u062f\u0644\u064a\u0629 \u0627\u0644\u0647\u0644\u0627\u0644 \u0628\u0627\u0644\u062e\u0628\u0631",
+      "status": "Onboarded",
+      "wave": "Phar.2"
+    },
+    {
+      "cchi": "1409",
+      "nphies_id": "10000300256888",
+      "name": "MOUWASAT MEDICAL SERVICES HOSPITAL",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "13895",
+      "nphies_id": "10000300287065",
+      "name": "\u0635\u064a\u062f\u0644\u064a\u0629 \u0628\u064a\u062a \u0627\u0644\u0635\u062d\u0629 \u062e\u0645\u0633\u0645\u0627\u0626\u0629 \u0648\u0627\u062b\u0646\u0627 \u0639\u0634\u0631",
+      "status": "Onboarded",
+      "wave": "Phar.2"
+    },
+    {
+      "cchi": "13894",
+      "nphies_id": "10000300294590",
+      "name": "\u0635\u064a\u062f\u0644\u064a\u0629 \u0628\u064a\u062a \u0627\u0644\u0635\u062d\u0629 \u062e\u0645\u0633\u0645\u0627\u0626\u0629 \u0648\u0623\u0631\u0628\u0639\u0629 \u0639\u0634\u0631",
+      "status": "Onboarded",
+      "wave": "Phar.2"
+    },
+    {
+      "cchi": "17073",
+      "nphies_id": "10000000036721",
+      "name": "Um Al Hamam Medical Group Clinics Complex - Riyadh",
+      "status": "Onboarded",
+      "wave": "W1"
+    },
+    {
+      "cchi": "17206",
+      "nphies_id": "10000300202189",
+      "name": "First Modern Clinics Complex",
+      "status": "Onboarded",
+      "wave": "W2"
+    },
+    {
+      "cchi": "18340",
+      "nphies_id": "10000300058524",
+      "name": "Alarjan Medical Polyclinic",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18082",
+      "nphies_id": "10000300118807",
+      "name": "AL DOSARY MEDICAL POLY CLINIC",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18091",
+      "nphies_id": "10000300054044",
+      "name": "AL-Thowaini Medical Center",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "1077",
+      "nphies_id": "10000300031497",
+      "name": "Aljafil International Hospital",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18577",
+      "nphies_id": "10000300074562",
+      "name": "sabamedical1",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18046",
+      "nphies_id": "10000300090576",
+      "name": "Dur Alsalam Polyclinics",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "2087",
+      "nphies_id": "10000300150305",
+      "name": "Dawaak Medical Center Co.1/Riyadh",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17038",
+      "nphies_id": "10000300119177",
+      "name": "Dr.Zaher Qadheeb Alban Polyclinics No. 1 dist. Rusaifa",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "8295",
+      "nphies_id": "10000300034996",
+      "name": "NAHDI Pharmacy 8295",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11069",
+      "nphies_id": "10000300141494",
+      "name": "NAHDI Pharmacy 11069",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "8292",
+      "nphies_id": "10000300119722",
+      "name": "NAHDI Pharmacy 8292",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "17307",
+      "nphies_id": "10000300139431",
+      "name": "G.M.Compound of Dr.Zaher Gadeeb Alban2",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "19307",
+      "nphies_id": "10000300040167",
+      "name": "FAL ALAFIA POLYCLINIC",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17107",
+      "nphies_id": "10000300148374",
+      "name": "Talah Corporation for Medical Services",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "19705",
+      "nphies_id": "10000300062690",
+      "name": "MOHAMED ALI ALHABEEB MEDICAL COMPLEX",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18041",
+      "nphies_id": "10000300201777",
+      "name": "ZAHRAT ALAMAL POLYCLINIC",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18215",
+      "nphies_id": "10000300076245",
+      "name": "AL Azizia Medical Polyclinic",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18127",
+      "nphies_id": "10000300052667",
+      "name": "albustan medical complex",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18402",
+      "nphies_id": "10000300084330",
+      "name": "alnowaimah poly linic",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "1162",
+      "nphies_id": "10000300191036",
+      "name": "Al-Zafer Hospital-jeddah",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18606",
+      "nphies_id": "10000300196191",
+      "name": "Atba al Asr General Medical Complex",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18224",
+      "nphies_id": "10000300162136",
+      "name": "Ram Al-Ahsa Medical Company",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17920",
+      "nphies_id": "10000300200696",
+      "name": "Dar Ram Dental Clinics - Khobar 3",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18416",
+      "nphies_id": "10000300083175",
+      "name": "DHAKA MEDICAL",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18381",
+      "nphies_id": "10000300091509",
+      "name": "EBRAHEEM ABDULRAHMAN ALSUKHAIBER MEDICAL COMPLEX",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18687",
+      "nphies_id": "10000300196332",
+      "name": "HEALTH AND LIFE POLYCLINIC",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18094",
+      "nphies_id": "10000300041835",
+      "name": "Madlouh Medical Complex",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17815",
+      "nphies_id": "10000300200175",
+      "name": "Ram Jubail Medical Company",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17180",
+      "nphies_id": "10000300202767",
+      "name": "Ram Khobar one Clinics",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17882",
+      "nphies_id": "10000300174024",
+      "name": "Jabal Ram Dental Clinics Complex - Al Khobar",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17538",
+      "nphies_id": "10000300092176",
+      "name": "Clinics Complex Ram Dental in Dammam",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18488",
+      "nphies_id": "10000300088240",
+      "name": "Ram Clinics Bohairah",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18336",
+      "nphies_id": "10000300097902",
+      "name": "Ram Specialized Dental Medical Complex / Yanbu Industrial",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17164",
+      "nphies_id": "10000300207964",
+      "name": "Saudi Swiss Consultant Company",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18040",
+      "nphies_id": "10000300198106",
+      "name": "ZAHRAT ALAMAL POLYCLINIC 2",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17388",
+      "nphies_id": "10000300109293",
+      "name": "Basmat Dental and Dermatology Clinics Complex",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18846",
+      "nphies_id": "10000300198262",
+      "name": "Ram Rahima Medical Company",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "19028",
+      "nphies_id": "10000300204227",
+      "name": "Ram Medical Clinics - Dhahran",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "19614",
+      "nphies_id": "10000300261458",
+      "name": "Dallah Clinics",
+      "status": "Onboarded",
+      "wave": "W3 P3.3"
+    },
+    {
+      "cchi": "19879",
+      "nphies_id": "10000300297643",
+      "name": "ALMANAR UNITED MEDICAL COMPANY IS A ONE PERSON",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17119",
+      "nphies_id": "10000300112594",
+      "name": "Dr. Jamil Mahmoud Khattab Polyclinics in Hofuf",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18164",
+      "nphies_id": "10000300032776",
+      "name": "family medical complex",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17126",
+      "nphies_id": "10000300041678",
+      "name": "shifa jubail medical center",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17986",
+      "nphies_id": "10000300043807",
+      "name": "RIYADH MEDICAL COMPLEX CLINIC",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18417",
+      "nphies_id": "10000300051743",
+      "name": "ALBARAKAH GENERAL MEDICAL COMPLEX",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17850",
+      "nphies_id": "10000300062120",
+      "name": "Specialist medical Center",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17880",
+      "nphies_id": "10000300074208",
+      "name": "Basmat Ram Dental Clinic Complex in Qatif",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17044",
+      "nphies_id": "10000300084413",
+      "name": "Shifa Al jazira Poly clinic",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17585",
+      "nphies_id": "10000300089974",
+      "name": "Ram Dental Clinics Complex in Al-Ahsa Governorate",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17968",
+      "nphies_id": "10000300094107",
+      "name": "Al-Nathim National Medical Complex",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18279",
+      "nphies_id": "10000300094750",
+      "name": "AL-KHALEEJ MEDICAL CENTER",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17113",
+      "nphies_id": "10000300100987",
+      "name": "Almotgadmah Alesteshariya Polyclinics -2-Al-Mentazh/Al-Karaj",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17080",
+      "nphies_id": "10000300103528",
+      "name": "ALMOHAMADIAH MEDICAL CENTER",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18680",
+      "nphies_id": "10000300105176",
+      "name": "Doha Medical Complex - Dhahran",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17017",
+      "nphies_id": "10000300106034",
+      "name": "AFAQ CLINIC COMPANY",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17724",
+      "nphies_id": "10000300107388",
+      "name": "Al-Nairiyah Medical polyclinic",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17075",
+      "nphies_id": "10000300124789",
+      "name": "Polyclinic Nessim Jeddah",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17484",
+      "nphies_id": "10000300127998",
+      "name": "Ibrahim Saud Tayyar Partner Clinic",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18394",
+      "nphies_id": "10000300136874",
+      "name": "Mohamed Ahmed Ashiri Medical Complex",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "1406",
+      "nphies_id": "10000300248034",
+      "name": "Meddle East Healthcare Hospital Company Alrawabi",
+      "status": "Onboarded",
+      "wave": "W3 P3.3"
+    },
+    {
+      "cchi": "17909",
+      "nphies_id": "10000300139241",
+      "name": "LAMSAT SHIFA POLYCLINIC",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17983",
+      "nphies_id": "10000300155619",
+      "name": "Family Smile Medical Complex",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17367",
+      "nphies_id": "10000300178215",
+      "name": "Russell Medical Center-1-Riyadh",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18319",
+      "nphies_id": "10000300191077",
+      "name": "Zamzam Medical Complex",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18511",
+      "nphies_id": "10000300198411",
+      "name": "Ram Dammam Medical Company Complex",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18274",
+      "nphies_id": "10000300199385",
+      "name": "alkhaldeya medical complex",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18013",
+      "nphies_id": "10000300201876",
+      "name": "excellence specialist medical",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18096",
+      "nphies_id": "10000300201967",
+      "name": "ABU ZEED POLYCLINIC",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17925",
+      "nphies_id": "10000300202734",
+      "name": "AL-Fares Crystal General Medical Complex",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17114",
+      "nphies_id": "10000300202973",
+      "name": "Shifa Medical Complex - Afif",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17175",
+      "nphies_id": "10000300207188",
+      "name": "Wahat Alams Dental Center",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18122",
+      "nphies_id": "10000300247259",
+      "name": "MEDICAL WORLD POLYCLINIC",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "1117",
+      "nphies_id": "10000300037270",
+      "name": "Alosrah International Hospital",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17866",
+      "nphies_id": "10000300043518",
+      "name": "alalam medical company",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18415",
+      "nphies_id": "10000300044524",
+      "name": "Nahj Alertifaa Medical complex",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18052",
+      "nphies_id": "10000300168406",
+      "name": "al jazerah health medical complex",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25051",
+      "nphies_id": "10000300039243",
+      "name": "ALMAHAOPTICAL NASSEM MAIN",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17173",
+      "nphies_id": "10000300079561",
+      "name": "Safa Polyclinic Medical Inc. in Dammam",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17366",
+      "nphies_id": "10000300082318",
+      "name": "Alemtyaz Center Medial Polyclinics in Kateef",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "1079",
+      "nphies_id": "10000300113857",
+      "name": "Alazhar Medical Hospital",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17676",
+      "nphies_id": "10000300164165",
+      "name": "Amass Health Polyclinic Complex-Arar",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18782",
+      "nphies_id": "10000300186820",
+      "name": "Ram Dental Orthodontic and Derma Complex - Jeddah",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17641",
+      "nphies_id": "10000300202007",
+      "name": "Amass Polyclinic Complex-Al-Jufe",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18303",
+      "nphies_id": "10000300071451",
+      "name": "Rahima Medical Polyclinic - Rahima",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18298",
+      "nphies_id": "10000300030697",
+      "name": "ALAHMADI MEDICAL COMPLEX",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "16104",
+      "nphies_id": "10000300051933",
+      "name": "tayyeb saudi company ltd",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "1187",
+      "nphies_id": "10000300058292",
+      "name": "Shefa Specialized Hopital Dallah /Najran",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "16018",
+      "nphies_id": "10000300140116",
+      "name": "Almadina Hearing Company Branch",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "19561",
+      "nphies_id": "10000300250493",
+      "name": "JEAZZ MOHAMED ALBISHRI MEDCAIL JEDHAA",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17077",
+      "nphies_id": "10000300123070",
+      "name": "Madar Alshifaa Polyclinic for Dentistry-1",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17460",
+      "nphies_id": "10000300164389",
+      "name": "AL-Madar Polyclinic For Medical Dental/5",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17500",
+      "nphies_id": "10000300182738",
+      "name": "Mohammed Aqel Jizzi Al-Bishri Trading  Medical Complex",
+      "status": "Closed",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17352",
+      "nphies_id": "10000300201090",
+      "name": "Madar Alshifaa dental Polyclinics",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18061",
+      "nphies_id": "10000300042775",
+      "name": "Albadri Polyclinic",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18012",
+      "nphies_id": "10000300055231",
+      "name": "DRSOLIMAN ALKHARASHI MEDICAL CENTER",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18301",
+      "nphies_id": "10000300063532",
+      "name": "Al-Hadi Medical Clinic",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18441",
+      "nphies_id": "10000300101068",
+      "name": "Alquds Polyclinic",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18051",
+      "nphies_id": "10000300120779",
+      "name": "aziz poly clinic",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17987",
+      "nphies_id": "10000300138169",
+      "name": "ALFAIHA POLYCLINIC RIYADH",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "15044",
+      "nphies_id": "10000300139126",
+      "name": "Physical therapy and sports rehabilitation  Fizik center",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18409",
+      "nphies_id": "10000300159611",
+      "name": "CLINIC9 NEW MEDICAL COMPANY",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18021",
+      "nphies_id": "10000300164546",
+      "name": "alameed medical polyclinic",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18555",
+      "nphies_id": "10000300177050",
+      "name": "osfan General Medical Complex",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18157",
+      "nphies_id": "10000300183793",
+      "name": "HAMED IDRIS FALQI CLINCS COMPLEX",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "19184",
+      "nphies_id": "10000300194063",
+      "name": "Majid Muhammad Al-Bishri Complex Khulais",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18200",
+      "nphies_id": "10000300195771",
+      "name": "Al Bati Medical Center",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17610",
+      "nphies_id": "10000300199310",
+      "name": "RUBBAN MEDICAL CENTER",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "1376",
+      "nphies_id": "10000300200258",
+      "name": "Hospital of Citizen / Ali Bin Mohamed Bin Mehfer Bin Ali",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "1267",
+      "nphies_id": "10000300202528",
+      "name": "Almaali Hospital Hafar Albatin",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17706",
+      "nphies_id": "10000300202593",
+      "name": "(One Day Surgery Center) ALHAKAMI MEDICAL COMPLEX",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18678",
+      "nphies_id": "10000300177134",
+      "name": "HALA ESSA MOHAMED BINLADEN POLYCLINIC",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "1071",
+      "nphies_id": "10000300194949",
+      "name": "ALEMEIS MEDICAL Hospital",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "18364",
+      "nphies_id": "10000300155122",
+      "name": "ALEMEIS MEDICAL COMPLEX",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25023",
+      "nphies_id": "10000300199500",
+      "name": "Maghrabi Optical Alkobar",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26996",
+      "nphies_id": "10000300266200",
+      "name": "Magrabi branch of The View Mall",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26980",
+      "nphies_id": "10000300270988",
+      "name": "Magrabi Hail Square Branch",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26986",
+      "nphies_id": "10000300268164",
+      "name": "magrabi The Park Mall branch in Taif",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25024",
+      "nphies_id": "10000300200795",
+      "name": "Almaghrabi Optical in Kateef",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25027",
+      "nphies_id": "10000300113527",
+      "name": "Maghrabi Optical Center - Olaya category (a)",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25030",
+      "nphies_id": "10000300108691",
+      "name": "Almaghrabi Optical Center category (a) / Malaz",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25032",
+      "nphies_id": "10000300065842",
+      "name": "Hail-Almaghrabi Optical",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25036",
+      "nphies_id": "10000300146394",
+      "name": "MAGRABI Sultana Center",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25038",
+      "nphies_id": "10000300085717",
+      "name": "MAGRABI Glasses class A Alzizia",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25045",
+      "nphies_id": "10000300086236",
+      "name": "Almaghrabi Shop No. 2 class A",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25290",
+      "nphies_id": "10000300192976",
+      "name": "Magrabi Optical Madinah Monawarh-Airport Road",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25291",
+      "nphies_id": "10000300115084",
+      "name": "Magrabi Optical Alkobar",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25293",
+      "nphies_id": "10000300115696",
+      "name": "Maghrabi Optical Category (a) - Altahlyah",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25298",
+      "nphies_id": "10000300190830",
+      "name": "Maghrabi Optical category (C) - Al-Salamah",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25299",
+      "nphies_id": "10000300067632",
+      "name": "Maghrabi Optical Category (a) - Qurnath",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25302",
+      "nphies_id": "10000300125620",
+      "name": "Maghrabi Optical Category (a) - Almamlakah Centar",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25309",
+      "nphies_id": "10000300140595",
+      "name": "Maghrabi Optical Aldahran",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25547",
+      "nphies_id": "10000300166673",
+      "name": "Magrabi Optical - Elwan Mall",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25548",
+      "nphies_id": "10000300084918",
+      "name": "Alnoor Mall - Magrabi Optical",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25703",
+      "nphies_id": "10000300052733",
+      "name": "MAGRABi Panorama Mall",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25765",
+      "nphies_id": "10000300156195",
+      "name": "Magrabi branch Industrial",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25866",
+      "nphies_id": "10000300199583",
+      "name": "Hayat MAll",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25880",
+      "nphies_id": "10000300179007",
+      "name": "Magrabi Center for Optics category (c) district of Mohammedia / Riyadh",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25897",
+      "nphies_id": "10000300188222",
+      "name": "MAGRABI Optical-Faisalya Plaza",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25899",
+      "nphies_id": "10000300084439",
+      "name": "Magrabi Hospital-Khames Mushet",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26048",
+      "nphies_id": "10000300087119",
+      "name": "Magrabi Optical",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26178",
+      "nphies_id": "10000300080957",
+      "name": "MAGRABI Optical company- lass A",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26179",
+      "nphies_id": "10000300134465",
+      "name": "MAGRABI Optical company- A",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26184",
+      "nphies_id": "10000300110895",
+      "name": "Magrabi-Qurtuba Plaza",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26186",
+      "nphies_id": "10000300095807",
+      "name": "Magrabi Optical-Alnakhil Mall",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26235",
+      "nphies_id": "10000300037585",
+      "name": "Magrabi Optical",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26250",
+      "nphies_id": "10000300128475",
+      "name": "Magrabi Optical-Refala Center",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26304",
+      "nphies_id": "10000300127808",
+      "name": "MAGRABI Makka Mall",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26307",
+      "nphies_id": "10000300074042",
+      "name": "MAGRABI Alyasmeen Mall",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26339",
+      "nphies_id": "10000300075312",
+      "name": "Maghribi Alshaati",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26362",
+      "nphies_id": "10000300035027",
+      "name": "Jarir Plaza",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26364",
+      "nphies_id": "10000300146220",
+      "name": "Alwadi Plaza",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26365",
+      "nphies_id": "10000300085428",
+      "name": "MAGRABI Centro Alnakheel",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26367",
+      "nphies_id": "10000300151352",
+      "name": "Khaled Bin Alwaleed",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26372",
+      "nphies_id": "10000300051701",
+      "name": "Dana Mall-Magrabi Optical",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26379",
+      "nphies_id": "10000300134861",
+      "name": "Othman Bin Affan",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26416",
+      "nphies_id": "10000300068242",
+      "name": "Mooj Plaza",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26613",
+      "nphies_id": "10000300103551",
+      "name": "Magrabi Optical",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26624",
+      "nphies_id": "10000300035837",
+      "name": "Magrabi Optical Company Riyadh Gallery",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26725",
+      "nphies_id": "10000300048160",
+      "name": "Jubail Branch-Magrabi Optical Company",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26784",
+      "nphies_id": "10000300206099",
+      "name": "Magrabi Optical Branch Alawali",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26785",
+      "nphies_id": "10000300207733",
+      "name": "Magrabi Optical Branch Nakheel Dammam",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26788",
+      "nphies_id": "10000300204912",
+      "name": "MAGRABI Optical Branch Almurjan",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26817",
+      "nphies_id": "10000300219654",
+      "name": "Magrabi Optical Alkharj Hospital",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26822",
+      "nphies_id": "10000300214168",
+      "name": "MAGRABI Town Square",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26843",
+      "nphies_id": "10000300225024",
+      "name": "MAGRABI Alhamra Mall",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26850",
+      "nphies_id": "10000300231790",
+      "name": "Magrabi Tasan",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26892",
+      "nphies_id": "10000300234489",
+      "name": "MAGRABi Optical Jeddah Park Branch",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26898",
+      "nphies_id": "10000300239751",
+      "name": "MAGRABI Tabuk Park Branch",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26932",
+      "nphies_id": "10000300248711",
+      "name": "MAGRABI Buridah Branch Alrayan District",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "18043",
+      "nphies_id": "10000300143094",
+      "name": "Al-Khonaini Medical Complex-Jubail Industrial",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "18049",
+      "nphies_id": "10000300094115",
+      "name": "Kahhal Medical Complex",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "25539",
+      "nphies_id": "10000300065131",
+      "name": "Al-Kahhal Optics in Dammam",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "1057",
+      "nphies_id": "10000300204391",
+      "name": "Magrabi Hospital and Centers Aseer",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "18590",
+      "nphies_id": "10000300148598",
+      "name": "Magrabi Dental Center - Al Murjan Branch",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "19093",
+      "nphies_id": "10000300170709",
+      "name": "Magrabi",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "19299",
+      "nphies_id": "10000300205075",
+      "name": "AlJubailMagrabi Eye and Dental complex",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "19340",
+      "nphies_id": "10000300125992",
+      "name": "Magrabi Specialize medical complex",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "17947",
+      "nphies_id": "10000300062518",
+      "name": "ALTAAWIN MEDICAL3",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "17948",
+      "nphies_id": "10000300049580",
+      "name": "ALTAAWIN MEDICAL2",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "17616",
+      "nphies_id": "10000300072111",
+      "name": "ALHIKMAH MODERN COMPLEX",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "17939",
+      "nphies_id": "10000300161112",
+      "name": "Al-Saher Polyclinic-shfa/Hail",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "18601",
+      "nphies_id": "10000300157730",
+      "name": "RAYAN AL SHARQ MEDICAL COMPLEX",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "19292",
+      "nphies_id": "10000300210539",
+      "name": "Dr. Sulaiman Al Habib Medical Center",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "19686",
+      "nphies_id": "10000300276068",
+      "name": "DR SULAIMAN AL AHABIB MEDICAL CENTER DIGITAL CITY",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "18003",
+      "nphies_id": "10000300067707",
+      "name": "Al-Watan Medical Complex 2",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "18004",
+      "nphies_id": "10000300190822",
+      "name": "Shuaa Medical Clinics Complex",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "19738",
+      "nphies_id": "10000300122486",
+      "name": "Deem General Medical Company branch complex",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17081",
+      "nphies_id": "10000300047667",
+      "name": "Almashfa Medial Polyclinic-1",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "17985",
+      "nphies_id": "10000300103049",
+      "name": "modern medical complex",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "16135",
+      "nphies_id": "10000300266275",
+      "name": "Future Health Care Company",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26420",
+      "nphies_id": "10000300143540",
+      "name": "ALABEER INTERNATIONAL MEDICAL CO BRANCH OF THE OPTICAL",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26612",
+      "nphies_id": "10000300152236",
+      "name": "Branch of Abeer International Co Ltd.",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26842",
+      "nphies_id": "10000300222070",
+      "name": "optics of alabeer international medical co. Madinah",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "1390",
+      "nphies_id": "10000300227459",
+      "name": "Doctor Soliman Fakeeh Hospital",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "18583",
+      "nphies_id": "10000300049747",
+      "name": "Saudi Medical Services company",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "1363",
+      "nphies_id": "10000300199039",
+      "name": "The hospital of doctor Mohammed Alfagih company and his partner",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "1271",
+      "nphies_id": "10000300197439",
+      "name": "WE CARE MEDICAL HOSPITAL.",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "2011",
+      "nphies_id": "10000300052246",
+      "name": "bn Rushd ophthalmology/surgery one day",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "1033",
+      "nphies_id": "10000300099627",
+      "name": "Dr. Noor Mohammed Khan General Hospital",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17051",
+      "nphies_id": "10000300122098",
+      "name": "Balghosoon Polyclinics-dist.Thagr/Jeddah",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17752",
+      "nphies_id": "10000300137856",
+      "name": "Rafa medical Polyclinic-South Al-Khobar",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18194",
+      "nphies_id": "10000300032545",
+      "name": "alharamin medical complex",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "1364",
+      "nphies_id": "10000300031323",
+      "name": "CMRC Saudi Arabia",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "2013",
+      "nphies_id": "10000300097704",
+      "name": "Alsaggaf Eye Center And Day Surgery",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18347",
+      "nphies_id": "10000300105044",
+      "name": "Al Khaleeji Medical Clinics Complex (Al Shifa)",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25057",
+      "nphies_id": "10000300085873",
+      "name": "Moklaa Optical Center (a) Rawdhah - (1)",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18314",
+      "nphies_id": "10000300080841",
+      "name": "Salamatak Medical",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18405",
+      "nphies_id": "10000300036884",
+      "name": "Rafa medical",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18510",
+      "nphies_id": "10000300201405",
+      "name": "Second Primary Care Complex",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17230",
+      "nphies_id": "10000300246715",
+      "name": "Royal Medical Polyclinics in Al Khafji",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18343",
+      "nphies_id": "10000300121488",
+      "name": "ALAHLI GEN.MEDICAL COMPLEX",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17372",
+      "nphies_id": "10000300179213",
+      "name": "noon clinic 2",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18572",
+      "nphies_id": "10000300062591",
+      "name": "ALKHOLOOD POLYCLINIC",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17942",
+      "nphies_id": "10000300188131",
+      "name": "Arrazi Medical Complex Co. ltd.",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18084",
+      "nphies_id": "10000300156633",
+      "name": "zahraa aljouf polyclinic",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25929",
+      "nphies_id": "10000300177977",
+      "name": "Al-Maha Optics Center (C) - Renaissance - Riyadh",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25455",
+      "nphies_id": "10000300103387",
+      "name": "ALMAHAOPTICAL ELRODHAHFOUR",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18311",
+      "nphies_id": "10000300154257",
+      "name": "almawed medical center",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17972",
+      "nphies_id": "10000300066642",
+      "name": "Sigal World for Medical Services",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "19679",
+      "nphies_id": "10000300208244",
+      "name": "NEBRAS MEDICAL COMPLEX",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25334",
+      "nphies_id": "10000300032065",
+      "name": "Al Maha Optical eloroba",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18009",
+      "nphies_id": "10000300201645",
+      "name": "Al-Mulhim Polyclinics Complex",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18554",
+      "nphies_id": "10000300199609",
+      "name": "ALSAFA MEDICAL COMPLEX",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17108",
+      "nphies_id": "10000300053178",
+      "name": "Safa Makkah Polyclinic-2/Riyadh",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17935",
+      "nphies_id": "10000300122882",
+      "name": "high care medical",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17380",
+      "nphies_id": "10000300117957",
+      "name": "CMAI COMPLX",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "19142",
+      "nphies_id": "10000300152681",
+      "name": "Primary Care Center of Excellence",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25060",
+      "nphies_id": "10000300081708",
+      "name": "Almaha Optical Center category (a) Al Rayyan",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25067",
+      "nphies_id": "10000300033675",
+      "name": "Al-Maha Optical ELMorou",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25069",
+      "nphies_id": "10000300194592",
+      "name": "Al-Maha Optical Center Hotat Bani Tamim (C) 1439-1093492",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25070",
+      "nphies_id": "10000300188032",
+      "name": "ALMAHAOPTICAL SHOBRA",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25335",
+      "nphies_id": "10000300107271",
+      "name": "Al-Maha Optical Al-Malaz Two",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25451",
+      "nphies_id": "10000300131206",
+      "name": "ALMAHAOPTICAL ALqaseem",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25473",
+      "nphies_id": "10000300048244",
+      "name": "Al-Maha Optical-(7)-(A)  alkharaj",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25542",
+      "nphies_id": "10000300102264",
+      "name": "almahaoptical hafr elbatin one",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25698",
+      "nphies_id": "10000300131297",
+      "name": "ALMAHAOPTICAL ELMADINA ELMONAWARA",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25699",
+      "nphies_id": "10000300135215",
+      "name": "ALMAHAOPTICAL Madinah Askriah",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25700",
+      "nphies_id": "10000300095815",
+      "name": "almahaoptical-jizan",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25745",
+      "nphies_id": "10000300070065",
+      "name": "ALMAHAOPTICAL ELJAZEERA",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25746",
+      "nphies_id": "10000300098702",
+      "name": "Al-Maha Opticals Company ELBADYAA Two",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25748",
+      "nphies_id": "10000300044581",
+      "name": "ALMAHAOPTICAL OTEEGA ONE",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25749",
+      "nphies_id": "10000300035068",
+      "name": "ALMAHAOPTICAL LABAN ONE",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25751",
+      "nphies_id": "10000300116835",
+      "name": "almahaoptica elnhdha",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25752",
+      "nphies_id": "10000300145420",
+      "name": "almahaoptical elwadi",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25753",
+      "nphies_id": "10000300090477",
+      "name": "almahaoptical oraga",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25755",
+      "nphies_id": "10000300097795",
+      "name": "ALMAHAOPTICAL ELSAADA",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25756",
+      "nphies_id": "10000300080627",
+      "name": "almahaoptical-alarbeen",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25757",
+      "nphies_id": "10000300157854",
+      "name": "Al Maha Optical Center - (A) - Casablanca",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25759",
+      "nphies_id": "10000300065792",
+      "name": "Rawat Al Maha Optical Center A Al Aqeeq",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25760",
+      "nphies_id": "10000300173356",
+      "name": "ALMAHAOPTICAL ELNASEEM ALGHARBI",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25916",
+      "nphies_id": "10000300074729",
+      "name": "Al-Maha Optical Center (a) ALARAJA",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25919",
+      "nphies_id": "10000300076070",
+      "name": "ALMAHAOPTICAL ALMZAHMIA",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25921",
+      "nphies_id": "10000300061353",
+      "name": "Al Maha Optical Center - (A)",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25922",
+      "nphies_id": "10000300050737",
+      "name": "ALMAHAOPTICAL ALMALAZ4",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25923",
+      "nphies_id": "10000300100730",
+      "name": "ALMAHAOPTICAL ALRAIED",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25924",
+      "nphies_id": "10000300076724",
+      "name": "ALMAHAOPTICAL ALNADWA",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25925",
+      "nphies_id": "10000300117254",
+      "name": "ALMAHAOPTICAL ESKAN ELKHARJ",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25928",
+      "nphies_id": "10000300046248",
+      "name": "ALMAHAOPTICAL ALYASMEEN",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25930",
+      "nphies_id": "10000300103155",
+      "name": "ALMAHAOPTICAL NAJRAN",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25931",
+      "nphies_id": "10000300130612",
+      "name": "ALMAHAOPTICAL ALSHIFA2",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25934",
+      "nphies_id": "10000300131768",
+      "name": "ALMAHAOPTICAL ALSALAM",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25971",
+      "nphies_id": "10000300093497",
+      "name": "Al Maha Optics Class (A) Princ Sultan St. Dist. Al Zahra /Jeddah",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25972",
+      "nphies_id": "10000300152640",
+      "name": "Al-Maha Optics Class No.1 dist.Al-Khaldah-Abha St./ Bisha Region",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25973",
+      "nphies_id": "10000300047360",
+      "name": "Al Maha Optics class (A)King Fahad St./Almjmaha region",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "25974",
+      "nphies_id": "10000300035860",
+      "name": "Al Maha Est Optics class (A)King Abdulaziz Road/Al-Baha",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26201",
+      "nphies_id": "10000300178074",
+      "name": "elmahaoptical",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26240",
+      "nphies_id": "10000300127857",
+      "name": "almahaoptical",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26269",
+      "nphies_id": "10000300076377",
+      "name": "ALMAHAOPTICAL ONAIZAH",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26513",
+      "nphies_id": "10000300036694",
+      "name": "Almaha store for medical opticals class A in buraidah",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26517",
+      "nphies_id": "10000300111364",
+      "name": "Al Maha Optical Class (A)",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26518",
+      "nphies_id": "10000300127659",
+      "name": "Rawat Al Maha Optical Store C Al Fayhaa District",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26519",
+      "nphies_id": "10000300112834",
+      "name": "almaha optical buraydah al rayyan class A",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26520",
+      "nphies_id": "10000300043369",
+      "name": "ALMAHAOPTICAL ELDARAYAELKHALEDEYA",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26521",
+      "nphies_id": "10000300145388",
+      "name": "almahaoptical tuwaiq one",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26522",
+      "nphies_id": "10000300152244",
+      "name": "ALMAHAOPTICAL ELRODHAH THREE",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26524",
+      "nphies_id": "10000300091111",
+      "name": "ALMAHAOPTICAL ELMORSALAT",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26525",
+      "nphies_id": "10000300156997",
+      "name": "almahaoptical elbadeaa",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26527",
+      "nphies_id": "10000300116165",
+      "name": "almahaoptical elbalad",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26529",
+      "nphies_id": "10000300139886",
+      "name": "almahaoptical",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26530",
+      "nphies_id": "10000300166715",
+      "name": "almahaoptical elmansoura",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26533",
+      "nphies_id": "10000300155510",
+      "name": "ALMAHAOPTICAL ELRAHMANYA ONE",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26534",
+      "nphies_id": "10000300094339",
+      "name": "ALMAHAOPTICAL ELSHARAFIA",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26535",
+      "nphies_id": "10000300110804",
+      "name": "ALMAHAOPTICAL NAZEEM FOUR",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26537",
+      "nphies_id": "10000300157045",
+      "name": "Al Maha Optical Center - Al Nazim - Category (C)",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26538",
+      "nphies_id": "10000300132444",
+      "name": "ALMAHAOPTICAL ELHAZM",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26539",
+      "nphies_id": "10000300036306",
+      "name": "ALMAHAOPTICAL LABAN TWO",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26540",
+      "nphies_id": "10000300096847",
+      "name": "almahaoptical elshefa 4",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26541",
+      "nphies_id": "10000300119565",
+      "name": "almahaoptical jedah3",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26542",
+      "nphies_id": "10000300082052",
+      "name": "almahaoptical hail 3",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26544",
+      "nphies_id": "10000300084397",
+      "name": "Al Maha Opticals Class A Al Nazeem Al Marmar Street",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26545",
+      "nphies_id": "10000300171517",
+      "name": "almahaoptical eldawadmi",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26546",
+      "nphies_id": "10000300119979",
+      "name": "ALMAHAOPTICAL ELMALAZ ONE",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26547",
+      "nphies_id": "10000300163654",
+      "name": "ALMAHAOPTICAL TWEQ BILAL BINRABAH",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26549",
+      "nphies_id": "10000300073671",
+      "name": "ALMAHAOPTICAL ELHAMRA",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26550",
+      "nphies_id": "10000300133053",
+      "name": "almahaoptical Mahael assir",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26554",
+      "nphies_id": "10000300164769",
+      "name": "almahaoptical elsharafyah",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26606",
+      "nphies_id": "10000300057096",
+      "name": "almahaopticals makkah alsitteen",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26655",
+      "nphies_id": "10000300135108",
+      "name": "almaha optticals hafr elbatin 3",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26768",
+      "nphies_id": "10000300206073",
+      "name": "ALMAHAOPTICAL Makkah ALAWALY",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26769",
+      "nphies_id": "10000300196373",
+      "name": "ALMAHAOPTICAL ELTAIF ABU BAKR",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26770",
+      "nphies_id": "10000300209291",
+      "name": "ALMAHAOPTICAL ELTAIF ELSTEEN",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26773",
+      "nphies_id": "10000300040522",
+      "name": "ALMAHAOPTICAL ALREMAL",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26774",
+      "nphies_id": "10000300092689",
+      "name": "ALMAHAOPTICAL ELRYMAL ELSAHEL",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26775",
+      "nphies_id": "10000300166475",
+      "name": "ALMAHAOPTICAL ALYARMOK",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26776",
+      "nphies_id": "10000300177902",
+      "name": "ALMAHAOPTICAL ELTAKHASUSI TWO",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26777",
+      "nphies_id": "10000300070750",
+      "name": "ALMAHAOPTICAL OM ELHAMAM",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26779",
+      "nphies_id": "10000300206412",
+      "name": "ALMAHAOPICAL ALSULAYMANIA",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26927",
+      "nphies_id": "10000300244470",
+      "name": "ALMAHAOPTICAL QURTUBA TWO",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26928",
+      "nphies_id": "10000300240346",
+      "name": "ALMAHAOPTICAL ELDAR ALBEDHA TWO",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26929",
+      "nphies_id": "10000300239025",
+      "name": "Al Maha Opticals Foundation Al Kharj Three",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18466",
+      "nphies_id": "10000300128657",
+      "name": "ALRAYAH CLINIC COMPLEX",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17976",
+      "nphies_id": "10000300107529",
+      "name": "Malaz modern Polyclinic",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17922",
+      "nphies_id": "10000300252861",
+      "name": "Alwasaj Medical Health Company",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17991",
+      "nphies_id": "10000300108782",
+      "name": "dr alelaj clinics",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17078",
+      "nphies_id": "10000300144381",
+      "name": "Alhijrah Medical Center",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17237",
+      "nphies_id": "10000300070677",
+      "name": "Tareeq Alelaj Medial Polyclinic",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18886",
+      "nphies_id": "10000300168513",
+      "name": "andalusia alsanable polyclinic",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18587",
+      "nphies_id": "10000300201215",
+      "name": "alwaseet medical complex",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "19874",
+      "nphies_id": "10000300306790",
+      "name": "ATLAS INTERNATIONAL MEDICAL COMPLEX",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17859",
+      "nphies_id": "10000300168638",
+      "name": "Pulse Care Medical Inc.Thalatheen St.-District Qaisumah / Hfralebatn",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17040",
+      "nphies_id": "10000300127931",
+      "name": "Polyclinic Medical Center for ear, nose and throa and Chest (E.N.T)-Riyadh",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18438",
+      "nphies_id": "10000300166194",
+      "name": "TULIP MEDICAL COMPLEX HAFR ALBATEN",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17791",
+      "nphies_id": "10000300184239",
+      "name": "Al-Haramain medical Polyclinic- Khamis Mushayt",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "19286",
+      "nphies_id": "10000300112495",
+      "name": "DARB ALHAYA POLY CLINIC",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17737",
+      "nphies_id": "10000300071584",
+      "name": "ALSITEEN DOCTORS MEDICAL COMPLEX",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18154",
+      "nphies_id": "10000300049390",
+      "name": "NABDH ALWATEEN POLYCLINIC",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18479",
+      "nphies_id": "10000300056031",
+      "name": "Al Fairouz Medical Poly Clinic",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17478",
+      "nphies_id": "10000300103593",
+      "name": "Polyclinic Abas Co. No.2/Riyadh",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18473",
+      "nphies_id": "10000300057666",
+      "name": "SALAMATAK MEDICAL COMPLEX-RIYADH/ALNAHDAH",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18033",
+      "nphies_id": "10000300261664",
+      "name": "QASR ALRAED MEDICAL CLINIC",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17554",
+      "nphies_id": "10000300129440",
+      "name": "nokhbat Al janob medical complex",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "17967",
+      "nphies_id": "10000300068903",
+      "name": "ABAS MEDICAL COMPANY",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "2062",
+      "nphies_id": "10000300152160",
+      "name": "ABAS MEDICAL CLINIC 3",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "15088",
+      "nphies_id": "10000300064316",
+      "name": "Foot Print Center",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18350",
+      "nphies_id": "10000300125224",
+      "name": "shifaa alshamly poly clinic",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "18089",
+      "nphies_id": "10000300197868",
+      "name": "Durar Medical Polyclinic",
+      "status": "Onboarded",
+      "wave": "W3 P1"
+    },
+    {
+      "cchi": "26185",
+      "nphies_id": "10000300177506",
+      "name": "Magrabi Optical - Alnokhba center",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26665",
+      "nphies_id": "10000300167143",
+      "name": "Magrabi Optical - NAU Red Sea MAll",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26685",
+      "nphies_id": "10000300166418",
+      "name": "MAgrabi Optical - NAU",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26786",
+      "nphies_id": "10000300206560",
+      "name": "Magrabi Optical Branch Nakheel NAU Dammam",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26810",
+      "nphies_id": "10000300214374",
+      "name": "Doctor M Al Nakhil Mall branch in Riyadh",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26813",
+      "nphies_id": "10000300211453",
+      "name": "Magrabi Optical Doctor M Olya",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26820",
+      "nphies_id": "10000300215587",
+      "name": "Magrabi Doctor M Alqasr Mall",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26821",
+      "nphies_id": "10000300216601",
+      "name": "Magrabi Doctor M Khalid Ibn Elwaleed",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26832",
+      "nphies_id": "10000300224928",
+      "name": "MAGRABI Doctor M Aisha",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26888",
+      "nphies_id": "10000300235726",
+      "name": "JED DM Jeddah Park",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26938",
+      "nphies_id": "10000300252036",
+      "name": "JED DM Andalus Mall",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "26942",
+      "nphies_id": "10000300256185",
+      "name": "RYD DM King Abdallah Street",
+      "status": "Onboarded",
+      "wave": "W3/W1&W2 Remaining"
+    },
+    {
+      "cchi": "9839",
+      "nphies_id": "10000300108030",
+      "name": "ADawaa Pharmacy number four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9830",
+      "nphies_id": "10000300093562",
+      "name": "AlDawaa Pharmacy Number six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9731",
+      "nphies_id": "10000300067251",
+      "name": "AlDawaa Pharmacy is number seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9832",
+      "nphies_id": "10000300105036",
+      "name": "AlDawaa Pharmacy number ten",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9835",
+      "nphies_id": "10000300050752",
+      "name": "AlDawaa Pharmacy Fourteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9728",
+      "nphies_id": "10000300143698",
+      "name": "AlDawaa Pharmacy Seventeen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10480",
+      "nphies_id": "10000300163027",
+      "name": "AlDawaa Pharmacy twenty seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9723",
+      "nphies_id": "10000300149596",
+      "name": "AlDawaa Pharmacy Twenty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9807",
+      "nphies_id": "10000300047592",
+      "name": "AlDawaa Pharmacy Thirty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9829",
+      "nphies_id": "10000300189527",
+      "name": "AlDawaa Pharmacy Thirty three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9823",
+      "nphies_id": "10000300152251",
+      "name": "AlDawaa Pharmacy thirty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10481",
+      "nphies_id": "10000300039797",
+      "name": "AlDawaa Pharmacy thirty seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9819",
+      "nphies_id": "10000300094511",
+      "name": "AlDawaa Pharmacy thirty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9686",
+      "nphies_id": "10000300176813",
+      "name": "AlDawaa Pharmacy Forty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10483",
+      "nphies_id": "10000300079330",
+      "name": "AlDawaa Pharmacy Forty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "8328",
+      "nphies_id": "10000300147392",
+      "name": "Aldawaa pharmacy is forty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10484",
+      "nphies_id": "10000300102751",
+      "name": "AlDawaa Pharmacy forty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10486",
+      "nphies_id": "10000300101845",
+      "name": "AlDawaa Pharmacy Fifty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9784",
+      "nphies_id": "10000300129754",
+      "name": "AlDawaa Pharmacy Sixty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9827",
+      "nphies_id": "10000300081146",
+      "name": "AlDawaa Pharmacy sixty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10471",
+      "nphies_id": "10000300030614",
+      "name": "Aldawaa Pharmacy sixty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10493",
+      "nphies_id": "10000300122973",
+      "name": "Al Dawaa Pharmacy Sixty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10710",
+      "nphies_id": "10000300059670",
+      "name": "AlDawaa Pharmacy sixty seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11669",
+      "nphies_id": "10000300084157",
+      "name": "AlDawaa Pharmacy sixty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10759",
+      "nphies_id": "10000300173166",
+      "name": "AlDawaa Pharmacy seventy two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10703",
+      "nphies_id": "10000300042692",
+      "name": "AlDawaa Pharmacy seventy three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10349",
+      "nphies_id": "10000300149174",
+      "name": "aldawaa pharmacy number seventy five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10713",
+      "nphies_id": "10000300063540",
+      "name": "AlDawaa Pharmacy seventy eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9822",
+      "nphies_id": "10000300040902",
+      "name": "AlDawaa Pharmacy eighty four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10761",
+      "nphies_id": "10000300128343",
+      "name": "AlDawaa Pharmacy number Ninety one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9688",
+      "nphies_id": "10000300080429",
+      "name": "AlDawaa Pharmacy number ninety three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10366",
+      "nphies_id": "10000300035639",
+      "name": "aldawaa pharmacy number ninty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9690",
+      "nphies_id": "10000300037213",
+      "name": "AlDawaa Pharmacy number ninety seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9692",
+      "nphies_id": "10000300188826",
+      "name": "AlDawaa Pharmacy number One hundred and two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10987",
+      "nphies_id": "10000300151113",
+      "name": "AlDawaa Pharmacy one hundred ten",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11672",
+      "nphies_id": "10000300056189",
+      "name": "AlDawaa Pharmacy One hundred and twelve",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9813",
+      "nphies_id": "10000300183876",
+      "name": "AlDawaa Pharmacy One hundred and thirteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9811",
+      "nphies_id": "10000300184544",
+      "name": "AlDawaa Pharmacy One hundred and fifteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9858",
+      "nphies_id": "10000300139084",
+      "name": "Aldawaa Pharmacy One hundred and sixteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9752",
+      "nphies_id": "10000300135504",
+      "name": "AlDawaa Pharmacy One hundred and nineteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9808",
+      "nphies_id": "10000300151774",
+      "name": "AlDawaa Pharmacy One hundred and twenty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9702",
+      "nphies_id": "10000300136569",
+      "name": "AlDawaa Pharmacy One hundred twenty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9683",
+      "nphies_id": "10000300047527",
+      "name": "AlDawaa Pharmacy One hundred and thirty two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9757",
+      "nphies_id": "10000300062542",
+      "name": "AlDawaa Pharmacy One hundred and thirty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9756",
+      "nphies_id": "10000300060637",
+      "name": "AlDawaa Pharmacy One hundred and thirty seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9755",
+      "nphies_id": "10000300155874",
+      "name": "AlDawaa Pharmacy One hundred and thirty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10427",
+      "nphies_id": "10000300199104",
+      "name": "AlDawaa Pharmacy one hundred and forty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10999",
+      "nphies_id": "10000300066097",
+      "name": "AlDawaa Pharmacy One hundred and forty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10997",
+      "nphies_id": "10000300046156",
+      "name": "AlDawaa Pharmacy One hundred and forty seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9856",
+      "nphies_id": "10000300084108",
+      "name": "AlDawaa Pharmacy One hundred and fifty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "8335",
+      "nphies_id": "10000300078308",
+      "name": "AlDawaa Pharmacy one hundred and fifty seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10474",
+      "nphies_id": "10000300158845",
+      "name": "Aldawaa Pharmacy One hundred and fifty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10990",
+      "nphies_id": "10000300099049",
+      "name": "AlDawaa Pharmacy number One hundred and sixty three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9855",
+      "nphies_id": "10000300155437",
+      "name": "Al Dawaa Pharmacy one hundred and sixty four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11626",
+      "nphies_id": "10000300117585",
+      "name": "Aldawaa Pharmacy One hundred and sixty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11627",
+      "nphies_id": "10000300157292",
+      "name": "Aldawaa Pharmacy one hundred and seventy",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11628",
+      "nphies_id": "10000300167317",
+      "name": "Aldawaa Pharmacy One hundred and seventy three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11694",
+      "nphies_id": "10000300185954",
+      "name": "Al Dawaa Pharmacy one hundred and seventy seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9846",
+      "nphies_id": "10000300178538",
+      "name": "Al Dawaa One Hundred Eighty Seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11698",
+      "nphies_id": "10000300066741",
+      "name": "AlDawaa Pharmacy one hundred and ninety",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11651",
+      "nphies_id": "10000300096680",
+      "name": "Al Dawaa Pharmacy one hundred and ninety three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11838",
+      "nphies_id": "10000300074109",
+      "name": "AlDawaa Pharmacy One hundred and ninety six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11619",
+      "nphies_id": "10000300102041",
+      "name": "Aldawaa Pharmacy One hundred and ninety eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11692",
+      "nphies_id": "10000300030093",
+      "name": "Aldawaa Pharmacy One hundred and ninety nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11921",
+      "nphies_id": "10000300142658",
+      "name": "Al Dawaa Pharmacy two hundred one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11640",
+      "nphies_id": "10000300104781",
+      "name": "AlDawaa Pharmacy Two hundred and four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11641",
+      "nphies_id": "10000300060728",
+      "name": "AlDawaa Pharmacy Two hundred and five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11642",
+      "nphies_id": "10000300083639",
+      "name": "Al-Dawaa Pharmacy No-208",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11643",
+      "nphies_id": "10000300089966",
+      "name": "AlDawaa Pharmacy Two hundred and nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12128",
+      "nphies_id": "10000300189832",
+      "name": "AlDawaa Pharmacy Two hundred and ten",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11759",
+      "nphies_id": "10000300075163",
+      "name": "Al Dawaa Pharmacy two hundred twelve",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "8330",
+      "nphies_id": "10000300101670",
+      "name": "AlDawaa Pharmacy two hundred and fifteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9710",
+      "nphies_id": "10000300030267",
+      "name": "AlDawaa Pharmacy Two hundred and sixteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9842",
+      "nphies_id": "10000300073317",
+      "name": "Al Dawaa Pharmacy two hundred and seventeen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9816",
+      "nphies_id": "10000300123393",
+      "name": "Al Dawaa Pharmacy two hundred and eighteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11856",
+      "nphies_id": "10000300161203",
+      "name": "AlDawaa Pharmacy two hundred and nineteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9738",
+      "nphies_id": "10000300170329",
+      "name": "ALDAWAA Pharmacy two hundred and twenty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10706",
+      "nphies_id": "10000300188909",
+      "name": "AlDawaa Pharmacy Two hundred and twenty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9709",
+      "nphies_id": "10000300041942",
+      "name": "AlDawaa Pharmacy two hundred and twenty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12826",
+      "nphies_id": "10000300207303",
+      "name": "two hundred twenty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12833",
+      "nphies_id": "10000300139217",
+      "name": "AlDawaa Pharmacy Two hundred and twenty seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13109",
+      "nphies_id": "10000300230438",
+      "name": "AlDawaa Pharmacy two hundred and twenty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12822",
+      "nphies_id": "10000300205547",
+      "name": "AlDawaa Pharmacy Two hundred and thirty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13230",
+      "nphies_id": "10000300241211",
+      "name": "AlDawaa Pharmacy two hundred and thirty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12825",
+      "nphies_id": "10000300205158",
+      "name": "AlDawaa pharmacy two hundred and thirtyfive",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12963",
+      "nphies_id": "10000300218607",
+      "name": "aldawaa pharmacy two hundred thirty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12154",
+      "nphies_id": "10000300087515",
+      "name": "Al Dawaa Pharmacy two hundred forty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12185",
+      "nphies_id": "10000300127691",
+      "name": "AlDawaa Pharmacy Two hundred forty two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12411",
+      "nphies_id": "10000300153598",
+      "name": "Al Dawaa Pharmacy two hundred forty four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12176",
+      "nphies_id": "10000300146121",
+      "name": "Al Dawaa Pharmacy two hundred forty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12412",
+      "nphies_id": "10000300123492",
+      "name": "Al Dawaa Pharmacy two hundred forty seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12186",
+      "nphies_id": "10000300145289",
+      "name": "Al Dawaa Pharmacy  two hundred forty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12403",
+      "nphies_id": "10000300066931",
+      "name": "AlDawaa Pharmacy Two hundred and fifty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12580",
+      "nphies_id": "10000300089602",
+      "name": "Al Dawaa Pharmacy two hundred fifty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12848",
+      "nphies_id": "10000300159678",
+      "name": "AlDawaa Pharmacy Two hundred  fifty three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9833",
+      "nphies_id": "10000300034285",
+      "name": "AlDawaa Pharmacy Two hundred and fifty four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12623",
+      "nphies_id": "10000300185988",
+      "name": "AlDawaa Pharmacy Two hundred  fifty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12844",
+      "nphies_id": "10000300208046",
+      "name": "AlDawaa Pharmacy Two hundred and fifty seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13130",
+      "nphies_id": "10000300230602",
+      "name": "Al Dawaa Pharmacy two hundred sixty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13442",
+      "nphies_id": "10000300261425",
+      "name": "Al Dawaa Pharmacy two hundred sixtysix",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12845",
+      "nphies_id": "10000300208921",
+      "name": "Al Dawaa Pharmacy two hundred sixty seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12840",
+      "nphies_id": "10000300211222",
+      "name": "AlDawaa Pharmacy Two hundred and sixty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9708",
+      "nphies_id": "10000300112875",
+      "name": "AlDawaa Pharmacy Two hundred and sixty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12966",
+      "nphies_id": "10000300213954",
+      "name": "Al Dawaa Pharmacy two hundred seventy",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12843",
+      "nphies_id": "10000300209531",
+      "name": "AlDawaa Pharmacy Two hundred  seventy one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12841",
+      "nphies_id": "10000300212097",
+      "name": "Al Dawaa Pharmacy two hundred seventy two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "8694",
+      "nphies_id": "10000300148473",
+      "name": "AlDawaa Pharmacy Two hundred and seventy three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9707",
+      "nphies_id": "10000300172150",
+      "name": "AlDawaa Pharmacy Two hundred and eighty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13306",
+      "nphies_id": "10000300244793",
+      "name": "AlDawaa Pharmacy two hundred and eighty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13229",
+      "nphies_id": "10000300233093",
+      "name": "Al Dawaa Pharmacy two hundred and eighty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13129",
+      "nphies_id": "10000300235759",
+      "name": "Al Dawaa Pharmacytwo hundred ninety one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12962",
+      "nphies_id": "10000300219985",
+      "name": "Al Dawaa Pharmacy two hundred ninet two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12842",
+      "nphies_id": "10000300211479",
+      "name": "Al Dawaa Pharmacy two hundred ninety three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12846",
+      "nphies_id": "10000300212139",
+      "name": "AlDawaa Pharmacy Two hundred ninety five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13131",
+      "nphies_id": "10000300223334",
+      "name": "Al Dawaa Pharmacy two hundred ninety six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9802",
+      "nphies_id": "10000300080767",
+      "name": "AlDawaa Pharmacy Three hundred",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9798",
+      "nphies_id": "10000300179817",
+      "name": "Aldawaa Pharmacy Three hundred and one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10103",
+      "nphies_id": "10000300149182",
+      "name": "AlDawaa Pharmacy Three hundred and seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11680",
+      "nphies_id": "10000300098090",
+      "name": "AlDawaa Pharmacy Three hundred and nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11625",
+      "nphies_id": "10000300170667",
+      "name": "AlDawaa Pharmacy Three hundred and eleven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11890",
+      "nphies_id": "10000300042544",
+      "name": "AlDawaa Pharmacy Three hundred and thirteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12827",
+      "nphies_id": "10000300211537",
+      "name": "AlDawaa Pharmacy Three hundred and fourteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12193",
+      "nphies_id": "10000300180302",
+      "name": "Aldawaa Pharmacy Three hundred and seventeen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12194",
+      "nphies_id": "10000300074653",
+      "name": "AlDawaa Pharmacy Three hundred and eighteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12410",
+      "nphies_id": "10000300041652",
+      "name": "AlDawaa Pharmacy Three hundred and twenty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13137",
+      "nphies_id": "10000300232418",
+      "name": "AlDawaa Pharmacy three hundred and twentythree",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12398",
+      "nphies_id": "10000300130059",
+      "name": "AlDawaa Pharmacy Three hundred and twenty four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12831",
+      "nphies_id": "10000300191135",
+      "name": "three hundred twenty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10979",
+      "nphies_id": "10000300035423",
+      "name": "AlDawaa Pharmacy Three hundred and thirty four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10141",
+      "nphies_id": "10000300056528",
+      "name": "Aldawaa Pharmacy Three hundred and thirty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9789",
+      "nphies_id": "10000300061999",
+      "name": "AlDawaa Pharmacy Three hundred and forty two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10982",
+      "nphies_id": "10000300143938",
+      "name": "AlDawaa Pharmacy Three hundred and forty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10143",
+      "nphies_id": "10000300097761",
+      "name": "AlDawaa Pharmacy Three hundred and forty seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11891",
+      "nphies_id": "10000300081641",
+      "name": "AlDawaa Pharmacy Three hundred and forty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9764",
+      "nphies_id": "10000300162110",
+      "name": "Aldawaa Pharmacy Three hundred and sixty three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10046",
+      "nphies_id": "10000300172531",
+      "name": "AlDawaa Pharmacy Three hundred and sixty four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10042",
+      "nphies_id": "10000300183892",
+      "name": "AlDawaa Pharmacy Three hundred and sixty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10095",
+      "nphies_id": "10000300101118",
+      "name": "Aldawaa Pharmacy Three hundred and sixty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9677",
+      "nphies_id": "10000300098694",
+      "name": "AlDawaa Pharmacy Three hundred and sixty seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9779",
+      "nphies_id": "10000300176557",
+      "name": "AlDawaa Pharmacy Three hundred and seventy one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9771",
+      "nphies_id": "10000300187778",
+      "name": "AlDawaa Pharmacy Three hundred and seventy seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9767",
+      "nphies_id": "10000300192547",
+      "name": "AlDawaa Pharmacy Three hundred and eighty four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9768",
+      "nphies_id": "10000300146998",
+      "name": "AlDawaa Pharmacy Three hundred and eighty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10050",
+      "nphies_id": "10000300087739",
+      "name": "AlDawaa Pharmacy Three hundred and ninety",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9722",
+      "nphies_id": "10000300137484",
+      "name": "AlDawaa Pharmacy Three hundred and ninety two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9716",
+      "nphies_id": "10000300096748",
+      "name": "AlDawaa Pharmacy Three hundred and ninety four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9681",
+      "nphies_id": "10000300126107",
+      "name": "AlDawaa Pharmacy number Three hundred and ninety six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9676",
+      "nphies_id": "10000300192349",
+      "name": "AlDawaa Pharmacy number Three hundred and ninety seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9674",
+      "nphies_id": "10000300150701",
+      "name": "AlDawaa Pharmacy  numberThree hundred and ninety nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10074",
+      "nphies_id": "10000300165691",
+      "name": "ALDAWAA",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10984",
+      "nphies_id": "10000300149273",
+      "name": "ALDAWAA",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10426",
+      "nphies_id": "10000300071279",
+      "name": "AlDawaa Pharmacy Four hundred and eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10424",
+      "nphies_id": "10000300047287",
+      "name": "AlDawaa Pharmacy Four hundred and nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10760",
+      "nphies_id": "10000300096003",
+      "name": "AlDawaa Pharmacy Four hundred and eleven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10985",
+      "nphies_id": "10000300184874",
+      "name": "AlDawaa Pharmacy Four hundred and thirteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10428",
+      "nphies_id": "10000300181631",
+      "name": "AlDawaa Pharmacy Four hundred and fourteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9800",
+      "nphies_id": "10000300184346",
+      "name": "AlDawaa Pharmacy Four hundred and sixteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10429",
+      "nphies_id": "10000300077458",
+      "name": "AlDawaa Pharmacy Four hundred and twenty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10088",
+      "nphies_id": "10000300183058",
+      "name": "ALDAWAA",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10975",
+      "nphies_id": "10000300049499",
+      "name": "AlDawaa Pharmacy Four hundred and thirty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10079",
+      "nphies_id": "10000300077896",
+      "name": "Al Dawaa Pharmacy four hundred thirty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10422",
+      "nphies_id": "10000300120860",
+      "name": "Al Dawaa Pharmacy four hundred thirty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10729",
+      "nphies_id": "10000300126453",
+      "name": "ALDAWAA",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10097",
+      "nphies_id": "10000300084793",
+      "name": "ALDAWAA",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10748",
+      "nphies_id": "10000300162300",
+      "name": "AlDawaa Pharmacy Four hundred and forty two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10747",
+      "nphies_id": "10000300142641",
+      "name": "AlDawaa Pharmacy Four hundred and forty three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12130",
+      "nphies_id": "10000300064613",
+      "name": "Al-Dawaa Pharmacy No-445",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11687",
+      "nphies_id": "10000300148580",
+      "name": "Al Dawaa Pharmacy Four hundred and fifty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11688",
+      "nphies_id": "10000300128046",
+      "name": "AlDawaa Pharmacy Four hundred and fifty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12125",
+      "nphies_id": "10000300166483",
+      "name": "Al Dawaa Pharmacy four hundred fifty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11665",
+      "nphies_id": "10000300119482",
+      "name": "AlDawaa Pharmacy Four hundred sixty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11691",
+      "nphies_id": "10000300195995",
+      "name": "Al-Dawaa Pharmacy No-461",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11758",
+      "nphies_id": "10000300136254",
+      "name": "Al Dawaa Pharmacy  four hundred sixty four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11696",
+      "nphies_id": "10000300133509",
+      "name": "ALDAWAA",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11678",
+      "nphies_id": "10000300175880",
+      "name": "ALDAWAA",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11904",
+      "nphies_id": "10000300125885",
+      "name": "AlDawaa Pharmacy Four hundred and sixty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11676",
+      "nphies_id": "10000300079702",
+      "name": "ALDAWAA",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10743",
+      "nphies_id": "10000300089669",
+      "name": "Al Dawaa Pharmacy four hundred and seventy one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12127",
+      "nphies_id": "10000300104559",
+      "name": "AlDawaa Pharmacy Four hundred and seventy two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9750",
+      "nphies_id": "10000300176995",
+      "name": "AlDawaa Pharmacy  four hundred and seventy four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10752",
+      "nphies_id": "10000300033477",
+      "name": "AlDawaa Pharmacy Four hundred and eighty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10754",
+      "nphies_id": "10000300174198",
+      "name": "AlDawaa Pharmacy Four hundred and eighty two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10753",
+      "nphies_id": "10000300167754",
+      "name": "AlDawaa Pharmacy Four hundred and eighty four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10057",
+      "nphies_id": "10000300051842",
+      "name": "Al Dawaa Pharmacy four hundred ninety",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13127",
+      "nphies_id": "10000300236146",
+      "name": "AlDawaa Pharmacy four hundred and ninety one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11689",
+      "nphies_id": "10000300129770",
+      "name": "AlDawaa Pharmacy four hundred and ninetythree",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11681",
+      "nphies_id": "10000300078845",
+      "name": "Al Dawaa Pharmacy four hundred and ninety four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13322",
+      "nphies_id": "10000300243605",
+      "name": "AlDawaa Pharmacy five hundred",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9732",
+      "nphies_id": "10000300132147",
+      "name": "Aldawaa Pharmacy Five hundred and one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9734",
+      "nphies_id": "10000300076435",
+      "name": "AlDawaa Pharmacy  five hundred two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9689",
+      "nphies_id": "10000300171731",
+      "name": "Al Dawaa Pharmacy five hundred three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9737",
+      "nphies_id": "10000300104930",
+      "name": "aldawaa pharmacy number five hundred four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10102",
+      "nphies_id": "10000300064282",
+      "name": "Al Dawaa Pharmacy five hundred five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10100",
+      "nphies_id": "10000300168299",
+      "name": "Al Dawaa Pharmacy five hundred six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11878",
+      "nphies_id": "10000300159884",
+      "name": "Al Dawaa Pharmacy five hundred seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11798",
+      "nphies_id": "10000300075270",
+      "name": "Al Dawaa Pharmacy five hundred eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10061",
+      "nphies_id": "10000300172192",
+      "name": "Al Dawaa Pharmacy five hundred nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9741",
+      "nphies_id": "10000300130380",
+      "name": "Al Dawaa Pharmacy five hundred ten",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10146",
+      "nphies_id": "10000300086897",
+      "name": "Al Dawaa Pharmacy five hundred eleven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9735",
+      "nphies_id": "10000300070503",
+      "name": "Al Dawaa Pharmacy Five Hundred and Twelve in Rafha",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12123",
+      "nphies_id": "10000300188230",
+      "name": "Al Dawaa Pharmacy five hundred thirteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10716",
+      "nphies_id": "10000300062716",
+      "name": "ALDAWAA",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10163",
+      "nphies_id": "10000300134259",
+      "name": "Al Dawaa Pharmacy five hundred eighteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9803",
+      "nphies_id": "10000300185038",
+      "name": "Al Dawaa Pharmacy five hundred twenty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10164",
+      "nphies_id": "10000300151287",
+      "name": "Al Dawaa Pharmacy five hundred twenty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10165",
+      "nphies_id": "10000300067343",
+      "name": "Aldawaa Almasy pharmacy 2",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10766",
+      "nphies_id": "10000300167598",
+      "name": "Al-Dawaa Pharmacy No-526",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10763",
+      "nphies_id": "10000300111448",
+      "name": "AlDawaa Pharmacy Five hundred and twenty seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10762",
+      "nphies_id": "10000300091863",
+      "name": "AlDawaa Pharmacy Five hundred and twenty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10166",
+      "nphies_id": "10000300082995",
+      "name": "Al Dawaa Pharmacy five hundred thirty two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11659",
+      "nphies_id": "10000300166574",
+      "name": "Al Dawaa Pharmacy five hundred thirty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11660",
+      "nphies_id": "10000300104906",
+      "name": "AlDawaa Pharmacy five hundred and thirty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10017",
+      "nphies_id": "10000300033956",
+      "name": "Al Dawaa Pharmacy five hundred forty two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9696",
+      "nphies_id": "10000300151170",
+      "name": "aldawaa pharmacy Five hundred and forty four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10127",
+      "nphies_id": "10000300167119",
+      "name": "ALDAWAA",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11658",
+      "nphies_id": "10000300079280",
+      "name": "ALDAWAA",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11637",
+      "nphies_id": "10000300148697",
+      "name": "AlDawaa Pharmacy Five hundred and fifty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11836",
+      "nphies_id": "10000300179429",
+      "name": "AlDawaa Pharmacy Five hundred and fifty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11709",
+      "nphies_id": "10000300055827",
+      "name": "Al-Dawaa Pharmacy No-557",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11858",
+      "nphies_id": "10000300079363",
+      "name": "AlDawaa Pharmacy Five hundred and seventy",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11653",
+      "nphies_id": "10000300120514",
+      "name": "ALDAWAA",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10145",
+      "nphies_id": "10000300036660",
+      "name": "ALDAWAA",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11638",
+      "nphies_id": "10000300086855",
+      "name": "Al Dawaa Pharmacy five hundred seventy six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11682",
+      "nphies_id": "10000300114707",
+      "name": "Al Dawaa Pharmacy five hundred seventy seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10363",
+      "nphies_id": "10000300071840",
+      "name": "AlDawaa pharmacy  five hundred and seventy eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11654",
+      "nphies_id": "10000300185848",
+      "name": "ALDAWAA",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11695",
+      "nphies_id": "10000300195045",
+      "name": "AlDawaa Pharmacy Five hundred and eighty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11645",
+      "nphies_id": "10000300155791",
+      "name": "ALDAWAA ALAWLA",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11760",
+      "nphies_id": "10000300073200",
+      "name": "Al Dawaa Pharmacy five hundred ninety seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12124",
+      "nphies_id": "10000300187877",
+      "name": "Al Dawaa Pharmacy five hundred ninety nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9762",
+      "nphies_id": "10000300165840",
+      "name": "AlDawaa Pharmacy\u00a0six hundred one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9699",
+      "nphies_id": "10000300032875",
+      "name": "AlDawaa Pharmacy\u00a0six hundred two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10104",
+      "nphies_id": "10000300204243",
+      "name": "Al Dawaa Pharmacy\u00a0six hundred six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10107",
+      "nphies_id": "10000300178520",
+      "name": "Al Dawaa Pharmacy six hundred ten",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10740",
+      "nphies_id": "10000300055405",
+      "name": "Al Dawaa Pharmacy\u00a0six hundred fifteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10741",
+      "nphies_id": "10000300146907",
+      "name": "Pharmacy aldawaa six hundred sixteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12150",
+      "nphies_id": "10000300127246",
+      "name": "Al Dawaa Pharmacy six hundred eighteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12143",
+      "nphies_id": "10000300154786",
+      "name": "Al Dawaa Pharmacy six hundred nineteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12155",
+      "nphies_id": "10000300188297",
+      "name": "ph six hundred twenty three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12136",
+      "nphies_id": "10000300035654",
+      "name": "Al Dawaa Pharmacy six hundred twenty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10162",
+      "nphies_id": "10000300121868",
+      "name": "Al Dawaa Pharmacy six hundred thirty four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10154",
+      "nphies_id": "10000300072236",
+      "name": "Al Dawaa Pharmacy six hundred thirty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11897",
+      "nphies_id": "10000300068135",
+      "name": "Al Dawaa Pharmacy six hundred thirty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10149",
+      "nphies_id": "10000300145040",
+      "name": "Al Dawaa Pharmacy six hundred thirty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10155",
+      "nphies_id": "10000300108709",
+      "name": "Al Dawaa Pharmacy six hundred forty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11923",
+      "nphies_id": "10000300150131",
+      "name": "Al Dawaa Pharmacy six hundred forty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10158",
+      "nphies_id": "10000300105812",
+      "name": "Al Dawaa Pharmacy six hundred forty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10476",
+      "nphies_id": "10000300067798",
+      "name": "Al Dawaa Pharmacy six hundred fifty two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10039",
+      "nphies_id": "10000300175799",
+      "name": "Al Dawaa Pharmacy six hundred fifty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10044",
+      "nphies_id": "10000300172432",
+      "name": "Al Dawaa Pharmacy six hundred fifty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10045",
+      "nphies_id": "10000300100193",
+      "name": "Al Dawaa Pharmacy six hundred sixty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9706",
+      "nphies_id": "10000300054838",
+      "name": "Al Dawaa Pharmacy six hundred sixty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10025",
+      "nphies_id": "10000300141411",
+      "name": "Al Dawaa Pharmacy six hundred sixty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10071",
+      "nphies_id": "10000300125653",
+      "name": "Al Dawaa Pharmacy six hundred seventy six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10080",
+      "nphies_id": "10000300181656",
+      "name": "Al Dawaa Pharmacy six hundred seventy eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10073",
+      "nphies_id": "10000300166681",
+      "name": "Al Dawaa Pharmacy six hundred eighty two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10757",
+      "nphies_id": "10000300179551",
+      "name": "Al Dawaa Pharmacy six hundred eighty three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10049",
+      "nphies_id": "10000300091715",
+      "name": "Al Dawaa Pharmacy six hundred ninety",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10138",
+      "nphies_id": "10000300115886",
+      "name": "Al Dawaa Pharmacy six hundred ninety four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10052",
+      "nphies_id": "10000300089586",
+      "name": "Al Dawaa Pharmacy six hundred ninety five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10111",
+      "nphies_id": "10000300147533",
+      "name": "Al Dawaa Pharmacy six hundred ninety seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10135",
+      "nphies_id": "10000300099718",
+      "name": "AlDawaa Pharmacy Seven hundred and two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9717",
+      "nphies_id": "10000300090162",
+      "name": "AlDawaa Pharmacy Seven hundred and four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9672",
+      "nphies_id": "10000300148911",
+      "name": "Aldawaa Pharmacy Seven hundred and twelve",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12824",
+      "nphies_id": "10000300207030",
+      "name": "AlDawaa Pharmacy number Seven hundred and twenty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10021",
+      "nphies_id": "10000300194733",
+      "name": "AlDawaa Pharmacy Seven hundred and twenty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10725",
+      "nphies_id": "10000300163746",
+      "name": "AlDawaa Pharmacy Seven hundred and thirty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9743",
+      "nphies_id": "10000300114814",
+      "name": "Aldawaa Pharmacy Seven hundred and thirty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10719",
+      "nphies_id": "10000300100615",
+      "name": "AlDawaa Pharmacy Seven hundred and forty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10060",
+      "nphies_id": "10000300067467",
+      "name": "AlDawaa Pharmacy Seven hundred and fifty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12188",
+      "nphies_id": "10000300054358",
+      "name": "AlDawaa Pharmacy number Seven hundred and fifty four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10723",
+      "nphies_id": "10000300117973",
+      "name": "AlDawaa Pharmacy Seven hundred and fifty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10727",
+      "nphies_id": "10000300048392",
+      "name": "AlDawaa Pharmacy number Seven hundred and sixty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11817",
+      "nphies_id": "10000300146592",
+      "name": "AlDawaa Pharmacy Seven hundred and sixty two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11887",
+      "nphies_id": "10000300165220",
+      "name": "AlDawaa Pharmacy number Seven hundred and sixty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10147",
+      "nphies_id": "10000300094586",
+      "name": "AlDawaa Pharmacy number Seven hundred and sixty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10371",
+      "nphies_id": "10000300185335",
+      "name": "Aldawaa Pharmacy Seven hundred seventy eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10113",
+      "nphies_id": "10000300104773",
+      "name": "AlDawaa Pharmacy Seven hundred and eighty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10459",
+      "nphies_id": "10000300122197",
+      "name": "AlDawaa Pharmacy Seven hundred and eighty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9751",
+      "nphies_id": "10000300071709",
+      "name": "AlDawaa Pharmacy Seven hundred and eighty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10419",
+      "nphies_id": "10000300114244",
+      "name": "Al Dawaa Pharmacy  eight hundred four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10121",
+      "nphies_id": "10000300182316",
+      "name": "Al Dawaa Pharmacy eight hundred eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10462",
+      "nphies_id": "10000300103510",
+      "name": "Al Dawaa Pharmacy eight hundred fourteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11773",
+      "nphies_id": "10000300088034",
+      "name": "Al Dawaa Pharmacy eight hundred twenty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11774",
+      "nphies_id": "10000300117197",
+      "name": "Al Dawaa Pharmacy eight hundred twenty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11757",
+      "nphies_id": "10000300100128",
+      "name": "Al Dawaa Pharmacy eight hundred thirty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11847",
+      "nphies_id": "10000300173000",
+      "name": "Al Dawaa Pharmacy eight hundred thirty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11844",
+      "nphies_id": "10000300113253",
+      "name": "Al Dawaa Pharmacy eight hundred forty two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11895",
+      "nphies_id": "10000300069851",
+      "name": "Al Dawaa Pharmacy eight hundred fifty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11780",
+      "nphies_id": "10000300129564",
+      "name": "Al Dawaa Pharmacy eight hundred sixty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11900",
+      "nphies_id": "10000300140165",
+      "name": "AlDawaa Pharmacy  eight hundred seventy five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11788",
+      "nphies_id": "10000300132212",
+      "name": "Al Dawaa Pharmacy eight hundred ninety seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12118",
+      "nphies_id": "10000300089263",
+      "name": "Al Dawaa Pharmacy eight hundred ninety six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12142",
+      "nphies_id": "10000300076195",
+      "name": "AlDawaa Pharmacy eight hundred ninety seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12146",
+      "nphies_id": "10000300177290",
+      "name": "Al Dawaa Pharmacy eight hundred ninety nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "9715",
+      "nphies_id": "10000300036397",
+      "name": "Al dawaa Pharmacy nine hundred and two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10441",
+      "nphies_id": "10000300046164",
+      "name": "Al dawaa Pharmacy nine hundred and six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10736",
+      "nphies_id": "10000300087176",
+      "name": "Aldwaa pharmacy nine hundred and eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10445",
+      "nphies_id": "10000300072624",
+      "name": "Al dawaa Pharmacy nine hundred and twelve",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10447",
+      "nphies_id": "10000300048137",
+      "name": "Aldawaa pharmacy nine hundred and fourteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11885",
+      "nphies_id": "10000300107867",
+      "name": "Aldawaa pharmacynine hundred twenty and one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10452",
+      "nphies_id": "10000300098736",
+      "name": "Al dawaa Pharmacy nine hundred and twenty three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10737",
+      "nphies_id": "10000300091095",
+      "name": "Aldwaa pharmacy nine hundred and twenty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10738",
+      "nphies_id": "10000300181243",
+      "name": "Aldwaa pharmacy nine hundred and twenty seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11876",
+      "nphies_id": "10000300097167",
+      "name": "Al dawaa Pharmacy nine hundred and twenty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11880",
+      "nphies_id": "10000300185483",
+      "name": "Aldawaa pharmacynine nine hundred thirty and three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10767",
+      "nphies_id": "10000300138698",
+      "name": "Aldawaa pharmacy nine hundred thirty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11603",
+      "nphies_id": "10000300030812",
+      "name": "Aldawaa pharmacy nine hundred forty two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11871",
+      "nphies_id": "10000300087150",
+      "name": "Al dawaa Pharmacy nine hundred forty and five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11609",
+      "nphies_id": "10000300176623",
+      "name": "Aldawaa pharmacy nine hundred forty and six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11872",
+      "nphies_id": "10000300156872",
+      "name": "Al dawaa Pharmacy nine hundred and forty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11793",
+      "nphies_id": "10000300122254",
+      "name": "Aldawaa pharmacy nine hundred fifty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11795",
+      "nphies_id": "10000300060447",
+      "name": "Aldwaa pharmacy nine hundred fifty four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11602",
+      "nphies_id": "10000300050323",
+      "name": "Aldawaa pharmacy nine hundred fifty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11604",
+      "nphies_id": "10000300074265",
+      "name": "Aldawaa pharmacy nine hundred fifty seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11022",
+      "nphies_id": "10000300067293",
+      "name": "Aldawaa pharmacy nine hundred fifty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11840",
+      "nphies_id": "10000300116819",
+      "name": "Aldawaa pharmacy nine hundred sixty two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11710",
+      "nphies_id": "10000300196696",
+      "name": "Aldawaa pharmacy nine hundred sixty and four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11877",
+      "nphies_id": "10000300131859",
+      "name": "Al dawaa Pharmacy nine hundred sixty seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12407",
+      "nphies_id": "10000300152749",
+      "name": "Al dawaa Pharmacy nine hundred and seventy six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13081",
+      "nphies_id": "10000300229158",
+      "name": "Aldawaa pharmacy nine hundred eighty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12961",
+      "nphies_id": "10000300211685",
+      "name": "Al dawaa Pharmacy nine hundred eighty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13128",
+      "nphies_id": "10000300233929",
+      "name": "Aldawaa pharmacy nine hundred eighty two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13238",
+      "nphies_id": "10000300235825",
+      "name": "Al dawaa Pharmacy nine hundred eighty and three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13680",
+      "nphies_id": "10000300287958",
+      "name": "Medicine pharmacy nine hundred and eightyfour",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13553",
+      "nphies_id": "10000300265392",
+      "name": "Aldawaa pharmacy nine hundred eighty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10758",
+      "nphies_id": "10000300153648",
+      "name": "Al dawaa Pharmacy one thousand one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11903",
+      "nphies_id": "10000300107172",
+      "name": "Al dawaa Pharmacy one thousand and two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11014",
+      "nphies_id": "10000300080601",
+      "name": "Al dawaa Pharmacy one thousand and three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11015",
+      "nphies_id": "10000300060454",
+      "name": "Al dawaa Pharmacy one thousand and four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11016",
+      "nphies_id": "10000300075809",
+      "name": "Al dawaa Pharmacy one thousand five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11021",
+      "nphies_id": "10000300065321",
+      "name": "AlDawaa Pharmacy One thousand and six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11802",
+      "nphies_id": "10000300055637",
+      "name": "AlDawaa Pharmacy One thousand and nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11707",
+      "nphies_id": "10000300173307",
+      "name": "AlDawaa Pharmacy  thousand and thirteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11831",
+      "nphies_id": "10000300119284",
+      "name": "AlDawaa Pharmacy One thousand and fourteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11812",
+      "nphies_id": "10000300143961",
+      "name": "AlDawaa Pharmacy One thousand and seventeen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11621",
+      "nphies_id": "10000300073044",
+      "name": "Al dawaa Pharmacy one thousand twenty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11790",
+      "nphies_id": "10000300087820",
+      "name": "AlDawaa Pharmacy One thousand and twenty three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11804",
+      "nphies_id": "10000300143128",
+      "name": "AlDawaa Pharmacy One thousand and twenty four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11806",
+      "nphies_id": "10000300113071",
+      "name": "AlDawaa Pharmacy One thousand and twenty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11601",
+      "nphies_id": "10000300031265",
+      "name": "AlDawaa Pharmacy One thousand and twenty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11019",
+      "nphies_id": "10000300107875",
+      "name": "Al dawaa Pharmacy one thousand and thirty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11606",
+      "nphies_id": "10000300068333",
+      "name": "AlDawaa Pharmacy One thousand and thirty two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12115",
+      "nphies_id": "10000300179411",
+      "name": "Al dawaa Pharmacy one thousand thirty four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11662",
+      "nphies_id": "10000300156807",
+      "name": "AlDawaa Pharmacy One thousand and thirty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11809",
+      "nphies_id": "10000300103809",
+      "name": "AlDawaa Pharmacy One thousand and thirty seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11607",
+      "nphies_id": "10000300057443",
+      "name": "Al dawaa Pharmacy one thousand and thirty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11608",
+      "nphies_id": "10000300173851",
+      "name": "AlDawaa Pharmacy One thousand and thirty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11118",
+      "nphies_id": "10000300181151",
+      "name": "Al dawaa Pharmacy one thousand forty two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11800",
+      "nphies_id": "10000300169347",
+      "name": "Al dawaa Pharmacy one thousand forty three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11810",
+      "nphies_id": "10000300154224",
+      "name": "AlDawaa Pharmacy One thousand forty four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11684",
+      "nphies_id": "10000300097779",
+      "name": "AlDawaa Pharmacy One thousand and forty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12116",
+      "nphies_id": "10000300182654",
+      "name": "AlDawaa Pharmacy One thousand and forty seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12121",
+      "nphies_id": "10000300036249",
+      "name": "AlDawaa Pharmacy One thousand forty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12117",
+      "nphies_id": "10000300117718",
+      "name": "AlDawaa Pharmacy One thousand forty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12120",
+      "nphies_id": "10000300193370",
+      "name": "AlDawaa Pharmacy One thousand and fifty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12141",
+      "nphies_id": "10000300187893",
+      "name": "AlDawaa Pharmacy One thousand and fifty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12149",
+      "nphies_id": "10000300042718",
+      "name": "AlDawaa Pharmacy One thousand and fifty three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12140",
+      "nphies_id": "10000300057823",
+      "name": "AlDawaa Pharmacy One thousand and fifty four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12396",
+      "nphies_id": "10000300103585",
+      "name": "Al dawaa Pharmacy one thousand fifty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12114",
+      "nphies_id": "10000300113006",
+      "name": "AlDawaa Pharmacy One thousand and fifty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12137",
+      "nphies_id": "10000300117627",
+      "name": "AlDawaa Pharmacy One thousand and fifty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12406",
+      "nphies_id": "10000300043278",
+      "name": "AlDawaa Pharmacy One thousand and sixty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12148",
+      "nphies_id": "10000300124250",
+      "name": "Aldawaa Pharamacy",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12145",
+      "nphies_id": "10000300037296",
+      "name": "Aldawaa Pharamacy one thousand sixty three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12182",
+      "nphies_id": "10000300137690",
+      "name": "Aldawaa Pharamacy one thousand sixty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13080",
+      "nphies_id": "10000300232004",
+      "name": "Al dawaa Pharmacy one thousand and seventy",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13239",
+      "nphies_id": "10000300241401",
+      "name": "Aldawaa Pharamacy one thousand seventy two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13243",
+      "nphies_id": "10000300238290",
+      "name": "AlDawaa Pharmacy one thousand seventy five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13268",
+      "nphies_id": "10000300240106",
+      "name": "Aldawaa pharmacy one thousand seventy and six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13321",
+      "nphies_id": "10000300249271",
+      "name": "AlDawaa Pharmacy one thousand seventy seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13325",
+      "nphies_id": "10000300249891",
+      "name": "Aldawaa Pharamacy one thousand seventy eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13326",
+      "nphies_id": "10000300250311",
+      "name": "Aldawaa Pharamacy one thousand seventy nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13327",
+      "nphies_id": "10000300250279",
+      "name": "AlDawaa Pharmacy one thousand eighty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11801",
+      "nphies_id": "10000300135553",
+      "name": "Al Dawaa Pharmacy one thousand eighty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11613",
+      "nphies_id": "10000300053053",
+      "name": "AlDawaa Pharmacy one thousand eighty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13615",
+      "nphies_id": "10000300278122",
+      "name": "Al Dawaa Pharmacy One thousand eighty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13580",
+      "nphies_id": "10000300273388",
+      "name": "Aldawaa Pharamacy one thousand ninety",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13656",
+      "nphies_id": "10000300283213",
+      "name": "Al dawaa Pharmacy one thousand ninety one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13660",
+      "nphies_id": "10000300285671",
+      "name": "AlDawaa Pharmacy one thousand ninety four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13672",
+      "nphies_id": "10000300289616",
+      "name": "AlDawaa Pharmacy one thousand ninety nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13211",
+      "nphies_id": "10000300240130",
+      "name": "Al Dawaa Pharmacy one thousand one hundred eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13241",
+      "nphies_id": "10000300238936",
+      "name": "Al Dawaa Pharmacy one thousand one hundred ten",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13135",
+      "nphies_id": "10000300227046",
+      "name": "Al Dawaa Pharmacy one thousand one hundred eleven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13212",
+      "nphies_id": "10000300235833",
+      "name": "Al Dawaa Pharmacy one thousand one hundred twelve",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13214",
+      "nphies_id": "10000300242045",
+      "name": "Al Dawaa Pharmacy one thousand one hundred sixteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13220",
+      "nphies_id": "10000300241633",
+      "name": "Al Dawaa Pharmacy one thousand one hundred seventeen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13216",
+      "nphies_id": "10000300242110",
+      "name": "Al Dawaa Pharmacy one thousand one hundred twenty three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13240",
+      "nphies_id": "10000300239215",
+      "name": "Al Dawaa Pharmacy one thousand one hundred twenty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13242",
+      "nphies_id": "10000300238811",
+      "name": "Al Dawaa Pharmacy one thousand one hundred thirty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13210",
+      "nphies_id": "10000300241443",
+      "name": "Al Dawaa Pharmacy one thousand one hundred thirty three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13245",
+      "nphies_id": "10000300238779",
+      "name": "Al Dawaa Pharmacy one thousand one hundred thirty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13207",
+      "nphies_id": "10000300238977",
+      "name": "Al Dawaa Pharmacy one thousand one hundred thirty seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13218",
+      "nphies_id": "10000300241740",
+      "name": "Al Dawaa Pharmacy one thousand one hundred thirty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13304",
+      "nphies_id": "10000300252572",
+      "name": "Al Dawaa Pharmacy one thousand one hundred forty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10770",
+      "nphies_id": "10000300137609",
+      "name": "Al Dawaa Pharmacy one thousand one hundred forty three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10467",
+      "nphies_id": "10000300135066",
+      "name": "Al Dawaa Pharmacy one thousand one hundred forty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10068",
+      "nphies_id": "10000300108519",
+      "name": "Al Dawaa Pharmacy one thousand one hundred forty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10457",
+      "nphies_id": "10000300179742",
+      "name": "Al Dawaa Pharmacy one thousand one hundred forty seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13319",
+      "nphies_id": "10000300252325",
+      "name": "Al Dawaa Pharmacy one thousand one hundred fifty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13698",
+      "nphies_id": "10000300292875",
+      "name": "Al Dawaa Pharmacy one thousand one hundred fifty four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "12110",
+      "nphies_id": "10000300147855",
+      "name": "Al dawaa Pharmacy one thousand two hundred one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11020",
+      "nphies_id": "10000300090451",
+      "name": "Al dawaa Pharmacy one thousand two hundred two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11825",
+      "nphies_id": "10000300173943",
+      "name": "Al dawaa Pharmacy one thousand two hundred three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11905",
+      "nphies_id": "10000300148382",
+      "name": "Al dawaa Pharmacy one thousand two hundred four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "11622",
+      "nphies_id": "10000300047253",
+      "name": "Al dawaa Pharmacy one thousand two hundred five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13267",
+      "nphies_id": "10000300235361",
+      "name": "AlDawaa Pharmacy one thousand two hundred and eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13082",
+      "nphies_id": "10000300224241",
+      "name": "Al Dawaa Pharmacy One thousand two hundred and ten",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13138",
+      "nphies_id": "10000300215751",
+      "name": "Al Dawaa pharmacy one thousand two hundred and eleven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13224",
+      "nphies_id": "10000300239249",
+      "name": "AlDawaa Pharmacy one thousand two hundred and sixteen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13606",
+      "nphies_id": "10000300278783",
+      "name": "aldawaa pharmacy one thousand two hundred seventeen",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13271",
+      "nphies_id": "10000300240478",
+      "name": "AlDawaa Pharmacy one thousand two hundred twenty",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13124",
+      "nphies_id": "10000300224571",
+      "name": "AlDawaa Pharmacy one thousand two hundred twenty two",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13126",
+      "nphies_id": "10000300230057",
+      "name": "AlDawaa Pharmacy one thousand two hundred twenty three",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13233",
+      "nphies_id": "10000300236898",
+      "name": "Al Dawaa Pharmacy one thousand two hundred and thirty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13237",
+      "nphies_id": "10000300238928",
+      "name": "AlDawaa Pharmacy one thousand two hundred and thirty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13446",
+      "nphies_id": "10000300259742",
+      "name": "AlDawaa Pharmacy one thousand two hundred and forty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13676",
+      "nphies_id": "10000300289970",
+      "name": "Al Dawaa Pharmacy No  one thousand two hundred and forty four",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13550",
+      "nphies_id": "10000300274188",
+      "name": "Al Dawaa Pharmacy one thousand two hundred and forty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13440",
+      "nphies_id": "10000300253976",
+      "name": "AlDawaa Pharmacy one thousand two hundred and forty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13513",
+      "nphies_id": "10000300248224",
+      "name": "AlDawaa Pharmacy one thousand two hundred and forty seven",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13514",
+      "nphies_id": "10000300249925",
+      "name": "AlDawaa Pharmacy one thousand two hundred and forty eight",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13441",
+      "nphies_id": "10000300257720",
+      "name": "AlDawaa Pharmacy one thousand two hundred and forty nine",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "13323",
+      "nphies_id": "10000300248174",
+      "name": "AlDawaa Pharmacy one thousand two hundred fifty one",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10487",
+      "nphies_id": "10000300030010",
+      "name": "Al Dawaa Pharmacy one thousand two hundred and fifty five",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    },
+    {
+      "cchi": "10085",
+      "nphies_id": "10000300176904",
+      "name": "AlDawaa Pharmacy one thousand two hundred and fifty six",
+      "status": "Onboarded",
+      "wave": "Phar.1"
+    }
+  ]
+}

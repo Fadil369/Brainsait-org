@@ -1,0 +1,422 @@
+[
+  {
+    "code": "1",
+    "display": "Medical Care",
+    "description": "Medical Care."
+  },
+  {
+    "code": "2",
+    "display": "Surgical",
+    "description": "Surgical."
+  },
+  {
+    "code": "3",
+    "display": "Consultation",
+    "description": "Consultation."
+  },
+  {
+    "code": "4",
+    "display": "Diagnostic XRay",
+    "description": "Diagnostic XRay."
+  },
+  {
+    "code": "5",
+    "display": "Diagnostic Lab",
+    "description": "Diagnostic Lab."
+  },
+  {
+    "code": "6",
+    "display": "Renal Supplies",
+    "description": "Renal Supplies excluding Dialysis."
+  },
+  {
+    "code": "7",
+    "display": "Diagnostic Dental",
+    "description": "Diagnostic Dental."
+  },
+  {
+    "code": "8",
+    "display": "Periodontics",
+    "description": "Periodontics."
+  },
+  {
+    "code": "9",
+    "display": "Restorative",
+    "description": "Restorative."
+  },
+  {
+    "code": "10",
+    "display": "Endodontics",
+    "description": "Endodontics."
+  },
+  {
+    "code": "11",
+    "display": "Maxillofacial Prosthetics",
+    "description": "Maxillofacial Prosthetics."
+  },
+  {
+    "code": "12",
+    "display": "Adjunctive Dental Services",
+    "description": "Adjunctive Dental Services."
+  },
+  {
+    "code": "13",
+    "display": "Health Benefit Plan Coverage",
+    "description": "Health Benefit Plan Coverage."
+  },
+  {
+    "code": "14",
+    "display": "Dental Care",
+    "description": "Dental Care."
+  },
+  {
+    "code": "15",
+    "display": "Dental Crowns",
+    "description": "Dental Crowns."
+  },
+  {
+    "code": "16",
+    "display": "Dental Accident",
+    "description": "Dental Accident."
+  },
+  {
+    "code": "17",
+    "display": "Hospital Room and Board",
+    "description": "Hospital Room and Board."
+  },
+  {
+    "code": "18",
+    "display": "Major Medical",
+    "description": "Major Medical."
+  },
+  {
+    "code": "19",
+    "display": "Medically Related Transportation",
+    "description": "Medically Related Transportation."
+  },
+  {
+    "code": "20",
+    "display": "In-vitro Fertilization",
+    "description": "In-vitro Fertilization."
+  },
+  {
+    "code": "21",
+    "display": "MRI Scan",
+    "description": "MRI Scan."
+  },
+  {
+    "code": "22",
+    "display": "Donor Procedures",
+    "description": "Donor Procedures such as organ harvest."
+  },
+  {
+    "code": "23",
+    "display": "Maternity",
+    "description": "Maternity."
+  },
+  {
+    "code": "24",
+    "display": "Renal Dialysis",
+    "description": "Renal dialysis."
+  },
+  {
+    "code": "25",
+    "display": "Medical Coverage",
+    "description": "Medical Coverage."
+  },
+  {
+    "code": "26",
+    "display": "Dental Coverage",
+    "description": "Dental Coverage."
+  },
+  {
+    "code": "27",
+    "display": "Hearing Coverage",
+    "description": "Hearing Coverage."
+  },
+  {
+    "code": "28",
+    "display": "Vision Coverage",
+    "description": "Vision Coverage."
+  },
+  {
+    "code": "29",
+    "display": "Mental Health",
+    "description": "Mental Health"
+  },
+  {
+    "code": "30",
+    "display": "OP Medical",
+    "description": "OP Medical"
+  },
+  {
+    "code": "31",
+    "display": "Max Copay",
+    "description": "Max Copay"
+  },
+  {
+    "code": "32",
+    "display": "Medical Equipment",
+    "description": "Medical Equipment"
+  },
+  {
+    "code": "33",
+    "display": "Acute Psychiatric Cases",
+    "description": "Acute Psychiatric Cases"
+  },
+  {
+    "code": "34",
+    "display": "Chronic Psychiatric Cases",
+    "description": "Chronic Psychiatric Cases"
+  },
+  {
+    "code": "35",
+    "display": "Alzheimer's Disease",
+    "description": "Alzheimer's Disease"
+  },
+  {
+    "code": "36",
+    "display": "Infertility & Related Procedures",
+    "description": "Infertility & Related Procedures"
+  },
+  {
+    "code": "37",
+    "display": "Orthodontic Treatment",
+    "description": "Orthodontic Treatment"
+  },
+  {
+    "code": "38",
+    "display": "Check ups",
+    "description": "Check ups"
+  },
+  {
+    "code": "39",
+    "display": "Circumcision of male newborn",
+    "description": "Circumcision of male newborn"
+  },
+  {
+    "code": "40",
+    "display": "Ear Piercing of female newborn",
+    "description": "Ear Piercing of female newborn"
+  },
+  {
+    "code": "41",
+    "display": "Dental Prosthesis",
+    "description": "Dental Prosthesis"
+  },
+  {
+    "code": "42",
+    "display": "Vision Surgery",
+    "description": "Vision Surgery"
+  },
+  {
+    "code": "43",
+    "display": "Outpatient Treatment expenses-within minimum unified network",
+    "description": "Outpatient Treatment expenses-within minimum unified network"
+  },
+  {
+    "code": "44",
+    "display": "Outpatient Treatment expenses-for hospital out of the minimum unified network",
+    "description": "Outpatient Treatment expenses-for hospital out of the minimum unified network"
+  },
+  {
+    "code": "45",
+    "display": "Outpatient Treatment expenses-for non-hospital out of the minimum unified network",
+    "description": "Outpatient Treatment expenses-for non-hospital out of the minimum unified network"
+  },
+  {
+    "code": "46",
+    "display": "Companion Room and Board",
+    "description": "Companion Room and Board"
+  },
+  {
+    "code": "47",
+    "display": "Repatriation of Mortal Remains",
+    "description": "Repatriation of Mortal Remains"
+  },
+  {
+    "code": "48",
+    "display": "Acquired valvular heart disease",
+    "description": "Acquired valvular heart disease"
+  },
+  {
+    "code": "49",
+    "display": "Autism Management",
+    "description": "Autism Management"
+  },
+  {
+    "code": "50",
+    "display": "Disability Compensations",
+    "description": "Disability Compensations"
+  },
+  {
+    "code": "51",
+    "display": "Obesity Surgery",
+    "description": "Obesity Surgery"
+  },
+  {
+    "code": "52",
+    "display": "Newborn Screening Programs for Hearing Impairment & critical congenital heart disease",
+    "description": "Newborn Screening Programs for Hearing Impairment & critical congenital heart disease"
+  },
+  {
+    "code": "53",
+    "display": "Home Healthcare",
+    "description": "Home Healthcare"
+  },
+  {
+    "code": "54",
+    "display": "Long term care",
+    "description": "Long term care"
+  },
+  {
+    "code": "55",
+    "display": "Rehabilitation",
+    "description": "Rehabilitation"
+  },
+  {
+    "code": "56",
+    "display": "Pharmacy",
+    "description": "Pharmacy"
+  },
+  {
+    "code": "57",
+    "display": "OP Prescribed Invented Medicines - with generic alternative",
+    "description": "OP Prescribed Invented Medicines - with generic alternative"
+  },
+  {
+    "code": "58",
+    "display": "Advanced Dental Coverage",
+    "description": "Advanced Dental Coverage with RCT"
+  },
+  {
+    "code": "59",
+    "display": "Advanced Homecare coverage",
+    "description": "Advanced Homecare coverage"
+  },
+  {
+    "code": "60",
+    "display": "Advanced Obesity Medical Management",
+    "description": "Advanced Obesity Medical Management"
+  },
+  {
+    "code": "61",
+    "display": "Basic and Preventive Dental Coverage",
+    "description": "Basic and Preventive Dental Coverage"
+  },
+  {
+    "code": "62",
+    "display": "Basic Homecare coverage",
+    "description": "Basic Homecare coverage"
+  },
+  {
+    "code": "63",
+    "display": "Contraception Coverage (Birth Control)",
+    "description": "Contraception Coverage (Birth Control)"
+  },
+  {
+    "code": "64",
+    "display": "Hip and Knee Replacement",
+    "description": "Hip and Knee Replacement"
+  },
+  {
+    "code": "65",
+    "display": "Impairment medical management",
+    "description": "Impairment medical management"
+  },
+  {
+    "code": "66",
+    "display": "OP Prescribed Generic and Invented Medicines - with no generic alternative available",
+    "description": "OP Prescribed Generic and Invented Medicines - with no generic alternative available"
+  },
+  {
+    "code": "67",
+    "display": "Outpatient Treatment expenses - Primary clinic",
+    "description": "Outpatient Treatment expenses - Primary clinic"
+  },
+  {
+    "code": "68",
+    "display": "Outpatient Treatment expenses - specialized clinic with referral",
+    "description": "Outpatient Treatment expenses - specialized clinic with referral"
+  },
+  {
+    "code": "69",
+    "display": "Outpatient Treatment expenses - specialized clinic without referral",
+    "description": "Outpatient Treatment expenses - specialized clinic without referral"
+  },
+  {
+    "code": "70",
+    "display": "Pediatric vision coverage",
+    "description": "Pediatric vision coverage"
+  },
+  {
+    "code": "71",
+    "display": "Psychiatry coverage",
+    "description": "Psychiatry coverage"
+  },
+  {
+    "code": "72",
+    "display": "Renal transplant",
+    "description": "Renal transplant"
+  },
+  {
+    "code": "73",
+    "display": "Root canal dental coverage",
+    "description": "Root canal dental coverage"
+  },
+  {
+    "code": "74",
+    "display": "Complications arising from treatment of a covered benefit",
+    "description": "Complications arising from treatment of a covered benefit"
+  },
+  {
+    "code": "75",
+    "display": "Congenital anomalies",
+    "description": "Congenital anomalies"
+  },
+  {
+    "code": "76",
+    "display": "Costs of national program for the early examination of newborn to limit impairment",
+    "description": "Costs of national program for the early examination of newborn to limit impairment"
+  },
+  {
+    "code": "77",
+    "display": "Delivery of premature babies",
+    "description": "Delivery of premature babies"
+  },
+  {
+    "code": "78",
+    "display": "Emergency Service coverage",
+    "description": "Emergency Service coverage"
+  },
+  {
+    "code": "79",
+    "display": "Genetic diseases",
+    "description": "Genetic diseases"
+  },
+  {
+    "code": "80",
+    "display": "Inpatient Medical Coverage",
+    "description": "Inpatient Medical Coverage"
+  },
+  {
+    "code": "81",
+    "display": "Life sustaining and interventions altering medical outcomes",
+    "description": "Life sustaining and interventions altering medical outcomes"
+  },
+  {
+    "code": "82",
+    "display": "Maternity Complications Coverage",
+    "description": "Maternity Complications Coverage"
+  },
+  {
+    "code": "83",
+    "display": "New-born coverage",
+    "description": "New-born coverage"
+  },
+  {
+    "code": "84",
+    "display": "Telemedicine",
+    "description": "Telemedicine"
+  }
+]

@@ -1,0 +1,997 @@
+[
+  {
+    "code": "01.00",
+    "display": "Anesthesiology Specialty",
+    "code_system": "http://nphies.sa/terminology/CodeSystem/practice-codes"
+  },
+  {
+    "code": "01.01",
+    "display": "Ambulatory Anesthesia",
+    "code_system": ""
+  },
+  {
+    "code": "01.02",
+    "display": "Anesthesia Cardiology",
+    "code_system": ""
+  },
+  {
+    "code": "01.03",
+    "display": "Neuro-Anesthesia",
+    "code_system": ""
+  },
+  {
+    "code": "01.04",
+    "display": "Obstetrics Anesthesia",
+    "code_system": ""
+  },
+  {
+    "code": "01.05",
+    "display": "Pediatrics Anesthesia",
+    "code_system": ""
+  },
+  {
+    "code": "01.06",
+    "display": "Pediatrics Cardiac Anesthesia",
+    "code_system": ""
+  },
+  {
+    "code": "01.07",
+    "display": "Regional Anesthesia",
+    "code_system": ""
+  },
+  {
+    "code": "01.08",
+    "display": "Vascular / Thoracic Anesthesia",
+    "code_system": ""
+  },
+  {
+    "code": "02.00",
+    "display": "Community Medicine Specialty",
+    "code_system": ""
+  },
+  {
+    "code": "02.01",
+    "display": "Community Health",
+    "code_system": ""
+  },
+  {
+    "code": "03.00",
+    "display": "Dermatology Specialty",
+    "code_system": ""
+  },
+  {
+    "code": "03.01",
+    "display": "Dermatology Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "03.02",
+    "display": "Hair Implant Dermatology",
+    "code_system": ""
+  },
+  {
+    "code": "03.03",
+    "display": "Pediatrics Dermatology",
+    "code_system": ""
+  },
+  {
+    "code": "04.00",
+    "display": "Emergency Medicine Specialty",
+    "code_system": ""
+  },
+  {
+    "code": "04.01",
+    "display": "Adult Emergency Medicine",
+    "code_system": ""
+  },
+  {
+    "code": "04.02",
+    "display": "Pediatrics Emergency Medicine",
+    "code_system": ""
+  },
+  {
+    "code": "05.00",
+    "display": "Ear, Nose & Throat Specialty",
+    "code_system": ""
+  },
+  {
+    "code": "05.01",
+    "display": "Adult ENT",
+    "code_system": ""
+  },
+  {
+    "code": "05.02",
+    "display": "Laryngology",
+    "code_system": ""
+  },
+  {
+    "code": "05.03",
+    "display": "Neuro - Otology & Otology",
+    "code_system": ""
+  },
+  {
+    "code": "05.04",
+    "display": "Nose, Ear Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "05.05",
+    "display": "Oral & Maxillofacial Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "05.06",
+    "display": "Otolaryngology",
+    "code_system": ""
+  },
+  {
+    "code": "05.07",
+    "display": "Pediatrics ENT",
+    "code_system": ""
+  },
+  {
+    "code": "05.08",
+    "display": "Pediatrics Otolaryngology",
+    "code_system": ""
+  },
+  {
+    "code": "05.09",
+    "display": "Rhinology",
+    "code_system": ""
+  },
+  {
+    "code": "05.10",
+    "display": "Audiology",
+    "code_system": ""
+  },
+  {
+    "code": "06.00",
+    "display": "Family Medicine Specialty",
+    "code_system": ""
+  },
+  {
+    "code": "06.01",
+    "display": "Family Medicine",
+    "code_system": ""
+  },
+  {
+    "code": "06.02",
+    "display": "Primary Care / Ophthalmology",
+    "code_system": ""
+  },
+  {
+    "code": "06.03",
+    "display": "Primary Care / Pulmonary",
+    "code_system": ""
+  },
+  {
+    "code": "06.04",
+    "display": "Primary Care Preventive Pediatrics",
+    "code_system": ""
+  },
+  {
+    "code": "06.05",
+    "display": "Primary Health Care",
+    "code_system": ""
+  },
+  {
+    "code": "07.00",
+    "display": "Forensic Medicine Specialty",
+    "code_system": ""
+  },
+  {
+    "code": "08.00",
+    "display": "Internal Medicine Specialty",
+    "code_system": ""
+  },
+  {
+    "code": "08.01",
+    "display": "Adolescent Medicine",
+    "code_system": ""
+  },
+  {
+    "code": "08.02",
+    "display": "Cardiology",
+    "code_system": ""
+  },
+  {
+    "code": "08.03",
+    "display": "Diabetics Medicine",
+    "code_system": ""
+  },
+  {
+    "code": "08.04",
+    "display": "Endocrinology",
+    "code_system": ""
+  },
+  {
+    "code": "08.05",
+    "display": "Gastrology/Gastroenterology",
+    "code_system": ""
+  },
+  {
+    "code": "08.06",
+    "display": "Geriatrics",
+    "code_system": ""
+  },
+  {
+    "code": "08.07",
+    "display": "Hematology",
+    "code_system": ""
+  },
+  {
+    "code": "08.08",
+    "display": "Infectious Diseases",
+    "code_system": ""
+  },
+  {
+    "code": "08.09",
+    "display": "Nephrology",
+    "code_system": ""
+  },
+  {
+    "code": "08.10",
+    "display": "Nuclear Medicine",
+    "code_system": ""
+  },
+  {
+    "code": "08.11",
+    "display": "Oncology",
+    "code_system": ""
+  },
+  {
+    "code": "08.12",
+    "display": "Palliative Medicine",
+    "code_system": ""
+  },
+  {
+    "code": "08.13",
+    "display": "Pulmonology/Chest Medicine",
+    "code_system": ""
+  },
+  {
+    "code": "08.14",
+    "display": "Rheumatology",
+    "code_system": ""
+  },
+  {
+    "code": "08.15",
+    "display": "Sleep Medicine",
+    "code_system": ""
+  },
+  {
+    "code": "08.16",
+    "display": "Sport Medicine",
+    "code_system": ""
+  },
+  {
+    "code": "08.17",
+    "display": "Hepatology",
+    "code_system": ""
+  },
+  {
+    "code": "08.18",
+    "display": "Neurology",
+    "code_system": ""
+  },
+  {
+    "code": "08.19",
+    "display": "Radiation Oncology",
+    "code_system": ""
+  },
+  {
+    "code": "08.20",
+    "display": "Diabetes Foot Care",
+    "code_system": ""
+  },
+  {
+    "code": "08.21",
+    "display": "Head & Neck Oncology",
+    "code_system": ""
+  },
+  {
+    "code": "08.22",
+    "display": "Hematology - Stem Cell",
+    "code_system": ""
+  },
+  {
+    "code": "08.23",
+    "display": "Congenital Heart Disease",
+    "code_system": ""
+  },
+  {
+    "code": "08.24",
+    "display": "Bariatric Medicine",
+    "code_system": ""
+  },
+  {
+    "code": "08.25",
+    "display": "Cardiothoracic",
+    "code_system": ""
+  },
+  {
+    "code": "08.26",
+    "display": "General Medicine",
+    "code_system": ""
+  },
+  {
+    "code": "09.00",
+    "display": "Microbiology Specialty",
+    "code_system": ""
+  },
+  {
+    "code": "10.00",
+    "display": "Obstetrics & Gynecology Specialty",
+    "code_system": ""
+  },
+  {
+    "code": "10.01",
+    "display": "Gynecology Oncology",
+    "code_system": ""
+  },
+  {
+    "code": "10.02",
+    "display": "Infertility",
+    "code_system": ""
+  },
+  {
+    "code": "10.03",
+    "display": "IVF",
+    "code_system": ""
+  },
+  {
+    "code": "10.04",
+    "display": "Perinatology",
+    "code_system": ""
+  },
+  {
+    "code": "10.05",
+    "display": "Urogynecology",
+    "code_system": ""
+  },
+  {
+    "code": "10.06",
+    "display": "Obstetrics",
+    "code_system": ""
+  },
+  {
+    "code": "10.07",
+    "display": "Reproductive Endocrinology & Infertility",
+    "code_system": ""
+  },
+  {
+    "code": "10.08",
+    "display": "Gynecology",
+    "code_system": ""
+  },
+  {
+    "code": "10.09",
+    "display": "Maternal Fetal Medicine",
+    "code_system": ""
+  },
+  {
+    "code": "11.00",
+    "display": "Ophthalmology Specialty",
+    "code_system": ""
+  },
+  {
+    "code": "11.01",
+    "display": "Comprehensive Ophthalmology",
+    "code_system": ""
+  },
+  {
+    "code": "11.02",
+    "display": "Diseases & Surgery of the Retina",
+    "code_system": ""
+  },
+  {
+    "code": "11.03",
+    "display": "Glaucoma",
+    "code_system": ""
+  },
+  {
+    "code": "11.04",
+    "display": "Neuro - Ophthalmology",
+    "code_system": ""
+  },
+  {
+    "code": "11.05",
+    "display": "Ocular Oncology",
+    "code_system": ""
+  },
+  {
+    "code": "11.06",
+    "display": "Oculoplastic",
+    "code_system": ""
+  },
+  {
+    "code": "11.07",
+    "display": "Ophthalmology",
+    "code_system": ""
+  },
+  {
+    "code": "11.08",
+    "display": "Pediatrics Ophthalmology & Strabismus",
+    "code_system": ""
+  },
+  {
+    "code": "11.09",
+    "display": "Primary Care / Ophthalmology",
+    "code_system": ""
+  },
+  {
+    "code": "11.10",
+    "display": "Uveitis / Medical Retina",
+    "code_system": ""
+  },
+  {
+    "code": "11.11",
+    "display": "Optometric",
+    "code_system": ""
+  },
+  {
+    "code": "11.12",
+    "display": "Anterior Segment",
+    "code_system": ""
+  },
+  {
+    "code": "11.13",
+    "display": "Anaplastology",
+    "code_system": ""
+  },
+  {
+    "code": "11.14",
+    "display": "Macular Dystrophy",
+    "code_system": ""
+  },
+  {
+    "code": "11.15",
+    "display": "Abyplopia",
+    "code_system": ""
+  },
+  {
+    "code": "11.16",
+    "display": "Ophthalmic Photography",
+    "code_system": ""
+  },
+  {
+    "code": "12.00",
+    "display": "Orthopedic Specialty",
+    "code_system": ""
+  },
+  {
+    "code": "12.01",
+    "display": "Oncology Orthopedic",
+    "code_system": ""
+  },
+  {
+    "code": "12.02",
+    "display": "Orthopedic Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "12.03",
+    "display": "Pediatrics Orthopedic",
+    "code_system": ""
+  },
+  {
+    "code": "12.04",
+    "display": "Upper Limp Orthopedic",
+    "code_system": ""
+  },
+  {
+    "code": "13.00",
+    "display": "Pathology Specialty",
+    "code_system": ""
+  },
+  {
+    "code": "13.01",
+    "display": "Bone & Soft Tissue Pathology",
+    "code_system": ""
+  },
+  {
+    "code": "13.02",
+    "display": "Dermatopathology",
+    "code_system": ""
+  },
+  {
+    "code": "13.03",
+    "display": "Gast. & Hepat Pathology",
+    "code_system": ""
+  },
+  {
+    "code": "13.04",
+    "display": "Histopathology",
+    "code_system": ""
+  },
+  {
+    "code": "13.05",
+    "display": "Lymphoma Pathology",
+    "code_system": ""
+  },
+  {
+    "code": "13.06",
+    "display": "Pathology Dermatology",
+    "code_system": ""
+  },
+  {
+    "code": "13.07",
+    "display": "Renal Pathology",
+    "code_system": ""
+  },
+  {
+    "code": "14.00",
+    "display": "Pediatric Specialty",
+    "code_system": ""
+  },
+  {
+    "code": "14.01",
+    "display": "Fetal Medicine",
+    "code_system": ""
+  },
+  {
+    "code": "14.02",
+    "display": "Neonatal Intensive Care (NICU)",
+    "code_system": ""
+  },
+  {
+    "code": "14.03",
+    "display": "Pediatrics Imaging",
+    "code_system": ""
+  },
+  {
+    "code": "14.04",
+    "display": "Pediatrics Endocrinology",
+    "code_system": ""
+  },
+  {
+    "code": "14.05",
+    "display": "Pediatrics Gastroenterology",
+    "code_system": ""
+  },
+  {
+    "code": "14.06",
+    "display": "Pediatrics Genetics",
+    "code_system": ""
+  },
+  {
+    "code": "14.07",
+    "display": "Pediatrics Rheumatology",
+    "code_system": ""
+  },
+  {
+    "code": "14.08",
+    "display": "Pediatrics Sleep Medicine",
+    "code_system": ""
+  },
+  {
+    "code": "14.09",
+    "display": "Pediatrics Orthopedic",
+    "code_system": ""
+  },
+  {
+    "code": "14.10",
+    "display": "Pediatrics Hematology",
+    "code_system": ""
+  },
+  {
+    "code": "14.11",
+    "display": "Pediatrics Infectious Diseases",
+    "code_system": ""
+  },
+  {
+    "code": "14.12",
+    "display": "Pediatrics Intensive Care",
+    "code_system": ""
+  },
+  {
+    "code": "14.13",
+    "display": "Pediatrics Nephrology",
+    "code_system": ""
+  },
+  {
+    "code": "14.14",
+    "display": "Pediatrics Pulmonary Diseases",
+    "code_system": ""
+  },
+  {
+    "code": "14.15",
+    "display": "Primary Care Preventive Pediatrics",
+    "code_system": ""
+  },
+  {
+    "code": "14.16",
+    "display": "Pediatric Neurology",
+    "code_system": ""
+  },
+  {
+    "code": "14.17",
+    "display": "Fetal Cardiology",
+    "code_system": ""
+  },
+  {
+    "code": "14.18",
+    "display": "Neonatology",
+    "code_system": ""
+  },
+  {
+    "code": "14.19",
+    "display": "Pediatric Allergy",
+    "code_system": ""
+  },
+  {
+    "code": "14.20",
+    "display": "Pediatric Cardiology",
+    "code_system": ""
+  },
+  {
+    "code": "15.00",
+    "display": "Pediatrics Surgery Specialty",
+    "code_system": ""
+  },
+  {
+    "code": "15.01",
+    "display": "Pediatrics Cardiology",
+    "code_system": ""
+  },
+  {
+    "code": "15.02",
+    "display": "Pediatrics Neurosurgery",
+    "code_system": ""
+  },
+  {
+    "code": "15.03",
+    "display": "Pediatrics Oncology",
+    "code_system": ""
+  },
+  {
+    "code": "15.04",
+    "display": "Pediatrics Plastic Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "15.05",
+    "display": "Pediatrics General Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "15.06",
+    "display": "Pediatrics Hematology/Oncology",
+    "code_system": ""
+  },
+  {
+    "code": "16.00",
+    "display": "Physical Medicine & Rehabilitation Specialty",
+    "code_system": ""
+  },
+  {
+    "code": "16.01",
+    "display": "Physical Medicine & Rehabilitation",
+    "code_system": ""
+  },
+  {
+    "code": "16.02",
+    "display": "Occupational Medicine",
+    "code_system": ""
+  },
+  {
+    "code": "17.00",
+    "display": "Psychiatry Specialty",
+    "code_system": ""
+  },
+  {
+    "code": "17.01",
+    "display": "Addiction Medicine",
+    "code_system": ""
+  },
+  {
+    "code": "17.02",
+    "display": "Child / Adolescent Psychiatry",
+    "code_system": ""
+  },
+  {
+    "code": "17.03",
+    "display": "Consultation - Liaison Psychiatry",
+    "code_system": ""
+  },
+  {
+    "code": "17.04",
+    "display": "Forensic Psychiatry",
+    "code_system": ""
+  },
+  {
+    "code": "17.05",
+    "display": "Geriatric Psychiatry",
+    "code_system": ""
+  },
+  {
+    "code": "17.06",
+    "display": "Mental Health",
+    "code_system": ""
+  },
+  {
+    "code": "17.07",
+    "display": "Mood Disorders Psychiatry",
+    "code_system": ""
+  },
+  {
+    "code": "17.08",
+    "display": "Psychiatry",
+    "code_system": ""
+  },
+  {
+    "code": "17.09",
+    "display": "Rehabilitation Psychiatry",
+    "code_system": ""
+  },
+  {
+    "code": "17.10",
+    "display": "Schizophrenia",
+    "code_system": ""
+  },
+  {
+    "code": "17.11",
+    "display": "Pediatric Behavior",
+    "code_system": ""
+  },
+  {
+    "code": "17.12",
+    "display": "Youth Stress Reduction",
+    "code_system": ""
+  },
+  {
+    "code": "18.00",
+    "display": "Radiology Specialty",
+    "code_system": ""
+  },
+  {
+    "code": "18.01",
+    "display": "Body Imaging",
+    "code_system": ""
+  },
+  {
+    "code": "18.02",
+    "display": "Breast Imaging",
+    "code_system": ""
+  },
+  {
+    "code": "18.03",
+    "display": "Cardiac Imaging",
+    "code_system": ""
+  },
+  {
+    "code": "18.04",
+    "display": "Chest Imaging",
+    "code_system": ""
+  },
+  {
+    "code": "18.05",
+    "display": "Diagnostic Neuroradiology",
+    "code_system": ""
+  },
+  {
+    "code": "18.06",
+    "display": "Diagnostic Radiology",
+    "code_system": ""
+  },
+  {
+    "code": "18.07",
+    "display": "Emergency Radiology",
+    "code_system": ""
+  },
+  {
+    "code": "18.08",
+    "display": "Interventional Neuroradiology",
+    "code_system": ""
+  },
+  {
+    "code": "18.09",
+    "display": "Interventional Radiology",
+    "code_system": ""
+  },
+  {
+    "code": "18.10",
+    "display": "Musculoskeletal Imaging",
+    "code_system": ""
+  },
+  {
+    "code": "18.11",
+    "display": "Pediatrics Imaging",
+    "code_system": ""
+  },
+  {
+    "code": "18.12",
+    "display": "Women's Imaging",
+    "code_system": ""
+  },
+  {
+    "code": "19.00",
+    "display": "Surgery Specialty",
+    "code_system": ""
+  },
+  {
+    "code": "19.01",
+    "display": "Arthroplasty Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "19.02",
+    "display": "Bariatric Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "19.03",
+    "display": "Cosmetic Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "19.04",
+    "display": "Craniofacial Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "19.05",
+    "display": "Endocrinology Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "19.06",
+    "display": "Facioplastic",
+    "code_system": ""
+  },
+  {
+    "code": "19.07",
+    "display": "Foot & Ankle Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "19.08",
+    "display": "General Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "19.09",
+    "display": "Hand Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "19.10",
+    "display": "Hepatobiliary & Upper GI Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "19.11",
+    "display": "Neurosurgery (Spinal Surgery)",
+    "code_system": ""
+  },
+  {
+    "code": "19.12",
+    "display": "Neurosurgery / Oncology",
+    "code_system": ""
+  },
+  {
+    "code": "19.13",
+    "display": "Neurosurgery Vascular",
+    "code_system": ""
+  },
+  {
+    "code": "19.14",
+    "display": "Plastic Surgery & Reconstruction",
+    "code_system": ""
+  },
+  {
+    "code": "19.15",
+    "display": "Skull Base Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "19.16",
+    "display": "Spine Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "19.17",
+    "display": "Thoracic Surgery/Chest Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "19.18",
+    "display": "Trauma Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "19.19",
+    "display": "Vascular Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "19.20",
+    "display": "Colorectal Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "19.21",
+    "display": "Transplant Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "19.22",
+    "display": "Liver Transplant Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "19.23",
+    "display": "Renal and Pancreas Transplant Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "19.24",
+    "display": "Breast Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "19.25",
+    "display": "Cardiothoracic Surgery",
+    "code_system": ""
+  },
+  {
+    "code": "19.26",
+    "display": "Burns",
+    "code_system": ""
+  },
+  {
+    "code": "20.00",
+    "display": "Urology Specialty",
+    "code_system": ""
+  },
+  {
+    "code": "20.01",
+    "display": "Gynecology Urology",
+    "code_system": ""
+  },
+  {
+    "code": "20.02",
+    "display": "Laparoscopic Urology",
+    "code_system": ""
+  },
+  {
+    "code": "20.03",
+    "display": "Neuro - Urology",
+    "code_system": ""
+  },
+  {
+    "code": "20.04",
+    "display": "Oncology Urology",
+    "code_system": ""
+  },
+  {
+    "code": "20.05",
+    "display": "Pediatrics Urology",
+    "code_system": ""
+  },
+  {
+    "code": "20.06",
+    "display": "Reconstruction Urology",
+    "code_system": ""
+  },
+  {
+    "code": "21.00",
+    "display": "Critical Care",
+    "code_system": ""
+  },
+  {
+    "code": "21.01",
+    "display": "Pediatric Critical Care (PICU)",
+    "code_system": ""
+  },
+  {
+    "code": "21.02",
+    "display": "Intensive Care (ICU)",
+    "code_system": ""
+  },
+  {
+    "code": "22.00",
+    "display": "Dental",
+    "code_system": ""
+  }
+]

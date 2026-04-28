@@ -1,0 +1,106 @@
+[
+  {
+    "chapter": "1",
+    "name": "Procedures on nervous system"
+  },
+  {
+    "chapter": "2",
+    "name": "Procedures on endocrine system"
+  },
+  {
+    "chapter": "3",
+    "name": "Procedures on eye and adnexa"
+  },
+  {
+    "chapter": "4",
+    "name": "Procedures on ear and mastoid process"
+  },
+  {
+    "chapter": "5",
+    "name": "Procedures on nose, mouth and pharynx"
+  },
+  {
+    "chapter": "6",
+    "name": "Dental services"
+  },
+  {
+    "chapter": "7",
+    "name": "Procedures on respiratory system"
+  },
+  {
+    "chapter": "8",
+    "name": "Procedures on cardiovascular system"
+  },
+  {
+    "chapter": "9",
+    "name": "Procedures on blood and blood-forming organs"
+  },
+  {
+    "chapter": "10",
+    "name": "Procedures on digestive system"
+  },
+  {
+    "chapter": "11",
+    "name": "Procedures on urinary system"
+  },
+  {
+    "chapter": "12",
+    "name": "Procedures on male genital organs"
+  },
+  {
+    "chapter": "13",
+    "name": "Gynaecological procedures"
+  },
+  {
+    "chapter": "14",
+    "name": "Obstetric procedures"
+  },
+  {
+    "chapter": "15",
+    "name": "Procedures on musculoskeletal system"
+  },
+  {
+    "chapter": "16",
+    "name": "Dermatological and plastic procedures"
+  },
+  {
+    "chapter": "17",
+    "name": "Procedures on breast"
+  },
+  {
+    "chapter": "18",
+    "name": "Radiation oncology procedures"
+  },
+  {
+    "chapter": "19",
+    "name": "Non-invasive, cognitive and other interventions, not elsewhere classified"
+  },
+  {
+    "chapter": "20",
+    "name": "Imaging services"
+  },
+  {
+    "chapter": "21",
+    "name": "Laboratory and Pathology Services"
+  },
+  {
+    "chapter": "22",
+    "name": "Ambulance and Transport Services"
+  },
+  {
+    "chapter": "23",
+    "name": "KSA Service Codes"
+  },
+  {
+    "chapter": "24",
+    "name": "Emergency Medical Services (EMS)"
+  },
+  {
+    "chapter": "25",
+    "name": "Mortuary Services"
+  },
+  {
+    "chapter": "26",
+    "name": "Rehabilitation Services"
+  }
+]

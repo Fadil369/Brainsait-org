@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "updatedAt": "2026-04-25T08:53:56.853Z",
+  "entries": {
+    "memory:memory/2026-04-24.md:1:38": {
+      "key": "memory:memory/2026-04-24.md:1:38",
+      "path": "memory/2026-04-24.md",
+      "startLine": 1,
+      "endLine": 38,
+      "source": "memory",
+      "snippet": "# Daily Memory — 2026-04-24 ## Session Overview Bootstrap day — Basma (بسمة) named and initialized by Dr. Fadil. Full BrainSAIT context established. --- ## Oracle Portal Work (Evening Session) ### Domain Fix - **Correct URL:** `oracle-riyadh.brainsait.org` (NOT `elfadil.com`) - All 6 hospitals: `oracle-{riyadh|madinah|unaizah|khamis|jizan|abha}.brainsait.org` - Riyadh/Unaizah/Khamis/Jizan: `/prod` context - Madinah/Abha: `/Oasis` context ### Credentials - User: `U29200` / Password: `U29201` - Portal user: Heba Osman — Laboratory Reception - 1133 - Has access to: Claims Submission, Patient Search, Documents Panel, Manage Claims ### ADF Selectors Discovered - Hamburger button: `pt1:Oasis",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5538236794813399,
+      "maxScore": 0.5538236794813399,
+      "firstRecalledAt": "2026-04-25T08:53:56.853Z",
+      "lastRecalledAt": "2026-04-25T08:53:56.853Z",
+      "queryHashes": [
+        "2f0a94e77678"
+      ],
+      "recallDays": [
+        "2026-04-25"
+      ],
+      "conceptTags": [
+        "oracle-riyadh.brainsait.org",
+        "elfadil.com",
+        "brainsait.org",
+        "riyadh/unaizah/khamis/jizan",
+        "madinah/abha",
+        "overview",
+        "bootstrap",
+        "day"
+      ]
+    }
+  }
+}

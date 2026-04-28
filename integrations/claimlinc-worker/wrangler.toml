@@ -1,0 +1,21 @@
+name = "claimlinc-api"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+[vars]
+ENVIRONMENT = "production"
+NPHIES_REALM = "sehaticoreprod"
+NPHIES_CLIENT_ID = "community"
+NPHIES_VIEWER_API = "https://sgw.nphies.sa/viewerapi"
+NPHIES_TOKEN_URL = "https://sso.nphies.sa/auth/realms/sehaticoreprod/protocol/openid-connect/token"
+
+# Route: api.brainsait.io/nphies/*
+[[routes]]
+pattern = "api.brainsait.org/nphies/*"
+zone_name = "brainsait.org"
+
+# Secrets (set via: wrangler secret put NPHIES_USERNAME etc.)
+# NPHIES_USERNAME
+# NPHIES_PASSWORD
+# API_SECRET_KEY
+
