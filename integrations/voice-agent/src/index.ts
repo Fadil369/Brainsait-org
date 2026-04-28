@@ -431,13 +431,125 @@ export default {
     // Oracle Bridge routes
     if (path === "/bsma/oracle" || path.startsWith("/bsma/oracle/")) return handleOracleBridge(request, env);
     if (path === "/bsma/oracle/eligibility" && request.method === "POST") return handleOracleEligibility(request, env);
+    if (path === "/bsma/eligibility/integrated" && request.method === "POST") return handleIntegratedEligibility(request, env);
+    if (path === "/bsma/integrated-eligibility" && request.method === "POST") return handleIntegratedEligibility(request, env);
 
     // Health
     if (path === "/" || path === "/health") {
-      return json({ status: "ok", agent: "basma-v2", version: "2.2.0", tts: "elevenlabs", oracle_bridge: { version: "2.0.0", hospitals: 6, url: ORACLE_BRIDGE_URL }, nphies: { approval_rate: "98.6%", live_givc: "yes" } });
+      return json({ status: "ok", agent: "basma-v2", version: "2.2.0", tts: "elevenlabs", oracle_bridge: { version: "2.0.0", hospitals: 6, url: ORACLE_BRIDGE_URL }, nphies: { approval_rate: "98.6%", live_givc: "yes" }, integrations: { version: "2.2.0", oracle_bridge: "https://oracle-bridge.brainsait.org", eligibility_pipeline: "oracle \u2192 nphies fallback", claim_matching: true, bv_validation: true, drug_formulary: true } });
     }
 
-    return json({ error: "Not found", path }, 404);
+    
+// ─── Integrated Eligibility Tool (Oracle → NPHIES fallback) ─────────
+async function handleIntegratedEligibility(request: Request, env: Env): Promise<Response> {
+  try {
+    const url = new URL(request.url);
+    const id = url.searchParams.get("id") || "";
+    const branch = url.searchParams.get("branch") || "riyadh";
+    const idType = url.searchParams.get("id_type") || "NATIONAL NUMBER";
+    const lang = url.searchParams.get("lang") || "ar";
+
+    if (!id) return json({ error: "id required" }, 400);
+
+    const ORACLE_BRIDGE_URL = "https://oracle-bridge.brainsait.org";
+    const ORACLE_BRIDGE_KEY = env.ORACLE_BRIDGE_KEY || "bsma-oracle-b2af3196522b556636b09f5d268cb976";
+    const NPHIES_TOKEN_URL = env.NPHIES_TOKEN_URL || "https://sso.nphies.sa/auth/realms/sehaticoreprod/protocol/openid-connect/token";
+    const NPHIES_VIEWER_API = env.NPHIES_VIEWER_API || "https://sgw.nphies.sa/viewerapi/";
+    const NPHIES_CLIENT_ID = env.NPHIES_CLIENT_ID || "community";
+
+    // Try Oracle Bridge first
+    let oracleResult: any = null;
+    let nphiesResult: any = null;
+    let primarySource = "oracle";
+
+    try {
+      const oracleResp = await fetch(
+        `${ORACLE_BRIDGE_URL}/patient/${branch}?identity=${encodeURIComponent(id)}&identity_type=${encodeURIComponent(idType)}&api_key=${ORACLE_BRIDGE_KEY}`,
+        { signal: AbortSignal.timeout(8000) }
+      );
+      if (oracleResp.ok) {
+        oracleResult = await oracleResp.json();
+      }
+    } catch {
+      // Oracle failed, fall through to NPHIES
+    }
+
+    // Fallback: NPHIES eligibility
+    if (!oracleResult || !oracleResult.ok) {
+      primarySource = "nphies";
+      try {
+        // Get NPHIES token
+        const tokenResp = await fetch(NPHIES_TOKEN_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams({
+            client_id: NPHIES_CLIENT_ID,
+            grant_type: "password",
+            username: env.NPHIES_USER || "",
+            password: env.NPHIES_PASS || ""
+          }),
+          signal: AbortSignal.timeout(8000)
+        });
+        if (tokenResp.ok) {
+          const { access_token } = await tokenResp.json() as any;
+          const eligibilityResp = await fetch(
+            `${NPHIES_VIEWER_API}eligibility?identifier=${encodeURIComponent(id)}&identifierType=${encodeURIComponent(idType)}`,
+            {
+              headers: { Authorization: `Bearer ${access_token}` },
+              signal: AbortSignal.timeout(8000)
+            }
+          );
+          if (eligibilityResp.ok) {
+            nphiesResult = await eligibilityResp.json();
+          }
+        }
+      } catch {
+        // Both failed
+      }
+    }
+
+    // Build bilingual response
+    const result = oracleResult || nphiesResult || {};
+    const found = !!(oracleResult?.ok || nphiesResult);
+    const name = result?.patientName || result?.name || "";
+    const policy = result?.policyNumber || result?.membershipNo || "";
+    const payer = result?.payerName || result?.insuranceCompany || "";
+
+    // Voice-friendly text
+    let voiceText = "";
+    if (lang === "ar") {
+      if (found) {
+        voiceText = `✅ تم العثور على المريض. ${name ? "الاسم: " + name + ". " : ""}` +
+          `${policy ? "رقم البوليصة: " + policy + ". " : ""}` +
+          `${payer ? "شركة التأمين: " + payer + ". " : ""}` +
+          `المصدر: ${primarySource === "oracle" ? "نظام أوراكل" : "نظام نفيس"}.`;
+      } else {
+        voiceText = "❌ لم يتم العثور على بيانات الأهلية لهذا المريض. يرجى التأكد من رقم الهوية.";
+      }
+    } else {
+      if (found) {
+        voiceText = `✅ Patient found. ${name ? "Name: " + name + ". " : ""}` +
+          `${policy ? "Policy: " + policy + ". " : ""}` +
+          `${payer ? "Payer: " + payer + ". " : ""}` +
+          `Source: ${primarySource === "oracle" ? "Oracle" : "NPHIES"}.`;
+      } else {
+        voiceText = "❌ No eligibility data found for this patient. Please verify the ID.";
+      }
+    }
+
+    return json({
+      ok: found,
+      source: primarySource,
+      patient: result,
+      voice: voiceText,
+      speak_url: `/basma/speak/eligibility`
+    });
+  } catch (e: any) {
+    return json({ error: e.message }, 500);
+  }
+}
+
+return json({ error: "Not found", path }, 404);
   },
 };
 
