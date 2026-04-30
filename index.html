@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrainSAIT — الذكاء الاصطناعي للرعاية الصحية السعودية</title>
+<meta name="description" content="BrainSAIT — حلول الذكاء الاصطناعي للرعاية الصحية في المملكة العربية السعودية">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --midnight: #0a0f1e; --gold: #c9a84c; --gold-light: #e8c97e; --teal: #0ea5e9; --orange: #ea580c; --white: #fff; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'IBM Plex Sans Arabic', sans-serif; background: var(--midnight); color: var(--white); direction: rtl; overflow-x: hidden; line-height: 1.7; }
+#canvas-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+nav { position: sticky; top: 0; z-index: 100; background: rgba(10,15,30,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(201,168,76,0.2); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.nav-logo { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--gold); text-decoration: none; }
+.nav-links { display: flex; align-items: center; gap: 1.5rem; }
+.nav-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+.nav-links a:hover { color: var(--white); }
+.gtm-pill { background: linear-gradient(135deg, var(--gold), var(--orange)); color: var(--midnight) !important; padding: 0.45rem 1.2rem; border-radius: 100px; font-weight: 700; font-size: 0.78rem; box-shadow: 0 0 20px rgba(201,168,76,0.3); }
+.gtm-pill:hover { transform: translateY(-2px); box-shadow: 0 4px 30px rgba(201,168,76,0.5); }
+.hero { min-height: 90vh; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding: 5rem 2rem; position: relative; z-index: 1; }
+.hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; background: linear-gradient(135deg, #fff 0%, var(--gold-light) 40%, var(--teal) 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-size: 1.1rem; color: rgba(255,255,255,0.6); max-width: 580px; margin: 0 auto 3rem; }
+.ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'IBM Plex Sans Arabic', sans-serif; font-weight: 600; font-size: 0.95rem; padding: 0.9rem 2.2rem; border-radius: 100px; border: none; cursor: pointer; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+.btn-gold { background: linear-gradient(135deg, var(--gold), var(--orange)); color: var(--midnight); box-shadow: 0 0 30px rgba(201,168,76,0.3); }
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(201,168,76,0.4); }
+.btn-outline { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.2); }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.page-container { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; position: relative; z-index: 1; text-align: center; }
+.page-container h2 { font-family: 'Syne', sans-serif; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 1rem; }
+.page-container p { color: rgba(255,255,255,0.6); max-width: 600px; margin: 0 auto 2rem; line-height: 1.8; font-size: 0.95rem; }
+.site-footer { background: rgba(10,15,30,0.95); border-top: 1px solid rgba(201,168,76,0.2); padding: 2rem; text-align: center; position: relative; z-index: 1; }
+.site-footer p { color: rgba(255,255,255,0.25); font-size: 0.75rem; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.animate-in { animation: fadeUp 0.5s ease forwards; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+</style>
+</head>
+<body>
+<canvas id="canvas-bg"></canvas>
+<nav>
+  <a class="nav-logo" href="#">⬡ BrainSAIT</a>
+  <div class="nav-links">
+    <a href="https://spark.brainsait.org">⚡ Spark</a>
+    <a href="https://gtm.brainsait.org" class="gtm-pill">🎯 دليل GTM للمؤسسين</a>
+  </div>
+</nav>
+<section class="hero">
+  <h1 class="animate-in">الذكاء الاصطناعي<br>للرعاية الصحية السعودية</h1>
+  <p class="hero-sub animate-in delay-1">نبني الجيل القادم من حلول الذكاء الاصطناعي لمقدمي الخدمة وشركات التأمين في المملكة.</p>
+  <div class="ctas animate-in delay-2">
+    <a href="https://spark.brainsait.org" class="btn btn-gold">⚡ جرب Spark</a>
+    <a href="https://gtm.brainsait.org" class="btn btn-outline">🎯 دليل GTM للمؤسسين</a>
+  </div>
+</section>
+<div class="page-container">
+  <h2>من نحن</h2>
+  <p>شركة سعودية ناشئة متخصصة في الذكاء الاصطناعي للرعاية الصحية. نؤمن أن الذكاء الاصطناعي يمكنه تغيير طريقة عمل المنظومة الصحية في المملكة.</p>
+  <div class="ctas">
+    <a href="https://spark.brainsait.org" class="btn btn-gold">⚡ استكشف Spark</a>
+  </div>
+</div>
+<footer class="site-footer">
+  <p>⬡ BrainSAIT © ٢٠٢٦ — جميع الحقوق محفوظة.</p>
+</footer>
+<script>
+const canvas = document.getElementById('canvas-bg');
+const ctx = canvas.getContext('2d');
+let particles = [];
+function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+resize(); window.addEventListener('resize', resize);
+class Particle {
+  constructor() { this.reset(); }
+  reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.size = Math.random() * 1.5 + 0.3; this.speed = Math.random() * 0.2 + 0.03; this.opacity = Math.random() * 0.35 + 0.04; this.hue = 43; }
+  update() { this.y -= this.speed; if (this.y < -5) { this.reset(); this.y = canvas.height + 5; } }
+  draw() { ctx.save(); ctx.globalAlpha = this.opacity; ctx.fillStyle = 'hsl(43,70%,65%)'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); ctx.restore(); }
+}
+for (let i = 0; i < 60; i++) particles.push(new Particle());
+function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); }
+animate();
+</script>
+</body>
+</html>
