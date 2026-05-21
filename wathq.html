@@ -1252,6 +1252,14 @@ function saveNewApp() {
         </div>`;
     grid.appendChild(card);
 
+    // تحديث مصفوفة البيانات لضمان توافق المفاتيح في المختبر
+    appsData.push({
+        id: 'app-' + Math.random().toString(36).substr(2, 5),
+        name: rawName,
+        key: key,
+        pwd: '---'
+    });
+
     // Add to playground selector
     const opt = document.createElement('option');
     opt.value = rawName; opt.text = rawName;
