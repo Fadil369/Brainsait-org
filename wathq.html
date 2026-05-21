@@ -1191,7 +1191,7 @@ function calculateBudget() {
 
     // Budget progress bar
     const totalAvail = baseCharge + (baseCharge * bonusPct / 100);
-    const pct = totalAvail > 0 ? Math.min(100, Math.round((totalCost / totalAvail) * 100)) : 0;
+    const pct = (pkg === 'trial') ? Math.min(100, totalQty) : (totalAvail > 0 ? Math.min(100, Math.round((totalCost / totalAvail) * 100)) : 0);
     const bar = document.getElementById('budget-progress-bar');
     const pctLabel = document.getElementById('budget-pct-label');
     bar.style.width = pct + '%';
