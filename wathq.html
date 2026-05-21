@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوابة مطوري واثق | Wathq Developer Hub — BrainSAIT</title>
+    <meta name="description" content="بوابة الربط المتكامل مع الأنظمة العدلية والتجارية والمالية السعودية — واثق للمطورين من BrainSAIT">
+    <meta property="og:title" content="بوابة مطوري واثق | BrainSAIT">
+    <meta property="og:description" content="إدارة التطبيقات، مختبر API، حاسبة الباقات، ومستشار تكامل منصة اعتماد">
+    <meta property="og:type" content="website">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50:'#f0fdf4', 100:'#dcfce7', 500:'#10b981',
+                            600:'#059669', 700:'#047857', 800:'#065f46',
+                            900:'#064e3b', 950:'#022c22'
+                        },
+                        accent: { gold:'#d97706', goldLight:'#f59e0b', dark:'#0f172a' }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; }
+        ::-webkit-scrollbar { width:6px; height:6px; }
+        ::-webkit-scrollbar-track { background:#0f172a; }
+        ::-webkit-scrollbar-thumb { background:#1e293b; border-radius:4px; }
+        ::-webkit-scrollbar-thumb:hover { background:#10b981; }
+
+        /* Tab fade transition */
+        .tab-content { transition: opacity 0.18s ease; }
+        .tab-content.hidden { opacity: 0; pointer-events: none; display: none !important; }
+
+        /* Toast slide-up */
+        #custom-toast { transition: transform 0.3s cubic-bezier(.4,0,.2,1), opacity 0.3s ease; }
+        #custom-toast.toast-hidden { transform: translateY(6rem); opacity: 0; pointer-events: none; }
+
+        /* Subtab underline indicator */
+        .subtab-btn.active-subtab { color: #10b981 !important; background: #1e293b !important; }
+
+        /* Budget bar fill */
+        .budget-fill { transition: width 0.5s ease; }
+
+        /* Pulse ring for status dot */
+        @keyframes ping-slow { 75%,100%{ transform:scale(1.8); opacity:0; } }
+        .ping-slow { animation: ping-slow 2.5s cubic-bezier(0,0,.2,1) infinite; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+
+        <!-- Brand block -->
+        <div class="flex items-center gap-4">
+            <!-- BrainSAIT back-link -->
+            <a href="/" title="العودة إلى BrainSAIT"
+               class="hidden sm:flex items-center gap-1.5 text-[11px] text-slate-500 hover:text-amber-400 transition border border-slate-800 hover:border-amber-500/30 px-2.5 py-1 rounded-lg">
+                <i class="fa-solid fa-chevron-right text-[9px]"></i>
+                <span class="font-bold" style="font-family:'Syne',sans-serif;">⬡ BrainSAIT</span>
+            </a>
+            <div class="bg-gradient-to-tr from-brand-600 to-brand-500 p-2.5 rounded-xl shadow-lg shadow-brand-900/30">
+                <i class="fa-solid fa-shield-halved text-2xl text-white"></i>
+            </div>
+            <div>
+                <h1 class="text-xl font-extrabold tracking-wide text-white flex items-center gap-2">
+                    واثق
+                    <span class="text-brand-500 text-sm font-semibold bg-brand-950/80 px-2 py-0.5 rounded border border-brand-800/40">المطورين</span>
+                </h1>
+                <p class="text-xs text-slate-400">بوابة الربط المتكامل مع الأنظمة العدلية والتجارية والمالية</p>
+            </div>
+        </div>
+
+        <!-- Right controls -->
+        <div class="hidden md:flex items-center gap-4">
+            <div class="flex items-center gap-2 text-xs bg-slate-800/60 px-3 py-1.5 rounded-lg border border-slate-700/50">
+                <span class="relative flex h-2 w-2">
+                    <span class="ping-slow absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-40"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span class="text-slate-300">اتصال آمن — بيئة إنتاجية</span>
+            </div>
+            <button type="button" onclick="toggleTheme()" id="theme-toggle-btn"
+                    aria-label="تبديل المظهر بين الفاتح والداكن"
+                    class="p-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition">
+                <i id="theme-icon" class="fa-solid fa-sun"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- ═══════════════ SANDBOX DEMO NOTICE ═══════════════ -->
+<div class="bg-amber-500/10 border-b border-amber-500/20 px-4 py-2">
+    <div class="max-w-7xl mx-auto flex items-center gap-2 text-xs text-amber-400">
+        <i class="fa-solid fa-flask-vial shrink-0"></i>
+        <span><strong>بيئة تجريبية — Sandbox Demo:</strong> المفاتيح والبيانات المعروضة هنا لأغراض العرض والتطوير فقط. لا تُستخدم في الإنتاج.</span>
+    </div>
+</div>
+
+<!-- ═══════════════ MAIN LAYOUT ═══════════════ -->
+<div class="flex-1 flex flex-col lg:flex-row max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 gap-8">
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="w-full lg:w-64 shrink-0 flex flex-col gap-6">
+
+        <!-- Navigation -->
+        <nav class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-col gap-1" aria-label="القائمة الرئيسية">
+            <p class="text-[11px] font-bold text-slate-500 uppercase tracking-wider px-3 mb-2">القائمة الرئيسية</p>
+
+            <button type="button" onclick="switchTab('dashboard')" id="btn-dashboard"
+                    class="tab-btn flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white transition group text-right">
+                <span class="flex items-center gap-3">
+                    <i class="fa-solid fa-chart-line text-lg text-brand-500 group-hover:scale-110 transition"></i>
+                    <span class="text-sm font-medium">لوحة التحكم والتطبيقات</span>
+                </span>
+                <i class="fa-solid fa-chevron-left text-xs text-slate-600 group-hover:-translate-x-0.5 transition"></i>
+            </button>
+
+            <button type="button" onclick="switchTab('playground')" id="btn-playground"
+                    class="tab-btn flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white transition group text-right">
+                <span class="flex items-center gap-3">
+                    <i class="fa-solid fa-terminal text-lg text-amber-500 group-hover:scale-110 transition"></i>
+                    <span class="text-sm font-medium">مختبر واجهات الـ API</span>
+                </span>
+                <i class="fa-solid fa-chevron-left text-xs text-slate-600 group-hover:-translate-x-0.5 transition"></i>
+            </button>
+
+            <button type="button" onclick="switchTab('calculator')" id="btn-calculator"
+                    class="tab-btn flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white transition group text-right">
+                <span class="flex items-center gap-3">
+                    <i class="fa-solid fa-calculator text-lg text-blue-500 group-hover:scale-110 transition"></i>
+                    <span class="text-sm font-medium">حاسبة الباقات والاستعلام</span>
+                </span>
+                <span class="bg-blue-500/15 text-blue-400 text-[10px] px-1.5 py-0.5 rounded font-bold">محدث</span>
+            </button>
+
+            <button type="button" onclick="switchTab('etimad')" id="btn-etimad"
+                    class="tab-btn flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white transition group text-right">
+                <span class="flex items-center gap-3">
+                    <i class="fa-solid fa-building-columns text-lg text-teal-400 group-hover:scale-110 transition"></i>
+                    <span class="text-sm font-medium">مستشار تكامل اعتماد</span>
+                </span>
+                <span class="bg-emerald-500/15 text-emerald-400 text-[10px] px-1.5 py-0.5 rounded font-bold">دليل</span>
+            </button>
+        </nav>
+
+        <!-- Active App Card -->
+        <div class="bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-5 relative overflow-hidden">
+            <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-brand-500/10 rounded-full blur-xl pointer-events-none"></div>
+            <div class="flex items-center justify-between mb-3">
+                <span class="text-xs text-amber-400 font-bold bg-amber-950/60 px-2 py-0.5 rounded border border-amber-900/50">DEMO KEY</span>
+                <i class="fa-solid fa-key text-slate-600"></i>
+            </div>
+            <h4 class="text-base font-bold text-white mb-0.5">BrainSAIT</h4>
+            <p class="text-xs text-slate-400 mb-3">مفتاح عرض تجريبي</p>
+            <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 mb-3 flex items-center justify-between gap-2">
+                <code class="text-[10px] text-slate-300 font-mono truncate">EQMc2uo...TfUjJ2K</code>
+                <button type="button"
+                        onclick="copyToClipboard('EQMc2uonE6iViTfUjJ2KARG9a3yDDwdQ','تم نسخ مفتاح API التجريبي!')"
+                        aria-label="نسخ مفتاح API"
+                        class="text-slate-500 hover:text-brand-400 transition shrink-0">
+                    <i class="fa-regular fa-copy"></i>
+                </button>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-slate-400">
+                <i class="fa-solid fa-circle-check text-emerald-500"></i>
+                <span>10 منتجات مفعلة</span>
+            </div>
+        </div>
+
+        <!-- Quick stats -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 grid grid-cols-3 gap-3 text-center">
+            <div>
+                <span class="text-lg font-black text-white" id="stat-apps">4</span>
+                <p class="text-[10px] text-slate-500 mt-0.5">تطبيق</p>
+            </div>
+            <div class="border-x border-slate-800">
+                <span class="text-lg font-black text-brand-400" id="stat-keys">10</span>
+                <p class="text-[10px] text-slate-500 mt-0.5">منتج نشط</p>
+            </div>
+            <div>
+                <span class="text-lg font-black text-amber-400">5.20</span>
+                <p class="text-[10px] text-slate-500 mt-0.5">الإصدار</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ═══════════════ MAIN WORKSPACE ═══════════════ -->
+    <main class="flex-1 min-w-0">
+
+        <!-- ─── TAB 1: DASHBOARD ─── -->
+        <section id="tab-dashboard" class="tab-content flex flex-col gap-6">
+
+            <!-- Welcome banner -->
+            <div class="bg-gradient-to-r from-brand-950 to-slate-900 border border-brand-900/40 rounded-3xl p-6 sm:p-8 relative overflow-hidden">
+                <div class="absolute right-0 top-0 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <span class="text-xs text-brand-400 font-bold tracking-wider uppercase bg-brand-900/60 px-3 py-1 rounded-full border border-brand-800">تطبيقاتي المعتمدة</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-3 mb-2">أهلاً بك في لوحة تحكم مطوري واثق</h2>
+                <p class="text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed">
+                    إدارة تطبيقاتك البرمجية، مراقبة مفاتيح الأمان، والوصول المباشر لواجهات الربط الإلكتروني مع الأنظمة الحكومية والعدلية.
+                </p>
+                <div class="flex flex-wrap gap-3 mt-6">
+                    <button type="button" onclick="openModal('add-app-modal')"
+                            class="bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-brand-900/30 transition flex items-center gap-2">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>إضافة تطبيق جديد</span>
+                    </button>
+                    <button type="button" onclick="switchTab('playground')"
+                            class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs sm:text-sm px-5 py-2.5 rounded-xl transition flex items-center gap-2">
+                        <i class="fa-solid fa-vial"></i>
+                        <span>فحص سريع للـ APIs</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Apps list header -->
+            <div class="flex items-center justify-between">
+                <div>
+                    <h3 class="text-lg font-bold text-white">قائمة التطبيقات المسجلة</h3>
+                    <p class="text-xs text-slate-400">تطبيقاتك المربوطة حالياً بقنوات الاستعلام</p>
+                </div>
+                <span class="text-xs text-slate-400">الإصدار النشط: <strong class="text-brand-400">5.20.0</strong></span>
+            </div>
+
+            <!-- Apps grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="apps-grid">
+
+                <!-- App 1: BrainSAIT -->
+                <div class="bg-slate-900 border border-slate-800 hover:border-brand-500/30 transition rounded-2xl p-5 flex flex-col justify-between group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-brand-500/5 rounded-full blur-xl pointer-events-none"></div>
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-brand-950 text-brand-400 border border-brand-900 text-xs px-2.5 py-1 rounded-lg font-bold">جديد</span>
+                            <span class="text-xs text-emerald-400 bg-emerald-950 px-2.5 py-1 rounded-full font-semibold border border-emerald-900/50 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                موافق عليه
+                            </span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-brain text-brand-500"></i>
+                            BrainSAIT
+                        </h4>
+                        <p class="text-xs text-slate-400 mb-4">تطبيق رئيسي للربط المباشر مع عقود تأسيس الشركات والصكوك والتحقق الشامل.</p>
+                        <div class="grid grid-cols-2 gap-2 text-xs mb-4">
+                            <div class="bg-slate-950/50 p-2 rounded-lg border border-slate-800">
+                                <span class="text-slate-500 block mb-0.5">تاريخ الإصدار</span>
+                                <span class="text-slate-300 font-medium">منذ 22 دقيقة</span>
+                            </div>
+                            <div class="bg-slate-950/50 p-2 rounded-lg border border-slate-800">
+                                <span class="text-slate-500 block mb-0.5">الصلاحية</span>
+                                <span class="text-slate-300 font-medium">دائم</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 pt-4 border-t border-slate-800/80">
+                        <button type="button" onclick="openBrainSaitKeys()"
+                                class="flex-1 bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold py-2 rounded-lg transition flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-key"></i><span>عرض المفاتيح</span>
+                        </button>
+                        <button type="button" onclick="openBrainSaitProducts()"
+                                class="flex-1 bg-brand-600/10 hover:bg-brand-600/20 text-brand-400 text-xs font-bold py-2 rounded-lg transition flex items-center justify-center gap-1.5 border border-brand-500/20">
+                            <i class="fa-solid fa-cubes"></i><span>المنتجات (12)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- App 2: Americana-API -->
+                <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 transition rounded-2xl p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-slate-500 text-xs font-mono">ID: app-am-77</span>
+                            <span class="text-xs text-emerald-400 bg-emerald-950 px-2.5 py-1 rounded-full font-semibold border border-emerald-900/50 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                موافق عليه
+                            </span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-utensils text-slate-400"></i>
+                            Americana-API
+                        </h4>
+                        <p class="text-xs text-slate-400 mb-4">التحقق التلقائي من السجلات التجارية وحالة العناوين الوطنية لفروع سلاسل التوريد.</p>
+                    </div>
+                    <div class="flex items-center gap-2 pt-4 border-t border-slate-800/80">
+                        <button type="button" onclick="showWipToast()" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold py-2 rounded-lg transition">تعديل التطبيق</button>
+                        <button type="button" onclick="showWipToast()" class="flex-1 border border-slate-800 hover:bg-slate-800 text-slate-300 text-xs font-semibold py-2 rounded-lg transition">الإحصاءات</button>
+                    </div>
+                </div>
+
+                <!-- App 3: FadilWathAPI -->
+                <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 transition rounded-2xl p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-slate-500 text-xs font-mono">ID: app-fa-88</span>
+                            <span class="text-xs text-emerald-400 bg-emerald-950 px-2.5 py-1 rounded-full font-semibold border border-emerald-900/50 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                موافق عليه
+                            </span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-id-card-clip text-slate-400"></i>
+                            FadilWathAPI
+                        </h4>
+                        <p class="text-xs text-slate-400 mb-4">استرجاع بيانات السجلات الفرعية وتفاصيل الملاك لتسهيل التحقق في الخدمات.</p>
+                    </div>
+                    <div class="flex items-center gap-2 pt-4 border-t border-slate-800/80">
+                        <button type="button" onclick="showWipToast()" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold py-2 rounded-lg transition">تعديل التطبيق</button>
+                        <button type="button" onclick="showWipToast()" class="flex-1 border border-slate-800 hover:bg-slate-800 text-slate-300 text-xs font-semibold py-2 rounded-lg transition">الإحصاءات</button>
+                    </div>
+                </div>
+
+                <!-- App 4: Wathqlinc-Pro -->
+                <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 transition rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-2 left-2">
+                        <span class="bg-amber-500/10 text-amber-500 border border-amber-500/30 text-[10px] px-2 py-0.5 rounded font-bold">باقة مسبقة الدفع</span>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-slate-500 text-xs font-mono">ID: app-wl-99</span>
+                            <span class="text-xs text-emerald-400 bg-emerald-950 px-2.5 py-1 rounded-full font-semibold border border-emerald-900/50 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                موافق عليه
+                            </span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-crown text-amber-500"></i>
+                            Wathqlinc-Pro
+                        </h4>
+                        <p class="text-xs text-slate-400 mb-4">الربط عالي الأداء مع قاعدة بيانات وزارة التجارة لدعم التحقق الكبير لمقاولي البناء.</p>
+                    </div>
+                    <div class="flex items-center gap-2 pt-4 border-t border-slate-800/80">
+                        <button type="button" onclick="showWipToast()" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold py-2 rounded-lg transition">تعديل التطبيق</button>
+                        <button type="button" onclick="showWipToast()" class="flex-1 border border-slate-800 hover:bg-slate-800 text-slate-300 text-xs font-semibold py-2 rounded-lg transition">الإحصاءات</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── TAB 2: PLAYGROUND ─── -->
+        <section id="tab-playground" class="tab-content hidden flex flex-col gap-6">
+
+            <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+                <div class="flex items-start gap-3">
+                    <div class="bg-amber-500/15 text-amber-500 p-2 rounded-xl border border-amber-500/30 shrink-0">
+                        <i class="fa-solid fa-flask text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-bold text-white">البيئة الاختبارية (Sandbox)</h3>
+                        <p class="text-xs text-slate-400">استعلم وحاكي استرجاع بيانات من السجل التجاري، الصك العقاري، والعناوين الوطنية — بدون خصم رصيد.</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 w-full sm:w-auto">
+                    <span class="text-xs text-slate-500 shrink-0">التطبيق النشط:</span>
+                    <select id="playground-app-select" onchange="updatePlaygroundKey()"
+                            class="w-full bg-slate-950 border border-slate-800 text-xs text-white rounded-lg p-2 focus:ring-1 focus:ring-brand-500">
+                        <option value="BrainSAIT">BrainSAIT</option>
+                        <option value="Americana-API">Americana-API</option>
+                        <option value="FadilWathAPI">FadilWathAPI</option>
+                        <option value="Wathqlinc-Pro">Wathqlinc-Pro</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+                <!-- Left: Inputs -->
+                <div class="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col gap-4">
+                    <h4 class="text-sm font-bold text-white pb-3 border-b border-slate-800 flex items-center gap-2">
+                        <i class="fa-solid fa-sliders text-brand-500"></i>
+                        إعدادات الطلب
+                    </h4>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-xs text-slate-400" for="api-service-selector">الخدمة المراد تجربتها:</label>
+                        <select id="api-service-selector" onchange="onServiceChange()"
+                                class="bg-slate-950 border border-slate-800 text-sm text-white rounded-xl p-3 focus:ring-1 focus:ring-brand-500">
+                            <option value="cr-full">استرجاع بيانات السجل التجاري كاملة (12.00 ر.س)</option>
+                            <option value="deed-check">استرجاع بيانات الصك العقاري (5.00 ر.س)</option>
+                            <option value="national-address">استرجاع العنوان الوطني للمنشآت (2.00 ر.س)</option>
+                            <option value="poa-details">استرجاع بيانات الوكالة العدلية (5.00 ر.س)</option>
+                        </select>
+                    </div>
+
+                    <div id="playground-inputs" class="flex flex-col gap-3"></div>
+
+                    <!-- Endpoint display with copy button -->
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-xs flex flex-col gap-2">
+                        <div class="flex items-start justify-between gap-2">
+                            <div class="flex-1 min-w-0">
+                                <span class="text-brand-400 font-bold font-mono">GET</span>
+                                <code id="req-endpoint" class="text-slate-300 font-mono text-[11px] ml-1 select-all break-all"></code>
+                            </div>
+                            <button type="button" onclick="copyEndpointUrl()" aria-label="نسخ رابط API"
+                                    class="shrink-0 text-slate-500 hover:text-brand-400 transition p-1">
+                                <i class="fa-regular fa-copy text-sm"></i>
+                            </button>
+                        </div>
+                        <div class="border-t border-slate-800/80 pt-2 flex flex-col gap-1 font-mono text-[10px] text-slate-500">
+                            <span>x-api-key: <span id="header-key-display" class="text-amber-500 font-bold">EQMc2uonE6...</span></span>
+                            <span>Accept: application/json</span>
+                        </div>
+                    </div>
+
+                    <!-- Run button with loading state -->
+                    <button type="button" id="run-btn" onclick="runSimulatedAPI()"
+                            class="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-brand-900/30 transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-play" id="run-btn-icon"></i>
+                        <span id="run-btn-text">إرسال طلب الاستعلام</span>
+                    </button>
+                </div>
+
+                <!-- Right: Results -->
+                <div class="lg:col-span-7 flex flex-col gap-5">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden flex flex-col min-h-[480px]">
+                        <!-- Subtab buttons -->
+                        <div class="bg-slate-950/80 border-b border-slate-800 p-2 flex gap-1">
+                            <button type="button" onclick="switchPlaygroundSubTab('visual')" id="subtab-btn-visual"
+                                    class="subtab-btn active-subtab flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-lg transition">
+                                <i class="fa-solid fa-id-card"></i><span>المستند المرئي</span>
+                            </button>
+                            <button type="button" onclick="switchPlaygroundSubTab('json')" id="subtab-btn-json"
+                                    class="subtab-btn flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white transition">
+                                <i class="fa-solid fa-code"></i><span>مخرج JSON</span>
+                            </button>
+                            <button type="button" onclick="switchPlaygroundSubTab('code')" id="subtab-btn-code"
+                                    class="subtab-btn flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white transition">
+                                <i class="fa-solid fa-laptop-code"></i><span>كود الربط</span>
+                            </button>
+                        </div>
+
+                        <div class="p-5 flex-1 flex flex-col">
+
+                            <!-- Panel 1: Visual -->
+                            <div id="play-panel-visual" class="subtab-panel flex flex-col flex-1">
+                                <div id="visual-render-container"
+                                     class="border border-slate-800 bg-slate-950/50 p-4 rounded-xl flex-1 flex flex-col items-center justify-center text-center overflow-y-auto">
+                                    <div class="flex flex-col items-center gap-3 max-w-sm">
+                                        <i class="fa-solid fa-wand-magic-sparkles text-3xl text-slate-600 animate-pulse"></i>
+                                        <h5 class="text-sm font-bold text-slate-300">أداة محاكاة المستندات</h5>
+                                        <p class="text-xs text-slate-500">أرسل طلب الاستعلام لعرض مستند تمثيلي تفاعلي مستخرج من منصة واثق</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Panel 2: JSON -->
+                            <div id="play-panel-json" class="subtab-panel hidden flex-1">
+                                <div class="font-mono text-[11px] bg-slate-950 p-4 rounded-xl border border-slate-800 text-emerald-400 overflow-y-auto h-full max-h-[380px]">
+                                    <pre id="json-output">// بانتظار إرسال الطلب...</pre>
+                                </div>
+                            </div>
+
+                            <!-- Panel 3: Code -->
+                            <div id="play-panel-code" class="subtab-panel hidden flex-1 flex flex-col gap-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs text-slate-400">مثال ربط متكامل:</span>
+                                    <div class="flex gap-1">
+                                        <button type="button" onclick="setPlaygroundLang('python')" id="lang-btn-python"
+                                                class="px-2 py-1 text-[10px] font-bold bg-brand-600/20 text-brand-400 rounded">Python</button>
+                                        <button type="button" onclick="setPlaygroundLang('node')" id="lang-btn-node"
+                                                class="px-2 py-1 text-[10px] font-bold bg-slate-800 text-slate-400 rounded">Node.js</button>
+                                        <button type="button" onclick="setPlaygroundLang('curl')" id="lang-btn-curl"
+                                                class="px-2 py-1 text-[10px] font-bold bg-slate-800 text-slate-400 rounded">cURL</button>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-slate-300 overflow-x-auto flex-1">
+                                    <pre id="code-snippet-container">// أرسل طلب الاستعلام لتحديث كود الربط</pre>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── TAB 3: CALCULATOR ─── -->
+        <section id="tab-calculator" class="tab-content hidden flex flex-col gap-6">
+            <div>
+                <h3 class="text-xl font-bold text-white">حاسبة باقات واثق وتقدير التكاليف</h3>
+                <p class="text-xs text-slate-400">خطط لربطك البرمجي، اختر الحجم الأنسب لطلب الاستعلامات، واعرف رصيدك والوفر الإضافي المالي.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+                <!-- Left: Inputs -->
+                <div class="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col gap-5">
+
+                    <div>
+                        <h4 class="text-sm font-bold text-white mb-3">1. اختر باقة الاشتراك المناسبة:</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <label class="calc-pkg-label border-2 border-slate-800 bg-slate-950 p-4 rounded-xl flex flex-col cursor-pointer hover:border-brand-500 transition relative" id="calc-package-trial">
+                                <input type="radio" name="calc-pkg" value="trial" onchange="calculateBudget()" class="absolute top-3 left-3 accent-brand-500">
+                                <span class="text-xs font-bold text-slate-400">الباقة التجريبية</span>
+                                <span class="text-lg font-bold text-white mt-1">30 يوم مجاني</span>
+                                <span class="text-[10px] text-slate-500 mt-2">100 استعلام مجاني كلياً</span>
+                            </label>
+                            <label class="calc-pkg-label border-2 border-brand-500 bg-slate-950 p-4 rounded-xl flex flex-col cursor-pointer transition relative" id="calc-package-prepaid">
+                                <input type="radio" name="calc-pkg" value="prepaid" onchange="calculateBudget()" checked class="absolute top-3 left-3 accent-brand-500">
+                                <span class="text-xs font-bold text-amber-500">مسبقة الدفع</span>
+                                <span class="text-lg font-bold text-white mt-1">شحن الرصيد</span>
+                                <span class="text-[10px] text-slate-500 mt-2">يبدأ من 5,000 ريال + بونص</span>
+                            </label>
+                            <label class="calc-pkg-label border-2 border-slate-800 bg-slate-950 p-4 rounded-xl flex flex-col cursor-pointer hover:border-brand-500 transition relative" id="calc-package-enterprise">
+                                <input type="radio" name="calc-pkg" value="enterprise" onchange="calculateBudget()" class="absolute top-3 left-3 accent-brand-500">
+                                <span class="text-xs font-bold text-blue-400">باقة الأعمال</span>
+                                <span class="text-lg font-bold text-white mt-1">حسب الطلب</span>
+                                <span class="text-[10px] text-slate-500 mt-2">غير محدود — تخصيص كامل</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="prepaid-options-block" class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col gap-3">
+                        <span class="text-xs text-slate-400 font-semibold">تخصيص رصيد الباقة مسبقة الدفع:</span>
+                        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                            <button type="button" onclick="setPrepaidValue(5000)"   id="pv-5000"   class="pv-btn py-2 text-xs font-bold rounded-lg border border-brand-500 bg-brand-500/10 text-white transition">5,000</button>
+                            <button type="button" onclick="setPrepaidValue(10000)"  id="pv-10000"  class="pv-btn py-2 text-xs font-bold rounded-lg border border-slate-800 bg-slate-900 text-slate-400 hover:text-white transition">10,000 +5%</button>
+                            <button type="button" onclick="setPrepaidValue(50000)"  id="pv-50000"  class="pv-btn py-2 text-xs font-bold rounded-lg border border-slate-800 bg-slate-900 text-slate-400 hover:text-white transition">50,000 +8%</button>
+                            <button type="button" onclick="setPrepaidValue(100000)" id="pv-100000" class="pv-btn py-2 text-xs font-bold rounded-lg border border-slate-800 bg-slate-900 text-slate-400 hover:text-white transition">100,000 +10%</button>
+                            <button type="button" onclick="setPrepaidValue(150000)" id="pv-150000" class="pv-btn py-2 text-xs font-bold rounded-lg border border-slate-800 bg-slate-900 text-slate-400 hover:text-white transition">150,000 +12%</button>
+                        </div>
+                        <span id="prepaid-validity-note" class="text-[10px] text-slate-500">الصلاحية: 30 يوماً من التنشيط.</span>
+                    </div>
+
+                    <div>
+                        <h4 class="text-sm font-bold text-white mb-3">2. تقدير حجم الاستعلامات المتوقعة (شهرياً):</h4>
+                        <div class="flex flex-col gap-3">
+                            <div class="flex items-center justify-between gap-4 bg-slate-950 p-3 rounded-xl border border-slate-800">
+                                <div>
+                                    <span class="text-xs font-bold text-slate-200 block">السجل التجاري الكامل (12 ر.س)</span>
+                                    <span class="text-[10px] text-slate-500">بيانات السجل، المدراء، الملاك ورأس المال كاملة</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <input type="number" id="qty-cr-full" value="200" min="0" onchange="calculateBudget()" onkeyup="calculateBudget()"
+                                           class="w-20 bg-slate-900 text-center text-sm font-bold text-white border border-slate-800 rounded px-2 py-1 focus:ring-1 focus:ring-brand-500">
+                                    <span class="text-xs text-slate-400 shrink-0">طلب</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between gap-4 bg-slate-950 p-3 rounded-xl border border-slate-800">
+                                <div>
+                                    <span class="text-xs font-bold text-slate-200 block">السجل الأساسي / الصكوك (5 ر.س)</span>
+                                    <span class="text-[10px] text-slate-500">حالة السجل، التحقق من الصكوك، الوكالات العدلية</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <input type="number" id="qty-cr-basic" value="500" min="0" onchange="calculateBudget()" onkeyup="calculateBudget()"
+                                           class="w-20 bg-slate-900 text-center text-sm font-bold text-white border border-slate-800 rounded px-2 py-1 focus:ring-1 focus:ring-brand-500">
+                                    <span class="text-xs text-slate-400 shrink-0">طلب</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between gap-4 bg-slate-950 p-3 rounded-xl border border-slate-800">
+                                <div>
+                                    <span class="text-xs font-bold text-slate-200 block">العنوان الوطني للمنشآت (2 ر.س)</span>
+                                    <span class="text-[10px] text-slate-500">استرجاع العنوان الوطني المسجل للمؤسسات</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <input type="number" id="qty-national" value="300" min="0" onchange="calculateBudget()" onkeyup="calculateBudget()"
+                                           class="w-20 bg-slate-900 text-center text-sm font-bold text-white border border-slate-800 rounded px-2 py-1 focus:ring-1 focus:ring-brand-500">
+                                    <span class="text-xs text-slate-400 shrink-0">طلب</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between gap-4 bg-slate-950 p-3 rounded-xl border border-slate-800">
+                                <div>
+                                    <span class="text-xs font-bold text-slate-200 block">استعلامات مجانية (0 ر.س)</span>
+                                    <span class="text-[10px] text-slate-500">خدمة المستفيد الحقيقي، والصرف الدوائي</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <input type="number" id="qty-free" value="1000" min="0" onchange="calculateBudget()" onkeyup="calculateBudget()"
+                                           class="w-20 bg-slate-900 text-center text-sm font-bold text-white border border-slate-800 rounded px-2 py-1 focus:ring-1 focus:ring-brand-500">
+                                    <span class="text-xs text-slate-400 shrink-0">طلب</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Summary -->
+                <div class="lg:col-span-5 bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-sm font-bold text-white pb-3 border-b border-slate-800 mb-4 flex items-center justify-between">
+                            <span>ملخص الميزانية التقديرية</span>
+                            <i class="fa-solid fa-receipt text-slate-500"></i>
+                        </h4>
+
+                        <div class="flex flex-col gap-4">
+                            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                                <span class="text-xs text-slate-500 block mb-1">الرصيد الكلي المتوفر</span>
+                                <div class="flex items-baseline gap-2">
+                                    <span id="res-total-balance" class="text-2xl font-black text-emerald-400">5,000.00</span>
+                                    <span class="text-xs text-slate-400">ريال سعودي</span>
+                                </div>
+                                <div class="text-[10px] text-slate-500 mt-2 flex justify-between">
+                                    <span>رصيد شحن: <span id="res-base-charge" class="text-slate-300">5,000</span> ر.س</span>
+                                    <span>رصيد مكافأة: <span id="res-bonus-charge" class="text-brand-400">+0</span> ر.س</span>
+                                </div>
+                            </div>
+
+                            <!-- Budget progress bar -->
+                            <div class="flex flex-col gap-1">
+                                <div class="flex justify-between text-[10px] text-slate-500 mb-1">
+                                    <span>نسبة استهلاك الميزانية</span>
+                                    <span id="budget-pct-label">0%</span>
+                                </div>
+                                <div class="w-full bg-slate-800 rounded-full h-2">
+                                    <div id="budget-progress-bar" class="budget-fill h-2 rounded-full bg-brand-500" style="width:0%"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-2 text-xs text-slate-400">
+                                <div class="flex justify-between">
+                                    <span>تكلفة الاستعلامات التقديرية:</span>
+                                    <span class="text-white font-bold"><span id="res-total-inquiries-cost">5,500.00</span> ريال</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>عدد الاستعلامات الإجمالية:</span>
+                                    <span class="text-white font-bold"><span id="res-total-qty">2,000</span> طلب</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>ضريبة القيمة المضافة (15%):</span>
+                                    <span><span id="res-vat">750.00</span> ريال</span>
+                                </div>
+                                <div class="flex justify-between border-t border-slate-800/80 pt-2">
+                                    <span class="font-bold text-slate-300">الإجمالي شامل الضريبة:</span>
+                                    <span class="text-white font-bold text-sm"><span id="res-grand-total">5,750.00</span> ريال</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-5 border-t border-slate-800">
+                        <div id="budget-analysis-badge" class="text-xs p-3.5 rounded-xl flex items-start gap-2.5 bg-amber-500/10 border border-amber-500/30 text-amber-500">
+                            <i class="fa-solid fa-triangle-exclamation text-base shrink-0 mt-0.5"></i>
+                            <div>
+                                <h5 class="font-bold">ملاحظة الرصيد</h5>
+                                <p class="text-[11px] text-slate-400 mt-0.5" id="budget-analysis-text"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── TAB 4: ETIMAD ─── -->
+        <section id="tab-etimad" class="tab-content hidden flex flex-col gap-6">
+
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="bg-emerald-500/10 text-emerald-400 p-3 rounded-2xl border border-emerald-500/20 shrink-0">
+                        <i class="fa-solid fa-building-columns text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">مستشار الربط مع منصة اعتماد للمشتريات</h3>
+                        <p class="text-xs text-slate-400">كيف تستخدم واجهات واثق للتحقق ومطابقة نظام المنافسات والمشتريات الحكومية.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col gap-3 hover:border-emerald-500/20 transition">
+                    <span class="text-xs text-emerald-400 font-bold bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-900/50 w-max">دليل المقاولين</span>
+                    <h4 class="text-base font-bold text-white">التحقق التلقائي من حالة السجل واستبعاد المقاولين</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        يتطلب دليل استبعاد المقاولين التحقق الدائم من سلامة السجل التجاري. استدعاء
+                        <code class="text-brand-400 font-mono text-[10px]">GET /status/{id}</code>
+                        يتيح التحقق الفوري من الكيان التجاري قبل ترسية العقود وتفادي غرامات الاستبعاد.
+                    </p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col gap-3 hover:border-emerald-500/20 transition">
+                    <span class="text-xs text-blue-400 font-bold bg-blue-950/50 px-2 py-0.5 rounded border border-blue-900/50 w-max">دليل الضمانات</span>
+                    <h4 class="text-base font-bold text-white">تدقيق الوكالات الشرعية والشركاء</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        لمطابقة صلاحية المفوضين لإصدار الضمانات البنكية، يُستخدم API الوكالات العدلية
+                        <code class="text-brand-400 font-mono text-[10px]">GET /info/{code}</code>
+                        للتحقق من صلاحية المدراء قبل رفع الضمان الابتدائي.
+                    </p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col gap-3 hover:border-emerald-500/20 transition">
+                    <span class="text-xs text-amber-500 font-bold bg-amber-950/50 px-2 py-0.5 rounded border border-amber-900/50 w-max">دليل التعاقد الرقمي</span>
+                    <h4 class="text-base font-bold text-white">العقود الرقمية والعنوان الوطني</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        تتطلب العقود التنفيذية على اعتماد إدخال العنوان الوطني الدقيق. يربط API واثق
+                        <code class="text-brand-400 font-mono text-[10px]">/info/{crNumber}</code>
+                        هذه الحقول تلقائياً لمنع أخطاء التعميد.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+                <h4 class="text-base font-bold text-white mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-headset text-brand-500"></i>
+                    المرشد الذكي لتكامل منصة اعتماد
+                </h4>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+                    <div class="md:col-span-4 flex flex-col gap-1.5 border-l border-slate-800 pl-3">
+                        <button type="button" onclick="showEtimadQa(1)" id="qa-btn-1"
+                                class="qa-btn text-right px-3 py-2 text-xs font-semibold rounded-lg text-brand-400 bg-brand-950/40 border border-brand-900/50 transition">
+                            كيف أتحقق من أهلية مقاول قبل الترسية؟
+                        </button>
+                        <button type="button" onclick="showEtimadQa(2)" id="qa-btn-2"
+                                class="qa-btn text-right px-3 py-2 text-xs font-semibold rounded-lg text-slate-400 hover:text-white transition">
+                            ما السجل الموصى به للتحقق من صلاحية توقيع العقود؟
+                        </button>
+                        <button type="button" onclick="showEtimadQa(3)" id="qa-btn-3"
+                                class="qa-btn text-right px-3 py-2 text-xs font-semibold rounded-lg text-slate-400 hover:text-white transition">
+                            كيف يفيد واثق في تفادي إشكالات الضمانات البنكية؟
+                        </button>
+                        <button type="button" onclick="showEtimadQa(4)" id="qa-btn-4"
+                                class="qa-btn text-right px-3 py-2 text-xs font-semibold rounded-lg text-slate-400 hover:text-white transition">
+                            متى يجب الاستعلام عن العنوان الوطني في دورة المشتريات؟
+                        </button>
+                    </div>
+                    <div class="md:col-span-8 bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col justify-between min-h-[160px]">
+                        <div id="qa-answer-text" class="text-xs text-slate-300 leading-relaxed" aria-live="polite"></div>
+                        <div class="mt-4 pt-3 border-t border-slate-800/60 flex items-center justify-between text-[10px] text-slate-500">
+                            <span>المصدر: دليل الحوكمة المالية والمشتريات الرقمية الموحد</span>
+                            <span class="text-brand-500">منصة واثق × اعتماد</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<!-- ═══════════════ MODAL: BrainSAIT Keys ═══════════════ -->
+<div id="keys-modal" role="dialog" aria-modal="true" aria-labelledby="keys-modal-title"
+     class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-lg w-full p-6 relative shadow-2xl">
+        <button type="button" onclick="closeModal('keys-modal')" aria-label="إغلاق النافذة"
+                class="absolute top-4 left-4 text-slate-400 hover:text-white transition">
+            <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+        <div class="flex items-center gap-3 mb-5">
+            <div class="bg-brand-500/10 text-brand-400 p-2 rounded-xl border border-brand-500/20">
+                <i class="fa-solid fa-key text-xl"></i>
+            </div>
+            <div>
+                <h3 id="keys-modal-title" class="text-base font-bold text-white">مفاتيح الوصول — BrainSAIT</h3>
+                <p class="text-xs text-amber-400/80">⚠ بيانات تجريبية — لا تستخدم في الإنتاج</p>
+            </div>
+        </div>
+        <div class="flex flex-col gap-4">
+            <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800">
+                <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-xs text-slate-400 font-bold">مفتاح API (apiKey)</span>
+                    <button type="button" onclick="copyToClipboard('EQMc2uonE6iViTfUjJ2KARG9a3yDDwdQ','تم نسخ مفتاح API!')"
+                            class="text-xs text-brand-400 hover:underline flex items-center gap-1">
+                        <i class="fa-regular fa-copy"></i><span>نسخ</span>
+                    </button>
+                </div>
+                <code class="text-xs text-emerald-400 font-mono select-all block break-all">EQMc2uonE6iViTfUjJ2KARG9a3yDDwdQ</code>
+            </div>
+            <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800">
+                <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-xs text-slate-400 font-bold">كلمة السر (Password)</span>
+                    <button type="button" onclick="copyToClipboard('ZhYKLpEGWna9phXj','تم نسخ كلمة السر!')"
+                            class="text-xs text-brand-400 hover:underline flex items-center gap-1">
+                        <i class="fa-regular fa-copy"></i><span>نسخ</span>
+                    </button>
+                </div>
+                <code class="text-xs text-emerald-400 font-mono select-all block break-all">ZhYKLpEGWna9phXj</code>
+            </div>
+            <div class="grid grid-cols-2 gap-3 text-xs text-slate-400">
+                <div>تاريخ الإصدار: <strong class="text-slate-200">منذ 22 دقيقة</strong></div>
+                <div>الصلاحية: <strong class="text-slate-200">دائمة</strong></div>
+            </div>
+        </div>
+        <button type="button" onclick="closeModal('keys-modal')"
+                class="w-full mt-6 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold py-3 rounded-xl transition">إغلاق النافذة</button>
+    </div>
+</div>
+
+<!-- ═══════════════ MODAL: Products ═══════════════ -->
+<div id="products-modal" role="dialog" aria-modal="true" aria-labelledby="products-modal-title"
+     class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 relative shadow-2xl">
+        <button type="button" onclick="closeModal('products-modal')" aria-label="إغلاق النافذة"
+                class="absolute top-4 left-4 text-slate-400 hover:text-white transition">
+            <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+        <div class="flex items-center gap-3 mb-4">
+            <div class="bg-brand-500/10 text-brand-400 p-2.5 rounded-xl border border-brand-500/20">
+                <i class="fa-solid fa-cubes text-xl"></i>
+            </div>
+            <div>
+                <h3 id="products-modal-title" class="text-base font-bold text-white">المنتجات المفعلة — BrainSAIT</h3>
+                <p class="text-xs text-slate-400">واجهات API وصلاحيات العمل الفورية المعيّنة</p>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-h-[380px] overflow-y-auto pl-1">
+            <!-- 10 active products -->
+            <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800 flex items-center justify-between"><span class="text-xs text-slate-200 font-semibold">Chamber of Commerce — Basic</span><span class="text-[10px] text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-900/50">مُفَعَّل</span></div>
+            <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800 flex items-center justify-between"><span class="text-xs text-slate-200 font-semibold">motim-delegation — Basic</span><span class="text-[10px] text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-900/50">مُفَعَّل</span></div>
+            <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800 flex items-center justify-between"><span class="text-xs text-slate-200 font-semibold">Real Estates Deeds — Basic</span><span class="text-[10px] text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-900/50">مُفَعَّل</span></div>
+            <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800 flex items-center justify-between"><span class="text-xs text-slate-200 font-semibold">Commercial Registration Search</span><span class="text-[10px] text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-900/50">مُفَعَّل</span></div>
+            <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800 flex items-center justify-between"><span class="text-xs text-slate-200 font-semibold">Power Of Attorney — Basic</span><span class="text-[10px] text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-900/50">مُفَعَّل</span></div>
+            <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800 flex items-center justify-between"><span class="text-xs text-slate-200 font-semibold">National Address — Basic</span><span class="text-[10px] text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-900/50">مُفَعَّل</span></div>
+            <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800 flex items-center justify-between"><span class="text-xs text-slate-200 font-semibold">Real Estates — Basic</span><span class="text-[10px] text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-900/50">مُفَعَّل</span></div>
+            <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800 flex items-center justify-between"><span class="text-xs text-slate-200 font-semibold">Commercial Registration — Basic</span><span class="text-[10px] text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-900/50">مُفَعَّل</span></div>
+            <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800 flex items-center justify-between"><span class="text-xs text-slate-200 font-semibold">Company Contract — Basic</span><span class="text-[10px] text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-900/50">مُفَعَّل</span></div>
+            <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800 flex items-center justify-between"><span class="text-xs text-slate-200 font-semibold">E-Delegation — Basic</span><span class="text-[10px] text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-900/50">مُفَعَّل</span></div>
+            <!-- 2 pending -->
+            <div class="bg-slate-950/60 p-3 rounded-xl border border-amber-900/20 flex items-center justify-between"><span class="text-xs text-slate-200 font-semibold">CR Beneficiary</span><span class="text-[10px] text-amber-400 bg-amber-950/80 px-2 py-0.5 rounded-full border border-amber-900/50">قيد المراجعة</span></div>
+            <div class="bg-slate-950/60 p-3 rounded-xl border border-amber-900/20 flex items-center justify-between"><span class="text-xs text-slate-200 font-semibold">Employee Information — Basic</span><span class="text-[10px] text-amber-400 bg-amber-950/80 px-2 py-0.5 rounded-full border border-amber-900/50">قيد المراجعة</span></div>
+        </div>
+        <button type="button" onclick="closeModal('products-modal')"
+                class="w-full mt-5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold py-3 rounded-xl transition">إغلاق النافذة</button>
+    </div>
+</div>
+
+<!-- ═══════════════ MODAL: Add App ═══════════════ -->
+<div id="add-app-modal" role="dialog" aria-modal="true" aria-labelledby="add-app-modal-title"
+     class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-md w-full p-6 relative shadow-2xl">
+        <button type="button" onclick="closeModal('add-app-modal')" aria-label="إغلاق النافذة"
+                class="absolute top-4 left-4 text-slate-400 hover:text-white transition">
+            <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+        <div class="flex items-center gap-3 mb-5">
+            <div class="bg-brand-500/10 text-brand-400 p-2 rounded-xl border border-brand-500/20">
+                <i class="fa-solid fa-plus-square text-xl"></i>
+            </div>
+            <div>
+                <h3 id="add-app-modal-title" class="text-base font-bold text-white">إضافة تطبيق جديد</h3>
+                <p class="text-xs text-slate-400">سجّل منتجك الجديد للبدء بالتحقق الإلكتروني</p>
+            </div>
+        </div>
+        <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-1.5">
+                <label for="new-app-name" class="text-xs text-slate-400">اسم التطبيق التجاري:</label>
+                <input type="text" id="new-app-name" placeholder="مثال: Wathq-Contractor-Integration"
+                       class="bg-slate-950 border border-slate-800 text-sm text-white rounded-xl p-3 focus:ring-1 focus:ring-brand-500 focus:outline-none">
+            </div>
+            <div class="flex flex-col gap-1.5">
+                <label for="new-app-desc" class="text-xs text-slate-400">وصف الغرض والتحقق:</label>
+                <textarea id="new-app-desc" rows="3"
+                          placeholder="نبذة عن كيفية استخدام التطبيق للتحقق من الموردين أو التكامل المالي..."
+                          class="bg-slate-950 border border-slate-800 text-sm text-white rounded-xl p-3 focus:ring-1 focus:ring-brand-500 focus:outline-none resize-none"></textarea>
+            </div>
+        </div>
+        <div class="flex gap-3 mt-6">
+            <button type="button" onclick="closeModal('add-app-modal')"
+                    class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold py-3 rounded-xl transition">إلغاء</button>
+            <button type="button" onclick="saveNewApp()"
+                    class="flex-1 bg-brand-600 hover:bg-brand-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-brand-900/30 transition">حفظ وإصدار المفاتيح</button>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════ TOAST ═══════════════ -->
+<div id="custom-toast" role="status" aria-live="polite"
+     class="toast-hidden fixed bottom-5 left-5 z-50 bg-slate-900 border border-brand-500/30 shadow-2xl p-4 rounded-xl flex items-center gap-3 max-w-sm">
+    <div class="bg-brand-500/15 text-brand-400 p-2 rounded-lg border border-brand-500/30 shrink-0">
+        <i class="fa-solid fa-check-double text-base"></i>
+    </div>
+    <div>
+        <h5 class="text-xs font-bold text-white" id="toast-title">إشعار</h5>
+        <p class="text-[11px] text-slate-400 mt-0.5" id="toast-message">تم تنفيذ العملية بنجاح.</p>
+    </div>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="border-t border-slate-800 bg-slate-900/60 py-6 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div class="flex items-center gap-6">
+            <a href="#" class="hover:text-brand-400 transition">الأحكام والشروط</a>
+            <a href="#" class="hover:text-brand-400 transition">سياسة الخصوصية</a>
+            <a href="#" class="hover:text-brand-400 transition">الأسئلة الشائعة</a>
+        </div>
+        <div class="flex items-center gap-3">
+            <span>جميع الحقوق محفوظة © 2026 واثق الرقمية</span>
+            <span class="text-slate-700">|</span>
+            <a href="/" class="hover:text-amber-400 transition font-bold" style="font-family:'Syne',sans-serif;">⬡ BrainSAIT</a>
+        </div>
+    </div>
+</footer>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script>
+/* ── State ── */
+let currentTab = 'dashboard';
+let currentPlaygroundLang = 'python';
+let activePlaygroundKey = 'EQMc2uonE6iViTfUjJ2KARG9a3yDDwdQ';
+let activePrepaidValue = 5000;
+let toastTimer = null;
+
+const appsData = [
+    { id:'app-am-77', name:'Americana-API', key:'AM77c2uonE6iViTfUjJ2KARG9a3yDD', pwd:'AmePwdEGWna9phXj' },
+    { id:'app-fa-88', name:'FadilWathAPI',  key:'FA88c2uonE6iViTfUjJ2KARG9a3yDD', pwd:'FadPwdEGWna9phXj' },
+    { id:'app-wl-99', name:'Wathqlinc-Pro', key:'WL99c2uonE6iViTfUjJ2KARG9a3yDD', pwd:'WlProEGWna9phXj' }
+];
+
+const etimadQaAnswers = {
+    1: "للتحقق التلقائي من أهلية أي مقاول على اعتماد، يُربط النظام بـ <code class='text-brand-400 bg-slate-900 px-1 rounded'>GET /status/{id}</code> لسجل السجل التجاري. يُتيح هذا الاستعلام اللحظي التأكد من أن الكيان نشط وغير مشطوب أو مجمد، مما يمنع ترسية العقود على أطراف مستبعدة تنظيمياً.",
+    2: "توصي حوكمة العقود الرقمية بالتحقق من وثيقتين: <strong>صلاحيات المدراء في عقود التأسيس</strong> عبر <code class='text-brand-400 bg-slate-900 px-1 rounded'>GET /manager/...</code> للتأكد من أحقية الممثل بالتوقيع، و<strong>الوكالة العدلية</strong> عبر API وزارة العدل المتكامل للتحقق من صلاحية المفوضين.",
+    3: "باستخدام واثق، يستطيع النظام البنكي فحص هوية مقدم الطلب، والتحقق من الملاك الفعليين، مما يسرّع إصدار خطاب الضمان ويلغي الحاجة للتدخل اليدوي الذي يبطئ تقديم العروض للمنافسات.",
+    4: "العنوان الوطني حقل إجباري في اعتماد لتوقيع العقود وتلقي المراسلات الرسمية. يُستعلم عنه عبر <code class='text-brand-400 bg-slate-900 px-1 rounded'>/info/{crNumber}</code> مباشرةً عند إدخال بيانات الطرف الثاني وقبل صياغة العقود، لضمان مطابقتها للسجلات المعتمدة."
+};
+
+/* ── Helpers ── */
+function escHtml(s) {
+    return String(s)
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+        .replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+}
+
+async function copyToClipboard(text, msg) {
+    try {
+        await navigator.clipboard.writeText(text);
+        showToast('تم النسخ', msg);
+    } catch {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;opacity:0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); showToast('تم النسخ', msg); }
+        catch { showToast('خطأ', 'تعذّر النسخ — يرجى النسخ يدوياً.'); }
+        document.body.removeChild(ta);
+    }
+}
+
+function copyEndpointUrl() {
+    const url = document.getElementById('req-endpoint').textContent;
+    copyToClipboard(url, 'تم نسخ رابط API!');
+}
+
+function showToast(title, message) {
+    clearTimeout(toastTimer);
+    document.getElementById('toast-title').textContent = title;
+    document.getElementById('toast-message').textContent = message;
+    const t = document.getElementById('custom-toast');
+    t.classList.remove('toast-hidden');
+    toastTimer = setTimeout(() => t.classList.add('toast-hidden'), 3200);
+}
+
+function showWipToast() {
+    showToast('ميزة قيد التطوير', 'جاري ربط لوحة الإحصاءات المتقدمة في النسخة القادمة.');
+}
+
+/* ── Modals ── */
+function openModal(id)  { document.getElementById(id).classList.remove('hidden'); }
+function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+function openBrainSaitKeys()    { openModal('keys-modal'); }
+function openBrainSaitProducts(){ openModal('products-modal'); }
+
+// ESC to close any open modal
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        ['keys-modal','products-modal','add-app-modal'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el && !el.classList.contains('hidden')) closeModal(id);
+        });
+    }
+});
+
+// Click-outside to close modals
+['keys-modal','products-modal','add-app-modal'].forEach(id => {
+    document.getElementById(id).addEventListener('click', e => {
+        if (e.target === document.getElementById(id)) closeModal(id);
+    });
+});
+
+/* ── Theme ── */
+function toggleTheme() {
+    const html = document.documentElement;
+    const icon = document.getElementById('theme-icon');
+    const isDark = html.classList.toggle('dark');
+    icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+    showToast('المظهر', isDark ? 'تفعيل الوضع الداكن' : 'تفعيل الوضع المضيء');
+}
+
+/* ── Tab switching ── */
+function switchTab(tabId) {
+    currentTab = tabId;
+    document.querySelectorAll('.tab-content').forEach(el => {
+        el.classList.add('hidden');
+        el.style.opacity = '0';
+    });
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('bg-brand-950','text-brand-400','border','border-brand-900/50');
+        btn.classList.add('text-slate-300');
+    });
+
+    const section = document.getElementById('tab-' + tabId);
+    if (section) {
+        section.classList.remove('hidden');
+        requestAnimationFrame(() => { section.style.opacity = '1'; });
+    }
+    const btn = document.getElementById('btn-' + tabId);
+    if (btn) {
+        btn.classList.remove('text-slate-300');
+        btn.classList.add('bg-brand-950','text-brand-400','border','border-brand-900/50');
+    }
+}
+
+/* ── Playground ── */
+function updatePlaygroundKey() {
+    const val = document.getElementById('playground-app-select').value;
+    const match = appsData.find(a => a.name === val);
+    activePlaygroundKey = (val === 'BrainSAIT') ? 'EQMc2uonE6iViTfUjJ2KARG9a3yDDwdQ'
+                        : match ? match.key
+                        : 'WathqKey' + Math.random().toString(36).substr(3,7).toUpperCase();
+    document.getElementById('header-key-display').textContent = activePlaygroundKey.substring(0,10) + '...';
+    updatePlaygroundSnippet();
+}
+
+function onServiceChange() {
+    const val = document.getElementById('api-service-selector').value;
+    const c = document.getElementById('playground-inputs');
+    if (val === 'cr-full') {
+        c.innerHTML = `<div class="flex flex-col gap-1"><label class="text-[11px] text-slate-500">رقم السجل التجاري:</label><input type="text" id="play-input-val1" value="1010000123" oninput="updateEndpointsShowcase()" class="bg-slate-950 border border-slate-800 text-sm text-white rounded-xl p-2.5 focus:ring-1 focus:ring-brand-500 font-mono focus:outline-none"></div>`;
+    } else if (val === 'deed-check') {
+        c.innerHTML = `<div class="flex flex-col gap-1"><label class="text-[11px] text-slate-500">رقم الصك العقاري:</label><input type="text" id="play-input-val1" value="920104001243" oninput="updateEndpointsShowcase()" class="bg-slate-950 border border-slate-800 text-sm text-white rounded-xl p-2.5 focus:ring-1 focus:ring-brand-500 font-mono focus:outline-none"></div><div class="flex flex-col gap-1"><label class="text-[11px] text-slate-500">هوية مالك الصك:</label><input type="text" id="play-input-val2" value="1029432143" class="bg-slate-950 border border-slate-800 text-sm text-white rounded-xl p-2.5 focus:ring-1 focus:ring-brand-500 font-mono focus:outline-none"></div>`;
+    } else if (val === 'national-address') {
+        c.innerHTML = `<div class="flex flex-col gap-1"><label class="text-[11px] text-slate-500">رقم السجل التجاري للمنشأة:</label><input type="text" id="play-input-val1" value="1010554321" oninput="updateEndpointsShowcase()" class="bg-slate-950 border border-slate-800 text-sm text-white rounded-xl p-2.5 focus:ring-1 focus:ring-brand-500 font-mono focus:outline-none"></div>`;
+    } else if (val === 'poa-details') {
+        c.innerHTML = `<div class="flex flex-col gap-1"><label class="text-[11px] text-slate-500">رقم الوكالة العدلية:</label><input type="text" id="play-input-val1" value="441098432" oninput="updateEndpointsShowcase()" class="bg-slate-950 border border-slate-800 text-sm text-white rounded-xl p-2.5 focus:ring-1 focus:ring-brand-500 font-mono focus:outline-none"></div>`;
+    }
+    updateEndpointsShowcase();
+}
+
+function updateEndpointsShowcase() {
+    const val = document.getElementById('api-service-selector').value;
+    const v1 = (document.getElementById('play-input-val1') || {}).value || '123';
+    const endpointEl = document.getElementById('req-endpoint');
+    const base = 'https://api.wathq.sa/v1';
+    const map = {
+        'cr-full':          `${base}/commercial-registration/fullinfo/${v1}`,
+        'deed-check':       `${base}/real-estate/deed/${v1}`,
+        'national-address': `${base}/national-address/info/${v1}`,
+        'poa-details':      `${base}/power-of-attorney/info/${v1}`
+    };
+    endpointEl.textContent = map[val] || '';
+    updatePlaygroundSnippet();
+}
+
+function switchPlaygroundSubTab(id) {
+    document.querySelectorAll('.subtab-btn').forEach(b => b.classList.remove('active-subtab'));
+    document.querySelectorAll('.subtab-panel').forEach(p => p.classList.add('hidden'));
+    const btn = document.getElementById('subtab-btn-' + id);
+    const panel = document.getElementById('play-panel-' + id);
+    if (btn) btn.classList.add('active-subtab');
+    if (panel) panel.classList.remove('hidden');
+}
+
+function setPlaygroundLang(lang) {
+    currentPlaygroundLang = lang;
+    ['python','node','curl'].forEach(l => {
+        const b = document.getElementById('lang-btn-' + l);
+        b.className = l === lang
+            ? 'px-2 py-1 text-[10px] font-bold bg-brand-600/20 text-brand-400 rounded'
+            : 'px-2 py-1 text-[10px] font-bold bg-slate-800 text-slate-400 rounded';
+    });
+    updatePlaygroundSnippet();
+}
+
+function updatePlaygroundSnippet() {
+    const url = document.getElementById('req-endpoint').textContent;
+    const k = activePlaygroundKey;
+    const el = document.getElementById('code-snippet-container');
+    if (!el) return;
+    if (currentPlaygroundLang === 'python') {
+        el.textContent = `import requests\n\nurl = "${url}"\nheaders = {\n    "Accept": "application/json",\n    "apiKey": "${k}"\n}\n\nresponse = requests.get(url, headers=headers)\ndata = response.json()\nprint(f"Status: {response.status_code}")\nprint(data)`;
+    } else if (currentPlaygroundLang === 'node') {
+        el.textContent = `const axios = require('axios');\n\naxios.get('${url}', {\n  headers: { 'Accept': 'application/json', 'apiKey': '${k}' }\n})\n  .then(res => console.log(res.data))\n  .catch(err => console.error(err.message));`;
+    } else {
+        el.textContent = `curl -X GET "${url}" \\\n  -H "Accept: application/json" \\\n  -H "apiKey: ${k}"`;
+    }
+}
+
+function runSimulatedAPI() {
+    const val = document.getElementById('api-service-selector').value;
+    const i1el = document.getElementById('play-input-val1');
+    if (!i1el || !i1el.value.trim()) {
+        showToast('خطأ في الإدخال', 'يرجى إدخال القيمة المطلوبة قبل الإرسال.');
+        return;
+    }
+    const input1 = escHtml(i1el.value.trim());
+    const input2 = escHtml((document.getElementById('play-input-val2') || {}).value || '');
+
+    // Loading state
+    const runBtn = document.getElementById('run-btn');
+    const runIcon = document.getElementById('run-btn-icon');
+    const runText = document.getElementById('run-btn-text');
+    runBtn.disabled = true;
+    runIcon.className = 'fa-solid fa-spinner fa-spin';
+    runText.textContent = 'جارٍ الاستعلام...';
+
+    document.getElementById('json-output').textContent = '// جارٍ الاتصال بخوادم واثق الآمنة...';
+    document.getElementById('visual-render-container').innerHTML = `
+        <div class="flex flex-col items-center gap-3">
+            <div class="w-8 h-8 border-4 border-brand-500 border-t-transparent rounded-full animate-spin"></div>
+            <p class="text-xs text-slate-400 font-semibold">جارٍ استرجاع مستند واثق المعتمد...</p>
+        </div>`;
+
+    setTimeout(() => {
+        let mockJson = {};
+        let visualHtml = '';
+
+        if (val === 'cr-full') {
+            mockJson = { crNumber: input1, crNameAr:"شركة تطوير الحلول الرقمية الذكية", crNameEn:"Smart Digital Solutions Development Co.", status:"نشط", capital:{ amount:2000000, currency:"SAR" }, entityType:"ذات مسؤولية محدودة", address:{ city:"الرياض", district:"حي الصحافة" }, owners:[{name:"خالد بن عبد الله الجبر",share:"50%"},{name:"سارة بنت محمد آل سعود",share:"50%"}], managers:[{name:"عمر بن فهد السليمان",position:"المدير التنفيذي"}] };
+            visualHtml = `<div class="w-full max-w-md bg-white text-slate-900 border-4 border-double border-slate-400 p-6 rounded-lg text-right relative shadow-md"><div class="border-b-2 border-slate-300 pb-3 mb-4 flex justify-between items-center"><span class="text-[10px] text-slate-500">وزارة التجارة</span><h4 class="text-sm font-black text-green-900">مستخرج السجل التجاري (واثق)</h4></div><div class="flex flex-col gap-2 text-xs"><div class="flex justify-between"><strong>المنشأة:</strong><span class="text-green-800 font-bold">شركة تطوير الحلول الرقمية</span></div><div class="flex justify-between"><strong>رقم السجل:</strong><span class="font-mono">${input1}</span></div><div class="flex justify-between"><strong>الحالة:</strong><span class="text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded">نشط</span></div><div class="flex justify-between"><strong>رأس المال:</strong><span>2,000,000 ريال</span></div><div class="flex justify-between"><strong>انتهاء السجل:</strong><span>1448/05/12 هـ</span></div><div class="border-t border-slate-200 my-2 pt-2"><span class="font-bold block mb-1">المدير:</span><span class="text-slate-700">عمر بن فهد السليمان (المدير التنفيذي)</span></div></div><div class="mt-3 pt-2 border-t border-slate-100 flex justify-between text-[9px] text-slate-400"><span>مطابق لمنصة اعتماد</span><span>مصدر: واثق</span></div></div>`;
+        } else if (val === 'deed-check') {
+            mockJson = { deedNumber: input1, ownerId: input2, status:"صك فعال", issueDate:"1441/08/20", property:{ type:"أرض فضاء تجارية", city:"الرياض", district:"حي النرجس", areaM2: 1250 }, verifiedBy:"وزارة العدل" };
+            visualHtml = `<div class="w-full max-w-md bg-amber-50 text-slate-900 border-2 border-amber-300 p-6 rounded-xl text-right shadow-md"><div class="border-b border-amber-200 pb-2 mb-3 flex justify-between items-center"><span class="text-[9px] font-bold text-amber-800 bg-amber-200/50 px-2 py-0.5 rounded">وثيقة إلكترونية موثقة</span><h4 class="text-xs font-black text-amber-900">شهادة تحقق صك عقاري</h4></div><div class="flex flex-col gap-1.5 text-xs"><div><strong>رقم الصك:</strong> <span class="font-mono font-bold">${input1}</span></div><div><strong>هوية المالك:</strong> <span class="font-mono">${input2 || 'غير محدد'}</span></div><div><strong>النوع:</strong> <span>أرض فضاء تجارية</span></div><div><strong>الموقع:</strong> <span>الرياض — حي النرجس</span></div><div><strong>المساحة:</strong> <span>1,250 م²</span></div><div class="mt-2 p-2 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-800 flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-600"></i><span>صك فعال ومطابق لوزارة العدل</span></div></div></div>`;
+        } else if (val === 'national-address') {
+            mockJson = { crNumber: input1, buildingNumber:"3292", postalCode:"12331", additionalNumber:"8821", street:"طريق العليا العام", district:"حي الورود", city:"الرياض", fullAddress:"3292 طريق العليا العام، حي الورود، الرياض 12331-8821" };
+            visualHtml = `<div class="w-full max-w-md bg-emerald-950 text-white border border-brand-500/30 p-5 rounded-2xl text-right shadow-xl"><div class="flex justify-between items-center mb-3"><span class="bg-brand-500 text-emerald-950 text-[10px] font-black px-2.5 py-0.5 rounded">العنوان الوطني المعتمد</span><i class="fa-solid fa-map-location-dot text-brand-400"></i></div><p class="text-base font-bold text-slate-100 mb-3">3292 طريق العليا العام، حي الورود، الرياض 12331-8821</p><div class="grid grid-cols-2 gap-3 text-xs text-slate-400 border-t border-emerald-900 pt-3"><div><strong>المبنى:</strong> <span class="text-white">3292</span></div><div><strong>الرمز البريدي:</strong> <span class="text-white">12331</span></div><div><strong>الرقم الإضافي:</strong> <span class="text-white">8821</span></div><div><strong>المدينة:</strong> <span class="text-white">الرياض</span></div></div></div>`;
+        } else if (val === 'poa-details') {
+            mockJson = { poaNumber: input1, status:"سارية", issueDate:"1445/02/10", expiryDate:"1448/02/10", principal:"عبد اللطيف عبد العزيز البواردي", agent:"فهد بن سليمان الراجحي", powers:["توقيع العقود الرقمية","تقديم الضمانات البنكية","مراجعة اعتماد والتعقيب"] };
+            visualHtml = `<div class="w-full max-w-md bg-slate-900 border border-slate-700 p-5 rounded-xl text-right shadow-md"><div class="border-b border-slate-800 pb-2.5 mb-3 flex justify-between items-center"><span class="text-[10px] text-emerald-400 font-bold bg-emerald-950 px-2 py-0.5 rounded-full border border-emerald-900/40">سارية وصالحة</span><h4 class="text-xs font-bold text-slate-200">الوكالة العدلية المعتمدة</h4></div><div class="flex flex-col gap-2 text-xs"><div><strong>رقم الوكالة:</strong> <span class="font-mono font-bold text-white">${input1}</span></div><div><strong>الموكِّل:</strong> <span>عبد اللطيف عبد العزيز البواردي</span></div><div><strong>الوكيل:</strong> <span class="text-amber-400 font-semibold">فهد بن سليمان الراجحي</span></div><div class="mt-2 border-t border-slate-800 pt-2"><strong class="text-slate-400 block mb-1">الصلاحيات:</strong><ul class="list-disc pr-4 text-slate-300 flex flex-col gap-0.5"><li>توقيع العقود الرقمية</li><li>تقديم الضمانات البنكية</li><li>مراجعة اعتماد والتعقيب</li></ul></div></div></div>`;
+        }
+
+        document.getElementById('json-output').textContent = JSON.stringify(mockJson, null, 2);
+        document.getElementById('visual-render-container').innerHTML = visualHtml;
+        updatePlaygroundSnippet();
+        showToast('نجاح الاستعلام', 'تم استرجاع البيانات ومطابقتها بنجاح!');
+
+        runBtn.disabled = false;
+        runIcon.className = 'fa-solid fa-play';
+        runText.textContent = 'إرسال طلب الاستعلام';
+    }, 850);
+}
+
+/* ── Calculator ── */
+function setPrepaidValue(val) {
+    activePrepaidValue = val;
+    document.querySelectorAll('.pv-btn').forEach(b => {
+        b.className = 'pv-btn py-2 text-xs font-bold rounded-lg border border-slate-800 bg-slate-900 text-slate-400 hover:text-white transition';
+    });
+    const ab = document.getElementById('pv-' + val);
+    if (ab) ab.className = 'pv-btn py-2 text-xs font-bold rounded-lg border border-brand-500 bg-brand-500/10 text-white transition';
+    calculateBudget();
+}
+
+function calculateBudget() {
+    const pkg = (document.querySelector('input[name="calc-pkg"]:checked') || {}).value || 'prepaid';
+    const qtyCrFull  = Math.max(0, parseInt(document.getElementById('qty-cr-full').value)  || 0);
+    const qtyCrBasic = Math.max(0, parseInt(document.getElementById('qty-cr-basic').value) || 0);
+    const qtyNat     = Math.max(0, parseInt(document.getElementById('qty-national').value) || 0);
+    const qtyFree    = Math.max(0, parseInt(document.getElementById('qty-free').value)     || 0);
+
+    const totalQty  = qtyCrFull + qtyCrBasic + qtyNat + qtyFree;
+    const totalCost = (qtyCrFull * 12) + (qtyCrBasic * 5) + (qtyNat * 2);
+    const vat       = totalCost * 0.15;
+    const grand     = totalCost + vat;
+
+    const prepaidBlock = document.getElementById('prepaid-options-block');
+    const validityNote = document.getElementById('prepaid-validity-note');
+
+    let baseCharge = 0, bonusPct = 0;
+
+    if (pkg === 'trial') {
+        prepaidBlock.classList.add('opacity-40','pointer-events-none');
+        document.getElementById('res-total-balance').textContent = '100 استعلام مجاني';
+        document.getElementById('res-base-charge').textContent   = '0.00';
+        document.getElementById('res-bonus-charge').textContent  = '+100 طلب';
+    } else if (pkg === 'prepaid') {
+        prepaidBlock.classList.remove('opacity-40','pointer-events-none');
+        baseCharge = activePrepaidValue;
+        const bonusMap = { 5000:[0,'30 يوماً'], 10000:[5,'90 يوماً'], 50000:[8,'180 يوماً'], 100000:[10,'سنة كاملة'], 150000:[12,'سنة كاملة'] };
+        const bm = bonusMap[baseCharge] || [0,'30 يوماً'];
+        bonusPct = bm[0];
+        validityNote.textContent = `الصلاحية: ${bm[1]} من التنشيط.${bonusPct ? ` يوفر لك ${bonusPct}% رصيد إضافي.` : ''}`;
+        const bonus = (baseCharge * bonusPct) / 100;
+        const total = baseCharge + bonus;
+        document.getElementById('res-total-balance').textContent = total.toLocaleString('en-US',{minimumFractionDigits:2});
+        document.getElementById('res-base-charge').textContent   = baseCharge.toLocaleString();
+        document.getElementById('res-bonus-charge').textContent  = '+' + bonus.toLocaleString();
+    } else {
+        prepaidBlock.classList.add('opacity-40','pointer-events-none');
+        document.getElementById('res-total-balance').textContent = 'عرض سعر مخصص';
+        document.getElementById('res-base-charge').textContent   = 'غير محدود';
+        document.getElementById('res-bonus-charge').textContent  = '+خصومات';
+    }
+
+    document.getElementById('res-total-inquiries-cost').textContent = totalCost.toLocaleString('en-US',{minimumFractionDigits:2});
+    document.getElementById('res-total-qty').textContent  = totalQty.toLocaleString();
+    document.getElementById('res-vat').textContent        = vat.toLocaleString('en-US',{minimumFractionDigits:2});
+    document.getElementById('res-grand-total').textContent = grand.toLocaleString('en-US',{minimumFractionDigits:2});
+
+    // Budget progress bar
+    const totalAvail = baseCharge + (baseCharge * bonusPct / 100);
+    const pct = totalAvail > 0 ? Math.min(100, Math.round((totalCost / totalAvail) * 100)) : 0;
+    const bar = document.getElementById('budget-progress-bar');
+    const pctLabel = document.getElementById('budget-pct-label');
+    bar.style.width = pct + '%';
+    bar.className = 'budget-fill h-2 rounded-full ' + (pct > 100 ? 'bg-red-500' : pct > 80 ? 'bg-amber-500' : 'bg-brand-500');
+    if (pctLabel) pctLabel.textContent = pct + '%';
+
+    // Analysis badge
+    const badge = document.getElementById('budget-analysis-badge');
+    const text  = document.getElementById('budget-analysis-text');
+    if (pkg === 'trial') {
+        badge.className = 'text-xs p-3.5 rounded-xl flex items-start gap-2.5 bg-blue-500/10 border border-blue-500/30 text-blue-400';
+        text.textContent = 'أنت على الباقة التجريبية. لديك 100 استعلام مجاني للفحص البرمجي قبل الشحن المالي.';
+    } else if (pkg === 'prepaid') {
+        const avail = baseCharge + (baseCharge * bonusPct / 100);
+        if (totalCost > avail) {
+            badge.className = 'text-xs p-3.5 rounded-xl flex items-start gap-2.5 bg-amber-500/10 border border-amber-500/30 text-amber-500';
+            text.textContent = 'تكلفة الاستعلامات تتجاوز رصيد الباقة الحالية. نوصي بزيادة سقف الشحن للحصول على رصيد يغطي الطلب بمرونة.';
+        } else {
+            badge.className = 'text-xs p-3.5 rounded-xl flex items-start gap-2.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400';
+            text.textContent = 'ممتاز! رصيد الباقة يغطي حجم استعلاماتك المخططة بنجاح مع هامش إضافي مريح.';
+        }
+    } else {
+        badge.className = 'text-xs p-3.5 rounded-xl flex items-start gap-2.5 bg-blue-500/10 border border-blue-500/30 text-blue-400';
+        text.textContent = 'باقة الأعمال تمنحك استعلامات غير محدودة وأداء يصل لـ 100 طلب/ثانية. تواصل مع مبيعات واثق للامتيازات.';
+    }
+}
+
+/* ── Add new app ── */
+function saveNewApp() {
+    const rawName = document.getElementById('new-app-name').value.trim();
+    const rawDesc = document.getElementById('new-app-desc').value.trim();
+    if (!rawName) { showToast('خطأ', 'يرجى إدخال اسم التطبيق.'); return; }
+
+    const name = escHtml(rawName);
+    const desc = escHtml(rawDesc);
+    const key  = 'WathqNew' + Math.random().toString(36).substr(3,8).toUpperCase();
+
+    const grid = document.getElementById('apps-grid');
+    const card = document.createElement('div');
+    card.className = 'bg-slate-900 border border-slate-800 hover:border-brand-500/30 transition rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden';
+    card.innerHTML = `
+        <div>
+            <div class="flex items-center justify-between mb-4">
+                <span class="bg-brand-950 text-brand-400 border border-brand-900 text-xs px-2.5 py-1 rounded-lg font-bold">مضاف حديثاً</span>
+                <span class="text-xs text-amber-400 bg-amber-950 px-2.5 py-1 rounded-full font-semibold border border-amber-900/50 flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                    بانتظار الموافقة
+                </span>
+            </div>
+            <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                <i class="fa-solid fa-cube text-brand-500"></i>${name}
+            </h4>
+            <p class="text-xs text-slate-400 mb-4">${desc || 'لا يوجد وصف مقدم.'}</p>
+        </div>
+        <div class="flex items-center gap-2 pt-4 border-t border-slate-800/80">
+            <button type="button" onclick="showToast('مفتاح جديد','${key}')" class="flex-1 bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold py-2 rounded-lg transition">استعراض المفاتيح</button>
+            <button type="button" onclick="showWipToast()" class="flex-1 border border-slate-800 hover:bg-slate-800 text-slate-300 text-xs font-semibold py-2 rounded-lg transition">المنتجات معلقة</button>
+        </div>`;
+    grid.appendChild(card);
+
+    // Add to playground selector
+    const opt = document.createElement('option');
+    opt.value = rawName; opt.text = rawName;
+    document.getElementById('playground-app-select').appendChild(opt);
+
+    // Update stat counter
+    const statEl = document.getElementById('stat-apps');
+    statEl.textContent = parseInt(statEl.textContent) + 1;
+
+    closeModal('add-app-modal');
+    showToast('تطبيق جديد مضاف', 'تمت الإضافة وقيد مراجعة تفعيل خدمات واثق.');
+    document.getElementById('new-app-name').value = '';
+    document.getElementById('new-app-desc').value = '';
+}
+
+/* ── Etimad Q&A ── */
+function showEtimadQa(id) {
+    document.querySelectorAll('.qa-btn').forEach(b => {
+        b.className = 'qa-btn text-right px-3 py-2 text-xs font-semibold rounded-lg text-slate-400 hover:text-white transition';
+    });
+    const ab = document.getElementById('qa-btn-' + id);
+    if (ab) ab.className = 'qa-btn text-right px-3 py-2 text-xs font-semibold rounded-lg text-brand-400 bg-brand-950/40 border border-brand-900/50 transition';
+    document.getElementById('qa-answer-text').innerHTML = etimadQaAnswers[id] || '';
+}
+
+/* ── Init ── */
+document.addEventListener('DOMContentLoaded', () => {
+    switchTab('dashboard');
+    onServiceChange();
+    calculateBudget();
+    showEtimadQa(1);
+});
+</script>
+</body>
+</html>
