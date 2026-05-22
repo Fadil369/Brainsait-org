@@ -373,35 +373,116 @@
 
     /* ─── NAVBAR ─── */
     #nav {
-      position: fixed; top: 0; width: 100%; z-index: 1000;
-      backdrop-filter: blur(20px) saturate(1.8);
-      -webkit-backdrop-filter: blur(20px) saturate(1.8);
-      background: rgba(2,4,10,.80);
-      border-bottom: 1px solid var(--gb);
-      transition: background .3s, box-shadow .3s;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(2,4,10,.75); backdrop-filter: blur(16px) saturate(1.4);
+      -webkit-backdrop-filter: blur(16px) saturate(1.4);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      transition: background .4s, box-shadow .4s, border-color .4s;
     }
-    #nav.scrolled { background: rgba(2,4,10,.96); box-shadow: 0 4px 32px rgba(0,0,0,.5); }
-    .ni  { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; padding: 0 24px; gap: 24px; }
-    .nb  { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); flex-shrink: 0; }
-    .nlogo { width: 36px; height: 36px; background: linear-gradient(135deg, var(--gold), var(--teal)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: var(--fd); font-weight: 800; font-size: 18px; color: var(--void); position: relative; overflow: hidden; }
-    .nn   { font-family: var(--fd); font-weight: 800; font-size: 18px; letter-spacing: .5px; }
+    #nav.scrolled { background: rgba(2,4,10,.94); box-shadow: 0 4px 32px rgba(0,0,0,.5); border-color: rgba(255,255,255,.1); }
+    .ni  { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 56px; padding: 0 14px; gap: 8px; }
+    
+    /* Logo */
+    .nb  { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); flex-shrink: 0; }
+    .nlogo {
+      width: 30px; height: 30px; background: linear-gradient(135deg, var(--gold), var(--teal));
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      font-family: var(--fd); font-weight: 800; font-size: 14px; color: var(--void);
+      position: relative; overflow: hidden;
+    }
+    .nn   { font-family: var(--fd); font-weight: 800; font-size: 15px; letter-spacing: .3px; }
     .nn em { color: var(--gold); font-style: normal; }
-    .nl  { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; }
-    .nl a { color: var(--textd); text-decoration: none; font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: var(--rx); transition: all .2s; white-space: nowrap; }
-    .nl a:hover, .nl a.active { color: var(--text); background: var(--g2); }
-    .nl a.active { color: var(--gold); }
-    .na  { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-    .lang-btn { background: var(--g1); border: 1px solid var(--gb); color: var(--textd); font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: var(--rx); cursor: pointer; transition: all .2s; font-family: var(--fi); }
-    .lang-btn:hover { background: var(--g2); color: var(--text); border-color: var(--gbh); }
-    .hbg { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 7px; border-radius: var(--rx); background: transparent; border: none; transition: background .2s; }
-    .hbg:hover { background: var(--g2); }
-    .hbg span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all .3s; }
-    .hbg.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hbg.open span:nth-child(2) { opacity: 0; }
-    .hbg.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    
+    /* Desktop nav links — hidden on mobile */
+    .nl  { display: none; }
+    .lang-btn { display: none; }
+    .na  { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    
+    /* Hamburger */
+    .hbg {
+      display: flex; flex-direction: column; gap: 4px; cursor: pointer;
+      padding: 6px; border-radius: 8px; background: transparent; border: none;
+      transition: background .2s; z-index: 1001;
+    }
+    .hbg:hover { background: rgba(255,255,255,.06); }
+    .hbg span { display: block; width: 20px; height: 2px; background: var(--text); border-radius: 2px; transition: all .3s cubic-bezier(.4,0,.2,1); }
+    .hbg.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hbg.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hbg.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-    /* ─── Mobile Menu ─── */
-    .mob-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 999; background: rgba(6,9,19,.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--gb); padding: 16px 24px 24px; flex-direction: column; gap: 4px; }
+    /* Mobile slide-in menu */
+    .mob-menu {
+      position: fixed; top: 56px; left: 0; right: 0; bottom: 0; z-index: 999;
+      background: rgba(6,9,19,.97); backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      display: flex; flex-direction: column; gap: 2px; padding: 12px 14px 24px;
+      transform: translateX(100%); opacity: 0;
+      transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .25s ease;
+      overflow-y: auto; border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .mob-menu.open { transform: translateX(0); opacity: 1; }
+    .mob-menu a {
+      display: flex; align-items: center; gap: 10px;
+      color: rgba(255,255,255,.65); text-decoration: none;
+      font-size: 15px; font-weight: 500; padding: 14px 16px;
+      border-radius: 10px; transition: all .2s;
+    }
+    .mob-menu a:hover { background: rgba(255,255,255,.04); color: var(--text); }
+    .mob-menu .btn-p { margin-top: 8px; justify-content: center; }
+    .mob-menu .book-demo {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      margin-top: 4px; padding: 12px 16px; border-radius: 10px;
+      font-size: 14px; font-weight: 600; text-decoration: none;
+      background: var(--gold-dim); color: var(--gold);
+      border: 1px solid rgba(212,165,116,.2);
+      transition: all .2s;
+    }
+    .mob-menu .book-demo:hover { background: rgba(212,165,116,.15); }
+    .mob-divider { height: 1px; background: rgba(255,255,255,.06); margin: 6px 0; }
+
+    /* Tablet+ */
+    @media (min-width: 640px) {
+      .ni { height: 64px; padding: 0 20px; gap: 16px; }
+      .nlogo { width: 34px; height: 34px; font-size: 16px; }
+      .nn { font-size: 17px; }
+    }
+
+    /* Desktop nav — full menu */
+    @media (min-width: 900px) {
+      .ni { height: 72px; padding: 0 24px; gap: 24px; }
+      .nlogo { width: 36px; height: 36px; font-size: 18px; }
+      .nn { font-size: 18px; letter-spacing: .5px; }
+      .nb { gap: 12px; }
+      
+      .nl { display: flex; align-items: center; gap: 2px; flex: 1; justify-content: center; }
+      .nl a {
+        color: var(--textd); text-decoration: none; font-size: 14px; font-weight: 500;
+        padding: 6px 12px; border-radius: 8px; transition: all .2s; white-space: nowrap;
+        position: relative;
+      }
+      .nl a::after {
+        content: ''; position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%);
+        width: 0; height: 2px; border-radius: 1px;
+        background: var(--gold); transition: width .25s;
+      }
+      .nl a:hover { color: var(--text); background: rgba(255,255,255,.04); }
+      .nl a:hover::after { width: 50%; }
+      .nl a.active { color: var(--gold); }
+      .nl a.active::after { width: 50%; background: var(--gold); }
+      
+      .lang-btn {
+        display: inline-flex; align-items: center; gap: 4px;
+        background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+        color: var(--textd); font-size: 13px; font-weight: 600;
+        padding: 6px 12px; border-radius: 8px; cursor: pointer;
+        transition: all .2s; font-family: var(--fi);
+      }
+      .lang-btn:hover { background: rgba(255,255,255,.08); color: var(--text); border-color: rgba(255,255,255,.15); }
+      .lang-btn::before { content: '🌐'; font-size: 12px; }
+      
+      .hbg { display: none; }
+      .mob-menu { display: none !important; }
+    }
     .mob-menu.open { display: flex; animation: slideDown .22s ease-out; }
     @keyframes slideDown { from { opacity:0; transform: translateY(-8px); } to { opacity:1; transform: translateY(0); } }
     .mob-menu a { color: var(--textd); text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 16px; border-radius: var(--rx); transition: all .2s; }
@@ -596,37 +677,75 @@
     .f-legal a { color: var(--textm); text-decoration: none; transition: color .2s; }
     .f-legal a:hover { color: var(--textd); }
 
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 1024px) {
-      .plat-grid   { grid-template-columns: 1fr 1fr; }
+    /* ─── RESPONSIVE — Mobile First ─── */
+
+    /* Base: mobile defaults */
+    .nav-links { display: none; }
+    .lang-btn { display: none; }
+    .hbg { display: flex; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--gb); }
+    .plat-grid { grid-template-columns: 1fr; }
+    .hiw-grid { grid-template-columns: 1fr; gap: 32px; }
+    .hiw-connector { display: none; }
+    .vision-grid { grid-template-columns: 1fr; gap: 32px; }
+    .f-grid { grid-template-columns: 1fr; gap: 32px; }
+    .f-bottom { flex-direction: column; gap: 14px; text-align: center; }
+    .hero { padding: 100px 0 48px; }
+    .hero-acts .btn { width: 100%; max-width: 280px; }
+    .cta-acts .btn { width: 100%; max-width: 280px; }
+    .vs-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .stats-wrap { padding: 48px 0; }
+    .trust-inner { gap: 16px; }
+    .ti { font-size: 10px; }
+    .plat-card { padding: 24px 20px; }
+    .card { padding: 24px; }
+    .stat-item { padding: 28px 16px; }
+    .vision-sec .section { padding: 48px 0; }
+    .clinic-grid { gap: 20px; }
+    .clinic-card { padding: 24px; }
+    .hero-chips { margin-top: 40px; }
+    .hero-sub { margin-bottom: 32px; }
+
+    /* ≥600px: small tablet */
+    @media (min-width: 600px) {
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .hero { padding: 120px 0 60px; }
+      .hero-acts { flex-direction: row; }
+      .hero-acts .btn { width: auto; }
+      .cta-acts .btn { width: auto; }
+      .stats-wrap { padding: 64px 0; }
+      .plat-card { padding: 32px 28px; }
+    }
+
+    /* ≥768px: tablet */
+    @media (min-width: 768px) {
+      .plat-grid { grid-template-columns: 1fr 1fr; }
       .vision-grid { grid-template-columns: 1fr; gap: 40px; }
-      .f-grid      { grid-template-columns: 1fr 1fr; }
+      .f-grid { grid-template-columns: 1fr 1fr; }
+      .hero-sub { margin-bottom: 48px; }
     }
-    @media (max-width: 900px) {
-      .nl       { display: none; }
-      .lang-btn { display: none; }
-      .hbg      { display: flex; }
-      .stats-grid     { grid-template-columns: 1fr 1fr; }
-      .stat-item      { border-right: none; border-bottom: 1px solid var(--gb); }
-      .stat-item:last-child { border-bottom: none; }
-      .plat-grid      { grid-template-columns: 1fr; }
-      .hiw-grid       { grid-template-columns: 1fr; }
-      .hiw-connector  { display: none; }
+
+    /* ≥900px: small desktop */
+      .stats-grid { grid-template-columns: repeat(4, 1fr); }
+      .stat-item { border-right: 1px solid var(--gb); border-bottom: none; }
+      .stat-item:last-child { border-right: none; }
+      .plat-grid { grid-template-columns: repeat(3, 1fr); }
+      .hiw-grid { grid-template-columns: repeat(3, 1fr); gap: 40px; }
+      .hiw-connector { display: block; }
+      .vision-grid { grid-template-columns: 1fr 1fr; gap: 80px; }
+      .f-grid { grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 48px; }
+      .f-bottom { flex-direction: row; text-align: left; }
+      .hero { padding: 140px 0 80px; }
+      .plat-card { padding: 40px 32px; }
+      .stats-wrap { padding: 80px 0; }
     }
-    @media (max-width: 600px) {
-      .f-grid    { grid-template-columns: 1fr; }
-      .f-bottom  { flex-direction: column; gap: 14px; text-align: center; }
-      .hero      { padding: 120px 0 60px; }
-      .hero-acts { flex-direction: column; align-items: center; }
-      .hero-acts .btn { width: 100%; max-width: 300px; }
-      .cta-acts  { flex-direction: column; align-items: center; }
-      .cta-acts .btn { width: 100%; max-width: 300px; }
-      .vs-grid   { grid-template-columns: 1fr 1fr; }
-      h1         { letter-spacing: -1px; }
+
+    /* ≥1200px: large desktop */
+    @media (min-width: 1200px) {
+      .plat-grid { grid-template-columns: repeat(3, 1fr); }
     }
-    @media (max-width: 400px) {
-      .stats-grid { grid-template-columns: 1fr; }
-    }
+
     @media print {
       #nav, .orb, #cvs, .hbg, .stage-lights { display: none !important; }
       body { background: white; color: black; }
@@ -650,18 +769,16 @@
       <span class="nn">BRAIN<em>SAIT</em></span>
     </a>
     <div class="nl" role="menubar">
-      <a href="#products"     role="menuitem">Platform</a>
-      <a href="#solutions"    role="menuitem">Solutions</a>
-      <a href="#how-it-works" role="menuitem">How It Works</a>
-      <a href="#vision"       role="menuitem">Vision 2030</a>
-      <a href="/training/courses/" role="menuitem" style="color: #06b6d4; font-weight: 600;">Training</a>
-      <a href="/appstore"     role="menuitem" style="color: #d4a574; font-weight: 600;">Store</a>
-      <a href="/clinics" role="menuitem" style="color: #d4a574;">Clinics</a>
-      <a href="/partners"     role="menuitem" style="color: #a78bfa; font-weight: 600;">Partners</a>
+      <a href="https://spark.brainsait.org" role="menuitem" style="color: #f97316; font-weight: 700;" target="_blank" rel="noopener noreferrer">⚡ Spark</a>
+      <a href="https://gtm.brainsait.org" role="menuitem" style="color: #c9a84c; font-weight: 700;" target="_blank" rel="noopener noreferrer">🎯 GTM</a>
+      <a href="/incubator"  role="menuitem" style="color: #a78bfa; font-weight: 600;">Incubator</a>
+      <a href="/platform"   role="menuitem" style="color: #38bdf8; font-weight: 600;">Platform</a>
+      <a href="/training/" role="menuitem" style="color: #06b6d4; font-weight: 600;">Training</a>
+      <a href="/solutions"  role="menuitem">Solutions</a>
     </div>
     <div class="na">
       <button class="lang-btn" id="langToggle" aria-label="Switch language / تبديل اللغة">العربية</button>
-      <a href="/rcm" class="btn btn-p btn-sm">Launch RCM</a>
+      <a href="https://portal.elfadil.com" class="btn btn-p btn-sm" target="_blank" rel="noopener noreferrer">Launch RCM</a>
       <button class="hbg" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobMenu">
         <span></span><span></span><span></span>
       </button>
@@ -671,16 +788,14 @@
 
 <!-- Mobile Menu -->
 <div class="mob-menu" id="mobMenu" aria-label="Mobile navigation" aria-hidden="true">
-  <a href="#products">Platform</a>
-  <a href="#solutions">Solutions</a>
-  <a href="#how-it-works">How It Works</a>
-  <a href="#vision">Vision 2030</a>
-  <a href="/training/courses/" style="color: #06b6d4; font-weight: 600;">Training &amp; Courses 🎓</a>
-  <a href="/docs">Documentation ↗</a>
-  <a href="/partners" style="color: #a78bfa; font-weight: 600;">Partners 🤝</a>
-  <div class="mob-sep"></div>
-  <a href="/rcm" class="btn btn-p">Launch RCM →</a>
-  <a href="https://calendar.app.google/V9KcXPcD1PeWDQHH8" target="_blank" rel="noopener noreferrer">Book Demo</a>
+  <a href="https://spark.brainsait.org" style="color: #f97316; font-weight: 700;" target="_blank" rel="noopener noreferrer">⚡ Spark — Startup Builder</a>
+  <a href="https://gtm.brainsait.org" style="color: #c9a84c; font-weight: 700;" target="_blank" rel="noopener noreferrer">🎯 GTM Playbook</a>
+  <a href="/incubator" style="color: #a78bfa; font-weight: 600;">Incubator 🏗️</a>
+  <a href="/platform" style="color: #38bdf8; font-weight: 600;">Platform</a>
+  <a href="/training/" style="color: #06b6d4; font-weight: 600;">Training &amp; Courses 🎓</a>
+  <a href="/solutions">Solutions</a>
+  <a href="https://portal.elfadil.com" class="btn btn-p" target="_blank" rel="noopener noreferrer">Launch RCM →</a>
+  <a href="https://calendar.app.google/V9KcXPcD1PeWDQHH8" class="book-demo" target="_blank" rel="noopener noreferrer">📅 Book Demo</a>
 </div>
 
 <!-- ═══ MAIN ═══ -->
@@ -747,6 +862,60 @@
     </div>
   </div>
 
+  <!-- ── SPARK BANNER ── -->
+  <section style="padding: 40px 24px; background: linear-gradient(135deg, rgba(249,115,22,.08) 0%, rgba(168,85,247,.08) 100%); border-top: 1px solid rgba(249,115,22,.15); border-bottom: 1px solid rgba(249,115,22,.15);" aria-label="Spark — Healthcare Startup Builder">
+    <div class="c" style="display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+          <span style="font-size:28px;">⚡</span>
+          <span style="font-size:11px; font-weight:700; letter-spacing:.12em; color:#f97316; text-transform:uppercase;">New</span>
+        </div>
+        <h2 style="margin:0 0 6px; font-size:clamp(18px,3vw,26px); font-weight:800; color:#fff; font-family:'Syne',sans-serif; line-height:1.2;">
+          <span class="en">Spark الشرارة — AI Healthcare Startup Builder</span>
+          <span class="ar">الشرارة — منشئ الشركات الناشئة الصحية بالذكاء الاصطناعي</span>
+        </h2>
+        <p style="margin:0; color:#94a3b8; font-size:14px; max-width:520px; line-height:1.6;">
+          <span class="en">Turn your healthcare idea into a funded startup in 6 AI-powered phases. Brainstorm → Story → Brand → PRD → Code → GitHub. Built for Vision 2030 founders.</span>
+          <span class="ar">حوّل فكرتك الصحية إلى شركة ناشئة في 6 مراحل بالذكاء الاصطناعي. مصمم لمؤسسي رؤية 2030.</span>
+        </p>
+      </div>
+      <a href="https://spark.brainsait.org" target="_blank" rel="noopener noreferrer"
+        style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; border-radius:12px; background:linear-gradient(135deg,#f97316,#ea580c); color:#fff; font-weight:700; font-size:15px; text-decoration:none; white-space:nowrap; box-shadow:0 4px 20px rgba(249,115,22,.3); transition:all .2s;"
+        onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(249,115,22,.45)'"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(249,115,22,.3)'"
+      >
+        ⚡ <span class="en">Launch Spark</span><span class="ar">انطلق مع الشرارة</span> →
+      </a>
+    </div>
+  </section>
+
+  <!-- ── INCUBATOR BANNER ── -->
+  <section style="padding: 36px 24px; background: linear-gradient(135deg, rgba(167,139,250,.08) 0%, rgba(99,102,241,.08) 100%); border-bottom: 1px solid rgba(167,139,250,.15);" aria-label="BrainSAIT Incubator">
+    <div class="c" style="display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+          <span style="font-size:26px;">🏗️</span>
+          <span style="font-size:11px; font-weight:700; letter-spacing:.12em; color:#a78bfa; text-transform:uppercase;">Healthcare Incubator</span>
+        </div>
+        <h2 style="margin:0 0 6px; font-size:clamp(17px,3vw,24px); font-weight:800; color:#fff; font-family:'Syne',sans-serif; line-height:1.2;">
+          <span class="en">BrainSAIT Incubator — Build, Partner, Scale</span>
+          <span class="ar">حاضنة BrainSAIT — ابنِ، شارك، وانطلق</span>
+        </h2>
+        <p style="margin:0; color:#94a3b8; font-size:14px; max-width:560px; line-height:1.6;">
+          <span class="en">App Store · Partners · Clinics Hub · Innovation Toolkit · Courses · Templates. Everything a Saudi healthcare startup needs to launch and scale.</span>
+          <span class="ar">متجر التطبيقات · الشركاء · مركز العيادات · أدوات الابتكار · الدورات · القوالب. كل ما تحتاجه الشركات الناشئة في قطاع الصحة السعودي.</span>
+        </p>
+      </div>
+      <a href="/incubator"
+        style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; border-radius:12px; background:linear-gradient(135deg,#a78bfa,#6366f1); color:#fff; font-weight:700; font-size:15px; text-decoration:none; white-space:nowrap; box-shadow:0 4px 20px rgba(167,139,250,.3); transition:all .2s;"
+        onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(167,139,250,.45)'"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(167,139,250,.3)'"
+      >
+        🏗️ <span class="en">Enter Incubator</span><span class="ar">ادخل إلى الحاضنة</span> →
+      </a>
+    </div>
+  </section>
+
   <!-- ── STATS ── -->
   <div class="stats-wrap rev" aria-label="Key metrics">
     <div class="c">
@@ -808,7 +977,7 @@
             <li><span class="en">AI fraud detection</span><span class="ar">كشف الاحتيال بالذكاء الاصطناعي</span></li>
             <li><span class="en">Predictive analytics dashboard</span><span class="ar">لوحة تحليلات تنبؤية</span></li>
           </ul>
-          <a href="/rcm" class="p-link">
+          <a href="https://portal.elfadil.com" class="p-link" target="_blank" rel="noopener noreferrer">
             <span class="en">Explore ClaimLinc</span><span class="ar">استكشف ClaimLinc</span> →
           </a>
         </div>
@@ -865,7 +1034,7 @@
           <p class="c-desc en">AI-powered Revenue Cycle Management with complete NPHIES integration, FHIR R4 compliance, fraud detection, and predictive analytics for Saudi healthcare providers.</p>
           <p class="c-desc ar">إدارة دورة الإيرادات المدعومة بالذكاء الاصطناعي مع التكامل الكامل مع NPHIES وامتثال FHIR R4 وكشف الاحتيال والتحليلات التنبؤية.</p>
           <div class="c-tags"><span class="tag">TypeScript</span><span class="tag">NPHIES</span><span class="tag">AI/ML</span><span class="tag">FHIR R4</span></div>
-          <a href="/rcm" class="c-link">
+          <a href="https://portal.elfadil.com" class="c-link" target="_blank" rel="noopener noreferrer">
             <span class="en">Open Product</span><span class="ar">افتح المنتج</span> →
           </a>
         </article>
@@ -1167,7 +1336,7 @@
           <span class="ar">انضم إلى مزودي الرعاية الصحية في المملكة العربية السعودية ومنطقة الشرق الأوسط الذين يستخدمون برينسايت للأتمتة والامتثال والنمو.</span>
         </p>
         <div class="cta-acts">
-          <a href="/rcm" class="btn btn-p btn-lg">
+          <a href="https://portal.elfadil.com" class="btn btn-p btn-lg" target="_blank" rel="noopener noreferrer">
             <span class="en">Launch RCM</span><span class="ar">تشغيل RCM</span> →
           </a>
           <a href="https://calendar.app.google/V9KcXPcD1PeWDQHH8" target="_blank" rel="noopener noreferrer" class="btn btn-g btn-lg">
@@ -1212,10 +1381,10 @@
         <div>
           <h4 class="f-title"><span class="en">Platform</span><span class="ar">المنصة</span></h4>
           <ul class="f-links">
-            <li><a href="/rcm">RCM Workspace</a></li>
+            <li><a href="https://portal.elfadil.com" target="_blank" rel="noopener noreferrer">RCM Workspace</a></li>
             <li><a href="/docs">Documentation</a></li>
             <li><a href="https://brainsait.org/api">API Reference</a></li>
-            <li><a href="#products">Platform Overview</a></li>
+            <li><a href="/platform">Platform Overview</a></li>
           </ul>
         </div>
         <div>
@@ -1230,9 +1399,9 @@
         <div>
           <h4 class="f-title"><span class="en">Training</span><span class="ar">التدريب</span></h4>
           <ul class="f-links">
-            <li><a href="/training/courses/"><span class="en">All Courses</span><span class="ar">جميع الدورات</span></a></li>
-            <li><a href="/training/courses/collective-brainpower/"><span class="en">Collective Brainpower</span><span class="ar">القوة الجماعية</span></a></li>
-            <li><a href="/training/courses/nphies-ai-mastery/"><span class="en">NPHIES-AI Mastery</span><span class="ar">إتقان NPHIES-AI</span></a></li>
+            <li><a href="/training/"><span class="en">All Courses</span><span class="ar">جميع الدورات</span></a></li>
+            <li><a href="/training/courses/collective-brainpower"><span class="en">Collective Brainpower</span><span class="ar">القوة الجماعية</span></a></li>
+            <li><a href="/training/courses/nphies-ai-mastery"><span class="en">NPHIES-AI Mastery</span><span class="ar">إتقان NPHIES-AI</span></a></li>
             <li><a href="https://classroom.google.com/c/ODYwNTAyNzAzMTky?cjc=4oc22gvm" target="_blank" rel="noopener noreferrer"><span class="en">Google Classroom</span><span class="ar">Google Classroom</span></a></li>
           </ul>
         </div>
