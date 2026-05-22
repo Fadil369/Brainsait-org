@@ -1,13 +1,37 @@
 <!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════════════════
+  BrainSAIT Trust Layer — /wathq launch page
+  ───────────────────────────────────────────────────────────────────────
+  Last major change: feat(wathq) BrainSAIT Trust Layer launch.
+  - 10 product cards (Verify Widget, PDF Cert, KYB Bundles, Monitoring,
+    ZATCA Invoice, Trust Page, AI Risk Score, Bulk CSV, Tender Dossier, GCC)
+  - Tier badges: Coming this week / Coming soon / Roadmap
+  - Sticky early-access banner (50% off, first 25 customers)
+  - Shared waitlist modal with product-aware context (Formspree TODO)
+  - "Why BrainSAIT vs raw Wathq" comparison table
+  - 4-step "How it works"
+  - Enterprise "Talk to Sales" with calendar booking link
+  - Retail prices on raw API calculator: CR Full 20, CR Basic 9, Address 4,
+    Deed/POA 9 SAR. Prepaid: extended validity, bonuses up to 18%.
+  - Trial reduced to 20 free calls / 14 days.
+  - Updated SEO metadata.
+  TODO: Replace PLACEHOLDER_REPLACE_ME Formspree endpoint with real one.
+  ═══════════════════════════════════════════════════════════════════════
+-->
 <html lang="ar" dir="rtl" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة مطوري واثق | Wathq Developer Hub — BrainSAIT</title>
-    <meta name="description" content="بوابة الربط المتكامل مع الأنظمة العدلية والتجارية والمالية السعودية — واثق للمطورين من BrainSAIT">
-    <meta property="og:title" content="بوابة مطوري واثق | BrainSAIT">
-    <meta property="og:description" content="إدارة التطبيقات، مختبر API، حاسبة الباقات، ومستشار تكامل منصة اعتماد">
+    <title>BrainSAIT Trust Layer — Saudi Business Verification, KYB, Certificates &amp; Monitoring | بوابة الثقة من BrainSAIT</title>
+    <meta name="description" content="The complete Saudi business trust platform built on Wathq. KYB bundles, PDF certificates, continuous monitoring, AI risk scoring. Pay-per-call or subscription. Vision 2030 ready.">
+    <meta property="og:title" content="BrainSAIT Trust Layer — Saudi Business Verification &amp; KYB">
+    <meta property="og:description" content="KYB bundles, PDF certificates, continuous monitoring, AI risk scoring — built on Wathq. Pay-per-call or subscription. Vision 2030 ready.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://brainsait.org/wathq">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BrainSAIT Trust Layer — Saudi Business Verification &amp; KYB">
+    <meta name="twitter:description" content="KYB · PDF certificates · monitoring · AI risk score. Built on Wathq, made for Vision 2030.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -99,6 +123,428 @@
         </div>
     </div>
 </header>
+
+<!-- ═══════════════ EARLY ACCESS BANNER ═══════════════ -->
+<div id="early-access-banner" class="relative bg-gradient-to-l from-brand-600/20 via-brand-500/15 to-amber-500/10 border-b border-brand-500/30 px-4 py-2.5">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-3 text-center sm:text-right">
+        <div class="text-[12px] sm:text-sm text-slate-100 leading-snug">
+            <span class="text-base">🚀</span>
+            <strong class="text-brand-400">Early Access مفتوح الآن</strong> —
+            أول <strong>25</strong> عميل يحصلون على <strong class="text-amber-400">خصم 50%</strong> لمدة 6 أشهر.
+            <span class="hidden sm:inline text-slate-400">·</span>
+            <span class="text-slate-300">Lock in <strong>50% off</strong> for 6 months — limited to first 25 customers.</span>
+        </div>
+        <button type="button" onclick="openWaitlistModal('Early Access — 50% off launch offer')"
+                class="shrink-0 inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-slate-950 text-xs font-bold px-4 py-1.5 rounded-full transition shadow-lg shadow-brand-500/20">
+            <i class="fa-solid fa-bolt"></i>
+            احجز مكانك / Reserve My Spot
+        </button>
+        <button type="button" onclick="document.getElementById('early-access-banner').remove()"
+                aria-label="إغلاق" class="absolute top-1.5 left-2 text-slate-400 hover:text-white text-sm">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+</div>
+
+<!-- ═══════════════ TRUST LAYER PRODUCTS MEGA-SECTION ═══════════════ -->
+<section id="trust-layer-products" class="relative border-b border-slate-800/80 bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900/30">
+    <div class="absolute inset-0 pointer-events-none opacity-30" style="background-image:radial-gradient(circle at 20% 10%, rgba(201,168,76,0.12), transparent 40%),radial-gradient(circle at 80% 60%, rgba(16,185,129,0.08), transparent 40%);"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+
+        <div class="text-center max-w-3xl mx-auto mb-10">
+            <span class="inline-flex items-center gap-2 text-[11px] font-bold text-brand-400 bg-brand-500/10 border border-brand-500/30 px-3 py-1 rounded-full">
+                <i class="fa-solid fa-shield-halved"></i>
+                BrainSAIT Trust Layer · طبقة الثقة السعودية
+            </span>
+            <h2 class="text-2xl sm:text-4xl font-black text-white mt-4 leading-tight">
+                التحقق التجاري السعودي — كاملاً، بسطر واحد.
+                <span class="block text-base sm:text-xl text-slate-400 font-bold mt-2">The complete Saudi business trust platform. Built on Wathq. Made for Vision 2030.</span>
+            </h2>
+            <p class="text-sm text-slate-400 mt-4 leading-relaxed">
+                KYB bundles · PDF certificates · continuous monitoring · ZATCA invoicing · AI risk scoring · widgets &amp; bulk tools — everything you used to build in-house, in one API.
+            </p>
+        </div>
+
+        <!-- TIER A: Ship This Week -->
+        <div class="mb-4 flex items-center gap-3">
+            <span class="text-[11px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-1 rounded-full">
+                <i class="fa-solid fa-circle-play text-[9px]"></i> متاح قريباً / Coming This Week
+            </span>
+            <span class="h-px flex-1 bg-slate-800"></span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+            <!-- 1. Verify-as-a-Widget -->
+            <article class="group product-card relative bg-slate-900/80 border border-slate-800 hover:border-brand-500/60 rounded-2xl p-5 flex flex-col gap-3 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand-500/5">
+                <div class="flex items-start justify-between gap-3">
+                    <div class="bg-brand-500/10 text-brand-400 p-3 rounded-xl border border-brand-500/20"><i class="fa-solid fa-bolt text-xl"></i></div>
+                    <span class="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 rounded-full">Coming This Week</span>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold text-white">⚡ Verify-as-a-Widget</h3>
+                    <p class="text-xs text-slate-400 mt-0.5">بوابة التحقق كأداة جاهزة</p>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed">Drop-in JS snippet. One line of code. Verify any Saudi business on your signup form.</p>
+                <div class="flex items-baseline gap-2 mt-1">
+                    <span class="text-lg font-black text-white">200 ر.س</span>
+                    <span class="text-[11px] text-slate-500">/شهر + 8 ر.س لكل تحقق</span>
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="text-[10px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-full">SaaS</span>
+                    <span class="text-[10px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-full">One-line install</span>
+                    <span class="text-[10px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-full">Marketplaces</span>
+                    <span class="text-[10px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-full">Fintech</span>
+                </div>
+                <button type="button" data-product="Verify-as-a-Widget" onclick="openWaitlistModal(this.dataset.product)"
+                        class="mt-2 w-full inline-flex items-center justify-center gap-2 bg-brand-500/10 hover:bg-brand-500 hover:text-slate-950 text-brand-400 text-xs font-bold py-2.5 rounded-xl border border-brand-500/30 transition">
+                    Get Early Access <i class="fa-solid fa-arrow-left"></i>
+                </button>
+            </article>
+
+            <!-- 2. PDF Verification Certificate -->
+            <article class="group product-card relative bg-slate-900/80 border border-slate-800 hover:border-brand-500/60 rounded-2xl p-5 flex flex-col gap-3 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand-500/5">
+                <div class="flex items-start justify-between gap-3">
+                    <div class="bg-rose-500/10 text-rose-400 p-3 rounded-xl border border-rose-500/20"><i class="fa-solid fa-file-pdf text-xl"></i></div>
+                    <span class="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 rounded-full">Coming This Week</span>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold text-white">📄 PDF Verification Certificate</h3>
+                    <p class="text-xs text-slate-400 mt-0.5">شهادة تحقق PDF موقّعة</p>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed">Signed, QR-coded, timestamped PDF certificate of any business's CR data. Drop into procurement/HR/legal workflows.</p>
+                <div class="flex items-baseline gap-2 mt-1">
+                    <span class="text-lg font-black text-white">25 ر.س</span>
+                    <span class="text-[11px] text-slate-500">لكل شهادة</span>
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="text-[10px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-full">Procurement</span>
+                    <span class="text-[10px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-full">HR</span>
+                    <span class="text-[10px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-full">Legal</span>
+                    <span class="text-[10px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-full">QR-signed</span>
+                </div>
+                <button type="button" data-product="PDF Verification Certificate" onclick="openWaitlistModal(this.dataset.product)"
+                        class="mt-2 w-full inline-flex items-center justify-center gap-2 bg-brand-500/10 hover:bg-brand-500 hover:text-slate-950 text-brand-400 text-xs font-bold py-2.5 rounded-xl border border-brand-500/30 transition">
+                    Get Early Access <i class="fa-solid fa-arrow-left"></i>
+                </button>
+            </article>
+
+            <!-- 3. KYB Bundles (popular) -->
+            <article class="group product-card relative bg-gradient-to-b from-brand-500/10 to-slate-900 border-2 border-brand-500/60 rounded-2xl p-5 flex flex-col gap-3 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand-500/20 lg:scale-[1.02]">
+                <span class="absolute -top-3 right-4 text-[10px] font-bold text-slate-950 bg-brand-500 px-3 py-1 rounded-full shadow-lg shadow-brand-500/30">⭐ MOST POPULAR</span>
+                <div class="flex items-start justify-between gap-3">
+                    <div class="bg-brand-500/20 text-brand-300 p-3 rounded-xl border border-brand-500/30"><i class="fa-solid fa-id-card text-xl"></i></div>
+                    <span class="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 rounded-full">Coming This Week</span>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold text-white">🪪 KYB Bundles</h3>
+                    <p class="text-xs text-slate-400 mt-0.5">باقات معرفة عميلك التجاري</p>
+                </div>
+                <p class="text-xs text-slate-200 leading-relaxed">One call, full report: CR + Address + Owners + POA + sanctions check. KYB Lite (9), Standard (29), Premium (49), +Monitor (149/yr).</p>
+                <div class="flex items-baseline gap-2 mt-1">
+                    <span class="text-lg font-black text-white">9–49 ر.س</span>
+                    <span class="text-[11px] text-slate-300">لكل تقرير + 149 ر.س/سنة للمراقبة</span>
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="text-[10px] text-slate-300 bg-slate-950/60 border border-brand-500/20 px-2 py-0.5 rounded-full">KYB</span>
+                    <span class="text-[10px] text-slate-300 bg-slate-950/60 border border-brand-500/20 px-2 py-0.5 rounded-full">Onboarding</span>
+                    <span class="text-[10px] text-slate-300 bg-slate-950/60 border border-brand-500/20 px-2 py-0.5 rounded-full">Sanctions</span>
+                    <span class="text-[10px] text-slate-300 bg-slate-950/60 border border-brand-500/20 px-2 py-0.5 rounded-full">Banks</span>
+                </div>
+                <button type="button" data-product="KYB Bundles" onclick="openWaitlistModal(this.dataset.product)"
+                        class="mt-2 w-full inline-flex items-center justify-center gap-2 bg-brand-500 hover:bg-brand-600 text-slate-950 text-xs font-bold py-2.5 rounded-xl transition">
+                    Get Early Access <i class="fa-solid fa-arrow-left"></i>
+                </button>
+            </article>
+        </div>
+
+        <!-- TIER B: Coming Soon -->
+        <div class="mb-4 flex items-center gap-3">
+            <span class="text-[11px] font-bold text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2.5 py-1 rounded-full">
+                <i class="fa-solid fa-clock text-[9px]"></i> قريباً / Coming Soon · 2 weeks
+            </span>
+            <span class="h-px flex-1 bg-slate-800"></span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+            <!-- 4. Continuous Monitoring -->
+            <article class="group product-card bg-slate-900/80 border border-slate-800 hover:border-amber-500/40 rounded-2xl p-5 flex flex-col gap-3 transition hover:-translate-y-0.5">
+                <div class="flex items-start justify-between gap-3">
+                    <div class="bg-amber-500/10 text-amber-400 p-3 rounded-xl border border-amber-500/20"><i class="fa-solid fa-bell text-xl"></i></div>
+                    <span class="text-[10px] font-bold text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2 py-0.5 rounded-full">Coming Soon</span>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold text-white">🔔 Continuous Monitoring</h3>
+                    <p class="text-xs text-slate-400 mt-0.5">المراقبة المستمرة</p>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed">Add CRs to your watchlist. We re-check weekly. Email + webhook the moment status changes (suspended, expired, ownership change, new branches).</p>
+                <div class="flex items-baseline gap-2 mt-1">
+                    <span class="text-lg font-black text-white">49 ر.س</span>
+                    <span class="text-[11px] text-slate-500">/سجل تجاري/سنة</span>
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="text-[10px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-full">Subscription</span>
+                    <span class="text-[10px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-full">Webhook</span>
+                    <span class="text-[10px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-full">Email Alerts</span>
+                    <span class="text-[10px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-full">Banks/Insurers</span>
+                </div>
+                <button type="button" data-product="Continuous Monitoring" onclick="openWaitlistModal(this.dataset.product)"
+                        class="mt-2 w-full inline-flex items-center justify-center gap-2 bg-amber-500/10 hover:bg-amber-500 hover:text-slate-950 text-amber-400 text-xs font-bold py-2.5 rounded-xl border border-amber-500/30 transition">
+                    Get Early Access <i class="fa-solid fa-arrow-left"></i>
+                </button>
+            </article>
+
+            <!-- 5. ZATCA E-Invoice -->
+            <article class="group product-card bg-slate-900/80 border border-slate-800 hover:border-amber-500/40 rounded-2xl p-5 flex flex-col gap-3 transition hover:-translate-y-0.5">
+                <div class="flex items-start justify-between gap-3">
+                    <div class="bg-teal-500/10 text-teal-400 p-3 rounded-xl border border-teal-500/20"><i class="fa-solid fa-file-invoice-dollar text-xl"></i></div>
+                    <span class="text-[10px] font-bold text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2 py-0.5 rounded-full">Coming Soon</span>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold text-white">💸 ZATCA E-Invoice Generator</h3>
+                    <p class="text-xs text-slate-400 mt-0.5">مولّد فواتير ZATCA</p>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed">Generate ZATCA-compliant tax invoices (Phase 1 + Phase 2 ready) populated from any verified business. QR code, signed.</p>
+                <div class="flex items-baseline gap-2 mt-1">
+                    <span class="text-lg font-black text-white">15 ر.س</span>
+                    <span class="text-[11px] text-slate-500">/فاتورة · باقة 1,000/شهر = 7,500 ر.س</span>
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="text-[10px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-full">ZATCA</span>
+                    <span class="text-[10px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-full">E-Invoice</span>
+                    <span class="text-[10px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-full">B2B</span>
+                    <span class="text-[10px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-full">Saudi Compliance</span>
+                </div>
+                <button type="button" data-product="ZATCA E-Invoice Generator" onclick="openWaitlistModal(this.dataset.product)"
+                        class="mt-2 w-full inline-flex items-center justify-center gap-2 bg-amber-500/10 hover:bg-amber-500 hover:text-slate-950 text-amber-400 text-xs font-bold py-2.5 rounded-xl border border-amber-500/30 transition">
+                    Get Early Access <i class="fa-solid fa-arrow-left"></i>
+                </button>
+            </article>
+
+            <!-- 6. White-label Trust Page -->
+            <article class="group product-card bg-slate-900/80 border border-slate-800 hover:border-amber-500/40 rounded-2xl p-5 flex flex-col gap-3 transition hover:-translate-y-0.5">
+                <div class="flex items-start justify-between gap-3">
+                    <div class="bg-orange-500/10 text-orange-400 p-3 rounded-xl border border-orange-500/20"><i class="fa-solid fa-shield-halved text-xl"></i></div>
+                    <span class="text-[10px] font-bold text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2 py-0.5 rounded-full">Coming Soon</span>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold text-white">🤝 White-label Trust Page</h3>
+                    <p class="text-xs text-slate-400 mt-0.5">صفحة الثقة بهويتك التجارية</p>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed">Public verification page at verify.brainsait.org/&lt;cr&gt;. Embeddable 'Verified by BrainSAIT' badge on your site.</p>
+                <div class="flex items-baseline gap-2 mt-1">
+                    <span class="text-lg font-black text-white">49 ر.س</span>
+                    <span class="text-[11px] text-slate-500">/شهر لكل منشأة</span>
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="text-[10px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-full">Trust Badge</span>
+                    <span class="text-[10px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-full">Public Page</span>
+                    <span class="text-[10px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-full">Yotpo-style</span>
+                    <span class="text-[10px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-full">Conversion+</span>
+                </div>
+                <button type="button" data-product="White-label Trust Page" onclick="openWaitlistModal(this.dataset.product)"
+                        class="mt-2 w-full inline-flex items-center justify-center gap-2 bg-amber-500/10 hover:bg-amber-500 hover:text-slate-950 text-amber-400 text-xs font-bold py-2.5 rounded-xl border border-amber-500/30 transition">
+                    Get Early Access <i class="fa-solid fa-arrow-left"></i>
+                </button>
+            </article>
+        </div>
+
+        <!-- TIER C: Roadmap -->
+        <div class="mb-4 flex items-center gap-3">
+            <span class="text-[11px] font-bold text-blue-400 bg-blue-500/10 border border-blue-500/30 px-2.5 py-1 rounded-full">
+                <i class="fa-solid fa-route text-[9px]"></i> في الطريق / Roadmap · Q3 2026
+            </span>
+            <span class="h-px flex-1 bg-slate-800"></span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <!-- 7. AI Risk Score -->
+            <article class="group product-card bg-slate-900/80 border border-slate-800 hover:border-blue-500/40 rounded-2xl p-5 flex flex-col gap-3 transition hover:-translate-y-0.5">
+                <div class="flex items-start justify-between gap-3">
+                    <div class="bg-blue-500/10 text-blue-400 p-3 rounded-xl border border-blue-500/20"><i class="fa-solid fa-brain text-xl"></i></div>
+                    <span class="text-[10px] font-bold text-blue-400 bg-blue-500/10 border border-blue-500/30 px-2 py-0.5 rounded-full">Roadmap</span>
+                </div>
+                <div>
+                    <h3 class="text-sm font-bold text-white">🧠 AI Business Risk Score</h3>
+                    <p class="text-[11px] text-slate-400 mt-0.5">درجة المخاطر الذكية</p>
+                </div>
+                <p class="text-[11px] text-slate-300 leading-relaxed">Explainable AI risk score 0–100. Powered by DeepSeek. Combines CR age, capital trends, ownership volatility, sector — with reasoning.</p>
+                <div class="flex items-baseline gap-2 mt-1">
+                    <span class="text-base font-black text-white">9 ر.س</span>
+                    <span class="text-[10px] text-slate-500">/تقييم</span>
+                </div>
+                <div class="flex flex-wrap gap-1">
+                    <span class="text-[9px] text-slate-400 bg-slate-950 border border-slate-800 px-1.5 py-0.5 rounded-full">AI</span>
+                    <span class="text-[9px] text-slate-400 bg-slate-950 border border-slate-800 px-1.5 py-0.5 rounded-full">Risk</span>
+                    <span class="text-[9px] text-slate-400 bg-slate-950 border border-slate-800 px-1.5 py-0.5 rounded-full">Lending</span>
+                    <span class="text-[9px] text-slate-400 bg-slate-950 border border-slate-800 px-1.5 py-0.5 rounded-full">Explainable</span>
+                </div>
+                <button type="button" data-product="AI Business Risk Score" onclick="openWaitlistModal(this.dataset.product)"
+                        class="mt-1 w-full inline-flex items-center justify-center gap-2 bg-blue-500/10 hover:bg-blue-500 hover:text-white text-blue-400 text-[11px] font-bold py-2 rounded-xl border border-blue-500/30 transition">
+                    Get Early Access <i class="fa-solid fa-arrow-left"></i>
+                </button>
+            </article>
+
+            <!-- 8. Bulk CSV -->
+            <article class="group product-card bg-slate-900/80 border border-slate-800 hover:border-blue-500/40 rounded-2xl p-5 flex flex-col gap-3 transition hover:-translate-y-0.5">
+                <div class="flex items-start justify-between gap-3">
+                    <div class="bg-blue-500/10 text-blue-400 p-3 rounded-xl border border-blue-500/20"><i class="fa-solid fa-table text-xl"></i></div>
+                    <span class="text-[10px] font-bold text-blue-400 bg-blue-500/10 border border-blue-500/30 px-2 py-0.5 rounded-full">Roadmap</span>
+                </div>
+                <div>
+                    <h3 class="text-sm font-bold text-white">🔍 Bulk CSV Enrichment</h3>
+                    <p class="text-[11px] text-slate-400 mt-0.5">إثراء جماعي بصيغة CSV</p>
+                </div>
+                <p class="text-[11px] text-slate-300 leading-relaxed">Upload CSV of CR numbers, get enriched CSV back in 5 minutes. Self-serve, no engineering needed.</p>
+                <div class="flex items-baseline gap-2 mt-1">
+                    <span class="text-base font-black text-white">4 ر.س</span>
+                    <span class="text-[10px] text-slate-500">/سجل (الحد الأدنى 500)</span>
+                </div>
+                <div class="flex flex-wrap gap-1">
+                    <span class="text-[9px] text-slate-400 bg-slate-950 border border-slate-800 px-1.5 py-0.5 rounded-full">Self-serve</span>
+                    <span class="text-[9px] text-slate-400 bg-slate-950 border border-slate-800 px-1.5 py-0.5 rounded-full">Sales</span>
+                    <span class="text-[9px] text-slate-400 bg-slate-950 border border-slate-800 px-1.5 py-0.5 rounded-full">Marketing</span>
+                </div>
+                <button type="button" data-product="Bulk CSV Enrichment" onclick="openWaitlistModal(this.dataset.product)"
+                        class="mt-1 w-full inline-flex items-center justify-center gap-2 bg-blue-500/10 hover:bg-blue-500 hover:text-white text-blue-400 text-[11px] font-bold py-2 rounded-xl border border-blue-500/30 transition">
+                    Get Early Access <i class="fa-solid fa-arrow-left"></i>
+                </button>
+            </article>
+
+            <!-- 9. Tender Dossier -->
+            <article class="group product-card bg-slate-900/80 border border-slate-800 hover:border-blue-500/40 rounded-2xl p-5 flex flex-col gap-3 transition hover:-translate-y-0.5">
+                <div class="flex items-start justify-between gap-3">
+                    <div class="bg-blue-500/10 text-blue-400 p-3 rounded-xl border border-blue-500/20"><i class="fa-solid fa-landmark text-xl"></i></div>
+                    <span class="text-[10px] font-bold text-blue-400 bg-blue-500/10 border border-blue-500/30 px-2 py-0.5 rounded-full">Roadmap</span>
+                </div>
+                <div>
+                    <h3 class="text-sm font-bold text-white">🏛️ Tender Procurement Dossier</h3>
+                    <p class="text-[11px] text-slate-400 mt-0.5">ملف العطاءات والمشتريات</p>
+                </div>
+                <p class="text-[11px] text-slate-300 leading-relaxed">Auto-generate complete supplier dossier (CR + Address + POA + Zakat cert refs) per bidder. Built for government procurement workflows.</p>
+                <div class="flex items-baseline gap-2 mt-1">
+                    <span class="text-base font-black text-white">99 ر.س</span>
+                    <span class="text-[10px] text-slate-500">/ملف</span>
+                </div>
+                <div class="flex flex-wrap gap-1">
+                    <span class="text-[9px] text-slate-400 bg-slate-950 border border-slate-800 px-1.5 py-0.5 rounded-full">Government</span>
+                    <span class="text-[9px] text-slate-400 bg-slate-950 border border-slate-800 px-1.5 py-0.5 rounded-full">Tenders</span>
+                    <span class="text-[9px] text-slate-400 bg-slate-950 border border-slate-800 px-1.5 py-0.5 rounded-full">Compliance</span>
+                </div>
+                <button type="button" data-product="Tender Procurement Dossier" onclick="openWaitlistModal(this.dataset.product)"
+                        class="mt-1 w-full inline-flex items-center justify-center gap-2 bg-blue-500/10 hover:bg-blue-500 hover:text-white text-blue-400 text-[11px] font-bold py-2 rounded-xl border border-blue-500/30 transition">
+                    Get Early Access <i class="fa-solid fa-arrow-left"></i>
+                </button>
+            </article>
+
+            <!-- 10. GCC Trust Network -->
+            <article class="group product-card bg-slate-900/80 border border-slate-800 hover:border-blue-500/40 rounded-2xl p-5 flex flex-col gap-3 transition hover:-translate-y-0.5">
+                <div class="flex items-start justify-between gap-3">
+                    <div class="bg-blue-500/10 text-blue-400 p-3 rounded-xl border border-blue-500/20"><i class="fa-solid fa-globe text-xl"></i></div>
+                    <span class="text-[10px] font-bold text-blue-400 bg-blue-500/10 border border-blue-500/30 px-2 py-0.5 rounded-full">Roadmap</span>
+                </div>
+                <div>
+                    <h3 class="text-sm font-bold text-white">🌍 GCC Trust Network</h3>
+                    <p class="text-[11px] text-slate-400 mt-0.5">شبكة الثقة الخليجية</p>
+                </div>
+                <p class="text-[11px] text-slate-300 leading-relaxed">One API for the entire GCC: Wathq (KSA) + Bayanat (UAE) + Sijilat (BH) + Kuwait registries. Coming 2026.</p>
+                <div class="flex items-baseline gap-2 mt-1">
+                    <span class="text-sm font-bold text-blue-300">قيد التطوير</span>
+                </div>
+                <div class="flex flex-wrap gap-1">
+                    <span class="text-[9px] text-slate-400 bg-slate-950 border border-slate-800 px-1.5 py-0.5 rounded-full">GCC</span>
+                    <span class="text-[9px] text-slate-400 bg-slate-950 border border-slate-800 px-1.5 py-0.5 rounded-full">Multi-country</span>
+                    <span class="text-[9px] text-slate-400 bg-slate-950 border border-slate-800 px-1.5 py-0.5 rounded-full">Enterprise</span>
+                </div>
+                <button type="button" data-product="GCC Trust Network" onclick="openWaitlistModal(this.dataset.product)"
+                        class="mt-1 w-full inline-flex items-center justify-center gap-2 bg-blue-500/10 hover:bg-blue-500 hover:text-white text-blue-400 text-[11px] font-bold py-2 rounded-xl border border-blue-500/30 transition">
+                    Join Roadmap <i class="fa-solid fa-arrow-left"></i>
+                </button>
+            </article>
+        </div>
+
+        <!-- ─── WHY BRAINSAIT vs RAW WATHQ COMPARISON ─── -->
+        <div class="mt-16">
+            <div class="text-center mb-8">
+                <h3 class="text-xl sm:text-3xl font-black text-white">لماذا BrainSAIT بدلاً من الربط المباشر مع واثق؟</h3>
+                <p class="text-sm text-slate-400 mt-2">Why BrainSAIT Trust Layer vs raw Wathq direct integration</p>
+            </div>
+            <div class="overflow-x-auto bg-slate-900/60 border border-slate-800 rounded-2xl">
+                <table class="w-full text-sm text-right min-w-[640px]">
+                    <thead class="bg-slate-950/60 border-b border-slate-800">
+                        <tr>
+                            <th class="py-3 px-4 text-slate-300 font-bold">المعيار / Capability</th>
+                            <th class="py-3 px-4 text-slate-400 font-bold text-center">Raw Wathq Direct</th>
+                            <th class="py-3 px-4 text-brand-400 font-bold text-center">BrainSAIT Trust Layer</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-xs sm:text-sm">
+                        <tr class="border-b border-slate-800/60"><td class="py-2.5 px-4 text-slate-300">Onboarding time</td><td class="py-2.5 px-4 text-slate-400 text-center">2–6 weeks gov't process</td><td class="py-2.5 px-4 text-emerald-400 text-center font-bold">Same day</td></tr>
+                        <tr class="border-b border-slate-800/60 bg-slate-950/30"><td class="py-2.5 px-4 text-slate-300">Per-call cost</td><td class="py-2.5 px-4 text-slate-400 text-center">Wholesale tariff</td><td class="py-2.5 px-4 text-emerald-400 text-center font-bold">Bundled · margin we absorb</td></tr>
+                        <tr class="border-b border-slate-800/60"><td class="py-2.5 px-4 text-slate-300">Caching</td><td class="py-2.5 px-4 text-slate-400 text-center">You build it</td><td class="py-2.5 px-4 text-emerald-400 text-center font-bold">24h smart cache included</td></tr>
+                        <tr class="border-b border-slate-800/60 bg-slate-950/30"><td class="py-2.5 px-4 text-slate-300">Bundled KYB report</td><td class="py-2.5 px-4 text-rose-400 text-center">❌ separate calls</td><td class="py-2.5 px-4 text-emerald-400 text-center font-bold">✅ One call</td></tr>
+                        <tr class="border-b border-slate-800/60"><td class="py-2.5 px-4 text-slate-300">PDF certificate</td><td class="py-2.5 px-4 text-rose-400 text-center">❌</td><td class="py-2.5 px-4 text-emerald-400 text-center font-bold">✅ Signed + QR</td></tr>
+                        <tr class="border-b border-slate-800/60 bg-slate-950/30"><td class="py-2.5 px-4 text-slate-300">ZATCA invoice</td><td class="py-2.5 px-4 text-rose-400 text-center">❌</td><td class="py-2.5 px-4 text-emerald-400 text-center font-bold">✅ Included</td></tr>
+                        <tr class="border-b border-slate-800/60"><td class="py-2.5 px-4 text-slate-300">Continuous monitoring</td><td class="py-2.5 px-4 text-rose-400 text-center">❌</td><td class="py-2.5 px-4 text-emerald-400 text-center font-bold">✅ Webhook alerts</td></tr>
+                        <tr class="border-b border-slate-800/60 bg-slate-950/30"><td class="py-2.5 px-4 text-slate-300">Risk score (AI)</td><td class="py-2.5 px-4 text-rose-400 text-center">❌</td><td class="py-2.5 px-4 text-emerald-400 text-center font-bold">✅ Explainable</td></tr>
+                        <tr class="border-b border-slate-800/60"><td class="py-2.5 px-4 text-slate-300">Bulk CSV self-serve</td><td class="py-2.5 px-4 text-rose-400 text-center">❌</td><td class="py-2.5 px-4 text-emerald-400 text-center font-bold">✅</td></tr>
+                        <tr class="border-b border-slate-800/60 bg-slate-950/30"><td class="py-2.5 px-4 text-slate-300">White-label trust badge</td><td class="py-2.5 px-4 text-rose-400 text-center">❌</td><td class="py-2.5 px-4 text-emerald-400 text-center font-bold">✅</td></tr>
+                        <tr class="border-b border-slate-800/60"><td class="py-2.5 px-4 text-slate-300">Multi-GCC roadmap</td><td class="py-2.5 px-4 text-rose-400 text-center">❌</td><td class="py-2.5 px-4 text-emerald-400 text-center font-bold">✅ 2026</td></tr>
+                        <tr class="bg-slate-950/30"><td class="py-2.5 px-4 text-slate-300">Billing model</td><td class="py-2.5 px-4 text-slate-400 text-center">Pay per use</td><td class="py-2.5 px-4 text-emerald-400 text-center font-bold">Pay per use + subscriptions</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ─── HOW IT WORKS ─── -->
+        <div class="mt-16">
+            <div class="text-center mb-8">
+                <h3 class="text-xl sm:text-3xl font-black text-white">كيف تبدأ خلال 4 خطوات</h3>
+                <p class="text-sm text-slate-400 mt-2">How it works — go live today</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col gap-2 relative">
+                    <span class="absolute -top-3 right-4 bg-brand-500 text-slate-950 text-xs font-black w-7 h-7 rounded-full flex items-center justify-center shadow-lg">1</span>
+                    <h4 class="text-base font-bold text-white mt-2">Sign up</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">سجّل الآن واحصل على مفتاح API خلال 5 دقائق. API key in 5 minutes.</p>
+                </div>
+                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col gap-2 relative">
+                    <span class="absolute -top-3 right-4 bg-brand-500 text-slate-950 text-xs font-black w-7 h-7 rounded-full flex items-center justify-center shadow-lg">2</span>
+                    <h4 class="text-base font-bold text-white mt-2">Choose product</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">اختر منتجك — Raw API · KYB bundle · Widget · Monitoring.</p>
+                </div>
+                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col gap-2 relative">
+                    <span class="absolute -top-3 right-4 bg-brand-500 text-slate-950 text-xs font-black w-7 h-7 rounded-full flex items-center justify-center shadow-lg">3</span>
+                    <h4 class="text-base font-bold text-white mt-2">Integrate</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">REST + Webhooks + Widget JS. أمثلة جاهزة بأي لغة برمجة.</p>
+                </div>
+                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 flex flex-col gap-2 relative">
+                    <span class="absolute -top-3 right-4 bg-brand-500 text-slate-950 text-xs font-black w-7 h-7 rounded-full flex items-center justify-center shadow-lg">4</span>
+                    <h4 class="text-base font-bold text-white mt-2">Pay as you grow</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">ادفع حسب الاستخدام · Prepaid أو NET-30 invoicing للمؤسسات.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ─── TALK TO SALES / ENTERPRISE ─── -->
+        <div class="mt-14 bg-gradient-to-l from-slate-900 via-slate-900 to-brand-500/5 border border-brand-500/20 rounded-3xl p-7 sm:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+            <div class="flex items-start gap-4">
+                <div class="bg-brand-500/10 text-brand-400 p-4 rounded-2xl border border-brand-500/30 shrink-0"><i class="fa-solid fa-handshake text-2xl"></i></div>
+                <div>
+                    <h3 class="text-lg sm:text-2xl font-black text-white">للمؤسسات — تحدّث مع المؤسسين مباشرة</h3>
+                    <p class="text-sm text-slate-400 mt-1">Need volume pricing, NET-30, custom SLA, or on-prem? Talk to founders directly.</p>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 shrink-0 w-full lg:w-auto">
+                <a href="https://calendar.app.google/V9KcXPcD1PeWDQHH8" target="_blank" rel="noopener"
+                   class="inline-flex items-center justify-center gap-2 bg-brand-500 hover:bg-brand-600 text-slate-950 text-sm font-bold px-5 py-3 rounded-xl transition">
+                    📅 Book 15-min call
+                </a>
+                <a href="mailto:hello@brainsait.org"
+                   class="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold px-5 py-3 rounded-xl border border-slate-700 transition">
+                    ✉️ hello@brainsait.org
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
 
 <!-- ═══════════════ SANDBOX DEMO NOTICE ═══════════════ -->
 <div class="bg-amber-500/10 border-b border-amber-500/20 px-4 py-2">
@@ -384,10 +830,10 @@
                         <label class="text-xs text-slate-400" for="api-service-selector">الخدمة المراد تجربتها:</label>
                         <select id="api-service-selector" onchange="onServiceChange()"
                                 class="bg-slate-950 border border-slate-800 text-sm text-white rounded-xl p-3 focus:ring-1 focus:ring-brand-500">
-                            <option value="cr-full">استرجاع بيانات السجل التجاري كاملة (12.00 ر.س)</option>
-                            <option value="deed-check">استرجاع بيانات الصك العقاري (5.00 ر.س)</option>
-                            <option value="national-address">استرجاع العنوان الوطني للمنشآت (2.00 ر.س)</option>
-                            <option value="poa-details">استرجاع بيانات الوكالة العدلية (5.00 ر.س)</option>
+                            <option value="cr-full">استرجاع بيانات السجل التجاري كاملة (20.00 ر.س)</option>
+                            <option value="deed-check">استرجاع بيانات الصك العقاري (9.00 ر.س)</option>
+                            <option value="national-address">استرجاع العنوان الوطني للمنشآت (4.00 ر.س)</option>
+                            <option value="poa-details">استرجاع بيانات الوكالة العدلية (9.00 ر.س)</option>
                         </select>
                     </div>
 
@@ -501,8 +947,8 @@
                             <label class="calc-pkg-label border-2 border-slate-800 bg-slate-950 p-4 rounded-xl flex flex-col cursor-pointer hover:border-brand-500 transition relative" id="calc-package-trial">
                                 <input type="radio" name="calc-pkg" value="trial" onchange="calculateBudget()" class="absolute top-3 left-3 accent-brand-500">
                                 <span class="text-xs font-bold text-slate-400">الباقة التجريبية</span>
-                                <span class="text-lg font-bold text-white mt-1">30 يوم مجاني</span>
-                                <span class="text-[10px] text-slate-500 mt-2">100 استعلام مجاني كلياً</span>
+                                <span class="text-lg font-bold text-white mt-1">14 يوم مجاني</span>
+                                <span class="text-[10px] text-slate-500 mt-2">20 استعلام مجاني كلياً</span>
                             </label>
                             <label class="calc-pkg-label border-2 border-brand-500 bg-slate-950 p-4 rounded-xl flex flex-col cursor-pointer transition relative" id="calc-package-prepaid">
                                 <input type="radio" name="calc-pkg" value="prepaid" onchange="calculateBudget()" checked class="absolute top-3 left-3 accent-brand-500">
@@ -536,7 +982,7 @@
                         <div class="flex flex-col gap-3">
                             <div class="flex items-center justify-between gap-4 bg-slate-950 p-3 rounded-xl border border-slate-800">
                                 <div>
-                                    <span class="text-xs font-bold text-slate-200 block">السجل التجاري الكامل (12 ر.س)</span>
+                                    <span class="text-xs font-bold text-slate-200 block">السجل التجاري الكامل (20 ر.س)</span>
                                     <span class="text-[10px] text-slate-500">بيانات السجل، المدراء، الملاك ورأس المال كاملة</span>
                                 </div>
                                 <div class="flex items-center gap-2">
@@ -547,7 +993,7 @@
                             </div>
                             <div class="flex items-center justify-between gap-4 bg-slate-950 p-3 rounded-xl border border-slate-800">
                                 <div>
-                                    <span class="text-xs font-bold text-slate-200 block">السجل الأساسي / الصكوك (5 ر.س)</span>
+                                    <span class="text-xs font-bold text-slate-200 block">السجل الأساسي / الصكوك (9 ر.س)</span>
                                     <span class="text-[10px] text-slate-500">حالة السجل، التحقق من الصكوك، الوكالات العدلية</span>
                                 </div>
                                 <div class="flex items-center gap-2">
@@ -558,7 +1004,7 @@
                             </div>
                             <div class="flex items-center justify-between gap-4 bg-slate-950 p-3 rounded-xl border border-slate-800">
                                 <div>
-                                    <span class="text-xs font-bold text-slate-200 block">العنوان الوطني للمنشآت (2 ر.س)</span>
+                                    <span class="text-xs font-bold text-slate-200 block">العنوان الوطني للمنشآت (4 ر.س)</span>
                                     <span class="text-[10px] text-slate-500">استرجاع العنوان الوطني المسجل للمؤسسات</span>
                                 </div>
                                 <div class="flex items-center gap-2">
@@ -631,6 +1077,7 @@
                                     <span class="font-bold text-slate-300">الإجمالي شامل الضريبة:</span>
                                     <span class="text-white font-bold text-sm"><span id="res-grand-total">5,750.00</span> ريال</span>
                                 </div>
+                                <p class="text-[10px] text-slate-500 leading-relaxed mt-2 pt-2 border-t border-slate-800/40">الأسعار شاملة خدمات الكاش الذكي والدعم الفني من BrainSAIT. تطبق ضريبة القيمة المضافة 15%.</p>
                             </div>
                         </div>
                     </div>
@@ -1151,7 +1598,7 @@ function calculateBudget() {
     const qtyFree    = Math.max(0, parseInt(document.getElementById('qty-free').value)     || 0);
 
     const totalQty  = qtyCrFull + qtyCrBasic + qtyNat + qtyFree;
-    const totalCost = (qtyCrFull * 12) + (qtyCrBasic * 5) + (qtyNat * 2);
+    const totalCost = (qtyCrFull * 20) + (qtyCrBasic * 9) + (qtyNat * 4);
     const vat       = totalCost * 0.15;
     const grand     = totalCost + vat;
 
@@ -1162,14 +1609,14 @@ function calculateBudget() {
 
     if (pkg === 'trial') {
         prepaidBlock.classList.add('opacity-40','pointer-events-none');
-        document.getElementById('res-total-balance').textContent = '100 استعلام مجاني';
+        document.getElementById('res-total-balance').textContent = '20 استعلام مجاني';
         document.getElementById('res-base-charge').textContent   = '0.00';
-        document.getElementById('res-bonus-charge').textContent  = '+100 طلب';
+        document.getElementById('res-bonus-charge').textContent  = '+20 طلب';
     } else if (pkg === 'prepaid') {
         prepaidBlock.classList.remove('opacity-40','pointer-events-none');
         baseCharge = activePrepaidValue;
-        const bonusMap = { 5000:[0,'30 يوماً'], 10000:[5,'90 يوماً'], 50000:[8,'180 يوماً'], 100000:[10,'سنة كاملة'], 150000:[12,'سنة كاملة'] };
-        const bm = bonusMap[baseCharge] || [0,'30 يوماً'];
+        const bonusMap = { 5000:[0,'90 يوماً'], 10000:[8,'180 يوماً'], 50000:[12,'سنة كاملة'], 100000:[15,'سنة كاملة'], 150000:[18,'سنة كاملة'] };
+        const bm = bonusMap[baseCharge] || [0,'90 يوماً'];
         bonusPct = bm[0];
         validityNote.textContent = `الصلاحية: ${bm[1]} من التنشيط.${bonusPct ? ` يوفر لك ${bonusPct}% رصيد إضافي.` : ''}`;
         const bonus = (baseCharge * bonusPct) / 100;
@@ -1203,7 +1650,7 @@ function calculateBudget() {
     const text  = document.getElementById('budget-analysis-text');
     if (pkg === 'trial') {
         badge.className = 'text-xs p-3.5 rounded-xl flex items-start gap-2.5 bg-blue-500/10 border border-blue-500/30 text-blue-400';
-        text.textContent = 'أنت على الباقة التجريبية. لديك 100 استعلام مجاني للفحص البرمجي قبل الشحن المالي.';
+        text.textContent = 'أنت على الباقة التجريبية. لديك 20 استعلام مجاني خلال 14 يوماً للفحص البرمجي قبل الشحن المالي.';
     } else if (pkg === 'prepaid') {
         const avail = baseCharge + (baseCharge * bonusPct / 100);
         if (totalCost > avail) {
@@ -1291,6 +1738,158 @@ document.addEventListener('DOMContentLoaded', () => {
     onServiceChange();
     calculateBudget();
     showEtimadQa(1);
+});
+</script>
+
+<!-- ═══════════════ WAITLIST MODAL (shared, product-aware) ═══════════════ -->
+<div id="waitlist-modal" class="hidden fixed inset-0 z-[100] items-center justify-center p-4" aria-modal="true" role="dialog" aria-labelledby="waitlist-title">
+    <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="closeWaitlistModal()"></div>
+    <div class="relative bg-slate-900 border border-brand-500/30 rounded-2xl w-full max-w-lg max-h-[92vh] overflow-y-auto shadow-2xl shadow-brand-500/10">
+        <button type="button" onclick="closeWaitlistModal()" aria-label="إغلاق"
+                class="absolute top-3 left-3 text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 w-8 h-8 rounded-full flex items-center justify-center">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="p-6 sm:p-7">
+            <div id="waitlist-content">
+                <h3 id="waitlist-title" class="text-xl font-black text-white">انضم لقائمة الانتظار</h3>
+                <p class="text-xs text-slate-400 mt-1">Join the BrainSAIT Trust Layer early access — first 25 get 50% off for 6 months.</p>
+                <div class="mt-4 inline-flex items-center gap-2 text-[11px] font-bold text-brand-400 bg-brand-500/10 border border-brand-500/30 px-3 py-1.5 rounded-full">
+                    <i class="fa-solid fa-tag"></i>
+                    <span>المنتج / Product:</span>
+                    <span id="waitlist-product-tag">—</span>
+                </div>
+                <form id="waitlist-form" class="mt-5 flex flex-col gap-3" novalidate>
+                    <input type="hidden" name="product" id="waitlist-product-input" value="">
+                    <input type="hidden" name="source" value="wathq-trust-layer">
+                    <div>
+                        <label class="text-[11px] font-bold text-slate-300 block mb-1">الاسم الكامل / Full name <span class="text-rose-400">*</span></label>
+                        <input type="text" name="name" required class="w-full bg-slate-950 border border-slate-800 text-sm text-white rounded-xl p-2.5 focus:ring-1 focus:ring-brand-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="text-[11px] font-bold text-slate-300 block mb-1">البريد الإلكتروني / Email <span class="text-rose-400">*</span></label>
+                        <input type="email" name="email" required class="w-full bg-slate-950 border border-slate-800 text-sm text-white rounded-xl p-2.5 focus:ring-1 focus:ring-brand-500 focus:outline-none">
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="text-[11px] font-bold text-slate-300 block mb-1">رقم الجوال / Phone</label>
+                            <input type="tel" name="phone" placeholder="+966 5x xxx xxxx" class="w-full bg-slate-950 border border-slate-800 text-sm text-white rounded-xl p-2.5 focus:ring-1 focus:ring-brand-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="text-[11px] font-bold text-slate-300 block mb-1">الشركة / السجل / Company or CR</label>
+                            <input type="text" name="company" class="w-full bg-slate-950 border border-slate-800 text-sm text-white rounded-xl p-2.5 focus:ring-1 focus:ring-brand-500 focus:outline-none">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="text-[11px] font-bold text-slate-300 block mb-1">الحجم الشهري المتوقع / Volume estimate</label>
+                        <select name="volume" class="w-full bg-slate-950 border border-slate-800 text-sm text-white rounded-xl p-2.5 focus:ring-1 focus:ring-brand-500 focus:outline-none">
+                            <option value="<100">&lt; 100 / month</option>
+                            <option value="100-1k" selected>100 – 1,000 / month</option>
+                            <option value="1k-10k">1,000 – 10,000 / month</option>
+                            <option value="10k+">10,000+ / month</option>
+                            <option value="tbd">I'll tell you</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-[11px] font-bold text-slate-300 block mb-1">حالة الاستخدام / Use case</label>
+                        <textarea name="usecase" rows="3" placeholder="اشرح بإيجاز كيف ستستخدم المنتج…" class="w-full bg-slate-950 border border-slate-800 text-sm text-white rounded-xl p-2.5 focus:ring-1 focus:ring-brand-500 focus:outline-none resize-none"></textarea>
+                    </div>
+                    <label class="flex items-start gap-2 text-[11px] text-slate-400 cursor-pointer">
+                        <input type="checkbox" name="agree" required class="mt-0.5 accent-brand-500">
+                        <span>أوافق على شروط الاستخدام وسياسة الخصوصية / I agree to the terms &amp; privacy policy.</span>
+                    </label>
+                    <div id="waitlist-error" class="hidden text-[12px] text-rose-400 bg-rose-500/10 border border-rose-500/30 rounded-xl p-2.5"></div>
+                    <button type="submit" id="waitlist-submit"
+                            class="mt-2 w-full inline-flex items-center justify-center gap-2 bg-brand-500 hover:bg-brand-600 text-slate-950 text-sm font-bold py-3 rounded-xl transition disabled:opacity-60 disabled:cursor-not-allowed">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        احجز مكانك / Reserve My Spot
+                    </button>
+                    <p class="text-[10px] text-slate-500 text-center">No spam. We reply within 24 hours · لن نشاركك مع أي طرف ثالث.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// ═══════════════ WAITLIST MODAL LOGIC ═══════════════
+// TODO(Dr. Mohammed): Replace PLACEHOLDER_REPLACE_ME below with your real Formspree form ID
+// e.g. https://formspree.io/f/abcd1234
+const WAITLIST_ENDPOINT = 'https://formspree.io/f/PLACEHOLDER_REPLACE_ME';
+
+function openWaitlistModal(productName) {
+    const modal = document.getElementById('waitlist-modal');
+    if (!modal) return;
+    const product = productName || 'BrainSAIT Trust Layer';
+    document.getElementById('waitlist-product-tag').textContent = product;
+    document.getElementById('waitlist-product-input').value = product;
+    // Reset form to fresh state if previously submitted
+    const content = document.getElementById('waitlist-content');
+    if (!content.querySelector('#waitlist-form')) {
+        // form was replaced by success message — reload page reset by closing first
+    }
+    document.getElementById('waitlist-error').classList.add('hidden');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+}
+function closeWaitlistModal() {
+    const modal = document.getElementById('waitlist-modal');
+    if (!modal) return;
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+}
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeWaitlistModal();
+});
+
+document.addEventListener('submit', async (e) => {
+    if (e.target && e.target.id === 'waitlist-form') {
+        e.preventDefault();
+        const form = e.target;
+        const submitBtn = document.getElementById('waitlist-submit');
+        const errBox = document.getElementById('waitlist-error');
+        errBox.classList.add('hidden');
+
+        const data = Object.fromEntries(new FormData(form).entries());
+        if (!data.name || !data.email || !data.agree) {
+            errBox.textContent = 'الرجاء تعبئة الاسم والبريد والموافقة على الشروط. Please fill name, email and accept the terms.';
+            errBox.classList.remove('hidden');
+            return;
+        }
+
+        console.log('[BrainSAIT waitlist] submitting payload:', data);
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جارٍ الإرسال…';
+
+        try {
+            const res = await fetch(WAITLIST_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            if (!res.ok && !WAITLIST_ENDPOINT.includes('PLACEHOLDER_REPLACE_ME')) {
+                throw new Error('Network response was not ok: ' + res.status);
+            }
+            // Replace form with success message
+            document.getElementById('waitlist-content').innerHTML = `
+                <div class="text-center py-6">
+                    <div class="mx-auto w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl mb-4">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-white">شكراً! تم تسجيلك بنجاح.</h3>
+                    <p class="text-sm text-slate-300 mt-2">سنتواصل معك خلال 24 ساعة.</p>
+                    <p class="text-sm text-slate-400 mt-1">We'll be in touch within 24 hours.</p>
+                    <button type="button" onclick="closeWaitlistModal()" class="mt-5 inline-flex items-center justify-center gap-2 bg-brand-500 hover:bg-brand-600 text-slate-950 text-sm font-bold px-5 py-2.5 rounded-xl transition">إغلاق / Close</button>
+                </div>`;
+        } catch (err) {
+            console.warn('[BrainSAIT waitlist] submit failed:', err);
+            errBox.innerHTML = 'حدث خطأ في الإرسال. يرجى المحاولة لاحقاً أو راسلنا على <a class="underline text-brand-400" href="mailto:hello@brainsait.org">hello@brainsait.org</a>.<br>Submission failed. Please try again or email <a class="underline text-brand-400" href="mailto:hello@brainsait.org">hello@brainsait.org</a>.';
+            errBox.classList.remove('hidden');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> احجز مكانك / Reserve My Spot';
+        }
+    }
 });
 </script>
 </body>
