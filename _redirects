@@ -17,6 +17,7 @@ https://docs.brainsait.org/*       https://fadil369.github.io/brainsait-docs/:sp
 /platform     https://hnh.brainsait.org    301
 /training     https://academy.brainsait.org    301
 /training/    https://academy.brainsait.org    301
+/training/*   https://academy.brainsait.org    301
 /academy      https://academy.brainsait.org    301
 /incubator    /#incubator    301
 /products     /#products    301
