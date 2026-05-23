@@ -24,6 +24,20 @@ https://docs.brainsait.org/*       https://fadil369.github.io/brainsait-docs/:sp
 /how-it-works /#how-it-works    301
 /clinic-booking /#clinic-booking    301
 
+# ── Tool pages (serve HTML files) ─────────────────────────
+/pdf-to-excel        /pdf-to-excel.html    200
+/tawnia-reconciliation /tawnia-reconciliation.html    200
+
+# ── Cross-product navigation shortcuts ────────────────────
+/portal      https://portal.elfadil.com    301
+/rcm         https://portal.elfadil.com    301
+/hnh         https://hnh.brainsait.org    301
+/hotels      https://hotel.elfadil.com    301
+/momfood     https://mom.elfadil.com    301
+/basma       https://hnh.brainsait.org/basma    301
+/wathq       /wathq.html    200
+/docs        https://fadil369.github.io/brainsait-docs/    301
+
 # ── Legal pages (real files if/when added) ────────────────
 /privacy      /privacy.html    200
 /terms        /terms.html      200

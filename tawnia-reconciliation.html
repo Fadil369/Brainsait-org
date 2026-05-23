@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tawnia Reconciliation AI — BrainSAIT</title>
+<meta name="description" content="Interactive Saudi RCM review console for Tawnia claim decisions. Load data, apply AGREE/DISAGREE logic, export reconciled outcomes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--void:#02040a;--deep:#060913;--surface:#0f1524;--gold:#d4a574;--gold-l:#e8c49a;--gold-dim:rgba(212,165,116,0.10);--eme:#10b981;--eme-dim:rgba(16,185,129,0.1);--rose:#f43f5e;--rose-dim:rgba(244,63,94,0.1);--text:#f8fafc;--textd:#cbd5e1;--textm:#64748b;--gb:rgba(255,255,255,0.06);--gbh:rgba(255,255,255,0.16);--r:16px;--fi:'Inter',sans-serif;--fd:'Syne',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--void);color:var(--text);font-family:var(--fi);font-size:15px;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--gold);text-decoration:none}
+.c{max-width:1100px;margin:0 auto;padding:0 24px;width:100%}
+/* Nav */
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(2,4,10,.8);backdrop-filter:blur(16px);border-bottom:1px solid var(--gb)}
+.ni{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1100px;margin:0 auto;padding:0 24px}
+.nb{display:flex;align-items:center;gap:10px;color:var(--text);font-family:var(--fd);font-weight:800;font-size:16px}
+.nlogo{width:32px;height:32px;background:linear-gradient(135deg,var(--gold),#0ea5e9);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--void);font-weight:800}
+/* Main */
+main{padding-top:100px;flex:1}
+header{text-align:center;padding:40px 0}
+h1{font-family:var(--fd);font-size:clamp(28px,5vw,44px);font-weight:800;margin-bottom:12px}
+h1 span{background:linear-gradient(135deg,var(--gold),var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:var(--textd);font-size:16px;max-width:600px;margin:0 auto}
+/* Upload */
+.upload-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
+@media(max-width:640px){.upload-grid{grid-template-columns:1fr}}
+.drop-zone{border:2px dashed var(--gb);border-radius:var(--r);padding:40px 24px;text-align:center;cursor:pointer;transition:all .3s;background:rgba(255,255,255,.02)}
+.drop-zone:hover,.drop-zone.dragover{border-color:var(--gold);background:var(--gold-dim)}
+.drop-zone-icon{font-size:36px;margin-bottom:12px}
+.drop-zone-text{color:var(--textd);font-size:14px}
+.drop-zone-text strong{color:var(--gold)}
+.drop-zone-hint{color:var(--textm);font-size:12px;margin-top:6px}
+/* Controls */
+.controls{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:24px 0}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:8px;font-weight:600;font-size:14px;border:none;cursor:pointer;transition:all .2s;text-decoration:none}
+.btn-p{background:linear-gradient(135deg,var(--gold),var(--gold-l));color:var(--void)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,165,116,.3)}
+.btn-g{background:transparent;color:var(--text);border:1px solid var(--gb)}
+.btn-g:hover{background:rgba(255,255,255,.04);border-color:var(--gbh)}
+.btn-eme{background:var(--eme);color:#fff}
+.btn-eme:hover{background:#059669}
+.btn-rose{background:var(--rose);color:#fff}
+.btn-rose:hover{background:#e11d48}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important}
+.btn-sm{padding:6px 14px;font-size:13px}
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+@media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:var(--deep);border:1px solid var(--gb);border-radius:var(--r);padding:20px;text-align:center}
+.stat-val{font-family:var(--fd);font-size:28px;font-weight:800;color:var(--text)}
+.stat-label{font-size:12px;color:var(--textm);margin-top:4px}
+.stat.gold .stat-val{color:var(--gold)}
+.stat.eme .stat-val{color:var(--eme)}
+.stat.rose .stat-val{color:var(--rose)}
+/* Table */
+.table-wrap{overflow-x:auto;border:1px solid var(--gb);border-radius:var(--r);background:var(--deep);margin-top:16px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--surface);color:var(--gold);font-weight:600;text-align:left;padding:10px 12px;border-bottom:1px solid var(--gb);white-space:nowrap;position:sticky;top:0}
+td{padding:8px 12px;border-bottom:1px solid var(--gb);color:var(--textd)}
+tr:hover td{background:rgba(255,255,255,.02)}
+tr.agree td{background:var(--eme-dim)}
+tr.disagree td{background:var(--rose-dim)}
+tr.pending td{background:rgba(255,255,255,.02)}
+.agree-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:var(--eme);color:#fff}
+.disagree-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:var(--rose);color:#fff}
+.pending-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;background:var(--textm);color:#fff}
+.action-btn{cursor:pointer;padding:4px 10px;border-radius:4px;border:none;font-weight:600;font-size:12px;transition:all .2s;margin:0 3px}
+.action-btn.agree{background:var(--eme);color:#fff}
+.action-btn.agree:hover{background:#059669}
+.action-btn.disagree{background:var(--rose);color:#fff}
+.action-btn.disagree:hover{background:#e11d48}
+/* Footer */
+footer{border-top:1px solid var(--gb);padding:24px 0;margin-top:60px;text-align:center;color:var(--textm);font-size:13px}
+.empty{text-align:center;padding:60px 24px;color:var(--textm)}
+.empty-icon{font-size:48px;margin-bottom:12px}
+</style>
+</head>
+<body>
+<nav id="nav"><div class="ni"><a href="https://brainsait.org" class="nb"><div class="nlogo">B</div> BrainSAIT</a><a href="https://brainsait.org#solutions" class="btn btn-g btn-sm">Back to Solutions</a></div></nav>
+<main>
+<div class="c">
+<header>
+<h1><span>Tawnia Reconciliation</span> AI</h1>
+<p class="sub">Interactive Saudi RCM review console. Load Google Sheets or Excel data, apply AGREE/DISAGREE logic, and export reconciled outcomes.</p>
+</header>
+<div class="upload-grid">
+<div class="drop-zone" id="csvDrop">
+<div class="drop-zone-icon">📊</div>
+<div class="drop-zone-text"><strong>Upload CSV/Excel</strong> — drag &amp; drop or click</div>
+<div class="drop-zone-hint">Columns: claim_id, payer, amount, status, decision</div>
+</div>
+<div class="drop-zone" style="cursor:default;background:rgba(16,185,129,.03);border-color:rgba(16,185,129,.2)">
+<div class="drop-zone-icon">🧠</div>
+<div class="drop-zone-text"><strong>AI Auto-Reconcile</strong></div>
+<div class="drop-zone-hint">AGREE if claim_amount ≤ expected &amp; status=paid · DISAGREE otherwise</div>
+</div>
+<input type="file" id="fileInput" accept=".csv,.xlsx,.xls,.tsv" style="display:none">
+</div>
+<div class="controls">
+<button class="btn btn-p" id="autoBtn">🤖 Auto-Reconcile</button>
+<button class="btn btn-g" id="exportBtn" disabled>📥 Export Reconciled</button>
+<button class="btn btn-g" id="resetBtn">🔄 Reset</button>
+</div>
+<div class="stats" id="stats" style="display:none">
+<div class="stat gold"><div class="stat-val" id="totalCount">0</div><div class="stat-label">Total Claims</div></div>
+<div class="stat eme"><div class="stat-val" id="agreeCount">0</div><div class="stat-label">AGREE</div></div>
+<div class="stat rose"><div class="stat-val" id="disagreeCount">0</div><div class="stat-label">DISAGREE</div></div>
+<div class="stat"><div class="stat-val" id="pendingCount">0</div><div class="stat-label">Pending</div></div>
+</div>
+<div id="tableArea" style="display:none">
+<div class="table-wrap" id="tableWrap"></div>
+</div>
+<div class="empty" id="emptyState"><div class="empty-icon">📋</div><div>Upload claim data to start reconciliation</div></div>
+</div>
+</main>
+<footer><div class="c">&copy; 2026 BrainSAIT LTD — Saudi RCM Reconciliation Console</div></footer>
+<script>
+const fileInput=document.getElementById('fileInput');
+const csvDrop=document.getElementById('csvDrop');
+const autoBtn=document.getElementById('autoBtn');
+const exportBtn=document.getElementById('exportBtn');
+const resetBtn=document.getElementById('resetBtn');
+const tableWrap=document.getElementById('tableWrap');
+const tableArea=document.getElementById('tableArea');
+const emptyState=document.getElementById('emptyState');
+const stats=document.getElementById('stats');
+const totalCount=document.getElementById('totalCount');
+const agreeCount=document.getElementById('agreeCount');
+const disagreeCount=document.getElementById('disagreeCount');
+const pendingCount=document.getElementById('pendingCount');
+let rows=[];
+let headers=[];
+csvDrop.addEventListener('click',()=>fileInput.click());
+csvDrop.addEventListener('dragover',e=>{e.preventDefault();csvDrop.classList.add('dragover')});
+csvDrop.addEventListener('dragleave',()=>csvDrop.classList.remove('dragover'));
+csvDrop.addEventListener('drop',e=>{e.preventDefault();csvDrop.classList.remove('dragover');if(e.dataTransfer.files.length)loadFile(e.dataTransfer.files[0])});
+fileInput.addEventListener('change',()=>{if(fileInput.files.length)loadFile(fileInput.files[0])});
+function loadFile(file){
+const ext=file.name.split('.').pop().toLowerCase();
+if(ext==='csv'||ext==='tsv'){
+const reader=new FileReader();
+reader.onload=function(e){
+const text=e.target.result;
+const lines=text.split('\n').filter(l=>l.trim());
+if(lines.length<2){alert('File has no data rows');return}
+const delim=ext==='tsv'?'\t':',';
+headers=lines[0].split(delim).map(h=>h.trim().replace(/^"(.*)"$/,'$1'));
+rows=lines.slice(1).map(line=>{
+const vals=line.split(delim).map(v=>v.trim().replace(/^"(.*)"$/,'$1'));
+const row={};headers.forEach((h,i)=>{row[h]=vals[i]||''});row._verdict='pending';return row;
+});
+render();
+};
+reader.readAsText(file);
+}else if(ext==='xlsx'||ext==='xls'){
+alert('XLSX support requires the SheetJS library. Save as CSV and upload.');
+}else{alert('Please upload a CSV or TSV file');}
+}
+function autoReconcile(){
+if(!rows.length)return;
+let agreed=0,disagreed=0;
+rows.forEach(row=>{
+const amount=parseFloat(String(row.amount||row.Amount||row.claim_amount||row.Claim_Amount||'0').replace(/[^0-9.]/g,''));
+const status=(row.status||row.Status||row.claim_status||row.Claim_Status||'').toLowerCase();
+const expected=parseFloat(String(row.expected||row.Expected||row.expected_amount||row.Expected_Amount||'0').replace(/[^0-9.]/g,''));
+if(amount<=expected+0.01&&(status==='paid'||status==='approved'||status==='مؤمن')){row._verdict='agree';agreed++}
+else{row._verdict='disagree';disagreed++}
+});
+render();
+autoBtn.textContent='✓ Re-reconciled';
+setTimeout(()=>{autoBtn.textContent='🤖 Auto-Reconcile'},2000);
+}
+function render(){
+if(!rows.length)return;
+emptyState.style.display='none';tableArea.style.display='block';stats.style.display='grid';
+const cols=['#',...headers,'Decision','Actions'];
+let html='<table><thead><tr>'+cols.map(c=>`<th>${c}</th>`).join('')+'</tr></thead><tbody>';
+let agree=0,disagree=0,pending=0;
+rows.forEach((row,i)=>{
+const verdict=row._verdict||'pending';
+if(verdict==='agree')agree++;
+else if(verdict==='disagree')disagree++;
+else pending++;
+html+=`<tr class="${verdict}">`;
+html+=`<td>${i+1}</td>`;
+headers.forEach(h=>html+=`<td>${(row[h]||'').replace(/</g,'&lt;')}</td>`);
+const badge=verdict==='agree'?'<span class="agree-badge">AGREE</span>':verdict==='disagree'?'<span class="disagree-badge">DISAGREE</span>':'<span class="pending-badge">Pending</span>';
+html+=`<td>${badge}</td>`;
+html+=`<td><button class="action-btn agree" onclick="setVerdict(${i},'agree')">✓ AGREE</button><button class="action-btn disagree" onclick="setVerdict(${i},'disagree')">✗ DISAGREE</button></td>`;
+html+='</tr>';
+});
+html+='</tbody></table>';tableWrap.innerHTML=html;
+totalCount.textContent=rows.length;agreeCount.textContent=agree;disagreeCount.textContent=disagree;pendingCount.textContent=pending;
+exportBtn.disabled=false;
+}
+function setVerdict(idx,v){if(rows[idx]){rows[idx]._verdict=v;render()}}
+autoBtn.addEventListener('click',autoReconcile);
+exportBtn.addEventListener('click',()=>{
+if(!rows.length)return;
+const cols=['#',...headers,'Decision'];
+let csv=cols.map(c=>`"${c}"`).join(',')+'\n';
+rows.forEach((row,i)=>{
+const vals=[i+1,...headers.map(h=>row[h]||''),row._verdict||'pending'];
+csv+=vals.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')+'\n';
+});
+const BOM='\uFEFF';const blob=new Blob([BOM+csv],{type:'text/csv;charset=utf-8'});
+const url=URL.createObjectURL(blob);
+const a=document.createElement('a');a.href=url;a.download='tawnia_reconciled.csv';a.click();
+URL.revokeObjectURL(url);
+});
+resetBtn.addEventListener('click',()=>{rows=[];headers=[];emptyState.style.display='block';tableArea.style.display='none';stats.style.display='none';exportBtn.disabled=true;fileInput.value='';autoBtn.textContent='🤖 Auto-Reconcile'});
+</script>
+</body>
+</html>

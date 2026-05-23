@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF to Excel Extractor — BrainSAIT</title>
+<meta name="description" content="Browser-based PDF extraction workspace for structured contracts, claim reports, and tabular PDFs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--void:#02040a;--deep:#060913;--surface:#0f1524;--gold:#d4a574;--gold-l:#e8c49a;--gold-dim:rgba(212,165,116,0.10);--text:#f8fafc;--textd:#cbd5e1;--textm:#64748b;--gb:rgba(255,255,255,0.06);--gbh:rgba(255,255,255,0.16);--r:16px;--fi:'Inter',sans-serif;--fd:'Syne',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--void);color:var(--text);font-family:var(--fi);font-size:15px;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--gold);text-decoration:none}
+.c{max-width:1000px;margin:0 auto;padding:0 24px;width:100%}
+/* Nav */
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(2,4,10,.8);backdrop-filter:blur(16px);border-bottom:1px solid var(--gb)}
+.ni{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1000px;margin:0 auto;padding:0 24px}
+.nb{display:flex;align-items:center;gap:10px;color:var(--text);font-family:var(--fd);font-weight:800;font-size:16px}
+.nlogo{width:32px;height:32px;background:linear-gradient(135deg,var(--gold),#0ea5e9);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--void);font-weight:800}
+/* Main */
+main{padding-top:100px;flex:1}
+header{text-align:center;padding:40px 0}
+h1{font-family:var(--fd);font-size:clamp(28px,5vw,44px);font-weight:800;margin-bottom:12px}
+h1 span{background:linear-gradient(135deg,var(--gold),var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:var(--textd);font-size:16px;max-width:600px;margin:0 auto}
+/* Upload */
+.drop-zone{border:2px dashed var(--gb);border-radius:var(--r);padding:60px 24px;text-align:center;cursor:pointer;transition:all .3s;background:rgba(255,255,255,.02)}
+.drop-zone:hover,.drop-zone.dragover{border-color:var(--gold);background:var(--gold-dim)}
+.drop-zone-icon{font-size:48px;margin-bottom:16px}
+.drop-zone-text{color:var(--textd);font-size:15px}
+.drop-zone-text strong{color:var(--gold)}
+.drop-zone-hint{color:var(--textm);font-size:13px;margin-top:8px}
+/* Controls */
+.controls{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:24px 0}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:8px;font-weight:600;font-size:14px;border:none;cursor:pointer;transition:all .2s;text-decoration:none}
+.btn-p{background:linear-gradient(135deg,var(--gold),var(--gold-l));color:var(--void)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,165,116,.3)}
+.btn-g{background:transparent;color:var(--text);border:1px solid var(--gb)}
+.btn-g:hover{background:rgba(255,255,255,.04);border-color:var(--gbh)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important}
+/* Preview */
+.preview{margin-top:32px;display:none}
+.preview.show{display:block}
+.preview-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:12px}
+.preview-header h2{font-family:var(--fd);font-size:20px}
+.table-wrap{overflow-x:auto;border:1px solid var(--gb);border-radius:var(--r);background:var(--deep)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--surface);color:var(--gold);font-weight:600;text-align:left;padding:12px 16px;border-bottom:1px solid var(--gb);white-space:nowrap;position:sticky;top:0}
+td{padding:10px 16px;border-bottom:1px solid var(--gb);color:var(--textd);max-width:300px;overflow:hidden;text-overflow:ellipsis}
+tr:hover td{background:rgba(255,255,255,.02)}
+.status-bar{display:flex;gap:12px;padding:12px 0;color:var(--textm);font-size:13px;flex-wrap:wrap}
+.status-bar .count{color:var(--gold);font-weight:600}
+/* Footer */
+footer{border-top:1px solid var(--gb);padding:24px 0;margin-top:60px;text-align:center;color:var(--textm);font-size:13px}
+.loading{display:none;text-align:center;padding:40px}
+.loading.show{display:block}
+.spinner{width:40px;height:40px;border:3px solid var(--gb);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty{text-align:center;padding:60px 24px;color:var(--textm)}
+.empty-icon{font-size:48px;margin-bottom:12px}
+</style>
+</head>
+<body>
+<nav id="nav"><div class="ni"><a href="https://brainsait.org" class="nb"><div class="nlogo">B</div> BrainSAIT</a><a href="https://brainsait.org#solutions" class="btn btn-g btn-sm">Back to Solutions</a></div></nav>
+<main>
+<div class="c">
+<header>
+<h1><span>PDF → Excel</span> Extractor</h1>
+<p class="sub">Upload structured PDFs — contracts, claim reports, tabular data — and export clean Excel instantly. All in your browser.</p>
+</header>
+<div class="drop-zone" id="dropZone">
+<div class="drop-zone-icon">📄</div>
+<div class="drop-zone-text"><strong>Click to upload</strong> or drag &amp; drop a PDF here</div>
+<div class="drop-zone-hint">Supports structured contracts, claim reports, and tabular PDFs</div>
+</div>
+<input type="file" id="fileInput" accept=".pdf" style="display:none">
+<div class="controls"><button class="btn btn-p" id="extractBtn" disabled>⚡ Extract Tables</button><button class="btn btn-g" id="exportBtn" disabled>📥 Export to Excel</button><button class="btn btn-g" id="resetBtn">🔄 Reset</button></div>
+<div class="loading" id="loading"><div class="spinner"></div><div class="sub">Extracting tables from PDF...</div></div>
+<div class="preview" id="preview">
+<div class="preview-header"><h2>📊 Extracted Data</h2></div>
+<div class="status-bar" id="statusBar"></div>
+<div class="table-wrap" id="tableWrap"><div class="empty"><div class="empty-icon">📋</div><div>Upload a PDF to extract tables</div></div></div>
+</div>
+</div>
+</main>
+<footer><div class="c">&copy; 2026 BrainSAIT LTD — Browser-based, no data leaves your machine</div></footer>
+<script>
+const dropZone=document.getElementById('dropZone');
+const fileInput=document.getElementById('fileInput');
+const extractBtn=document.getElementById('extractBtn');
+const exportBtn=document.getElementById('exportBtn');
+const resetBtn=document.getElementById('resetBtn');
+const loading=document.getElementById('loading');
+const preview=document.getElementById('preview');
+const tableWrap=document.getElementById('tableWrap');
+const statusBar=document.getElementById('statusBar');
+let currentData=null;
+let currentFile=null;
+dropZone.addEventListener('click',()=>fileInput.click());
+dropZone.addEventListener('dragover',e=>{e.preventDefault();dropZone.classList.add('dragover')});
+dropZone.addEventListener('dragleave',()=>dropZone.classList.remove('dragover'));
+dropZone.addEventListener('drop',e=>{e.preventDefault();dropZone.classList.remove('dragover');if(e.dataTransfer.files.length)handleFile(e.dataTransfer.files[0])});
+fileInput.addEventListener('change',()=>{if(fileInput.files.length)handleFile(fileInput.files[0])});
+async function handleFile(file){
+if(file.type!=='application/pdf'){alert('Please select a PDF file');return}
+currentFile=file;extractBtn.disabled=false;exportBtn.disabled=true;
+document.querySelector('.drop-zone-text').innerHTML=`<strong>${file.name}</strong> (${(file.size/1024).toFixed(0)} KB)`;
+dropZone.style.borderColor='rgba(212,165,116,.4)';
+}
+extractBtn.addEventListener('click',extractTables);
+async function extractTables(){
+if(!currentFile)return;
+loading.classList.add('show');preview.classList.remove('show');extractBtn.disabled=true;
+const reader=new FileReader();
+reader.onload=async function(e){
+const pdfData=e.target.result;
+try{
+const pdfBytes=new Uint8Array(pdfData);
+const pdfjsLib=window.pdfjsLib;
+if(!pdfjsLib){loading.classList.remove('show');extractBtn.disabled=false;alert('PDF.js library not loaded. Try refreshing.');return}
+const pdf=await pdfjsLib.getDocument({data:pdfBytes}).promise;
+const allTables=[];
+for(let i=1;i<=pdf.numPages;i++){
+const page=await pdf.getPage(i);
+const textContent=await page.getTextContext();
+const items=textContent.items.map(item=>({text:item.str,x:item.transform[4],y:item.transform[5],h:item.height||0,w:item.width||0}));
+items.sort((a,b)=>b.y-a.y||a.x-b.x);
+if(items.length<3)continue;
+const rows=[];let currentRow=[];let lastY=items[0]?.y||0;
+for(const item of items){
+if(Math.abs(item.y-lastY)>5){if(currentRow.length){rows.push([...currentRow]);currentRow=[]}lastY=item.y}
+currentRow.push(item.text.trim())}
+if(currentRow.length)rows.push(currentRow);
+if(rows.length>2)allTables.push(...rows.slice(0,50));
+}
+if(!allTables.length){
+const text=items.map(i=>i.text).join(' ');
+allTables.push(...text.split('\n').filter(l=>l.trim()).slice(0,100).map(l=>[l]));
+}
+currentData=allTables;
+renderTable(allTables);
+loading.classList.remove('show');
+preview.classList.add('show');
+exportBtn.disabled=false;
+statusBar.innerHTML=`<span class="count">${allTables.length}</span> rows extracted from ${pdf.numPages} page(s)`;
+}catch(err){
+loading.classList.remove('show');extractBtn.disabled=false;
+alert('Could not extract tables. PDF may be scanned or image-based. Try a text PDF.');
+console.error(err);
+}
+};
+reader.readAsArrayBuffer(currentFile);
+}
+function renderTable(data){
+if(!data||!data.length){tableWrap.innerHTML='<div class="empty"><div class="empty-icon">📋</div><div>No table data found in this PDF</div></div>';return}
+const maxCols=data.reduce((m,r)=>Math.max(m,r.length),0);
+let html='<table><thead><tr>';
+for(let i=0;i<maxCols;i++)html+=`<th>Column ${i+1}</th>`;
+html+='</tr></thead><tbody>';
+for(const row of data.slice(0,500)){
+html+='<tr>';
+for(let i=0;i<maxCols;i++)html+=`<td>${(row[i]||'').replace(/</g,'&lt;')}</td>`;
+html+='</tr>'}
+if(data.length>500)html+=`<tr><td colspan="${maxCols}" style="text-align:center;color:var(--textm)">… ${data.length-500} more rows</td></tr>`;
+html+='</tbody></table>';tableWrap.innerHTML=html;
+}
+exportBtn.addEventListener('click',()=>{
+if(!currentData||!currentData.length)return;
+let csv='';const maxCols=currentData.reduce((m,r)=>Math.max(m,r.length),0);
+for(const row of currentData){
+const cells=[];
+for(let i=0;i<maxCols;i++){let val=(row[i]||'');cells.push(`"${val.replace(/"/g,'""')}"`)}
+csv+=cells.join(',')+'\n';
+}
+const BOM='\uFEFF';const blob=new Blob([BOM+csv],{type:'text/csv;charset=utf-8'});
+const url=URL.createObjectURL(blob);
+const a=document.createElement('a');a.href=url;a.download=`${(currentFile?.name||'extracted').replace('.pdf','')}_extracted.csv`;a.click();
+URL.revokeObjectURL(url);
+});
+resetBtn.addEventListener('click',()=>{
+currentFile=null;currentData=null;extractBtn.disabled=true;exportBtn.disabled=true;
+preview.classList.remove('show');loading.classList.remove('show');
+document.querySelector('.drop-zone-text').innerHTML='<strong>Click to upload</strong> or drag &amp; drop a PDF here';
+dropZone.style.borderColor='';fileInput.value='';
+tableWrap.innerHTML='<div class="empty"><div class="empty-icon">📋</div><div>Upload a PDF to extract tables</div></div>';
+});
+(function(){const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';s.onload=()=>{pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'};document.head.appendChild(s)})();
+</script>
+</body>
+</html>
