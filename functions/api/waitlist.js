@@ -1,7 +1,3 @@
-interface Env {
-  WATHQ_KV?: KVNamespace;
-}
-
 const CORS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -12,17 +8,10 @@ export async function onRequestOptions() {
   return new Response(null, { status: 204, headers: CORS });
 }
 
-export async function onRequestPost({ request, env }: { request: Request; env: Env }) {
+export async function onRequestPost({ request, env }) {
   const headers = { ...CORS, 'Content-Type': 'application/json' };
 
-  let body: {
-    name?: string;
-    email?: string;
-    company?: string;
-    product?: string;
-    usecase?: string;
-    source?: string;
-  };
+  let body;
   try {
     body = await request.json();
   } catch {

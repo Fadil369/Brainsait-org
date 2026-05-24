@@ -1,12 +1,7 @@
-interface Env {
-  GEMINI_API_KEY: string;
-  WATHQ_KV?: KVNamespace;
-}
-
 const DEMO_CALLS_LIMIT = 3;
 const DEMO_WINDOW_SEC = 86400;
 
-const SYSTEM_PROMPTS: Record<string, string> = {
+const SYSTEM_PROMPTS = {
   tender: `أنت خبير حكومي سعودي متخصص في تحليل كراسات الشروط والعطاءات الحكومية.
 مهمتك: تحليل النص المقدم وتحديد:
 1. أي مخالفات لنظام المنافسات والمشتريات الحكومية (GTPL)
@@ -43,10 +38,10 @@ export async function onRequestOptions() {
   return new Response(null, { status: 204, headers: CORS });
 }
 
-export async function onRequestPost({ request, env }: { request: Request; env: Env }) {
+export async function onRequestPost({ request, env }) {
   const headers = { ...CORS, 'Content-Type': 'application/json' };
 
-  let body: { type?: string; text?: string; sessionId?: string };
+  let body;
   try {
     body = await request.json();
   } catch {
@@ -58,7 +53,6 @@ export async function onRequestPost({ request, env }: { request: Request; env: E
   if (!type || !text?.trim()) {
     return new Response(JSON.stringify({ success: false, error: 'type and text are required' }), { status: 400, headers });
   }
-
   if (!['tender', 'naphis', 'contract'].includes(type)) {
     return new Response(JSON.stringify({ success: false, error: 'type must be tender | naphis | contract' }), { status: 400, headers });
   }
@@ -68,7 +62,7 @@ export async function onRequestPost({ request, env }: { request: Request; env: E
     return new Response(JSON.stringify({ success: false, error: 'AI service not configured' }), { status: 503, headers });
   }
 
-  // Server-side rate limiting via KV (bind WATHQ_KV in Pages → Settings → Functions)
+  // Server-side rate limiting via KV (bind WATHQ_KV in Pages → Settings → Functions → KV bindings)
   let used = 0;
   let kvKey = '';
   if (env.WATHQ_KV) {
@@ -76,7 +70,6 @@ export async function onRequestPost({ request, env }: { request: Request; env: E
     kvKey = `demo-calls:${sessionId ?? ip}`;
     const stored = await env.WATHQ_KV.get(kvKey);
     used = stored ? parseInt(stored, 10) : 0;
-
     if (used >= DEMO_CALLS_LIMIT) {
       return new Response(JSON.stringify({
         success: false,
@@ -89,10 +82,8 @@ export async function onRequestPost({ request, env }: { request: Request; env: E
   }
 
   // Call Gemini
-  const model = 'gemini-2.0-flash';
-  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${geminiKey}`;
-
-  let geminiResp: Response;
+  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiKey}`;
+  let geminiResp;
   try {
     geminiResp = await fetch(endpoint, {
       method: 'POST',
@@ -114,14 +105,13 @@ export async function onRequestPost({ request, env }: { request: Request; env: E
     return new Response(JSON.stringify({ success: false, error: 'AI analysis failed' }), { status: 502, headers });
   }
 
-  const geminiData = await geminiResp.json() as any;
-  const analysis: string = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
-
+  const geminiData = await geminiResp.json();
+  const analysis = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
   if (!analysis) {
     return new Response(JSON.stringify({ success: false, error: 'Empty AI response' }), { status: 502, headers });
   }
 
-  // Persist updated counter
+  // Update KV counter
   const newUsed = used + 1;
   if (env.WATHQ_KV && kvKey) {
     await env.WATHQ_KV.put(kvKey, String(newUsed), { expirationTtl: DEMO_WINDOW_SEC });
