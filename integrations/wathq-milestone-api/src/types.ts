@@ -25,6 +25,7 @@ export interface Env {
   PAYPAL_CLIENT_SECRET: string;
   STCPAY_MERCHANT_ID: string;
   STCPAY_SECRET_KEY: string;
+  GEMINI_API_KEY: string;
 }
 
 // ── Status Enums (D1 CHECK constraints mirror these) ────────────────────

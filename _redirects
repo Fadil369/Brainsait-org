@@ -25,6 +25,10 @@ https://docs.brainsait.org/*       https://fadil369.github.io/brainsait-docs/:sp
 /how-it-works /#how-it-works    301
 /clinic-booking /#clinic-booking    301
 
+# ── TrustOS + Wathq aliases ───────────────────────────────
+/trustos     /trustos.html    200
+/wathq       /wathq.html      200
+
 # ── Cross-product navigation shortcuts ────────────────────
 /portal      https://portal.elfadil.com    301
 /rcm         https://portal.elfadil.com    301
