@@ -1,0 +1,23 @@
+{
+  "name": "wathq-milestone-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AFESWE — Automated Fintech Escrow and Smart Workflow Ecosystem for Saudi Government Procurement",
+  "scripts": {
+    "dev": "wrangler dev",
+    "build": "tsc --noEmit",
+    "deploy": "wrangler deploy",
+    "deploy:staging": "wrangler deploy --env staging",
+    "migrate": "wrangler d1 migrations apply openauth-brainsait-db --remote",
+    "migrate:local": "wrangler d1 migrations apply openauth-brainsait-db --local",
+    "types": "wrangler types"
+  },
+  "dependencies": {
+    "hono": "^4.6.3"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241022.0",
+    "typescript": "^5.6.3",
+    "wrangler": "^3.86.0"
+  }
+}
