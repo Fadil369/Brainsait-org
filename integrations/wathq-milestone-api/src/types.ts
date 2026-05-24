@@ -10,11 +10,21 @@ export interface Env {
   WATHQ_QUEUE: Queue;
   // Secrets
   API_SECRET_KEY: string;
+  WATHQ_API_KEY: string;           // real Wathq apiKey from developer.wathq.sa
+  WATHQ_API_BASE_URL: string;      // https://api.wathq.sa/v1
   ETIMAD_CLIENT_ID: string;
   ETIMAD_CLIENT_SECRET: string;
-  ETIMAD_TOKEN_URL: string;       // https://<host>/oauth/v2/accesstoken
-  ETIMAD_CONTRACTS_URL: string;   // https://<host>/banks/v2/contracts
+  ETIMAD_TOKEN_URL: string;
+  ETIMAD_CONTRACTS_URL: string;
   ENVIRONMENT: string;
+  // Payment keys
+  STRIPE_SECRET_KEY: string;
+  STRIPE_PUBLISHABLE_KEY: string;
+  STRIPE_WEBHOOK_SECRET: string;
+  PAYPAL_CLIENT_ID: string;
+  PAYPAL_CLIENT_SECRET: string;
+  STCPAY_MERCHANT_ID: string;
+  STCPAY_SECRET_KEY: string;
 }
 
 // ── Status Enums (D1 CHECK constraints mirror these) ────────────────────

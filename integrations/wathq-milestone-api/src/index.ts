@@ -10,6 +10,7 @@ import { bidsRouter } from './routes/bids';
 import { guaranteesRouter } from './routes/guarantees';
 import { offsetsRouter } from './routes/offsets';
 import { vendorsRouter } from './routes/vendors';
+import { paymentsRouter } from './routes/payments';
 import { scanExpiringGuarantees } from './services/escrow';
 import { ok } from './utils/response';
 
@@ -54,6 +55,32 @@ app.route('/wathq/v1/bids', bidsRouter);
 app.route('/wathq/v1/guarantees', guaranteesRouter);
 app.route('/wathq/v1/offsets', offsetsRouter);
 app.route('/wathq/v1/vendors', vendorsRouter);
+// Payments — /config and /webhooks are public (no auth middleware)
+app.route('/wathq/v1/payments', paymentsRouter);
+
+// Wathq API proxy — forward to real Wathq with cached apiKey
+app.get('/wathq/v1/proxy/*', async (c) => {
+  const wathqKey = c.env.WATHQ_API_KEY;
+  if (!wathqKey) return c.json({ success: false, error: { message: 'WATHQ_API_KEY not configured' } }, 503 as any);
+
+  const base = c.env.WATHQ_API_BASE_URL ?? 'https://api.wathq.sa/v1';
+  const path = c.req.path.replace('/wathq/v1/proxy', '');
+  const upstream = `${base}${path}${c.req.url.includes('?') ? '?' + c.req.url.split('?')[1] : ''}`;
+
+  const cacheKey = `wathq-proxy:${path}`;
+  const cached = await c.env.WATHQ_KV.get(cacheKey);
+  if (cached) return c.json(JSON.parse(cached));
+
+  const resp = await fetch(upstream, {
+    headers: { apiKey: wathqKey, Accept: 'application/json' },
+  });
+
+  const data = await resp.json() as any;
+  if (resp.ok) {
+    await c.env.WATHQ_KV.put(cacheKey, JSON.stringify(data), { expirationTtl: 86400 });
+  }
+  return c.json(data, resp.status as any);
+});
 
 // --- Scheduled Tasks (Cloudflare Cron Triggers) ---
 

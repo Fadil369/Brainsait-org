@@ -5,7 +5,16 @@ compatibility_flags = ["nodejs_compat"]
 
 [vars]
 ETIMAD_BASE_URL = "https://api.etimad.sa"
+WATHQ_API_BASE_URL = "https://api.wathq.sa/v1"
 ENVIRONMENT = "production"
+# Public keys (safe to commit — set secret keys via: wrangler secret put <NAME>)
+# STRIPE_PUBLISHABLE_KEY = "pk_live_..."   # wrangler secret put STRIPE_PUBLISHABLE_KEY
+# PAYPAL_CLIENT_ID = "..."                  # wrangler secret put PAYPAL_CLIENT_ID
+# Secrets (set via wrangler secret put):
+# STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET
+# PAYPAL_CLIENT_SECRET
+# STCPAY_MERCHANT_ID, STCPAY_SECRET_KEY
+# WATHQ_KEY (real Wathq API key from developer.wathq.sa)
 
 # D1 SQLite Database — uses existing openauth-brainsait-db
 [[d1_databases]]
@@ -17,8 +26,8 @@ migrations_dir = "migrations"
 # KV Namespace — token cache, rate limiting, 2PC locks
 [[kv_namespaces]]
 binding = "WATHQ_KV"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
-preview_id = "REPLACE_WITH_KV_PREVIEW_ID"
+id = "d737c30e79d2461abaeaf7e65e38f648"
+preview_id = "d737c30e79d2461abaeaf7e65e38f648"
 
 # R2 Bucket — invoice document storage
 [[r2_buckets]]
