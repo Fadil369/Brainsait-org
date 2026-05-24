@@ -598,7 +598,6 @@
     }
 
     // ── Main AI runner ─────────────────────────────────────────────
-    const API_BASE = 'https://wathq-milestone-api.brainsait.workers.dev';
     const btnLabels = { tender: 'تحليل المخاطر', naphis: 'فحص الترميز', contract: 'مراجعة البنود' };
 
     async function runAI(type) {
@@ -615,7 +614,7 @@
         resetBars(type);
 
         try {
-            const resp = await fetch(`${API_BASE}/wathq/v1/ai/analyze`, {
+            const resp = await fetch('/api/ai/analyze', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ type, text: input, sessionId: getSessionId() }),
@@ -662,7 +661,7 @@
         btn.innerHTML = '<span class="ai-loader"></span> جاري الإرسال...'; btn.disabled = true;
 
         try {
-            const resp = await fetch(`${API_BASE}/wathq/v1/payments/waitlist`, {
+            const resp = await fetch('/api/waitlist', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: JSON.stringify({ name, email, company, product, usecase, source: 'trustos-landing' }),
