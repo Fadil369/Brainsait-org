@@ -133,7 +133,7 @@ milestonesRouter.post('/', async (c) => {
 
   const id = crypto.randomUUID();
   await c.env.DB.prepare(`
-    INSERT INTO milestones (id, contract_id, name, "order", planned_date, status)
+    INSERT INTO milestones (id, contract_id, name, order_seq, planned_date, status)
     VALUES (?, ?, ?, ?, ?, 'PLANNED')
   `).bind(id, contractId, name, order, plannedDate).run();
 
