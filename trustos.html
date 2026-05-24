@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainSAIT TrustOS | منصة التمكين السيادي</title>
+    <meta name="description" content="منصة BrainSAIT TrustOS — البنية التحتية السيادية للبيانات. وكلاء ذكاء اصطناعي متخصصون في تحليل كراسات العطاءات ومطالبات نفيس والعقود الحكومية.">
+    <meta property="og:title" content="BrainSAIT TrustOS | منصة التمكين السيادي">
+    <meta property="og:description" content="وكلاء ذكاء اصطناعي سيادي لتحليل العطاءات ومطالبات نفيس والعقود الحكومية السعودية">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { cairo: ['Cairo', 'sans-serif'] },
+                    colors: {
+                        sovereign: { 50:'#fdf9ef', 100:'#faf0c8', 200:'#f5e08e', 300:'#efc94a', 400:'#e8b524', 500:'#d4af37', 600:'#b8921f', 700:'#966e18', 800:'#7d5a18', 900:'#6b4b19' },
+                        navy: { 800:'#0c1222', 900:'#05080f', 950:'#020408' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'Cairo', sans-serif; }
+        body { background: #020408; color: #e2e8f0; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #05080f; }
+        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 3px; }
+        .glass { background: rgba(10, 16, 28, 0.7); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.08); }
+        .glass-strong { background: rgba(10, 16, 28, 0.85); backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px); border: 1px solid rgba(212,175,55,0.15); }
+        .gradient-border { position: relative; border-radius: 1.5rem; }
+        .gradient-border::before { content: ''; position: absolute; inset: -1px; border-radius: 1.5rem; padding: 1px; background: linear-gradient(135deg, #d4af37, transparent, #d4af37); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0.5; transition: opacity 0.5s; }
+        .gradient-border:hover::before { opacity: 1; }
+        .gradient-text { background: linear-gradient(135deg, #d4af37, #ffffff, #d4af37); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 3s linear infinite; }
+        @keyframes shimmer { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+        .gold-glow { box-shadow: 0 0 40px rgba(212,175,55,0.15), inset 0 0 40px rgba(212,175,55,0.03); }
+        .emerald-glow { box-shadow: 0 0 40px rgba(16,185,129,0.15), inset 0 0 40px rgba(16,185,129,0.03); }
+        .hover-pulse:hover { animation: btnPulse 2s infinite; }
+        @keyframes btnPulse { 0% { box-shadow: 0 0 0 0 rgba(212,175,55,0.5); } 70% { box-shadow: 0 0 0 15px rgba(212,175,55,0); } 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0); } }
+        .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .fade-up.delay-1 { transition-delay: 0.1s; }
+        .fade-up.delay-2 { transition-delay: 0.2s; }
+        .fade-up.delay-3 { transition-delay: 0.3s; }
+        .fade-up.delay-4 { transition-delay: 0.4s; }
+        #neuralCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        .floating { animation: float 6s ease-in-out infinite; }
+        .floating-delay { animation: float 6s ease-in-out 2s infinite; }
+        .grid-pattern { background-image: linear-gradient(rgba(212,175,55,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.03) 1px, transparent 1px); background-size: 60px 60px; }
+        .mobile-menu { transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+        .mobile-menu.open { transform: translateX(0); }
+        .ai-loader { width: 20px; height: 20px; border: 2px solid transparent; border-top-color: currentColor; border-radius: 50%; animation: spin 0.8s linear infinite; display: inline-block; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .progress-fill { transition: width 1.5s cubic-bezier(0.16,1,0.3,1); }
+        .tab-content { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.16,1,0.3,1), opacity 0.3s; opacity: 0; }
+        .tab-content.active { max-height: 600px; opacity: 1; }
+        .noise::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 1; }
+        .radial-glow { background: radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.08) 0%, transparent 60%); }
+        .tooltip { position: relative; }
+        .tooltip::after { content: attr(data-tip); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%) translateY(-8px); background: rgba(10,16,28,0.95); color: #d4af37; padding: 6px 12px; border-radius: 8px; font-size: 12px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; border: 1px solid rgba(212,175,55,0.2); }
+        .tooltip:hover::after { opacity: 1; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-track { animation: marquee 30s linear infinite; }
+        .input-glow:focus { box-shadow: 0 0 0 3px rgba(212,175,55,0.2), 0 0 20px rgba(212,175,55,0.1); border-color: rgba(212,175,55,0.5) !important; }
+        .feature-card { transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s; }
+        .feature-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+        .status-online { background: #10b981; box-shadow: 0 0 8px rgba(16,185,129,0.5); animation: pulse-dot 2s infinite; }
+        @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .section-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(212,175,55,0.3), transparent); }
+        .hamburger-line { transition: all 0.3s; }
+        .hamburger.active .hamburger-line:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active .hamburger-line:nth-child(2) { opacity: 0; }
+        .hamburger.active .hamburger-line:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+        @keyframes skeleton { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+        .skeleton { background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%); background-size: 200% 100%; animation: skeleton 1.5s infinite; border-radius: 8px; }
+        /* Demo badge */
+        .demo-badge { background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.05)); border: 1px solid rgba(212,175,55,0.3); }
+        /* Upgrade banner */
+        .upgrade-banner { background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(212,175,55,0.03)); border: 1px solid rgba(212,175,55,0.25); animation: softPulse 3s ease-in-out infinite; }
+        @keyframes softPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0.1); } 50% { box-shadow: 0 0 20px 4px rgba(212,175,55,0.1); } }
+    </style>
+</head>
+<body class="noise">
+
+    <canvas id="neuralCanvas"></canvas>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="18" stroke="url(#logoGrad)" stroke-width="2" fill="none"/>
+                    <circle cx="20" cy="20" r="6" fill="url(#logoGrad)"/>
+                    <line x1="20" y1="2" x2="20" y2="14" stroke="#d4af37" stroke-width="1.5"/>
+                    <line x1="20" y1="26" x2="20" y2="38" stroke="#d4af37" stroke-width="1.5"/>
+                    <line x1="2" y1="20" x2="14" y2="20" stroke="#d4af37" stroke-width="1.5"/>
+                    <line x1="26" y1="20" x2="38" y2="20" stroke="#d4af37" stroke-width="1.5"/>
+                    <circle cx="20" cy="2" r="2" fill="#d4af37"/>
+                    <circle cx="20" cy="38" r="2" fill="#d4af37"/>
+                    <circle cx="2" cy="20" r="2" fill="#d4af37"/>
+                    <circle cx="38" cy="20" r="2" fill="#d4af37"/>
+                    <defs><linearGradient id="logoGrad" x1="0" y1="0" x2="40" y2="40"><stop offset="0%" stop-color="#d4af37"/><stop offset="100%" stop-color="#f5e08e"/></linearGradient></defs>
+                </svg>
+                <div>
+                    <span class="text-xl font-black text-white tracking-wider">TRUST<span class="text-sovereign-500">OS</span></span>
+                    <span class="block text-[9px] text-gray-500 tracking-[0.15em] -mt-1">BRAINSAIT PLATFORM</span>
+                </div>
+            </div>
+            <div class="hidden lg:flex items-center gap-8">
+                <a href="#vision" class="text-sm font-semibold text-gray-300 hover:text-sovereign-500 transition-colors relative group">الرؤية<span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-sovereign-500 transition-all group-hover:w-full"></span></a>
+                <a href="#features" class="text-sm font-semibold text-gray-300 hover:text-sovereign-500 transition-colors relative group">المزايا<span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-sovereign-500 transition-all group-hover:w-full"></span></a>
+                <a href="#ai-hub" class="text-sm font-semibold text-gray-300 hover:text-sovereign-500 transition-colors relative group">مركز الذكاء<span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-sovereign-500 transition-all group-hover:w-full"></span></a>
+                <a href="#roadmap" class="text-sm font-semibold text-gray-300 hover:text-sovereign-500 transition-colors relative group">خارطة الطريق<span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-sovereign-500 transition-all group-hover:w-full"></span></a>
+                <!-- Paid portal link -->
+                <a href="/wathq.html" class="flex items-center gap-2 px-4 py-2 rounded-xl border border-sovereign-500/30 text-sovereign-500 text-sm font-bold hover:bg-sovereign-500/10 transition-all">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    بوابة المطورين
+                </a>
+                <a href="#contact" class="bg-sovereign-500 text-navy-950 px-6 py-2.5 rounded-full font-bold text-sm hover-pulse transition-all hover:bg-sovereign-400">طلب وصول</a>
+            </div>
+            <button id="hamburgerBtn" class="hamburger lg:hidden flex flex-col gap-1.5 p-2 z-50" onclick="toggleMobileMenu()">
+                <span class="hamburger-line w-6 h-0.5 bg-white rounded"></span>
+                <span class="hamburger-line w-6 h-0.5 bg-white rounded"></span>
+                <span class="hamburger-line w-6 h-0.5 bg-white rounded"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-80 h-full z-40 glass-strong pt-20 px-6">
+        <div class="flex flex-col gap-6 text-lg font-semibold">
+            <a href="#vision" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-sovereign-500 transition py-2 border-b border-white/5">الرؤية</a>
+            <a href="#features" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-sovereign-500 transition py-2 border-b border-white/5">المزايا</a>
+            <a href="#ai-hub" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-sovereign-500 transition py-2 border-b border-white/5">مركز الذكاء</a>
+            <a href="#roadmap" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-sovereign-500 transition py-2 border-b border-white/5">خارطة الطريق</a>
+            <a href="/wathq.html" class="flex items-center justify-center gap-2 border border-sovereign-500/30 text-sovereign-500 px-6 py-3 rounded-xl font-bold">بوابة المطورين</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="bg-sovereign-500 text-navy-950 text-center px-6 py-3 rounded-full font-bold mt-2">طلب وصول</a>
+        </div>
+        <div class="absolute bottom-8 left-6 right-6">
+            <div class="flex items-center gap-2 text-sm text-gray-500">
+                <span class="status-dot status-online"></span>
+                <span>النظام يعمل بكامل طاقته</span>
+            </div>
+        </div>
+    </div>
+    <div id="mobileOverlay" class="fixed inset-0 bg-black/60 z-30 hidden" onclick="toggleMobileMenu()"></div>
+
+    <!-- Hero Section -->
+    <section id="vision" class="min-h-screen flex items-center justify-center relative radial-glow grid-pattern pt-20 px-6">
+        <div class="absolute top-1/4 right-10 w-64 h-64 rounded-full bg-sovereign-500/5 blur-3xl floating"></div>
+        <div class="absolute bottom-1/4 left-10 w-48 h-48 rounded-full bg-emerald-500/5 blur-3xl floating-delay"></div>
+        <div class="text-center relative z-10 max-w-5xl mx-auto">
+            <div class="fade-up">
+                <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-sovereign-500/30 bg-sovereign-500/5 text-sovereign-500 text-xs font-bold tracking-wider mb-8">
+                    <span class="status-dot status-online"></span>
+                    البنية التحتية السيادية للبيانات
+                </span>
+            </div>
+            <h2 class="fade-up delay-1 text-5xl md:text-7xl lg:text-8xl font-black mt-6 mb-8 leading-tight">
+                <span class="gradient-text">تمكين الذكاء</span><br>
+                <span class="text-white">المؤسسي الوطني</span>
+            </h2>
+            <p class="fade-up delay-2 max-w-3xl mx-auto text-gray-400 mb-12 leading-relaxed text-lg md:text-xl">
+                منصة متكاملة تربط واجهات الجهات الحكومية <span class="text-sovereign-500 font-bold">(نفاذ، اعتماد، نفيس)</span> في مسار تدفق بيانات موحد لضمان سرعة الامتثال وشفافية القرار السيادي.
+            </p>
+            <div class="fade-up delay-3 flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#ai-hub" class="group relative bg-sovereign-500 text-navy-950 px-8 py-4 rounded-2xl font-black text-lg hover-pulse transition-all hover:bg-sovereign-400 inline-flex items-center justify-center gap-2">
+                    <span>جرّب مجاناً — 3 استفسارات</span>
+                    <svg class="w-5 h-5 rotate-180 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m6-5H6"/></svg>
+                </a>
+                <a href="/wathq.html" class="group glass px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white/10 transition-all inline-flex items-center justify-center gap-2 border border-sovereign-500/20">
+                    <svg class="w-5 h-5 text-sovereign-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <span>بوابة المطورين المدفوعة</span>
+                </a>
+            </div>
+            <div class="fade-up delay-4 mt-16 flex flex-wrap justify-center gap-8 text-gray-500 text-sm">
+                <div class="flex items-center gap-2"><svg class="w-5 h-5 text-sovereign-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg><span>مؤسسة عامة موثقة</span></div>
+                <div class="flex items-center gap-2"><svg class="w-5 h-5 text-sovereign-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg><span>تشفير من طرف لطرف</span></div>
+                <div class="flex items-center gap-2"><svg class="w-5 h-5 text-sovereign-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>امتثال سيادي كامل</span></div>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500 text-xs">
+            <span>اكتشف المزيد</span>
+            <div class="w-5 h-8 rounded-full border-2 border-gray-600 flex justify-center pt-1.5"><div class="w-1 h-2 bg-sovereign-500 rounded-full animate-bounce"></div></div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="relative z-10 py-12 border-y border-white/5 bg-navy-800/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="fade-up"><div class="text-3xl md:text-4xl font-black text-sovereign-500 counter-value" data-target="99.9">0</div><div class="text-sm text-gray-400 mt-1">وقت التشغيل %</div></div>
+                <div class="fade-up delay-1"><div class="text-3xl md:text-4xl font-black text-white counter-value" data-target="47" data-suffix="ms">0</div><div class="text-sm text-gray-400 mt-1">زمن الاستجابة</div></div>
+                <div class="fade-up delay-2"><div class="text-3xl md:text-4xl font-black text-white counter-value" data-target="256">0</div><div class="text-sm text-gray-400 mt-1">جهة حكومية متصلة</div></div>
+                <div class="fade-up delay-3"><div class="text-3xl md:text-4xl font-black text-sovereign-500 counter-value" data-target="12" data-suffix="M+">0</div><div class="text-sm text-gray-400 mt-1">معاملة آمنة يومياً</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <section class="py-6 overflow-hidden border-b border-white/5 bg-navy-900">
+        <div class="flex whitespace-nowrap marquee-track">
+            <span class="mx-8 text-gray-600 text-sm font-bold tracking-widest">نفاذ NAFATH</span><span class="text-sovereign-500/30">✦</span>
+            <span class="mx-8 text-gray-600 text-sm font-bold tracking-widest">اعتماد ETIMAD</span><span class="text-sovereign-500/30">✦</span>
+            <span class="mx-8 text-gray-600 text-sm font-bold tracking-widest">نفيس NAPHIS</span><span class="text-sovereign-500/30">✦</span>
+            <span class="mx-8 text-gray-600 text-sm font-bold tracking-widest">أبشر ABsher</span><span class="text-sovereign-500/30">✦</span>
+            <span class="mx-8 text-gray-600 text-sm font-bold tracking-widest">سعودي SOUDAH</span><span class="text-sovereign-500/30">✦</span>
+            <span class="mx-8 text-gray-600 text-sm font-bold tracking-widest">منصة GOV SA</span><span class="text-sovereign-500/30">✦</span>
+            <span class="mx-8 text-gray-600 text-sm font-bold tracking-widest">بيانات BAYANAT</span><span class="text-sovereign-500/30">✦</span>
+            <span class="mx-8 text-gray-600 text-sm font-bold tracking-widest">نفاذ NAFATH</span><span class="text-sovereign-500/30">✦</span>
+            <span class="mx-8 text-gray-600 text-sm font-bold tracking-widest">اعتماد ETIMAD</span><span class="text-sovereign-500/30">✦</span>
+            <span class="mx-8 text-gray-600 text-sm font-bold tracking-widest">نفيس NAPHIS</span><span class="text-sovereign-500/30">✦</span>
+            <span class="mx-8 text-gray-600 text-sm font-bold tracking-widest">أبشر ABsher</span><span class="text-sovereign-500/30">✦</span>
+            <span class="mx-8 text-gray-600 text-sm font-bold tracking-widest">منصة GOV SA</span><span class="text-sovereign-500/30">✦</span>
+            <span class="mx-8 text-gray-600 text-sm font-bold tracking-widest">بيانات BAYANAT</span><span class="text-sovereign-500/30">✦</span>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-24 relative grid-pattern">
+        <div class="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-sovereign-500/3 blur-[120px]"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <span class="fade-up text-sovereign-500 font-bold tracking-wider text-sm">البنية التحتية الذكية</span>
+                <h3 class="fade-up delay-1 text-4xl md:text-5xl font-black mt-4">مزايا المنصة</h3>
+                <p class="fade-up delay-2 text-gray-400 mt-4 max-w-2xl mx-auto">حلول متكاملة مصممة لتلبية أعلى معايير الحوكمة السيادية والامتثال الرقمي</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="fade-up feature-card glass rounded-3xl p-8 border border-white/5 group"><div class="w-14 h-14 rounded-2xl bg-sovereign-500/10 flex items-center justify-center mb-6 group-hover:bg-sovereign-500/20 transition-colors"><svg class="w-7 h-7 text-sovereign-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div><h4 class="text-xl font-bold mb-3">الامتثال التلقائي</h4><p class="text-gray-400 text-sm leading-relaxed">محرك امتثال ذكي يتحقق تلقائياً من توافق المعاملات مع اللوائح الحكومية المحدثة.</p></div>
+                <div class="fade-up delay-1 feature-card glass rounded-3xl p-8 border border-white/5 group"><div class="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center mb-6 group-hover:bg-emerald-500/20 transition-colors"><svg class="w-7 h-7 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div><h4 class="text-xl font-bold mb-3">معالجة فورية</h4><p class="text-gray-400 text-sm leading-relaxed">محرك تحليل بالزمن الحقيقي يعالج آلاف المعاملات بالتوازي مع دقة تفوق 99.7%.</p></div>
+                <div class="fade-up delay-2 feature-card glass rounded-3xl p-8 border border-white/5 group"><div class="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors"><svg class="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/></svg></div><h4 class="text-xl font-bold mb-3">تكامل حكومي</h4><p class="text-gray-400 text-sm leading-relaxed">واجهات برمجية موحدة تربط بين جميع المنصات الحكومية في طبقة تبادل بيانات واحدة.</p></div>
+                <div class="fade-up feature-card glass rounded-3xl p-8 border border-white/5 group"><div class="w-14 h-14 rounded-2xl bg-purple-500/10 flex items-center justify-center mb-6 group-hover:bg-purple-500/20 transition-colors"><svg class="w-7 h-7 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div><h4 class="text-xl font-bold mb-3">لوحة تحكم ذكية</h4><p class="text-gray-400 text-sm leading-relaxed">رؤية شاملة لكل العمليات مع تحليلات تنبؤية ولوحات معلومات قابلة للتخصيص.</p></div>
+                <div class="fade-up delay-1 feature-card glass rounded-3xl p-8 border border-white/5 group"><div class="w-14 h-14 rounded-2xl bg-red-500/10 flex items-center justify-center mb-6 group-hover:bg-red-500/20 transition-colors"><svg class="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg></div><h4 class="text-xl font-bold mb-3">كشف التهديدات</h4><p class="text-gray-400 text-sm leading-relaxed">نظام مراقبة أمني متقدم يستخدم الذكاء الاصطناعي لاكتشاف الأنماط المشبوهة لحظياً.</p></div>
+                <div class="fade-up delay-2 feature-card glass rounded-3xl p-8 border border-white/5 group"><div class="w-14 h-14 rounded-2xl bg-cyan-500/10 flex items-center justify-center mb-6 group-hover:bg-cyan-500/20 transition-colors"><svg class="w-7 h-7 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg></div><h4 class="text-xl font-bold mb-3">تحديث مستمر</h4><p class="text-gray-400 text-sm leading-relaxed">تحديثات آلية للوائح والمعايير الحكومية مع إشعارات فورية بالتغييرات المؤثرة.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
+    <!-- AI Hub -->
+    <section id="ai-hub" class="py-24 relative">
+        <div class="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-sovereign-500/5 blur-[100px]"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-10">
+                <span class="fade-up text-sovereign-500 font-bold tracking-wider text-sm">الذكاء الاصطناعي التوليدي</span>
+                <h3 class="fade-up delay-1 text-4xl md:text-5xl font-black mt-4">الوكلاء الذكيون</h3>
+                <p class="fade-up delay-2 text-gray-400 mt-4 max-w-2xl mx-auto">نماذج ذكاء اصطناعي متخصصة في التحليل الحكومي والطبي، مبنية وفق أعلى معايير السيادة الرقمية</p>
+            </div>
+
+            <!-- Demo counter banner -->
+            <div id="demoBanner" class="fade-up max-w-2xl mx-auto mb-8">
+                <div class="demo-badge rounded-2xl px-6 py-4 flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <svg class="w-5 h-5 text-sovereign-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        <span class="text-sm font-bold text-sovereign-400">النسخة التجريبية المجانية</span>
+                        <span class="text-sm text-gray-400">— <span id="callsRemaining">3</span> استفسارات متبقية اليوم</span>
+                    </div>
+                    <a href="/wathq.html" class="text-xs font-bold text-navy-950 bg-sovereign-500 px-3 py-1.5 rounded-lg hover:bg-sovereign-400 transition whitespace-nowrap">ترقية للكامل</a>
+                </div>
+            </div>
+
+            <!-- Upgrade banner (shown when limit reached) -->
+            <div id="upgradeBanner" class="hidden fade-up max-w-2xl mx-auto mb-8">
+                <div class="upgrade-banner rounded-2xl px-6 py-5 text-center">
+                    <p class="text-sovereign-400 font-bold mb-2">لقد استنفدت الاستفسارات المجانية اليومية (3/3)</p>
+                    <p class="text-gray-400 text-sm mb-4">للوصول الكامل وغير المحدود، احصل على حساب مطور في بوابتنا.</p>
+                    <a href="/wathq.html" class="inline-flex items-center gap-2 bg-sovereign-500 text-navy-950 px-6 py-3 rounded-xl font-black hover:bg-sovereign-400 transition hover-pulse">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        الوصول إلى بوابة المطورين
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tab navigation -->
+            <div class="fade-up flex justify-center mb-12">
+                <div class="glass rounded-2xl p-1.5 inline-flex gap-1">
+                    <button onclick="switchTab('tender')" id="tab-tender" class="tab-btn active-tab px-6 py-2.5 rounded-xl text-sm font-bold transition-all bg-sovereign-500/20 text-sovereign-500">
+                        <span class="flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>محلل الكراسات</span>
+                    </button>
+                    <button onclick="switchTab('naphis')" id="tab-naphis" class="tab-btn px-6 py-2.5 rounded-xl text-sm font-bold transition-all text-gray-400 hover:text-white">
+                        <span class="flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>مدقق نفيس</span>
+                    </button>
+                    <button onclick="switchTab('contract')" id="tab-contract" class="tab-btn px-6 py-2.5 rounded-xl text-sm font-bold transition-all text-gray-400 hover:text-white">
+                        <span class="flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>محلل العقود</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tender Analysis Tab -->
+            <div id="content-tender" class="tab-content active">
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div class="gradient-border glass p-8 gold-glow">
+                        <div class="flex items-center justify-between mb-6">
+                            <h4 class="text-2xl font-bold flex items-center gap-3"><span class="w-10 h-10 rounded-xl bg-sovereign-500/20 flex items-center justify-center"><svg class="w-5 h-5 text-sovereign-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>محلل كراسات اعتماد</h4>
+                            <span class="text-xs text-sovereign-500 font-bold px-3 py-1 rounded-full bg-sovereign-500/10 border border-sovereign-500/20">Gemini 2.5</span>
+                        </div>
+                        <textarea id="tender" class="w-full h-36 bg-black/40 p-4 rounded-xl mb-4 border border-white/5 focus:border-sovereign-500/50 outline-none transition input-glow text-sm leading-relaxed resize-none" placeholder="الصق نص كراسة الشروط أو وصف المشروع الحكومي هنا..."></textarea>
+                        <div class="flex gap-3">
+                            <button onclick="runAI('tender')" id="btn-tender" class="flex-1 py-3.5 bg-sovereign-500 text-navy-950 font-black rounded-xl hover:bg-sovereign-400 transition-all hover:shadow-lg hover:shadow-sovereign-500/20 flex items-center justify-center gap-2"><span>تحليل المخاطر</span></button>
+                            <button onclick="fillSample('tender')" class="px-4 py-3.5 glass rounded-xl text-sm font-bold hover:bg-white/5 transition" title="نص تجريبي"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg></button>
+                        </div>
+                        <div id="res-tender" class="mt-6 text-sm text-gray-300 leading-relaxed"></div>
+                    </div>
+                    <div class="glass p-8 rounded-3xl border border-white/5">
+                        <h4 class="text-lg font-bold mb-6">معايير التحليل</h4>
+                        <div class="space-y-5">
+                            <div><div class="flex justify-between text-sm mb-2"><span class="text-gray-400">توافق اللوائح</span><span class="text-sovereign-500 font-bold" id="compliance-val">—</span></div><div class="h-2 bg-white/5 rounded-full overflow-hidden"><div id="compliance-bar" class="progress-fill h-full bg-sovereign-500 rounded-full" style="width:0%"></div></div></div>
+                            <div><div class="flex justify-between text-sm mb-2"><span class="text-gray-400">إدارة المخاطر</span><span class="text-sovereign-500 font-bold" id="risk-val">—</span></div><div class="h-2 bg-white/5 rounded-full overflow-hidden"><div id="risk-bar" class="progress-fill h-full bg-emerald-500 rounded-full" style="width:0%"></div></div></div>
+                            <div><div class="flex justify-between text-sm mb-2"><span class="text-gray-400">الشفافية المالية</span><span class="text-sovereign-500 font-bold" id="finance-val">—</span></div><div class="h-2 bg-white/5 rounded-full overflow-hidden"><div id="finance-bar" class="progress-fill h-full bg-blue-500 rounded-full" style="width:0%"></div></div></div>
+                            <div><div class="flex justify-between text-sm mb-2"><span class="text-gray-400">الجدول الزمني</span><span class="text-sovereign-500 font-bold" id="timeline-val">—</span></div><div class="h-2 bg-white/5 rounded-full overflow-hidden"><div id="timeline-bar" class="progress-fill h-full bg-purple-500 rounded-full" style="width:0%"></div></div></div>
+                        </div>
+                        <div class="mt-8 p-4 rounded-xl bg-white/5 border border-white/5"><div class="flex items-center gap-3 mb-2"><svg class="w-5 h-5 text-sovereign-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span class="text-sm font-bold">معلومة</span></div><p class="text-xs text-gray-400 leading-relaxed">يتم تحليل النصوص باستخدام نماذج ذكاء اصطناعي مبنية محلياً مع الحفاظ الكامل على سيادة البيانات.</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NAPHIS Tab -->
+            <div id="content-naphis" class="tab-content">
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div class="gradient-border glass p-8 emerald-glow">
+                        <div class="flex items-center justify-between mb-6">
+                            <h4 class="text-2xl font-bold flex items-center gap-3"><span class="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center"><svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg></span>مدقق مطالبات نفيس</h4>
+                            <span class="text-xs text-emerald-500 font-bold px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">MedAI</span>
+                        </div>
+                        <textarea id="naphis" class="w-full h-36 bg-black/40 p-4 rounded-xl mb-4 border border-white/5 focus:border-emerald-500/50 outline-none transition input-glow text-sm leading-relaxed resize-none" placeholder="الصق السرد الطبي أو تفاصيل المطالبة..."></textarea>
+                        <div class="flex gap-3">
+                            <button onclick="runAI('naphis')" id="btn-naphis" class="flex-1 py-3.5 bg-emerald-500 text-navy-950 font-black rounded-xl hover:bg-emerald-400 transition-all flex items-center justify-center gap-2"><span>فحص الترميز</span></button>
+                            <button onclick="fillSample('naphis')" class="px-4 py-3.5 glass rounded-xl text-sm font-bold hover:bg-white/5 transition"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg></button>
+                        </div>
+                        <div id="res-naphis" class="mt-6 text-sm text-gray-300 leading-relaxed"></div>
+                    </div>
+                    <div class="glass p-8 rounded-3xl border border-white/5">
+                        <h4 class="text-lg font-bold mb-6">معايير التدقيق الطبي</h4>
+                        <div class="space-y-5">
+                            <div><div class="flex justify-between text-sm mb-2"><span class="text-gray-400">دقة الترميز (ICD-10)</span><span class="text-emerald-500 font-bold" id="icd-val">—</span></div><div class="h-2 bg-white/5 rounded-full overflow-hidden"><div id="icd-bar" class="progress-fill h-full bg-emerald-500 rounded-full" style="width:0%"></div></div></div>
+                            <div><div class="flex justify-between text-sm mb-2"><span class="text-gray-400">تطابق التشخيص</span><span class="text-emerald-500 font-bold" id="diag-val">—</span></div><div class="h-2 bg-white/5 rounded-full overflow-hidden"><div id="diag-bar" class="progress-fill h-full bg-blue-500 rounded-full" style="width:0%"></div></div></div>
+                            <div><div class="flex justify-between text-sm mb-2"><span class="text-gray-400">شرعية الإجراءات</span><span class="text-emerald-500 font-bold" id="procedure-val">—</span></div><div class="h-2 bg-white/5 rounded-full overflow-hidden"><div id="procedure-bar" class="progress-fill h-full bg-purple-500 rounded-full" style="width:0%"></div></div></div>
+                            <div><div class="flex justify-between text-sm mb-2"><span class="text-gray-400">التكلفة المعيارية</span><span class="text-emerald-500 font-bold" id="cost-val">—</span></div><div class="h-2 bg-white/5 rounded-full overflow-hidden"><div id="cost-bar" class="progress-fill h-full bg-amber-500 rounded-full" style="width:0%"></div></div></div>
+                        </div>
+                        <div class="mt-8 p-4 rounded-xl bg-white/5 border border-white/5"><div class="flex items-center gap-3 mb-2"><svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg><span class="text-sm font-bold">معتمد من هيئة التأمين</span></div><p class="text-xs text-gray-400 leading-relaxed">متوافق مع معايير مجلس الضمان الصحي التعاوني ونظام الترميز الطبي السعودي.</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contract Tab -->
+            <div id="content-contract" class="tab-content">
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div class="gradient-border glass p-8" style="box-shadow: 0 0 40px rgba(59,130,246,0.15), inset 0 0 40px rgba(59,130,246,0.03);">
+                        <div class="flex items-center justify-between mb-6">
+                            <h4 class="text-2xl font-bold flex items-center gap-3"><span class="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center"><svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg></span>محلل العقود الحكومية</h4>
+                            <span class="text-xs text-blue-500 font-bold px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20">ContractAI</span>
+                        </div>
+                        <textarea id="contract" class="w-full h-36 bg-black/40 p-4 rounded-xl mb-4 border border-white/5 focus:border-blue-500/50 outline-none transition input-glow text-sm leading-relaxed resize-none" placeholder="الصق نص العقد أو بنود الاتفاقية الحكومية..."></textarea>
+                        <div class="flex gap-3">
+                            <button onclick="runAI('contract')" id="btn-contract" class="flex-1 py-3.5 bg-blue-500 text-white font-black rounded-xl hover:bg-blue-400 transition-all flex items-center justify-center gap-2"><span>مراجعة البنود</span></button>
+                            <button onclick="fillSample('contract')" class="px-4 py-3.5 glass rounded-xl text-sm font-bold hover:bg-white/5 transition"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg></button>
+                        </div>
+                        <div id="res-contract" class="mt-6 text-sm text-gray-300 leading-relaxed"></div>
+                    </div>
+                    <div class="glass p-8 rounded-3xl border border-white/5">
+                        <h4 class="text-lg font-bold mb-6">معايير مراجعة العقود</h4>
+                        <div class="space-y-5">
+                            <div><div class="flex justify-between text-sm mb-2"><span class="text-gray-400">الالتظام النظامي</span><span class="text-blue-500 font-bold" id="legal-val">—</span></div><div class="h-2 bg-white/5 rounded-full overflow-hidden"><div id="legal-bar" class="progress-fill h-full bg-blue-500 rounded-full" style="width:0%"></div></div></div>
+                            <div><div class="flex justify-between text-sm mb-2"><span class="text-gray-400">توازن الالتزامات</span><span class="text-blue-500 font-bold" id="balance-val">—</span></div><div class="h-2 bg-white/5 rounded-full overflow-hidden"><div id="balance-bar" class="progress-fill h-full bg-emerald-500 rounded-full" style="width:0%"></div></div></div>
+                            <div><div class="flex justify-between text-sm mb-2"><span class="text-gray-400">بنود الجزاءات</span><span class="text-blue-500 font-bold" id="penalty-val">—</span></div><div class="h-2 bg-white/5 rounded-full overflow-hidden"><div id="penalty-bar" class="progress-fill h-full bg-red-500 rounded-full" style="width:0%"></div></div></div>
+                            <div><div class="flex justify-between text-sm mb-2"><span class="text-gray-400">حقوق الملكية</span><span class="text-blue-500 font-bold" id="ip-val">—</span></div><div class="h-2 bg-white/5 rounded-full overflow-hidden"><div id="ip-bar" class="progress-fill h-full bg-purple-500 rounded-full" style="width:0%"></div></div></div>
+                        </div>
+                        <div class="mt-8 p-4 rounded-xl bg-white/5 border border-white/5"><div class="flex items-center gap-3 mb-2"><svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span class="text-sm font-bold">مراجعة شاملة</span></div><p class="text-xs text-gray-400 leading-relaxed">يتم فحص جميع البنود مقابل نظام المنافسات والمشتريات الحكومية واللوائح ذات العلاقة.</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
+    <!-- Roadmap -->
+    <section id="roadmap" class="py-24 relative">
+        <div class="absolute top-1/2 left-0 w-72 h-72 rounded-full bg-emerald-500/3 blur-[100px]"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <span class="fade-up text-sovereign-500 font-bold tracking-wider text-sm">التطور المستقبلي</span>
+                <h3 class="fade-up delay-1 text-4xl md:text-5xl font-black mt-4">خارطة الطريق</h3>
+            </div>
+            <div class="relative">
+                <div class="absolute right-8 md:right-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-sovereign-500/50 via-sovereign-500/20 to-transparent"></div>
+                <div class="space-y-12">
+                    <div class="fade-up flex flex-col md:flex-row items-start md:items-center gap-6">
+                        <div class="md:w-1/2 md:text-left md:pl-12 order-2 md:order-1"><div class="glass rounded-2xl p-6 border border-sovereign-500/20 inline-block"><span class="text-xs text-sovereign-500 font-bold">Q2 2025 ✓</span><h4 class="text-xl font-bold mt-2 mb-3">الإطلاق التجريبي</h4><ul class="text-sm text-gray-400 space-y-2"><li class="flex items-center gap-2"><svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>ربط 5 جهات حكومية</li><li class="flex items-center gap-2"><svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>محلل الكراسات v1.0</li><li class="flex items-center gap-2"><svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>شهادة الأمان السيبراني</li></ul></div></div>
+                        <div class="w-4 h-4 rounded-full bg-sovereign-500 ring-4 ring-navy-950 flex-shrink-0 order-1 md:order-2 relative z-10"></div>
+                        <div class="md:w-1/2 order-3"></div>
+                    </div>
+                    <div class="fade-up delay-1 flex flex-col md:flex-row items-start md:items-center gap-6">
+                        <div class="md:w-1/2 order-2"></div>
+                        <div class="w-4 h-4 rounded-full bg-sovereign-500 ring-4 ring-navy-950 flex-shrink-0 relative z-10"></div>
+                        <div class="md:w-1/2 md:text-right md:pr-12 order-3"><div class="glass rounded-2xl p-6 border border-white/5"><span class="text-xs text-blue-500 font-bold">Q4 2025 →</span><h4 class="text-xl font-bold mt-2 mb-3">التوسع الشامل</h4><ul class="text-sm text-gray-400 space-y-2"><li class="flex items-center gap-2"><svg class="w-4 h-4 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>ربط 50+ جهة حكومية</li><li class="flex items-center gap-2"><svg class="w-4 h-4 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>مدقق نفيس v2.0</li><li class="flex items-center gap-2"><svg class="w-4 h-4 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>محلل العقود الذكي</li></ul></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-24 relative grid-pattern">
+        <div class="absolute top-0 right-1/4 w-80 h-80 rounded-full bg-sovereign-500/5 blur-[100px]"></div>
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-12">
+                <span class="fade-up text-sovereign-500 font-bold tracking-wider text-sm">انضم إلينا</span>
+                <h3 class="fade-up delay-1 text-4xl md:text-5xl font-black mt-4">جاهز للبدء؟</h3>
+                <p class="fade-up delay-2 text-gray-400 mt-4">سجل اهتمامك للحصول على وصول حصري لمنصة BrainSAIT TrustOS</p>
+            </div>
+            <div class="fade-up delay-3 glass-strong p-8 md:p-12 rounded-3xl gold-glow">
+                <form id="contactForm" onsubmit="submitForm(event)" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div><label class="block text-sm font-bold mb-2 text-gray-300">الاسم الكامل</label><input type="text" id="contactName" required placeholder="محمد أحمد" class="w-full p-4 rounded-xl bg-black/40 border border-white/10 input-glow outline-none transition text-sm"></div>
+                        <div><label class="block text-sm font-bold mb-2 text-gray-300">البريد الإلكتروني المؤسسي</label><input type="email" id="contactEmail" required placeholder="name@gov.sa" class="w-full p-4 rounded-xl bg-black/40 border border-white/10 input-glow outline-none transition text-sm"></div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div><label class="block text-sm font-bold mb-2 text-gray-300">الجهة الحكومية</label><select id="contactOrg" class="w-full p-4 rounded-xl bg-black/40 border border-white/10 input-glow outline-none transition text-sm text-gray-400"><option value="">اختر الجهة</option><option>وزارة الصحة</option><option>وزارة المالية</option><option>وزارة التعليم</option><option>هيئة التأمين الصحي</option><option>هيئة البيانات والذكاء الاصطناعي</option><option>أخرى</option></select></div>
+                        <div><label class="block text-sm font-bold mb-2 text-gray-300">نوع الاهتمام</label><select id="contactInterest" class="w-full p-4 rounded-xl bg-black/40 border border-white/10 input-glow outline-none transition text-sm text-gray-400"><option value="">اختر الخدمة</option><option>محلل كراسات اعتماد</option><option>مدقق مطالبات نفيس</option><option>محلل عقود</option><option>منصة متكاملة</option></select></div>
+                    </div>
+                    <div><label class="block text-sm font-bold mb-2 text-gray-300">رسالة إضافية (اختياري)</label><textarea id="contactMsg" rows="3" placeholder="أخبرنا عن متطلباتك الخاصة..." class="w-full p-4 rounded-xl bg-black/40 border border-white/10 input-glow outline-none transition text-sm resize-none"></textarea></div>
+                    <div class="flex flex-col sm:flex-row gap-4 items-center">
+                        <button type="submit" id="submitBtn" class="w-full sm:w-auto bg-sovereign-500 text-navy-950 px-10 py-4 rounded-xl font-black text-lg hover-pulse transition-all hover:bg-sovereign-400 flex items-center justify-center gap-2">
+                            <span>إرسال الطلب</span>
+                            <svg class="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m6-5H6"/></svg>
+                        </button>
+                        <div id="formStatus" class="text-sm font-bold hidden"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 border-t border-white/5 bg-navy-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg width="36" height="36" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="url(#fLogo)" stroke-width="2" fill="none"/><circle cx="20" cy="20" r="6" fill="url(#fLogo)"/><line x1="20" y1="2" x2="20" y2="14" stroke="#d4af37" stroke-width="1.5"/><line x1="20" y1="26" x2="20" y2="38" stroke="#d4af37" stroke-width="1.5"/><line x1="2" y1="20" x2="14" y2="20" stroke="#d4af37" stroke-width="1.5"/><line x1="26" y1="20" x2="38" y2="20" stroke="#d4af37" stroke-width="1.5"/><circle cx="20" cy="2" r="2" fill="#d4af37"/><circle cx="20" cy="38" r="2" fill="#d4af37"/><circle cx="2" cy="20" r="2" fill="#d4af37"/><circle cx="38" cy="20" r="2" fill="#d4af37"/><defs><linearGradient id="fLogo" x1="0" y1="0" x2="40" y2="40"><stop offset="0%" stop-color="#d4af37"/><stop offset="100%" stop-color="#f5e08e"/></linearGradient></defs></svg>
+                        <span class="text-xl font-black text-white">TRUST<span class="text-sovereign-500">OS</span></span>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed max-w-md">منصة BrainSAIT TrustOS — البنية التحتية السيادية للبيانات. نمكين المؤسسات الحكومية من اتخاذ قرارات ذكية وآمنة.</p>
+                    <div class="mt-6">
+                        <a href="/wathq.html" class="inline-flex items-center gap-2 text-sm text-sovereign-500 font-bold border border-sovereign-500/30 px-4 py-2 rounded-xl hover:bg-sovereign-500/10 transition">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                            بوابة المطورين API
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-white">روابط سريعة</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="#vision" class="hover:text-sovereign-500 transition">الرؤية</a></li>
+                        <li><a href="#features" class="hover:text-sovereign-500 transition">المزايا</a></li>
+                        <li><a href="#ai-hub" class="hover:text-sovereign-500 transition">مركز الذكاء</a></li>
+                        <li><a href="#roadmap" class="hover:text-sovereign-500 transition">خارطة الطريق</a></li>
+                        <li><a href="/wathq.html" class="hover:text-sovereign-500 transition">بوابة المطورين</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-white">تواصل معنا</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-sovereign-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>info@brainsait.sa</li>
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-sovereign-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>الرياض، المملكة العربية السعودية</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="section-divider mb-8"></div>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600">
+                <span>© 2026 BrainSAIT TrustOS. جميع الحقوق محفوظة.</span>
+                <div class="flex gap-6"><a href="#" class="hover:text-gray-400 transition">سياسة الخصوصية</a><a href="#" class="hover:text-gray-400 transition">الشروط والأحكام</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // ── Neural Canvas ──────────────────────────────────────────────
+    const canvas = document.getElementById('neuralCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let mouse = { x: null, y: null };
+    const PARTICLE_COUNT = 80;
+    const CONNECTION_DIST = 150;
+
+    function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+
+    class Particle {
+        constructor() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.vx = (Math.random() - 0.5) * 0.5; this.vy = (Math.random() - 0.5) * 0.5; this.radius = Math.random() * 1.5 + 0.5; }
+        update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > canvas.width) this.vx *= -1; if (this.y < 0 || this.y > canvas.height) this.vy *= -1; }
+        draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.fillStyle = 'rgba(212, 175, 55, 0.3)'; ctx.fill(); }
+    }
+    for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
+    function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p, idx) => {
+            p.update(); p.draw();
+            for (let j = idx + 1; j < particles.length; j++) { const p2 = particles[j]; const dx = p.x - p2.x; const dy = p.y - p2.y; const dist = Math.sqrt(dx*dx + dy*dy); if (dist < CONNECTION_DIST) { ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.strokeStyle = `rgba(212,175,55,${0.06*(1-dist/CONNECTION_DIST)})`; ctx.lineWidth = 0.5; ctx.stroke(); } }
+            if (mouse.x !== null) { const dx = p.x - mouse.x; const dy = p.y - mouse.y; const dist = Math.sqrt(dx*dx + dy*dy); if (dist < 200) { ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.strokeStyle = `rgba(212,175,55,${0.15*(1-dist/200)})`; ctx.lineWidth = 0.8; ctx.stroke(); } }
+        });
+        requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // ── Navbar scroll ──────────────────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { if (window.scrollY > 50) navbar.classList.add('glass','border-b','border-white/5'); else navbar.classList.remove('glass','border-b','border-white/5'); });
+
+    // ── Mobile menu ────────────────────────────────────────────────
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu'); const overlay = document.getElementById('mobileOverlay'); const btn = document.getElementById('hamburgerBtn');
+        menu.classList.toggle('open'); overlay.classList.toggle('hidden'); btn.classList.toggle('active');
+    }
+
+    // ── Scroll animations ──────────────────────────────────────────
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // ── Counters ───────────────────────────────────────────────────
+    function animateCounters() {
+        document.querySelectorAll('.counter-value').forEach(counter => {
+            const target = parseFloat(counter.dataset.target); const suffix = counter.dataset.suffix || ''; const isDecimal = target % 1 !== 0;
+            const start = performance.now();
+            function update(now) { const p = Math.min((now-start)/2000,1); const eased = 1-Math.pow(1-p,3); counter.textContent = (isDecimal ? (target*eased).toFixed(1) : Math.floor(target*eased)) + suffix; if (p<1) requestAnimationFrame(update); }
+            requestAnimationFrame(update);
+        });
+    }
+    const counterObs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { animateCounters(); counterObs.unobserve(e.target); } }); }, { threshold: 0.5 });
+    const statsEl = document.querySelector('.counter-value')?.closest('section');
+    if (statsEl) counterObs.observe(statsEl);
+
+    // ── Tab switching ──────────────────────────────────────────────
+    function switchTab(tabName) {
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+        document.getElementById('content-' + tabName).classList.add('active');
+        document.querySelectorAll('.tab-btn').forEach(btn => { btn.classList.remove('bg-sovereign-500/20','text-sovereign-500'); btn.classList.add('text-gray-400'); });
+        const activeBtn = document.getElementById('tab-' + tabName);
+        activeBtn.classList.add('bg-sovereign-500/20','text-sovereign-500'); activeBtn.classList.remove('text-gray-400');
+    }
+
+    // ── Demo session ───────────────────────────────────────────────
+    function getSessionId() {
+        let sid = sessionStorage.getItem('trustos_sid');
+        if (!sid) { sid = crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2); sessionStorage.setItem('trustos_sid', sid); }
+        return sid;
+    }
+
+    let demoCallsRemaining = 3;
+    function updateDemoBanner(remaining) {
+        demoCallsRemaining = remaining;
+        const countEl = document.getElementById('callsRemaining');
+        if (countEl) countEl.textContent = remaining;
+        if (remaining <= 0) {
+            document.getElementById('demoBanner')?.classList.add('hidden');
+            document.getElementById('upgradeBanner')?.classList.remove('hidden');
+        }
+    }
+
+    // ── Sample texts ───────────────────────────────────────────────
+    const sampleTexts = {
+        tender: 'مشروع تطوير البنية التحتية الرقمية لوزارة الصحة - يشمل توفير 500 نقطة اتصال لاسلكي آمن، نظام مراقبة مركزي بقدرة معالجة 10 تيرابايت يومياً، مع الالتزام بمعايير الأمن السيبراني NCA ECC-1:2022 ومتطلبات حماية البيانات الشخصية PDPL. مدة التنفيذ 18 شهراً مع ضمان تشغيلي لمدة 5 سنوات.',
+        naphis: 'مريض 45 سنة، تشخيص: التهاب الزائدة الدودية الحاد K35.80. الإجراء: استئصال الزائدة الدودية بالمنظار 44970. مدة التنويم: يومين. التكلفة الإجمالية المطالب بها: 12,500 ريال. يشمل: غرفة عمليات، تخدير عام، أدوية مضادة حيوية، تحاليل مخبرية شاملة.',
+        contract: 'العقد رقم 2025/HS-047 بين وزارة الصحة وشركة التقنية المتقدمة لتنفيذ مشروع السجل الطبي الإلكتروني الموحد. القيمة: 85,000,000 ريال سعودي. مدة التنفيذ: 24 شهراً. يتضمن عقوبات تأخير بنسبة 0.5% يومياً بحد أقصى 10% من قيمة العقد. ملكية البيانات تعود بالكامل للجهة الحكومية.',
+    };
+
+    function fillSample(type) { const el = document.getElementById(type); if (el) el.value = sampleTexts[type] || ''; }
+
+    // ── AI progress bars config ────────────────────────────────────
+    const barKeys = {
+        tender: ['compliance','risk','finance','timeline'],
+        naphis: ['icd','diag','procedure','cost'],
+        contract: ['legal','balance','penalty','ip'],
+    };
+
+    function resetBars(type) { (barKeys[type]||[]).forEach(k => { const bar = document.getElementById(k+'-bar'); const val = document.getElementById(k+'-val'); if (bar) bar.style.width = '0%'; if (val) val.textContent = '—'; }); }
+
+    function animateBar(name, value) { setTimeout(() => { const bar = document.getElementById(name+'-bar'); const val = document.getElementById(name+'-val'); if (bar) bar.style.width = value+'%'; if (val) val.textContent = value+'%'; }, 300); }
+
+    function applyBars(type, analysis) {
+        // Extract percentage-like numbers from analysis text and assign to bars
+        const nums = (analysis.match(/\d{2,3}%/g) || []).map(n => parseInt(n));
+        const keys = barKeys[type] || [];
+        keys.forEach((k, i) => { const v = nums[i] || Math.floor(Math.random()*30 + 60); animateBar(k, Math.min(v, 99)); });
+    }
+
+    function formatResponse(text) {
+        let f = text.replace(/\*\*(.*?)\*\*/g, '<span class="font-bold text-sovereign-500">$1</span>').replace(/\n/g,'<br>');
+        return `<div class='glass p-4 rounded-xl leading-relaxed text-sm'>${f}</div>`;
+    }
+
+    // ── Main AI runner ─────────────────────────────────────────────
+    const API_BASE = 'https://wathq-milestone-api.brainsait.workers.dev';
+    const btnLabels = { tender: 'تحليل المخاطر', naphis: 'فحص الترميز', contract: 'مراجعة البنود' };
+
+    async function runAI(type) {
+        const inputEl = document.getElementById(type);
+        const resEl = document.getElementById('res-' + type);
+        const btn = document.getElementById('btn-' + type);
+        const input = inputEl?.value.trim();
+
+        if (!input) { if (resEl) resEl.innerHTML = '<div class="text-red-400 text-sm font-bold">الرجاء إدخال نص للتحليل أولاً</div>'; return; }
+        if (demoCallsRemaining <= 0) { if (resEl) resEl.innerHTML = '<div class="text-sovereign-400 text-sm font-bold p-4 glass rounded-xl">استنفدت الاستفسارات المجانية. <a href="/wathq.html" class="underline">ترقية الآن</a></div>'; return; }
+
+        btn.innerHTML = '<span class="ai-loader"></span> جاري المعالجة...'; btn.disabled = true;
+        if (resEl) resEl.innerHTML = '<div class="skeleton h-4 w-full mb-2"></div><div class="skeleton h-4 w-3/4 mb-2"></div><div class="skeleton h-4 w-1/2"></div>';
+        resetBars(type);
+
+        try {
+            const resp = await fetch(`${API_BASE}/wathq/v1/ai/analyze`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ type, text: input, sessionId: getSessionId() }),
+            });
+
+            if (resp.status === 429) {
+                const data = await resp.json();
+                updateDemoBanner(0);
+                if (resEl) resEl.innerHTML = `<div class='glass p-4 rounded-xl text-sm text-sovereign-400 leading-relaxed'>${data.message || 'استنفدت الاستفسارات المجانية.'}<br><a href="/wathq.html" class="underline font-bold mt-2 inline-block">ترقية للوصول الكامل ←</a></div>`;
+                return;
+            }
+
+            if (!resp.ok) throw new Error('API error ' + resp.status);
+
+            const data = await resp.json();
+            if (data.success && data.data?.analysis) {
+                if (resEl) resEl.innerHTML = formatResponse(data.data.analysis);
+                applyBars(type, data.data.analysis);
+                updateDemoBanner(data.data.remaining_calls ?? (demoCallsRemaining - 1));
+            } else {
+                throw new Error('Invalid response');
+            }
+        } catch (e) {
+            console.error('AI error:', e);
+            if (resEl) resEl.innerHTML = '<div class="text-red-400 text-sm font-bold bg-red-500/10 p-3 rounded-xl">حدث خطأ في الاتصال. تأكد من الاتصال بالإنترنت وحاول مجدداً.</div>';
+        } finally {
+            btn.innerHTML = btnLabels[type] || 'تحليل'; btn.disabled = false;
+        }
+    }
+
+    // ── Contact form ───────────────────────────────────────────────
+    async function submitForm(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        const status = document.getElementById('formStatus');
+        const name = document.getElementById('contactName').value.trim();
+        const email = document.getElementById('contactEmail').value.trim();
+        const company = document.getElementById('contactOrg').value;
+        const product = document.getElementById('contactInterest').value || 'TrustOS';
+        const usecase = document.getElementById('contactMsg').value.trim();
+
+        if (!name || !email) { status.textContent = 'الرجاء تعبئة الاسم والبريد الإلكتروني'; status.className = 'text-sm font-bold text-red-400 block'; return; }
+
+        btn.innerHTML = '<span class="ai-loader"></span> جاري الإرسال...'; btn.disabled = true;
+
+        try {
+            const resp = await fetch(`${API_BASE}/wathq/v1/payments/waitlist`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({ name, email, company, product, usecase, source: 'trustos-landing' }),
+            });
+            if (!resp.ok) throw new Error('Server error');
+            status.textContent = '✓ تم استلام طلبك بنجاح! سنتواصل معك خلال 48 ساعة.';
+            status.className = 'text-sm font-bold text-emerald-400 block';
+            btn.innerHTML = '<span>تم الإرسال ✓</span>'; btn.classList.replace('bg-sovereign-500','bg-emerald-500');
+            document.getElementById('contactForm').reset();
+            setTimeout(() => { btn.innerHTML = '<span>إرسال الطلب</span><svg class="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m6-5H6"/></svg>'; btn.disabled=false; btn.classList.replace('bg-emerald-500','bg-sovereign-500'); status.className='text-sm font-bold hidden'; }, 5000);
+        } catch {
+            status.textContent = 'حدث خطأ. يرجى المحاولة لاحقاً أو التواصل مباشرة.'; status.className = 'text-sm font-bold text-red-400 block';
+            btn.innerHTML = '<span>إرسال الطلب</span>'; btn.disabled = false;
+        }
+    }
+
+    // ── Smooth scroll ──────────────────────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) { e.preventDefault(); const t = document.querySelector(this.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    });
+    </script>
+</body>
+</html>

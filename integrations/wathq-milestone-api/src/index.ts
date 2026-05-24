@@ -11,6 +11,7 @@ import { guaranteesRouter } from './routes/guarantees';
 import { offsetsRouter } from './routes/offsets';
 import { vendorsRouter } from './routes/vendors';
 import { paymentsRouter } from './routes/payments';
+import { aiRouter } from './routes/ai';
 import { scanExpiringGuarantees } from './services/escrow';
 import { ok } from './utils/response';
 
@@ -26,6 +27,9 @@ app.use('*', cors({
   maxAge: 86400,
   credentials: true,
 }));
+
+// AI demo route is public — mount before auth middleware
+app.route('/wathq/v1/ai', aiRouter);
 
 app.use('/wathq/v1/*', rateLimiter);
 app.use('/wathq/v1/*', requireApiKey);

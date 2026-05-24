@@ -16,7 +16,7 @@
     Deed/POA 9 SAR. Prepaid: extended validity, bonuses up to 18%.
   - Trial reduced to 20 free calls / 14 days.
   - Updated SEO metadata.
-  TODO: Replace PLACEHOLDER_REPLACE_ME Formspree endpoint with real one.
+  Waitlist endpoint: wathq-milestone-api.brainsait.workers.dev/wathq/v1/payments/waitlist
   ═══════════════════════════════════════════════════════════════════════
 -->
 <html lang="ar" dir="rtl" class="dark">
@@ -1812,9 +1812,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <script>
 // ═══════════════ WAITLIST MODAL LOGIC ═══════════════
-// TODO(Dr. Mohammed): Replace PLACEHOLDER_REPLACE_ME below with your real Formspree form ID
-// e.g. https://formspree.io/f/abcd1234
-const WAITLIST_ENDPOINT = 'https://formspree.io/f/PLACEHOLDER_REPLACE_ME';
+const WAITLIST_ENDPOINT = 'https://wathq-milestone-api.brainsait.workers.dev/wathq/v1/payments/waitlist';
 
 function openWaitlistModal(productName) {
     const modal = document.getElementById('waitlist-modal');
@@ -1868,7 +1866,7 @@ document.addEventListener('submit', async (e) => {
                 headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
             });
-            if (!res.ok && !WAITLIST_ENDPOINT.includes('PLACEHOLDER_REPLACE_ME')) {
+            if (!res.ok) {
                 throw new Error('Network response was not ok: ' + res.status);
             }
             // Replace form with success message
