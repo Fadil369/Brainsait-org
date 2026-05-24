@@ -1,0 +1,66 @@
+name = "wathq-milestone-api"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+ETIMAD_BASE_URL = "https://api.etimad.sa"
+WATHQ_API_BASE_URL = "https://api.wathq.sa/v1"
+ENVIRONMENT = "production"
+# Public keys (safe to commit — set secret keys via: wrangler secret put <NAME>)
+# STRIPE_PUBLISHABLE_KEY = "pk_live_..."   # wrangler secret put STRIPE_PUBLISHABLE_KEY
+# PAYPAL_CLIENT_ID = "..."                  # wrangler secret put PAYPAL_CLIENT_ID
+# Secrets (set via wrangler secret put):
+# STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET
+# PAYPAL_CLIENT_SECRET
+# STCPAY_MERCHANT_ID, STCPAY_SECRET_KEY
+# WATHQ_KEY (real Wathq API key from developer.wathq.sa)
+
+# D1 SQLite Database — uses existing openauth-brainsait-db
+[[d1_databases]]
+binding = "DB"
+database_name = "openauth-brainsait-db"
+database_id = "4c885964-c8a3-44af-90e3-e1f700087b31"
+migrations_dir = "migrations"
+
+# KV Namespace — token cache, rate limiting, 2PC locks
+[[kv_namespaces]]
+binding = "WATHQ_KV"
+id = "d737c30e79d2461abaeaf7e65e38f648"
+preview_id = "d737c30e79d2461abaeaf7e65e38f648"
+
+# R2 Bucket — invoice document storage
+[[r2_buckets]]
+binding = "WATHQ_R2"
+bucket_name = "wathq-invoices"
+preview_bucket_name = "wathq-invoices-preview"
+
+# Queue — async OCR and audit event processing
+[[queues.producers]]
+binding = "WATHQ_QUEUE"
+queue = "wathq-events"
+
+[[queues.consumers]]
+queue = "wathq-events"
+max_batch_size = 10
+max_batch_timeout = 5
+max_retries = 3
+
+# Cron triggers
+[triggers]
+crons = [
+  "0 */6 * * *",   # Guarantee expiry scan (every 6 hours)
+  "0 0 * * *",     # Daily token cleanup
+]
+
+# Secrets (set via: wrangler secret put <NAME>)
+# WATHQ_API_KEY      — Bearer token for API authentication
+# ETIMAD_CLIENT_ID   — OAuth2 client ID for Etimad platform
+# ETIMAD_CLIENT_SECRET — OAuth2 client secret for Etimad platform
+
+[build]
+command = "npm run build"
+
+[dev]
+port = 8787
+local_protocol = "http"
