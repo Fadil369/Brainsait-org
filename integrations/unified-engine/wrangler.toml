@@ -1,0 +1,24 @@
+name = "brainsait-unified-engine"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+account_id = "d7b99530559ab4f2545e9bdc72a7ab9b"
+
+# Uncomment after DNS setup for api.brainsait.org
+# routes = [
+#   { pattern = "api.brainsait.org/*", zone_name = "brainsait.org" }
+# ]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "brainsait-signing-db"
+database_id = "29cc24d6-66a3-4409-bbbf-d2bdd29bab64"
+
+[[kv_namespaces]]
+binding = "AUDIT_KV"
+id = "856d83058102484396c706220307f385"
+
+[vars]
+WATHQ_WORKER_URL = "https://wathiq-worker.brainsait-fadil.workers.dev"
+SIGN_WORKER_URL = "https://acrobat-sign-worker.brainsait-fadil.workers.dev"
+TRUSTOS_API_KEY = ""
