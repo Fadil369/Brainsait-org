@@ -1,0 +1,29 @@
+name = "acrobat-sign-worker"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+routes = [
+  { pattern = "sign.brainsait.org/*", zone_name = "brainsait.org" },
+  { pattern = "brainsait.org/sign/*" }
+]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "brainsait-signing-db"
+database_id = "YOUR_D1_DATABASE_ID"
+
+[[kv_namespaces]]
+binding = "AUDIT_KV"
+id = "YOUR_KV_NAMESPACE_ID"
+
+[vars]
+ADOBE_CLOUD = "commercial"
+ADOBE_BASE_URL = "https://api.adobesign.com"
+ADOBE_SCOPES = "agreement_write agreement_read agreement_send widget_read"
+
+# Secrets (set via wrangler secret put):
+# ADOBE_CLIENT_ID
+# ADOBE_CLIENT_SECRET
+# ADOBE_WEBHOOK_SECRET
+# ADOBE_ADMIN_EMAIL
