@@ -11,11 +11,11 @@ routes = [
 [[d1_databases]]
 binding = "DB"
 database_name = "brainsait-signing-db"
-database_id = "YOUR_D1_DATABASE_ID"
+database_id = "29cc24d6-66a3-4409-bbbf-d2bdd29bab64"
 
 [[kv_namespaces]]
 binding = "AUDIT_KV"
-id = "YOUR_KV_NAMESPACE_ID"
+id = "856d83058102484396c706220307f385"
 
 [vars]
 ADOBE_CLOUD = "commercial"
