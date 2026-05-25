@@ -8,7 +8,10 @@
     <meta property="og:title" content="BrainSAIT TrustOS | منصة التمكين السيادي">
     <meta property="og:description" content="وكلاء ذكاء اصطناعي سيادي لتحليل العطاءات ومطالبات نفيس والعقود الحكومية السعودية">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/site.webmanifest">
     <script>
         tailwind.config = {
             theme: {
@@ -83,6 +86,23 @@
         .upgrade-banner { background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(212,175,55,0.03)); border: 1px solid rgba(212,175,55,0.25); animation: softPulse 3s ease-in-out infinite; }
         @keyframes softPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0.1); } 50% { box-shadow: 0 0 20px 4px rgba(212,175,55,0.1); } }
     </style>
+<!-- JSON-LD: WebApplication schema for TrustOS -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "BrainSAIT TrustOS",
+  "alternateName": "نظام الثقة العصبي",
+  "url": "https://brainsait.org/trustos",
+  "description": "Neural Trust Operating System — AI governance, explainable AI, human-in-the-loop workflows, and compliance engine for Saudi healthcare.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "provider": { "@type": "Organization", "name": "BrainSAIT LTD", "url": "https://brainsait.org" },
+  "featureList": ["AI Governance", "Explainable AI (XAI)", "Human-in-the-Loop Review", "Compliance Engine", "Model Registry", "Drift Monitoring", "Bias Detection"],
+  "screenshot": "https://brainsait.org/og-image.png",
+  "inLanguage": ["en", "ar"]
+}
+</script>
 </head>
 <body class="noise">
 

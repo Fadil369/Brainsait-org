@@ -1,0 +1,21 @@
+{
+  "name": "BrainSAIT — AI-Native Healthcare Platform",
+  "short_name": "BrainSAIT",
+  "description": "AI-native claims, clinical, and compliance automation for Saudi Arabia & MENA.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#02040a",
+  "theme_color": "#c9a84c",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a365d'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='%23c9a84c' font-size='20' font-weight='bold' font-family='system-ui'%3EB%3C/text%3E%3C/svg%3E",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["health", "business", "productivity"],
+  "lang": "en",
+  "dir": "ltr",
+  "scope": "/"
+}

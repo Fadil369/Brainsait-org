@@ -53,6 +53,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="manifest" href="/site.webmanifest">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Cairo', sans-serif; }
@@ -79,6 +80,28 @@
         @keyframes ping-slow { 75%,100%{ transform:scale(1.8); opacity:0; } }
         .ping-slow { animation: ping-slow 2.5s cubic-bezier(0,0,.2,1) infinite; }
     </style>
+<!-- JSON-LD: WebApplication schema for Wathq -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "BrainSAIT Trust Layer — Wathq",
+  "alternateName": "طبقة الثقة BrainSAIT",
+  "url": "https://brainsait.org/wathq",
+  "description": "Saudi business verification platform built on Wathq API. KYB bundles, PDF certificates, continuous monitoring, ZATCA invoicing, AI risk scoring.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": [
+    { "@type": "Offer", "name": "Verify-as-a-Widget", "price": "200", "priceCurrency": "SAR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "200", "priceCurrency": "SAR", "billingDuration": "P1M" } },
+    { "@type": "Offer", "name": "KYB Standard Bundle", "price": "29", "priceCurrency": "SAR" },
+    { "@type": "Offer", "name": "PDF Verification Certificate", "price": "25", "priceCurrency": "SAR" }
+  ],
+  "provider": { "@type": "Organization", "name": "BrainSAIT LTD", "url": "https://brainsait.org" },
+  "featureList": ["KYB Verification", "PDF Certificates", "Continuous Monitoring", "ZATCA E-Invoicing", "AI Risk Scoring", "Bulk CSV"],
+  "screenshot": "https://brainsait.org/og-image.png",
+  "inLanguage": ["en", "ar"]
+}
+</script>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
 
@@ -1856,7 +1879,7 @@ document.addEventListener('submit', async (e) => {
             return;
         }
 
-        console.log('[BrainSAIT waitlist] submitting payload:', data);
+        if (location.hostname === 'localhost') console.log('[BrainSAIT waitlist] payload:', data);
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جارٍ الإرسال…';
 
@@ -1881,7 +1904,7 @@ document.addEventListener('submit', async (e) => {
                     <button type="button" onclick="closeWaitlistModal()" class="mt-5 inline-flex items-center justify-center gap-2 bg-brand-500 hover:bg-brand-600 text-slate-950 text-sm font-bold px-5 py-2.5 rounded-xl transition">إغلاق / Close</button>
                 </div>`;
         } catch (err) {
-            console.warn('[BrainSAIT waitlist] submit failed:', err);
+            if (location.hostname === 'localhost') console.warn('[BrainSAIT waitlist] submit failed:', err);
             errBox.innerHTML = 'حدث خطأ في الإرسال. يرجى المحاولة لاحقاً أو راسلنا على <a class="underline text-brand-400" href="mailto:hello@brainsait.org">hello@brainsait.org</a>.<br>Submission failed. Please try again or email <a class="underline text-brand-400" href="mailto:hello@brainsait.org">hello@brainsait.org</a>.';
             errBox.classList.remove('hidden');
             submitBtn.disabled = false;
