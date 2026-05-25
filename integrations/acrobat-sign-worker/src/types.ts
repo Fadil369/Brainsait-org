@@ -2,11 +2,11 @@
 
 export interface Env {
   ADOBE_CLIENT_ID: string;
-  ADOBE_CLIENT_SECRET: ***
+  ADOBE_CLIENT_SECRET: string;
   ADOBE_SCOPES: string;
   ADOBE_CLOUD: 'commercial' | 'gov';          // determines base URL
   ADOBE_BASE_URL: string;                       // override if set, otherwise auto from cloud
-  ADOBE_WEBHOOK_SECRET: ***
+  ADOBE_WEBHOOK_SECRET: string;
   ADOBE_ADMIN_EMAIL: string;                    // admin email for impersonation (gov cloud)
   DB: D1Database;
   AUDIT_KV: KVNamespace;

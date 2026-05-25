@@ -21,7 +21,7 @@ function errorResponse(message: string, status = 400): Response {
 }
 
 // ── Verify HMAC signature for webhooks ──
-async function verifyWebhookSignature(body: string, signature: string, secret: ***Promise<boolean> {
+async function verifyWebhookSignature(body: string, signature: string, secret: string): Promise<boolean> {
   const encoder = new TextEncoder();
   const key = await crypto.subtle.importKey(
     'raw',
