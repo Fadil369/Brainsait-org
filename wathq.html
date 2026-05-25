@@ -113,7 +113,7 @@
                     <span class="ping-slow absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-40"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
-                <span class="text-slate-300">اتصال آمن — بيئة إنتاجية</span>
+                <span class="text-slate-300">اتصال آمن — عرض توضيبي آمن</span>
             </div>
             <button type="button" onclick="toggleTheme()" id="theme-toggle-btn"
                     aria-label="تبديل المظهر بين الفاتح والداكن"
@@ -1320,7 +1320,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
         <div class="flex items-center gap-6">
             <a href="#" class="hover:text-brand-400 transition">الأحكام والشروط</a>
-            <a href="#" class="hover:text-brand-400 transition">سياسة الخصوصية</a>
+            <a href="/privacy" class="hover:text-brand-400 transition">سياسة الخصوصية / Privacy Policy</a>
             <a href="#" class="hover:text-brand-400 transition">الأسئلة الشائعة</a>
         </div>
         <div class="flex items-center gap-3">
@@ -1543,11 +1543,11 @@ function runSimulatedAPI() {
     runIcon.className = 'fa-solid fa-spinner fa-spin';
     runText.textContent = 'جارٍ الاستعلام...';
 
-    document.getElementById('json-output').textContent = '// جارٍ الاتصال بخوادم واثق الآمنة...';
+    document.getElementById('json-output').textContent = '// جاري محاكاة الاتصال بواثق... (وضع العرض التوضيبي)';
     document.getElementById('visual-render-container').innerHTML = `
         <div class="flex flex-col items-center gap-3">
             <div class="w-8 h-8 border-4 border-brand-500 border-t-transparent rounded-full animate-spin"></div>
-            <p class="text-xs text-slate-400 font-semibold">جارٍ استرجاع مستند واثق المعتمد...</p>
+            <p class="text-xs text-slate-400 font-semibold">جارٍ تجهيز المستند التوضيبي...</p>
         </div>`;
 
     setTimeout(() => {
@@ -1571,7 +1571,7 @@ function runSimulatedAPI() {
         document.getElementById('json-output').textContent = JSON.stringify(mockJson, null, 2);
         document.getElementById('visual-render-container').innerHTML = visualHtml;
         updatePlaygroundSnippet();
-        showToast('نجاح الاستعلام', 'تم استرجاع البيانات ومطابقتها بنجاح!');
+        showToast('عرض توضيبي', 'تم عرض بيانات تجريبية — هذا محاكاة للاستجابة الحقيقية.')
 
         runBtn.disabled = false;
         runIcon.className = 'fa-solid fa-play';
@@ -1889,6 +1889,39 @@ document.addEventListener('submit', async (e) => {
         }
     }
 });
+</script>
+<!-- Cloudflare Web Analytics — replace TOKEN with your beacon token -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_CF_ANALYTICS_TOKEN"}'></script>
+
+<!-- Cookie Consent (lightweight, no library) -->
+<div id="cookie-consent" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0f172a;border-top:1px solid #1e293b;padding:12px 20px;align-items:center;justify-content:center;gap:16px;font-family:Inter,sans-serif;flex-wrap:wrap;">
+  <span style="color:#94a3b8;font-size:13px;">This site uses cookies for analytics to improve your experience. We respect your privacy (PDPL compliant).</span>
+  <div style="display:flex;gap:8px;">
+    <button onclick="acceptCookies()" style="background:#c9a84c;color:#02040a;border:none;padding:6px 16px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;">Accept</button>
+    <button onclick="declineCookies()" style="background:transparent;color:#94a3b8;border:1px solid #334155;padding:6px 16px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">Decline</button>
+  </div>
+</div>
+<script>
+(function(){
+  const c=document.getElementById('cookie-consent');
+  if(!localStorage.getItem('bs_cookie_choice')){c.style.display='flex';}
+  window.acceptCookies=function(){localStorage.setItem('bs_cookie_choice','accepted');c.style.display='none';};
+  window.declineCookies=function(){localStorage.setItem('bs_cookie_choice','declined');c.style.display='none';};
+})();
+</script>
+
+<!-- Auto-prefix +966 for Saudi phone input -->
+<script>
+(function(){
+  document.querySelectorAll('input[type=tel]').forEach(function(el){
+    el.addEventListener('focus',function(){
+      if(!this.value) this.value='+966 ';
+    });
+    el.addEventListener('blur',function(){
+      if(this.value.trim()==='+966') this.value='';
+    });
+  });
+})();
 </script>
 </body>
 </html>

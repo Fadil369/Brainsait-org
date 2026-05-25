@@ -13,5 +13,6 @@ oracle_screenshot.jpg
 package.json
 package-lock.json
 *.png
+!og-image.png
 portal-audit/
 .secrets

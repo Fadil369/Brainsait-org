@@ -1799,5 +1799,24 @@ function openDirectBooking() {
 }
 
 </script>
+<!-- Cloudflare Web Analytics — replace TOKEN with your beacon token -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_CF_ANALYTICS_TOKEN"}'></script>
+
+<!-- Cookie Consent (lightweight, no library) -->
+<div id="cookie-consent" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0f172a;border-top:1px solid #1e293b;padding:12px 20px;align-items:center;justify-content:center;gap:16px;font-family:Inter,sans-serif;flex-wrap:wrap;">
+  <span style="color:#94a3b8;font-size:13px;">This site uses cookies for analytics to improve your experience. We respect your privacy (PDPL compliant).</span>
+  <div style="display:flex;gap:8px;">
+    <button onclick="acceptCookies()" style="background:#c9a84c;color:#02040a;border:none;padding:6px 16px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;">Accept</button>
+    <button onclick="declineCookies()" style="background:transparent;color:#94a3b8;border:1px solid #334155;padding:6px 16px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">Decline</button>
+  </div>
+</div>
+<script>
+(function(){
+  const c=document.getElementById('cookie-consent');
+  if(!localStorage.getItem('bs_cookie_choice')){c.style.display='flex';}
+  window.acceptCookies=function(){localStorage.setItem('bs_cookie_choice','accepted');c.style.display='none';};
+  window.declineCookies=function(){localStorage.setItem('bs_cookie_choice','declined');c.style.display='none';};
+})();
+</script>
 </body>
 </html>

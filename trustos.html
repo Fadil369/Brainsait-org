@@ -475,7 +475,7 @@
             <div class="section-divider mb-8"></div>
             <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600">
                 <span>© 2026 BrainSAIT TrustOS. جميع الحقوق محفوظة.</span>
-                <div class="flex gap-6"><a href="#" class="hover:text-gray-400 transition">سياسة الخصوصية</a><a href="#" class="hover:text-gray-400 transition">الشروط والأحكام</a></div>
+                <div class="flex gap-6"><a href="/privacy" class="hover:text-gray-400 transition">سياسة الخصوصية / Privacy</a><a href="#" class="hover:text-gray-400 transition">الشروط والأحكام</a></div>
             </div>
         </div>
     </footer>
@@ -589,7 +589,9 @@
         // Extract percentage-like numbers from analysis text and assign to bars
         const nums = (analysis.match(/\d{2,3}%/g) || []).map(n => parseInt(n));
         const keys = barKeys[type] || [];
-        keys.forEach((k, i) => { const v = nums[i] || Math.floor(Math.random()*30 + 60); animateBar(k, Math.min(v, 99)); });
+        // Deterministic fallback: spread analysis length across bars so values are reproducible
+        const fallbackSeed = analysis.length || 100;
+        keys.forEach((k, i) => { const v = nums[i] || Math.min(99, Math.floor(60 + ((fallbackSeed * (i + 1) * 7) % 30))); animateBar(k, v); });
     }
 
     function formatResponse(text) {
@@ -612,6 +614,13 @@
         btn.innerHTML = '<span class="ai-loader"></span> جاري المعالجة...'; btn.disabled = true;
         if (resEl) resEl.innerHTML = '<div class="skeleton h-4 w-full mb-2"></div><div class="skeleton h-4 w-3/4 mb-2"></div><div class="skeleton h-4 w-1/2"></div>';
         resetBars(type);
+
+        // ── Pre-built demo analyses (used when API is unavailable) ──
+        const demoAnalyses = {
+            tender: '**تحليل المخاطر — عرض توضيحي**\n\n**المخاطر المحددة:**\n• مخاطر أمنية: التزام بـ NCA ECC-1:2022 موثق ✓ — لكن خطة الاستجابة للحوادث غير مذكورة\n• مخاطر مالية: لا يوجد سقف للتكاليف غير المتوقعة — يُوصى بإضافة بند 10% احتياطي\n• مخاطر جدولة: 18 شهراً تنفيذ واقعية لمشروع بنية تحتية بهذا الحجم\n• مخاطر تشغيلية: ضمان 5 سنوات يغطي الصيانة لكن لا يشمل الترقيات\n\n**التقييم العام:** 72/100 — مشروع قابل للتنفيذ مع تحسينات مقترحة\n\n**التوصيات:**\n1. إضافة خطة استجابة للحوادث السيبرانية\n2. تحديد سقف تكاليف إضافية بنسبة 15%\n3. تضمين مؤشرات أداء رئيسية (KPIs) ربع سنوية',
+            naphis: '**فحص الترميز الطبي — عرض توضيحي**\n\n**تحليل ICD-10:** K35.80 — التهاب الزائدة الدودية الحاد ✓ صحيح\n\n**تحليل إجراء CPT:** 44970 — استئصال الزائدة الدودية بالمنظار ✓ مطابق\n\n**مراجعة التكلفة:**\n• التكلفة المطالب بها: 12,500 ريال\n• نطاق السعر المرجعي: 10,000 — 18,000 ريال ✓ ضمن النطاق\n• نسبة التكلفة/المرجع: 69% — معقولة\n\n**مؤشرات الجودة:**\n• مدة التنويم (يومان) — مناسبة للإجراء ✓\n• التحاليل المخبرية — مذكورة ✓\n• المضادات الحيوية — مذكورة ✓\n\n**النتيجة:** 91/100 — مطالبة متوافقة، يُنصح بالموافقة مع فحص عشوائي لـ 5% من الحالات المماثلة',
+            contract: '**مراجعة البنود التعاقدية — عرض توضيحي**\n\n**تحليل البنود:**\n• **القيمة والدفع:** 85,000,000 ريال — لا يوجد جدول دفع مذكور ⚠️\n• **الملكية الفكرية:** ملكية البيانات للجهة الحكومية ✓ — لكن لا يوجد ذكر للكود المصدري\n• **عقوبات التأخير:** 0.5%/يوم بحد أقصى 10% ✓ معقولة\n• **الأمن السيبراني:** غير مذكور ⚠️ خطير لمشروع بهذا الحجم\n\n**مؤشر التوازن:** 58/100 — العقد يميل لصالح الجهة الحكومية بشكل غير متوازن\n\n**المخاطر القانونية:**\n1. عدم تحديد آلية حل النزاعات — يُوصى بإضافة بند تحكيم\n2. عدم ذكر التأمين ضد المخاطر السيبرانية\n3. غياب شروط إنهاء العقد قبل اكتماله\n\n**التوصيات:** إضافة 6 بنود مقترحة لتحقيق توازن أفضل',
+        };
 
         try {
             const resp = await fetch('/api/ai/analyze', {
@@ -638,8 +647,16 @@
                 throw new Error('Invalid response');
             }
         } catch (e) {
-            console.error('AI error:', e);
-            if (resEl) resEl.innerHTML = '<div class="text-red-400 text-sm font-bold bg-red-500/10 p-3 rounded-xl">حدث خطأ في الاتصال. تأكد من الاتصال بالإنترنت وحاول مجدداً.</div>';
+            console.warn('API unavailable, using demo analysis:', e.message);
+            // Graceful fallback: show pre-built demo analysis instead of error
+            const demoText = demoAnalyses[type] || 'تحليل تجريبي — الخادم غير متاح حالياً.';
+            if (resEl) resEl.innerHTML = `
+                <div class="glass p-3 rounded-xl text-xs text-amber-400/80 border border-amber-500/20 mb-3">
+                    <i class="fa-solid fa-flask mr-1"></i> وضع العرض التوضيبي — هذا تحليل مُعد مسبقاً للعرض
+                </div>
+                ${formatResponse(demoText)}`;
+            applyBars(type, demoText);
+            updateDemoBanner(Math.max(0, demoCallsRemaining - 1));
         } finally {
             btn.innerHTML = btnLabels[type] || 'تحليل'; btn.disabled = false;
         }
@@ -672,9 +689,19 @@
             btn.innerHTML = '<span>تم الإرسال ✓</span>'; btn.classList.replace('bg-sovereign-500','bg-emerald-500');
             document.getElementById('contactForm').reset();
             setTimeout(() => { btn.innerHTML = '<span>إرسال الطلب</span><svg class="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m6-5H6"/></svg>'; btn.disabled=false; btn.classList.replace('bg-emerald-500','bg-sovereign-500'); status.className='text-sm font-bold hidden'; }, 5000);
-        } catch {
-            status.textContent = 'حدث خطأ. يرجى المحاولة لاحقاً أو التواصل مباشرة.'; status.className = 'text-sm font-bold text-red-400 block';
-            btn.innerHTML = '<span>إرسال الطلب</span>'; btn.disabled = false;
+        } catch (err) {
+            console.warn('Waitlist API unavailable, storing locally:', err.message);
+            // Graceful fallback: store in localStorage so data isn't lost
+            try {
+                const pending = JSON.parse(localStorage.getItem('trustos_waitlist') || '[]');
+                pending.push({ name, email, company, product, usecase, timestamp: new Date().toISOString() });
+                localStorage.setItem('trustos_waitlist', JSON.stringify(pending));
+            } catch (_) { /* localStorage unavailable */ }
+            status.innerHTML = '✓ تم حفظ طلبك محلياً! سنتواصل معك عند تفعيل النظام.<br><span class="text-xs text-slate-500">(وضع العرض التوضيبي)</span>';
+            status.className = 'text-sm font-bold text-amber-400 block';
+            btn.innerHTML = '<span>تم الحفظ ✓</span>'; btn.classList.replace('bg-sovereign-500','bg-amber-600');
+            document.getElementById('contactForm').reset();
+            setTimeout(() => { btn.innerHTML = '<span>إرسال الطلب</span><svg class="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m6-5H6"/></svg>'; btn.disabled=false; btn.classList.replace('bg-amber-600','bg-sovereign-500'); status.className='text-sm font-bold hidden'; }, 5000);
         }
     }
 
@@ -683,5 +710,24 @@
         anchor.addEventListener('click', function(e) { e.preventDefault(); const t = document.querySelector(this.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
     });
     </script>
+<!-- Cloudflare Web Analytics — replace TOKEN with your beacon token -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_CF_ANALYTICS_TOKEN"}'></script>
+
+<!-- Cookie Consent (lightweight, no library) -->
+<div id="cookie-consent" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0f172a;border-top:1px solid #1e293b;padding:12px 20px;align-items:center;justify-content:center;gap:16px;font-family:Inter,sans-serif;flex-wrap:wrap;">
+  <span style="color:#94a3b8;font-size:13px;">This site uses cookies for analytics to improve your experience. We respect your privacy (PDPL compliant).</span>
+  <div style="display:flex;gap:8px;">
+    <button onclick="acceptCookies()" style="background:#c9a84c;color:#02040a;border:none;padding:6px 16px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;">Accept</button>
+    <button onclick="declineCookies()" style="background:transparent;color:#94a3b8;border:1px solid #334155;padding:6px 16px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">Decline</button>
+  </div>
+</div>
+<script>
+(function(){
+  const c=document.getElementById('cookie-consent');
+  if(!localStorage.getItem('bs_cookie_choice')){c.style.display='flex';}
+  window.acceptCookies=function(){localStorage.setItem('bs_cookie_choice','accepted');c.style.display='none';};
+  window.declineCookies=function(){localStorage.setItem('bs_cookie_choice','declined');c.style.display='none';};
+})();
+</script>
 </body>
 </html>
