@@ -703,34 +703,9 @@
                 }
             }
             
-            // If API fails, fall back to demo
-            throw new Error('API unavailable');
+            throw new Error('Live API failed');
         } catch (e) {
-            console.warn('API unavailable, using demo analysis:', e.message);
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ type, text: input, sessionId: getSessionId() }),
-            });
-
-            if (resp.status === 429) {
-                const data = await resp.json();
-                updateDemoBanner(0);
-                if (resEl) resEl.innerHTML = `<div class='glass p-4 rounded-xl text-sm text-sovereign-400 leading-relaxed'>${data.message || 'استنفدت الاستفسارات المجانية.'}<br><a href="/wathq.html" class="underline font-bold mt-2 inline-block">ترقية للوصول الكامل ←</a></div>`;
-                return;
-            }
-
-            if (!resp.ok) throw new Error('API error ' + resp.status);
-
-            const data = await resp.json();
-            if (data.success && data.data?.analysis) {
-                if (resEl) resEl.innerHTML = formatResponse(data.data.analysis);
-                applyBars(type, data.data.analysis);
-                updateDemoBanner(data.data.remaining_calls ?? (demoCallsRemaining - 1));
-            } else {
-                throw new Error('Invalid response');
-            }
-        } catch (e) {
-            console.warn('API unavailable, using demo analysis:', e.message);
+            console.warn('Using demo analysis:', e.message);
             // Graceful fallback: show pre-built demo analysis instead of error
             const demoText = demoAnalyses[type] || 'تحليل تجريبي — الخادم غير متاح حالياً.';
             if (resEl) resEl.innerHTML = `
@@ -766,10 +741,6 @@
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: JSON.stringify({ name, email, product: product || 'TrustOS', usecase }),
-            });
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify({ name, email, company, product, usecase, source: 'trustos-landing' }),
             });
             if (!resp.ok) throw new Error('Server error');
             status.textContent = '✓ تم استلام طلبك بنجاح! سنتواصل معك خلال 48 ساعة.';
