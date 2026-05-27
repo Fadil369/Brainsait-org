@@ -642,8 +642,70 @@
             contract: '**مراجعة البنود التعاقدية — عرض توضيحي**\n\n**تحليل البنود:**\n• **القيمة والدفع:** 85,000,000 ريال — لا يوجد جدول دفع مذكور ⚠️\n• **الملكية الفكرية:** ملكية البيانات للجهة الحكومية ✓ — لكن لا يوجد ذكر للكود المصدري\n• **عقوبات التأخير:** 0.5%/يوم بحد أقصى 10% ✓ معقولة\n• **الأمن السيبراني:** غير مذكور ⚠️ خطير لمشروع بهذا الحجم\n\n**مؤشر التوازن:** 58/100 — العقد يميل لصالح الجهة الحكومية بشكل غير متوازن\n\n**المخاطر القانونية:**\n1. عدم تحديد آلية حل النزاعات — يُوصى بإضافة بند تحكيم\n2. عدم ذكر التأمين ضد المخاطر السيبرانية\n3. غياب شروط إنهاء العقد قبل اكتماله\n\n**التوصيات:** إضافة 6 بنود مقترحة لتحقيق توازن أفضل',
         };
 
+        const API_BASE = 'https://wathq-milestone-api.brainsait-fadil.workers.dev';
+        const DEMO_KEY = 'EQMc2uonE6iViTfUjJ2KARG9a3yDDwdQ';
+
         try {
-            const resp = await fetch('/api/ai/analyze', {
+            // Try the real ML API first
+            if (type === 'tender') {
+                // Use semantic search for tender analysis
+                const searchInput = input.substring(0, 300);
+                const resp = await fetch(API_BASE + '/wathq/v1/ai/ml/search', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + DEMO_KEY },
+                    body: JSON.stringify({ query: searchInput, limit: 5 }),
+                });
+                if (resp.ok) {
+                    const data = await resp.json();
+                    if (data.success) {
+                        const results = data.data?.results || [];
+                        const summary = results.length > 0 
+                            ? `تم العثور على ${results.length} نتائج مشابهة:\n\n` + results.map(r => `• ${r.entity}: ${r.purpose?.substring(0,80)}...`).join('\n')
+                            : 'لم يتم العثور على نتائج';
+                        if (resEl) resEl.innerHTML = formatResponse(summary + '\n\n⚡ Powered by BrainSAIT ML Engine');
+                        applyBars(type, summary);
+                        return;
+                    }
+                }
+            } else if (type === 'naphis') {
+                // Use classify for NAPHIS analysis
+                const resp = await fetch(API_BASE + '/wathq/v1/ai/ml/classify', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + DEMO_KEY },
+                    body: JSON.stringify({ entities: ['مستشفى'], purposes: [input.substring(0, 100)] }),
+                });
+                if (resp.ok) {
+                    const data = await resp.json();
+                    if (data.success) {
+                        const cats = data.data?.classification || [];
+                        const summary = 'الفئات المكتشفة: ' + cats.map(c => c.category).join(', ');
+                        if (resEl) resEl.innerHTML = formatResponse(summary + '\n\n⚡ Powered by BrainSAIT ML Engine');
+                        return;
+                    }
+                }
+            } else {
+                // Contract analysis - use semantic search
+                const resp = await fetch(API_BASE + '/wathq/v1/ai/ml/search', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + DEMO_KEY },
+                    body: JSON.stringify({ query: input.substring(0, 300), limit: 3 }),
+                });
+                if (resp.ok) {
+                    const data = await resp.json();
+                    if (data.success) {
+                        const results = data.data?.results || [];
+                        const summary = 'عقود مشابهة: ' + results.length + '\n\n' + results.map(r => `• ${r.entity}: ${r.purpose?.substring(0,60)}...`).join('\n');
+                        if (resEl) resEl.innerHTML = formatResponse(summary + '\n\n🤝 Powered by BrainSAIT ContractAI');
+                        applyBars(type, summary);
+                        return;
+                    }
+                }
+            }
+            
+            // If API fails, fall back to demo
+            throw new Error('API unavailable');
+        } catch (e) {
+            console.warn('API unavailable, using demo analysis:', e.message);
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ type, text: input, sessionId: getSessionId() }),
@@ -698,7 +760,12 @@
         btn.innerHTML = '<span class="ai-loader"></span> جاري الإرسال...'; btn.disabled = true;
 
         try {
-            const resp = await fetch('/api/waitlist', {
+            // Use the new public waitlist API
+            const resp = await fetch(API_BASE + '/public/waitlist', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({ name, email, product: product || 'TrustOS', usecase }),
+            });
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: JSON.stringify({ name, email, company, product, usecase, source: 'trustos-landing' }),
