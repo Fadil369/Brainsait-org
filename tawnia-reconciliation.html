@@ -257,7 +257,7 @@ return false}
 
 // ===== GENERATE INTELLIGENT COMMENT =====
 function gIC(row,st2,cat,sName){
-if(st2==='AGREE'){
+if(st2==='AGREED'){
 if(/not covered/i.test(String(row['Reason']||''))||/excluded/i.test(String(row['Reason']||'')))
 return AT.coverage.replace('{s}',sName);
 if(/pre-existing/i.test(String(row['Reason']||'')))
@@ -288,11 +288,11 @@ var sName=eSN(row['Service']||'');
 
 // Check AGREE first (per decision tree in AGREE_DISAGREE_LOGIC.md)
 var isAgree=cAP(row);
-var status=isAgree?'AGREE':'DISAGREE';
+var status=isAgree?'AGREED':'DISAGREED';
 var catInfo=isAgree?{cat:'Valid Rejection',pri:'LOW',act:'No further action - accept rejection'}:cR(row);
 var comment=gIC(row,status,catInfo.cat,sName);
 
-result._S=status;result._P=catInfo.pri;result._Cmt=comment;result._Cat=catInfo.cat;result._Act=catInfo.act;
+result._S=status;result._Cmt=comment;
 res.push(result);idx++;
 if(idx%5===0)setTimeout(pN,10);else pN()}
 setTimeout(pN,200)}
@@ -301,42 +301,36 @@ function finA(){$('pp').textContent='100%';$('pF').style.width='100%';$('pD').te
 
 function showR(){
 ss('done');
-var agr=res.filter(function(r){return r._S==='AGREE'}).length;
-var dis=res.filter(function(r){return r._S==='DISAGREE'}).length;
+var agr=res.filter(function(r){return r._S==='AGREED'}).length;
+var dis=res.filter(function(r){return r._S==='DISAGREED'}).length;
 var tot=res.length;
-// Count priorities
-var crit=res.filter(function(r){return r._P==='CRITICAL'}).length;
-var high=res.filter(function(r){return r._P==='HIGH'}).length;
-var med=res.filter(function(r){return r._P==='MEDIUM'}).length;
 
 // Total rejected amount
 var totalAmt=0;res.forEach(function(r){var a=String(r['Rejected Amount']||'0').replace(/[^0-9.\-]/g,'');totalAmt+=parseFloat(a)||0});
 
 $('sG').innerHTML=[
 {l:'Total Claims',v:tot,c:'#94a3b8',i:'&#128203;'},
-{l:'Disagree',v:dis,c:'#f59e0b',i:'&#9888;'},
-{l:'Agree',v:agr,c:'#22c55e',i:'&#9989;'},
+{l:'Disagreed',v:dis,c:'#f59e0b',i:'&#9888;'},
+{l:'Agreed',v:agr,c:'#22c55e',i:'&#9989;'},
 {l:'Recovery SAR',v:totalAmt.toFixed(0),c:'#0ea5e9',i:'&#128176;'}
 ].map(function(s){return'<div class="sc"><div class="si">'+s.i+'</div><div class="sv" style="color:'+s.c+'">'+s.v+'</div><div class="sl">'+s.l+'</div></div>'}).join('');
 
-var filters=[{k:'all',l:'All',c:tot},{k:'DISAGREE',l:'Disagree',c:dis},{k:'AGREE',l:'Agree',c:agr},{k:'CRITICAL',l:'Critical',c:crit},{k:'HIGH',l:'High',c:high}];
+var filters=[{k:'all',l:'All',c:tot},{k:'DISAGREED',l:'Disagreed',c:dis},{k:'AGREED',l:'Agreed',c:agr}];
 $('rT').innerHTML=filters.map(function(f){return'<button class="tt '+(cF===f.k?'active':'')+'" onclick="fR(\''+f.k+'\')">'+f.l+' <span class="cn">('+f.c+')</span></button>'}).join('');
 rTbl()}
 
 function fR(f){cF=f;document.querySelectorAll('.tt').forEach(function(t){t.classList.remove('active')});event.target.closest('.tt').classList.add('active');rTbl()}
 
 function rTbl(){
-var filtered=cF==='all'?res:cF==='DISAGREE'||cF==='AGREE'?res.filter(function(r){return r._S===cF}):res.filter(function(r){return r._P===cF});
-var h='<table><thead><tr><th>#</th><th>Status</th><th>Priority</th>';
-var oc=aC.filter(function(c){return['Service','Service Code','Claim No.','Rejected Amount','Reason','Member Name'].indexOf(c)>=0}).slice(0,3);
+var filtered=cF==='all'?res:cF==='DISAGREED'||cF==='AGREED'?res.filter(function(r){return r._S===cF}):res;
+var h='<table><thead><tr><th>#</th><th>Status</th>';
+var oc=aC.filter(function(c){return['Service','Service Code','Claim No.','Rejected Amount','Member Name'].indexOf(c)>=0}).slice(0,4);
 oc.forEach(function(c){h+='<th>'+e(c)+'</th>'});h+='<th>Comments</th></tr></thead><tbody>';
 filtered.forEach(function(r){
-var sc=r._S==='AGREE'?sa:sd;var icon=r._S==='AGREE'?'&#10003;':'!';
-var pc=r._P==='CRITICAL'?'pc-c':r._P==='HIGH'?'pc-h':'pc-m';
+var sc=r._S==='AGREED'?sa:sd;var icon=r._S==='AGREED'?'&#10003;':'!';
 h+='<tr onclick="sD2('+r._RI+')" style="cursor:pointer">';
 h+='<td>'+(r._RI+1)+'</td>';
 h+='<td><span class="sb '+sc+'">'+icon+' '+r._S+'</span></td>';
-h+='<td><span class="pc '+pc+'">'+r._P+'</span></td>';
 oc.forEach(function(c){h+='<td>'+e(String(r[c]!=null?r[c]:'-'))+'</td>'});
 h+='<td class="cm">'+e(r._Cmt.substring(0,120))+(r._Cmt.length>120?'...':'')+'</td></tr>'});
 h+='</tbody></table>';$('rTbl').innerHTML=h}
@@ -345,19 +339,15 @@ var sa='sa',sd='sd';
 
 function sD2(idx){var r=res.find(function(r){return r._RI===idx});if(!r)return;
 $('mT').textContent='Claim '+(r['Claim No.']||r._RI+1);
-var sc=r._S==='AGREE'?'sa':'sd';
-var pc=r._P==='CRITICAL'?'pc-c':r._P==='HIGH'?'pc-h':'pc-m';
+var sc=r._S==='AGREED'?'sa':'sd';
 var h='<div class="dr"><span class="dk">Status</span><span class="sb '+sc+'">'+r._S+'</span></div>';
-h+='<div class="dr"><span class="dk">Priority</span><span class="pc '+pc+'">'+r._P+'</span></div>';
-h+='<div class="dr"><span class="dk">Category</span><span class="dv">'+e(r._Cat)+'</span></div>';
 aC.forEach(function(c){h+='<div class="dr"><span class="dk">'+e(c)+'</span><span class="dv">'+e(String(r[c]!=null?r[c]:'-'))+'</span></div>'});
 h+='<div style="margin-top:16px;padding:12px;background:rgba(255,255,255,.03);border-radius:10px;font-size:13px;color:rgba(255,255,255,.7);line-height:1.6">'+e(r._Cmt)+'</div>';
-h+='<div style="margin-top:12px;padding:12px;background:rgba(14,165,233,.05);border:1px solid rgba(14,165,233,.1);border-radius:10px;font-size:12px;color:rgba(14,165,233,.8);line-height:1.6"><strong>Action Required:</strong> '+e(r._Act)+'</div>';
 $('mC').innerHTML=h;sh('dM')}
 
 function cM(){hd('dM')}
 
-function expX(){var ed=res.map(function(r){var o={};aC.forEach(function(c){o[c]=r[c]});o['Status']=r._S;o['Priority']=r._P;o['Category']=r._Cat;o['Comments']=r._Cmt;o['Action Required']=r._Act;return o});var ws=XLSX.utils.json_to_sheet(ed);var wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'Reconciliation');XLSX.writeFile(wb,'Tawnia_Reconciliation_'+new Date().toISOString().slice(0,10)+'.xlsx')}
+function expX(){var ed=res.map(function(r){var o={};aC.forEach(function(c){o[c]=r[c]});o['Status']=r._S;o['Comments']=r._Cmt;return o});var ws=XLSX.utils.json_to_sheet(ed);var wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'Reconciliation');XLSX.writeFile(wb,'Tawnia_Reconciliation_'+new Date().toISOString().slice(0,10)+'.xlsx')}
 
 function rst(){aR=[];aC=[];res=[];cF='all';$('sUrl').value='';hd('eBox');ss('idle')}
 ss('idle');
