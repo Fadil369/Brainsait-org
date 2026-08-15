@@ -93,30 +93,48 @@
       line-height: 1.7;
       transition: background .4s ease, color .4s ease;
     }
-    [dir="ltr"] body, body.ltr { font-family: 'Inter', 'IBM Plex Sans Arabic', sans-serif; }
+    [dir="ltr"] body { font-family: 'Inter', 'IBM Plex Sans Arabic', sans-serif; }
     a { color: inherit; text-decoration: none; }
     .ar, .en { display: none; }
     html[lang="ar"] .ar { display: inline; }
     html[lang="en"] .en { display: inline; }
     html[lang="ar"] .ar-block, html[lang="en"] .en-block { display: block; }
 
+    /* ── Scroll progress bar ── */
+    .progress { position: fixed; top: 0; inset-inline-start: 0; height: 2px; width: 100%; z-index: 200; pointer-events: none; }
+    .progress-bar { height: 100%; width: 0; background: linear-gradient(90deg, var(--gold), var(--gold-l), var(--cyan)); box-shadow: 0 0 12px rgba(233,196,106,.6); }
+
+    /* ── Custom cursor ── */
+    .cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; border-radius: 50%; pointer-events: none; z-index: 300; mix-blend-mode: screen; }
+    .cursor-dot { width: 8px; height: 8px; background: var(--gold-l); box-shadow: 0 0 12px var(--gold-l); transform: translate(-50%, -50%); }
+    .cursor-ring { width: 40px; height: 40px; border: 1.5px solid rgba(233,196,106,.5); transform: translate(-50%, -50%); transition: width .3s, height .3s, border-color .3s; }
+    .cursor-ring.grow { width: 64px; height: 64px; border-color: rgba(233,196,106,.9); }
+    @media (pointer: coarse) { .cursor-dot, .cursor-ring { display: none; } }
+    @media (pointer: fine) { body { cursor: none; } a, button, .pcard, input { cursor: none; } }
+
     /* ── Aurora background ── */
     .bg-aurora { position: fixed; inset: 0; z-index: -1; overflow: hidden; background: var(--ink); transition: background .4s ease; }
-    .orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .5; }
-    .orb-1 { width: 560px; height: 560px; top: -160px; inset-inline-start: -120px; background: radial-gradient(circle, rgba(201,162,39,.35), transparent 70%); animation: float 18s ease-in-out infinite; }
-    .orb-2 { width: 480px; height: 480px; top: 20%; inset-inline-end: -140px; background: radial-gradient(circle, rgba(41,216,255,.28), transparent 70%); animation: float 22s ease-in-out infinite reverse; }
-    .orb-3 { width: 420px; height: 420px; bottom: -120px; inset-inline-start: 30%; background: radial-gradient(circle, rgba(167,139,250,.26), transparent 70%); animation: float 26s ease-in-out infinite; }
-    @keyframes float { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-40px) scale(1.06); } }
+    .orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .5; will-change: transform; }
+    .orb-1 { width: 560px; height: 560px; top: -160px; inset-inline-start: -120px; background: radial-gradient(circle, rgba(201,162,39,.35), transparent 70%); }
+    .orb-2 { width: 480px; height: 480px; top: 20%; inset-inline-end: -140px; background: radial-gradient(circle, rgba(41,216,255,.28), transparent 70%); }
+    .orb-3 { width: 420px; height: 420px; bottom: -120px; inset-inline-start: 30%; background: radial-gradient(circle, rgba(167,139,250,.26), transparent 70%); }
     [data-theme="light"] .orb { opacity: .28; }
 
+    /* ── Film grain ── */
+    .grain { position: fixed; inset: -100%; width: 300%; height: 300%; z-index: 250; pointer-events: none; opacity: .035; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); animation: grain 7s steps(10) infinite; }
+    @keyframes grain { 0%,100% { transform: translate(0,0); } 10% { transform: translate(-3%,-6%); } 30% { transform: translate(4%,2%); } 50% { transform: translate(-5%,5%); } 70% { transform: translate(6%,-3%); } 90% { transform: translate(-2%,6%); } }
+    [data-theme="light"] .grain { opacity: .05; }
+
     /* ── Header ── */
-    .site-head { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(14px); background: color-mix(in srgb, var(--ink) 72%, transparent); border-bottom: 1px solid var(--line); }
+    .site-head { position: sticky; top: 0; z-index: 100; backdrop-filter: blur(14px); background: color-mix(in srgb, var(--ink) 72%, transparent); border-bottom: 1px solid var(--line); }
     .head-inner { max-width: 1180px; margin: 0 auto; padding: 0.9rem 1.4rem; display: flex; align-items: center; gap: 1rem; }
     .brand { display: flex; align-items: center; gap: 0.65rem; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; letter-spacing: .02em; }
-    .brand-mark { width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, var(--gold), var(--gold-l)); color: #141824; display: grid; place-items: center; font-weight: 800; font-size: 1.15rem; }
+    .brand-mark { width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, var(--gold), var(--gold-l)); color: #141824; display: grid; place-items: center; font-weight: 800; font-size: 1.15rem; box-shadow: 0 0 18px rgba(201,162,39,.4); }
     .main-nav { display: flex; align-items: center; gap: 1.4rem; margin-inline-start: auto; font-size: .92rem; font-weight: 500; }
     .main-nav a { color: var(--muted); transition: color .2s; position: relative; }
+    .main-nav a::after { content: ""; position: absolute; bottom: -4px; inset-inline-start: 0; width: 0; height: 2px; background: var(--gold-l); transition: width .25s ease; }
     .main-nav a:hover { color: var(--text); }
+    .main-nav a:hover::after { width: 100%; }
     .main-nav a.store-link { color: var(--gold-l); font-weight: 700; }
     .head-actions { display: flex; align-items: center; gap: .6rem; margin-inline-start: 1rem; }
     .icon-btn { width: 40px; height: 40px; border-radius: 12px; border: 1px solid var(--line); background: var(--panel); color: var(--text); cursor: pointer; display: grid; place-items: center; transition: all .2s; font-family: inherit; }
@@ -126,17 +144,19 @@
     /* ── Hero ── */
     .hero { max-width: 1180px; margin: 0 auto; padding: 6rem 1.4rem 4rem; text-align: center; }
     .hero-eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-size: .82rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-l); font-weight: 700; }
-    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 12px var(--gold); }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 12px var(--gold); animation: pulse 2.4s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { box-shadow: 0 0 12px var(--gold); } 50% { box-shadow: 0 0 26px var(--gold), 0 0 40px rgba(233,196,106,.5); } }
     .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(2.4rem, 7vw, 5rem); font-weight: 800; line-height: 1.08; margin: 1.2rem 0 1.4rem; letter-spacing: -.01em; }
     html[lang="ar"] .hero h1 { font-family: 'IBM Plex Sans Arabic', sans-serif; }
-    .hero h1 .accent { background: linear-gradient(100deg, var(--gold-l), var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero h1 .accent { background: linear-gradient(100deg, var(--gold-l), var(--cyan), var(--violet), var(--gold-l)); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer 5s linear infinite; }
+    @keyframes shimmer { to { background-position: 300% 0; } }
     .hero .lede { max-width: 640px; margin: 0 auto; color: var(--muted); font-size: clamp(1rem, 2.4vw, 1.18rem); }
     .hero-acts { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2.4rem; }
 
-    /* ── Buttons ── */
-    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .85rem 1.7rem; border-radius: 999px; font-weight: 700; font-size: .95rem; transition: all .22s; cursor: pointer; border: none; font-family: inherit; }
+    /* ── Buttons (magnetic) ── */
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .85rem 1.7rem; border-radius: 999px; font-weight: 700; font-size: .95rem; transition: all .22s; cursor: pointer; border: none; font-family: inherit; will-change: transform; }
     .btn-primary { background: linear-gradient(135deg, var(--gold), var(--gold-l)); color: #141824; box-shadow: 0 8px 30px rgba(201,162,39,.28); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(201,162,39,.4); }
+    .btn-primary:hover { box-shadow: 0 12px 36px rgba(201,162,39,.4); }
     .btn-ghost { background: var(--panel); border: 1px solid var(--line); color: var(--text); }
     .btn-ghost:hover { border-color: var(--gold); background: var(--panel-2); }
 
@@ -147,14 +167,15 @@
     html[lang="ar"] .section-head h2 { font-family: 'IBM Plex Sans Arabic', sans-serif; }
     .section-head .sub { color: var(--muted); font-size: .95rem; max-width: 420px; }
 
-    /* ── Liquid product cards ── */
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.4rem; }
-    .pcard { position: relative; border-radius: 20px; overflow: hidden; background: var(--panel); border: 1px solid var(--line); transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, border-color .35s; }
-    .pcard:hover { transform: translateY(-8px); border-color: rgba(201,162,39,.5); box-shadow: 0 24px 60px rgba(0,0,0,.45), 0 0 0 1px rgba(233,196,106,.15); }
+    /* ── Liquid 3D product cards ── */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.6rem; perspective: 1200px; }
+    .pcard { position: relative; border-radius: 20px; overflow: hidden; background: var(--panel); border: 1px solid var(--line); transition: border-color .35s, box-shadow .35s; transform-style: preserve-3d; will-change: transform; }
+    .pcard:hover { border-color: rgba(201,162,39,.5); box-shadow: 0 30px 70px rgba(0,0,0,.5), 0 0 0 1px rgba(233,196,106,.15); }
     .pcard-cover { position: relative; aspect-ratio: 2/3; overflow: hidden; background: var(--surface-2); }
     .pcard-cover img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s cubic-bezier(.2,.8,.2,1); }
-    .pcard:hover .pcard-cover img { transform: scale(1.05); }
     .pcard-cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(7,11,20,.88) 100%); }
+    .pcard-glare { position: absolute; inset: 0; z-index: 3; pointer-events: none; background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,.22), transparent 55%); opacity: 0; transition: opacity .3s; }
+    .pcard:hover .pcard-glare { opacity: 1; }
     .pcard-badge { position: absolute; top: .8rem; inset-inline-start: .8rem; z-index: 2; background: rgba(7,11,20,.7); backdrop-filter: blur(6px); color: var(--gold-l); font-size: .72rem; font-weight: 700; padding: .3rem .7rem; border-radius: 999px; border: 1px solid rgba(233,196,106,.3); }
     .pcard-body { padding: 1rem 1.1rem 1.2rem; }
     .pcard-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: .4rem; }
@@ -185,7 +206,7 @@
     .site-foot .links a:hover { color: var(--gold-l); }
 
     /* ── Reveal ── */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
     .reveal.in { opacity: 1; transform: none; }
 
     @media (max-width: 640px) {
@@ -196,6 +217,11 @@
   </style>
 </head>
 <body>
+  <div class="progress" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
   <div class="bg-aurora" aria-hidden="true">
     <span class="orb orb-1"></span>
     <span class="orb orb-2"></span>
@@ -239,10 +265,10 @@
         <span class="en">A digital library, an incubation program, and production-ready software — crafted to elevate you. Elegant in every detail, powerful in every feature.</span>
       </p>
       <div class="hero-acts">
-        <a class="btn btn-primary" href="https://fadil369.github.io" target="_blank" rel="noopener noreferrer">
+        <a class="btn btn-primary" href="https://fadil369.github.io" target="_blank" rel="noopener noreferrer" data-magnetic>
           <span class="ar">ادخل المتجر</span><span class="en">Enter the Store</span> →
         </a>
-        <a class="btn btn-ghost" href="#newsletter">
+        <a class="btn btn-ghost" href="#newsletter" data-magnetic>
           <span class="ar">اشترك في النشرة</span><span class="en">Subscribe to the Newsletter</span>
         </a>
       </div>
@@ -258,10 +284,11 @@
       </div>
       <div class="grid">
         <!-- All Men -->
-        <article class="pcard reveal">
+        <article class="pcard reveal" data-tilt>
           <div class="pcard-cover">
             <span class="pcard-badge"><span class="ar">رواية</span><span class="en">Novel</span></span>
             <img src="https://fadil369.github.io/assets/images/books/all-men.webp" alt="كل الرجال — All Men" loading="lazy" width="320" height="480">
+            <span class="pcard-glare"></span>
           </div>
           <div class="pcard-body">
             <div class="pcard-meta"><span class="pcard-eyebrow"><span class="ar">روايات</span><span class="en">Novels</span></span></div>
@@ -277,10 +304,11 @@
         </article>
 
         <!-- Between One Beat and Another (Arabic) -->
-        <article class="pcard reveal">
+        <article class="pcard reveal" data-tilt>
           <div class="pcard-cover">
             <span class="pcard-badge"><span class="ar">رواية</span><span class="en">Novel</span></span>
             <img src="https://fadil369.github.io/assets/images/books/Between_One_Beat_and_Another_Arabic.webp" alt="بين نبضةٍ وأخرى" loading="lazy" width="320" height="480">
+            <span class="pcard-glare"></span>
           </div>
           <div class="pcard-body">
             <div class="pcard-meta"><span class="pcard-eyebrow"><span class="ar">روايات</span><span class="en">Novels</span></span></div>
@@ -296,10 +324,11 @@
         </article>
 
         <!-- Between One Beat and Another (English) -->
-        <article class="pcard reveal">
+        <article class="pcard reveal" data-tilt>
           <div class="pcard-cover">
             <span class="pcard-badge"><span class="ar">رواية</span><span class="en">Novel</span></span>
             <img src="https://fadil369.github.io/assets/images/books/Between_One_Beat_and_Another_English.webp" alt="Between One Beat and Another" loading="lazy" width="320" height="480">
+            <span class="pcard-glare"></span>
           </div>
           <div class="pcard-body">
             <div class="pcard-meta"><span class="pcard-eyebrow"><span class="ar">روايات</span><span class="en">Novels</span></span></div>
@@ -326,7 +355,7 @@
         </p>
         <form class="newsletter-form" id="nlForm" novalidate>
           <input type="email" id="nlEmail" placeholder="you@email.com" aria-label="Email" required>
-          <button type="submit" class="btn btn-primary">
+          <button type="submit" class="btn btn-primary" data-magnetic>
             <span class="ar">اشترك</span><span class="en">Subscribe</span>
           </button>
         </form>
@@ -339,7 +368,7 @@
           <span class="en">Subscription failed — check your email and try again.</span>
         </p>
         <div style="margin-top:1.4rem;">
-          <a class="btn btn-ghost" href="https://brainsait369.blogspot.com/" target="_blank" rel="noopener noreferrer">
+          <a class="btn btn-ghost" href="https://brainsait369.blogspot.com/" target="_blank" rel="noopener noreferrer" data-magnetic>
             <span class="ar">تصفح أرشيف المدونة</span><span class="en">Browse the Blog Archive</span> ↗
           </a>
         </div>
@@ -349,7 +378,7 @@
     <!-- STORE CTA -->
     <section class="section" style="text-align:center; padding-top: 0;">
       <div class="reveal">
-        <a class="btn btn-primary" href="https://fadil369.github.io" target="_blank" rel="noopener noreferrer" style="font-size:1.05rem; padding:1rem 2.2rem;">
+        <a class="btn btn-primary" href="https://fadil369.github.io" target="_blank" rel="noopener noreferrer" style="font-size:1.05rem; padding:1rem 2.2rem;" data-magnetic>
           <span class="ar">اكتشف المتجر الكامل</span><span class="en">Explore the Full Store</span> →
         </a>
       </div>
@@ -368,6 +397,7 @@
   <script>
     (function () {
       var root = document.getElementById('html-root');
+      var fine = window.matchMedia('(pointer: fine)').matches;
 
       // ── Language (Arabic default) ──
       var savedLang = null;
@@ -378,7 +408,6 @@
         try { localStorage.setItem('bs-lang', lang); } catch (e) {}
       }
       applyLang(savedLang === 'en' ? 'en' : 'ar');
-
       document.getElementById('langToggle').addEventListener('click', function () {
         applyLang(root.getAttribute('lang') === 'ar' ? 'en' : 'ar');
       });
@@ -392,7 +421,6 @@
         try { localStorage.setItem('bs-theme', t); } catch (e) {}
       }
       applyTheme(savedTheme === 'light' ? 'light' : 'dark');
-
       document.getElementById('themeToggle').addEventListener('click', function () {
         applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
       });
@@ -422,12 +450,105 @@
       // ── Year ──
       document.getElementById('yr').textContent = new Date().getFullYear();
 
-      // ── Reveal on scroll ──
+      // ── Scroll progress bar ──
+      var bar = document.getElementById('progressBar');
+      function onScroll() {
+        var h = document.documentElement;
+        var sc = h.scrollTop / (h.scrollHeight - h.clientHeight);
+        bar.style.width = (sc * 100) + '%';
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // ── Reveal on scroll (staggered) ──
+      var reveals = document.querySelectorAll('.reveal');
       var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+        entries.forEach(function (en) {
+          if (en.isIntersecting) {
+            var delay = (en.target.dataset.delay || 0);
+            en.target.style.transitionDelay = delay + 'ms';
+            en.target.classList.add('in');
+            io.unobserve(en.target);
+          }
+        });
       }, { threshold: 0.12 });
-      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+      reveals.forEach(function (el) { io.observe(el); });
+
+      // ── Custom cursor (desktop) ──
+      if (fine) {
+        var dot = document.getElementById('cursorDot');
+        var ring = document.getElementById('cursorRing');
+        var mx = -100, my = -100, rx = -100, ry = -100;
+        document.addEventListener('mousemove', function (e) {
+          mx = e.clientX; my = e.clientY;
+          dot.style.transform = 'translate(' + mx + 'px,' + my + 'px) translate(-50%,-50%)';
+        });
+        (function loop() {
+          rx += (mx - rx) * 0.16;
+          ry += (my - ry) * 0.16;
+          ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)';
+          requestAnimationFrame(loop);
+        })();
+        // Grow ring over interactive elements
+        document.querySelectorAll('a, button, .pcard, input').forEach(function (el) {
+          el.addEventListener('mouseenter', function () { ring.classList.add('grow'); });
+          el.addEventListener('mouseleave', function () { ring.classList.remove('grow'); });
+        });
+      }
+
+      // ── 3D tilt cards + glare ──
+      document.querySelectorAll('[data-tilt]').forEach(function (card) {
+        if (!fine) return;
+        var glare = card.querySelector('.pcard-glare');
+        card.addEventListener('mousemove', function (e) {
+          var r = card.getBoundingClientRect();
+          var px = (e.clientX - r.left) / r.width;
+          var py = (e.clientY - r.top) / r.height;
+          var rx = (py - 0.5) * -10;
+          var ry = (px - 0.5) * 12;
+          card.style.transform = 'perspective(1000px) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg) translateY(-8px)';
+          if (glare) {
+            glare.style.setProperty('--mx', (px * 100) + '%');
+            glare.style.setProperty('--my', (py * 100) + '%');
+          }
+        });
+        card.addEventListener('mouseleave', function () {
+          card.style.transform = '';
+        });
+      });
+
+      // ── Magnetic buttons ──
+      document.querySelectorAll('[data-magnetic]').forEach(function (btn) {
+        if (!fine) return;
+        btn.addEventListener('mousemove', function (e) {
+          var r = btn.getBoundingClientRect();
+          var dx = e.clientX - (r.left + r.width / 2);
+          var dy = e.clientY - (r.top + r.height / 2);
+          btn.style.transform = 'translate(' + dx * 0.22 + 'px,' + dy * 0.22 + 'px)';
+        });
+        btn.addEventListener('mouseleave', function () {
+          btn.style.transform = '';
+        });
+      });
+
+      // ── Mouse-reactive aurora parallax ──
+      if (fine) {
+        var orbs = document.querySelectorAll('.orb');
+        var tx = 0, ty = 0, cx = 0, cy = 0;
+        document.addEventListener('mousemove', function (e) {
+          cx = (e.clientX / window.innerWidth - 0.5);
+          cy = (e.clientY / window.innerHeight - 0.5);
+        });
+        (function parallax() {
+          tx += (cx - tx) * 0.05;
+          ty += (cy - ty) * 0.05;
+          orbs.forEach(function (o, i) {
+            var depth = (i + 1) * 22;
+            o.style.transform = 'translate(' + (tx * depth) + 'px,' + (ty * depth) + 'px)';
+          });
+          requestAnimationFrame(parallax);
+        })();
+      }
     })();
   </script>
 </body>
