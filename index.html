@@ -256,6 +256,35 @@
     .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
     .reveal.in { opacity: 1; transform: none; }
 
+    /* ── BUILD Journey strip ── */
+    .journey { max-width: 1180px; margin: 0 auto; padding: 0 1.4rem 1rem; }
+    .journey-track { display: flex; gap: .6rem; flex-wrap: wrap; justify-content: center; }
+    .journey-chip { display: inline-flex; align-items: center; gap: .45rem; padding: .55rem .95rem; border-radius: 999px; background: var(--panel); border: 1px solid var(--line); font-size: .82rem; font-weight: 600; transition: all .3s; position: relative; }
+    .journey-chip .d { color: var(--muted); font-size: .68rem; font-weight: 700; }
+    .journey-chip:hover { border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(201,162,39,.2); }
+    .journey-chip.grad { border-color: rgba(201,162,39,.5); background: linear-gradient(135deg, rgba(201,162,39,.14), rgba(41,216,255,.08)); }
+
+    /* ── Luxury BUILD Certificate ── */
+    .cert-wrap { display: flex; justify-content: center; padding: 2.4rem 1.4rem 0; perspective: 1200px; }
+    .cert { position: relative; width: min(560px, 92vw); border-radius: 22px; padding: 3px; background: conic-gradient(from var(--ang, 0deg), #c9a227, #e9c46a, #29d8ff, #c9a227); animation: border-spin 8s linear infinite; transition: transform .3s; transform-style: preserve-3d; will-change: transform; }
+    @property --ang { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+    @keyframes border-spin { to { --ang: 360deg; } }
+    .cert-inner { position: relative; border-radius: 19px; background: linear-gradient(160deg, #0d0d16, #16162a); padding: 2.4rem 2rem; text-align: center; overflow: hidden; }
+    .cert-inner::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% -20%, rgba(233,196,106,.16), transparent 60%); }
+    .cert-seal { width: 64px; height: 64px; margin: 0 auto .9rem; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-l)); display: grid; place-items: center; font-size: 1.9rem; box-shadow: 0 0 40px rgba(201,162,39,.5); }
+    .cert-brand { font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: .3em; text-transform: uppercase; font-size: .72rem; color: var(--gold-l); margin-bottom: .7rem; }
+    .cert-title { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; line-height: 1.25; margin-bottom: .3rem; }
+    html[lang="ar"] .cert-title { font-family: 'IBM Plex Sans Arabic', sans-serif; }
+    .cert-sub { color: var(--muted); font-size: .88rem; margin-bottom: 1.2rem; }
+    .cert-name { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.35rem; color: var(--gold-l); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: .7rem 0; margin-bottom: 1.1rem; }
+    .cert-foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; font-size: .74rem; color: var(--muted); }
+    .cert-foot .sig { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; color: var(--text); }
+    .cert-badge { display: inline-block; font-size: .72rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #141824; background: linear-gradient(135deg, var(--gold), var(--gold-l)); border-radius: 999px; padding: .4rem 1rem; margin-top: 1rem; box-shadow: 0 0 24px rgba(201,162,39,.4); }
+    .cert-float { animation: certFloat 5s ease-in-out infinite; }
+    @keyframes certFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .cert-shine { position: absolute; top: 0; bottom: 0; width: 40%; inset-inline-start: -60%; background: linear-gradient(105deg, transparent, rgba(255,255,255,.14), transparent); transform: skewX(-18deg); animation: shine 4.5s ease-in-out infinite; }
+    @keyframes shine { 0%,100% { inset-inline-start: -60%; } 45%, 60% { inset-inline-start: 120%; } }
+
     @media (max-width: 640px) {
       .main-nav { display: none; }
       .hero { padding: 4rem 1.2rem 3rem; }
@@ -393,6 +422,55 @@
             </div>
           </div>
         </article>
+      </div>
+    </section>
+
+    <!-- BUILD JOURNEY + CERTIFICATE -->
+    <section class="section" id="journey" style="padding-top: 1rem;">
+      <div class="section-head reveal" style="justify-content:center; text-align:center;">
+        <h2><span class="ar">برنامج BUILD — 16 يوماً إلى شهادتك</span><span class="en">BUILD — 16 days to your certificate</span></h2>
+      </div>
+      <div class="journey reveal">
+        <div class="journey-track">
+          <span class="journey-chip"><span class="d">00</span> 🔥 <span class="ar">الإشعال</span><span class="en">Ignite</span></span>
+          <span class="journey-chip"><span class="d">01</span> 🎯 <span class="ar">التحديد</span><span class="en">Define</span></span>
+          <span class="journey-chip"><span class="d">02</span> 🏗️ <span class="ar">البناء</span><span class="en">Build</span></span>
+          <span class="journey-chip"><span class="d">03</span> 🔌 <span class="ar">التكامل</span><span class="en">Integrate</span></span>
+          <span class="journey-chip"><span class="d">04</span> 🧪 <span class="ar">التحقق</span><span class="en">Validate</span></span>
+          <span class="journey-chip"><span class="d">05</span> 🚀 <span class="ar">الإطلاق</span><span class="en">Launch</span></span>
+          <span class="journey-chip"><span class="d">06</span> 📣 <span class="ar">الجذب</span><span class="en">Acquire</span></span>
+          <span class="journey-chip"><span class="d">07</span> 🤖 <span class="ar">الأتمتة</span><span class="en">Automate</span></span>
+          <span class="journey-chip"><span class="d">08</span> 👥 <span class="ar">التسليم</span><span class="en">Deliver</span></span>
+          <span class="journey-chip"><span class="d">09</span> 📊 <span class="ar">التحليلات</span><span class="en">Analyze</span></span>
+          <span class="journey-chip"><span class="d">10</span> 📈 <span class="ar">التوسع</span><span class="en">Scale</span></span>
+          <span class="journey-chip"><span class="d">11</span> 🧠 <span class="ar">الذكاء</span><span class="en">AI</span></span>
+          <span class="journey-chip"><span class="d">12</span> 🛡️ <span class="ar">الأمن</span><span class="en">Secure</span></span>
+          <span class="journey-chip"><span class="d">13</span> 👑 <span class="ar">العلامة</span><span class="en">Brand</span></span>
+          <span class="journey-chip"><span class="d">14</span> 🏆 <span class="ar">التخرج</span><span class="en">Graduate</span></span>
+          <span class="journey-chip grad"><span class="d">15</span> 🏗️ <span class="ar">المشروع الختامي</span><span class="en">Capstone</span></span>
+        </div>
+      </div>
+      <div class="cert-wrap reveal">
+        <div class="cert cert-float" data-tilt>
+          <div class="cert-inner">
+            <span class="cert-shine" aria-hidden="true"></span>
+            <div class="cert-seal">🎖️</div>
+            <div class="cert-brand">BrainSAIT · Build</div>
+            <h3 class="cert-title"><span class="ar">شهادة إتمام المنظومة</span><span class="en">Certificate of Completion</span></h3>
+            <p class="cert-sub"><span class="ar">تُمنح للشريك الذي أكمل المعالم الـ 16</span><span class="en">Awarded to the partner who completes all 16 milestones</span></p>
+            <div class="cert-name"><span class="ar">اسمك هنا</span><span class="en">Your Name Here</span></div>
+            <span class="cert-badge"><span class="ar">شريك متميّز</span><span class="en">Super Partner</span></span>
+            <div class="cert-foot" style="margin-top:1.2rem;">
+              <span><span class="ar">التوقيع</span><span class="en">Signature</span><br><span class="sig">Dr. Mohamed El Fadil</span></span>
+              <span style="text-align:center;"><span class="ar">المعرف</span><span class="en">ID</span><br><span class="sig" style="font-size:.8rem;">BS-BUILD-003</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:2.2rem;" class="reveal">
+        <a class="btn btn-primary" href="https://fadil369.github.io/build" target="_blank" rel="noopener noreferrer" style="font-size:1.05rem; padding:1rem 2.2rem;" data-magnetic data-track="store_visit" data-item="BUILD">
+          <span class="ar">ادخل برنامج BUILD</span><span class="en">Enter the BUILD Program</span> →
+        </a>
       </div>
     </section>
 
