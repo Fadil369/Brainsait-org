@@ -220,7 +220,7 @@
     .section-head .sub { color: var(--muted); font-size: .95rem; max-width: 420px; }
 
     /* ── Liquid 3D product cards ── */
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.6rem; perspective: 1200px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 1.6rem; perspective: 1200px; }
     .pcard { position: relative; border-radius: 20px; overflow: hidden; background: var(--panel); border: 1px solid var(--line); transition: border-color .35s, box-shadow .35s; transform-style: preserve-3d; will-change: transform; }
     .pcard:hover { border-color: rgba(201,162,39,.5); box-shadow: 0 30px 70px rgba(0,0,0,.5), 0 0 0 1px rgba(233,196,106,.15); }
     .pcard-cover { position: relative; aspect-ratio: 2/3; overflow: hidden; background: var(--surface-2); }
@@ -290,10 +290,44 @@
     .cert-shine { position: absolute; top: 0; bottom: 0; width: 40%; inset-inline-start: -60%; background: linear-gradient(105deg, transparent, rgba(255,255,255,.14), transparent); transform: skewX(-18deg); animation: shine 4.5s ease-in-out infinite; }
     @keyframes shine { 0%,100% { inset-inline-start: -60%; } 45%, 60% { inset-inline-start: 120%; } }
 
+    /* ── Mobile navigation (hamburger) ── */
+    .nav-toggle { display: none; position: relative; }
+    .nav-burger { width: 18px; height: 2px; background: currentColor; position: relative; display: block; transition: background .2s; }
+    .nav-burger::before, .nav-burger::after { content: ""; position: absolute; left: 0; width: 18px; height: 2px; background: currentColor; transition: transform .25s ease; }
+    .nav-burger::before { top: -6px; }
+    .nav-burger::after { top: 6px; }
+    .nav-toggle.open .nav-burger { background: transparent; }
+    .nav-toggle.open .nav-burger::before { transform: translateY(6px) rotate(45deg); }
+    .nav-toggle.open .nav-burger::after { transform: translateY(-6px) rotate(-45deg); }
+    .mobile-nav { display: none; }
+
+    /* ── Touch & small-screen polish ── */
+    a, button { touch-action: manipulation; }
+    .btn, .pcard-cta, .icon-btn { min-height: 44px; }
+
     @media (max-width: 640px) {
       .main-nav { display: none; }
+      .nav-toggle { display: grid; }
+      .mobile-nav {
+        display: flex; flex-direction: column; gap: .15rem;
+        position: absolute; top: 100%; inset-inline: 0;
+        padding: .6rem 1.4rem 1.1rem;
+        background: color-mix(in srgb, var(--ink) 96%, transparent);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(14px);
+        opacity: 0; transform: translateY(-10px); pointer-events: none;
+        transition: opacity .25s ease, transform .25s ease;
+      }
+      .mobile-nav.open { opacity: 1; transform: none; pointer-events: auto; }
+      .mobile-nav a { padding: .8rem .2rem; font-weight: 600; font-size: 1rem; border-bottom: 1px solid var(--line); }
+      .mobile-nav a:last-child { border-bottom: none; }
+      .mobile-nav a.store-link { color: var(--gold-l); font-weight: 700; }
       .hero { padding: 4rem 1.2rem 3rem; }
-      .section { padding: 3rem 1.2rem; }
+      .hero h1 { font-size: clamp(2rem, 11vw, 3rem); }
+      .section { padding: 2.6rem 1.2rem; }
+      .section-head { flex-direction: column; align-items: flex-start; gap: .6rem; }
+      .band-card { padding: 2rem 1.3rem; }
+      .cert-inner { padding: 1.6rem 1.1rem; }
     }
   </style>
 </head>
@@ -324,6 +358,9 @@
           <span class="ar">المتجر</span><span class="en">Store</span>
         </a>
         <a href="#featured"><span class="ar">مختارات</span><span class="en">Featured</span></a>
+        <a href="#healthcare"><span class="ar">الرعاية الصحية</span><span class="en">Healthcare</span></a>
+        <a href="#business"><span class="ar">الأعمال</span><span class="en">Business</span></a>
+        <a href="#development"><span class="ar">التطوير</span><span class="en">Development</span></a>
         <a href="#newsletter"><span class="ar">النشرة</span><span class="en">Newsletter</span></a>
       </nav>
       <div class="head-actions">
@@ -333,8 +370,25 @@
         <button class="icon-btn lang-btn" id="langToggle" aria-label="Switch language">
           <span class="ar">EN</span><span class="en">ع</span>
         </button>
+        <button class="icon-btn nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+          <span class="nav-burger"></span>
+        </button>
       </div>
     </div>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="https://fadil369.github.io" class="store-link" target="_blank" rel="noopener noreferrer">
+        <span class="ar">المتجر</span><span class="en">Store</span>
+      </a>
+      <a href="#featured"><span class="ar">مختارات</span><span class="en">Featured</span></a>
+      <a href="#healthcare"><span class="ar">الرعاية الصحية</span><span class="en">Healthcare</span></a>
+      <a href="#business"><span class="ar">الأعمال</span><span class="en">Business</span></a>
+      <a href="#development"><span class="ar">التطوير</span><span class="en">Development</span></a>
+      <a href="#journey"><span class="ar">برنامج BUILD</span><span class="en">BUILD Program</span></a>
+      <a href="#newsletter"><span class="ar">النشرة</span><span class="en">Newsletter</span></a>
+      <a href="https://brainsait369.blogspot.com/" target="_blank" rel="noopener noreferrer">
+        <span class="ar">المدونة</span><span class="en">Blog</span>
+      </a>
+    </nav>
   </header>
 
   <main>
@@ -770,6 +824,23 @@
       applyTheme(savedTheme === 'light' ? 'light' : 'dark');
       document.getElementById('themeToggle').addEventListener('click', function () {
         applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      });
+
+      // ── Mobile navigation toggle ──
+      var navToggle = document.getElementById('navToggle');
+      var mobileNav = document.getElementById('mobileNav');
+      function closeNav() {
+        navToggle.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        mobileNav.classList.remove('open');
+      }
+      navToggle.addEventListener('click', function () {
+        var open = mobileNav.classList.toggle('open');
+        navToggle.classList.toggle('open', open);
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      mobileNav.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeNav);
       });
 
       // ── Newsletter → Shopify customer marketing sync ──
