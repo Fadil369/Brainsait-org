@@ -290,6 +290,12 @@
     .cert-shine { position: absolute; top: 0; bottom: 0; width: 40%; inset-inline-start: -60%; background: linear-gradient(105deg, transparent, rgba(255,255,255,.14), transparent); transform: skewX(-18deg); animation: shine 4.5s ease-in-out infinite; }
     @keyframes shine { 0%,100% { inset-inline-start: -60%; } 45%, 60% { inset-inline-start: 120%; } }
 
+    /* ── Certificate + Digital Badge showcase ── */
+    .showcase { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; align-items: stretch; max-width: 1180px; margin: 0 auto; padding: 2.4rem 1.4rem 0; }
+    .showcase .cert-wrap { padding: 0; flex: 1 1 400px; max-width: 560px; }
+    .badge-inner { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .55rem; min-height: 100%; }
+    .badge-medal { width: 230px; height: 230px; border-radius: 50%; box-shadow: 0 0 60px rgba(201,162,39,.5); margin-bottom: .4rem; }
+
     /* ── Mobile navigation (hamburger) ── */
     .nav-toggle { display: none; position: relative; }
     .nav-burger { width: 18px; height: 2px; background: currentColor; position: relative; display: block; transition: background .2s; }
@@ -722,19 +728,32 @@
           <span class="journey-chip grad"><span class="d">15</span> 🏗️ <span class="ar">المشروع الختامي</span><span class="en">Capstone</span></span>
         </div>
       </div>
-      <div class="cert-wrap reveal">
-        <div class="cert cert-float" data-tilt>
-          <div class="cert-inner">
-            <span class="cert-shine" aria-hidden="true"></span>
-            <div class="cert-seal">🎖️</div>
-            <div class="cert-brand">BrainSAIT · Build</div>
-            <h3 class="cert-title"><span class="ar">شهادة إتمام المنظومة</span><span class="en">Certificate of Completion</span></h3>
-            <p class="cert-sub"><span class="ar">تُمنح للشريك الذي أكمل المعالم الـ 16</span><span class="en">Awarded to the partner who completes all 16 milestones</span></p>
-            <div class="cert-name"><span class="ar">اسمك هنا</span><span class="en">Your Name Here</span></div>
-            <span class="cert-badge"><span class="ar">شريك متميّز</span><span class="en">Super Partner</span></span>
-            <div class="cert-foot" style="margin-top:1.2rem;">
-              <span><span class="ar">التوقيع</span><span class="en">Signature</span><br><span class="sig">Dr. Mohamed El Fadil</span></span>
-              <span style="text-align:center;"><span class="ar">المعرف</span><span class="en">ID</span><br><span class="sig" style="font-size:.8rem;">BS-BUILD-003</span></span>
+      <div class="showcase">
+        <div class="cert-wrap reveal">
+          <div class="cert cert-float" data-tilt>
+            <div class="cert-inner">
+              <span class="cert-shine" aria-hidden="true"></span>
+              <div class="cert-seal">🎖️</div>
+              <div class="cert-brand">BrainSAIT · Build</div>
+              <h3 class="cert-title"><span class="ar">شهادة إتمام المنظومة</span><span class="en">Certificate of Completion</span></h3>
+              <p class="cert-sub"><span class="ar">تُمنح للشريك الذي أكمل المعالم الـ 16</span><span class="en">Awarded to the partner who completes all 16 milestones</span></p>
+              <div class="cert-name"><span class="ar">اسمك هنا</span><span class="en">Your Name Here</span></div>
+              <span class="cert-badge"><span class="ar">شريك متميّز</span><span class="en">Super Partner</span></span>
+              <div class="cert-foot" style="margin-top:1.2rem;">
+                <span><span class="ar">التوقيع</span><span class="en">Signature</span><br><span class="sig">Dr. Mohamed El Fadil</span></span>
+                <span style="text-align:center;"><span class="ar">المعرف</span><span class="en">ID</span><br><span class="sig" style="font-size:.8rem;">BS-BUILD-003</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cert-wrap reveal">
+          <div class="cert cert-float" data-tilt>
+            <div class="cert-inner badge-inner">
+              <span class="cert-shine" aria-hidden="true"></span>
+              <img class="badge-medal" src="https://build-apply.brainsait.org/badge-image.svg" alt="BrainSAIT BUILD digital badge" loading="lazy" width="230" height="230" />
+              <h3 class="cert-title"><span class="ar">شارة رقمية موثّقة</span><span class="en">Verifiable Digital Badge</span></h3>
+              <p class="cert-sub"><span class="ar">بمعيار Open Badges 3.0 — قابلة للمشاركة والتحقق على LinkedIn و Credly.</span><span class="en">Open Badges 3.0 — shareable &amp; verifiable on LinkedIn and Credly.</span></p>
+              <span class="cert-badge"><span class="ar">موثّقة</span><span class="en">Verified</span></span>
             </div>
           </div>
         </div>
