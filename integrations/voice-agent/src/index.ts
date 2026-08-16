@@ -23,6 +23,12 @@ export interface Env {
   GIVC_URL: string;
   SBS_URL: string;
   CLAIMLINC_URL: string;
+  ORACLE_BRIDGE_KEY?: string;
+  NPHIES_TOKEN_URL?: string;
+  NPHIES_VIEWER_API?: string;
+  NPHIES_CLIENT_ID?: string;
+  NPHIES_USER?: string;
+  NPHIES_PASS?: string;
 }
 
 const CORS = {

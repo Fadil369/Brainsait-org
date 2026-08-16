@@ -16,3 +16,4 @@ package-lock.json
 !og-image.png
 portal-audit/
 .secrets
+.wrangler/
