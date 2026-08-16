@@ -35,8 +35,5 @@ https://docs.brainsait.org/*       https://fadil369.github.io/brainsait-docs/:sp
 /academy     https://academy.brainsait.org    301
 /training    https://academy.brainsait.org    301
 
-# ── Legal pages ────────────────────────────────────────────
-/privacy      /privacy.html    200
-
 # ── 404 catch-all ─────────────────────────────────────────
 /*    /404.html    404
