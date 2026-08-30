@@ -35,7 +35,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,500&family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,500&family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Reem+Kufi+Ink&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Google Tag Manager (shared with store.brainsait.org) -->
   <script>
@@ -140,15 +140,15 @@
       --surface-2: #111827;
     }
     [data-theme="light"] {
-      --ink: #f7f5f0;
-      --ink-2: #efece4;
-      --panel: rgba(7,11,20,0.03);
-      --panel-2: rgba(7,11,20,0.05);
-      --line: rgba(7,11,20,0.10);
-      --text: #141824;
-      --muted: #5b6472;
-      --surface: #ffffff;
-      --surface-2: #f2efe7;
+      --ink: #fdf8f0;
+      --ink-2: #f5efe0;
+      --panel: rgba(7,11,20,0.04);
+      --panel-2: rgba(7,11,20,0.06);
+      --line: rgba(7,11,20,0.09);
+      --text: #1a1d23;
+      --muted: #6b7280;
+      --surface: #fffcf5;
+      --surface-2: #f9f3e8;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -381,14 +381,15 @@
         <span>BrainSAIT</span>
       </a>
       <nav class="main-nav">
+        <a href="#triad"><span class="ar">المنصة</span><span class="en">Platform</span></a>
+        <a href="#stores"><span class="ar">المتاجر</span><span class="en">Stores</span></a>
+        <a href="#projects"><span class="ar">المشاريع</span><span class="en">Projects</span></a>
         <a href="https://fadil369.github.io" class="store-link" target="_blank" rel="noopener noreferrer">
           <span class="ar">المتجر</span><span class="en">Store</span>
         </a>
         <a href="#featured"><span class="ar">مختارات</span><span class="en">Featured</span></a>
-        <a href="#healthcare"><span class="ar">الرعاية الصحية</span><span class="en">Healthcare</span></a>
-        <a href="#business"><span class="ar">الأعمال</span><span class="en">Business</span></a>
-        <a href="#development"><span class="ar">التطوير</span><span class="en">Development</span></a>
-        <a href="#newsletter"><span class="ar">النشرة</span><span class="en">Newsletter</span></a>
+        <a href="https://brainsait.de" target="_blank"><span class="ar">البوابة</span><span class="en">Portal</span></a>
+        <a href="https://platforms.brainsait.org/v1/catalog" target="_blank"><span class="ar">الموجه</span><span class="en">API</span></a>
       </nav>
       <div class="head-actions">
         <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
@@ -437,6 +438,76 @@
         <a class="btn btn-ghost" href="#newsletter" data-magnetic>
           <span class="ar">اشترك في النشرة</span><span class="en">Subscribe to the Newsletter</span>
         </a>
+      </div>
+    </section>
+
+    <!-- MISSION / VISION / HOW — handwrite luxury triad -->
+    <section class="section triad" id="triad">
+      <div class="section-head reveal">
+        <h2><span class="ar" style="font-family:'Reem Kufi Ink','Aref Ruqaa','Amiri',serif">رؤيتنا · رسالتنا · كيف نُنجز</span><span class="en">Mission · Vision · How</span></h2>
+        <span class="pcard-badge" style="background:rgba(201,162,39,0.12);color:var(--gold-l);border:1px solid rgba(201,162,39,0.25)"><span class="ar">منصة الحل</span><span class="en">Resolution Platform</span></span>
+      </div>
+      <div class="grid triad-grid">
+        <article class="pcard reveal glass" data-tilt>
+          <div class="pcard-body">
+            <div class="pcard-meta"><span class="pcard-eyebrow"><span class="ar" style="font-family:'Reem Kufi Ink',serif">رسالتنا</span><span class="en">Mission</span></span> <span style="margin-inline-start:auto;color:var(--gold)">◆</span></div>
+            <h3 class="pcard-title"><span class="ar">نربط الناس والمعرفة والذكاء</span><span class="en">Connect people, knowledge & AI</span></h3>
+            <p class="pcard-prop"><span class="ar">منصة تحلّ ما يُبطئك — تربط لارك وتيليجرام و3CX والبوابة بكل قناة، وتُتمّ الطلبات والمطالبات والتوثيق تلقائياً.</span><span class="en">A platform that automates what slows you down — linking Lark, Telegram, 3CX & Portal across every channel.</span></p>
+            <a class="pcard-cta" href="https://fadil369.github.io" target="_blank"><span class="ar">المتجر</span><span class="en">Store</span> →</a>
+          </div>
+        </article>
+        <article class="pcard reveal glass" data-tilt>
+          <div class="pcard-body">
+            <div class="pcard-meta"><span class="pcard-eyebrow"><span class="ar" style="font-family:'Reem Kufi Ink',serif">رؤيتنا</span><span class="en">Vision</span></span> <span style="margin-inline-start:auto;color:var(--cyan)">◆</span></div>
+            <h3 class="pcard-title"><span class="ar">رعاية سيادية بلمسة فاخرة</span><span class="en">Sovereign care, luxury touch</span></h3>
+            <p class="pcard-prop"><span class="ar">التزام PDPL ورؤية 2030 — سحابة خاصة، تشفير، وتدقيق كامل، بتصميم يليق بالمستقبل.</span><span class="en">PDPL & Vision 2030 aligned — private cloud, encrypted, fully audited, designed for the future.</span></p>
+            <a class="pcard-cta" href="https://brainsait.de" target="_blank"><span class="ar">بوابتنا</span><span class="en">Portal</span> →</a>
+          </div>
+        </article>
+        <article class="pcard reveal glass" data-tilt>
+          <div class="pcard-body">
+            <div class="pcard-meta"><span class="pcard-eyebrow"><span class="ar" style="font-family:'Reem Kufi Ink',serif">كيف نُنجز</span><span class="en">How</span></span> <span style="margin-inline-start:auto;color:var(--violet)">◆</span></div>
+            <h3 class="pcard-title"><span class="ar">الناس × المعرفة × الذكاء</span><span class="en">People × Knowledge × AI</span></h3>
+            <p class="pcard-prop"><span class="ar">كل تفاعل → Vectorize → KB → Gateway (300s) → إجابة أفضل في المرة القادمة. بناء تراكمي مستمر.</span><span class="en">Every interaction → Vectorize → KB → Gateway (300s) → better next answer. Continuously improving.</span></p>
+            <a class="pcard-cta" href="https://hub.brainsait.org" target="_blank"><span class="ar">الموجه</span><span class="en">Hub</span> →</a>
+          </div>
+        </article>
+      </div>
+      <div class="triad-steps reveal" style="margin-top:1.2rem;display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;font-size:.82rem;color:var(--muted)">
+        <span>People</span> <span style="color:var(--gold)">→</span> <span>Knowledge</span> <span style="color:var(--gold)">→</span> <span>AI</span> <span style="color:var(--gold)">→</span> <span>Every Channel</span> <span style="color:var(--gold)">→</span> <span>Automate</span> <span style="color:var(--gold)">→</span> <span>Improve</span>
+      </div>
+    </section>
+
+    <!-- STORES — live from fadil369.github.io + Shopify -->
+    <section class="section" id="stores">
+      <div class="section-head reveal">
+        <h2><span class="ar">متاجرنا</span><span class="en">Our Stores</span></h2>
+        <a class="pcard-cta" href="https://fadil369.github.io" target="_blank"><span class="ar">كل المتجر</span><span class="en">Full Store</span> →</a>
+      </div>
+      <div class="grid stores-grid" id="storesGrid">
+        <article class="pcard reveal"><div class="pcard-body"><h3 class="pcard-title"><span class="ar">تعلّم — 40 كتاباً</span><span class="en">Learn — 40 books</span></h3><p class="pcard-prop"><span class="ar">مكتبة رقمية فاخرة — 182 SAR / شهر وصول كامل عبر f.io/dcOtN3Lf</span><span class="en">Luxury digital library — 182 SAR / mo full access via f.io/dcOtN3Lf</span></p><div class="pcard-foot"><a class="pcard-cta" href="https://store.brainsait.de/products/learn-brainsait-digital-access" target="_blank"><span class="ar">اشترك</span><span class="en">Subscribe</span> →</a><a class="pcard-cta" href="https://fadil369.github.io/learn" target="_blank"><span class="ar">تعلّم المزيد</span><span class="en">Learn more</span> →</a></div></div></article>
+        <article class="pcard reveal"><div class="pcard-body"><h3 class="pcard-title"><span class="ar">ابنِ — حاضنة 16 يوماً</span><span class="en">Build — 16-day incubator</span></h3><p class="pcard-prop"><span class="ar">من فكرة إلى منتج مُسلَّم — 499 SAR / شهر أو 9,630 SAR تذكرة، Notion + Telegram</span><span class="en">Idea to shipped product — 499 SAR / mo or 9,630 SAR ticket, Notion + Telegram</span></p><div class="pcard-foot"><a class="pcard-cta" href="https://store.brainsait.de/products/build-forge-incubator-founders-program" target="_blank"><span class="ar">499 / شهر</span><span class="en">499 / mo</span> →</a><a class="pcard-cta" href="https://fadil369.github.io/build" target="_blank"><span class="ar">ابنِ الآن</span><span class="en">Build now</span> →</a></div></div></article>
+        <article class="pcard reveal"><div class="pcard-body"><h3 class="pcard-title"><span class="ar">حلول — 60+ برمجية</span><span class="en">Solutions — 60+ software</span></h3><p class="pcard-prop"><span class="ar">71 عرضاً حياً — اشتراك شهري أو جاهز 24,000 SAR، مع Lark و Calendar</span><span class="en">71 live demos — monthly or ready 24,000 SAR, with Lark & Calendar</span></p><div class="pcard-foot"><a class="pcard-cta" href="https://store.brainsait.de/collections/solutions" target="_blank"><span class="ar">شهري</span><span class="en">Monthly</span> →</a><a class="pcard-cta" href="https://store.brainsait.de/products/givc" target="_blank"><span class="ar">جاهز 24k</span><span class="en">Ready 24k</span> →</a></div></div></article>
+      </div>
+      <div id="liveStores" class="grid" style="margin-top:1rem"></div>
+      <p class="fineprint reveal" style="text-align:center;margin-top:.8rem"><span class="ar">يُحدَّث حياً من fadil369.github.io/src/data/catalog.json + store.brainsait.de</span><span class="en">Live from fadil369.github.io/src/data/catalog.json + store.brainsait.de</span> — <a href="https://platforms.brainsait.org/v1/catalog" target="_blank" style="color:var(--gold-l)">platforms.brainsait.org/v1/catalog</a></p>
+    </section>
+
+    <!-- PROJECTS — 8 live -->
+    <section class="section" id="projects">
+      <div class="section-head reveal">
+        <h2><span class="ar">مشاريعنا</span><span class="en">Projects</span></h2>
+        <a class="pcard-cta" href="https://github.com/Fadil369" target="_blank"><span class="ar">غيتهاب</span><span class="en">GitHub</span> →</a>
+      </div>
+      <div class="grid projects-grid">
+        <a class="pcard reveal" href="https://givc.de" target="_blank"><div class="pcard-cover"><img src="https://fadil369.github.io/assets/images/products/givc-wide.webp" alt="GIVC" loading="lazy"><span class="pcard-badge">GIVC</span></div><div class="pcard-body"><h3 class="pcard-title">GIVC — Global Virtual Care</h3><p class="pcard-prop">givc.de — appointments + telemed + insurance</p></div></a>
+        <a class="pcard reveal" href="https://nphies.de" target="_blank"><div class="pcard-cover"><img src="https://fadil369.github.io/assets/images/products/nphies-wide.webp" alt="NPHIES" loading="lazy"><span class="pcard-badge">NPHIES</span></div><div class="pcard-body"><h3 class="pcard-title">NPHIES Gateway</h3><p class="pcard-prop">nphies-gateway — eligibility, claims, COC</p></div></a>
+        <a class="pcard reveal" href="https://masterlinc.de" target="_blank"><div class="pcard-cover"><img src="https://fadil369.github.io/assets/images/products/masterlinc-wide.webp" alt="MASTERLINC" loading="lazy"><span class="pcard-badge">MASTERLINC</span></div><div class="pcard-body"><h3 class="pcard-title">MASTERLINC</h3><p class="pcard-prop">Clinical intelligence orchestrator</p></div></a>
+        <a class="pcard reveal" href="https://hnh.brainsait.org" target="_blank"><div class="pcard-cover" style="background:linear-gradient(135deg,#0ea5e9,#6366f1)"></div><div class="pcard-body"><h3 class="pcard-title">HNH — Hospital at Home</h3><p class="pcard-prop">hnh.brainsait.org — Basma Voice, Momfood</p></div></a>
+        <a class="pcard reveal" href="https://wathq.brainsait.org" target="_blank"><div class="pcard-cover" style="background:linear-gradient(135deg,#c9a227,#e9c46a)"></div><div class="pcard-body"><h3 class="pcard-title">Wathq — Verification</h3><p class="pcard-prop">wathq.brainsait.org — trust & compliance</p></div></a>
+        <a class="pcard reveal" href="https://mom.elfadil.com" target="_blank"><div class="pcard-cover" style="background:linear-gradient(135deg,#fb7185,#f472b6)"></div><div class="pcard-body"><h3 class="pcard-title">Momfood — Cloud Kitchen</h3><p class="pcard-prop">mom.elfadil.com — hospitality F&B</p></div></a>
+        <a class="pcard reveal" href="https://store.brainsait.de" target="_blank"><div class="pcard-cover" style="background:linear-gradient(135deg,#a78bfa,#6366f1)"></div><div class="pcard-body"><h3 class="pcard-title">Store — Learn/Build/Solutions</h3><p class="pcard-prop">fadil369.github.io + store.brainsait.de — 40+60 products</p></div></a>
+        <a class="pcard reveal" href="https://brainsait.de" target="_blank"><div class="pcard-cover" style="background:linear-gradient(135deg,#070b14,#1a365d)"></div><div class="pcard-body"><h3 class="pcard-title">brainsait.de — Portal</h3><p class="pcard-prop">Hetzner 46.62.128.198 — Hub, n8n, Hermes, Forge</p></div></a>
       </div>
     </section>
 
@@ -1049,6 +1120,26 @@
           requestAnimationFrame(parallax);
         })();
       }
+
+      // ── Live stores — fetch fadil369.github.io catalog + Shopify ──
+      (function () {
+        var grid = document.getElementById('liveStores');
+        if (!grid) return;
+        Promise.all([
+          fetch('https://fadil369.github.io/src/data/catalog.json').then(function(r){return r.json()}).catch(function(){return null}),
+          fetch('https://store.brainsait.de/products.json?limit=6').then(function(r){return r.json()}).catch(function(){return null})
+        ]).then(function(results){
+          var cat = results[0];
+          if (!cat) return;
+          var featured = (cat.learn || []).slice(0,2).concat((cat.solutions || []).slice(0,4));
+          featured.forEach(function(p){
+            var a = document.createElement('article');
+            a.className = 'pcard reveal';
+            a.innerHTML = '<div class="pcard-cover" style="aspect-ratio:16/10;background:linear-gradient(135deg,var(--ink-2),var(--surface))"><img src="'+(p.image||'https://fadil369.github.io/assets/images/products/givc-wide.webp')+'" alt="'+(p.name||'Product')+'" loading="lazy" style="width:100%;height:100%;object-fit:cover;opacity:0.9"><span class="pcard-badge">'+(p.stage||'store')+'</span></div><div class="pcard-body"><h3 class="pcard-title">'+(p.name||p.slug)+'</h3><p class="pcard-prop">'+(p.tagline||p.description||'').slice(0,90)+'</p><div class="pcard-foot"><a class="pcard-cta" href="'+(p.shopifyUrl||'https://store.brainsait.de')+'" target="_blank">Pay now →</a><a class="pcard-cta" href="https://fadil369.github.io/products/'+(p.slug||'')+'" target="_blank">Learn more →</a></div></div>';
+            grid.appendChild(a);
+          });
+        }).catch(function(){});
+      })();
     })();
   </script>
 </body>
