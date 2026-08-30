@@ -154,12 +154,15 @@
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Amiri', 'Inter', serif;
+      font-size: 17px;
+      line-height: 1.75;
       background: var(--ink);
       color: var(--text);
       min-height: 100vh;
       overflow-x: hidden;
-      line-height: 1.7;
       transition: background .4s ease, color .4s ease;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     [dir="ltr"] body { font-family: 'Inter', 'Amiri', sans-serif; }
     /* ── Luxury Arabic accents (calligraphic Ruqaa for eyebrows & marks) ── */
