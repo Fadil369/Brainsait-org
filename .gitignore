@@ -17,3 +17,5 @@ package-lock.json
 portal-audit/
 .secrets
 .wrangler/
+!og-image.png
+!assets/brainsait-logo.png
