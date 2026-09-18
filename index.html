@@ -71,108 +71,156 @@
       .hero .tagline { font-size: 1.2rem; }
       .card-grid { grid-template-columns: 1fr; }
     }
+    .lang-toggle { position: fixed; top: 16px; right: 16px; z-index: 100; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 8px 16px; cursor: pointer; font-size: 0.85rem; color: var(--cyan); transition: all 0.2s; }
+    .lang-toggle:hover { border-color: var(--cyan); background: rgba(0,212,255,0.05); }
+    html[dir="rtl"] .lang-toggle { right: auto; left: 16px; }
+    .ar { display: none; }
+    html[dir="rtl"] .en { display: none; }
+    html[dir="rtl"] .ar { display: block; }
+    html[dir="rtl"] .ar-flex { display: flex; }
+    .ar-flex { display: none; }
+    html[data-lang="ar"] .en { display: none; }
+    html[data-lang="ar"] .ar { display: block; }
+    html[data-lang="ar"] .ar-flex { display: flex; }
+    html[data-lang="ar"] .en-flex { display: none; }
+    .en-flex { display: flex; }
+    html[data-lang="ar"] { direction: rtl; }
+    html[data-lang="ar"] body { font-family: 'Inter', 'Noto Sans Arabic', sans-serif; }
   </style>
 </head>
 <body>
+  <button class="lang-toggle" onclick="toggleLang()" id="langBtn">🇸🇦 عربي</button>
   <div class="container">
     <section class="hero">
       <h1>BrainSAIT</h1>
-      <p class="tagline">AI Operating System for Healthcare</p>
+      <p class="tagline"><span class="en">AI Operating System for Healthcare</span><span class="ar">نظام التشغيل الذكي للرعاية الصحية</span></p>
       <p style="color: var(--muted); max-width: 700px; margin-bottom: 2rem;">
-        Connecting providers, payers, patients, and AI through one intelligent healthcare operating system. FHIR-native, NPHIES-compliant, Arabic-first.
+        <span class="en">Connecting providers, payers, patients, and AI through one intelligent healthcare operating system. FHIR-native, NPHIES-compliant, Arabic-first.</span>
+        <span class="ar">يربط المزودين والمدفوعين والمرضى والذكاء الاصطناعي من خلال نظام رعاية صحية ذكي واحد. متوافق مع FHIR وNPHIES، العربية أولاً.</span>
       </p>
-      <div class="cta-group">
+      <div class="cta-group en-flex">
         <a href="https://fadil369.github.io" class="btn btn-primary">Explore Storefront</a>
         <a href="https://fadil369.github.io/learn" class="btn btn-outline">Learn</a>
         <a href="https://fadil369.github.io/build" class="btn btn-outline">Build</a>
         <a href="https://fadil369.github.io/solutions" class="btn btn-outline">Solutions</a>
       </div>
+      <div class="cta-group ar-flex" dir="rtl">
+        <a href="https://daftra.brainsait.org/shop" class="btn btn-primary">استكشف المتجر</a>
+        <a href="https://daftra.brainsait.org/shop?tab=learn" class="btn btn-outline">التعلم</a>
+        <a href="https://daftra.brainsait.org/shop?tab=build" class="btn btn-outline">البناء</a>
+        <a href="https://daftra.brainsait.org/shop?tab=solutions" class="btn btn-outline">الحلول</a>
+      </div>
     </section>
 
     <section class="appetizers">
-      <h2>What We Offer</h2>
+      <h2><span class="en">What We Offer</span><span class="ar">ما نقدمه</span></h2>
       <div class="card-grid">
         <div class="card">
           <div class="icon">📚</div>
-          <h3>Learn</h3>
-          <p>35+ books, templates, and blueprints. Instant delivery via secure Google Drive link after payment.</p>
-          <div class="price">182 SAR/month</div>
-          <a href="https://fadil369.github.io/learn" class="btn btn-primary">Explore Learn</a>
+          <h3><span class="en">Learn</span><span class="ar">التعلم</span></h3>
+          <p><span class="en">35+ books, templates, and blueprints. Instant delivery via secure link after payment.</span><span class="ar">أكثر من 35 كتاباً وقالباً ومخططاً. تسليم فوري عبر رابط آمن بعد الدفع.</span></p>
+          <div class="price">182 <span class="en">SAR/month</span><span class="ar">ريال/شهر</span></div>
+          <a href="https://fadil369.github.io/learn" class="btn btn-primary en">Explore Learn</a>
+          <a href="https://daftra.brainsait.org/shop?tab=learn" class="btn btn-primary ar" dir="rtl">استكشف التعلم</a>
         </div>
         <div class="card">
           <div class="icon">🔨</div>
-          <h3>Build</h3>
-          <p>Full founder journey from idea to launch. Notion OS, Second Brain, Telegram bot, simulators.</p>
-          <div class="price">499 SAR/month · or 9,630 full</div>
-          <a href="https://fadil369.github.io/build" class="btn btn-primary">Explore Build</a>
+          <h3><span class="en">Build</span><span class="ar">البناء</span></h3>
+          <p><span class="en">Full founder journey from idea to launch. Notion OS, Second Brain, Telegram bot, simulators.</span><span class="ar">رحلة المؤسس الكاملة من الفكرة إلى الإطلاق. Notion OS، العقل الثاني، بوت التلجرام، المحاكاة.</span></p>
+          <div class="price">499 <span class="en">SAR/month · or 9,630 full</span><span class="ar">ريال/شهر · أو 9,630 كامل</span></div>
+          <a href="https://fadil369.github.io/build" class="btn btn-primary en">Explore Build</a>
+          <a href="https://daftra.brainsait.org/shop?tab=build" class="btn btn-primary ar" dir="rtl">استكشف البناء</a>
         </div>
         <div class="card">
           <div class="icon">🌟</div>
-          <h3>Solutions</h3>
-          <p>Code platform, Lark workspace, Learn+Build access, registry profile, enterprise deployment.</p>
-          <div class="price">1,999 SAR/month · Ready 24k</div>
-          <a href="https://fadil369.github.io/solutions" class="btn btn-primary">Explore Solutions</a>
+          <h3><span class="en">Solutions</span><span class="ar">الحلول</span></h3>
+          <p><span class="en">Code platform, Lark workspace, Learn+Build access, registry profile, enterprise deployment.</span><span class="ar">منصة كود، مساحة عمل Lark، وصول التعلم+البناء، ملف تعريف السجل، نشر مؤسسي.</span></p>
+          <div class="price">1,999 <span class="en">SAR/month · Ready 24k</span><span class="ar">ريال/شهر · جاهز 24,000</span></div>
+          <a href="https://fadil369.github.io/solutions" class="btn btn-primary en">Explore Solutions</a>
+          <a href="https://daftra.brainsait.org/shop?tab=solutions" class="btn btn-primary ar" dir="rtl">استكشف الحلول</a>
         </div>
         <div class="card">
           <div class="icon">🆔</div>
-          <h3>OID & Registry</h3>
-          <p>Identity & OID management system. Badge, Explorer, FHIR, NPHIES, Namespace, White-Label.</p>
-          <div class="price">From 990 SAR</div>
-          <a href="https://fadil369.github.io/oid" class="btn btn-primary">Explore OID</a>
+          <h3><span class="en">OID & Registry</span><span class="ar">الهوية والسجل</span></h3>
+          <p><span class="en">Identity & OID management system. Badge, Explorer, FHIR, NPHIES, Namespace, White-Label.</span><span class="ar">نظام إدارة الهوية. شارة، مستكشف، FHIR، NPHIES، نطاق، علامة بيضاء.</span></p>
+          <div class="price"><span class="en">From 990 SAR</span><span class="ar">من 990 ريال</span></div>
+          <a href="https://fadil369.github.io/oid" class="btn btn-primary en">Explore OID</a>
+          <a href="https://daftra.brainsait.org/shop?tab=oid" class="btn btn-primary ar" dir="rtl">استكشف الهوية</a>
         </div>
         <div class="card">
           <div class="icon">🏢</div>
-          <h3>BPR Registry</h3>
-          <p>BrainSAIT Provider Registry for healthcare professionals. Verified identity with SPID.</p>
-          <div class="price">163 SAR/month · or 3,960/year</div>
-          <a href="https://registry.brainsait.org" class="btn btn-primary">Explore BPR</a>
+          <h3><span class="en">BPR Registry</span><span class="ar">سجل BPR</span></h3>
+          <p><span class="en">BrainSAIT Provider Registry for healthcare professionals. Verified identity with SPID.</span><span class="ar">سجل مزودي BrainSAIT للمتخصصين في الرعاية الصحية. هوية موثقة بـ SPID.</span></p>
+          <div class="price">163 <span class="en">SAR/month · or 3,960/year</span><span class="ar">ريال/شهر · أو 3,960/سنة</span></div>
+          <a href="https://registry.brainsait.org" class="btn btn-primary en">Explore BPR</a>
+          <a href="https://daftra.brainsait.org/shop?tab=bpr" class="btn btn-primary ar" dir="rtl">استكشف BPR</a>
         </div>
         <div class="card">
           <div class="icon">🧩</div>
-          <h3>Agent Templates</h3>
-          <p>23 ready, bilingual (EN/AR) AI agent templates. One-time SAR price, configured in 5 days.</p>
-          <div class="price">From 799 SAR</div>
-          <a href="https://fadil369.github.io/templates" class="btn btn-primary">Explore Templates</a>
+          <h3><span class="en">Agent Templates</span><span class="ar">قوالب الوكلاء</span></h3>
+          <p><span class="en">23 ready, bilingual (EN/AR) AI agent templates. One-time SAR price, configured in 5 days.</span><span class="ar">23 قالباً جاهزاً ثنائياً اللغة. سعر ريال لمرة واحدة، يُعد خلال 5 أيام.</span></p>
+          <div class="price"><span class="en">From 799 SAR</span><span class="ar">من 799 ريال</span></div>
+          <a href="https://fadil369.github.io/templates" class="btn btn-primary en">Explore Templates</a>
+          <a href="https://daftra.brainsait.org/shop?tab=templates" class="btn btn-primary ar" dir="rtl">استكشف القوالب</a>
         </div>
       </div>
     </section>
 
     <section class="storefront-link">
-      <h2>Visit Our Unified Storefront</h2>
-      <p>All our products in one place. Choose between our global Shopify store (English) or our premium Arabic Daftra store.</p>
-      <div class="cta-group">
+      <h2><span class="en">Visit Our Unified Storefront</span><span class="ar">زُر متجرنا الموحد</span></h2>
+      <p><span class="en">All our products in one place. Choose between our global Shopify store (English) or our premium Arabic Daftra store.</span><span class="ar">جميع منتجاتنا في مكان واحد. اختر بين متجرنا العالمي (إنجليزي) أو متجرنا العربي المتميز (Daftra).</span></p>
+      <div class="cta-group en-flex">
         <a href="https://fadil369.github.io" class="btn btn-primary">🌍 Global Store (English)</a>
         <a href="https://daftra.brainsait.org/shop" class="btn btn-outline" style="border-color: var(--gold); color: var(--gold);">🇸🇦 Arabic Store (Premium)</a>
+      </div>
+      <div class="cta-group ar-flex" dir="rtl">
+        <a href="https://daftra.brainsait.org/shop" class="btn btn-primary" style="border-color: var(--gold);">🇸🇦 المتجر العربي (متميز)</a>
+        <a href="https://fadil369.github.io" class="btn btn-outline">🌍 المتجر العالمي (إنجليزي)</a>
       </div>
     </section>
 
     <section class="stats">
       <div class="stat">
         <div class="number">36</div>
-        <div class="label">AI Agents</div>
+        <div class="label"><span class="en">AI Agents</span><span class="ar">وكلاء ذكاء اصطناعي</span></div>
       </div>
       <div class="stat">
         <div class="number">80+</div>
-        <div class="label">Products</div>
+        <div class="label"><span class="en">Products</span><span class="ar">منتج</span></div>
       </div>
       <div class="stat">
         <div class="number">58</div>
-        <div class="label">MCP Tools</div>
+        <div class="label"><span class="en">MCP Tools</span><span class="ar">أدوات MCP</span></div>
       </div>
       <div class="stat">
-        <div class="number">77/77</div>
-        <div class="label">Truth Keeper</div>
+        <div class="number">80/80</div>
+        <div class="label"><span class="en">Truth Keeper</span><span class="ar">حارس الحقيقة</span></div>
       </div>
     </section>
   </div>
 
   <footer>
-    <p>BrainSAIT Ltd. (UK) · Riyadh, KSA · <a href="mailto:info@brainsait.org">info@brainsait.org</a></p>
+    <p><span class="en">BrainSAIT Ltd. (UK) · Riyadh, KSA · </span><span class="ar">BrainSAIT Ltd. · الرياض، المملكة العربية السعودية · </span><a href="mailto:info@brainsait.org">info@brainsait.org</a></p>
     <p style="margin-top: 0.5rem;">
       <a href="https://github.com/Fadil369">GitHub</a> · 
       <a href="https://brainsait.org">brainsait.org</a> · 
       <a href="https://elfadil.com">elfadil.com</a>
     </p>
   </footer>
+  <script>
+    function toggleLang() {
+      const html = document.documentElement;
+      const btn = document.getElementById('langBtn');
+      if (html.getAttribute('data-lang') === 'ar') {
+        html.removeAttribute('data-lang');
+        html.setAttribute('lang', 'en');
+        btn.textContent = '🇸🇦 عربي';
+      } else {
+        html.setAttribute('data-lang', 'ar');
+        html.setAttribute('lang', 'ar');
+        btn.textContent = '🌍 English';
+      }
+    }
+  </script>
 </body>
 </html>
