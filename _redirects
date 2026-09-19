@@ -13,12 +13,12 @@ https://dashboard.brainsait.org/*  https://portal.elfadil.com/:splat         301
 https://docs.brainsait.org/*       https://fadil369.github.io/brainsait-docs/:splat    301
 
 # ── Old section aliases → the luxury storefront ────────────
-/solutions      https://fadil369.github.io/solutions     301
-/learn          https://fadil369.github.io/learn         301
-/build          https://fadil369.github.io/build         301
+/solutions      https://fadil369.github.io/solutions/     301
+/learn          https://fadil369.github.io/learn/         301
+/build          https://fadil369.github.io/build/         301
 /products       https://fadil369.github.io               301
 /store          https://fadil369.github.io               301
-/incubator      https://fadil369.github.io/build         301
+/incubator      https://fadil369.github.io/build/         301
 /ecosystem      https://fadil369.github.io               301
 /vision         https://fadil369.github.io               301
 /how-it-works   https://fadil369.github.io               301

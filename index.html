@@ -9,7 +9,15 @@
   <meta property="og:description" content="Connecting providers, payers, patients, and AI through one intelligent healthcare operating system.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://brainsait.org">
-  <link rel="canonical" href="https://brainsait.org">
+  <meta property="og:image" content="https://brainsait.org/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="BrainSAIT">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BrainSAIT — AI Operating System for Healthcare">
+  <meta name="twitter:description" content="Our published healthcare ecosystem is open to the public — verified providers, hospital slots, doctor pages, and signed trust chains.">
+  <meta name="twitter:image" content="https://brainsait.org/og-image.png">
+  <script type="module" src="https://brainsait.org/.webmcp/bridge.js" data-packs="mcp-server-client"></script><link rel="canonical" href="https://brainsait.org">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -161,6 +169,30 @@
       .nav-links a.nav-globe { display: none; }
       .recap-grid { grid-template-columns: 1fr 1fr; }
     }
+
+    /* === NATIONAL DAY HERO BADGE === */
+    .nd-badge { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 22px; padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 700; letter-spacing: 0.01em; color: #eafff3; background: linear-gradient(90deg, rgba(11,61,39,0.92), rgba(20,168,102,0.92)); border: 1px solid rgba(20,168,102,0.5); box-shadow: 0 0 26px rgba(20,168,102,0.35); animation: bob 3s ease-in-out infinite; }
+    .nd-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 10px #4ade80; animation: pulse 1.6s infinite; }
+
+    /* === PUBLISHED TO THE PUBLIC BAND === */
+    .published-section { max-width: 1180px; margin: 0 auto; padding: 30px 24px 70px; opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .published-section.visible { opacity: 1; transform: translateY(0); }
+    .published-section .pub-eyebrow { text-align: center; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+    .published-section h2 { text-align: center; font-size: clamp(24px,3.6vw,36px); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 6px; }
+    .published-section .pub-lead { text-align: center; max-width: 680px; margin: 0 auto 8px; color: var(--muted); font-size: 15px; line-height: 1.6; }
+    .published-section .pub-lead-ar { text-align: center; max-width: 680px; margin: 0 auto 34px; font-family: 'IBM Plex Sans Arabic', sans-serif; color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .pub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+    .pub-card { display: block; padding: 24px; border-radius: 20px; background: linear-gradient(180deg, rgba(11,61,39,0.22), rgba(255,255,255,0.02)); border: 1px solid rgba(20,168,102,0.22); text-decoration: none; color: var(--text); transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease; }
+    .pub-card:hover { transform: translateY(-6px); border-color: rgba(20,168,102,0.6); box-shadow: 0 24px 48px rgba(16,185,129,0.18); }
+    .pub-card .pc-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 22px; background: rgba(20,168,102,0.14); }
+    .pub-card .pc-title { font-weight: 700; font-size: 16px; margin-bottom: 3px; }
+    .pub-card .pc-desc { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 12px; }
+    .pub-card .pc-link { font-size: 13px; font-weight: 700; color: var(--green); }
+    .pub-story { margin-top: 34px; text-align: center; }
+    .pub-story .ps-line { font-family: 'IBM Plex Sans Arabic', sans-serif; font-size: clamp(16px,2.4vw,22px); font-weight: 600; color: #a7f3d0; margin: 0 0 4px; }
+    .pub-story .ps-line-en { font-size: 15px; color: var(--muted); margin: 0 0 22px; }
+    .pub-story .ps-cta { display: inline-block; padding: 12px 26px; border-radius: 100px; font-weight: 700; font-size: 14px; text-decoration: none; color: #04140d; background: linear-gradient(120deg, #4ade80, #14a866); box-shadow: 0 0 30px rgba(20,168,102,0.4); transition: transform 0.3s; }
+    .pub-story .ps-cta:hover { transform: scale(1.05); }
   </style>
 </head>
 <body>
@@ -186,6 +218,11 @@
       <div class="pulse-ring"></div>
       <img src="assets/brainsait-logo.png" alt="BrainSAIT logo" />
     </div>
+    <div class="nd-badge">
+      <span class="dot"></span>
+      <span class="en">🇸🇦 Saudi National Day 96 — Published &amp; Open to the Public</span>
+      <span class="ar" dir="rtl" lang="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif;">🇸🇦 اليوم الوطني 96 — منشور ومتاح للجميع</span>
+    </div>
     <h1>BrainSAIT</h1>
     <p class="tagline en">AI Operating System for Healthcare</p>
     <p class="tagline ar" dir="rtl" lang="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif;">نظام التشغيل الذكي للرعاية الصحية</p>
@@ -193,9 +230,9 @@
     <p class="desc ar" dir="rtl" lang="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif;">يربط المزودين والمدفوعين والمرضى والذكاء الاصطناعي من خلال نظام رعاية صحية ذكي واحد. متوافق مع FHIR وNPHIES، العربية أولاً.</p>
     <div class="cta-group en-flex">
       <a href="https://fadil369.github.io" class="btn btn-primary">Explore Storefront</a>
-      <a href="https://fadil369.github.io/learn" class="btn btn-outline">Learn</a>
-      <a href="https://fadil369.github.io/build" class="btn btn-outline">Build</a>
-      <a href="https://fadil369.github.io/solutions" class="btn btn-outline">Solutions</a>
+      <a href="https://fadil369.github.io/learn/" class="btn btn-outline">Learn</a>
+      <a href="https://fadil369.github.io/build/" class="btn btn-outline">Build</a>
+      <a href="https://fadil369.github.io/solutions/" class="btn btn-outline">Solutions</a>
     </div>
     <div class="cta-group ar-flex" dir="rtl" style="display:none;">
       <a href="https://daftra.brainsait.org/shop" class="btn btn-primary">استكشف المتجر</a>
@@ -219,6 +256,54 @@
     <p class="intro-sub ar" dir="rtl" style="font-family:'IBM Plex Sans Arabic',sans-serif;">أربعة طرق للتعلم والبناء والتوسع مع BrainSAIT.</p>
   </section>
 
+  <!-- PUBLISHED TO THE PUBLIC -->
+  <section class="published-section" data-reveal>
+    <p class="pub-eyebrow">Published · Verified · Open</p>
+    <h2 class="en">One URL. The whole published ecosystem.</h2>
+    <h2 class="ar" dir="rtl" style="font-family:'IBM Plex Sans Arabic',sans-serif;">رابط واحد. النظام الطبي المنشور بالكامل.</h2>
+    <p class="pub-lead en">From the doctor who uses the system… to the doctor who runs it. Four live public surfaces — no gates, no guesswork.</p>
+    <p class="pub-lead ar" dir="rtl" style="font-family:'IBM Plex Sans Arabic',sans-serif;">من الطبيب المستخدم للنظام… إلى الطبيب الذي يَشغّله. أربعة أسطح عامة حيّة — بدون حواجز.</p>
+    <div class="pub-grid">
+      <a class="pub-card" href="https://registry.brainsait.org/p/SA-PHY-000001?utm_source=brainsaitorg&utm_medium=apex&utm_campaign=nd96" target="_blank" rel="noopener">
+        <div class="pc-icon">🏢</div>
+        <div class="pc-title en">Provider Registry</div>
+        <div class="pc-title ar" dir="rtl" style="font-family:'IBM Plex Sans Arabic',sans-serif;">سجل مقدمي الخدمات</div>
+        <div class="pc-desc en">Verified doctors &amp; healthcare professionals with signed SPIDs.</div>
+        <div class="pc-desc ar" dir="rtl" style="font-family:'IBM Plex Sans Arabic',sans-serif;">أطباء ومهنيون موثقون بمعرّفات موقعة.</div>
+        <div class="pc-link">Explore Registry →</div>
+      </a>
+      <a class="pub-card" href="https://fadil369.github.io/slots/?utm_source=brainsaitorg&utm_medium=apex&utm_campaign=nd96" target="_blank" rel="noopener">
+        <div class="pc-icon">🏥</div>
+        <div class="pc-title en">Hospital Slots</div>
+        <div class="pc-title ar" dir="rtl" style="font-family:'IBM Plex Sans Arabic',sans-serif;">الشواغر الطبية</div>
+        <div class="pc-desc en">Live vacancy marketplace for hospitals and clinicians.</div>
+        <div class="pc-desc ar" dir="rtl" style="font-family:'IBM Plex Sans Arabic',sans-serif;">سوق حي للشواغر بين المستشفيات والأطباء.</div>
+        <div class="pc-link">View Slots →</div>
+      </a>
+      <a class="pub-card" href="https://registry.brainsait.org/p/SA-PHY-000001?utm_source=brainsaitorg&utm_medium=apex-doctor&utm_campaign=nd96" target="_blank" rel="noopener">
+        <div class="pc-icon">🩺</div>
+        <div class="pc-title en">Doctor Page</div>
+        <div class="pc-title ar" dir="rtl" style="font-family:'IBM Plex Sans Arabic',sans-serif;">صفحة الطبيب</div>
+        <div class="pc-desc en">A live provider business stack — book a consultation.</div>
+        <div class="pc-desc ar" dir="rtl" style="font-family:'IBM Plex Sans Arabic',sans-serif;">صفحة أعمال الطبيب — احجز استشارة.</div>
+        <div class="pc-link">View Doctor →</div>
+      </a>
+      <a class="pub-card" href="https://verify.brainsait.org/SA-PHY-000001?utm_source=brainsaitorg&utm_medium=apex&utm_campaign=nd96" target="_blank" rel="noopener">
+        <div class="pc-icon">✅</div>
+        <div class="pc-title en">Verify &amp; Trust Chain</div>
+        <div class="pc-title ar" dir="rtl" style="font-family:'IBM Plex Sans Arabic',sans-serif;">التحقق وسلسلة الثقة</div>
+        <div class="pc-desc en">Verify any SPID and inspect the signed delegation chain.</div>
+        <div class="pc-desc ar" dir="rtl" style="font-family:'IBM Plex Sans Arabic',sans-serif;">تحقق من أي معرّف واطلع على سلسلة التفويض الموقعة.</div>
+        <div class="pc-link">Verify →</div>
+      </a>
+    </div>
+    <div class="pub-story">
+      <p class="ps-line ar" dir="rtl" style="font-family:'IBM Plex Sans Arabic',sans-serif;">ابدأ من نفسك… وكل شيء يأتي إليك.</p>
+      <p class="ps-line-en en">Start from yourself… and everything comes to you.</p>
+      <a class="ps-cta" href="https://registry.brainsait.org/p/SA-PHY-000001?utm_source=brainsaitorg&utm_medium=apex-cta&utm_campaign=nd96" target="_blank" rel="noopener">Enter the published ecosystem →</a>
+    </div>
+  </section>
+
   <!-- PRODUCT: BUILD -->
   <section class="product-section" data-reveal>
     <div class="product-visual">
@@ -239,7 +324,7 @@
       <p class="price en">499 SAR/month · or 9,630 full</p>
       <p class="price-ar ar" dir="rtl" lang="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif;">ريال/شهر · أو 9,630 كامل</p>
       <div class="product-cta">
-        <a href="https://fadil369.github.io/build" class="btn btn-primary en">Explore Build →</a>
+        <a href="https://fadil369.github.io/build/" class="btn btn-primary en">Explore Build →</a>
         <a href="https://daftra.brainsait.org/shop?tab=build" class="btn btn-primary ar" dir="rtl">استكشف البناء ←</a>
         <a href="https://daftra.brainsait.org/shop?tab=build" class="btn btn-outline ar" dir="rtl">🇸🇦 المتجر العربي</a>
       </div>
@@ -266,7 +351,7 @@
       <p class="price en">From 990 SAR</p>
       <p class="price-ar ar" dir="rtl" lang="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif;">من 990 ريال</p>
       <div class="product-cta">
-        <a href="https://fadil369.github.io/oid" class="btn btn-primary en" style="background:linear-gradient(120deg,var(--gold),var(--red));">Explore OID →</a>
+        <a href="https://fadil369.github.io/oid/" class="btn btn-primary en" style="background:linear-gradient(120deg,var(--gold),var(--red));">Explore OID →</a>
         <a href="https://daftra.brainsait.org/shop?tab=oid" class="btn btn-primary ar" dir="rtl" style="background:linear-gradient(120deg,var(--gold),var(--red));">استكشف الهوية ←</a>
         <a href="https://daftra.brainsait.org/shop?tab=oid" class="btn btn-outline ar" dir="rtl">🇸🇦 المتجر العربي</a>
       </div>
@@ -292,8 +377,14 @@
       <p class="price en">163 SAR/month · or 3,960/year</p>
       <p class="price-ar ar" dir="rtl" lang="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif;">ريال/شهر · أو 3,960/سنة</p>
       <div class="product-cta">
-        <a href="https://registry.brainsait.org" class="btn btn-primary en">Explore BPR →</a>
+        <a href="https://registry.brainsait.org/p/SA-PHY-000001" class="btn btn-primary en">Explore BPR →</a>
+        <a href="https://verify.brainsait.org/SA-PHY-000001" class="btn btn-outline en">Verify a Doctor →</a>
+        <a href="https://fadil369.github.io/slots/" class="btn btn-outline en">Hospital Slots →</a>
+        <a href="https://registry.brainsait.org/p/SA-PHY-000001" class="btn btn-outline en">Doctor Page →</a>
         <a href="https://daftra.brainsait.org/shop?tab=bpr" class="btn btn-primary ar" dir="rtl">استكشف BPR ←</a>
+        <a href="https://verify.brainsait.org/SA-PHY-000001" class="btn btn-outline ar" dir="rtl">تحقق من طبيب ←</a>
+        <a href="https://fadil369.github.io/slots/" class="btn btn-outline ar" dir="rtl">الشواغر الطبية ←</a>
+        <a href="https://registry.brainsait.org/p/SA-PHY-000001" class="btn btn-outline ar" dir="rtl">صفحة الطبيب ←</a>
         <a href="https://daftra.brainsait.org/shop?tab=bpr" class="btn btn-outline ar" dir="rtl">🇸🇦 المتجر العربي</a>
       </div>
     </div>
@@ -320,7 +411,7 @@
       <p class="price en">From 799 SAR</p>
       <p class="price-ar ar" dir="rtl" lang="ar" style="font-family:'IBM Plex Sans Arabic',sans-serif;">من 799 ريال</p>
       <div class="product-cta">
-        <a href="https://fadil369.github.io/templates" class="btn btn-primary en" style="background:linear-gradient(120deg,var(--gold),var(--red));">Explore Templates →</a>
+        <a href="https://fadil369.github.io/templates/" class="btn btn-primary en" style="background:linear-gradient(120deg,var(--gold),var(--red));">Explore Templates →</a>
         <a href="https://daftra.brainsait.org/shop?tab=templates" class="btn btn-primary ar" dir="rtl" style="background:linear-gradient(120deg,var(--gold),var(--red));">استكشف القوالب ←</a>
         <a href="https://daftra.brainsait.org/shop?tab=templates" class="btn btn-outline ar" dir="rtl">🇸🇦 المتجر العربي</a>
       </div>
@@ -332,22 +423,22 @@
     <h2 class="en">All products, one storefront</h2>
     <h2 class="ar" dir="rtl" style="font-family:'IBM Plex Sans Arabic',sans-serif;">جميع منتجاتنا في مكان واحد</h2>
     <div class="recap-grid">
-      <a href="https://fadil369.github.io/build" target="_blank" rel="noopener" class="recap-card c-blue">
+      <a href="https://fadil369.github.io/build/" target="_blank" rel="noopener" class="recap-card c-blue">
         <div class="recap-icon i-blue">🔨</div>
         <div class="rc-title">Build</div>
         <div class="rc-price">499 SAR/month</div>
       </a>
-      <a href="https://fadil369.github.io/oid" target="_blank" rel="noopener" class="recap-card c-gold">
+      <a href="https://fadil369.github.io/oid/" target="_blank" rel="noopener" class="recap-card c-gold">
         <div class="recap-icon i-gold">🆔</div>
         <div class="rc-title">OID &amp; Registry</div>
         <div class="rc-price">From 990 SAR</div>
       </a>
-      <a href="https://registry.brainsait.org" target="_blank" rel="noopener" class="recap-card c-blue">
+      <a href="https://registry.brainsait.org/p/SA-PHY-000001" target="_blank" rel="noopener" class="recap-card c-blue">
         <div class="recap-icon i-blue">🏢</div>
         <div class="rc-title">BPR Registry</div>
         <div class="rc-price">163 SAR/month</div>
       </a>
-      <a href="https://fadil369.github.io/templates" target="_blank" rel="noopener" class="recap-card c-gold">
+      <a href="https://fadil369.github.io/templates/" target="_blank" rel="noopener" class="recap-card c-gold">
         <div class="recap-icon i-gold">🧩</div>
         <div class="rc-title">Agent Templates</div>
         <div class="rc-price">From 799 SAR</div>
