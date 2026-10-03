@@ -31,4 +31,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://brainsait.org/status</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brainsait.org/status"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://brainsait.org/status"/>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
