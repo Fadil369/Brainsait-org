@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Status — BrainSAIT</title>
+<meta name="description" content="Live reachability for every BrainSAIT surface, with the honest reason anything is down.">
+<meta property="og:title" content="Live Status — BrainSAIT">
+<meta property="og:description" content="Live reachability for every BrainSAIT surface, with the honest reason anything is down.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://brainsait.org/status">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://brainsait.org/status">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #05070c; --card: rgba(255,255,255,0.03); --border: rgba(255,255,255,0.08);
+    --text: #F5F6FA; --muted: #8B93A7; --cyan: #7C8CF0; --purple: #5B63D6;
+    --gold: #F5A623; --red: #E23B3B; --green: #10b981;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter','IBM Plex Sans Arabic',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; overflow-x:hidden; }
+  .wrap { max-width:1100px; margin:0 auto; padding:0 1.5rem 5rem; }
+
+  header { padding:4rem 0 2rem; border-bottom:1px solid var(--border); margin-bottom:2.5rem; }
+  .eyebrow { font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--cyan); margin-bottom:.9rem; }
+  h1 { font-size:clamp(2rem,5.5vw,3.2rem); font-weight:700; letter-spacing:-.02em; line-height:1.1; }
+  .sub { color:var(--muted); margin-top:.9rem; max-width:62ch; font-size:1.02rem; }
+  .topbar { display:flex; flex-wrap:wrap; gap:1rem; align-items:center; justify-content:space-between; margin-top:1.8rem; }
+  .legend { display:flex; gap:1.1rem; flex-wrap:wrap; font-size:.8rem; color:var(--muted); align-items:center; }
+  .legend span { display:inline-flex; align-items:center; gap:.45rem; }
+  .dot { width:8px; height:8px; border-radius:50%; background:var(--muted); flex:none; }
+  .dot.ok { background:var(--green); box-shadow:0 0 0 3px rgba(16,185,129,.16); }
+  .dot.seen { background:var(--cyan); box-shadow:0 0 0 3px rgba(124,140,240,.14); }
+  .dot.no { background:var(--gold); box-shadow:0 0 0 3px rgba(245,166,35,.14); }
+  .dot.down { background:var(--red); box-shadow:0 0 0 3px rgba(226,59,59,.14); }
+
+  button.lang, button.refresh {
+    font:inherit; font-size:.82rem; color:var(--text); background:var(--card);
+    border:1px solid var(--border); border-radius:999px; padding:.5rem 1.05rem; cursor:pointer;
+  }
+  button.lang:hover, button.refresh:hover { border-color:var(--cyan); }
+
+  .meta { font-size:.8rem; color:var(--muted); margin-top:.8rem; font-variant-numeric:tabular-nums; }
+
+  .incident { border:1px solid rgba(245,166,35,.3); background:rgba(245,166,35,.06);
+    border-radius:14px; padding:1.4rem 1.5rem; margin:2rem 0 2.5rem; }
+  .incident h2 { font-size:1.02rem; font-weight:600; color:var(--gold); margin-bottom:.6rem; display:flex; gap:.55rem; align-items:center; }
+  .incident p { color:var(--muted); font-size:.93rem; }
+  .incident code { background:rgba(255,255,255,.07); padding:.12rem .42rem; border-radius:5px; font-size:.86em; color:var(--text); }
+  .incident .fix { margin-top:.85rem; padding-top:.85rem; border-top:1px solid rgba(245,166,35,.2); font-size:.89rem; }
+  .incident .fix b { color:var(--text); font-weight:600; }
+
+  section { margin:2.8rem 0; }
+  section > h2 { font-size:1.16rem; font-weight:600; margin-bottom:.35rem; display:flex; align-items:center; gap:.6rem; }
+  section > p.note { color:var(--muted); font-size:.88rem; margin-bottom:1.15rem; max-width:70ch; }
+
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:.7rem; }
+  .row { display:flex; align-items:center; gap:.8rem; padding:.85rem 1rem;
+    background:var(--card); border:1px solid var(--border); border-radius:11px; }
+  .row .body { flex:1; min-width:0; }
+  .row .name { font-size:.92rem; font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .row .why { font-size:.76rem; color:var(--muted); margin-top:.15rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .row a.go { font-size:.76rem; color:var(--cyan); text-decoration:none; border:1px solid var(--border);
+    border-radius:7px; padding:.3rem .55rem; flex:none; }
+  .row a.go:hover { border-color:var(--cyan); }
+  .row.static { opacity:.72; }
+
+  footer { border-top:1px solid var(--border); margin-top:3.5rem; padding-top:1.6rem; color:var(--muted); font-size:.83rem; }
+  footer a { color:var(--cyan); }
+  [dir="rtl"] body { font-family:'IBM Plex Sans Arabic','Inter',sans-serif; }
+  @media (prefers-reduced-motion:no-preference) { .dot { transition:background .3s ease; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow" data-i18n="eyebrow">Ecosystem reachability</div>
+    <h1 data-i18n="title">Live Status</h1>
+    <p class="sub" data-i18n="sub">Every BrainSAIT surface, probed live from your browser, with the honest reason anything is down.</p>
+    <div class="topbar">
+      <div class="legend">
+        <span><i class="dot ok"></i><span data-i18n="lgOk">healthy</span></span>
+        <span><i class="dot seen"></i><span data-i18n="lgSeen">responded, status hidden</span></span>
+        <span><i class="dot no"></i><span data-i18n="lgNo">no response</span></span>
+        <span><i class="dot down"></i><span data-i18n="lgDown">blocked at edge</span></span>
+      </div>
+      <div style="display:flex;gap:.6rem;align-items:center">
+        <button class="refresh" id="refresh" data-i18n="btnRefresh">Re-check now</button>
+        <button class="lang" id="lang">العربية</button>
+      </div>
+    </div>
+    <div class="meta" id="meta">—</div>
+  </header>
+
+  <div class="incident">
+    <h2>⚠ <span data-i18n="incTitle">Ongoing: domain delegation points at the wrong Cloudflare account</span></h2>
+    <p data-i18n="incBody">The registry nameservers for brainsait.org, elfadil.com and sibaiti.app currently point at a Cloudflare zone in a different account, so our own zone is parked as <code>pending / ns_mismatch</code>. Cloudflare permanently bans cross-account CNAMEs, which is why every worker-backed subdomain answers <code>error 1014</code> and every tunnel answers <code>1033</code>. Nothing here is a fault of the services themselves — the origins are healthy.</p>
+    <p class="fix"><span data-i18n="incFixLbl">The fix is one change:</span> <b data-i18n="incFix">set the nameservers to <code>jewel.ns.cloudflare.com</code> + <code>milan.ns.cloudflare.com</code></b><span data-i18n="incFixEnd"> — then every surface below returns on its real domain with no code change.</span></p>
+  </div>
+
+  <section>
+    <h2><span class="dot ok"></span><span data-i18n="s1h">Live on brainsait.org</span></h2>
+    <p class="note" data-i18n="s1n">Served through Cloudflare Pages hostnames, which are cross-account safe — these keep working while delegation is wrong.</p>
+    <div class="grid" id="g-live"></div>
+  </section>
+
+  <section>
+    <h2><span class="dot no"></span><span data-i18n="s2h">Reachable now on workers.dev</span></h2>
+    <p class="note" data-i18n="s2n">The same services, without the pretty domain. These are the canonical live URLs until the nameservers are repaired.</p>
+    <div class="grid" id="g-alt"></div>
+  </section>
+
+  <section>
+    <h2><span class="dot down"></span><span data-i18n="s3h">Down under the real domain</span></h2>
+    <p class="note" data-i18n="s3n">Cloudflare rejects these at the edge before any origin is contacted. They are not broken — they are unreachable from the wrong account.</p>
+    <div class="grid" id="g-down"></div>
+  </section>
+
+  <footer>
+    <p><span data-i18n="ft1">A green dot means a real 2xx was observed. A blue dot means the endpoint answered but the browser was not allowed to read its status — reachability, not health. Nothing is upgraded to green without evidence.</span> <span data-i18n="ft2">Cross-origin services cannot be read by a browser, so no status is invented where none can be observed.</span></p>
+    <p style="margin-top:.6rem"><span data-i18n="ft3">Profile &amp; full workspace:</span> <a href="https://elfadil.pages.dev/">elfadil.pages.dev</a> · <span data-i18n="ft4">Store:</span> <a href="https://shop.brainsait.de/">shop.brainsait.de</a></p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var LIVE = [
+    ["brainsait.org", "https://brainsait.org/", "flagship site"],
+    ["doctors.brainsait.org", "https://doctors.brainsait.org/", "provider directory"],
+    ["portal.brainsait.org", "https://portal.brainsait.org/", "OID portal"],
+    ["spark.brainsait.org", "https://spark.brainsait.org/", "founder programme"],
+    ["clinics.brainsait.org", "https://clinics.brainsait.org/", "clinics directory"],
+    ["coding.brainsait.org", "https://coding.brainsait.org/", "coding academy"],
+    ["front-store.brainsait.org", "https://front-store.brainsait.org/", "digital store"],
+    ["gtm.brainsait.org", "https://gtm.brainsait.org/", "go-to-market, Arabic"],
+    ["okclinics.brainsait.org", "https://okclinics.brainsait.org/", "OK Clinics"],
+    ["academy.brainsait.org", "https://academy.brainsait.org/", "academy — stale Pages build, HTTP 500"]
+  ];
+  var ALT = [
+    ["Ask Dr. Fadil", "https://ask-dr-fadil.brainsait-fadil.workers.dev/", "RAG clinician assistant"],
+    ["BrainSAIT Bot", "https://brainsait-bot.brainsait-fadil.workers.dev/", "Web Bot Auth identity"],
+    ["BPR Registry", "https://bpr-registry.brainsait-fadil.workers.dev/", "provider registry"],
+    ["Lark DANAH", "https://bpr-lark.brainsait-fadil.workers.dev/", "operations backbone"],
+    ["Forge Pay", "https://forge-pay.brainsait-fadil.workers.dev/", "Telegram payments"],
+    ["Ecosystem Sync", "https://ecosystem-sync.brainsait-fadil.workers.dev/", "catalog → Shopify sync"],
+    ["Hub", "https://brainsait-hub.brainsait-fadil.workers.dev/", "central MCP hub"],
+    ["Platform", "https://brainsait-platform.brainsait-fadil.workers.dev/", "unified router"],
+    ["Profile & 3D workspace", "https://profile.brainsait-fadil.workers.dev/", "full site + 34-slide deck"]
+  ];
+  var DOWN = [
+    ["nphies.brainsait.org", "1014 — cross-account CNAME banned"],
+    ["registry.brainsait.org", "1014 / 522 — edge cannot reach origin"],
+    ["verify.brainsait.org", "1014 — cross-account CNAME banned"],
+    ["passport.brainsait.org", "1014 — cross-account CNAME banned"],
+    ["payments.brainsait.org", "1014 — cross-account CNAME banned"],
+    ["platform.brainsait.org", "1014 — cross-account CNAME banned"],
+    ["daftra.brainsait.org", "1014 — cross-account CNAME banned"],
+    ["mcp.brainsait.org", "1014 — cross-account CNAME banned"],
+    ["assets.brainsait.org", "522 — edge cannot reach origin"],
+    ["audit.brainsait.org", "522 — edge cannot reach origin"],
+    ["api.brainsait.org", "1033 — tunnel not in this account"],
+    ["dashboard.brainsait.org", "1033 — tunnel not in this account"]
+  ];
+
+  var I18N = {
+    en: { eyebrow:"Ecosystem reachability", title:"Live Status", sub:"Every BrainSAIT surface, probed live from your browser, with the honest reason anything is down.",
+      btnRefresh:"Re-check now", lgOk:"healthy (2xx)", lgSeen:"responded, status hidden", lgNo:"no response", lgDown:"blocked at edge",
+      incTitle:"Ongoing: domain delegation points at the wrong Cloudflare account",
+      incBody:"The registry nameservers for brainsait.org, elfadil.com and sibaiti.app currently point at a Cloudflare zone in a different account, so our own zone is parked as pending / ns_mismatch. Cloudflare permanently bans cross-account CNAMEs, which is why every worker-backed subdomain answers error 1014 and every tunnel answers 1033. Nothing here is a fault of the services themselves — the origins are healthy.",
+      incFixLbl:"The fix is one change:", incFix:"set the nameservers to jewel.ns.cloudflare.com + milan.ns.cloudflare.com", incFixEnd:" — then every surface below returns on its real domain with no code change.",
+      s1h:"Live on brainsait.org", s1n:"Served through Cloudflare Pages hostnames, which are cross-account safe — these keep working while delegation is wrong.",
+      s2h:"Reachable now on workers.dev", s2n:"The same services, without the pretty domain. These are the canonical live URLs until the nameservers are repaired.",
+      s3h:"Down under the real domain", s3n:"Cloudflare rejects these at the edge before any origin is contacted. They are not broken — they are unreachable from the wrong account.",
+      ft1:"A green dot means a real 2xx was observed. A blue dot means the endpoint answered but the browser was not allowed to read its status — reachability, not health. Nothing is upgraded to green without evidence.",
+      ft2:"Cross-origin services cannot be read by a browser, so no status is invented where none can be observed.",
+      ft3:"Profile & full workspace:", ft4:"Store:", checked:"checked" },
+    ar: { eyebrow:"توفّر المنظومة", title:"الحالة الحية", sub:"كل خدمة في برينسايت، تُفحص مباشرة من متصفحك، مع السبب الصريح لأي تعطّل.",
+      btnRefresh:"إعادة الفحص الآن", lgOk:"سليم (2xx)", lgSeen:"استجابت، الحالة مخفية", lgNo:"لا استجابة", lgDown:"محجوبة عند الحافة",
+      incTitle:"جارٍ: تفويض النطاق يشير إلى حساب Cloudflare خاطئ",
+      incBody:"تُشير خوادم الأسماء في السجل لـ brainsait.org و elfadil.com و sibaiti.app حالياً إلى منطقة Cloudflare في حساب مختلف، لذلك منطقتنا متوقفة عند pending / ns_mismatch. يحظر Cloudflare دائماً CNAME عبر الحسابات، لذلك ترد كل النطاقات الفرعية المرتبطة بالعمال بالخطأ 1014 وكل الأنفاق بالخطأ 1033. لا يوجد خلل في الخدمات نفسها — المصادر سليمة.",
+      incFixLbl:"الحل بخطوة واحدة:", incFix:"تعيين خوادم الأسماء إلى jewel.ns.cloudflare.com + milan.ns.cloudflare.com", incFixEnd:" — عندها تعود كل الخدمات أدناه على نطاقها الحقيقي دون أي تعديل برمجي.",
+      s1h:"يعمل على brainsait.org", s1n:"يُقدَّم عبر استضافة Cloudflare Pages الآمنة عبر الحسابات — لذا يستمر أثناء خلل التفويض.",
+      s2h:"متاح الآن على workers.dev", s2n:"الخدمات نفسها بدون النطاق الجميل. هذه الروابط الحية المعتمدة حتى إصلاح خوادم الأسماء.",
+      s3h:"معطّل تحت النطاق الحقيقي", s3n:"يرفضها Cloudflare عند الحافة قبل أي اتصال بالمصدر. ليست معطوبة بل غير قابلة للوصول من الحساب الخطأ.",
+      ft1:"النقطة الخضراء تعني استجابة 2xx حقيقية. النقطة الزرقاء تعني أن الخدمة ردّت لكن المتصفح لم يُسمح له بقراءة الحالة — توفّر لا صحة. لا شيء يُعتبر سليماً بلا دليل.",
+      ft2:"لا يستطيع المتصفح قراءة الخدمات عبر النطاقات، فلا نختلق حالة حيث لا يمكن رصدها.",
+      ft3:"الملف الشخصي ومساحة العمل:", ft4:"المتجر:", checked:"آخر فحص" }
+  };
+  I18N.ar.incFixLbl = "الحل بخطوة واحدة:";
+
+  var lang = "en";
+  var t = function (k) { return (I18N[lang][k] !== undefined ? I18N[lang][k] : I18N.en[k]); };
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text !== undefined) n.textContent = text;
+    return n;
+  }
+
+  function render(groupId, rows, mode) {
+    var host = document.getElementById(groupId);
+    host.textContent = "";
+    rows.forEach(function (r) {
+      var name = r[0], url = r[1], why = r[2];
+      var row = el("div", "row");
+      var dot = el("i", "dot");
+      dot.id = "p-" + groupId + "-" + name.replace(/[^a-z0-9]/gi, "");
+      var body = el("div", "body");
+      body.appendChild(el("div", "name", name));
+      if (why) body.appendChild(el("div", "why", why));
+      row.appendChild(dot);
+      row.appendChild(body);
+      if (url && mode !== "static") {
+        var a = el("a", "go", "open ↗");
+        a.href = url; a.target = "_blank"; a.rel = "noopener";
+        row.appendChild(a);
+      }
+      host.appendChild(row);
+    });
+  }
+
+  // Two-stage probe, because a browser genuinely cannot read a cross-origin
+  // status code. Stage 1 asks normally: if the service opts into CORS we get a
+  // real HTTP status and the dot is truthful. Stage 2 falls back to no-cors,
+  // which resolves for ANY http response (200, 403, 500, even a Cloudflare 1014
+  // page) and rejects only on DNS/TCP/TLS failure. That fallback is reported as
+  // "responded" in a neutral tone — never as healthy. No status is invented
+  // where the browser cannot observe one.
+  function probe(url) {
+    var opts = { cache: "no-store", redirect: "follow", signal: AbortSignal.timeout(7000) };
+    return fetch(url, opts)
+      .then(function (r) { return r.ok ? "ok" : "bad"; })
+      .catch(function () {
+        return fetch(url, { mode: "no-cors", cache: "no-store", redirect: "follow", signal: AbortSignal.timeout(7000) })
+          .then(function () { return "seen"; })
+          .catch(function () { return "no"; });
+      });
+  }
+
+  function setDot(id, state) {
+    var d = document.getElementById(id);
+    if (!d) return;
+    d.className = "dot " + (state === "ok" ? "ok" : state === "seen" ? "seen" : state === "no" ? "no" : "down");
+    if (state === "seen") d.title = "responded — status not observable from a browser";
+    if (state === "ok") d.title = "HTTP 2xx";
+    if (state === "bad") d.title = "answered with an error status";
+    if (state === "no") d.title = "no response";
+  }
+
+  function check() {
+    var jobs = [];
+    LIVE.concat(ALT).forEach(function (r) {
+      var id = "p-g-live-" + r[0].replace(/[^a-z0-9]/gi, "");
+      var id2 = "p-g-alt-" + r[0].replace(/[^a-z0-9]/gi, "");
+      var which = document.getElementById(id) ? id : id2;
+      jobs.push(probe(r[1]).then(function (s) { setDot(which, s); }));
+    });
+    DOWN.forEach(function (r) {
+      var id = "p-g-down-" + r[0].replace(/[^a-z0-9]/gi, "");
+      jobs.push(probe("https://" + r[0] + "/").then(function () { setDot(id, "down"); }));
+    });
+    return Promise.all(jobs).then(function () {
+      var d = new Date();
+      document.getElementById("meta").textContent =
+        t("checked") + " " + d.toLocaleTimeString(lang === "ar" ? "ar" : "en-GB",
+          { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+    });
+  }
+
+  function apply() {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    document.querySelectorAll("[data-i18n]").forEach(function (n) {
+      n.textContent = t(n.getAttribute("data-i18n"));
+    });
+    document.getElementById("lang").textContent = lang === "en" ? "العربية" : "English";
+    document.title = (lang === "en" ? "Live Status" : "الحالة الحية") + " — BrainSAIT";
+  }
+
+  function boot() {
+    render("g-live", LIVE, "link");
+    render("g-alt", ALT, "link");
+    render("g-down", DOWN, "static");
+    apply();
+    document.getElementById("refresh").addEventListener("click", check);
+    document.getElementById("lang").addEventListener("click", function () {
+      lang = lang === "en" ? "ar" : "en"; apply(); check();
+    });
+    check();
+    setInterval(check, 60000);
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+})();
+</script>
+</body>
+</html>
